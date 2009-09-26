@@ -31,16 +31,17 @@ background:#ccc;
 color:#666;
 font-weight:bold;
 padding: 1px 2px;}
-.comingSoon p{text-align:center;margin-top:0px;font-size:14px;font-weight:bold;color:white;}
+.comingSoon p{margin-left:400px;margin-top:0px;font-size:14px;font-weight:bold;color:white;}
 .comingSoon a:link,a:visited{text-decoration: none;color:#c7b815;}
 
-.comingSoon #captchaImage{text-align:center;padding-left:95px;padding-bottom:3px;}
+.comingSoon #captchaImage{margin-left:450px;padding-left:95px;padding-bottom:3px;}
 </style>
 </head>
 <body>
 <br>
 <div class="comingSoon">
-<p>Please Register if you want to be inform until we go online.</p>
+<p>A marketplace to buy but also to sell products orginated in Thailand.</p>
+<p>Please Register if you like to be notified when we go online.</p>
 <form name="signUpForContactListForm" action="signUpForContactList" method="post">
  <input type="hidden" name="reload"/>
  <div id="captchaCode"><input type="hidden" value="${parameters.ID_KEY}" name="captchaCode"/></div>
