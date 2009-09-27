@@ -27,19 +27,19 @@
     <entity-resource type="data" reader-name="demo" loader="main" location="data/DemoProduct.xml"/>
     <entity-resource type="data" reader-name="seed" loader="main" location="data/EcommerceTypeData.xml"/>
 
-    <webapp name="productfromthailand"
+    <webapp name="productfromthailand1"
         title="Product from thailand"
         menu-name="secondary"
         server="default-server"
         location="webapp/ecommerce"
         mount-point="/productfromthailand"
         app-bar-display="false"/>
-    <webapp name="productfromthailand"
+    <webapp name="productfromthailand2"
         title="Product from thailand"
         menu-name="secondary"
         server="default-server"
         location="webapp/test"
-        mount-point="/"
+        mount-point="/pft"
         app-bar-display="false"/>
     
 </ofbiz-component>
