@@ -17,4 +17,4 @@ specific language governing permissions and limitations
 under the License.
 --%>
 
-<%response.sendRedirect("/test/control/main");%>
+<%response.sendRedirect("control/main");%>
