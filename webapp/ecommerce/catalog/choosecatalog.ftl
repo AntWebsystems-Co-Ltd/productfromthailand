@@ -24,35 +24,35 @@ under the License.
 <#if (catalogCol?size > 1)>
 <div id ="choosecatalog" class="screenlet">
     <div class="screenlet-header">
-    	<table>
-    		<tbody>
-    			<tr>
-        			<td> <div class="boxhead_sb">${uiLabelMap.ProductChooseCatalog}</div></td>
-        		</tr>
-        		<tr>
-        			<td>
-        				<table>
-				        	<tbody>
-				        		<tr>
-				        			<td>
-				        				<form name="choosecatalogform" method="post" action="<@ofbizUrl>main</@ofbizUrl>" style='margin: 0;'>
-								          <select name='CURRENT_CATALOG_ID' class='selectBox' onchange="submit()">
-								            <option value='${currentCatalogId}'>${currentCatalogName}</option>
-								            <option value='${currentCatalogId}'></option>
-								            <#list catalogCol as catalogId>
-								              <#assign thisCatalogName = Static["org.ofbiz.product.catalog.CatalogWorker"].getCatalogName(request, catalogId)>
-								              <option value='${catalogId}'>${thisCatalogName}</option>
-								            </#list>
-								          </select>
-								        </form>
-				        			</td>
-				        		</tr>
-				        	</tbody>
-				        </table> 
-        			</td>
-        		</tr>
-        	</tbody>
-    	</table>
+        <table>
+            <tbody>
+                <tr>
+                    <td> <div class="boxhead_sb">${uiLabelMap.ProductChooseCatalog}</div></td>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <form name="choosecatalogform" method="post" action="<@ofbizUrl>main</@ofbizUrl>" style='margin: 0;'>
+                                          <select name='CURRENT_CATALOG_ID' class='selectBox' onchange="submit()">
+                                            <option value='${currentCatalogId}'>${currentCatalogName}</option>
+                                            <option value='${currentCatalogId}'></option>
+                                            <#list catalogCol as catalogId>
+                                              <#assign thisCatalogName = Static["org.ofbiz.product.catalog.CatalogWorker"].getCatalogName(request, catalogId)>
+                                              <option value='${catalogId}'>${thisCatalogName}</option>
+                                            </#list>
+                                          </select>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table> 
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 </#if>

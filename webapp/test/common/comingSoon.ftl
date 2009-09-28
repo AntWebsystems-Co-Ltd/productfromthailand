@@ -89,9 +89,8 @@ padding: 1px 2px;}
                   <p>Verify Captcha Code : <input type="text" autocomplete="off" id="subscribeForm_captcha" maxlength="30" size="10" class="required false" name="captcha"/>
 <input id="subscribeButton" value="Subscribe" type="submit"></p>
 </form><br>
-<p><span style="color:#c7b815;font-size:11px;">Tel:053 483245, Fax.053 483246 Email:<a href="mailto:info@productfromthailand.com">info@productfromthailand.com</a></span></p>
-<p ><span style="color:#c7b815;font-size:11px;"><a href="http://www.antwebsystems.com">Antwebsystems Co.,Ltd. 171/28, Moo 3, Thumbol Nhongkeaw,
-Aumphur Hang Dong,Chiang Mai, Thailand 50230</a></span></p>
+<p><span style="color:#c7b815;font-size:11px;">${uiLabelMap.PartyPhoneNumber}: +66-53 483245, ${uiLabelMap.PartyFaxNumber} : +66-53 483246, ${uiLabelMap.PartyEmailAddress}:<a href="mailto:info@productfromthailand.com">info@productfromthailand.com</a></span></p>
+<p ><span style="color:#c7b815;font-size:11px;"><a href="http://www.antwebsystems.com">${uiLabelMap.PFTCompanyName}</a> ${uiLabelMap.PFTCompanyAddress}</span></p>
 </div>
 
 </body></html>

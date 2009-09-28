@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+    
+    http://www.apache.org/licenses/LICENSE-2.0
+    
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+
+<entity-engine-xml>
+    <Party partyId="pft" partyTypeId="PARTY_GROUP" createdDate="2009-09-25 10:35:14.088"/>
+    <PartyGroup partyId="pft" groupName="Antwebsystems Co.,Ltd."/>
+
+    <PartyRole partyId="pft" roleTypeId="CARRIER"/>
+    <PartyRole partyId="pft" roleTypeId="INTERNAL_ORGANIZATIO"/>
+    <PartyRole partyId="pft" roleTypeId="_NA_"/>
+
+    <ContactMech contactMechId="pftAddr" contactMechTypeId="POSTAL_ADDRESS"/>
+    <ContactMech contactMechId="pftPhone" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="pftEmail" contactMechTypeId="EMAIL_ADDRESS" infoString="info@productfromthailand.com"/>
+    <ContactMech contactMechId="pftFacilityAddr" contactMechTypeId="POSTAL_ADDRESS"/>
+
+    <PostalAddress contactMechId="pftAddr" toName="Antwebsystems Co.,Ltd." address1="171/28, Moo 3, Thumbol Nhongkeaw, Aumphur Hang Dong" city="Chiangmai" postalCode="50230" countryGeoId="THA"/>
+    <PostalAddress contactMechId="pftFacilityAddr" toName="Antwebsystems Co.,Ltd." address1="171/28, Moo 3, Thumbol Nhongkeaw, Aumphur Hang Dong" city="Chiangmai" postalCode="50230" countryGeoId="THA"/>
+
+    <TelecomNumber contactMechId="pftPhone" countryCode="+66" areaCode="053" contactNumber="483245"/>
+
+    <PartyContactMech partyId="pft" contactMechId="pftEmail" fromDate="2009-09-25 10:35:15.962" roleTypeId="INTERNAL_ORGANIZATIO" allowSolicitation="Y"/>
+    <PartyContactMech partyId="pft" contactMechId="pftPhone" fromDate="2009-09-25 10:35:15.909" roleTypeId="INTERNAL_ORGANIZATIO" allowSolicitation="Y"/>
+    <PartyContactMech partyId="pft" contactMechId="pftAddr" fromDate="2009-09-25 10:35:15.777" roleTypeId="INTERNAL_ORGANIZATIO" allowSolicitation="Y"/>
+
+    <PartyContactMechPurpose partyId="pft" contactMechId="pftEmail" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2009-09-25 10:35:15.971"/>
+    <PartyContactMechPurpose partyId="pft" contactMechId="pftPhone" contactMechPurposeTypeId="PHONE_WORK" fromDate="2009-09-25 10:35:15.917"/>
+    <PartyContactMechPurpose partyId="pft" contactMechId="pftAddr" contactMechPurposeTypeId="BILLING_LOCATION" fromDate="2009-09-25 10:35:15.856"/>
+    <PartyContactMechPurpose partyId="pft" contactMechId="pftAddr" contactMechPurposeTypeId="GENERAL_LOCATION" fromDate="2009-09-25 10:35:15.851"/>
+    <PartyContactMechPurpose partyId="pft" contactMechId="pftAddr" contactMechPurposeTypeId="PAYMENT_LOCATION" fromDate="2009-09-25 10:35:15.838"/>
+
+    <GlJournal glJournalId="pftGlJournal" glJournalName="Suspense transactions" organizationPartyId="pft"/>
+    <PartyAcctgPreference partyId="pft" taxFormId="US_IRS_1120" cogsMethodId="COGS_AVG_COST" baseCurrencyUomId="USD" invoiceSequenceEnumId="INVSQ_ENF_SEQ" 
+        invoiceIdPrefix="PRCI" quoteSequenceEnumId="INVSQ_ENF_SEQ" quoteIdPrefix="QU" orderSequenceEnumId="INVSQ_ENF_SEQ" orderIdPrefix="OD" errorGlJournalId="pftGlJournal"/>
+
+    <Facility facilityId="pftWarehouse" facilityTypeId="WAREHOUSE" ownerPartyId="pft" defaultInventoryItemTypeId="NON_SERIAL_INV_ITEM" 
+        facilityName="Product from Thailand Warehouse" defaultDaysToShip="25" defaultWeightUomId="WT_lb"/>
+    <FacilityContactMech facilityId="pftWarehouse" contactMechId="pftFacilityAddr" fromDate="2009-09-25 10:37:46.351"/>
+    <FacilityContactMechPurpose facilityId="pftWarehouse" contactMechId="pftFacilityAddr" contactMechPurposeTypeId="SHIP_ORIG_LOCATION" fromDate="2009-09-25 10:37:46.428"/>
+    <FacilityContactMechPurpose facilityId="pftWarehouse" contactMechId="pftFacilityAddr" contactMechPurposeTypeId="SHIPPING_LOCATION" fromDate="2009-09-25 10:37:46.414"/>
+    
+    <!-- General Ledger Setup for the Product from Thailand company -->
+    <GlAccountOrganization glAccountId="900000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="810000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="804000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="650000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="625000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="605000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="604000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="603200" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="603100" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="602200" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="602100" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="601400" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="601300" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="601200" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="601100" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="601000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="600000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="516100" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="515000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="514000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="510000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="500000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="424000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="423000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="422000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="421000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="410000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="409000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="401000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="400000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="336000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="224209" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="224153" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="224151" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="224140" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="224106" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="224100" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="224000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="221100" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="215000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="214000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="213500" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="213300" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="213200" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="213000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="210000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="142000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="141000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="140000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="122500" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="122300" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="122200" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="122100" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="122000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="121800" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="125000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="120000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="112000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="111100" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="111000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    <GlAccountOrganization glAccountId="100000" organizationPartyId="pft" fromDate="2009-09-25 10:44:00.569"/>
+    
+    <GlAccountTypeDefault glAccountTypeId="TAX_ACCOUNT" organizationPartyId="pft" glAccountId="900000"/>
+    <GlAccountTypeDefault glAccountTypeId="OPERATING_EXPENSE" organizationPartyId="pft" glAccountId="600000"/>
+    <GlAccountTypeDefault glAccountTypeId="INV_ADJ_VAL" organizationPartyId="pft" glAccountId="515000"/>
+    <GlAccountTypeDefault glAccountTypeId="COGS_ACCOUNT" organizationPartyId="pft" glAccountId="500000"/>
+    <GlAccountTypeDefault glAccountTypeId="SALES_ACCOUNT" organizationPartyId="pft" glAccountId="400000"/>
+    <GlAccountTypeDefault glAccountTypeId="RETAINED_EARNINGS" organizationPartyId="pft" glAccountId="336000"/>
+    <GlAccountTypeDefault glAccountTypeId="COMMISSIONS_PAYABLE" organizationPartyId="pft" glAccountId="221100"/>
+    <GlAccountTypeDefault glAccountTypeId="INVENTORY_XFER_IN" organizationPartyId="pft" glAccountId="215000"/>
+    <GlAccountTypeDefault glAccountTypeId="UNINVOICED_SHIP_RCPT" organizationPartyId="pft" glAccountId="214000"/>
+    <GlAccountTypeDefault glAccountTypeId="CUSTOMER_DEPOSIT" organizationPartyId="pft" glAccountId="213300"/>
+    <GlAccountTypeDefault glAccountTypeId="CUSTOMER_CREDIT" organizationPartyId="pft" glAccountId="213000"/>
+    <GlAccountTypeDefault glAccountTypeId="ACCOUNTS_PAYABLE" organizationPartyId="pft" glAccountId="210000"/>
+    <GlAccountTypeDefault glAccountTypeId="PREPAID_EXPENSES" organizationPartyId="pft" glAccountId="150000"/>
+    <GlAccountTypeDefault glAccountTypeId="WIP_INVENTORY" organizationPartyId="pft" glAccountId="142000"/>
+    <GlAccountTypeDefault glAccountTypeId="RAWMAT_INVENTORY" organizationPartyId="pft" glAccountId="141000"/>
+    <GlAccountTypeDefault glAccountTypeId="INVENTORY_ACCOUNT" organizationPartyId="pft" glAccountId="140000"/>
+    <GlAccountTypeDefault glAccountTypeId="INVENTORY_XFER_OUT" organizationPartyId="pft" glAccountId="125000"/>
+    <GlAccountTypeDefault glAccountTypeId="INTRSTINC_RECEIVABLE" organizationPartyId="pft" glAccountId="121800"/>
+    <GlAccountTypeDefault glAccountTypeId="ACCOUNTS_RECEIVABLE" organizationPartyId="pft" glAccountId="120000"/>
+    
+    <PaymentGlAccountTypeMap paymentTypeId="GC_DEPOSIT" organizationPartyId="pft" glAccountTypeId="CUSTOMER_DEPOSIT"/>
+    <PaymentGlAccountTypeMap paymentTypeId="INTEREST_RECEIPT" organizationPartyId="pft" glAccountTypeId="INTRSTINC_RECEIVABLE"/>
+    <PaymentGlAccountTypeMap paymentTypeId="CUSTOMER_DEPOSIT" organizationPartyId="pft" glAccountTypeId="CUSTOMER_DEPOSIT"/>
+    <PaymentGlAccountTypeMap paymentTypeId="CUSTOMER_PAYMENT" organizationPartyId="pft" glAccountTypeId="ACCOUNTS_RECEIVABLE"/>
+    <PaymentGlAccountTypeMap paymentTypeId="INCOME_TAX_PAYMENT" organizationPartyId="pft" glAccountTypeId="TAX_ACCOUNT"/>
+    <PaymentGlAccountTypeMap paymentTypeId="PAYROLL_TAX_PAYMENT" organizationPartyId="pft" glAccountTypeId="TAX_ACCOUNT"/>
+    <PaymentGlAccountTypeMap paymentTypeId="PAYROL_PAYMENT" organizationPartyId="pft" glAccountTypeId="OPERATING_EXPENSE"/>
+    <PaymentGlAccountTypeMap paymentTypeId="SALES_TAX_PAYMENT" organizationPartyId="pft" glAccountTypeId="TAX_ACCOUNT"/>
+    <PaymentGlAccountTypeMap paymentTypeId="GC_WITHDRAWAL" organizationPartyId="pft" glAccountTypeId="CUSTOMER_CREDIT"/>
+    <PaymentGlAccountTypeMap paymentTypeId="PAY_CHECK" organizationPartyId="pft" glAccountTypeId="CUSTOMER_CREDIT"/>
+    <PaymentGlAccountTypeMap paymentTypeId="COMMISSION_PAYMENT" organizationPartyId="pft" glAccountTypeId="COMMISSIONS_PAYABLE"/>
+    <PaymentGlAccountTypeMap paymentTypeId="VENDOR_PREPAY" organizationPartyId="pft" glAccountTypeId="PREPAID_EXPENSES"/>
+    <PaymentGlAccountTypeMap paymentTypeId="VENDOR_PAYMENT" organizationPartyId="pft" glAccountTypeId="ACCOUNTS_PAYABLE"/>
+    <PaymentGlAccountTypeMap paymentTypeId="CUSTOMER_REFUND" organizationPartyId="pft" glAccountTypeId="CUSTOMER_CREDIT"/>
+    
+    <PaymentMethodTypeGlAccount paymentMethodTypeId="EXT_WORLDPAY" organizationPartyId="pft" glAccountId="122500"/>
+    <PaymentMethodTypeGlAccount paymentMethodTypeId="EXT_PAYPAL" organizationPartyId="pft" glAccountId="122500"/>
+    <PaymentMethodTypeGlAccount paymentMethodTypeId="EXT_OFFLINE" organizationPartyId="pft" glAccountId="112000"/>
+    <PaymentMethodTypeGlAccount paymentMethodTypeId="EXT_EBAY" organizationPartyId="pft" glAccountId="112000"/>
+    <PaymentMethodTypeGlAccount paymentMethodTypeId="EXT_COD" organizationPartyId="pft" glAccountId="112000"/>
+    <PaymentMethodTypeGlAccount paymentMethodTypeId="EXT_BILLACT" organizationPartyId="pft" glAccountId="213000"/>
+    <PaymentMethodTypeGlAccount paymentMethodTypeId="COMPANY_ACCOUNT" organizationPartyId="pft" glAccountId="111100"/>
+    <PaymentMethodTypeGlAccount paymentMethodTypeId="MONEY_ORDER" organizationPartyId="pft" glAccountId="112000"/>
+    <PaymentMethodTypeGlAccount paymentMethodTypeId="CERTIFIED_CHECK" organizationPartyId="pft" glAccountId="112000"/>
+    <PaymentMethodTypeGlAccount paymentMethodTypeId="COMPANY_CHECK" organizationPartyId="pft" glAccountId="112000"/>
+    <PaymentMethodTypeGlAccount paymentMethodTypeId="PERSONAL_CHECK" organizationPartyId="pft" glAccountId="112000"/>
+    <PaymentMethodTypeGlAccount paymentMethodTypeId="FIN_ACCOUNT" organizationPartyId="pft" glAccountId="111100"/>
+    <PaymentMethodTypeGlAccount paymentMethodTypeId="EFT_ACCOUNT" organizationPartyId="pft" glAccountId="111100"/>
+    <PaymentMethodTypeGlAccount paymentMethodTypeId="CASH" organizationPartyId="pft" glAccountId="112000"/>
+    <PaymentMethodTypeGlAccount paymentMethodTypeId="GIFT_CERTIFICATE" organizationPartyId="pft" glAccountId="120000"/>
+    
+    <CreditCardTypeGlAccount cardType="AmericanExpress" organizationPartyId="pft" glAccountId="122100"/>
+    <CreditCardTypeGlAccount cardType="CCT_AMERICANEXPRESS" organizationPartyId="pft" glAccountId="122100"/>
+    <CreditCardTypeGlAccount cardType="CCT_DINERSCLUB" organizationPartyId="pft" glAccountId="122100"/>
+    <CreditCardTypeGlAccount cardType="CCT_DISCOVER" organizationPartyId="pft" glAccountId="122200"/>
+    <CreditCardTypeGlAccount cardType="CCT_MASTERCARD" organizationPartyId="pft" glAccountId="122300"/>
+    <CreditCardTypeGlAccount cardType="CCT_VISA" organizationPartyId="pft" glAccountId="122300"/>
+    <CreditCardTypeGlAccount cardType="DinersClub" organizationPartyId="pft" glAccountId="122100"/>
+    <CreditCardTypeGlAccount cardType="Discover" organizationPartyId="pft" glAccountId="122200"/>
+    <CreditCardTypeGlAccount cardType="MasterCard" organizationPartyId="pft" glAccountId="122300"/>
+    <CreditCardTypeGlAccount cardType="Visa" organizationPartyId="pft" glAccountId="122300"/>
+    
+    <FinAccountTypeGlAccount finAccountTypeId="INVESTMENT_ACCOUNT" organizationPartyId="pft" glAccountId="213500"/>
+    <FinAccountTypeGlAccount finAccountTypeId="BANK_ACCOUNT" organizationPartyId="pft" glAccountId="213500"/>
+    <FinAccountTypeGlAccount finAccountTypeId="DEPOSIT_ACCOUNT" organizationPartyId="pft" glAccountId="213500"/>
+    <FinAccountTypeGlAccount finAccountTypeId="GIFTCERT_ACCOUNT" organizationPartyId="pft" glAccountId="213200"/>
+    
+    <VarianceReasonGlAccount varianceReasonId="VAR_SAMPLE" organizationPartyId="pft" glAccountId="625000"/>
+    <VarianceReasonGlAccount varianceReasonId="VAR_INTEGR" organizationPartyId="pft" glAccountId="514000"/>
+    <VarianceReasonGlAccount varianceReasonId="VAR_DAMAGED" organizationPartyId="pft" glAccountId="514000"/>
+    <VarianceReasonGlAccount varianceReasonId="VAR_FOUND" organizationPartyId="pft" glAccountId="514000"/>
+    <VarianceReasonGlAccount varianceReasonId="VAR_STOLEN" organizationPartyId="pft" glAccountId="514000"/>
+    <VarianceReasonGlAccount varianceReasonId="VAR_LOST" organizationPartyId="pft" glAccountId="514000"/>
+    <!-- End of General Ledger Setup for Product from Thailand company -->
+    
+    <ProductStore productStoreId="pftStore" storeName="Product from Thailand Store" companyName="Product from Thailand Co.,Ltd" payToPartyId="pft" 
+        daysToCancelNonPay="30" manualAuthIsCapture="N" prorateShipping="Y" prorateTaxes="Y" viewCartOnAdd="N" autoSaveCart="N" autoApproveReviews="N" 
+        isDemoStore="Y" isImmediatelyFulfilled="N" inventoryFacilityId="pftWarehouse" oneInventoryFacility="Y" checkInventory="Y" reserveInventory="Y" 
+        reserveOrderEnumId="INVRO_FIFO_REC" requireInventory="N" balanceResOnOrderCreation="Y" orderNumberPrefix="WS" defaultLocaleString="en_US" 
+        defaultCurrencyUomId="USD" defaultSalesChannelEnumId="WEB_SALES_CHANNEL" allowPassword="Y" explodeOrderItems="N" checkGcBalance="N" retryFailedAuths="Y" 
+        headerApprovedStatus="ORDER_APPROVED" itemApprovedStatus="ITEM_APPROVED" digitalItemApprovedStatus="ITEM_APPROVED" headerDeclinedStatus="ORDER_REJECTED" 
+        itemDeclinedStatus="ITEM_REJECTED" headerCancelStatus="ORDER_CANCELLED" itemCancelStatus="ITEM_CANCELLED" 
+        authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or call customer service." 
+        authFraudMessage="Your order has been rejected and your account has been disabled due to fraud." 
+        authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email." visualThemeId="ECC_DEFAULT" 
+        storeCreditAccountEnumId="FIN_ACCOUNT" usePrimaryEmailUsername="N" requireCustomerRole="N" autoInvoiceDigitalItems="Y" reqShipAddrForDigItems="Y" 
+        showCheckoutGiftOptions="Y" selectPaymentTypePerItem="N" showPricesWithVatTax="N" showTaxIsExempt="Y" enableDigProdUpload="N" prodSearchExcludeVariants="Y" 
+        autoOrderCcTryExp="Y" autoOrderCcTryOtherCards="Y" autoOrderCcTryLaterNsf="Y" storeCreditValidDays="90" autoApproveInvoice="Y" autoApproveOrder="Y" 
+        shipIfCaptureFails="Y" reqReturnInventoryReceive="N" showOutOfStockProducts="Y"/>
+    
+    <ProductStoreFacility productStoreId="pftStore" facilityId="pftWarehouse" fromDate="2009-09-25 10:38:07.561"/>
+    <!--<ProductStoreCatalog productStoreId="pftStore" prodCatalogId="DemoCatalog" fromDate="2009-09-25 10:38:07.561"/>-->
+    <WebSite webSiteId="ProductFromThailand" siteName="Product from Thailand website" visualThemeSetId="ECOMMERCE" productStoreId="pftStore"/>
+
+    <ProductStorePaymentSetting productStoreId="pftStore" paymentMethodTypeId="EXT_BILLACT" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
+    <ProductStorePaymentSetting productStoreId="pftStore" paymentMethodTypeId="EXT_COD" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
+    <ProductStorePaymentSetting productStoreId="pftStore" paymentMethodTypeId="EXT_OFFLINE" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
+    <ProductStorePaymentSetting productStoreId="pftStore" paymentMethodTypeId="EXT_WORLDPAY" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentGatewayConfigId="WORLDPAY_CONFIG"/>
+    <ProductStorePaymentSetting productStoreId="pftStore" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentGatewayConfigId="PAYPAL_CONFIG"/>
+    <ProductStorePaymentSetting productStoreId="pftStore" paymentMethodTypeId="GIFT_CARD" paymentServiceTypeEnumId="PRDS_PAY_RELEASE" paymentService="testGCRelease" paymentCustomMethodId="GIFT_RELEASE_TEST"/>
+    <ProductStorePaymentSetting productStoreId="pftStore" paymentMethodTypeId="GIFT_CARD" paymentServiceTypeEnumId="PRDS_PAY_AUTH" paymentService="alwaysApproveGCProcessor" paymentCustomMethodId="GIFT_AUTH_ALWAYSAPPR"/>
+    <ProductStorePaymentSetting productStoreId="pftStore" paymentMethodTypeId="EFT_ACCOUNT" paymentServiceTypeEnumId="PRDS_PAY_AUTH" paymentService="alwaysApproveEFTProcessor" paymentCustomMethodId="EFT_AUTH_ALWAYSAPPRO"/>
+    <ProductStorePaymentSetting productStoreId="pftStore" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_REFUND" paymentService="testCCRefund" paymentCustomMethodId="CC_REFUND_TEST"/>
+    <ProductStorePaymentSetting productStoreId="pftStore" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_REAUTH" paymentService="alwaysApproveCCProcessor" paymentCustomMethodId="CC_AUTH_ALWAYSAPPROV"/>
+    <ProductStorePaymentSetting productStoreId="pftStore" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_CAPTURE" paymentService="testCCCapture" paymentCustomMethodId="CC_CAPTURE_TEST"/>
+    <ProductStorePaymentSetting productStoreId="pftStore" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_RELEASE" paymentService="testCCRelease" paymentCustomMethodId="CC_RELEASE_TEST"/>
+    <ProductStorePaymentSetting productStoreId="pftStore" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_AUTH" paymentService="alwaysApproveCCProcessor" paymentCustomMethodId="CC_AUTH_ALWAYSAPPROV"/>
+    
+    <ProductStoreShipmentMeth productStoreShipMethId="10016" productStoreId="pftStore" shipmentMethodTypeId="GROUND_HOME" partyId="FEDEX" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="N" sequenceNumber="17"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="10015" productStoreId="pftStore" shipmentMethodTypeId="GROUND" partyId="FEDEX" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="N" sequenceNumber="16"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="10014" productStoreId="pftStore" shipmentMethodTypeId="EXPRESS" partyId="FEDEX" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="N" sequenceNumber="15"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="10013" productStoreId="pftStore" shipmentMethodTypeId="SECOND_DAY" partyId="FEDEX" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="N" sequenceNumber="14"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="10012" productStoreId="pftStore" shipmentMethodTypeId="NEXT_PM" partyId="FEDEX" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="N" sequenceNumber="13"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="10011" productStoreId="pftStore" shipmentMethodTypeId="NEXT_DAY" partyId="FEDEX" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="N" sequenceNumber="12"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="10010" productStoreId="pftStore" shipmentMethodTypeId="NEXT_AM" partyId="FEDEX" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="N" sequenceNumber="11"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="10009" productStoreId="pftStore" shipmentMethodTypeId="GROUND" partyId="DHL" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="N" sequenceNumber="10"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="10008" productStoreId="pftStore" shipmentMethodTypeId="SECOND_DAY" partyId="DHL" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="N" sequenceNumber="9"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="10007" productStoreId="pftStore" shipmentMethodTypeId="NEXT_PM" partyId="DHL" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="N" sequenceNumber="8"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="10006" productStoreId="pftStore" shipmentMethodTypeId="EXPRESS" partyId="DHL" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="N" sequenceNumber="7"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="10005" productStoreId="pftStore" shipmentMethodTypeId="EXPRESS" partyId="USPS" roleTypeId="CARRIER" allowUspsAddr="Y" requireUspsAddr="N" includeNoChargeItems="N" serviceName="uspsRateInquire" sequenceNumber="4"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="10004" productStoreId="pftStore" shipmentMethodTypeId="STANDARD" partyId="USPS" roleTypeId="CARRIER" allowUspsAddr="Y" requireUspsAddr="N" includeNoChargeItems="N" serviceName="uspsRateInquire" sequenceNumber="5"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="10003" productStoreId="pftStore" shipmentMethodTypeId="NEXT_DAY" partyId="UPS" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="N" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="10002" productStoreId="pftStore" shipmentMethodTypeId="AIR" partyId="UPS" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="N" sequenceNumber="2"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="10001" productStoreId="pftStore" shipmentMethodTypeId="GROUND" partyId="UPS" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="N" sequenceNumber="3"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="10000" productStoreId="pftStore" shipmentMethodTypeId="NO_SHIPPING" partyId="_NA_" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="Y" sequenceNumber="6"/>
+    
+    <CarrierShipmentMethod shipmentMethodTypeId="LOCAL_DELIVERY" partyId="pft" roleTypeId="CARRIER" sequenceNumber="4"/>
+    
+    <ShipmentCostEstimate shipmentCostEstimateId="10016" shipmentMethodTypeId="GROUND_HOME" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER" productStoreId="pftStore" orderFlatPrice="0.00" orderPricePercent="0.000000" orderItemFlatPrice="0.00"/>
+    <ShipmentCostEstimate shipmentCostEstimateId="10015" shipmentMethodTypeId="GROUND" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER" productStoreId="pftStore" orderFlatPrice="0.00" orderPricePercent="0.000000" orderItemFlatPrice="0.00"/>
+    <ShipmentCostEstimate shipmentCostEstimateId="10014" shipmentMethodTypeId="EXPRESS" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER" productStoreId="pftStore" orderFlatPrice="0.00" orderPricePercent="0.000000" orderItemFlatPrice="0.00"/>
+    <ShipmentCostEstimate shipmentCostEstimateId="10013" shipmentMethodTypeId="SECOND_DAY" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER" productStoreId="pftStore" orderFlatPrice="0.00" orderPricePercent="0.000000" orderItemFlatPrice="0.00"/>
+    <ShipmentCostEstimate shipmentCostEstimateId="10012" shipmentMethodTypeId="NEXT_PM" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER" productStoreId="pftStore" orderFlatPrice="0.00" orderPricePercent="0.000000" orderItemFlatPrice="0.00"/>
+    <ShipmentCostEstimate shipmentCostEstimateId="10011" shipmentMethodTypeId="NEXT_DAY" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER" productStoreId="pftStore" orderFlatPrice="0.00" orderPricePercent="0.000000" orderItemFlatPrice="0.00"/>
+    <ShipmentCostEstimate shipmentCostEstimateId="10010" shipmentMethodTypeId="NEXT_AM" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER" productStoreId="pftStore" orderFlatPrice="0.00" orderPricePercent="0.000000" orderItemFlatPrice="0.00"/>
+    <ShipmentCostEstimate shipmentCostEstimateId="10009" shipmentMethodTypeId="GROUND" carrierPartyId="DHL" carrierRoleTypeId="CARRIER" productStoreId="pftStore" weightBreakId="9006" weightUnitPrice="0.10" orderFlatPrice="3.00" orderPricePercent="0.000000" orderItemFlatPrice="0.00"/>
+    <ShipmentCostEstimate shipmentCostEstimateId="10008" shipmentMethodTypeId="SECOND_DAY" carrierPartyId="DHL" carrierRoleTypeId="CARRIER" productStoreId="pftStore" weightBreakId="9005" weightUnitPrice="0.20" orderFlatPrice="5.00" orderPricePercent="0.000000" orderItemFlatPrice="0.00"/>
+    <ShipmentCostEstimate shipmentCostEstimateId="10007" shipmentMethodTypeId="NEXT_PM" carrierPartyId="DHL" carrierRoleTypeId="CARRIER" productStoreId="pftStore" weightBreakId="9004" weightUnitPrice="0.20" orderFlatPrice="9.00" orderPricePercent="0.000000" orderItemFlatPrice="0.00"/>
+    <ShipmentCostEstimate shipmentCostEstimateId="10006" shipmentMethodTypeId="EXPRESS" carrierPartyId="DHL" carrierRoleTypeId="CARRIER" productStoreId="pftStore" weightBreakId="9003" weightUnitPrice="0.20" orderFlatPrice="10.00" orderPricePercent="0.000000" orderItemFlatPrice="0.00"/>
+    <ShipmentCostEstimate shipmentCostEstimateId="10005" shipmentMethodTypeId="NO_SHIPPING" carrierPartyId="_NA_" carrierRoleTypeId="CARRIER" productStoreId="pftStore" orderFlatPrice="0.00" orderPricePercent="0.000000" orderItemFlatPrice="0.00" lastUpdatedStamp="2009-09-25 10:38:08.754"/>
+    <ShipmentCostEstimate shipmentCostEstimateId="10004" shipmentMethodTypeId="STANDARD" carrierPartyId="_NA_" carrierRoleTypeId="CARRIER" productStoreId="pftStore" orderFlatPrice="0.00" orderPricePercent="20.000000" orderItemFlatPrice="0.00" lastUpdatedStamp="2009-09-25 10:38:08.75"/>
+    <ShipmentCostEstimate shipmentCostEstimateId="10003" shipmentMethodTypeId="NEXT_DAY" carrierPartyId="UPS" carrierRoleTypeId="CARRIER" productStoreId="pftStore" weightBreakId="9002" weightUnitPrice="0.35" orderFlatPrice="10.00" orderPricePercent="0.000000" orderItemFlatPrice="0.00"/>
+    <ShipmentCostEstimate shipmentCostEstimateId="10002" shipmentMethodTypeId="GROUND" carrierPartyId="UPS" carrierRoleTypeId="CARRIER" productStoreId="pftStore" weightBreakId="9001" weightUnitPrice="0.10" orderFlatPrice="3.00" orderPricePercent="0.000000" orderItemFlatPrice="0.00"/>
+    <ShipmentCostEstimate shipmentCostEstimateId="10001" shipmentMethodTypeId="AIR" carrierPartyId="UPS" carrierRoleTypeId="CARRIER" productStoreId="pftStore" weightBreakId="9000" weightUnitPrice="0.20" orderFlatPrice="5.00" orderPricePercent="0.000000" orderItemFlatPrice="0.00"/>
+    <ShipmentCostEstimate shipmentCostEstimateId="10000" shipmentMethodTypeId="LOCAL_DELIVERY" carrierPartyId="pft" carrierRoleTypeId="CARRIER" productStoreId="pftStore" orderFlatPrice="5.00" orderPricePercent="0.000000" orderItemFlatPrice="0.00"/>
+
+    <CustomTimePeriod customTimePeriodId="10000" periodTypeId="FISCAL_YEAR" periodNum="1" periodName="2009" fromDate="2009-01-01" thruDate="2009-12-31" isClosed="N" organizationPartyId="pft"/>
+</entity-engine-xml>

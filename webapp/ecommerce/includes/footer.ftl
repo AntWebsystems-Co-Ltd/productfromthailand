@@ -18,29 +18,29 @@ under the License.
 -->
 
 <#assign nowTimestamp = Static["org.ofbiz.base.util.UtilDateTime"].nowTimestamp()>
-						<center><hr width="740"/></center>
-						<table  align="center">
-							<tbody>
-								<tr>
-									<td  align="center">
-										<h4>Tel: +66-53-400992, 400993 Fax: +66-53-400911 Email: info@iproductfromthailand.com</h4>
-									</td>
-								</tr>
-								<tr>
-									<td  align="center">
-										<h4>Productfromthailand Co., Ltd., 191 Huay Kaew Rd, T.Suthep, A.Muang, Chiang Mai 50200, Thailand</h4>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</td>
-				</tr>
-				<tr>
-					<td background="/productfromthailand/images/bg02.gif" width="800" height="18" align="center" valign="bottom"></td>
-				</tr>
-			</tbody>
-		</table>
- 	</div>
+                        <center><hr width="740"/></center>
+                        <table  align="center">
+                            <tbody>
+                                <tr>
+                                    <td  align="center">
+                                        <h4>${uiLabelMap.PartyPhoneNumber}: +66-53 483245, ${uiLabelMap.PartyFaxNumber} : +66-53 483246, ${uiLabelMap.PartyEmailAddress} : info@productfromthailand.com</h4>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td  align="center">
+                                        <h4><a href="http://www.antwebsystems.com">${uiLabelMap.PFTCompanyName} ${uiLabelMap.PFTCompanyAddress} <a></h4>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td background="/pft/images/bg02.gif" width="800" height="18" align="center" valign="bottom"></td>
+                </tr>
+            </tbody>
+        </table>
+     </div>
 </div>
 <div id="ecom-footer">
   <br/>
