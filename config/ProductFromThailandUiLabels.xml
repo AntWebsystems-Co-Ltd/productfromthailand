@@ -35,4 +35,12 @@
         <value xml:lang="zh">注册</value>
         <value xml:lang="th">สมัครสมาชิก</value>
     </property>
+    <property key="PFTCaptchaWrong">
+        <value xml:lang="en">Verify code captcha is wrong</value>
+        <value xml:lang="th">รหัสตัวเลขที่ท่านกรอกมีข้อผิดพลาด</value>
+    </property>
+    <property key="PFTCaptchaMissing">
+        <value xml:lang="en">Verify code captcha is missing</value>
+        <value xml:lang="th">ท่านไม่ได้กรอกรหัสตัวเลข</value>
+    </property>
 </resource>
