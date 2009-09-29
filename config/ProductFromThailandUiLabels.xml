@@ -43,4 +43,16 @@
         <value xml:lang="en">Verify code captcha is missing</value>
         <value xml:lang="th">ท่านไม่ได้กรอกรหัสตัวเลข</value>
     </property>
+    <property key="PFTIntroMarketPlace">
+        <value xml:lang="en">A marketplace to buy but also to sell products orginated in Thailand.</value>
+        <value xml:lang="th">ตลาดนัดซื้อขายสินค้าในประเทศไทย</value>
+    </property>
+    <property key="PFTPleaseRegister">
+        <value xml:lang="en">Please Register if you like to be notified when we go online.</value>
+        <value xml:lang="th">คุณสามารถลงทะเบียนทิ้งไว้ แล้วทางเราจะแจ้งให้ท่านทราบเมื่อเรา online</value>
+    </property>
+    <property key="PFTYourEmail">
+        <value xml:lang="en">Your E-mail</value>
+        <value xml:lang="th">อีเมล์ของคุณ</value>
+    </property>
 </resource>
