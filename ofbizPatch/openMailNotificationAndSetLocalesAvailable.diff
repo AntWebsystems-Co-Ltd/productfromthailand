@@ -2,6 +2,15 @@ Index: framework/common/config/general.properties
 ===================================================================
 --- framework/common/config/general.properties	(revision 819458)
 +++ framework/common/config/general.properties	(working copy)
+@@ -42,7 +42,7 @@
+ #    which locales the user can select from. If this property is not used,
+ #    then the user will be able to select from all the locales available
+ #    in the JVM.
+-#locales.available=en,fr,nl
++locales.available=en,th
+ 
+ # -- Time zones made available, separated by commas. This property controls
+ #    which time zones the user can select from. If this property is not used,
 @@ -66,17 +66,17 @@
  # as 'baseUrl' and 'baseSecureUrl' are set in the url.properties file. 
  
