@@ -24,15 +24,6 @@
         <call-bsh><![CDATA[
             org.ofbiz.common.Captcha.getCodeCaptcha(request,response);
             ]]></call-bsh>
-        <if-empty field="parameters.captcha">
-            <add-error><fail-property resource="ProductFromThailandUiLabels" property="PFTCaptchaMissing"/></add-error>
-            <else>
-                <if-compare field="parameters.captcha" value="${parameters.captchaCode}" operator="not-equals">
-                    <add-error><fail-property resource="ProductFromThailandUiLabels" property="PFTCaptchaWrong"/></add-error>
-                </if-compare>
-            </else>
-        </if-empty>
-        <check-errors/>
         
         <call-object-method obj-field="parameters.captcha" method-name="toLowerCase" ret-field="parameters.captcha"/>
         <call-object-method obj-field="parameters.captchaCode" method-name="toLowerCase" ret-field="parameters.captchaCode"/>
@@ -68,6 +59,10 @@
             <set field="addPartyToContactList.userLogin" from-field="userLogin"/>
             <set field="addPartyToContactList.fromDate" from-field="nowDate"/>
             <call-service service-name="createContactListParty" in-map-name="addPartyToContactList" include-user-login="false"/>
+            <else>
+                <property-to-field field="errorMessage" resource="MyPortalUiLabels" property="MyPortalCaptchaMissingError"/><field-to-list field="errorMessage" list="error_list"/>
+                <check-errors/>
+            </else>
         </if-compare>
     </simple-method>
 </simple-methods>
