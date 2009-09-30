@@ -266,4 +266,9 @@
     <ShipmentCostEstimate shipmentCostEstimateId="10000" shipmentMethodTypeId="LOCAL_DELIVERY" carrierPartyId="pft" carrierRoleTypeId="CARRIER" productStoreId="pftStore" orderFlatPrice="5.00" orderPricePercent="0.000000" orderItemFlatPrice="0.00"/>
 
     <CustomTimePeriod customTimePeriodId="10000" periodTypeId="FISCAL_YEAR" periodNum="1" periodName="2009" fromDate="2009-01-01" thruDate="2009-12-31" isClosed="N" organizationPartyId="pft"/>
+    
+    <ContactList contactListId="PFT0001" contactListTypeId="ANNOUNCEMENT" contactMechTypeId="EMAIL_ADDRESS" marketingCampaignId=""
+        contactListName="Product From Thailand Announcements" description="Product From Thailand Announcements Mailing List (email)" comments="" isPublic="Y" ownerPartyId="pft"
+        verifyEmailFrom="" verifyEmailScreen=""
+        verifyEmailSubject="" verifyEmailWebSiteId=""/>
 </entity-engine-xml>

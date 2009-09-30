@@ -3,6 +3,23 @@ background: url("../pfdimages/background.jpg") left top;
 color:white;
 text-align:center;
 } 
+.eventMessage, .errorMessage {
+background-color: #FFFFEE;
+border: solid #000000 0.1em;
+font-size: 1.1em;
+font-weight: bold;
+margin: 0.5em;
+padding: 0em;
+}
+
+.eventMessage {
+color: #000099;
+}
+
+.errorMessage {
+color: #ff0000;
+}
+
 .header{
 clear:both;
 height:auto;
@@ -39,6 +56,9 @@ text-decoration:none;
 
 .logo{
 padding-bottom:10px;
+}
+.logo img{
+border:none;
 }
 
 .floatright{

@@ -31,7 +31,7 @@
         <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=en_US"><img src="../pfdimages/EngFlag.jpg"  alt="English"/></a>
         </#if>
     </div>
-    <div class="logo"><img src="../pfdimages/logo.png"/></div>
+    <div class="logo"><a href="<@ofbizUrl>main</@ofbizUrl>"><img src="../pfdimages/logo.png"/></a></div>
     <div class="content">
         ${uiLabelMap.PFTIntroMarketPlace}
         ${uiLabelMap.PFTPleaseRegister}
@@ -39,9 +39,7 @@
          <form name="signUpForContactListForm" action="signUpForContactList" method="post">
         <input type="hidden" name="reload"/>
         <div id="captchaCode"><input type="hidden" value="${parameters.ID_KEY}" name="captchaCode"/></div>
-            <select class="selectBox" name="contactListId" style="visibility:hidden;">
-              <option value="9000" >New Product Announcements</option>
-            </select>
+            <input type="hidden" value="PFT0001" name="contactListId"/>
         <div class="floatleft">${uiLabelMap.PFTYourEmail} :</div>
         <div class="floatright"> <input class="inputBox" value="${parameters.email?default("")}" id="subscribeForm_email" name="email" maxlength="255" size="20" type="text"></div>
         <div class="floatleft">&nbsp;</div>
