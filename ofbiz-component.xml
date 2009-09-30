@@ -42,11 +42,4 @@
         location="webapp/test"
         mount-point="/"
         app-bar-display="false"/>
-    <webapp name="productfromthailand3"
-        title="Product from thailand"
-        menu-name="secondary"
-        server="default-server"
-        location="webapp/backoffice"
-        mount-point="/pftbackoffice"
-        app-bar-display="true"/>
 </ofbiz-component>

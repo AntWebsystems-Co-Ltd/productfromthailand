@@ -374,12 +374,4 @@ under the License.
             </widgets>
         </section>
     </screen>
-    
-    <screen name="mainBackOffice">
-        <section>
-            <widgets>
-                <label text="Hi!!!!!!!!! Product From Thailand Back Office" style="h1"></label>
-            </widgets>
-        </section>
-    </screen>
 </screens>
