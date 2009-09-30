@@ -46,6 +46,21 @@ under the License.
                                             <tr>
                                                 <td>
                                                     <ul id="left-links">
+                                                        <li id="header-bar-language">
+	                                                        <#assign availableLocales = Static["org.ofbiz.base.util.UtilMisc"].availableLocales()/>
+	                                                        <#list availableLocales as availableLocale>
+	                                                            <#if locale.toString() == availableLocale.toString()>
+	                                                                <#if locale.toString() == "en">
+	                                                                    <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="../../pfdimages/ThaiFlag.jpg" alt="Thai" width="30"/></a>
+	                                                                <#elseif locale.toString() == "th">
+	                                                                    <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=en"><img src="../../pfdimages/EngFlag.jpg"  alt="English" width="30"/></a>
+	                                                                </#if>
+	                                                            </#if>
+	                                                        </#list>
+	                                                        <#if locale.toString() == "en_US">
+	                                                            <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="../../pfdimages/ThaiFlag.jpg" alt="Thai" width="30"/></a>
+	                                                        </#if>
+                                                        </li>
                                                       <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
                                                         <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><h2>${uiLabelMap.CommonLogout}</h2></a></li>
                                                       <#else/>
