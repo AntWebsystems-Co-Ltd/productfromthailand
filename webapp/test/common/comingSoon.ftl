@@ -23,12 +23,12 @@
             <#if locale.toString()?has_content>
             <#assign currentlang = locale.toString()>
             <#else>
-            <#assign currentlang = "en">
+            <#assign currentlang = "en_US">
         </#if> 
-        <#if currentlang == "en">
+        <#if currentlang == "en_US">
         <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="../pfdimages/ThaiFlag.jpg" alt="Thai"/></a>
         <#elseif currentlang =="th"> 
-        <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=en"><img src="../pfdimages/EngFlag.jpg"  alt="English"/></a>
+        <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=en_US"><img src="../pfdimages/EngFlag.jpg"  alt="English"/></a>
         </#if>
     </div>
     <div class="logo"><img src="../pfdimages/logo.png"/></div>
