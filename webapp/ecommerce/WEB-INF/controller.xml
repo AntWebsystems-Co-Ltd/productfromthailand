@@ -22,13 +22,15 @@ under the License.
         xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/site-conf.xsd">
     <include location="component://ecommerce/webapp/ecommerce/WEB-INF/controller.xml"/>
     <description>OFBiz: Cloned eCommerce Controller Configuration File</description>
-
+    
+    <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
     <view-map name="main" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#main"/>
     <view-map name="editShoppingList" type="screen" page="component://productfromthailand/widget/ShoppingListScreens.xml#editShoppingList"/>
     <view-map name="advancedsearch" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#advancedsearch"/>
     
     <view-map name="category" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#category"/>
     <view-map name="product" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#product"/>
-    
+
     <view-map name="newcustomer" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newcustomer"/>
+    <view-map name="contactus" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#contactus"/>
 </site-conf>

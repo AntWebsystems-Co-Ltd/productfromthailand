@@ -57,8 +57,8 @@ under the License.
                     <field-map field-name="themeResources" from-field="layoutSettings"/>
                 </service>
                 <set field="layoutSettings" from-field="themeResources" default-value="${layoutSettings}" global="true"/>
-                <set field="headerTemplateLocation" from-field="layoutSettings.VT_HDR_TMPLT_LOC[]" default-value="component://productfromthailand/webapp/ecommerce/includes/header.ftl"/>
-                <set field="footerTemplateLocation" from-field="layoutSettings.VT_FTR_TMPLT_LOC[]" default-value="component://productfromthailand/webapp/ecommerce/includes/footer.ftl"/>
+                <set field="headerTemplateLocation" from-field="layoutSettings.VT_HDR_TMPLT_LOC[0]" default-value="component://productfromthailand/webapp/ecommerce/includes/header.ftl"/>
+                <set field="footerTemplateLocation" from-field="layoutSettings.VT_FTR_TMPLT_LOC[0]" default-value="component://productfromthailand/webapp/ecommerce/includes/footer.ftl"/>
             </actions>
             <widgets>
                 <!-- render header -->
@@ -275,7 +275,7 @@ under the License.
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                         <platform-specific>
-                            <html><html-template location="component://ecommerce/webapp/ecommerce/login.ftl"/></html>
+                            <html><html-template location="component://productfromthailand/webapp/ecommerce/includes/login.ftl"/></html>
                         </platform-specific>
                     </decorator-section>
                 </decorator-screen>

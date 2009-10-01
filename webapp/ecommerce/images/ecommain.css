@@ -55,7 +55,7 @@ h2 {
 	letter-spacing: 0.005em;
 }
 h3 {
-	font-size: 16px;
+	font-size: 14px;
 	color: #000000;
 	letter-spacing: 0.05em;
 }
@@ -265,10 +265,10 @@ text-decoration: none;
 }
 #welcome-message a {
 text-decoration: none;
-color: #1C334D;
+color: #999966;
 }
 #welcome-message a:hover {
-color: black;
+color:white;
 text-decoration: underline;
 }
 #company-name {
@@ -424,10 +424,16 @@ height:auto !important;
 height:1%
 }
 
+#ecom-mainarea .screenlet h3, #ecom-mainarea .screenlet legend {
+background:#F4F4DA;
+color:#827B00;
+height:auto!important;
+padding:1px 4px 3px;
+}
 .boxhead {
 height:25px;
 background-image:url(/pft/images/bt_bg.jpg);
-background-repeat:no-repeat;
+background-repeat:repeat-x;
 font-size: 8pt;
 font-weight: bold;
 text-decoration: none;
@@ -1174,3 +1180,8 @@ text-align:left;
 padding:5px;
 width:45%;
 }
+
+/***********************************************
+Forms
+***********************************************/
+form div, .buttons {clear: both; margin: 0 0 0.8em;}

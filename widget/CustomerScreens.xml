@@ -36,5 +36,26 @@ under the License.
             </widgets>
         </section>
     </screen>
-
+    
+    <screen name="contactus">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <!--<set field="rightbarScreenName" value="rightbar"/>-->
+                <set field="MainColumnStyle" value="nocolumns"/>
+                
+                <set field="titleProperty" value="PageTitleLogin"/>
+                <set field="pageHeader" value="${uiLabelMap.CommonContactUs}"/>
+                <set field="headerItem" value="contactus"/>
+                <set field="submitRequest" value="contactsubmit"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/customer/newmsg.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
 </screens>
