@@ -31,12 +31,22 @@
             <if-validate-method field="parameters.email" method="isEmail">
                 <else><add-error><fail-property resource="MarketingUiLabels" property="MarketingCampaignInvalidEmailInput"/></add-error></else>
             </if-validate-method>
-            <entity-and entity-name="PartyContactWithPurpose" list="existingEmails">
+            <entity-and entity-name="PartyContactWithPurpose" list="emailAddressesPurposes">
                 <field-map field-name="partyId" value="_NA_"/>
                 <field-map field-name="contactMechPurposeTypeId" value="OTHER_EMAIL"/>
-                <field-map field-name="infoString" from-field="parameters.email"/>
+                <field-map field-name="contactMechTypeId" value="EMAIL_ADDRESS"/>
             </entity-and>
-            <if-not-empty field="existingEmails">
+            <filter-list-by-date list="emailAddressesPurposes" to-list="emailAddressesPurposes1" from-field-name="purposeFromDate" thru-field-name="purposeThruDate"/>
+            <filter-list-by-date list="emailAddressesPurposes1" to-list="emailAddresses" from-field-name="contactFromDate" thru-field-name="contactThruDate"/>
+            <!-- Ignore upper/lower case in the email address and verify if an email address exists -->
+            <call-object-method obj-field="parameters.email" method-name="toLowerCase" ret-field="email"/>
+            <iterate entry="emailAddress" list="emailAddresses">
+                <call-object-method obj-field="emailAddress.infoString" method-name="toLowerCase" ret-field="emailAddress.infoString"/>
+                <if-compare field="email" operator="equals" value="${emailAddress.infoString}">
+                    <set field="existingEmail" value="Y"/>
+                </if-compare>
+            </iterate>
+            <if-not-empty field="existingEmail">
                 <add-error><fail-message message="Your Email address is already registered"/></add-error>
             </if-not-empty>
             <else>
