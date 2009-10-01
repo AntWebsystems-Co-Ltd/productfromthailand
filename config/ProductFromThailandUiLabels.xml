@@ -19,6 +19,14 @@
     under the License.
 -->
 <resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <property key="PartyFullName">
+        <value xml:lang="en">Full Name</value>
+        <value xml:lang="th">ชื่อ - นามสกุล</value>
+    </property>
+    <property key="PartyShippingAddress">
+        <value xml:lang="en">Shipping Address</value>
+        <value xml:lang="th">ที่อยู่</value>
+    </property>
     <property key="PFTCompanyName">
         <value xml:lang="en">Antwebsystems Co.,Ltd.</value>
         <value xml:lang="th">บริษัท แอนท์ เว็บซิสเต็มส์ จำกัด</value>

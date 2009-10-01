@@ -29,4 +29,6 @@ under the License.
     
     <view-map name="category" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#category"/>
     <view-map name="product" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#product"/>
+    
+    <view-map name="newcustomer" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newcustomer"/>
 </site-conf>

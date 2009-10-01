@@ -28,6 +28,7 @@ margin: 0;
 padding: 0;
 }
 
+
 a, address, body, caption, cite, code, dfn, em, strong, th, var {
 font-style: normal;
 font-weight: normal;
@@ -1118,4 +1119,58 @@ iframe.ie6_blocker {
 
 .fieldWithErrors .calendar_date_select {
   border: 2px solid #FF0000;
+}
+
+/* Additional Styles For New User Register Page */
+#newuserform div{
+padding:5px 10px 10px 20px;
+}
+#newuserform label{
+float:left;
+width:20%;
+margin-right:0.5em;
+padding-top:0.2em;
+text-align:right;
+font-weight:bold;
+}
+
+#newuserform input,select option ,fieldset{
+ /* optional rounded corners for browsers that support it */
+-moz-border-radius: 2px;
+-khtml-border-radius: 2px;
+-webkit-border-radius: 2px;
+border-radius: 2px;
+}
+
+#newuserform fieldset{
+border:1px solid #CCC ;
+margin:10px;
+width:70%;
+}
+#newuserform legend{
+color:#684825;
+font-weight:bold;
+font-size:1.4em;
+}
+.newuserbutton{
+margin:10px;
+padding:10px;
+width:70%;
+text-align:center;
+}
+.newuserbutton a{
+color:#684825;
+font-size:x-large;
+}
+.newuserbutton .floatleft{
+float:left;
+text-align:right;
+padding:5px;
+width:45%;
+}
+.newuserbutton .floatright{
+float:right;
+text-align:left;
+padding:5px;
+width:45%;
 }
