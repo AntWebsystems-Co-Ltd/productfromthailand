@@ -26,4 +26,7 @@ under the License.
     <view-map name="main" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#main"/>
     <view-map name="editShoppingList" type="screen" page="component://productfromthailand/widget/ShoppingListScreens.xml#editShoppingList"/>
     <view-map name="advancedsearch" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#advancedsearch"/>
+    
+    <view-map name="category" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#category"/>
+    <view-map name="product" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#product"/>
 </site-conf>

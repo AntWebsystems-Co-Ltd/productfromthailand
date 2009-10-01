@@ -139,10 +139,10 @@ under the License.
                 <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/ProductSummary.groovy"/>
+                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/ProductSummary.groovy"/>
             </actions>
             <widgets>
-                <platform-specific><html><html-template location="component://order/webapp/ordermgr/entry/catalog/productsummary.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/productsummary.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
@@ -166,8 +166,7 @@ under the License.
         <section>
             <actions>
                 <set field="leftbarScreenName" value="leftbar"/>
-                <set field="rightbarScreenName" value="rightbar"/>
-                <set field="MainColumnStyle" value="center"/>
+                <set field="MainColumnStyle" value="leftonly"/>
 
                 <set field="titleProperty" value="PageTitleCategoryPage"/>
                 <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/Category.groovy"/>
@@ -218,7 +217,7 @@ under the License.
                 </entity-and>
             </actions>
             <widgets>
-                <platform-specific><html><html-template location="component://order/webapp/ordermgr/entry/catalog/categorydetail.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/categorydetail.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
@@ -251,10 +250,10 @@ under the License.
         <section>
             <actions>
                 <set field="leftbarScreenName" value="leftbar"/>
-                <set field="rightbarScreenName" value="rightbar"/>
-                <set field="MainColumnStyle" value="center"/>
+                <set field="MainColumnStyle" value="leftonly"/>
                 <set field="titleProperty" value="PageTitleProductPage"/>
                 <set field="layoutSettings.javaScripts[]" value="/images/prototypejs/prototype.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/ecommerce/images/productAdditionalView.js" global="true"/>
                 <set field="configproductdetailScreen" value="component://ecommerce/widget/CatalogScreens.xml#configproductdetail"/>
                 <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/Product.groovy"/>
             </actions>
@@ -281,9 +280,9 @@ under the License.
     <screen name="productdetail">
         <section>
             <actions>
-                <set field="productsummaryScreen" value="component://ecommerce/widget/CatalogScreens.xml#productsummary"/>
+                <set field="productsummaryScreen" value="component://productfromthailand/widget/CatalogScreens.xml#productsummary"/>
 
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/ProductDetail.groovy"/>
+                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/ProductDetail.groovy"/>
             </actions>
             <widgets>
                 <include-screen name="breadcrumbs"/>
