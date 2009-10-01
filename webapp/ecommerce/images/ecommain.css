@@ -41,33 +41,31 @@ text-align: left;
 
 h1, h2, h3, h4, h5, h6 {
 font-family: Vernada, Arial, Helvetica, sans-serif;
-font-size: 100%;
+font-weight:inherit;
+
 }
 
 h1 {
-    color: #776F13;
-	font-size: 14px;
+color: #776F13;
+font-size: 1.6em;
 }
 h2 {
-    color: #827B00;
-    font-weight:normal;
-	font-size: 13px;
-	letter-spacing: 0.005em;
+color: #827B00;
+font-weight:normal;
+font-size: 1.4em;
 }
 h3 {
-	font-size: 14px;
-	color: #000000;
-	letter-spacing: 0.05em;
+font-size: 1.3em;
+color: #000000;
+letter-spacing: 0.05em;
 }
 h4 {
-    font-weight:normal;
-	font-size: 12px;
+font-weight:normal;
+font-size: 1.2em;
 }
 h5 {
-	font-size: 11px;
-	letter-spacing: 0.1em;
+font-size: 1.1em;
 }
-
 
 ol, ul {
 list-style: none;
@@ -231,7 +229,6 @@ padding: 0px 8px 0px 8px;
 #ecom-header #menubar ul#right-links li {
 float: left;
 }
-
 #ecom-header #searchbar {
 margin-top:1%;
 background-image:url(/pft/images/searchbar.gif);
@@ -348,8 +345,9 @@ width: 800px;
 
 #ecom-mainarea .left {
 /* alt: position: absolute; left: 0px; top: 0px; */
+padding-left:10px;
 float: left;
-width: 150px;
+width: 140px;
 /* border:1px solid #000; */
 }
 #ecom-mainarea .right {

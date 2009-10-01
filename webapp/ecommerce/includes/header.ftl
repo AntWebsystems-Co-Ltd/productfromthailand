@@ -31,7 +31,7 @@ under the License.
                           <#elseif catalogHeaderLogo?exists>
                             <img src="<@ofbizContentUrl>${catalogHeaderLogo}</@ofbizContentUrl>" alt="Logo"/>
                           <#elseif layoutSettings.VT_HDR_IMAGE_URL?has_content>
-                            <img src="<@ofbizContentUrl>${layoutSettings.VT_HDR_IMAGE_URL.get(0)}</@ofbizContentUrl>" alt="Logo"/>
+                            <a href="<@ofbizUrl>main</@ofbizUrl>"><img src="<@ofbizContentUrl>${layoutSettings.VT_HDR_IMAGE_URL.get(0)}</@ofbizContentUrl>" alt="Logo"/></a>
                           </#if>
                     </div>
                 </td>
