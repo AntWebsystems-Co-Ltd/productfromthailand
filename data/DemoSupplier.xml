@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    
+    <!-- Supplier data -->
+    <!-- CHIANGMAI TAVEEKUN Company -->
+    <Party partyId="CMTAVEEKUN" partyTypeId="PARTY_GROUP"/>
+    <PartyGroup partyId="CMTAVEEKUN" groupName="CHIANGMAI TAVEEKUN LTD., PART." />
+    <PartyRole  partyId="CMTAVEEKUN" roleTypeId="SUPPLIER"/>
+    <PartyRole partyId="CMTAVEEKUN" roleTypeId="ACCOUNT"/>
+    <ContactMech contactMechId="CMTAVEEKUN_ADDR" contactMechTypeId="POSTAL_ADDRESS"/>
+    <ContactMech contactMechId="CMTAVEEKUN_TELE" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="CMTAVEEKUN_FAX" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="CMTAVEEKUN_EMAIL" contactMechTypeId="EMAIL_ADDRESS" infoString="taveekun@hotmail.com"/>
+
+    <PartyContactMech partyId="CMTAVEEKUN" contactMechId="CMTAVEEKUN_ADDR" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    <PartyContactMech partyId="CMTAVEEKUN" contactMechId="CMTAVEEKUN_TELE" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    <PartyContactMech partyId="CMTAVEEKUN" contactMechId="CMTAVEEKUN_EMAIL" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+
+    <TelecomNumber contactMechId="CMTAVEEKUN_TELE" countryCode="+66" areaCode="053" contactNumber="116820"/>
+    <TelecomNumber contactMechId="CMTAVEEKUN_FAX" countryCode="+66" areaCode="053" contactNumber="116819"/>
+    <PostalAddress contactMechId="CMTAVEEKUN_ADDR" toName="SOMJIT SERMBOONYASOOK" address1="12/3-4 MOO 1, CHIANGMAI - SANKAMPANG RD., TASALA, MUANGCHIANG MAI" city="Chiangmai" postalCode="50000" countryGeoId="THA"/>
+    <PartyContactMechPurpose partyId="CMTAVEEKUN" contactMechId="CMTAVEEKUN_ADDR" contactMechPurposeTypeId="BILLING_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMTAVEEKUN" contactMechId="CMTAVEEKUN_ADDR" contactMechPurposeTypeId="GENERAL_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMTAVEEKUN" contactMechId="CMTAVEEKUN_ADDR" contactMechPurposeTypeId="PAYMENT_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMTAVEEKUN" contactMechId="CMTAVEEKUN_EMAIL" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMTAVEEKUN" contactMechId="CMTAVEEKUN_TELE" contactMechPurposeTypeId="PRIMARY_PHONE" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMTAVEEKUN" contactMechId="CMTAVEEKUN_FAX" contactMechPurposeTypeId="FAX_NUMBER" fromDate="2009-09-25 00:00:00.000"/>
+    <UserLogin userLoginId="CMTAVEEKUN" currentPassword="{SHA}47ca69ebb4bdc9ae0adec130880165d2cc05db1a" partyId="CMTAVEEKUN"/>
+    
+    <!-- CHIANGMAI MODERN HOME Company -->
+    <Party partyId="CMMODERNHOME" partyTypeId="PARTY_GROUP"/>
+    <PartyGroup partyId="CMMODERNHOME" groupName="CHIANGMAI MODERN HOME CO., LTD." />
+    <PartyRole  partyId="CMMODERNHOME" roleTypeId="SUPPLIER"/>
+    <PartyRole partyId="CMMODERNHOME" roleTypeId="ACCOUNT"/>
+    <ContactMech contactMechId="CMMODERNHOME_ADDR" contactMechTypeId="POSTAL_ADDRESS"/>
+    <ContactMech contactMechId="CMMODERNHOME_TELE" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="CMMODERNHOME_FAX" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="CMMODERNHOME_EMAIL" contactMechTypeId="EMAIL_ADDRESS" infoString="cmhlannahome@gmail.com"/>
+    
+    <PartyContactMech partyId="CMMODERNHOME" contactMechId="CMMODERNHOME_ADDR" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    <PartyContactMech partyId="CMMODERNHOME" contactMechId="CMMODERNHOME_TELE" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    <PartyContactMech partyId="CMMODERNHOME" contactMechId="CMMODERNHOME_EMAIL" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    
+    <TelecomNumber contactMechId="CMMODERNHOME_TELE" countryCode="+66" areaCode="053" contactNumber="204823"/>
+    <TelecomNumber contactMechId="CMMODERNHOME_FAX" countryCode="+66" areaCode="053" contactNumber="204815"/>
+    <PostalAddress contactMechId="CMMODERNHOME_ADDR" toName="CHOMCHALEO NGOENPISUTSILP" address1="428/14 CHIANGMAILAND SOI 5, CHANGKLAN RD.,MUANGCHIANG MAI" 
+        city="Chiangmai" postalCode="50100" countryGeoId="THA"/>
+    <PartyContactMechPurpose partyId="CMMODERNHOME" contactMechId="CMMODERNHOME_ADDR" contactMechPurposeTypeId="BILLING_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMMODERNHOME" contactMechId="CMMODERNHOME_ADDR" contactMechPurposeTypeId="GENERAL_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMMODERNHOME" contactMechId="CMMODERNHOME_ADDR" contactMechPurposeTypeId="PAYMENT_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMMODERNHOME" contactMechId="CMMODERNHOME_EMAIL" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMMODERNHOME" contactMechId="CMMODERNHOME_TELE" contactMechPurposeTypeId="PRIMARY_PHONE" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMMODERNHOME" contactMechId="CMMODERNHOME_FAX" contactMechPurposeTypeId="FAX_NUMBER" fromDate="2009-09-25 00:00:00.000"/>
+    <UserLogin userLoginId="CMMODERNHOME" currentPassword="{SHA}47ca69ebb4bdc9ae0adec130880165d2cc05db1a" partyId="CMMODERNHOME"/>
+    
+    <ProdCatalog prodCatalogId="PFTCatalog" catalogName="Product From Thailand Catalog" useQuickAdd="Y"/>
+    <ProductStoreCatalog productStoreId="PFTSTORE" prodCatalogId="PFTCatalog" fromDate="2009-09-25 00:00:00.000" sequenceNum="1"/>
+    
+    <ProductCategory longDescription="Demo Product From Thailand Catalog Browse Root Category"
+        productCategoryId="PFT_ROOT" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory description="Agricultural Products" primaryParentCategoryId="PFT_ROOT" productCategoryId="AGRICULTURAL" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory description="Leather Products" primaryParentCategoryId="PFT_ROOT" productCategoryId="LEATHER" productCategoryTypeId="CATALOG_CATEGORY"/>
+    
+    <ProductCategoryRollup fromDate="2001-05-13 12:00:00.0" parentProductCategoryId="PFT_ROOT" productCategoryId="AGRICULTURAL"/>
+    <ProductCategoryRollup fromDate="2001-05-13 12:00:00.0" parentProductCategoryId="PFT_ROOT" productCategoryId="LEATHER"/>
+    
+    <ProdCatalogCategory prodCatalogId="PFTCatalog" productCategoryId="PFT_ROOT" fromDate="2009-09-25 00:00:00.000"
+        sequenceNum="1" prodCatalogCategoryTypeId="PCCT_BROWSE_ROOT"/>
+
+    <Product productId="INSTANTTEA" productTypeId="FINISHED_GOOD" internalName="Instant Tea" productName="Instant Tea" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
+    <Product productId="SEASONING" productTypeId="FINISHED_GOOD" internalName="Seasoning" productName="Seasoning" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
+    <Product productId="TEA" productTypeId="FINISHED_GOOD" internalName="Tea" productName="Tea" description="GREEN TEA, OOLONG TEA, PUERS TEA, ORGANIC TEA" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
+    <Product productId="THAISPICES" productTypeId="FINISHED_GOOD" internalName="Thai Spices" productName="Thai Spices" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
+    <ProductCategoryMember productCategoryId="AGRICULTURAL" productId="INSTANTTEA" sequenceNum="1" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductCategoryMember productCategoryId="AGRICULTURAL" productId="SEASONING" sequenceNum="2" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductCategoryMember productCategoryId="AGRICULTURAL" productId="TEA" sequenceNum="3" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductCategoryMember productCategoryId="AGRICULTURAL" productId="THAISPICES" sequenceNum="4" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductPrice productId="INSTANTTEA" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="10.50" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
+    <ProductPrice productId="SEASONING" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="11.50" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
+    <ProductPrice productId="TEA" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="15.00" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
+    <ProductPrice productId="THAISPICES" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="13.99" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
+    <SupplierProduct partyId="CMTAVEEKUN" minimumOrderQuantity="0" currencyUomId="USD" productId="INSTANTTEA" lastPrice="5.0" supplierProductId="TVK-INSTANTTEA" supplierProductName="TAVEEKUN INSTANTTEA" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="CMTAVEEKUN" minimumOrderQuantity="0" currencyUomId="USD" productId="SEASONING" lastPrice="5.0" supplierProductId="TVK-SEASONING" supplierProductName="TAVEEKUN SEASONING" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="CMTAVEEKUN" minimumOrderQuantity="0" currencyUomId="USD" productId="TEA" lastPrice="5.0" supplierProductId="TVK-TEA" supplierProductName="TAVEEKUN TEA" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="CMTAVEEKUN" minimumOrderQuantity="0" currencyUomId="USD" productId="THAISPICES" lastPrice="5.0" supplierProductId="TVK-THAISPICES" supplierProductName="TAVEEKUN THAISPICES" availableFromDate="2009-09-25 00:00:00.000"/>
+
+    <Product productId="MH-001" productTypeId="FINISHED_GOOD" internalName="Box" productName="Box" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
+    <Product productId="MH-002" productTypeId="FINISHED_GOOD" internalName="Embroidery" productName="Embroidery" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
+    <Product productId="MH-003" productTypeId="FINISHED_GOOD" internalName="Handbags texttile" productName="Handbags texttile" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
+    <ProductCategoryMember productCategoryId="LEATHER" productId="MH-001" sequenceNum="1" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductCategoryMember productCategoryId="LEATHER" productId="MH-002" sequenceNum="2" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductCategoryMember productCategoryId="LEATHER" productId="MH-003" sequenceNum="3" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductPrice productId="MH-001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="15.45" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
+    <ProductPrice productId="MH-002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="45.99" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
+    <ProductPrice productId="MH-003" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="125.00" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
+    <SupplierProduct partyId="CMMODERNHOME" minimumOrderQuantity="0" currencyUomId="USD" productId="MH-001" lastPrice="5.0" supplierProductId="MH-IMH-001" supplierProductName="MODERN HOME Box" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="CMMODERNHOME" minimumOrderQuantity="0" currencyUomId="USD" productId="MH-002" lastPrice="15.0" supplierProductId="MH-IMH-002" supplierProductName="MODERN HOME Embroidery" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="CMMODERNHOME" minimumOrderQuantity="0" currencyUomId="USD" productId="MH-003" lastPrice="50.99" supplierProductId="MH-IMH-003" supplierProductName="MODERN HOME Handbags texttile" availableFromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Drop ship products -->
+    <!--<ProductCategory description="DropShip Products" primaryParentCategoryId="CATALOG1" productCategoryId="dropShip" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategoryRollup fromDate="2001-05-13 12:00:00.0" parentProductCategoryId="CATALOG1" productCategoryId="dropShip"/>
+    
+    <Product productId="dropShip1" productTypeId="FINISHED_GOOD" internalName="DropShip from DemoSupplier" productName="DropShip from DemoSupplier" smallImageUrl="/images/products/small/dropShip1.jpg" mediumImageUrl="/images/products/medium/dropShip1.jpg" largeImageUrl="/images/products/large/dropShip1.jpg" isVirtual="N" isVariant="N" requirementMethodEnumId="PRODRQM_DS" billOfMaterialLevel="0" createdDate="2007-05-05 14:50:58.584" createdByUserLogin="admin" lastModifiedDate="2007-05-05 15:05:41.62" lastModifiedByUserLogin="admin" inShippingBox="N" lastUpdatedStamp="2007-05-06 15:02:03.466" lastUpdatedTxStamp="2007-05-06 15:02:02.465" createdStamp="2007-05-05 14:50:58.586" createdTxStamp="2007-05-05 14:50:58.21"/>
+    <ProductCategoryMember productCategoryId="dropShip" productId="dropShip1" sequenceNum="1" fromDate="2001-05-13 12:00:00.0"/>
+    <ProductPrice productId="dropShip1" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2001-05-13 12:00:00.0" price="13.99" createdDate="2001-05-13 12:00:00.0" createdByUserLogin="admin" lastModifiedDate="2001-05-13 12:00:00.0" lastModifiedByUserLogin="admin"/>
+    <SupplierProduct productId="dropShip1" partyId="DemoSupplier" availableFromDate="2007-01-01 14:51:52.627" minimumOrderQuantity="0.0" lastPrice="10.0" currencyUomId="USD" supplierProductName="Drop ship product from demo supplier" supplierProductId="dropShip1-DS" canDropShip="Y" supplierCommissionPerc="20.0" lastUpdatedStamp="2007-05-05 14:53:35.248" lastUpdatedTxStamp="2007-05-05 14:53:35.15" createdStamp="2007-05-05 14:53:35.248" createdTxStamp="2007-05-05 14:53:35.15"/>-->
+
+</entity-engine-xml>
