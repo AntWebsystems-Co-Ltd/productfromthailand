@@ -35,7 +35,7 @@ under the License.
                           </#if>
                     </div>
                 </td>
-                <td align="right" width="600" valign="bottom">
+                <td align="right" width="600" valign="top">
                     <div id="ecom-header-bar">
                       <table align="right">
                         <tbody>
@@ -51,14 +51,14 @@ under the License.
 	                                                        <#list availableLocales as availableLocale>
 	                                                            <#if locale.toString() == availableLocale.toString()>
 	                                                                <#if locale.toString() == "en">
-	                                                                    <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="../../pfdimages/ThaiFlag.jpg" alt="Thai" width="30"/></a>
+	                                                                    <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="../../pfdimages/ThaiFlag.jpg" alt="Thai" width="25"/></a>
 	                                                                <#elseif locale.toString() == "th">
-	                                                                    <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=en"><img src="../../pfdimages/EngFlag.jpg"  alt="English" width="30"/></a>
+	                                                                    <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=en"><img src="../../pfdimages/EngFlag.jpg"  alt="English" width="25"/></a>
 	                                                                </#if>
 	                                                            </#if>
 	                                                        </#list>
 	                                                        <#if locale.toString() == "en_US">
-	                                                            <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="../../pfdimages/ThaiFlag.jpg" alt="Thai" width="30"/></a>
+	                                                            <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="../../pfdimages/ThaiFlag.jpg" alt="Thai" width="25"/></a>
 	                                                        </#if>
                                                         </li>
                                                       <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
