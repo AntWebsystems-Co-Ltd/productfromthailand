@@ -186,4 +186,12 @@
     <ProductPrice productId="dropShip1" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2001-05-13 12:00:00.0" price="13.99" createdDate="2001-05-13 12:00:00.0" createdByUserLogin="admin" lastModifiedDate="2001-05-13 12:00:00.0" lastModifiedByUserLogin="admin"/>
     <SupplierProduct productId="dropShip1" partyId="DemoSupplier" availableFromDate="2007-01-01 14:51:52.627" minimumOrderQuantity="0.0" lastPrice="10.0" currencyUomId="USD" supplierProductName="Drop ship product from demo supplier" supplierProductId="dropShip1-DS" canDropShip="Y" supplierCommissionPerc="20.0" lastUpdatedStamp="2007-05-05 14:53:35.248" lastUpdatedTxStamp="2007-05-05 14:53:35.15" createdStamp="2007-05-05 14:53:35.248" createdTxStamp="2007-05-05 14:53:35.15"/>-->
 
+    <ProductCategory productCategoryId="PFTPROMOTION" productCategoryTypeId="CATALOG_CATEGORY" categoryName="Special Products" detailScreen="component://ecommerce/widget/CatalogScreens.xml#categorydetailmatrix"/>    
+    <ProdCatalogCategory prodCatalogId="PFTCatalog" productCategoryId="PFTPROMOTION" prodCatalogCategoryTypeId="PCCT_PROMOTIONS" fromDate="2009-10-02 13:57:42.324" />
+    <ProductCategoryMember productCategoryId="PFTPROMOTION" productId="MH-003" fromDate="2009-10-01 11:03:04.0"/>
+    <ProductCategoryMember productCategoryId="PFTPROMOTION" productId="MH-002" fromDate="2009-10-01 11:03:04.0"/>
+    <ProductCategoryMember productCategoryId="PFTPROMOTION" productId="MH-001" fromDate="2009-10-01 11:03:04.0"/>
+    <ProductCategoryMember productCategoryId="PFTPROMOTION" productId="INSTANTTEA" fromDate="2009-10-01 11:03:04.0"/>
+    <ProductCategoryMember productCategoryId="PFTPROMOTION" productId="SEASONING" fromDate="2009-10-01 11:03:04.0"/>
+    <ProductCategoryMember productCategoryId="PFTPROMOTION" productId="THAISPICES" fromDate="2009-10-01 11:03:04.0"/>
 </entity-engine-xml>

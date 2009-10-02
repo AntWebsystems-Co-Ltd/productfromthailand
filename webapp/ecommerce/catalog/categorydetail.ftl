@@ -16,7 +16,6 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-
 <#macro paginationControls>
     <#assign viewIndexMax = Static["java.lang.Math"].ceil((listSize - 1)?double / viewSize?double)>
       <#if (viewIndexMax?int > 0)>
@@ -42,6 +41,10 @@ under the License.
     </#if>
 </#macro>
 
+<div class="title">
+      <#if (productStore.title)?exists><h1>${productStore.title}</h1></#if>
+      <#if (productStore.subtitle)?exists><h2>${productStore.subtitle}</h2></#if>
+  </div>
 
 <#if productCategory?exists>
     <#assign categoryName = categoryContentWrapper.get("CATEGORY_NAME")?if_exists/>
@@ -91,7 +94,7 @@ under the License.
 </#if>
 
 <#if productCategoryMembers?has_content>
-    <@paginationControls/>
+    <#--@paginationControls/-->
       <#assign numCol = numCol?default(1)>
       <#assign numCol = numCol?number>
       <#assign tabCol = 1>
@@ -99,18 +102,18 @@ under the License.
       <#if categoryImageUrl?string?has_content>
         style="position: relative; margin-top: ${height}px;"
       </#if>
-      class="productsummary-container<#if (numCol?int > 2)> matrix</#if>">
-      <#if (numCol?int > 2)>
+      class="productsummary-container<#if (numCol?int > 1)> matrix</#if>">
+      <#if (numCol?int > 1)>
         <table>
       </#if>
         <#list productCategoryMembers as productCategoryMember>
-          <#if (numCol?int == 2)>
+          <#if (numCol?int == 1)>
             ${setRequestAttribute("optProductId", productCategoryMember.productId)}
             ${setRequestAttribute("productCategoryMember", productCategoryMember)}
             ${setRequestAttribute("listIndex", productCategoryMember_index)}
             ${screens.render(productsummaryScreen)}
           <#else>
-              <#if (tabCol?int = 2)><tr></#if>
+              <#if (tabCol?int = 1)><tr></#if>
                   <td>
                       ${setRequestAttribute("optProductId", productCategoryMember.productId)}
                       ${setRequestAttribute("productCategoryMember", productCategoryMember)}
@@ -121,11 +124,11 @@ under the License.
               <#assign tabCol = tabCol+1><#if (tabCol?int > numCol)><#assign tabCol = 1></#if>
            </#if>
         </#list>
-      <#if (numCol?int > 2)>
+      <#if (numCol?int > 1)>
         </table>
       </#if>
       </div>
-    <@paginationControls/>
+    <#--@paginationControls/-->
 <#else>
     <hr/>
     <div>${uiLabelMap.ProductNoProductsInThisCategory}</div>

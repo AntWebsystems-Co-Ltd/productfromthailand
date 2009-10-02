@@ -28,7 +28,7 @@ under the License.
                                 </tr>
                                 <tr>
                                     <td  align="center">
-                                        <h4><a href="http://www.antwebsystems.com">${uiLabelMap.PFTCompanyName} ${uiLabelMap.PFTCompanyAddress} <a></h4>
+                                        <h4><a href="http://www.antwebsystems.com" style="color:black">${uiLabelMap.PFTCompanyName} ${uiLabelMap.PFTCompanyAddress} </a></h4>
                                     </td>
                                 </tr>
                             </tbody>
@@ -44,17 +44,8 @@ under the License.
 </div>
 <div id="ecom-footer">
   <br/>
-  <div align="center">
-    <a href="http://jigsaw.w3.org/css-validator/"><img style="border:0;width:88px;height:31px" src="<@ofbizContentUrl>/images/vcss.gif</@ofbizContentUrl>" alt="Valid CSS!"/></a>
-    <a href="http://validator.w3.org/check?uri=referer"><img style="border:0;width:88px;height:31px" src="<@ofbizContentUrl>/images/valid-xhtml10.png</@ofbizContentUrl>" alt="Valid XHTML 1.0!"/></a>
-  </div>
-  <br/>
-  <div class="tabletext" align="center">
-    <div class="tabletext">Copyright (c) 2001-${nowTimestamp?string("yyyy")} The Apache Software Foundation - <a href="http://www.apache.org" class="tabletext" target="_blank">www.apache.org</a></div>
-    <div class="tabletext">Powered by <a href="http://ofbiz.apache.org" class="tabletext" target="_blank">Apache OFBiz</a></div>
-  </div>
-  <br/>
-  <div class="tabletext" align="center"><a href="<@ofbizUrl>policies</@ofbizUrl>">${uiLabelMap.EcommerceSeeStorePoliciesHere}</a></div>
+  <div class="copyright">Copyright (c) ${nowTimestamp?string("yyyy")} <a href="http://www.productfromthailand.com" style="" target="_blank">productfromthailand.com</a> All Rights Reserved</div>
+    <br/><br/>
 </div>
 </center>
 </body>

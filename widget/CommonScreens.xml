@@ -67,7 +67,7 @@ under the License.
                 <container id="ecom-mainarea">
                     <!-- by default will render left-bar only if left/rightbarScreenName value not empty -->
                     <include-screen name="${leftbarScreenName}" location="${leftbarScreenLocation}"/>
-                    <include-screen name="top"/>
+                    <include-screen name="${bannerScreenName}" location="${bannerScreenLocation}"/>
                     <include-screen name="${rightbarScreenName}" location="${rightbarScreenLocation}"/>
                     
                     <container style="${MainColumnStyle}">
@@ -107,15 +107,6 @@ under the License.
                     <include-screen name="minilastproductsearches" location="component://ecommerce/widget/CatalogScreens.xml"/>
                     <include-screen name="recentlyviewed" location="component://ecommerce/widget/ContentScreens.xml"/>
                     <include-screen name="minipromotext" location="component://productfromthailand/widget/CartScreens.xml"/>
-                </container>
-            </widgets>
-        </section>
-    </screen>
-    <screen name="top">
-        <section>
-            <widgets>
-                <container style="top">
-                    <include-screen name="top" location="component://productfromthailand/widget/CatalogScreens.xml"/>
                 </container>
             </widgets>
         </section>
@@ -231,14 +222,21 @@ under the License.
             </widgets>
         </section>
     </screen>
-
+    <screen name="top">
+        <section>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/banner.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
     <!-- Top Level Screens -->
     <screen name="main">
         <section>
             <actions>
                 <set field="leftbarScreenName" value="leftbar"/>
-                <set field="MainColumnStyle" value="leftonly"/>
-
+                <set field="MainColumnStyle" value="center"/>
+                <set field="rightbarScreenName" value="rightbar"/>
+                <set field="bannerScreenName" value="top"/>
                 <set field="titleProperty" value="PageTitleMain"/>
                 <set field="headerItem" value="main"/>
                 <set field="randomSurveyGroup" value="testSurveyGroup"/>

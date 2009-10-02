@@ -268,11 +268,14 @@ color: #999966;
 color:white;
 text-decoration: underline;
 }
+.title{
+
+}
 .title h1{
 color:#443434;
 font-size:1.6em;
 font-weight:bold;
-padding:10px 0 5px 5px;clear:both;
+padding:10px 0 5px 5px;
 }
 .title h2{
 color:#443434;
@@ -354,7 +357,8 @@ width: 140px;
 #ecom-mainarea .right {
 /* alt: position: absolute; right: 0px; top: 0px; */
 float: right;
-width: 200px;
+width: 190px;
+padding-right:10px;
 }
 
 #ecom-mainarea .right #minipromotext A.linktext {
@@ -918,8 +922,8 @@ text-align: right;
 .matrix .productsummary {
 border: none;
 padding: 10px;
-height: 250px;
-width:  200px;
+height: 140px;
+width:  110px;
 }
 
 .matrix .productsummary .smallimage {
@@ -936,7 +940,7 @@ text-align: left;
 }
 
 .productsummary .productinfo {
-text-align: left;
+text-align: center;
 }
 
 /* ===== Product Detail Styles ===== */
@@ -1209,7 +1213,9 @@ color:#965b0e;
 font-weight:inherit;
 text-decoration:underline;
 }
-
+#welcome{
+height:auto;
+}
 /***********************************************
 Forms
 ***********************************************/

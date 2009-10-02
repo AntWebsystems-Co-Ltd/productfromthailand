@@ -22,13 +22,7 @@ under the License.
         xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
 
     <!-- Column Included Screens -->
-    <screen name="top">
-        <section>
-            <widgets>
-                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/banner.ftl"/></html></platform-specific>
-            </widgets>
-        </section>
-    </screen>
+    
     <screen name="choosecatalog">
         <section>
             <actions>
@@ -225,9 +219,9 @@ under the License.
     <screen name="categorydetailmatrix">
         <section>
             <actions>
-                <set field="numCol" value="2"/>
+                <set field="numCol" value="3"/>
                 <set field="searchInCategory" value="N"/>
-                <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="9"/>
+                <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="6"/>
             </actions>
             <widgets>
                 <include-screen name="categorydetail"/>
