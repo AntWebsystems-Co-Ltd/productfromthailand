@@ -75,6 +75,8 @@ under the License.
     </#list>
   </#if>
 
+  <meta name="google-site-verification" content="sFXpi9FNKTEvzYqKvAyhF3j8jdVMb0B97p5M9Y6S81U" />
+
   <#-- Append CSS for catalog -->
   <#if catalogStyleSheet?exists>
     <link rel="stylesheet" href="${catalogStyleSheet}" type="text/css"/>

@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+<meta name="google-site-verification" content="sFXpi9FNKTEvzYqKvAyhF3j8jdVMb0B97p5M9Y6S81U" />
 <title>Product From Thailand :Coming Soon</title>
  <#if layoutSettings.javaScripts?has_content>
     <#--layoutSettings.javaScripts is a list of java scripts. -->
@@ -88,7 +89,7 @@
     </form><br>
     </div>
     <div class="footer">
-        ${uiLabelMap.PartyPhoneNumber}: +66-53 483245, ${uiLabelMap.PartyFaxNumber} : +66-53 483246, ${uiLabelMap.PartyEmailAddress}:<a href="mailto:info@productfromthailand.com">info@productfromthailand.com</a></span></p>
+        ${uiLabelMap.PartyPhoneNumber}: +66-53-483245, ${uiLabelMap.PartyFaxNumber} : +66-53-483246, ${uiLabelMap.PartyEmailAddress}:<a href="mailto:info@productfromthailand.com">info@productfromthailand.com</a></span></p>
         <br/><a href="http://www.antwebsystems.com">${uiLabelMap.PFTCompanyName}</a> ${uiLabelMap.PFTCompanyAddress}
     </div>
     
