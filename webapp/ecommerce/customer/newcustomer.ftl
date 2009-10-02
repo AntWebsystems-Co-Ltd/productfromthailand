@@ -150,26 +150,26 @@ will generally always be reserved for the logo at the top of the page.
     </div>
 
     <div>
-      <label for="USER_FIRST_NAME">${uiLabelMap.PartyFirstName}*</label>
       <@fieldErrors fieldName="USER_FIRST_NAME"/>
+      <label for="USER_FIRST_NAME">${uiLabelMap.PartyFirstName}*</label>
       <input type="text" name="USER_FIRST_NAME" id="USER_FIRST_NAME" value="${requestParameters.USER_FIRST_NAME?if_exists}" />
     </div>
 
     <div>
-      <label for="USER_MIDDLE_NAME">${uiLabelMap.PartyMiddleInitial}</label>
       <@fieldErrors fieldName="USER_MIDDLE_NAME"/>
+      <label for="USER_MIDDLE_NAME">${uiLabelMap.PartyMiddleInitial}</label>
       <input type="text" name="USER_MIDDLE_NAME" id="USER_MIDDLE_NAME" value="${requestParameters.USER_MIDDLE_NAME?if_exists}" />
     </div>
 
     <div>
-      <label for="USER_LAST_NAME">${uiLabelMap.PartyLastName}*</label>
       <@fieldErrors fieldName="USER_LAST_NAME"/>
+      <label for="USER_LAST_NAME">${uiLabelMap.PartyLastName}*</label>
       <input type="text" name="USER_LAST_NAME" id="USER_LAST_NAME" value="${requestParameters.USER_LAST_NAME?if_exists}" />
     </div>
 
     <div>
-      <label for="USER_SUFFIX">${uiLabelMap.PartySuffix}</label>
       <@fieldErrors fieldName="USER_SUFFIX"/>
+      <label for="USER_SUFFIX">${uiLabelMap.PartySuffix}</label>
       <input type="text" class='inputBox' name="USER_SUFFIX" id="USER_SUFFIX" value="${requestParameters.USER_SUFFIX?if_exists}" />
     </div>
 
@@ -178,32 +178,32 @@ will generally always be reserved for the logo at the top of the page.
   <fieldset class="col">
     <legend>${uiLabelMap.PartyShippingAddress}</legend>
     <div>
-      <label for="CUSTOMER_ADDRESS1">${uiLabelMap.PartyAddressLine1}*</label>
       <@fieldErrors fieldName="CUSTOMER_ADDRESS1"/>
+      <label for="CUSTOMER_ADDRESS1">${uiLabelMap.PartyAddressLine1}*</label>
       <input type="text" name="CUSTOMER_ADDRESS1" id="CUSTOMER_ADDRESS1" value="${requestParameters.CUSTOMER_ADDRESS1?if_exists}" />
     </div>
 
     <div>
-      <label for="CUSTOMER_ADDRESS2">${uiLabelMap.PartyAddressLine2}</label>
       <@fieldErrors fieldName="CUSTOMER_ADDRESS2"/>
+      <label for="CUSTOMER_ADDRESS2">${uiLabelMap.PartyAddressLine2}</label>
       <input type="text" name="CUSTOMER_ADDRESS2" id="CUSTOMER_ADDRESS2" value="${requestParameters.CUSTOMER_ADDRESS2?if_exists}" />
     </div>
 
     <div>
-      <label for="CUSTOMER_CITY">${uiLabelMap.PartyCity}*</label>
       <@fieldErrors fieldName="CUSTOMER_CITY"/>
+      <label for="CUSTOMER_CITY">${uiLabelMap.PartyCity}*</label>
       <input type="text" name="CUSTOMER_CITY" id="CUSTOMER_CITY" value="${requestParameters.CUSTOMER_CITY?if_exists}" />
     </div>
 
     <div>
-      <label for="CUSTOMER_POSTAL_CODE">${uiLabelMap.PartyZipCode}*</label>
       <@fieldErrors fieldName="CUSTOMER_POSTAL_CODE"/>
+      <label for="CUSTOMER_POSTAL_CODE">${uiLabelMap.PartyZipCode}*</label>
       <input type="text" name="CUSTOMER_POSTAL_CODE" id="CUSTOMER_POSTAL_CODE" value="${requestParameters.CUSTOMER_POSTAL_CODE?if_exists}" />
     </div>
 
     <div>
-      <label for="customerCountry">${uiLabelMap.PartyCountry}*</label>
       <@fieldErrors fieldName="CUSTOMER_COUNTRY"/>
+      <label for="customerCountry">${uiLabelMap.PartyCountry}*</label>
       <select name="CUSTOMER_COUNTRY" onclick="hideShowUsaStates();" id="customerCountry">
         <#if requestParameters.CUSTOMER_COUNTRY?exists>
           <option value='${requestParameters.CUSTOMER_COUNTRY}'>${selectedCountryName?default(requestParameters.CUSTOMER_COUNTRY)}</option>
@@ -213,8 +213,8 @@ will generally always be reserved for the logo at the top of the page.
     </div>
 
     <div>
-      <label for="customerState">${uiLabelMap.PartyState}*</label>
       <@fieldErrors fieldName="CUSTOMER_STATE"/>
+      <label for="customerState">${uiLabelMap.PartyState}*</label>
       <select name="CUSTOMER_STATE" id="customerState">
         <#if requestParameters.CUSTOMER_STATE?exists>
           <option value='${requestParameters.CUSTOMER_STATE}'>${selectedStateName?default(requestParameters.CUSTOMER_STATE)}</option>
@@ -229,7 +229,7 @@ will generally always be reserved for the logo at the top of the page.
       <select name="CUSTOMER_ADDRESS_ALLOW_SOL" id="CUSTOMER_ADDRESS_ALLOW_SOL">
         <#if (((requestParameters.CUSTOMER_ADDRESS_ALLOW_SOL)!"") == "Y")><option value="Y">${uiLabelMap.CommonY}</option></#if>
         <#if (((requestParameters.CUSTOMER_ADDRESS_ALLOW_SOL)!"") == "N")><option value="N">${uiLabelMap.CommonN}</option></#if>
-        <option>--</option>
+        <option></option>
         <option value="Y">${uiLabelMap.CommonY}</option>
         <option value="N">${uiLabelMap.CommonN}</option>
       </select>
@@ -322,8 +322,8 @@ will generally always be reserved for the logo at the top of the page.
   <fieldset class="col">
     <legend>${uiLabelMap.PartyEmailAddress}</legend>
     <div>
-      <label for= "CUSTOMER_EMAIL">${uiLabelMap.PartyEmailAddress}*</label>
       <@fieldErrors fieldName="CUSTOMER_EMAIL"/>
+      <label for= "CUSTOMER_EMAIL">${uiLabelMap.PartyEmailAddress}*</label>
       <input type="text" name="CUSTOMER_EMAIL" id="CUSTOMER_EMAIL" value="${requestParameters.CUSTOMER_EMAIL?if_exists}" onchange="changeEmail()" onkeyup="changeEmail()" />
     </div>
     <div>
@@ -341,7 +341,6 @@ will generally always be reserved for the logo at the top of the page.
   <fieldset class="col">
     <legend><#if getUsername>${uiLabelMap.CommonUsername}</#if></legend>
     <#if getUsername>
-      <@fieldErrors fieldName="USERNAME"/>
       <div class="form-row inline">
         <label for="UNUSEEMAIL" style="text-align:left;width:100%">
           <input type="checkbox" class="checkbox" name="UNUSEEMAIL" id="UNUSEEMAIL" value="on" onclick="setEmailUsername();" onfocus="setLastFocused(this);"/> ${uiLabelMap.EcommerceUseEmailAddress}
@@ -349,6 +348,7 @@ will generally always be reserved for the logo at the top of the page.
       </div>
       <div class="bothclear"></div>
       <div>
+        <@fieldErrors fieldName="USERNAME"/>
         <label for="USERNAME">${uiLabelMap.CommonUsername}*</label>
         <input type="text" name="USERNAME" id="USERNAME" value="${requestParameters.USERNAME?if_exists}" onfocus="clickUsername();" onchange="changeEmail();"/>
       </div>
@@ -359,14 +359,14 @@ will generally always be reserved for the logo at the top of the page.
     <legend>${uiLabelMap.CommonPassword}</legend>
     <#if createAllowPassword>
       <div>
-        <label for="PASSWORD">${uiLabelMap.CommonPassword}*</label>
         <@fieldErrors fieldName="PASSWORD"/>
+        <label for="PASSWORD">${uiLabelMap.CommonPassword}*</label>
         <input type="password" name="PASSWORD" id="PASSWORD" onfocus="setLastFocused(this);"/>
       </div>
 
       <div>
-        <label for="CONFIRM_PASSWORD">${uiLabelMap.PartyRepeatPassword}*</label>
         <@fieldErrors fieldName="CONFIRM_PASSWORD"/>
+        <label for="CONFIRM_PASSWORD">${uiLabelMap.PartyRepeatPassword}*</label>
         <input type="password" class='inputBox' name="CONFIRM_PASSWORD" id="CONFIRM_PASSWORD" value="" maxlength="50"/>
       </div>
 

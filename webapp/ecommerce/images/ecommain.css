@@ -95,7 +95,7 @@ font-family: Verdana, Arial, Helvetica, sans-serif;
 body {
 background-image:url(/pft/images/background.jpg);
 background-attachment:fixed;
-color: #3D3334;
+color:black;
 font-size: 10px;
 margin-top:1%;
 }
@@ -268,18 +268,16 @@ color: #999966;
 color:white;
 text-decoration: underline;
 }
-#company-name {
-font-size: 16pt;
-font-weight: bold;
-color: #FFFFFF;
-white-space: nowrap;
-padding-left: 10px;
+.title h1{
+color:#443434;
+font-size:1.6em;
+font-weight:bold;
+padding:10px 0 5px 5px;clear:both;
 }
-#company-subtitle {
-font-size: 10pt;
-color: #FFFFFF;
-white-space: nowrap;
-padding-left: 10px;
+.title h2{
+color:#443434;
+font-size:1.3em;
+padding:0 0 10px 5px;
 }
 
 #microcart {
@@ -1151,6 +1149,12 @@ border:1px solid #CCC ;
 margin:10px;
 width:70%;
 }
+
+#newuserform .errorMessage{
+margin-left:21%;
+padding:0px;
+}
+
 #newuserform legend{
 color:#684825;
 font-weight:bold;
@@ -1179,6 +1183,19 @@ padding:5px;
 width:45%;
 }
 
+.copyright {
+color:#965b0e;
+}
+.copyright a,a:visited{
+color:#965b0e;
+font-weight:inherit;
+text-decoration:none;
+}
+.copyright a:hover{
+color:#965b0e;
+font-weight:inherit;
+text-decoration:underline;
+}
 /***********************************************
 Forms
 ***********************************************/
