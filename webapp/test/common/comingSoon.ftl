@@ -33,6 +33,7 @@
         </#if>
     </div>
     <div class="logo"><a href="<@ofbizUrl>main</@ofbizUrl>"><img src="../pfdimages/logo.png"/></a></div>
+    <div style="font-size:4em;font-weight:bold;padding: 0 0 10px 0">Coming Soon</div>
     <div class="content">
         ${uiLabelMap.PFTIntroMarketPlace}
         ${uiLabelMap.PFTPleaseRegister}
