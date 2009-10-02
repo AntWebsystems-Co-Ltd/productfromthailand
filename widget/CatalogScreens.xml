@@ -38,7 +38,7 @@ under the License.
     <screen name="keywordsearchbox">
         <section>
             <actions>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/KeywordSearchOptions.groovy"/>
+                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/KeywordSearchOptions.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/keywordsearchbox.ftl"/></html></platform-specific>
@@ -410,7 +410,7 @@ under the License.
                 <set field="rightbarScreenName" value="rightbar"/>
                 <set field="MainColumnStyle" value="center"/>
 
-                <set field="productsummaryScreen" value="component://ecommerce/widget/CatalogScreens.xml#productsummary"/>
+                <set field="productsummaryScreen" value="component://productfromthailand/widget/CatalogScreens.xml#productsummary"/>
 
                 <set field="titleProperty" value="PageTitleSearchResults"/>
                 <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="10"/>

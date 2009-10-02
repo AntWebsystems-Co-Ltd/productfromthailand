@@ -32,7 +32,7 @@
         <value xml:lang="th">บริษัท แอนท์ เว็บซิสเต็มส์ จำกัด</value>
     </property>
     <property key="PFTCompanyAddress">
-        <value xml:lang="en">171/28, Moo 3, Thumbol Nhongkeaw, Aumphur Hang Dong,Chiang Mai, Thailand 50230</value>
+        <value xml:lang="en">171/28 , Moo 3 , Thumbol Nhongkeaw , Aumphur Hang Dong , Chiang Mai, Thailand 50230</value>
         <value xml:lang="th">171/28 หมู่3 ต.หนองแก๋ว อ.เมือง จ.เชียงใหม่ ประเทศไทย 50230 </value>
     </property>
     <property key="PFTRegister">
@@ -98,5 +98,29 @@
     <property key="PFTSitemap">
         <value xml:lang="en">Sitemap</value>
         <value xml:lang="th">แผนผังเว็บไซต์</value>
+    </property>
+    <property key="PFTTel">
+        <value xml:lang="en">Tel</value>
+        <value xml:lang="th">เบอร์โทรศัพท์</value>
+    </property>
+    <property key="PFTFax">
+        <value xml:lang="en">Fax</value>
+        <value xml:lang="th">หมายเลขแฟกซ์</value>
+    </property>
+    <property key="PFTSearchYourProducts">
+        <value xml:lang="en">Search Your Products</value>
+        <value xml:lang="th">ค้นหาสินค้าที่คุณต้องการ</value>
+    </property>
+    <property key="PFTSelectByCategories">
+        <value xml:lang="en">Select by Categories</value>
+        <value xml:lang="th">ค้นหาในหมวดหมู่สินค้า</value>
+    </property>
+    <property key="PFTEnterKeyword">
+        <value xml:lang="en">Enter Keyword, Product name</value>
+        <value xml:lang="th">ใส่คีย์เวิร์ด/ชื่อสินค้าที่ต้องการค้นหา</value>
+    </property>
+    <property key="PFTInAllCategories">
+        <value xml:lang="en">In All Categories</value>
+        <value xml:lang="th">ค้นหาในหมวดหมู่สินค้า</value>
     </property>
 </resource>

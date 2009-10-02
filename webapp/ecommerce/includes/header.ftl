@@ -132,18 +132,17 @@ under the License.
                         </ul>
                       </div>
                       <div id="searchbar">
-                         <table align="left"  valign="bottom">
+                         <table align="left" valign="bottom">
                               <tbody>
                                   <tr>
-                                      <td width="190" height="50"><h3>Search Your Products</h3></td>
+                                      <td width="190" height="50"><h3>${uiLabelMap.PFTSearchYourProducts}</h3></td>
                                   </tr>
                               </tbody>
                           </table>
-                          <table align="right">
+                          <table align="left" valign="top">
                               <tbody>
                                   <tr>
-                                      <td>${screens.render("component://productfromthailand/widget/CatalogScreens.xml#choosecatalog")}</td>
-                                      <td>${screens.render("component://productfromthailand/widget/CatalogScreens.xml#keywordsearchbox")}</td>
+                                      <td width="580">${screens.render("component://productfromthailand/widget/CatalogScreens.xml#keywordsearchbox")}</td>
                                   </tr>
                               </tbody>
                           </table>

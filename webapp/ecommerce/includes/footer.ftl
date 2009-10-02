@@ -23,12 +23,12 @@ under the License.
                             <tbody>
                                 <tr>
                                     <td  align="center">
-                                        <h4>${uiLabelMap.PartyPhoneNumber}: +66-53 483245, ${uiLabelMap.PartyFaxNumber} : +66-53 483246, ${uiLabelMap.PartyEmailAddress} : info@productfromthailand.com</h4>
+                                        <h4>${uiLabelMap.PFTTel}: +66-53 483245, ${uiLabelMap.PFTFax} : +66-53 483246, ${uiLabelMap.PartyEmailAddress} : info@productfromthailand.com</h4>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td  align="center">
-                                        <h4><a href="http://www.antwebsystems.com" style="color:black">${uiLabelMap.PFTCompanyName} ${uiLabelMap.PFTCompanyAddress} </a></h4>
+                                        <h4>${uiLabelMap.PFTCompanyName} ${uiLabelMap.PFTCompanyAddress}</h4>
                                     </td>
                                 </tr>
                             </tbody>

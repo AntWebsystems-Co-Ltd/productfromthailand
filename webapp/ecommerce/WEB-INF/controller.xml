@@ -39,4 +39,6 @@ under the License.
     <view-map name="newcustomer" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newcustomer"/>
     <view-map name="contactus" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#contactus"/>
     <view-map name="partner" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#partner"/>
+    
+    <view-map name="keywordsearch" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#keywordsearch"/>
 </site-conf>
