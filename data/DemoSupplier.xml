@@ -53,20 +53,76 @@
     <PartyContactMechPurpose partyId="CMMODERNHOME" contactMechId="CMMODERNHOME_FAX" contactMechPurposeTypeId="FAX_NUMBER" fromDate="2009-09-25 00:00:00.000"/>
     <UserLogin userLoginId="CMMODERNHOME" currentPassword="{SHA}47ca69ebb4bdc9ae0adec130880165d2cc05db1a" partyId="CMMODERNHOME"/>
     
+    <!-- CHIANGMAI MARBLE GRANITE Company -->
+    <Party partyId="CMMARBLEGRANITE" partyTypeId="PARTY_GROUP"/>
+    <PartyGroup partyId="CMMARBLEGRANITE" groupName="CHIANGMAI MARBLE GRANITE CO.,LTD." />
+    <PartyRole  partyId="CMMARBLEGRANITE" roleTypeId="SUPPLIER"/>
+    <PartyRole partyId="CMMARBLEGRANITE" roleTypeId="ACCOUNT"/>
+    <ContactMech contactMechId="MG_ADDR" contactMechTypeId="POSTAL_ADDRESS"/>
+    <ContactMech contactMechId="MG_TELE" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="MG_FAX" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="MG_EMAIL" contactMechTypeId="EMAIL_ADDRESS" infoString="cmmarble@cm.ksc.co.th"/>
+    
+    <PartyContactMech partyId="CMMARBLEGRANITE" contactMechId="MG_ADDR" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    <PartyContactMech partyId="CMMARBLEGRANITE" contactMechId="MG_TELE" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    <PartyContactMech partyId="CMMARBLEGRANITE" contactMechId="MG_EMAIL" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    
+    <TelecomNumber contactMechId="MG_TELE" countryCode="+66" areaCode="053" contactNumber="275665"/>
+    <TelecomNumber contactMechId="MG_FAX" countryCode="+66" areaCode="053" contactNumber="275665"/>
+    <PostalAddress contactMechId="MG_ADDR" toName="KHUNKEDNAPA KANJANAKED" address1="181 MAHIDOL RD., HAI YA" city="Chiangmai" postalCode="50100" countryGeoId="THA"/>
+    <PartyContactMechPurpose partyId="CMMARBLEGRANITE" contactMechId="MG_ADDR" contactMechPurposeTypeId="BILLING_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMMARBLEGRANITE" contactMechId="MG_ADDR" contactMechPurposeTypeId="GENERAL_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMMARBLEGRANITE" contactMechId="MG_ADDR" contactMechPurposeTypeId="PAYMENT_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMMARBLEGRANITE" contactMechId="MG_EMAIL" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMMARBLEGRANITE" contactMechId="MG_TELE" contactMechPurposeTypeId="PRIMARY_PHONE" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMMARBLEGRANITE" contactMechId="MG_FAX" contactMechPurposeTypeId="FAX_NUMBER" fromDate="2009-09-25 00:00:00.000"/>
+    <UserLogin userLoginId="CMMARBLEGRANITE" currentPassword="{SHA}47ca69ebb4bdc9ae0adec130880165d2cc05db1a" partyId="CMMARBLEGRANITE"/>
+    
+    <!-- CHIANGMAI SOONTRI Company -->
+    <Party partyId="CMSOONTRI" partyTypeId="PARTY_GROUP"/>
+    <PartyGroup partyId="CMSOONTRI" groupName="CHIANGMAI SOONTRI LTD.,PART" />
+    <PartyRole  partyId="CMSOONTRI" roleTypeId="SUPPLIER"/>
+    <PartyRole partyId="CMSOONTRI" roleTypeId="ACCOUNT"/>
+    <ContactMech contactMechId="CMSOONTRI_ADDR" contactMechTypeId="POSTAL_ADDRESS"/>
+    <ContactMech contactMechId="CMSOONTRI_TELE" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="CMSOONTRI_FAX" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="CMSOONTRI_EMAIL" contactMechTypeId="EMAIL_ADDRESS" infoString="soontri@loxinfo.co.th"/>
+    
+    <PartyContactMech partyId="CMSOONTRI" contactMechId="CMSOONTRI_ADDR" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    <PartyContactMech partyId="CMSOONTRI" contactMechId="CMSOONTRI_TELE" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    <PartyContactMech partyId="CMSOONTRI" contactMechId="CMSOONTRI_EMAIL" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
+    
+    <TelecomNumber contactMechId="CMSOONTRI_TELE" countryCode="+66" areaCode="053" contactNumber="331127"/>
+    <TelecomNumber contactMechId="CMSOONTRI_FAX" countryCode="+66" areaCode="053" contactNumber="331339"/>
+    <PostalAddress contactMechId="CMSOONTRI_ADDR" toName="CHOMCHALEO NGOENPISUTSILP" address1="79, MOO 7, SAN KAMPHAENG" city="Chiangmai" postalCode="50100" countryGeoId="THA"/>
+    <PartyContactMechPurpose partyId="CMSOONTRI" contactMechId="CMSOONTRI_ADDR" contactMechPurposeTypeId="BILLING_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMSOONTRI" contactMechId="CMSOONTRI_ADDR" contactMechPurposeTypeId="GENERAL_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMSOONTRI" contactMechId="CMSOONTRI_ADDR" contactMechPurposeTypeId="PAYMENT_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMSOONTRI" contactMechId="CMSOONTRI_EMAIL" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMSOONTRI" contactMechId="CMSOONTRI_TELE" contactMechPurposeTypeId="PRIMARY_PHONE" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="CMSOONTRI" contactMechId="CMSOONTRI_FAX" contactMechPurposeTypeId="FAX_NUMBER" fromDate="2009-09-25 00:00:00.000"/>
+    <UserLogin userLoginId="CMSOONTRI" currentPassword="{SHA}47ca69ebb4bdc9ae0adec130880165d2cc05db1a" partyId="CMSOONTRI"/>
+    
+    <!-- Start with ProdCatalog -->
     <ProdCatalog prodCatalogId="PFTCatalog" catalogName="Product From Thailand Catalog" useQuickAdd="Y"/>
     <ProductStoreCatalog productStoreId="PFTSTORE" prodCatalogId="PFTCatalog" fromDate="2009-09-25 00:00:00.000" sequenceNum="1"/>
     
     <ProductCategory longDescription="Demo Product From Thailand Catalog Browse Root Category"
         productCategoryId="PFT_ROOT" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Agricultural Products" primaryParentCategoryId="PFT_ROOT" productCategoryId="AGRICULTURAL" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Leather Products" primaryParentCategoryId="PFT_ROOT" productCategoryId="LEATHER" productCategoryTypeId="CATALOG_CATEGORY"/>
-    
-    <ProductCategoryRollup fromDate="2001-05-13 12:00:00.0" parentProductCategoryId="PFT_ROOT" productCategoryId="AGRICULTURAL"/>
-    <ProductCategoryRollup fromDate="2001-05-13 12:00:00.0" parentProductCategoryId="PFT_ROOT" productCategoryId="LEATHER"/>
+    <ProductCategory description="Agricultural &amp; Forestry" primaryParentCategoryId="PFT_ROOT" productCategoryId="AGRICULTURAL" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory description="Bag" primaryParentCategoryId="PFT_ROOT" productCategoryId="BAG" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory description="Clothing" primaryParentCategoryId="PFT_ROOT" productCategoryId="CLOTHING" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory description="Footwear" primaryParentCategoryId="PFT_ROOT" productCategoryId="FOOTWEAR" productCategoryTypeId="CATALOG_CATEGORY"/>
+
+    <ProductCategoryRollup fromDate="2001-05-13 12:00:00.0" parentProductCategoryId="PFT_ROOT" productCategoryId="AGRICULTURAL" sequenceNum="1"/>
+    <ProductCategoryRollup fromDate="2001-05-13 12:00:00.0" parentProductCategoryId="PFT_ROOT" productCategoryId="BAG" sequenceNum="2"/>
+    <ProductCategoryRollup fromDate="2001-05-13 12:00:00.0" parentProductCategoryId="PFT_ROOT" productCategoryId="CLOTHING" sequenceNum="3"/>
+    <ProductCategoryRollup fromDate="2001-05-13 12:00:00.0" parentProductCategoryId="PFT_ROOT" productCategoryId="FOOTWEAR" sequenceNum="4"/>
     
     <ProdCatalogCategory prodCatalogId="PFTCatalog" productCategoryId="PFT_ROOT" fromDate="2009-09-25 00:00:00.000"
-        sequenceNum="1" prodCatalogCategoryTypeId="PCCT_BROWSE_ROOT"/>
-
+    sequenceNum="1" prodCatalogCategoryTypeId="PCCT_BROWSE_ROOT"/>
+    
+    <!-- Product from CHIANGMAI TAVEEKUN Company -->
     <Product productId="INSTANTTEA" productTypeId="FINISHED_GOOD" internalName="Instant Tea" productName="Instant Tea" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
     <Product productId="SEASONING" productTypeId="FINISHED_GOOD" internalName="Seasoning" productName="Seasoning" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
     <Product productId="TEA" productTypeId="FINISHED_GOOD" internalName="Tea" productName="Tea" description="GREEN TEA, OOLONG TEA, PUERS TEA, ORGANIC TEA" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
@@ -83,19 +139,43 @@
     <SupplierProduct partyId="CMTAVEEKUN" minimumOrderQuantity="0" currencyUomId="USD" productId="SEASONING" lastPrice="5.0" supplierProductId="TVK-SEASONING" supplierProductName="TAVEEKUN SEASONING" availableFromDate="2009-09-25 00:00:00.000"/>
     <SupplierProduct partyId="CMTAVEEKUN" minimumOrderQuantity="0" currencyUomId="USD" productId="TEA" lastPrice="5.0" supplierProductId="TVK-TEA" supplierProductName="TAVEEKUN TEA" availableFromDate="2009-09-25 00:00:00.000"/>
     <SupplierProduct partyId="CMTAVEEKUN" minimumOrderQuantity="0" currencyUomId="USD" productId="THAISPICES" lastPrice="5.0" supplierProductId="TVK-THAISPICES" supplierProductName="TAVEEKUN THAISPICES" availableFromDate="2009-09-25 00:00:00.000"/>
-
+    <!-- Product from CHIANGMAI MODERN HOME Company -->
     <Product productId="MH-001" productTypeId="FINISHED_GOOD" internalName="Box" productName="Box" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
     <Product productId="MH-002" productTypeId="FINISHED_GOOD" internalName="Embroidery" productName="Embroidery" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
     <Product productId="MH-003" productTypeId="FINISHED_GOOD" internalName="Handbags texttile" productName="Handbags texttile" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
-    <ProductCategoryMember productCategoryId="LEATHER" productId="MH-001" sequenceNum="1" fromDate="2009-09-25 00:00:00.000"/>
-    <ProductCategoryMember productCategoryId="LEATHER" productId="MH-002" sequenceNum="2" fromDate="2009-09-25 00:00:00.000"/>
-    <ProductCategoryMember productCategoryId="LEATHER" productId="MH-003" sequenceNum="3" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductCategoryMember productCategoryId="BAG" productId="MH-001" sequenceNum="1" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductCategoryMember productCategoryId="BAG" productId="MH-002" sequenceNum="2" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductCategoryMember productCategoryId="BAG" productId="MH-003" sequenceNum="3" fromDate="2009-09-25 00:00:00.000"/>
     <ProductPrice productId="MH-001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="15.45" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
     <ProductPrice productId="MH-002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="45.99" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
     <ProductPrice productId="MH-003" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="125.00" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
     <SupplierProduct partyId="CMMODERNHOME" minimumOrderQuantity="0" currencyUomId="USD" productId="MH-001" lastPrice="5.0" supplierProductId="MH-IMH-001" supplierProductName="MODERN HOME Box" availableFromDate="2009-09-25 00:00:00.000"/>
     <SupplierProduct partyId="CMMODERNHOME" minimumOrderQuantity="0" currencyUomId="USD" productId="MH-002" lastPrice="15.0" supplierProductId="MH-IMH-002" supplierProductName="MODERN HOME Embroidery" availableFromDate="2009-09-25 00:00:00.000"/>
     <SupplierProduct partyId="CMMODERNHOME" minimumOrderQuantity="0" currencyUomId="USD" productId="MH-003" lastPrice="50.99" supplierProductId="MH-IMH-003" supplierProductName="MODERN HOME Handbags texttile" availableFromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Product from CHIANGMAI MARBLE GRANITE Company -->
+    <Product productId="MG-001" productTypeId="FINISHED_GOOD" internalName="Bags" productName="Bags" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
+    <Product productId="MG-002" productTypeId="FINISHED_GOOD" internalName="Floor Rock" productName="Floor Rock" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
+    <Product productId="MG-003" productTypeId="FINISHED_GOOD" internalName="Belts" productName="Belts" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
+    <ProductCategoryMember productCategoryId="BAG" productId="MG-001" sequenceNum="1" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductCategoryMember productCategoryId="BAG" productId="MG-002" sequenceNum="2" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductCategoryMember productCategoryId="BAG" productId="MG-003" sequenceNum="3" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductPrice productId="MG-001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="25.45" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
+    <ProductPrice productId="MG-002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="55.99" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
+    <ProductPrice productId="MG-003" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="102.55" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
+    <SupplierProduct partyId="CMMARBLEGRANITE" minimumOrderQuantity="0" currencyUomId="USD" productId="MG-001" lastPrice="4.50" supplierProductId="CMMG-001" supplierProductName="MARBLE GRANITE Bags" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="CMMARBLEGRANITE" minimumOrderQuantity="0" currencyUomId="USD" productId="MG-002" lastPrice="11.25" supplierProductId="CMMG-002" supplierProductName="MARBLE GRANITE Floor Rock" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="CMMARBLEGRANITE" minimumOrderQuantity="0" currencyUomId="USD" productId="MG-003" lastPrice="27.99" supplierProductId="CMMG-003" supplierProductName="MARBLE GRANITE Belts" availableFromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Product from CHIANGMAI SOONTRI Company -->
+    <Product productId="ST-001" productTypeId="FINISHED_GOOD" internalName="LADIES WEAR" productName="LADIES WEAR" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
+    <Product productId="ST-002" productTypeId="FINISHED_GOOD" internalName="HOUSE HOLD PRODUCT" productName="HOUSE HOLD PRODUCT" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
+    <ProductCategoryMember productCategoryId="FOOTWEAR" productId="MG-001" sequenceNum="1" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductCategoryMember productCategoryId="FOOTWEAR" productId="MG-002" sequenceNum="2" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductPrice productId="ST-001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="30.55" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
+    <ProductPrice productId="ST-002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="52.99" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
+    <SupplierProduct partyId="CMSOONTRI" minimumOrderQuantity="0" currencyUomId="USD" productId="ST-001" lastPrice="5.0" supplierProductId="CMST-001" supplierProductName="SOONTRI LADIES WEAR" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="CMSOONTRI" minimumOrderQuantity="0" currencyUomId="USD" productId="ST-002" lastPrice="7.0" supplierProductId="CMST-002" supplierProductName="SOONTRI HOUSE HOLD PRODUCT" availableFromDate="2009-09-25 00:00:00.000"/>
     
     <!-- Drop ship products -->
     <!--<ProductCategory description="DropShip Products" primaryParentCategoryId="CATALOG1" productCategoryId="dropShip" productCategoryTypeId="CATALOG_CATEGORY"/>
