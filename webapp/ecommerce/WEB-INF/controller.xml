@@ -23,6 +23,11 @@ under the License.
     <include location="component://ecommerce/webapp/ecommerce/WEB-INF/controller.xml"/>
     <description>OFBiz: Cloned eCommerce Controller Configuration File</description>
     
+    <request-map uri="partner">
+        <security https="false" auth="false"/>
+        <response name="success" type="view" value="partner"/>
+    </request-map>
+    
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
     <view-map name="main" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#main"/>
     <view-map name="editShoppingList" type="screen" page="component://productfromthailand/widget/ShoppingListScreens.xml#editShoppingList"/>
@@ -33,4 +38,5 @@ under the License.
 
     <view-map name="newcustomer" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newcustomer"/>
     <view-map name="contactus" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#contactus"/>
+    <view-map name="partner" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#partner"/>
 </site-conf>

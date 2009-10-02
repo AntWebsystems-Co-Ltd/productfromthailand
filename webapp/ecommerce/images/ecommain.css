@@ -310,11 +310,14 @@ background: transparent;
 }
 
 #ecom-header-bar ul li {
-height: 14px;
+height:auto;
 padding: 0px 8px 0px 8px;
 }
 #ecom-header-bar ul#left-links li {
 float: right;
+}
+#ecom-header-bar li#header-bar-sitemap,#header-bar-help {
+border-left:2px solid #827B00;
 }
 #ecom-header-bar ul li a {
 text-decoration: none;
@@ -429,12 +432,12 @@ padding:1px 4px 3px;
 .boxhead {
 height:25px;
 background-image:url(/pft/images/bt_bg.jpg);
-background-repeat:repeat-x;
-font-size: 8pt;
+background-repeat:no-repeat;
+font-size: 10pt;
 font-weight: bold;
 text-decoration: none;
-color: #FFFFFF;
-padding-top:10px;
+color:white;
+padding-top:5px;
 }
 
 .boxhead_sb {
@@ -572,8 +575,6 @@ margin-left: 10px;
 .browsecategorytext {
 font-weight: bold;
 color: #525252;
-
-
 }
 
 A.browsecategorybutton {
@@ -1183,6 +1184,18 @@ padding:5px;
 width:45%;
 }
 
+.partnerconditions ul li {
+margin-left: 10px;
+}
+
+.partnerconditions li{
+font-weight:normal;
+color: #525252;
+list-style:decimal;
+list-style-position:inside;
+padding: 10px 0px 0px 0px;
+}
+
 .copyright {
 color:#965b0e;
 }
@@ -1196,6 +1209,7 @@ color:#965b0e;
 font-weight:inherit;
 text-decoration:underline;
 }
+
 /***********************************************
 Forms
 ***********************************************/

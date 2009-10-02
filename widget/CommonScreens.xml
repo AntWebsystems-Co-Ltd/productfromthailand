@@ -90,13 +90,7 @@ under the License.
         <section>
             <widgets>
                 <container style="left">
-                    <include-screen name="sidedeepcategory" location="component://ecommerce/widget/CatalogScreens.xml"/>
-                    <include-screen name="minireorderprods" location="component://ecommerce/widget/CatalogScreens.xml"/>
-                    <include-screen name="signupforcontactlist" location="component://ecommerce/widget/EmailContactListScreens.xml"/>
-                    <include-screen name="minipoll" location="component://ecommerce/widget/ContentScreens.xml"/>
-                    <include-screen name="forums" location="component://ecommerce/widget/ForumScreens.xml"/>
-                    <include-screen name="content_categories" location="component://ecommerce/widget/ContentScreens.xml"/>
-                    <include-screen name="blogs" location="component://ecommerce/widget/blog/BlogScreens.xml"/>
+                    <include-screen name="sidedeepcategory" location="component://productfromthailand/widget/CatalogScreens.xml"/>
                 </container>
             </widgets>
         </section>
@@ -368,6 +362,24 @@ under the License.
                     <decorator-section name="body">
                         <sub-content content-id="WebStoreCONTENT" map-key="policies"/>
                         <sub-content content-id="WebStoreCONTENT" map-key="policies2"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="partner">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PFTPartner"/>
+                <set field="headerItem" value="partner"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://productfromthailand/webapp/ecommerce/includes/partner.ftl"/></html>
+                        </platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>

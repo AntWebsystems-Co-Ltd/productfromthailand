@@ -47,28 +47,30 @@ under the License.
                                                 <td>
                                                     <ul id="left-links">
                                                         <li id="header-bar-language">
-	                                                        <#assign availableLocales = Static["org.ofbiz.base.util.UtilMisc"].availableLocales()/>
-	                                                        <#list availableLocales as availableLocale>
-	                                                            <#if locale.toString() == availableLocale.toString()>
-	                                                                <#if locale.toString() == "en">
-	                                                                    <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="../../pfdimages/ThaiFlag.jpg" alt="Thai" width="25"/></a>
-	                                                                <#elseif locale.toString() == "th">
-	                                                                    <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=en"><img src="../../pfdimages/EngFlag.jpg"  alt="English" width="25"/></a>
-	                                                                </#if>
-	                                                            </#if>
-	                                                        </#list>
-	                                                        <#if locale.toString() == "en_US">
-	                                                            <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="../../pfdimages/ThaiFlag.jpg" alt="Thai" width="25"/></a>
-	                                                        </#if>
+                                                            <#assign availableLocales = Static["org.ofbiz.base.util.UtilMisc"].availableLocales()/>
+                                                            <#list availableLocales as availableLocale>
+                                                                <#if locale.toString() == availableLocale.toString()>
+                                                                    <#if locale.toString() == "en">
+                                                                        <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
+                                                                    <#elseif locale.toString() == "th">
+                                                                        <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=en"><img src="<@ofbizContentUrl>/pfdimages/EngFlag.jpg</@ofbizContentUrl>"  alt="English" width="25"/></a>
+                                                                    </#if>
+                                                                </#if>
+                                                            </#list>
+                                                            <#if locale.toString() == "en_US">
+                                                                <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
+                                                            </#if>
                                                         </li>
+                                                        <li id="header-bar-sitemap"><a href="<@ofbizUrl>main</@ofbizUrl>"><h2>${uiLabelMap.PFTSitemap}</h2></a></li>
+                                                        <li id="header-bar-help"><a href="<@ofbizUrl>main</@ofbizUrl>"><h2>${uiLabelMap.PFTHelpAndInstruction}</h2></a></li>
                                                       <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
                                                         <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><h2>${uiLabelMap.CommonLogout}</h2></a></li>
                                                       <#else/>
-                                                        <li id="header-bar-login"><a href="<@ofbizUrl>${checkLoginUrl}</@ofbizUrl>"><h2>${uiLabelMap.CommonLogin}</h2></a></li>
-                                                        <li id="header-bar-login"><a href="<@ofbizUrl>newcustomer</@ofbizUrl>"><h2>${uiLabelMap.PFTRegister}</h2></a></li>
+                                                        <#--li id="header-bar-login"><a href="<@ofbizUrl>${checkLoginUrl}</@ofbizUrl>"><h2>${uiLabelMap.CommonLogin}</h2></a></li>
+                                                        <li id="header-bar-login"><a href="<@ofbizUrl>newcustomer</@ofbizUrl>"><h2>${uiLabelMap.PFTRegister}</h2></a></li-->
+                                                        <li id="header-bar-login"><a href="<@ofbizUrl>${checkLoginUrl}</@ofbizUrl>"><h2>${uiLabelMap.PFTSignInOrRegister}</h2></a></li>
                                                       </#if>
-                                                      <li id="header-bar-contactus"><a href="<@ofbizUrl>contactus</@ofbizUrl>"><h2>${uiLabelMap.CommonContactUs}</h2></a></li>
-                                                      <li id="header-bar-main"><a href="<@ofbizUrl>main</@ofbizUrl>"><h2>${uiLabelMap.CommonMain}</h2></a></li>
+                                                      
                                                     </ul>
                                                 </td>
                                             </tr>
@@ -113,16 +115,20 @@ under the License.
                       <div id="menubar">
                         <ul id="right-links">
                           <!-- NOTE: these are in reverse order because they are stacked right to left instead of left to right -->
-                          <#if !userLogin?has_content || (userLogin.userLoginId)?if_exists != "anonymous">
+                          <li id="header-bar-home"><a href="<@ofbizUrl>main</@ofbizUrl>"><h1>${uiLabelMap.PFTHome}</h1></a></li>
+                          <li id="header-bar-product"><a href="<@ofbizUrl>main</@ofbizUrl>"><h1>${uiLabelMap.PFTProducts}</h1></a></li>
+                          <li id="header-bar-service"><a href="<@ofbizUrl>main</@ofbizUrl>"><h1>${uiLabelMap.PFTServices}</h1></a></li>
+                          <li id="header-bar-partner"><a href="<@ofbizUrl>partner</@ofbizUrl>"><h1>${uiLabelMap.PFTPartner}</h1></a></li>
+                          <li id="header-bar-aboutus"><a href="<@ofbizUrl>main</@ofbizUrl>"><h1>${uiLabelMap.PFTAboutUs}</h1></a></li>
+                          <li id="header-bar-contact"><a href="<@ofbizUrl>contactus</@ofbizUrl>"><h1>${uiLabelMap.PFTContact}</h1></a></li>
+                          <#--if !userLogin?has_content || (userLogin.userLoginId)?if_exists != "anonymous">
                             <li id="header-bar-viewprofile"><a href="<@ofbizUrl>viewprofile</@ofbizUrl>"><h1>${uiLabelMap.CommonProfile}</h1></a></li>
                             <li id="header-bar-ListQuotes"><a href="<@ofbizUrl>ListQuotes</@ofbizUrl>"><h1>${uiLabelMap.OrderOrderQuotes}</h1></a></li>
                             <li id="header-bar-ListRequests"><a href="<@ofbizUrl>ListRequests</@ofbizUrl>"><h1>${uiLabelMap.OrderRequests}</h1></a></li>
                             <li id="header-bar-editShoppingList"><a href="<@ofbizUrl>editShoppingList</@ofbizUrl>"><h1>${uiLabelMap.EcommerceShoppingLists}</h1></a></li>
                             <li id="header-bar-orderhistory"><a href="<@ofbizUrl>orderhistory</@ofbizUrl>"><h1>${uiLabelMap.EcommerceOrderHistory}</h1></a></li>
-                          </#if>
-                          <#if catalogQuickaddUse>
-                            <li id="header-bar-quickadd"><a href="<@ofbizUrl>quickadd</@ofbizUrl>"><h1>${uiLabelMap.CommonQuickAdd}</h1></a></li>
-                          </#if>
+                          </#if-->
+                          
                         </ul>
                       </div>
                       <div id="searchbar">
