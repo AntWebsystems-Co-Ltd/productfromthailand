@@ -55,4 +55,48 @@
         <value xml:lang="en">Your E-mail</value>
         <value xml:lang="th">อีเมล์ของคุณ</value>
     </property>
+    <property key="PFTProductCategories">
+        <value xml:lang="en">Product Categories</value>
+        <value xml:lang="th">หมวดหมู่สินค้า</value>
+    </property>
+    <property key="PFTHome">
+        <value xml:lang="en">Home</value>
+        <value xml:lang="th">หน้าแรก</value>
+    </property>
+    <property key="PFTProducts">
+        <value xml:lang="en">Products</value>
+        <value xml:lang="th">สินค้า</value>
+    </property>
+    <property key="PFTServices">
+        <value xml:lang="en">Services</value>
+        <value xml:lang="th">สินค้า</value>
+    </property>
+    <property key="PFTPartner">
+        <value xml:lang="en">Partner</value>
+        <value xml:lang="th">หุ้นส่วนองค์กร</value>
+    </property>
+    <property key="PFTAboutUs">
+        <value xml:lang="en">About Us</value>
+        <value xml:lang="th">เกี่ยวกับเรา</value>
+    </property>
+    <property key="PFTContact">
+        <value xml:lang="en">Contact</value>
+        <value xml:lang="th">ติดต่อเรา</value>
+    </property>
+    <property key="PFTSalesconditions">
+        <value xml:lang="en">Sales conditions</value>
+        <value xml:lang="th">เงื่อนไขในการขายสินค้า</value>
+    </property>
+    <property key="PFTSignInOrRegister">
+        <value xml:lang="en">Sign in or Register</value>
+        <value xml:lang="th">เข้าสู่ระบบ/สมัครสมาชิก</value>
+    </property>
+    <property key="PFTHelpAndInstruction">
+        <value xml:lang="en">Help &amp; Instruction</value>
+        <value xml:lang="th">แนะนำ/ช่วยเหลือ</value>
+    </property>
+    <property key="PFTSitemap">
+        <value xml:lang="en">Sitemap</value>
+        <value xml:lang="th">แผนผังเว็บไซต์</value>
+    </property>
 </resource>
