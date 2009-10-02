@@ -40,12 +40,12 @@ under the License.
         </div>
     </#if>
 </#macro>
-
+<#if parameters._CURRENT_VIEW_=="main">
 <div class="title">
       <#if (productStore.title)?exists><h1>${productStore.title}</h1></#if>
       <#if (productStore.subtitle)?exists><h2>${productStore.subtitle}</h2></#if>
   </div>
-
+</#if>
 <#if productCategory?exists>
     <#assign categoryName = categoryContentWrapper.get("CATEGORY_NAME")?if_exists/>
     <#assign categoryDescription = categoryContentWrapper.get("DESCRIPTION")?if_exists/>
