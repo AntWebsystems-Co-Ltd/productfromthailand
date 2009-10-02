@@ -25,7 +25,7 @@
             <#else>
             <#assign currentlang = "en_US">
         </#if> 
-        <#if currentlang == "en_US">
+        <#if currentlang == "en_US" || currentlang == "en" || currentlang == "en_IE" || currentlang == "en_GB">
         <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="../pfdimages/ThaiFlag.jpg" alt="Thai"/></a>
         <#elseif currentlang =="th"> 
         <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=en_US"><img src="../pfdimages/EngFlag.jpg"  alt="English"/></a>
