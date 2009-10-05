@@ -22,8 +22,8 @@ under the License.
        <table width="100%">
            <tbody>
                <tr>
-                   <td align="right" width="250"><div class="boxhead_sb">${uiLabelMap.PFTSelectByCategories} :</div></td>
-                   <td align="right" width="250"><div class="boxhead_sb">${uiLabelMap.PFTEnterKeyword} :</div></td>
+                   <td align="right" width="350" valign="top"><div class="boxhead_sb">${uiLabelMap.PFTSelectByCategories} :</div></td>
+                   <td align="right" valign="top"><div class="boxhead_sb">${uiLabelMap.PFTEnterKeyword} :</div></td>
                </tr>
                <tr>
                     <form name="keywordsearchform" method="post" action="<@ofbizUrl>keywordsearch</@ofbizUrl>">

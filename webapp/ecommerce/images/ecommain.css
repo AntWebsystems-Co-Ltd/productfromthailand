@@ -203,10 +203,9 @@ text-align: left;
 }
 #ecom-header {
 position: relative;
-height: 80px;
 voice-family: "\"}\"";
 voice-family: inherit;
-height: 140px;
+height: 100px;
 width:800px;
 /* border:1px solid #000; */
 }
@@ -229,8 +228,10 @@ padding: 0px 8px 0px 8px;
 #ecom-header #menubar ul#right-links li {
 float: left;
 }
+#ecom-header #menubar ul#left-links li {
+float: right;
+}
 #ecom-header #searchbar {
-margin-top:1%;
 background-image:url(/pft/images/searchbar.gif);
 overflow: visible;
 height: 50px;
@@ -240,6 +241,11 @@ vertical-align:top;
 
 #ecom-header #searchbar table {
 width:auto;
+}
+#ecom-header #selected  {
+background-image:url(/pft/images/point.jpg);
+background-repeat:no-repeat;
+height:8px;
 }
 
 #ecom-header #right {
@@ -352,6 +358,7 @@ text-decoration: underline;
 #ecom-mainarea {
 position: relative;
 width: 800px;
+margin-top: 5px;
 }
 
 #ecom-mainarea .left {
@@ -440,7 +447,7 @@ padding:1px 4px 3px;
 .boxhead {
 height:25px;
 background-image:url(/pft/images/bt_bg.jpg);
-background-repeat:no-repeat;
+background-repeat:repeat-x;
 font-size: 10pt;
 font-weight: bold;
 text-decoration:none;
@@ -455,6 +462,7 @@ font-weight:bold;
 text-decoration: none;
 color: #5B5207;
 text-align:right;
+float: right;
 }
 
 .boxlink {
@@ -1201,6 +1209,7 @@ margin-left: 10px;
 
 .partnerconditions li{
 font-weight:normal;
+font-size:12px;
 color: #525252;
 list-style:decimal;
 list-style-position:inside;
@@ -1278,3 +1287,11 @@ height:auto !important;
 Forms
 ***********************************************/
 form div, .buttons {clear: both; margin: 0 0 0.8em;}
+
+#searchbartitle {
+vertical-align:middle;
+color: #f4f4da;
+font-size:15px;
+font-weight:bold;
+text-align:center;
+}

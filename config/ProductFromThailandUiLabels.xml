@@ -121,6 +121,6 @@
     </property>
     <property key="PFTInAllCategories">
         <value xml:lang="en">In All Categories</value>
-        <value xml:lang="th">ค้นหาในหมวดหมู่สินค้า</value>
+        <value xml:lang="th">ค้นหาทุกหมวดหมู่สินค้า</value>
     </property>
 </resource>

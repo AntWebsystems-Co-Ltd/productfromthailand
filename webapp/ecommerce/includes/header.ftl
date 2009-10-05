@@ -133,12 +133,24 @@ under the License.
                           </#if-->
                           
                         </ul>
+                        <ul id="left-links">
+                            <li id="header-bar-showcart"><a href="<@ofbizUrl>view/showcart</@ofbizUrl>"><h1>${uiLabelMap.OrderViewCart}</h1></a></li>
+                        </ul>
                       </div>
+                      <#if requestAttributes._CURRENT_VIEW_?has_content>
+                        <#if requestAttributes._CURRENT_VIEW_ == "main"><#assign startleft= "25px"></#if>
+                        <#if requestAttributes._CURRENT_VIEW_ == "contactus"><#assign startleft= "400px"></#if>
+                        <#if requestAttributes._CURRENT_VIEW_ == "partner"><#assign startleft= "250px"></#if>
+                        <#if requestAttributes._CURRENT_VIEW_ == "showcart"><#assign startleft= "740px"></#if>
+                      </#if>
+                      <div id="selected" style="margin-left:${startleft?default("25px")}"></div>
                       <div id="searchbar">
                          <table align="left" valign="bottom">
                               <tbody>
                                   <tr>
-                                      <td width="190" height="50"><h3>${uiLabelMap.PFTSearchYourProducts}</h3></td>
+                                      <td width="190" height="50">
+                                        <div id="searchbartitle">${uiLabelMap.PFTSearchYourProducts}</div>
+                                      </td>
                                   </tr>
                               </tbody>
                           </table>
@@ -152,13 +164,13 @@ under the License.
                       </div>
                   </td>
               </tr>
-              <tr>
+              <#--tr>
                   <td bgcolor="white" width="800" height="40" align="right">
                       <div id="right">
                       ${screens.render("component://productfromthailand/widget/CartScreens.xml#microcart")}
                     </div>
                 </td>
-              </tr>
+              </tr-->
           </tbody>
       </table>
     </div>
