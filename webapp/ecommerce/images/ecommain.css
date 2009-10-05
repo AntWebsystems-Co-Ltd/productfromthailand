@@ -430,7 +430,7 @@ height:auto !important;
 height:1%
 }
 
-#ecom-mainarea .screenlet h3, #ecom-mainarea .screenlet legend {
+/*#ecom-mainarea .screenlet h3,*/ #ecom-mainarea .screenlet legend {
 background:#F4F4DA;
 color:#827B00;
 height:auto!important;
@@ -1207,21 +1207,59 @@ list-style-position:inside;
 padding: 10px 0px 0px 0px;
 }
 
+
+#welcome{
+height:auto;
+}
+
+ #recentlyproducts{
+background-color:#d3c970;
+}
+#recentlyproducts .screenlet-title-bar{
+font-weight:bold;
+font-size:1.6em;
+padding:1px;
+color:white;
+text-align:center;
+}
+#recentlyproducts .screenlet-body{
+border-top:none;
+}
+
+.recentproduct{
+display:block;
+border-top:1px dotted #918732;
+min-height:50px;
+padding:5px 3px 10px 0px;
+
+}
+.recentproductimage img{
+float:left;
+padding:3px 3px 3px 0px;
+width:50px;
+}
+
+#recentproductdetail a,a:visited,a:hover{
+text-decoration:none;
+font-size:1em;
+font-weight:inherit;
+color:#322700;
+}
+#recentproductdetail h3{
+background:none;width:70%;float:right;color:#322700;
+border-bottom: 1px solid #918732;
+line-height:1em;
+}
 .copyright {
 color:#965b0e;
 }
 .copyright a,a:visited{
 color:#965b0e;
-font-weight:inherit;
 text-decoration:none;
 }
 .copyright a:hover{
 color:#965b0e;
-font-weight:inherit;
 text-decoration:underline;
-}
-#welcome{
-height:auto;
 }
 
 #ecom-mainarea .leftbarscreenlet {

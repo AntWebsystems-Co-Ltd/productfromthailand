@@ -32,7 +32,7 @@
         <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=en_US"><img src="../pfdimages/EngFlag.jpg"  alt="English"/></a>
         </#if>
     </div>
-    <div class="logo"><a href="<@ofbizUrl>main</@ofbizUrl>"><img src="../pfdimages/logo.png"/></a></div>
+    <div class="logo"><a href="<@ofbizUrl>main</@ofbizUrl>"><img src="../pfdimages/logo.gif"/></a></div>
     <div style="font-size:4em;font-weight:bold;padding: 0 0 10px 0">Coming Soon</div>
     <div class="content">
         ${uiLabelMap.PFTIntroMarketPlace}

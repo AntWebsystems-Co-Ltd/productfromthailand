@@ -446,4 +446,20 @@ under the License.
             </widgets>
         </section>
     </screen>
+    
+    <screen name="recentlyproducts">
+        <section>
+            <actions>
+                <entity-condition entity-name="Product" list="productlist">
+                    <condition-list combine="and">
+                        <condition-expr field-name="productTypeId" value="FINISHED_GOOD"/>
+                        <condition-expr field-name="createdDate" operator="not-equals" value="${nullValue}"/>
+                    </condition-list><order-by field-name="createdDate DESC"/>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/recentlyproducts.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
 </screens>
