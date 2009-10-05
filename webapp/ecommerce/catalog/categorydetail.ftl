@@ -43,14 +43,14 @@ under the License.
 <#if parameters._CURRENT_VIEW_=="main">
 <div class="title">
       <#if (productStore.title)?exists><h1>${productStore.title}</h1></#if>
-      <#if (productStore.subtitle)?exists><h2>${productStore.subtitle}</h2></#if>
+      <#if (productStore.subtitle)?exists><h3>${productStore.subtitle}</h3></#if>
   </div>
 </#if>
 <#if productCategory?exists>
     <#assign categoryName = categoryContentWrapper.get("CATEGORY_NAME")?if_exists/>
     <#assign categoryDescription = categoryContentWrapper.get("DESCRIPTION")?if_exists/>
     <#if categoryName?has_content>
-        <h1>${categoryName}</h1>
+        <h2 style="color:#443434;font-weight:bold;font-size:1.45em;">${categoryName}</h2>
     </#if>
     <#if categoryDescription?has_content>
         <h1>${categoryDescription}</h1>
