@@ -626,12 +626,13 @@ A.buttontext:hover {
 color: #663300;
 }
 
-A.linktext {
-font-weight: bold;
-color: #999966;
+A.linktext,A.linktext:visited,A.linktext:hover {
+font-size:1.4em;
+color: #443434;
 }
 
 A.linktext:hover {
+text-decoration:underline;
 color: #663300;
 }
 
