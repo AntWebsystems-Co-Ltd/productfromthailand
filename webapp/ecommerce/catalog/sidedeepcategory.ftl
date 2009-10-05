@@ -70,11 +70,11 @@ under the License.
 </#macro>
 
 <#if topLevelList?has_content>
-<div id="sidedeepcategory" class="screenlet">
-    <div class="screenlet-header">
+<div id="sidedeepcategory" class="leftbarscreenlet">
+    <div class="leftbarscreenlet-header">
         <div class="boxhead">${uiLabelMap.PFTProductCategories}</div>
     </div>
-    <div class="screenlet-body">
+    <div class="leftbarscreenlet-body">
         <ul class="browsecategorylist">
           <#list topLevelList as category>
             <@categoryList parentCategory="" category=category wrapInBox="N"/>

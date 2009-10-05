@@ -35,7 +35,7 @@ under the License.
                           </#if>
                     </div>
                 </td>
-                <td align="right" width="600" valign="top">
+                <td align="right" width="580" valign="bottom">
                     <div id="ecom-header-bar">
                       <table align="right">
                         <tbody>
@@ -61,16 +61,16 @@ under the License.
                                                                 <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
                                                             </#if>
                                                         </li>
-                                                        <li id="header-bar-sitemap"><a href="<@ofbizUrl>main</@ofbizUrl>"><h2>${uiLabelMap.PFTSitemap}</h2></a></li>
-                                                        <li id="header-bar-help"><a href="<@ofbizUrl>main</@ofbizUrl>"><h2>${uiLabelMap.PFTHelpAndInstruction}</h2></a></li>
-                                                      <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
-                                                        <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><h2>${uiLabelMap.CommonLogout}</h2></a></li>
-                                                      <#else/>
-                                                        <#--li id="header-bar-login"><a href="<@ofbizUrl>${checkLoginUrl}</@ofbizUrl>"><h2>${uiLabelMap.CommonLogin}</h2></a></li>
-                                                        <li id="header-bar-login"><a href="<@ofbizUrl>newcustomer</@ofbizUrl>"><h2>${uiLabelMap.PFTRegister}</h2></a></li-->
-                                                        <li id="header-bar-login"><a href="<@ofbizUrl>${checkLoginUrl}</@ofbizUrl>"><h2>${uiLabelMap.PFTSignInOrRegister}</h2></a></li>
-                                                      </#if>
-                                                      
+                                                        <li id="header-bar-welcome">
+                                                            <div id="welcome-message">
+                                                                <#if sessionAttributes.autoName?has_content>
+                                                                ${uiLabelMap.CommonWelcome}&nbsp;${sessionAttributes.autoName?html}!
+                                                                (${uiLabelMap.CommonNotYou}?&nbsp;<a href="<@ofbizUrl>autoLogout</@ofbizUrl>" class="linktext">${uiLabelMap.CommonClickHere}</a>)
+                                                                <#else/>
+                                                                ${uiLabelMap.CommonWelcome}!
+                                                                </#if>
+                                                            </div>
+                                                        </li>
                                                     </ul>
                                                 </td>
                                             </tr>
@@ -84,14 +84,17 @@ under the License.
                                         <tbody>
                                             <tr>
                                                 <td>
-                                                    <div id="welcome-message">
-                                                        <#if sessionAttributes.autoName?has_content>
-                                                        ${uiLabelMap.CommonWelcome}&nbsp;${sessionAttributes.autoName?html}!
-                                                        (${uiLabelMap.CommonNotYou}?&nbsp;<a href="<@ofbizUrl>autoLogout</@ofbizUrl>" class="linktext">${uiLabelMap.CommonClickHere}</a>)
-                                                        <#else/>
-                                                        ${uiLabelMap.CommonWelcome}!
-                                                        </#if>
-                                                    </div>
+                                                    <ul id="left-links">
+                                                        <li id="header-bar-sitemap"><a href="<@ofbizUrl>main</@ofbizUrl>"><h2>${uiLabelMap.PFTSitemap}</h2></a></li>
+                                                        <li id="header-bar-help"><a href="<@ofbizUrl>main</@ofbizUrl>"><h2>${uiLabelMap.PFTHelpAndInstruction}</h2></a></li>
+                                                      <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
+                                                        <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><h2>${uiLabelMap.CommonLogout}</h2></a></li>
+                                                      <#else/>
+                                                        <#--li id="header-bar-login"><a href="<@ofbizUrl>${checkLoginUrl}</@ofbizUrl>"><h2>${uiLabelMap.CommonLogin}</h2></a></li>
+                                                        <li id="header-bar-login"><a href="<@ofbizUrl>newcustomer</@ofbizUrl>"><h2>${uiLabelMap.PFTRegister}</h2></a></li-->
+                                                        <li id="header-bar-login"><a href="<@ofbizUrl>${checkLoginUrl}</@ofbizUrl>"><h2>${uiLabelMap.PFTSignInOrRegister}</h2></a></li>
+                                                      </#if>
+                                                    </ul>
                                                 </td>
                                             </tr>
                                         </tbody>

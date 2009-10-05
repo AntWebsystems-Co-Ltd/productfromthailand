@@ -331,6 +331,13 @@ color: black;
 text-decoration: underline;
 }
 
+#ecom-header-bar ul li a.linktext {
+text-decoration: none;
+color: #acacac;
+}
+#ecom-header-bar ul li:hover a.linktext {
+text-decoration: underline;
+}
 /* ===== Layout/Formatting Styles ===== */
 /* NOTE: using a combination of a float left/right for the side bars AND
   wide margins for the center to get 2 desired effects: 1. be able to end
@@ -411,12 +418,8 @@ height:auto !important;
 height:1%
 }
 #ecom-mainarea .screenlet-header {
-padding-top: 1px;
-padding-bottom: 3px;
-padding-right: 4px;
-padding-left: 4px;
+padding:1px 4px 3px;
 height:auto !important;
-height:1%
 }
 #ecom-mainarea .screenlet-body {
 border:thin;
@@ -433,13 +436,15 @@ color:#827B00;
 height:auto!important;
 padding:1px 4px 3px;
 }
+
 .boxhead {
 height:25px;
 background-image:url(/pft/images/bt_bg.jpg);
 background-repeat:no-repeat;
 font-size: 10pt;
 font-weight: bold;
-text-decoration: none;
+text-decoration:none;
+text-align:center;
 color:white;
 padding-top:5px;
 }
@@ -574,12 +579,13 @@ color: red;
 }
 
 .browsecategorylist {
-margin-left: 10px;
+margin-left: 5px;
 }
 
 .browsecategorytext{
 font-weight: bold;
-color:black;
+color:#000000;
+margin-top: 5px;
 }
 
 A.browsecategorybutton {
@@ -1216,6 +1222,19 @@ text-decoration:underline;
 }
 #welcome{
 height:auto;
+}
+
+#ecom-mainarea .leftbarscreenlet {
+margin-bottom: 10px;
+height:auto !important;
+border:1px solid #E7E7E7;
+}
+#ecom-mainarea .leftbarscreenlet-header {
+height:auto !important;
+}
+#ecom-mainarea .leftbarscreenlet-body {
+padding: 4px;
+height:auto !important;
 }
 /***********************************************
 Forms
