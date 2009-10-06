@@ -218,6 +218,12 @@ under the License.
 
     <screen name="categorydetailmatrix">
         <section>
+            <condition>
+            <and>
+                <not><if-empty field="productCategoryId"/></not>
+                <if-compare field="productCategoryId" operator="equals" value="PFTPROMOTION" />
+            </and>
+            </condition>
             <actions>
                 <set field="numCol" value="3"/>
                 <set field="searchInCategory" value="N"/>
@@ -226,6 +232,18 @@ under the License.
             <widgets>
                 <include-screen name="categorydetail"/>
             </widgets>
+            <fail-widgets>
+                <section>
+                    <actions>
+                        <set field="numCol" value="3"/>
+                        <set field="searchInCategory" value="N"/>
+                        <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="15"/>
+                    </actions>
+                    <widgets>
+                        <include-screen name="categorydetail"/>
+                    </widgets>
+                </section>
+            </fail-widgets>
         </section>
     </screen>
 

@@ -40,6 +40,7 @@ under the License.
         </div>
     </#if>
 </#macro>
+
 <#if parameters._CURRENT_VIEW_=="main">
 <div class="title">
       <#if (productStore.title)?exists><h1>${productStore.title}</h1></#if>
@@ -49,12 +50,14 @@ under the License.
 <#if productCategory?exists>
     <#assign categoryName = categoryContentWrapper.get("CATEGORY_NAME")?if_exists/>
     <#assign categoryDescription = categoryContentWrapper.get("DESCRIPTION")?if_exists/>
+    <div style="display:inline;">
     <#if categoryName?has_content>
-        <h2 style="color:#443434;font-weight:bold;font-size:1.45em;">${categoryName}</h2>
+        <h1 style="color:#443434;font-weight:bold;font-size:1.45em;">${categoryName}</h1>
     </#if>
     <#if categoryDescription?has_content>
-        <h1>${categoryDescription}</h1>
+        <h3>${categoryDescription}</h3>
     </#if>
+    </div>
     <#if hasQuantities?exists>
       <form method="post" action="<@ofbizUrl>addCategoryDefaults<#if requestAttributes._CURRENT_VIEW_?exists>/${requestAttributes._CURRENT_VIEW_}</#if></@ofbizUrl>" name="thecategoryform" style='margin: 0;'>
         <input type='hidden' name='add_category_id' value='${productCategory.productCategoryId}'/>
@@ -94,7 +97,10 @@ under the License.
 </#if>
 
 <#if productCategoryMembers?has_content>
-    <#--@paginationControls/-->
+      <#if parameters._CURRENT_VIEW_!="main">
+            <#assign numCol = 5/>
+            <@paginationControls/>
+      </#if>
       <#assign numCol = numCol?default(1)>
       <#assign numCol = numCol?number>
       <#assign tabCol = 1>
@@ -128,7 +134,9 @@ under the License.
         </table>
       </#if>
       </div>
-    <#--@paginationControls/-->
+      <#if parameters._CURRENT_VIEW_!="main">
+            <@paginationControls/>
+      </#if>
 <#else>
     <hr/>
     <div>${uiLabelMap.ProductNoProductsInThisCategory}</div>

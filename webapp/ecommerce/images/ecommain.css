@@ -936,9 +936,9 @@ text-align: right;
 
 .matrix .productsummary {
 border: none;
-padding: 10px;
+padding: 5px 5px 5px 10px;
 height: 140px;
-width:  110px;
+width:  auto;
 }
 
 .matrix .productsummary .smallimage {
@@ -946,6 +946,7 @@ float: none;
 text-align: center;
 }
 .matrix .productsummary .smallimage img {
+max-width:100px;
 height: 100px;
 }
 
@@ -1282,6 +1283,23 @@ height:auto !important;
 #ecom-mainarea .leftbarscreenlet-body {
 padding: 4px;
 height:auto !important;
+}
+
+#breadcrumbs ul{
+list-style:none;
+font-size:1em;
+}
+#breadcrumbs ul li{
+display:inline;
+padding:1px;
+}
+#breadcrumbs ul a,a:visited,a:active {
+font-size:1em;
+text-decoration: none;
+}
+#breadcrumbs ul a:hover {
+font-size:1em;
+text-decoration: underline;
 }
 /***********************************************
 Forms
