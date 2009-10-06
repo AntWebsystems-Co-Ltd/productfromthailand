@@ -19,11 +19,11 @@ under the License.
 
 <div id="keywordsearchbox" class="screenlet">
     <div class="screenlet-header">
-       <table width="100%">
+       <table width="580px">
            <tbody>
                <tr>
-                   <td align="right" width="350" valign="top"><div class="boxhead_sb">${uiLabelMap.PFTSelectByCategories} :</div></td>
-                   <td align="right" valign="top"><div class="boxhead_sb">${uiLabelMap.PFTEnterKeyword} :</div></td>
+                   <td align="right" width="280px" valign="top"><div class="boxhead_sb">${uiLabelMap.PFTSelectByCategories} :</div></td>
+                   <td align="right" width="250px" valign="top"><div class="boxhead_sb">${uiLabelMap.PFTEnterKeyword} :</div></td>
                </tr>
                <tr>
                     <form name="keywordsearchform" method="post" action="<@ofbizUrl>keywordsearch</@ofbizUrl>">
@@ -50,7 +50,7 @@ under the License.
                    </td>
                    <td align="right">
                     <input type="text" name="SEARCH_STRING" size="25" maxlength="50" value="${requestParameters.SEARCH_STRING?if_exists}"/>
-                    <input type="submit" value="${uiLabelMap.CommonFind}"/>
+                    <input type="submit" class="smallSubmit" value="${uiLabelMap.CommonFind}"/>
                    </td>
                    </form>
                </tr>

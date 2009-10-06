@@ -18,7 +18,7 @@ under the License.
 -->
 
 <#assign nowTimestamp = Static["org.ofbiz.base.util.UtilDateTime"].nowTimestamp()>
-                        <center><hr width="740"/></center>
+                        <center><hr width="940px"/></center>
                         <table  align="center">
                             <tbody>
                                 <tr>
@@ -36,7 +36,7 @@ under the License.
                     </td>
                 </tr>
                 <tr>
-                    <td background="/pft/images/bg02.gif" width="800" height="18" align="center" valign="bottom"></td>
+                    <td background="/pft/images/bg02.gif" width="955px" height="18px" align="center" valign="bottom"></td>
                 </tr>
             </tbody>
         </table>

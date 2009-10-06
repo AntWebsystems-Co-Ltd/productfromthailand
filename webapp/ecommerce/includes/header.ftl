@@ -21,99 +21,59 @@ under the License.
 
 <body>
 <center>
-    <table cellspacing="0" cellpadding="0" border="0" height="80">
-        <tbody>
-            <tr>
-                <td align="left" width="200" valign="top">
-                    <div id="left">
-                          <#if sessionAttributes.overrideLogo?exists>
-                            <img src="<@ofbizContentUrl>${sessionAttributes.overrideLogo}</@ofbizContentUrl>" alt="Logo"/>
-                          <#elseif catalogHeaderLogo?exists>
-                            <img src="<@ofbizContentUrl>${catalogHeaderLogo}</@ofbizContentUrl>" alt="Logo"/>
-                          <#elseif layoutSettings.VT_HDR_IMAGE_URL?has_content>
-                            <a href="<@ofbizUrl>main</@ofbizUrl>"><img src="<@ofbizContentUrl>${layoutSettings.VT_HDR_IMAGE_URL.get(0)}</@ofbizContentUrl>" alt="Logo"/></a>
-                          </#if>
-                    </div>
-                </td>
-                <td align="right" width="580" valign="top">
-                    <div id="ecom-header-bar">
-                      <table align="right">
-                        <tbody>
-                            <tr height="50px">
-                                <td  valign="top">
-                                    <table align="right">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <ul id="left-links">
-                                                        <li id="header-bar-language">
-                                                            <#assign availableLocales = Static["org.ofbiz.base.util.UtilMisc"].availableLocales()/>
-                                                            <#list availableLocales as availableLocale>
-                                                                <#if locale.toString() == availableLocale.toString()>
-                                                                    <#if locale.toString() == "en">
-                                                                        <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
-                                                                    <#elseif locale.toString() == "th">
-                                                                        <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=en"><img src="<@ofbizContentUrl>/pfdimages/EngFlag.jpg</@ofbizContentUrl>"  alt="English" width="25"/></a>
-                                                                    </#if>
-                                                                </#if>
-                                                            </#list>
-                                                            <#if locale.toString() == "en_US">
-                                                                <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
-                                                            </#if>
-                                                        </li>
-                                                        <li id="header-bar-welcome">
-                                                            <div id="welcome-message">
-                                                                <#if sessionAttributes.autoName?has_content>
-                                                                ${uiLabelMap.CommonWelcome}&nbsp;${sessionAttributes.autoName?html}!
-                                                                (${uiLabelMap.CommonNotYou}?&nbsp;<a href="<@ofbizUrl>autoLogout</@ofbizUrl>" class="linktext">${uiLabelMap.CommonClickHere}</a>)
-                                                                <#else/>
-                                                                ${uiLabelMap.CommonWelcome}!
-                                                                </#if>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <table align="right">
-                                        <tbody>
-                                            <tr>
-                                                <td>
-                                                    <ul id="left-links">
-                                                        <li id="header-bar-sitemap"><a href="<@ofbizUrl>main</@ofbizUrl>"><h2>${uiLabelMap.PFTSitemap}</h2></a></li>
-                                                        <li id="header-bar-help"><a href="<@ofbizUrl>main</@ofbizUrl>"><h2>${uiLabelMap.PFTHelpAndInstruction}</h2></a></li>
-                                                      <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
-                                                        <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><h2>${uiLabelMap.CommonLogout}</h2></a></li>
-                                                      <#else/>
-                                                        <#--li id="header-bar-login"><a href="<@ofbizUrl>${checkLoginUrl}</@ofbizUrl>"><h2>${uiLabelMap.CommonLogin}</h2></a></li>
-                                                        <li id="header-bar-login"><a href="<@ofbizUrl>newcustomer</@ofbizUrl>"><h2>${uiLabelMap.PFTRegister}</h2></a></li-->
-                                                        <li id="header-bar-login"><a href="<@ofbizUrl>${checkLoginUrl}</@ofbizUrl>"><h2>${uiLabelMap.PFTSignInOrRegister}</h2></a></li>
-                                                      </#if>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+<div id="ecom-header">
+    <div id="left">
+        <a href="<@ofbizUrl>main</@ofbizUrl>">
+          <#if sessionAttributes.overrideLogo?exists>
+            <img src="<@ofbizContentUrl>${sessionAttributes.overrideLogo}</@ofbizContentUrl>" alt="Logo"/>
+          <#elseif catalogHeaderLogo?exists>
+            <img src="<@ofbizContentUrl>${catalogHeaderLogo}</@ofbizContentUrl>" alt="Logo"/>
+          <#elseif layoutSettings.VT_HDR_IMAGE_URL?has_content>
+            <img src="<@ofbizContentUrl>${layoutSettings.VT_HDR_IMAGE_URL.get(0)}</@ofbizContentUrl>" alt="Logo"/>
+          </#if>
+        </a>
+    </div>
+    <div id="right">
+        <div id="welcome-message">
+            <#if sessionAttributes.autoName?has_content>
+            ${uiLabelMap.CommonWelcome}&nbsp;${sessionAttributes.autoName?html}!
+            (${uiLabelMap.CommonNotYou}?&nbsp;<a href="<@ofbizUrl>autoLogout</@ofbizUrl>" class="linktext">${uiLabelMap.CommonClickHere}</a>)
+            <#else/>
+            ${uiLabelMap.CommonWelcome}!
+            </#if>&nbsp;&nbsp;
+            <#assign availableLocales = Static["org.ofbiz.base.util.UtilMisc"].availableLocales()/>
+            <#list availableLocales as availableLocale>
+                <#if locale.toString() == availableLocale.toString()>
+                    <#if locale.toString() == "en">
+                        <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
+                    <#elseif locale.toString() == "th">
+                        <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=en"><img src="<@ofbizContentUrl>/pfdimages/EngFlag.jpg</@ofbizContentUrl>"  alt="English" width="25"/></a>
+                    </#if>
+                </#if>
+            </#list>
+            <#if locale.toString() == "en_US">
+                <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
+            </#if>
+        </div>
+        <div>
+            <ul id="right-links">
+                <li id="header-bar-sitemap"><a href="<@ofbizUrl>main</@ofbizUrl>"><h2>${uiLabelMap.PFTSitemap}</h2></a></li>
+                <li id="header-bar-help"><a href="<@ofbizUrl>main</@ofbizUrl>"><h2>${uiLabelMap.PFTHelpAndInstruction}</h2></a></li>
+              <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
+                <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><h2>${uiLabelMap.CommonLogout}</h2></a></li>
+              <#else/>
+                <li id="header-bar-login"><a href="<@ofbizUrl>${checkLoginUrl}</@ofbizUrl>"><h2>${uiLabelMap.PFTSignInOrRegister}</h2></a></li>
+              </#if>
+            </ul>
+        </div>
+    </div>
+  </div>
 <div id="main">
-  <div id="ecom-header">
+  <div id="ecom-header-bar">
       <table cellspacing="0" cellpadding="0" border="0">
           <tbody>
               <tr>
-                  <td background="/pft/images/bg01.gif" width="800" align="center">
+                  <td background="/pft/images/bg01.gif" width="955px" align="center">
                       <br>
                       <div id="menubar">
                         <ul id="right-links">
@@ -148,7 +108,7 @@ under the License.
                          <table align="left" valign="bottom">
                               <tbody>
                                   <tr>
-                                      <td width="190" height="50">
+                                      <td width="190px" height="50px">
                                         <div id="searchbartitle">${uiLabelMap.PFTSearchYourProducts}</div>
                                       </td>
                                   </tr>
@@ -157,7 +117,7 @@ under the License.
                           <table align="left" valign="top">
                               <tbody>
                                   <tr>
-                                      <td width="580">${screens.render("component://productfromthailand/widget/CatalogScreens.xml#keywordsearchbox")}</td>
+                                      <td width="580px">${screens.render("component://productfromthailand/widget/CatalogScreens.xml#keywordsearchbox")}</td>
                                   </tr>
                               </tbody>
                           </table>
@@ -177,4 +137,4 @@ under the License.
     <table cellspacing="0" cellpadding="0" border="0">
           <tbody>
               <tr>
-                  <td bgcolor="white" width="800">
+                  <td bgcolor="white" width="955px">

@@ -20,6 +20,7 @@
 /* ===== This file contains the eCommerce specific styles ===== */
 
 /* ===== Resets/Browser Normalization ===== */
+@import url("forms.css");
 
 blockquote, body, div, dl, dt, dd, fieldset, form, h1, h2, h3, h4, h5, h6,
 img, input, li, ol, p, select, span, td, textarea, th, ul {
@@ -162,10 +163,10 @@ border: #999999 solid 1px;
 margin: 2px;
 }
 
-th, th a {
+/*th, th a {
 color: #000000;
 font-weight: bold;
-}
+}*/
 
 img {
 behavior: url("/images/pngbehavior.htc");
@@ -191,60 +192,67 @@ width: 1%;
 }
 
 #main{
-width:800px;
-
-
+width:955px;
 }
 
 /* ===== Header Styles ===== */
-#left{
+/*#left{
 text-align: left;
-}
+}*/
 #ecom-header {
 position: relative;
 voice-family: "\"}\"";
 voice-family: inherit;
-height: 100px;
-width:800px;
-/* border:1px solid #000; */
+height: 80px;
+width:955px;
 }
-#ecom-header #menubar {
+#ecom-header-bar #menubar {
 background-color:#F4F4DA;
 text-align: center;
 overflow: visible;
-height: 25px;
-width:780px;
+height: 30px;
+width:940px;
 }
-#ecom-header #menubar ul {
+#ecom-header-bar #menubar ul {
 display: block;
 overflow: visible;
 background: transparent;
 }
-#ecom-header #menubar ul li {
+#ecom-header-bar #menubar ul li {
 height: 14px;
-padding: 0px 8px 0px 8px;
+padding: 5px 8px 0px 8px;
 }
-#ecom-header #menubar ul#right-links li {
+#ecom-header-bar #menubar ul#right-links li {
 float: left;
 }
-#ecom-header #menubar ul#left-links li {
+#ecom-header-bar #menubar ul#left-links li {
 float: right;
 }
-#ecom-header #searchbar {
+#ecom-header-bar #searchbar {
 background-image:url(/pft/images/searchbar.gif);
-overflow: visible;
-height: 50px;
-width:780px;
+overflow:hidden;
+height: 60px;
+width: 940px;
 vertical-align:top;
+margin-top:0px;
 }
 
-#ecom-header #searchbar table {
+#ecom-header-bar #searchbar table {
 width:auto;
 }
-#ecom-header #selected  {
+#ecom-header-bar #selected {
+position:relative;
 background-image:url(/pft/images/point.jpg);
 background-repeat:no-repeat;
 height:8px;
+top:0px;
+}
+
+#ecom-header #left {
+left:0px;
+position:absolute;
+top:0px;
+width:210px;
 }
 
 #ecom-header #right {
@@ -253,13 +261,21 @@ top: 0px;
 right: 0px;
 width: 500px;
 padding: 0px;
-margin-top: 100px;
 text-align: right;
+}
+
+#ecom-header ul#right-links li {
+padding: 0px 8px 0px 8px;
+float:right;
+margin-top: 30px;
+}
+
+#ecom-header li#header-bar-sitemap,#header-bar-help {
+border-left:2px solid #827B00;
 }
 
 #welcome-message {
 font-size: 10pt;
-padding-right: 10px;
 padding-left: 10px;
 font-weight: bold;
 color:#FFE4B5;
@@ -324,9 +340,7 @@ padding: 0px 8px 0px 8px;
 #ecom-header-bar ul#left-links li {
 float: right;
 }
-#ecom-header-bar li#header-bar-sitemap,#header-bar-help {
-border-left:2px solid #827B00;
-}
+
 #ecom-header-bar ul li a {
 text-decoration: none;
 color: #1C334D;
@@ -356,7 +370,7 @@ text-decoration: underline;
 /* ecom-mainarea wraps what is below the header including the divs for left, main, right columns as applicable */
 #ecom-mainarea {
 position: relative;
-width: 800px;
+width: 955px;
 margin-top: 5px;
 }
 
@@ -364,14 +378,15 @@ margin-top: 5px;
 /* alt: position: absolute; left: 0px; top: 0px; */
 padding-left:10px;
 float: left;
-width: 140px;
+width: 200px;
 /* border:1px solid #000; */
 }
 #ecom-mainarea .right {
 /* alt: position: absolute; right: 0px; top: 0px; */
 float: right;
-width: 190px;
-padding-right:10px;
+width: 240px;
+/*padding-right:10px;*/
+margin:0 10px 0 0;
 }
 
 #ecom-mainarea .right #minipromotext A.linktext {
@@ -397,24 +412,20 @@ text-align: left;
 vertical-align: top;
 }
 #ecom-mainarea .center {
-margin-left: 160px;
-margin-right: 210px;
+margin-left: 210px;
+margin-right: 240px;
 voice-family: "\"}\"";
 voice-family: inherit;
-margin-left: 160px;
-margin-right: 210px;
 }
 #ecom-mainarea .leftonly {
-margin-left: 160px;
+margin-left: 210px;
 voice-family: "\"}\"";
 voice-family: inherit;
-margin-left: 161px;
 }
 #ecom-mainarea .rightonly {
-margin-right: 210px;
+margin-right: 240px;
 voice-family: "\"}\"";
 voice-family: inherit;
-margin-right: 211px;
 }
 
 /* ====== eCommerce "Screenlet" Styles ====== */
@@ -450,7 +461,6 @@ background-repeat:repeat-x;
 font-size: 10pt;
 font-weight: bold;
 text-decoration:none;
-text-align:center;
 color:white;
 padding-top:5px;
 }
@@ -503,7 +513,7 @@ text-align: left;
 /*Footer*/
 #ecom-footer{
 color: #593505;
-width: 800px;
+width: 955px;
 font-size: 10pt;
 font-weight:normal;
 
@@ -627,7 +637,7 @@ color: #663300;
 }
 
 A.linktext,A.linktext:visited,A.linktext:hover {
-font-size:1.4em;
+font-size: 10pt;
 color: #443434;
 }
 
@@ -1276,6 +1286,7 @@ text-decoration:underline;
 margin-bottom: 10px;
 height:auto !important;
 border:1px solid #E7E7E7;
+width:200px;
 }
 #ecom-mainarea .leftbarscreenlet-header {
 height:auto !important;
@@ -1312,4 +1323,12 @@ color: #f4f4da;
 font-size:15px;
 font-weight:bold;
 text-align:center;
+}
+/***********************************************
+Tables
+***********************************************/
+thead th {
+border-bottom:2px solid #888;
+background:#bbb;
+padding:.4em 1em .2em;
 }
