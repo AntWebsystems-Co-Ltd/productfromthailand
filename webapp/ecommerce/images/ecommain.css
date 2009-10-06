@@ -463,6 +463,7 @@ font-weight: bold;
 text-decoration:none;
 color:white;
 padding-top:5px;
+text-align:center;
 }
 
 .boxhead_sb {
@@ -600,9 +601,10 @@ margin-left: 5px;
 }
 
 .browsecategorytext{
-font-weight: bold;
+font-weight:700;
 color:#000000;
 margin-top: 5px;
+text-align:left;
 }
 
 A.browsecategorybutton {

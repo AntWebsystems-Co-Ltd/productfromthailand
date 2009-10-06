@@ -101,14 +101,14 @@ under the License.
                         <#if requestAttributes._CURRENT_VIEW_ == "main"><#assign startleft= "25px"></#if>
                         <#if requestAttributes._CURRENT_VIEW_ == "contactus"><#assign startleft= "400px"></#if>
                         <#if requestAttributes._CURRENT_VIEW_ == "partner"><#assign startleft= "250px"></#if>
-                        <#if requestAttributes._CURRENT_VIEW_ == "showcart"><#assign startleft= "740px"></#if>
+                        <#if requestAttributes._CURRENT_VIEW_ == "showcart"><#assign startleft= "880px"></#if>
                       </#if>
                       <div id="selected" style="margin-left:${startleft?default("25px")}"></div>
                       <div id="searchbar">
                          <table align="left" valign="bottom">
                               <tbody>
                                   <tr>
-                                      <td width="190px" height="50px">
+                                      <td width="250px" height="50px">
                                         <div id="searchbartitle">${uiLabelMap.PFTSearchYourProducts}</div>
                                       </td>
                                   </tr>
@@ -117,7 +117,7 @@ under the License.
                           <table align="left" valign="top">
                               <tbody>
                                   <tr>
-                                      <td width="580px">${screens.render("component://productfromthailand/widget/CatalogScreens.xml#keywordsearchbox")}</td>
+                                      <td width="650px">${screens.render("component://productfromthailand/widget/CatalogScreens.xml#keywordsearchbox")}</td>
                                   </tr>
                               </tbody>
                           </table>
