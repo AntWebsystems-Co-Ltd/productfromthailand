@@ -35,12 +35,12 @@ under the License.
                           </#if>
                     </div>
                 </td>
-                <td align="right" width="580" valign="bottom">
+                <td align="right" width="580" valign="top">
                     <div id="ecom-header-bar">
                       <table align="right">
                         <tbody>
-                            <tr>
-                                <td>
+                            <tr height="50px">
+                                <td  valign="top">
                                     <table align="right">
                                         <tbody>
                                             <tr>
