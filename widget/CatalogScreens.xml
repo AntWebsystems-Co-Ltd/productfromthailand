@@ -235,7 +235,7 @@ under the License.
             <fail-widgets>
                 <section>
                     <actions>
-                        <set field="numCol" value="3"/>
+                        <set field="numCol" value="4"/>
                         <set field="searchInCategory" value="N"/>
                         <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="15"/>
                     </actions>

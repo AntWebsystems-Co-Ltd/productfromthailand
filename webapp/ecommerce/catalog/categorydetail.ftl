@@ -98,7 +98,6 @@ under the License.
 
 <#if productCategoryMembers?has_content>
       <#if parameters._CURRENT_VIEW_!="main">
-            <#assign numCol = 5/>
             <@paginationControls/>
       </#if>
       <#assign numCol = numCol?default(1)>

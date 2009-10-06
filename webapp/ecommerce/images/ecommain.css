@@ -378,6 +378,7 @@ margin-top: 5px;
 /* alt: position: absolute; left: 0px; top: 0px; */
 padding-left:10px;
 float: left;
+
 width: 200px;
 /* border:1px solid #000; */
 }
@@ -412,19 +413,16 @@ text-align: left;
 vertical-align: top;
 }
 #ecom-mainarea .center {
-margin-left: 210px;
-margin-right: 240px;
-voice-family: "\"}\"";
+margin-left: 215px;
+margin-right: 260px;
 voice-family: inherit;
 }
 #ecom-mainarea .leftonly {
 margin-left: 210px;
-voice-family: "\"}\"";
 voice-family: inherit;
 }
 #ecom-mainarea .rightonly {
 margin-right: 240px;
-voice-family: "\"}\"";
 voice-family: inherit;
 }
 
@@ -455,6 +453,7 @@ padding:1px 4px 3px;
 }
 
 .boxhead {
+text-align:center;
 height:25px;
 background-image:url(/pft/images/bt_bg.jpg);
 background-repeat:repeat-x;
@@ -948,7 +947,7 @@ text-align: right;
 
 .matrix .productsummary {
 border: none;
-padding: 5px 5px 5px 10px;
+padding: 5px 5px 5px 5px;
 height: 140px;
 width:  auto;
 }
@@ -958,8 +957,8 @@ float: none;
 text-align: center;
 }
 .matrix .productsummary .smallimage img {
-max-width:100px;
-height: 100px;
+width:140px;
+min-height: 100px;
 }
 
 .matrix .productsummary .productbuy {
@@ -1251,24 +1250,25 @@ border-top:none;
 .recentproduct{
 display:block;
 border-top:1px dotted #918732;
-min-height:50px;
+min-height:75px;
+height:75px;
 padding:5px 3px 10px 0px;
 
 }
 .recentproductimage img{
 float:left;
 padding:3px 3px 3px 0px;
-width:50px;
+width:75px;
 }
 
 #recentproductdetail a,a:visited,a:hover{
 text-decoration:none;
-font-size:1em;
+font-size:0.85em;
 font-weight:inherit;
 color:#322700;
 }
 #recentproductdetail h3{
-background:none;width:70%;float:right;color:#322700;
+background:none;width:65%;float:right;color:#322700;
 border-bottom: 1px solid #918732;
 line-height:1em;
 }
@@ -1294,10 +1294,16 @@ width:200px;
 height:auto !important;
 }
 #ecom-mainarea .leftbarscreenlet-body {
-padding: 4px;
-height:auto !important;
+padding: 0px;
+height:100% !important;
 }
-
+.banner{
+width:740px;
+float:right;
+}
+.banner img{
+padding:0px 0px 10px 5px;
+}
 #breadcrumbs ul{
 list-style:none;
 font-size:1em;
