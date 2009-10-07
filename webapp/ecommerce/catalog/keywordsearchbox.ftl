@@ -18,7 +18,7 @@ under the License.
 -->
 
 <div id="keywordsearchbox" class="screenlet">
-    <div class="screenlet-header">
+    <div class="screenlet-header" style="width:60%;float:right;">
        <table width="100%">
            <tbody>
                <tr>

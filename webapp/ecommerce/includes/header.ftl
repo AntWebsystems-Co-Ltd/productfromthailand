@@ -70,70 +70,40 @@ under the License.
   </div>
 <div id="main">
   <div id="ecom-header-bar">
-      <table cellspacing="0" cellpadding="0" border="0">
-          <tbody>
-              <tr>
-                  <td background="/pft/images/bg01.gif" width="955px" align="center">
-                      <br>
-                      <div id="menubar">
-                        <ul id="right-links">
-                          <!-- NOTE: these are in reverse order because they are stacked right to left instead of left to right -->
-                          <li id="header-bar-home"><a href="<@ofbizUrl>main</@ofbizUrl>"><h1>${uiLabelMap.PFTHome}</h1></a></li>
-                          <li id="header-bar-product"><a href="<@ofbizUrl>main</@ofbizUrl>"><h1>${uiLabelMap.PFTProducts}</h1></a></li>
-                          <li id="header-bar-service"><a href="<@ofbizUrl>main</@ofbizUrl>"><h1>${uiLabelMap.PFTServices}</h1></a></li>
-                          <li id="header-bar-partner"><a href="<@ofbizUrl>partner</@ofbizUrl>"><h1>${uiLabelMap.PFTPartner}</h1></a></li>
-                          <li id="header-bar-aboutus"><a href="<@ofbizUrl>main</@ofbizUrl>"><h1>${uiLabelMap.PFTAboutUs}</h1></a></li>
-                          <li id="header-bar-contact"><a href="<@ofbizUrl>contactus</@ofbizUrl>"><h1>${uiLabelMap.PFTContact}</h1></a></li>
-                          <#--if !userLogin?has_content || (userLogin.userLoginId)?if_exists != "anonymous">
-                            <li id="header-bar-viewprofile"><a href="<@ofbizUrl>viewprofile</@ofbizUrl>"><h1>${uiLabelMap.CommonProfile}</h1></a></li>
-                            <li id="header-bar-ListQuotes"><a href="<@ofbizUrl>ListQuotes</@ofbizUrl>"><h1>${uiLabelMap.OrderOrderQuotes}</h1></a></li>
-                            <li id="header-bar-ListRequests"><a href="<@ofbizUrl>ListRequests</@ofbizUrl>"><h1>${uiLabelMap.OrderRequests}</h1></a></li>
-                            <li id="header-bar-editShoppingList"><a href="<@ofbizUrl>editShoppingList</@ofbizUrl>"><h1>${uiLabelMap.EcommerceShoppingLists}</h1></a></li>
-                            <li id="header-bar-orderhistory"><a href="<@ofbizUrl>orderhistory</@ofbizUrl>"><h1>${uiLabelMap.EcommerceOrderHistory}</h1></a></li>
-                          </#if-->
-                          
-                        </ul>
-                        <ul id="left-links">
-                            <li id="header-bar-showcart"><a href="<@ofbizUrl>view/showcart</@ofbizUrl>"><h1>${uiLabelMap.OrderViewCart}</h1></a></li>
-                        </ul>
-                      </div>
-                      <#if requestAttributes._CURRENT_VIEW_?has_content>
-                        <#if requestAttributes._CURRENT_VIEW_ == "main"><#assign startleft= "25px"></#if>
-                        <#if requestAttributes._CURRENT_VIEW_ == "contactus"><#assign startleft= "400px"></#if>
-                        <#if requestAttributes._CURRENT_VIEW_ == "partner"><#assign startleft= "250px"></#if>
-                        <#if requestAttributes._CURRENT_VIEW_ == "showcart"><#assign startleft= "880px"></#if>
-                      </#if>
-                      <div id="selected" style="margin-left:${startleft?default("25px")}"></div>
-                      <div id="searchbar">
-                         <table align="left" valign="bottom">
-                              <tbody>
-                                  <tr>
-                                      <td width="250px" height="50px">
-                                        <div id="searchbartitle">${uiLabelMap.PFTSearchYourProducts}</div>
-                                      </td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                          <table align="left" valign="top">
-                              <tbody>
-                                  <tr>
-                                      <td width="650px">${screens.render("component://productfromthailand/widget/CatalogScreens.xml#keywordsearchbox")}</td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                  </td>
-              </tr>
-              <#--tr>
-                  <td bgcolor="white" width="800" height="40" align="right">
-                      <div id="right">
-                      ${screens.render("component://productfromthailand/widget/CartScreens.xml#microcart")}
-                    </div>
-                </td>
-              </tr-->
-          </tbody>
-      </table>
+      <div class="leftcorner">&nbsp;</div>
+      <div class="rightcorner">&nbsp;</div><br class="bothclear"/>
+      <div style="padding:5px 0 2px 0;background-color:white;">
+            <#if requestAttributes._CURRENT_VIEW_?has_content>
+                        <#if requestAttributes._CURRENT_VIEW_ == "main"><#assign headerId= "home"></#if>
+                        <#if requestAttributes._CURRENT_VIEW_ == "products"><#assign headerId= "products"></#if>
+                        <#if requestAttributes._CURRENT_VIEW_ == "service"><#assign headerId= "services"></#if>
+                        <#if requestAttributes._CURRENT_VIEW_ == "partner"><#assign headerId= "partner"></#if>
+                        <#if requestAttributes._CURRENT_VIEW_ == "aboutus"><#assign headerId= "aboutus"></#if>
+                        <#if requestAttributes._CURRENT_VIEW_ == "contactus"><#assign headerId= "contactus"></#if>
+           </#if>
+      <div id="menubar">
+            <ul id="right-links">
+              <!-- NOTE: these are in reverse order because they are stacked right to left instead of left to right -->
+              <li class="headermenu" <#if headerId?if_exists == "home">id="${headerId}"</#if> ><a href="<@ofbizUrl>main</@ofbizUrl>">${uiLabelMap.PFTHome}</a></li>
+              <li class="headermenu" <#if headerId?if_exists == "products">id="${headerId}"</#if> ><a href="<@ofbizUrl>main</@ofbizUrl>">${uiLabelMap.PFTProducts}</a></li>
+              <li class="headermenu" <#if headerId?if_exists  == "services">id="${headerId}"</#if> ><a href="<@ofbizUrl>main</@ofbizUrl>">${uiLabelMap.PFTServices}</a></li>
+              <li class="headermenu" <#if headerId?if_exists  == "partner">id="${headerId}"</#if> ><a href="<@ofbizUrl>partner</@ofbizUrl>">${uiLabelMap.PFTPartner}</a></li>
+              <li class="headermenu" <#if headerId?if_exists == "aboutus">id="${headerId}"</#if> ><a href="<@ofbizUrl>main</@ofbizUrl>">${uiLabelMap.PFTAboutUs}</a></li>
+              <li class="headermenu" <#if headerId?if_exists == "contactus">id="${headerId}"</#if> ><a href="<@ofbizUrl>contactus</@ofbizUrl>">${uiLabelMap.PFTContact}</a></li>
+            </ul>
+            <ul id="left-links">
+                <li id="header-bar-showcart"><a href="<@ofbizUrl>view/showcart</@ofbizUrl>">${uiLabelMap.OrderViewCart}</a></li>
+            </ul>
+     </div>
+  
+     <div id="searchbar">
+          <div id="searchbartitle">${uiLabelMap.PFTSearchYourProducts}</div>
+           ${screens.render("component://productfromthailand/widget/CatalogScreens.xml#keywordsearchbox")}
+           
     </div>
+    </div>
+</div>
+    
     <table cellspacing="0" cellpadding="0" border="0">
           <tbody>
               <tr>

@@ -211,19 +211,27 @@ background-color:#F4F4DA;
 text-align: center;
 overflow: visible;
 height: 30px;
-width:940px;
+width:933px;
+
 }
 #ecom-header-bar #menubar ul {
 display: block;
 overflow: visible;
 background: transparent;
+font-size:1.6em;
 }
 #ecom-header-bar #menubar ul li {
-height: 14px;
+height: 27px;
 padding: 5px 8px 0px 8px;
 }
+
 #ecom-header-bar #menubar ul#right-links li {
 float: left;
+}
+#right-links li#home,#right-links li#products,
+#right-links li#services,#right-links li#partner,
+#right-links li#aboutus,#right-links li#contactus{
+background:url(/pft/images/point.jpg) no-repeat bottom center;
 }
 #ecom-header-bar #menubar ul#left-links li {
 float: right;
@@ -232,20 +240,13 @@ float: right;
 background-image:url(/pft/images/searchbar.gif);
 overflow:hidden;
 height: 60px;
-width: 940px;
+width: 933px;
 vertical-align:top;
 margin-top:0px;
 }
 
 #ecom-header-bar #searchbar table {
 width:auto;
-}
-#ecom-header-bar #selected {
-position:relative;
-background-image:url(/pft/images/point.jpg);
-background-repeat:no-repeat;
-height:8px;
-top:0px;
 }
 
 #ecom-header #left {
@@ -323,8 +324,19 @@ color: #666666;
 
 /* ===== Header-Bar Styles ===== */
 #ecom-header-bar {
-text-align:right;
-overflow: visible;
+margin:0px;
+padding:0px;
+}
+#ecom-header-bar .leftcorner{
+background: url(/pft/images/leftTopCorner.gif) top left;
+width:2%;
+float:left;
+
+}
+#ecom-header-bar .rightcorner{
+background-color:white;
+width:98%;
+float:right;
 }
 
 #ecom-header-bar ul {
@@ -341,22 +353,7 @@ padding: 0px 8px 0px 8px;
 float: right;
 }
 
-#ecom-header-bar ul li a {
-text-decoration: none;
-color: #1C334D;
-}
-#ecom-header-bar ul li:hover a {
-color: black;
-text-decoration: underline;
-}
 
-#ecom-header-bar ul li a.linktext {
-text-decoration: none;
-color: #acacac;
-}
-#ecom-header-bar ul li:hover a.linktext {
-text-decoration: underline;
-}
 /* ===== Layout/Formatting Styles ===== */
 /* NOTE: using a combination of a float left/right for the side bars AND
   wide margins for the center to get 2 desired effects: 1. be able to end
@@ -1325,6 +1322,9 @@ Forms
 form div, .buttons {clear: both; margin: 0 0 0.8em;}
 
 #searchbartitle {
+float:left;
+width:30%;
+height:auto;
 vertical-align:middle;
 color: #f4f4da;
 font-size:15px;
