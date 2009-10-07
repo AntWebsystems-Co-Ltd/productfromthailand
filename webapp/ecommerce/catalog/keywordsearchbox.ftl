@@ -18,7 +18,7 @@ under the License.
 -->
 
 <div id="keywordsearchbox" class="screenlet">
-    <div class="screenlet-header" style="width:60%;float:right;">
+    <div class="screenlet-header">
        <table width="100%">
            <tbody>
                <tr>
@@ -31,6 +31,7 @@ under the License.
                       <input type="hidden" name="PAGING" value="Y"/>
                       <input type="hidden" name="SEARCH_OPERATOR" value="OR"/>
                       <input type="hidden" name="SEARCH_CATALOG_ID" value="${currentCatalogId?if_exists}"/>
+                      <td><div id="searchbartitle">${uiLabelMap.PFTSearchYourProducts}</div></td>
                    <td align="right" valign="top">
                    <#if 0 < allProductCategories?size>
                         <div>

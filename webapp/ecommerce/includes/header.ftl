@@ -97,7 +97,7 @@ under the License.
      </div>
   
      <div id="searchbar">
-          <div id="searchbartitle">${uiLabelMap.PFTSearchYourProducts}</div>
+          
            ${screens.render("component://productfromthailand/widget/CatalogScreens.xml#keywordsearchbox")}
            
     </div>
