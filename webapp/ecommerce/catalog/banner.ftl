@@ -2,4 +2,5 @@
 <div class="banner">
     <img src="<@ofbizContentUrl>/pft/images/banner.jpg</@ofbizContentUrl>" />
 </div>
+<br class="bothclear"/>
 </#if>

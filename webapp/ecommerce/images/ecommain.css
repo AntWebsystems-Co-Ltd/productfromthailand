@@ -1261,9 +1261,8 @@ padding:3px 3px 3px 0px;
 width:75px;
 }
 
-#recentproductdetail a,a:visited,a:hover{
+#recentproductdetail a,#recentproductdetail a:visited,#recentproductdetail a:hover{
 text-decoration:none;
-font-size:0.85em;
 font-weight:inherit;
 color:#322700;
 }
@@ -1275,7 +1274,7 @@ line-height:1em;
 .copyright {
 color:#965b0e;
 }
-.copyright a,a:visited{
+.copyright a,.copyright a:visited{
 color:#965b0e;
 text-decoration:none;
 }
@@ -1312,7 +1311,7 @@ font-size:1em;
 display:inline;
 padding:1px;
 }
-#breadcrumbs ul a,a:visited,a:active {
+#breadcrumbs ul a,#breadcrumbs ul a:visited,#breadcrumbs ul a:active {
 font-size:1em;
 text-decoration: none;
 }
