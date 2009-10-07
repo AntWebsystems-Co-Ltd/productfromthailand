@@ -69,11 +69,11 @@
     </property>
     <property key="PFTServices">
         <value xml:lang="en">Services</value>
-        <value xml:lang="th">สินค้า</value>
+        <value xml:lang="th">บริการ</value>
     </property>
     <property key="PFTPartner">
         <value xml:lang="en">Partner</value>
-        <value xml:lang="th">หุ้นส่วนองค์กร</value>
+        <value xml:lang="th">หุ้นส่วน</value>
     </property>
     <property key="PFTAboutUs">
         <value xml:lang="en">About Us</value>
