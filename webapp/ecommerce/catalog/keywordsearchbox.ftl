@@ -21,7 +21,7 @@ under the License.
     <div class="screenlet-header">
        <table width="100%">
            <tbody>
-               <tr>
+               <tr><td>&nbsp;</td>
                    <td align="right" width="450px" valign="top"><div class="boxhead_sb">${uiLabelMap.PFTSelectByCategories} :</div></td>
                    <td align="right" width="260px" valign="top"><div class="boxhead_sb">${uiLabelMap.PFTEnterKeyword} :</div></td>
                </tr>
@@ -31,7 +31,7 @@ under the License.
                       <input type="hidden" name="PAGING" value="Y"/>
                       <input type="hidden" name="SEARCH_OPERATOR" value="OR"/>
                       <input type="hidden" name="SEARCH_CATALOG_ID" value="${currentCatalogId?if_exists}"/>
-                      <td><div id="searchbartitle">${uiLabelMap.PFTSearchYourProducts}</div></td>
+                      <td id="searchbartitle">${uiLabelMap.PFTSearchYourProducts}</td>
                    <td align="right" valign="top">
                    <#if 0 < allProductCategories?size>
                         <div>
