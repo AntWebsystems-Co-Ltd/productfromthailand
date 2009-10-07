@@ -20,7 +20,7 @@
 /***********************************************
 Forms
 ***********************************************/
-form {clear:both; margin:0; padding:0}
+form {clear:none; margin:0; padding:0}
 
 form p.desc {margin:.5em 0; padding:.75em 0;}
 

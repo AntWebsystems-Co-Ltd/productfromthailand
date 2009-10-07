@@ -57,7 +57,7 @@ under the License.
         </div>
         <div>
             <ul id="right-links">
-                <li id="header-bar-sitemap"><a href="<@ofbizUrl>main</@ofbizUrl>"><h2>${uiLabelMap.PFTSitemap}</h2></a></li>
+                <li id="header-bar-sitemap"><a href="<@ofbizUrl>sitemap</@ofbizUrl>"><h2>${uiLabelMap.PFTSitemap}</h2></a></li>
                 <li id="header-bar-help"><a href="<@ofbizUrl>main</@ofbizUrl>"><h2>${uiLabelMap.PFTHelpAndInstruction}</h2></a></li>
               <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
                 <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><h2>${uiLabelMap.CommonLogout}</h2></a></li>
@@ -80,6 +80,7 @@ under the License.
                         <#if requestAttributes._CURRENT_VIEW_ == "partner"><#assign headerId= "partner"></#if>
                         <#if requestAttributes._CURRENT_VIEW_ == "aboutus"><#assign headerId= "aboutus"></#if>
                         <#if requestAttributes._CURRENT_VIEW_ == "contactus"><#assign headerId= "contactus"></#if>
+                        <#if requestAttributes._CURRENT_VIEW_ == "showcart"><#assign headerId= "showcart"></#if>
            </#if>
       <div id="menubar">
             <ul id="right-links">
@@ -88,18 +89,17 @@ under the License.
               <li class="headermenu" <#if headerId?if_exists == "products">id="${headerId}"</#if> ><a href="<@ofbizUrl>main</@ofbizUrl>">${uiLabelMap.PFTProducts}</a></li>
               <li class="headermenu" <#if headerId?if_exists  == "services">id="${headerId}"</#if> ><a href="<@ofbizUrl>main</@ofbizUrl>">${uiLabelMap.PFTServices}</a></li>
               <li class="headermenu" <#if headerId?if_exists  == "partner">id="${headerId}"</#if> ><a href="<@ofbizUrl>partner</@ofbizUrl>">${uiLabelMap.PFTPartner}</a></li>
-              <li class="headermenu" <#if headerId?if_exists == "aboutus">id="${headerId}"</#if> ><a href="<@ofbizUrl>main</@ofbizUrl>">${uiLabelMap.PFTAboutUs}</a></li>
+              <li class="headermenu" <#if headerId?if_exists == "aboutus">id="${headerId}"</#if> ><a href="<@ofbizUrl>aboutus</@ofbizUrl>">${uiLabelMap.PFTAboutUs}</a></li>
               <li class="headermenu" <#if headerId?if_exists == "contactus">id="${headerId}"</#if> ><a href="<@ofbizUrl>contactus</@ofbizUrl>">${uiLabelMap.PFTContact}</a></li>
             </ul>
             <ul id="left-links">
-                <li id="header-bar-showcart"><a href="<@ofbizUrl>view/showcart</@ofbizUrl>">${uiLabelMap.OrderViewCart}</a></li>
+                <li class="headermenu" <#if headerId?if_exists == "showcart">id="${headerId}"</#if> ><a href="<@ofbizUrl>view/showcart</@ofbizUrl>">${uiLabelMap.OrderViewCart}</a></li>
             </ul>
      </div>
   
      <div id="searchbar">
           
            ${screens.render("component://productfromthailand/widget/CatalogScreens.xml#keywordsearchbox")}
-           
     </div>
     </div>
 </div>

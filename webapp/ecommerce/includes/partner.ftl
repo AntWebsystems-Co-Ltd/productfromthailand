@@ -16,8 +16,8 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div id="partner" class="screenlet">
-     <h3>${uiLabelMap.PFTSalesconditions} :</h3>
+<div id="contentbox" class="screenlet">
+     <h1>${uiLabelMap.PFTSalesconditions} :</h1>
     <div class="screenlet-body">
         <ul class="partnerconditions">
           <li class="partnerconditions">The supplier is free to maintain his own products at our website without any further costs.</li>

@@ -123,4 +123,12 @@
         <value xml:lang="en">In All Categories</value>
         <value xml:lang="th">ค้นหาทุกหมวดหมู่สินค้า</value>
     </property>
+    <property key="PFTAboutCompany">
+        <value xml:lang="en">About Product from Thailand Co.,Ltd &amp; How we work.</value>
+        <value xml:lang="th">ข้อมูลเกี่ยวกับ Product from Thailand </value>
+    </property>
+    <property key="PFTUnderConstruction">
+        <value xml:lang="en">This page is under construction</value>
+        <value xml:lang="th">อระหว่างการปรับปรุงแก้ไข</value>
+    </property>
 </resource>

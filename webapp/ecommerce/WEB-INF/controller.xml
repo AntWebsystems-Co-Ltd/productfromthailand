@@ -27,6 +27,14 @@ under the License.
         <security https="false" auth="false"/>
         <response name="success" type="view" value="partner"/>
     </request-map>
+    <request-map uri="aboutus">
+        <security https="false" auth="false"/>
+        <response name="success" type="view" value="aboutus"/>
+    </request-map>
+    <request-map uri="sitemap">
+        <security https="false" auth="false"/>
+        <response name="success" type="view" value="sitemap"/>
+    </request-map>
     
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
     <view-map name="main" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#main"/>
@@ -39,6 +47,8 @@ under the License.
     <view-map name="newcustomer" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newcustomer"/>
     <view-map name="contactus" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#contactus"/>
     <view-map name="partner" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#partner"/>
+    <view-map name="aboutus" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#aboutus"/>
+    <view-map name="sitemap" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#sitemap"/>
     
     <view-map name="keywordsearch" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#keywordsearch"/>
 </site-conf>

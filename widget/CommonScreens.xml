@@ -372,12 +372,53 @@ under the License.
             <actions>
                 <set field="titleProperty" value="PFTPartner"/>
                 <set field="headerItem" value="partner"/>
+                <set field="MainColumnStyle" value="rightonly"/>
+                <set field="rightbarScreenName" value="rightbar"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                         <platform-specific>
                             <html><html-template location="component://productfromthailand/webapp/ecommerce/includes/partner.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="aboutus">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PFTAboutUs"/>
+                <set field="headerItem" value="aboutus"/>
+                <set field="MainColumnStyle" value="rightonly"/>
+                <set field="rightbarScreenName" value="rightbar"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://productfromthailand/webapp/ecommerce/includes/aboutus.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="sitemap">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PFTAboutUs"/>
+                <set field="headerItem" value="aboutus"/>
+                <set field="MainColumnStyle" value="nocolumns"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://productfromthailand/webapp/ecommerce/includes/sitemap.ftl"/></html>
                         </platform-specific>
                     </decorator-section>
                 </decorator-screen>

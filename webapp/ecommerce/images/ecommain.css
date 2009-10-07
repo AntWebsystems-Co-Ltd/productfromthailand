@@ -228,14 +228,16 @@ padding: 5px 8px 0px 8px;
 #ecom-header-bar #menubar ul#right-links li {
 float: left;
 }
-#right-links li#home,#right-links li#products,
-#right-links li#services,#right-links li#partner,
-#right-links li#aboutus,#right-links li#contactus{
-background:url(/pft/images/point.jpg) no-repeat bottom center;
-}
 #ecom-header-bar #menubar ul#left-links li {
 float: right;
 }
+
+#right-links li#home,#right-links li#products,
+#right-links li#services,#right-links li#partner,
+#right-links li#aboutus,#right-links li#contactus, #left-links li#showcart{
+background:url(/pft/images/point.jpg) no-repeat bottom center;
+}
+
 #ecom-header-bar #searchbar {
 background-image:url(/pft/images/searchbar.gif);
 overflow:hidden;
@@ -407,7 +409,7 @@ vertical-align: top;
 }
 #ecom-mainarea .center {
 margin-left: 215px;
-margin-right: 260px;
+margin-right: 250px;
 voice-family: inherit;
 }
 #ecom-mainarea .leftonly {
@@ -415,7 +417,7 @@ margin-left: 210px;
 voice-family: inherit;
 }
 #ecom-mainarea .rightonly {
-margin-right: 240px;
+margin-right: 250px;
 voice-family: inherit;
 }
 
@@ -430,12 +432,11 @@ padding:1px 4px 3px;
 height:auto !important;
 }
 #ecom-mainarea .screenlet-body {
-border:thin;
+/*border:thin;
 border-style:dotted;
-border-color:#E7E7E7;
+border-color:#E7E7E7;*/
 padding: 4px;
 height:auto !important;
-height:1%
 }
 
 /*#ecom-mainarea .screenlet h3,*/ #ecom-mainarea .screenlet legend {
@@ -1208,7 +1209,13 @@ padding:5px;
 width:45%;
 }
 
-.partnerconditions ul li {
+#contentbox{
+margin-top:10px;
+margin-left: 10px;
+font-size: 12px;
+}
+
+.partnerconditions, .sitemaplist ul li {
 margin-left: 10px;
 }
 
@@ -1221,6 +1228,17 @@ list-style-position:inside;
 padding: 10px 0px 0px 0px;
 }
 
+.sitemaplist li{
+font-size:12px;
+color: #525252;
+list-style:square;
+list-style-position:inside;
+padding: 10px 0px 0px 0px;
+}
+
+#sitemaptopic{
+margin-top:10px;
+}
 
 #welcome{
 height:auto;
@@ -1280,6 +1298,7 @@ text-decoration:underline;
 margin-bottom: 10px;
 height:auto !important;
 border:1px solid #E7E7E7;
+border-style:dotted;
 width:200px;
 }
 #ecom-mainarea .leftbarscreenlet-header {
@@ -1333,4 +1352,14 @@ thead th {
 border-bottom:2px solid #888;
 background:#bbb;
 padding:.4em 1em .2em;
+}
+
+#about-block {
+padding:20px;
+font-size:12px;
+}
+
+p {
+text-align:left;
+text-indent:20px;
 }
