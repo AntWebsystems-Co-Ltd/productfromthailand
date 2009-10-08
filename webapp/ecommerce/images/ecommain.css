@@ -235,7 +235,7 @@ float: right;
 #right-links li#home,#right-links li#products,
 #right-links li#services,#right-links li#partner,
 #right-links li#aboutus,#right-links li#contactus, #left-links li#showcart{
-background:url(/pft/images/point.jpg) no-repeat bottom center;
+background:url(/pft/images/point.gif) no-repeat bottom center;
 }
 
 #ecom-header-bar #searchbar {
@@ -381,8 +381,7 @@ width: 200px;
 /* alt: position: absolute; right: 0px; top: 0px; */
 float: right;
 width: 240px;
-/*padding-right:10px;*/
-margin:0 10px 0 0;
+padding-right:10px;
 }
 
 #ecom-mainarea .right #minipromotext A.linktext {
@@ -909,7 +908,7 @@ height: 50px;
 }
 
 .productsummary-container {
-position: relative;
+
 margin-top: 10px;
 margin-bottom: 5px;
 border-top: #999 solid 1px;
@@ -952,7 +951,8 @@ text-align: center;
 }
 .matrix .productsummary .smallimage img {
 width:140px;
-min-height: 100px;
+height: 120px;
+min-height: 120px;
 }
 
 .matrix .productsummary .productbuy {
