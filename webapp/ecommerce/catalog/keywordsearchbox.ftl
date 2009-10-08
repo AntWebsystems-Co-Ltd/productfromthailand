@@ -19,44 +19,31 @@ under the License.
 
 <div id="keywordsearchbox" class="screenlet">
     <div class="screenlet-header">
-       <table width="100%">
-           <tbody>
-               <tr><td>&nbsp;</td>
-                   <td align="right" width="450px" valign="top"><div class="boxhead_sb">${uiLabelMap.PFTSelectByCategories} :</div></td>
-                   <td align="right" width="260px" valign="top"><div class="boxhead_sb">${uiLabelMap.PFTEnterKeyword} :</div></td>
-               </tr>
-               <tr>
-                    <form name="keywordsearchform" method="post" action="<@ofbizUrl>keywordsearch</@ofbizUrl>">
-                      <input type="hidden" name="VIEW_SIZE" value="10"/>
-                      <input type="hidden" name="PAGING" value="Y"/>
-                      <input type="hidden" name="SEARCH_OPERATOR" value="OR"/>
-                      <input type="hidden" name="SEARCH_CATALOG_ID" value="${currentCatalogId?if_exists}"/>
-                      <td id="searchbartitle">${uiLabelMap.PFTSearchYourProducts}</td>
-                   <td align="right" valign="top">
-                   <#if 0 < allProductCategories?size>
-                        <div>
-                          <select name="SEARCH_CATEGORY_ID" size="1">
-                            <option value="${searchCategoryId?if_exists}">${uiLabelMap.PFTInAllCategories}</option>
-                            <#list allProductCategories as allProductCategory>
-                              <#assign searchProductCategory = allProductCategory.getRelatedOneCache("CurrentProductCategory")>
-                              <#if searchProductCategory?exists>
-                                <option value="${searchProductCategory.productCategoryId}">${searchProductCategory.description?default("No Description " + searchProductCategory.productCategoryId)}</option>
-                              </#if>
-                            </#list>
-                          </select>
-                        </div>
-                  <#else>
-                       <input type="hidden" name="SEARCH_CATEGORY_ID" value="${searchCategoryId?if_exists}"/>
-                  </#if>
-                   </td>
-                   <td align="right" valign="top">
-                    <input type="text" name="SEARCH_STRING" size="25" maxlength="50" value="${requestParameters.SEARCH_STRING?if_exists}"/>
-                    <input type="submit" class="smallSubmit" value="${uiLabelMap.CommonFind}"/>
-                   </td>
-                   </form>
-               </tr>
-           </tbody>
-       </table>
-          
+    <div id="searchbartitle">${uiLabelMap.PFTSearchYourProducts}</div>
+        <form name="keywordsearchform" method="post" action="<@ofbizUrl>keywordsearch</@ofbizUrl>" style="margin: 0;">
+            <input type="hidden" name="VIEW_SIZE" value="10"/>
+            <input type="hidden" name="PAGING" value="Y"/>
+            <input type="hidden" name="SEARCH_OPERATOR" value="OR"/>
+            <input type="hidden" name="SEARCH_CATALOG_ID" value="${currentCatalogId?if_exists}"/>
+            <span class="boxhead_sb">${uiLabelMap.PFTEnterKeyword}:<br/>
+                <input type="text" name="SEARCH_STRING" size="25" maxlength="50" value="${requestParameters.SEARCH_STRING?if_exists}"/>
+                <input type="submit" class="smallSubmit" value="${uiLabelMap.CommonFind}"/>
+            </span>
+            <span class="boxhead_sb">${uiLabelMap.PFTSelectByCategories}:<br/>
+                <#if 0 < allProductCategories?size>
+                  <select name="SEARCH_CATEGORY_ID" size="1">
+                    <option value="${searchCategoryId?if_exists}">${uiLabelMap.PFTInAllCategories}</option>
+                    <#list allProductCategories as allProductCategory>
+                      <#assign searchProductCategory = allProductCategory.getRelatedOneCache("CurrentProductCategory")>
+                      <#if searchProductCategory?exists>
+                        <option value="${searchProductCategory.productCategoryId}">${searchProductCategory.description?default("No Description " + searchProductCategory.productCategoryId)}</option>
+                      </#if>
+                    </#list>
+                  </select>
+              <#else>
+                   <input type="hidden" name="SEARCH_CATEGORY_ID" value="${searchCategoryId?if_exists}"/>
+              </#if>
+            </span>
+        </form>
     </div>
 </div>

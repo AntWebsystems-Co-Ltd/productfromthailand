@@ -72,7 +72,7 @@ under the License.
   <div id="ecom-header-bar">
       <div class="leftcorner">&nbsp;</div>
       <div class="rightcorner">&nbsp;</div><br class="bothclear"/>
-      <div style="padding:5px 0 2px 0;background-color:white;">
+      <div class="whitespace">
             <#if requestAttributes._CURRENT_VIEW_?has_content>
                         <#if requestAttributes._CURRENT_VIEW_ == "main"><#assign headerId= "home"></#if>
                         <#if requestAttributes._CURRENT_VIEW_ == "products"><#assign headerId= "products"></#if>
@@ -96,15 +96,9 @@ under the License.
                 <li class="headermenu" <#if headerId?if_exists == "showcart">id="${headerId}"</#if> ><a href="<@ofbizUrl>view/showcart</@ofbizUrl>">${uiLabelMap.OrderViewCart}</a></li>
             </ul>
      </div>
-  
      <div id="searchbar">
-          
            ${screens.render("component://productfromthailand/widget/CatalogScreens.xml#keywordsearchbox")}
     </div>
     </div>
 </div>
-    
-    <table cellspacing="0" cellpadding="0" border="0">
-          <tbody>
-              <tr>
-                  <td bgcolor="white" width="955px">
+<div class="whitespace">
