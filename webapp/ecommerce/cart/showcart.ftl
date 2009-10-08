@@ -100,7 +100,7 @@ function setAlternateGwp(field) {
 //]]>
 </script>
 <#assign fixedAssetExist = shoppingCart.containAnyWorkEffortCartItems() /> <#-- change display format when rental items exist in the shoppingcart -->
-<div>
+<div style="float:right;text-align:right;width:720px;padding-right:10px;">
     <h2>
         <#if ((sessionAttributes.lastViewedProducts)?has_content && sessionAttributes.lastViewedProducts?size > 0)>
           <#assign continueLink = "/product?product_id=" + sessionAttributes.lastViewedProducts.get(0) />
@@ -112,16 +112,15 @@ function setAlternateGwp(field) {
         ${uiLabelMap.CommonQuickAdd}
     </h2>
     <div>
-        <div class="tabletext">
+        <div class="quickadd">
             <form method="post" action="<@ofbizUrl>additem<#if requestAttributes._CURRENT_VIEW_?has_content>/${requestAttributes._CURRENT_VIEW_}</#if></@ofbizUrl>" name="quickaddform">
                 <fieldset>
-                ${uiLabelMap.EcommerceProductNumber}<input type="text" class="inputBox" name="add_product_id" value="${requestParameters.add_product_id?if_exists}" />
+                ${uiLabelMap.EcommerceProductNumber} <input type="text" class="inputBox" name="add_product_id" value="${requestParameters.add_product_id?if_exists}" />
                 <#-- check if rental data present  insert extra fields in Quick Add-->
                 <#if product?exists && product.getString("productTypeId") == "ASSET_USAGE">
                     ${uiLabelMap.EcommerceStartDate}: <input type="text" class="inputBox" size="10" name="reservStart" value=${requestParameters.reservStart?default("")} />
                     ${uiLabelMap.EcommerceLength}: <input type="text" class="inputBox" size="2" name="reservLength" value=${requestParameters.reservLength?default("")} />
-                    </div>
-                    <div>
+                    
                     &nbsp;&nbsp;${uiLabelMap.OrderNbrPersons}: <input type="text" class="inputBox" size="3" name="reservPersons" value=${requestParameters.reservPersons?default("1")} />
                 </#if>
                 ${uiLabelMap.CommonQuantity}: <input type="text" class="inputBox" size="5" name="quantity" value="${requestParameters.quantity?default("1")}" />
@@ -139,9 +138,8 @@ function setAlternateGwp(field) {
 //]]>
 </script>
 
-<div>
+<div style="width:730px;float:right;padding-left:5px;">
     <div>
-        <div>
             <div class="lightbuttontextdisabled">
               <#--<a href="<@ofbizUrl>main</@ofbizUrl>" class="lightbuttontext">[${uiLabelMap.EcommerceContinueShopping}]</a>-->
               <#if (shoppingCartSize > 0)>
@@ -156,16 +154,14 @@ function setAlternateGwp(field) {
               <#if (shoppingCartSize > 0)><a href="<@ofbizUrl>checkoutoptions</@ofbizUrl>" class="submenutextright">${uiLabelMap.OrderCheckout}</a><#else><span class="submenutextrightdisabled">${uiLabelMap.OrderCheckout}</span></#if>
             </div>
         </div>
-        <br />
-        <h2>&nbsp;${uiLabelMap.OrderShoppingCart}</h2>
-    </div>
-    <div>
-
+<div>
   <#if (shoppingCartSize > 0)>
-    <form method="post" action="<@ofbizUrl>modifycart</@ofbizUrl>" name="cartform">
+    <form method="post" action="<@ofbizUrl>modifycart</@ofbizUrl>" name="cartform" >
       <fieldset>
+
+      <#--h2>&nbsp;${uiLabelMap.OrderShoppingCart}</h2-->
       <input type="hidden" name="removeSelected" value="false" />
-      <table>
+      <table >
         <thead>
             <tr>
               <th></th>
@@ -420,6 +416,7 @@ function setAlternateGwp(field) {
     </div>
 </div>
 
+
 <div>
     <div>
         <h2>${uiLabelMap.ProductPromoCodes}</h2>
@@ -473,15 +470,15 @@ function setAlternateGwp(field) {
             <div>
                 ${setRequestAttribute("optProduct", assocProduct)}
                 ${setRequestAttribute("listIndex", assocProduct_index)}
-                ${screens.render("component://productfromthailand/widget/CatalogScreens.xml#productsummary")}
+                ${screens.render("component://ecommerce/widget/CatalogScreens.xml#productsummary")}
             </div>
         </#list>
     </div>
 </div>
 </#if>
 
-<#if (shoppingCartSize?default(0) > 0)>
-  ${screens.render("component://productfromthailand/widget/CartScreens.xml#promoUseDetailsInline")}
-</#if>
+<#--if (shoppingCartSize?default(0) > 0)>
+  ${screens.render("component://ecommerce/widget/CartScreens.xml#promoUseDetailsInline")}
+</#if-->
 
 <!-- Internal cart info: productStoreId=${shoppingCart.getProductStoreId()?if_exists} locale=${shoppingCart.getLocale()?if_exists} currencyUom=${shoppingCart.getCurrency()?if_exists} userLoginId=${(shoppingCart.getUserLogin().getString("userLoginId"))?if_exists} autoUserLogin=${(shoppingCart.getAutoUserLogin().getString("userLoginId"))?if_exists} -->

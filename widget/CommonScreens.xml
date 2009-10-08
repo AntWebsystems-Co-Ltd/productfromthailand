@@ -425,4 +425,23 @@ under the License.
             </widgets>
         </section>
     </screen>
+    
+    <screen name="services">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PFTAboutUs"/>
+                <set field="headerItem" value="services"/>
+                <set field="MainColumnStyle" value="nocolumns"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://productfromthailand/webapp/ecommerce/includes/services.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
 </screens>

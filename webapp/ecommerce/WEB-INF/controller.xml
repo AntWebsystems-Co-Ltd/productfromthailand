@@ -22,7 +22,10 @@ under the License.
         xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/site-conf.xsd">
     <include location="component://ecommerce/webapp/ecommerce/WEB-INF/controller.xml"/>
     <description>OFBiz: Cloned eCommerce Controller Configuration File</description>
-    
+    <request-map uri="services">
+        <security https="false" auth="false"/>
+        <response name="success" type="view" value="services"/>
+    </request-map>
     <request-map uri="partner">
         <security https="false" auth="false"/>
         <response name="success" type="view" value="partner"/>
@@ -49,6 +52,7 @@ under the License.
     <view-map name="partner" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#partner"/>
     <view-map name="aboutus" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#aboutus"/>
     <view-map name="sitemap" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#sitemap"/>
+    <view-map name="services" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#services"/>
     
     <view-map name="keywordsearch" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#keywordsearch"/>
     <!-- Cart Views -->
