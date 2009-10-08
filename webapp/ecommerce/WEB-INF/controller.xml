@@ -36,11 +36,6 @@ under the License.
         <response name="success" type="view" value="sitemap"/>
     </request-map>
     
-    <request-map uri="showcart">
-        <security https="false" auth="false"/>
-        <response name="success" type="view" value="showcart"/>
-    </request-map>
-    
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
     <view-map name="main" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#main"/>
     <view-map name="editShoppingList" type="screen" page="component://productfromthailand/widget/ShoppingListScreens.xml#editShoppingList"/>
