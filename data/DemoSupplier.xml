@@ -170,8 +170,8 @@
     <!-- Product from CHIANGMAI SOONTRI Company -->
     <Product productId="ST-001" productTypeId="FINISHED_GOOD" internalName="LADIES WEAR" productName="LADIES WEAR" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
     <Product productId="ST-002" productTypeId="FINISHED_GOOD" internalName="HOUSE HOLD PRODUCT" productName="HOUSE HOLD PRODUCT" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
-    <ProductCategoryMember productCategoryId="FOOTWEAR" productId="MG-001" sequenceNum="1" fromDate="2009-09-25 00:00:00.000"/>
-    <ProductCategoryMember productCategoryId="FOOTWEAR" productId="MG-002" sequenceNum="2" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductCategoryMember productCategoryId="FOOTWEAR" productId="ST-001" sequenceNum="1" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductCategoryMember productCategoryId="FOOTWEAR" productId="ST-002" sequenceNum="2" fromDate="2009-09-25 00:00:00.000"/>
     <ProductPrice productId="ST-001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="30.55" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
     <ProductPrice productId="ST-002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="52.99" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
     <SupplierProduct partyId="CMSOONTRI" minimumOrderQuantity="0" currencyUomId="USD" productId="ST-001" lastPrice="5.0" supplierProductId="CMST-001" supplierProductName="SOONTRI LADIES WEAR" availableFromDate="2009-09-25 00:00:00.000"/>
