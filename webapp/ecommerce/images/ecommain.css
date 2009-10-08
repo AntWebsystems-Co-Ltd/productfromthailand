@@ -1309,12 +1309,11 @@ padding: 0px;
 height:100% !important;
 }
 .banner{
-width:740px;
 float:right;
+margin:0px;
+padding:0 10px 5px 0;
 }
-.banner img{
-padding:0px 0px 10px 5px;
-}
+
 #breadcrumbs ul{
 list-style:none;
 font-size:1em;
