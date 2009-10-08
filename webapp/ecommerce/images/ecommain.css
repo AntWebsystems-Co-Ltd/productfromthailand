@@ -62,9 +62,8 @@ font-size: 1.6em;
 }
 h2 {
 color: #827B00;
-font-weight:normal;
-font-size: 1.4em;
-/*margin:0 0 1em;*/
+font-size: 1.5em;
+margin:0 0 1em;
 }
 h3 {
 font-size: 1.3em;
@@ -1428,4 +1427,10 @@ float:right;
 .whitespace{
 padding:5px 0px 2px 0px;
 background-color:white;
+}
+
+.menu-right {
+color: #827B00;
+font-weight:normal;
+font-size: 1.4em;
 }
