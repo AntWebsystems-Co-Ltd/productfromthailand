@@ -18,17 +18,17 @@ under the License.
 -->
 
 <#assign nowTimestamp = Static["org.ofbiz.base.util.UtilDateTime"].nowTimestamp()>
-<center><hr width="940px"/></center>
-                <div id="contactcompany">
-                    
-                    <h4>${uiLabelMap.PFTTel}: +66-53 483245, ${uiLabelMap.PFTFax} : +66-53 483246, ${uiLabelMap.PartyEmailAddress} : info@productfromthailand.com</h4><br/>
-                    <h4>${uiLabelMap.PFTCompanyName} ${uiLabelMap.PFTCompanyAddress}</h4>
-                </div>
+<div class="whitespace">
+            <center><hr width="940px"/></center>
+            <div id="contactcompany">
+                <h4>${uiLabelMap.PFTTel}: +66-53 483245, ${uiLabelMap.PFTFax} : +66-53 483246, ${uiLabelMap.PartyEmailAddress} : info@productfromthailand.com</h4><br/>
+                <h4>${uiLabelMap.PFTCompanyName} ${uiLabelMap.PFTCompanyAddress}</h4>
             </div>
-        <div id="endpage">
-            <div class="leftbottomcorner">&nbsp;</div>
-            <div class="rightbottomcorner">&nbsp;</div><br class="bothclear"/>
         </div>
+    </div>
+    <div id="endpage">
+        <div class="leftbottomcorner">&nbsp;</div>
+        <div class="rightbottomcorner">&nbsp;</div><br class="bothclear"/>
     </div>
 </div>
 <div id="ecom-footer">

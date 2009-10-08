@@ -18,20 +18,20 @@ under the License.
 -->
 
 <h1>${uiLabelMap.CommonLogin}</h1>
-    <div class="screenlet" style="text-align:center">
+    <div class="screenlet" style="text-align:center;">
       <h3>${uiLabelMap.CommonRegistered}</h3>
       <form method="post" action="<@ofbizUrl>login</@ofbizUrl>" name="loginform">
         <fieldset>
           <div>
-            <label for="userName">${uiLabelMap.CommonUsername}</label>
+            <label for="userName">${uiLabelMap.CommonUsername}&nbsp;&nbsp;
             <input type="text" id="userName" name="USERNAME" value="<#if requestParameters.USERNAME?has_content>${requestParameters.USERNAME}<#elseif autoUserLogin?has_content>${autoUserLogin.userLoginId}</#if>"/>
+            </label>
           </div>
           <#if autoUserLogin?has_content>
               <p>(${uiLabelMap.CommonNot} ${autoUserLogin.userLoginId}? <a href="<@ofbizUrl>${autoLogoutUrl}</@ofbizUrl>">${uiLabelMap.CommonClickHere}</a>)</p>
           </#if>
           <div>
-            <label for="password">${uiLabelMap.CommonPassword}:</label>
-            <input type="password" id="password" name="PASSWORD" value=""/>
+            <label for="password">${uiLabelMap.CommonPassword}:&nbsp;&nbsp;&nbsp;<input type="password" id="password" name="PASSWORD" value=""/></label>
           </div>
           <div>
             <input type="submit" class="button" value="${uiLabelMap.CommonLogin}"/>
@@ -48,8 +48,9 @@ under the License.
       <h3>${uiLabelMap.CommonForgotYourPassword}?</h3>
       <form method="post" action="<@ofbizUrl>forgotpassword</@ofbizUrl>">
         <div>
-          <label for="forgotpassword_userName">${uiLabelMap.CommonUsername}</label>
+          <label for="forgotpassword_userName">${uiLabelMap.CommonUsername}:&nbsp;&nbsp;
           <input type="text" id="forgotpassword_userName" name="USERNAME" value="<#if requestParameters.USERNAME?has_content>${requestParameters.USERNAME}<#elseif autoUserLogin?has_content>${autoUserLogin.userLoginId}</#if>"/>
+          </label>
         </div>
         <div class="buttons">
           <input type="submit" class="button" name="GET_PASSWORD_HINT" value="${uiLabelMap.CommonGetPasswordHint}"/>
@@ -68,7 +69,6 @@ under the License.
       </form>
     </div>
 -->
-  </div>
   <div class="endcolumns">&nbsp;</div>
 </div>
 
