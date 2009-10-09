@@ -71,7 +71,7 @@ under the License.
 <div id="main">
   <div id="ecom-header-bar">
       <div class="leftcorner">&nbsp;</div>
-      <div class="rightcorner">&nbsp;</div><br class="bothclear"/>
+      <div class="rightcorner">&nbsp;</div><div style="clear:both;"/>
       <div class="whitespace">
             <#if requestAttributes._CURRENT_VIEW_?has_content>
                         <#if requestAttributes._CURRENT_VIEW_ == "main"><#assign headerId= "home"></#if>

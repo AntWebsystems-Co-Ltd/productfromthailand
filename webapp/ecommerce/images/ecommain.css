@@ -328,10 +328,11 @@ margin:0px;
 padding:0px;
 }
 #ecom-header-bar .leftcorner{
-background: url(/pft/images/leftTopCorner.gif) top left;
+background: url(/pft/images/leftTopCorner.gif) top left no-repeat;
 width:2%;
 float:left;
 }
+
 #ecom-header-bar .rightcorner{
 background-color:white;
 width:98%;
