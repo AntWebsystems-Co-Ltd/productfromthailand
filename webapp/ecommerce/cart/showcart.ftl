@@ -421,7 +421,7 @@ function setAlternateGwp(field) {
     <div>
         <h2>${uiLabelMap.ProductPromoCodes}</h2>
     </div>
-    <div>
+    <div class="mainleftonly">
         <div class="tabletext">
             <form method="post" action="<@ofbizUrl>addpromocode<#if requestAttributes._CURRENT_VIEW_?has_content>/${requestAttributes._CURRENT_VIEW_}</#if></@ofbizUrl>" name="addpromocodeform">
                 <fieldset>

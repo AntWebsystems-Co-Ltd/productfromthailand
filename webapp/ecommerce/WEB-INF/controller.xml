@@ -57,4 +57,14 @@ under the License.
     <view-map name="keywordsearch" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#keywordsearch"/>
     <!-- Cart Views -->
     <view-map name="showcart" type="screen" page="component://productfromthailand/widget/CartScreens.xml#showcart"/>
+    
+    <view-map name="quickcheckout" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#checkoutoptions"/>
+    <view-map name="checkoutshippingaddress" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#checkoutshippingaddress"/>
+    <view-map name="checkoutshippingoptions" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#checkoutshippingoptions"/>
+    <view-map name="checkoutpayment" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#checkoutpayment"/>
+    <view-map name="splitship" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#splitship"/>
+    
+    <view-map name="checkoutreview" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#checkoutreview"/>
+    <view-map name="ordercomplete" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#ordercomplete"/>
+    <view-map name="orderstatus" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#orderstatus"/>
 </site-conf>

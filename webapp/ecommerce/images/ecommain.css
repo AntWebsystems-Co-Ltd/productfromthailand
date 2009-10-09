@@ -103,7 +103,7 @@ body {
 background-image:url(/pft/images/background.jpg);
 background-attachment:fixed;
 color:black;
-font-size: 10px;
+font-size: 8pt;
 margin-top:1%;
 }
 
@@ -154,7 +154,7 @@ margin: 2px;
 
 /* IE7 fix */
 table {
-font-size: 10px;
+font-size: 8pt;
 }
 
 /* IE7 fix */
@@ -331,7 +331,6 @@ padding:0px;
 background: url(/pft/images/leftTopCorner.gif) top left;
 width:2%;
 float:left;
-
 }
 #ecom-header-bar .rightcorner{
 background-color:white;
@@ -448,7 +447,7 @@ padding: 4px;
 height:auto !important;
 }
 
-/*#ecom-mainarea .screenlet h3,*/ #ecom-mainarea .screenlet legend {
+#ecom-mainarea .screenlet h3, #ecom-mainarea .screenlet legend {
 background:#F4F4DA;
 color:#827B00;
 height:auto!important;
@@ -648,6 +647,7 @@ color: #663300;
 A.linktext,A.linktext:visited,A.linktext:hover {
 font-size: 10pt;
 color: #443434;
+font-weight: 700;
 }
 
 A.linktext:hover {
@@ -730,7 +730,7 @@ color: #663300;
 }
 
 A.lightbuttontextsmall {
-font-size: 10px;
+font-size: 8pt;
 font-weight: bold;
 color: #999966;
 border: none;
@@ -1296,10 +1296,15 @@ text-decoration:none;
 font-weight:inherit;
 color:#322700;
 }
-#recentproductdetail h3{
-background:none;width:65%;float:right;color:#322700;
+.recentproductlabel{
+background:none;
+width:65%;
+float:right;
+color:#322700;
 border-bottom: 1px solid #918732;
 line-height:1em;
+font-size:1.2em;
+font-weight:bold;
 }
 .copyright {
 color:#965b0e;
@@ -1355,13 +1360,13 @@ Forms
 form div, .buttons {clear: both; margin: 0 0 0.8em;}
 
 #searchbartitle {
-margin:20px 0px 0px 20px;
+margin: 20px 0px 0px 10px;
 float:left;
 height:auto;
-width:200px;
+width:250px;
 vertical-align:middle;
 color: #f4f4da;
-font-size:1.6em;
+font-size:1.5em;
 font-weight:bold;
 text-align:right;
 }
@@ -1432,7 +1437,7 @@ float:right;
 }
 
 .whitespace{
-padding:5px 0px 2px 0px;
+padding:5px 0px 0px 0px;
 background-color:white;
 }
 
@@ -1440,4 +1445,15 @@ background-color:white;
 color: #827B00;
 font-weight:normal;
 font-size: 1.4em;
+}
+
+.mainrightonly {
+float:left; 
+width:700px;
+}
+
+.mainleftonly {
+float:right;
+width:720px;
+padding-right:10px;
 }
