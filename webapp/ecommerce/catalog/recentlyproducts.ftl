@@ -17,7 +17,7 @@
         </#if>
     </div>
     <div id="recentproductdetail">
-         <h3><a href="${productUrl?if_exists}">${product.internalName?if_exists}</a></h3>
+         <div class="recentproductlabel"><a href="${productUrl?if_exists}">${product.internalName?if_exists}</a></div>
          <p>${product.description?if_exists}</p>
     </div>
 </div>
