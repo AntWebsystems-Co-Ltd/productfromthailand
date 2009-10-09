@@ -76,7 +76,7 @@ under the License.
             <#if requestAttributes._CURRENT_VIEW_?has_content>
                         <#if requestAttributes._CURRENT_VIEW_ == "main"><#assign headerId= "home"></#if>
                         <#if requestAttributes._CURRENT_VIEW_ == "products"><#assign headerId= "products"></#if>
-                        <#if requestAttributes._CURRENT_VIEW_ == "service"><#assign headerId= "services"></#if>
+                        <#if requestAttributes._CURRENT_VIEW_ == "services"><#assign headerId= "services"></#if>
                         <#if requestAttributes._CURRENT_VIEW_ == "partner"><#assign headerId= "partner"></#if>
                         <#if requestAttributes._CURRENT_VIEW_ == "aboutus"><#assign headerId= "aboutus"></#if>
                         <#if requestAttributes._CURRENT_VIEW_ == "contactus"><#assign headerId= "contactus"></#if>
