@@ -470,7 +470,7 @@ function setAlternateGwp(field) {
             <div>
                 ${setRequestAttribute("optProduct", assocProduct)}
                 ${setRequestAttribute("listIndex", assocProduct_index)}
-                ${screens.render("component://ecommerce/widget/CatalogScreens.xml#productsummary")}
+                ${screens.render("component://productfromthailand/widget/CatalogScreens.xml#productsummary")}
             </div>
         </#list>
     </div>
