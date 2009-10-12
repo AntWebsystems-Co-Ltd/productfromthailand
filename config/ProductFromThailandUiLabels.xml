@@ -131,4 +131,8 @@
         <value xml:lang="en">This page is under construction</value>
         <value xml:lang="th">อระหว่างการปรับปรุงแก้ไข</value>
     </property>
+    <property key="PFTClickToRegister">
+        <value xml:lang="en">Click here to Register</value>
+        <value xml:lang="th">สมัครสมาชิกใหม่ คลิกที่นี่</value>
+    </property>
 </resource>

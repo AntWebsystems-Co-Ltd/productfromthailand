@@ -449,9 +449,15 @@ under the License.
     <screen name="services">
         <section>
             <actions>
-                <set field="titleProperty" value="PFTAboutUs"/>
+                <set field="titleProperty" value="PFTServices"/>
                 <set field="headerItem" value="services"/>
                 <set field="MainColumnStyle" value="nocolumns"/>
+                
+                <set field="custRequestId" from-field="parameters.custRequestId"/>
+                <entity-one entity-name="CustRequest" value-field="custRequest"/>
+                <set field="statusId" from-field="custRequest.statusId"/>
+                <entity-one entity-name="StatusItem" value-field="currentStatus"/>
+                <entity-condition entity-name="CustRequestType" list="custRequestTypeList"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -459,9 +465,11 @@ under the License.
                         <platform-specific>
                             <html><html-template location="component://productfromthailand/webapp/ecommerce/includes/services.ftl"/></html>
                         </platform-specific>
+                        <include-screen name="ListRequests" location="component://productfromthailand/widget/CustRequestScreens.xml"/>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
         </section>
     </screen>
+    
 </screens>

@@ -42,6 +42,17 @@ under the License.
         <security https="false" auth="false"/>
         <response name="success" type="view" value="sitemap"/>
     </request-map>
+    <request-map uri="services">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="services"/>
+    </request-map>
+    
+    <request-map uri="createrequest">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="createCustRequest"/>
+        <response name="success" type="view" value="services"/>
+        <response name="error" type="view" value="services"/>
+    </request-map>
     
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
     <view-map name="main" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#main"/>
@@ -72,4 +83,7 @@ under the License.
     <view-map name="checkoutreview" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#checkoutreview"/>
     <view-map name="ordercomplete" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#ordercomplete"/>
     <view-map name="orderstatus" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#orderstatus"/>
+    
+    <!-- Request Views -->
+    <view-map name="ViewRequest" type="screen" page="component://productfromthailand/widget/CustRequestScreens.xml#ViewRequest"/>
 </site-conf>

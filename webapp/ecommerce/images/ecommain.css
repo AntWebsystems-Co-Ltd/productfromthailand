@@ -22,15 +22,30 @@
 /* ===== Resets/Browser Normalization ===== */
 @import url("forms.css");
 
-blockquote, body, div, dl, dt, dd, fieldset, form, h1, h2, h3, h4, h5, h6,
-img, input, li, ol, p, select, span, td, textarea, th, ul{
+/*blockquote, body, div, dl, dt, dd, fieldset, form, h1, h2, h3, h4, h5, h6,
+img, input, li, ol, p, select, span, td, textarea, th, ul{*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
 margin: 0;
 padding: 0;
 border:0; 
 margin:0; 
 outline:0; 
 padding:0;
+font-size: 100%; 
+vertical-align: baseline;
 }
+
+table {border-collapse: collapse; border-spacing: 0;}
+
+caption, th, td {text-align: left; font-weight: normal;}
 
 p,ul,ol,dl,blockquote,pre {margin: 0 0 0.1em;}
 
@@ -81,29 +96,26 @@ font-size: 1.1em;
 /* ===== Basic Element Styles ===== */
 
 
-a, a:visited {
-color: #BCB104;
-}
-
-a:hover, a:active {
-text-decoration: underline;
-}
+a, a:link, a:visited {text-decoration: none; color:#BCB104; font-weight:bold;}
+a:hover {/*color:#111;*/ text-decoration: underline;}
 
 .disabled {
 color: #333366;
 text-decoration: none;
 }
 
-body, textarea, input, select {
+/*body, textarea, input, select {
 font-family: Verdana, Arial, Helvetica, sans-serif;
-}
+}*/
 
 body {
 background-image:url(/pft/images/background.jpg);
 background-attachment:fixed;
 color:black;
+font-family: Verdana, Arial, Helvetica, sans-serif;
 font-size: 8pt;
 margin-top:1%;
+line-height:1.5em;
 }
 
 hr {
@@ -112,45 +124,28 @@ border: 0;
 height: 1px;
 margin: 5px 0 5px 0;
 }
-
-input[type="radio"], input[type="checkbox"] {
-font-size: 8pt;
+input[type=radio],input[type=checkbox] {
+font-size:8pt;
 }
 
-input[type="text"], input[type="password"] {
-font-size: 8pt;
-background: white;
-border: #999999 solid 1px;
-
+input[type=submit],input[type=button],input[type=reset] {
+background:#FFF;
+border:#999 solid 1px;
+color:#1C334D;
+font-size:8pt;
+font-weight:700;
+margin:2px;
 }
 
-input[type="submit"], input[type="button"],
-input[type="reset"] {
-font-size: 8pt;
-font-weight: bold;
-color: #333300;
-background: white;
-border: #999999 solid 1px;
-margin: 2px;
+input[type=submit]:hover {
+color:red;
+cursor:pointer;
+text-decoration:underline;
 }
 
-input[type="submit"]:hover {
-color: #663300;
-cursor: pointer;
-text-decoration: underline;
+input[type=file] {
+font-size:11px;
 }
-
-input[type="file"] {
-font-size: 11px;
-}
-
-select {
-background: #FFFFFF;
-font-size: 8pt;
-border: #999999 solid 1px;
-margin: 2px;
-}
-
 /* IE7 fix */
 table {
 font-size: 8pt;
@@ -161,13 +156,13 @@ table input {
 border: #999999 solid 1px;
 }
 
-textarea {
+/*textarea {
 background: #FFFFFF;
 font-size: 8pt;
 background: white;
 border: #999999 solid 1px;
 margin: 2px;
-}
+}*/
 
 /*img {
 behavior: url("/images/pngbehavior.htc");
@@ -744,13 +739,14 @@ margin-top:10px;
 }
 
 A.buttontextbig, .buttontextbigdisabled {
-font-size: 15px;
-font-weight: bold;
-background: white;
-border: #999999 solid 1px;
-margin: 2px 2px 2px 2px;
-padding: 1px 4px 1px 4px;
+background:#FFF;
+border:#999 solid 1px;
+font-size:15px;
+font-weight:700;
+margin:2px;
+padding:1px 4px;
 }
+
 A.buttontextbig {
 color: #1C334D;
 }
@@ -1046,7 +1042,7 @@ iframe.ie6_blocker {
 }
 
 .calendar_date_select thead th {
-  font-weight:bold;
+  font-weight:700;
   background-color: #4682B4;
   border-top:1px solid #777;
   border-bottom:2px solid #777;
@@ -1078,9 +1074,9 @@ iframe.ie6_blocker {
 }
 
 .calendar_date_select .cds_header span {
-  font-size:15px;
-  color: #000;
-  font-weight: bold;
+color:#000;
+font-size:15px;
+font-weight:700;
 }
 
 .calendar_date_select select { font-size:11px;}
@@ -1089,7 +1085,7 @@ iframe.ie6_blocker {
   color: #fff;
 }
 .calendar_date_select .cds_header a {
-  width:22px;
+  width:14px;
   height:20px;
   text-decoration: none;
   font-size:14px;
@@ -1176,14 +1172,6 @@ margin-right:0.5em;
 padding-top:0.2em;
 text-align:right;
 font-weight:bold;
-}
-
-#newuserform input,select option ,#newuserform fieldset{
- /* optional rounded corners for browsers that support it */
--moz-border-radius: 2px;
--khtml-border-radius: 2px;
--webkit-border-radius: 2px;
-border-radius: 2px;
 }
 
 #newuserform fieldset{
