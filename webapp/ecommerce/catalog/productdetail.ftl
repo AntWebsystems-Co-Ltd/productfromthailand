@@ -295,7 +295,7 @@ ${virtualJavaScript?if_exists}
         <#assign productLargeImageUrl = firstLargeImage />
       </#if>
       <#if productLargeImageUrl?string?has_content>
-        <a href="javascript:popupDetail();"><img id="detailImage" src="<@ofbizContentUrl>${contentPathPrefix?if_exists}${productLargeImageUrl?if_exists}</@ofbizContentUrl>" name="mainImage" vspace="5" hspace="5" border="0" width="240" /></a>
+        <a href="javascript:popupDetail();"><img id="detailImage" src="<@ofbizContentUrl>${contentPathPrefix?if_exists}${productLargeImageUrl?if_exists}</@ofbizContentUrl>" name="mainImage" vspace="5" hspace="5" border="0" width="200" /></a>
         <input type="hidden" id="originalImage" name="originalImage" value="<@ofbizContentUrl>${contentPathPrefix?if_exists}${productLargeImageUrl?if_exists}</@ofbizContentUrl>" />
       </#if>
       <#if !productLargeImageUrl?string?has_content>
