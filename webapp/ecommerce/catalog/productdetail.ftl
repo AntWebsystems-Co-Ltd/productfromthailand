@@ -517,7 +517,7 @@ ${virtualJavaScript?if_exists}
             </#if>
           </#if>
         </#if>
-      </td></tr><tr><td colspan="2" align="right">
+      </td></tr><tr><td colspan="2" align="right" style="text-align:right;">
         <#-- check to see if introductionDate hasnt passed yet -->
         <#if product.introductionDate?exists && nowTimestamp.before(product.introductionDate)>
         <p>&nbsp;</p>
