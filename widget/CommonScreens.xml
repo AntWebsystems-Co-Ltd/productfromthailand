@@ -426,6 +426,26 @@ under the License.
         </section>
     </screen>
     
+    <screen name="products">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PFTProducts"/>
+                <set field="headerItem" value="products"/>
+                <set field="MainColumnStyle" value="leftonly"/>
+                <set field="rightbarScreenName" value="leftbar"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://productfromthailand/webapp/ecommerce/includes/products.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
     <screen name="services">
         <section>
             <actions>

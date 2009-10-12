@@ -86,7 +86,7 @@ under the License.
             <ul id="right-links">
               <!-- NOTE: these are in reverse order because they are stacked right to left instead of left to right -->
               <li class="headermenu" <#if headerId?if_exists == "home">id="${headerId}"</#if> ><a href="<@ofbizUrl>main</@ofbizUrl>">${uiLabelMap.PFTHome}</a></li>
-              <li class="headermenu" <#if headerId?if_exists == "products">id="${headerId}"</#if> ><a href="<@ofbizUrl>main</@ofbizUrl>">${uiLabelMap.PFTProducts}</a></li>
+              <li class="headermenu" <#if headerId?if_exists == "products">id="${headerId}"</#if> ><a href="<@ofbizUrl>products</@ofbizUrl>">${uiLabelMap.PFTProducts}</a></li>
               <li class="headermenu" <#if headerId?if_exists  == "services">id="${headerId}"</#if> ><a href="<@ofbizUrl>services</@ofbizUrl>">${uiLabelMap.PFTServices}</a></li>
               <li class="headermenu" <#if headerId?if_exists  == "partner">id="${headerId}"</#if> ><a href="<@ofbizUrl>partner</@ofbizUrl>">${uiLabelMap.PFTPartner}</a></li>
               <li class="headermenu" <#if headerId?if_exists == "aboutus">id="${headerId}"</#if> ><a href="<@ofbizUrl>aboutus</@ofbizUrl>">${uiLabelMap.PFTAboutUs}</a></li>

@@ -1283,16 +1283,22 @@ height:75px;
 padding:5px 3px 10px 0px;
 
 }
+.recentproductimage{
+float:left;text-align:center;
+}
 .recentproductimage img{
-float:left;
-padding:3px 3px 3px 0px;
 width:75px;
+padding:3px 3px 3px 0px;
+height:75px;
+max-height:75px;
+max-width:75px;
 }
 
 #recentproductdetail a,#recentproductdetail a:visited,#recentproductdetail a:hover{
 text-decoration:none;
 font-weight:inherit;
 color:#322700;
+text-align:left;
 }
 .recentproductlabel{
 background:none;
