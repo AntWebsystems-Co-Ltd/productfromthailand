@@ -40,7 +40,6 @@ margin:0;
 outline:0; 
 padding:0;
 font-size: 100%; 
-vertical-align: baseline;
 }
 
 table {border-collapse: collapse; border-spacing: 0;}
@@ -1387,7 +1386,7 @@ background:#555;
 border:1px solid #555;
 }
 
-tbody th, tbody td {border-top:1px solid #bbb;}
+/*tbody th, tbody td {border-top:1px solid #bbb;}*/
 tbody tr.odd th, tbody tr.odd td {background:#fff;}
 
 

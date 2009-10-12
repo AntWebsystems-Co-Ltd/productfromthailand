@@ -270,9 +270,9 @@ ${virtualJavaScript?if_exists}
 
 <table border="0" cellpadding="2" cellspacing="0" width="98%">
   <#-- Category next/previous -->
-  <#if category?exists>
+  <#--if category?exists>
     <tr>
-      <td colspan="2" align="right">
+      <td colspan="3" align="right" style="text-align:right;">
         <#if previousProductId?exists>
           <a href="<@ofbizUrl>product/~category_id=${categoryId?if_exists}/~product_id=${previousProductId?if_exists}</@ofbizUrl>" class="buttontext">${uiLabelMap.CommonPrevious}</a>&nbsp;|&nbsp;
         </#if>
@@ -282,9 +282,9 @@ ${virtualJavaScript?if_exists}
         </#if>
       </td>
     </tr>
-  </#if>
+  </#if-->
 
-  <tr><td colspan="2"><hr /></td></tr>
+  <#--tr><td colspan="2"><hr /></td></tr-->
 
   <#-- Product image/name/price -->
   <tr>
@@ -517,7 +517,7 @@ ${virtualJavaScript?if_exists}
             </#if>
           </#if>
         </#if>
-      </td></tr><tr><td colspan="2" align="right" style="text-align:right;">
+      </td></tr><tr><td  align="right" style="text-align:right;">
         <#-- check to see if introductionDate hasnt passed yet -->
         <#if product.introductionDate?exists && nowTimestamp.before(product.introductionDate)>
         <p>&nbsp;</p>
@@ -722,7 +722,7 @@ ${virtualJavaScript?if_exists}
         ${setRequestAttribute("targetRequestName", targetRequestName)}
       </#if>
           ${screens.render(productsummaryScreen)}
-      <#local listIndex = listIndex + 1 />
+      <#local listIndex = listIndex + 1 /><br class="bothclear"/>
     </#list>
     </div>
 

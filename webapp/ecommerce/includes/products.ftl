@@ -19,6 +19,11 @@ under the License.
 <div id="contentbox" class="screenlet">
      <h1>${uiLabelMap.PFTProducts} </h1>
     <div class="screenlet-body">
-        <p>Products</p>
+       <#if requestAttributes.productCategoryId?has_content>
+  ${screens.render("component://productfromthailand/widget/CatalogScreens.xml#category-include")}
+<#else>
+  <center><h2>${uiLabelMap.EcommerceNoPROMOTIONCategory}</h2></center>
+</#if>
+
     </div>
 </div>

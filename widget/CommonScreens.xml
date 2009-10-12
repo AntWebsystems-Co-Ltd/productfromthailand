@@ -433,6 +433,8 @@ under the License.
                 <set field="headerItem" value="products"/>
                 <set field="MainColumnStyle" value="leftonly"/>
                 <set field="rightbarScreenName" value="leftbar"/>
+                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/Main.groovy"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/Category.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">

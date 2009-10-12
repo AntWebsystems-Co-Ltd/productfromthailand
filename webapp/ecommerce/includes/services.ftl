@@ -19,7 +19,7 @@ under the License.
 <div id="contentbox" class="screenlet">
      <h1>${uiLabelMap.PFTServices} </h1>
     <div class="screenlet-body">
-        <p>For a company who wants to sell your products. This site allow you to sale your products and manage your catalog see all existing purchase from your customer.
+        <p>For a company who wants to sell your products. This site allow you to sell your products, manage your catalog and you will see all existing purchase from your customer.
          You can only upload your products with existing excel file format or create your products manually by using the system.
          and the system will do the rest for you.<br/><br/><a href="<@ofbizUrl>newcustomer</@ofbizUrl>">${uiLabelMap.PFTClickToRegister}.</a></p><br/><br/>
          <p>The customer can not find the products you want please fill in the request form below.</p>
