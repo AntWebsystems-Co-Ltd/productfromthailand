@@ -268,7 +268,7 @@ ${virtualJavaScript?if_exists}
 <#assign productAdditionalImage3 = productContentWrapper.get("ADDITIONAL_IMAGE_3")?if_exists />
 <#assign productAdditionalImage4 = productContentWrapper.get("ADDITIONAL_IMAGE_4")?if_exists />
 
-<table border="0" cellpadding="2" cellspacing="0" width="100%">
+<table border="0" cellpadding="2" cellspacing="0" width="98%">
   <#-- Category next/previous -->
   <#if category?exists>
     <tr>
@@ -288,7 +288,7 @@ ${virtualJavaScript?if_exists}
 
   <#-- Product image/name/price -->
   <tr>
-    <td valign="top" width="0">
+    <td valign="top" width="300px" style="max-height:150px;max-width:300px;text-align:center;">
       <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL")?if_exists />
       <#-- remove the next two lines to always display the virtual image first (virtual images must exist) -->
       <#if firstLargeImage?has_content>
@@ -302,8 +302,8 @@ ${virtualJavaScript?if_exists}
         <img id="detailImage" src="/images/defaultImage.jpg" name="mainImage" />
       </#if>
     </td>
-    
-    <td >
+    <#if productAdditionalImage1?string?has_content || productAdditionalImage2?string?has_content || productAdditionalImage3?string?has_content || productAdditionalImage4?string?has_content>
+    <td style="vertical-align:top;>
       <#if productAdditionalImage1?string?has_content>
         <div class="additionalImage">
           <a href="javascript:void(0);" swapDetail="<@ofbizContentUrl>${productAdditionalImage1}</@ofbizContentUrl>"><img src="<@ofbizContentUrl>${productAdditionalImage1}</@ofbizContentUrl>" vspace="5" hspace="5" border="0" width="75" /></a>
@@ -325,8 +325,8 @@ ${virtualJavaScript?if_exists}
         </div>
         </#if>
     </td>
-    
-    <td align="left" style="padding:0 0px 0 5px;" valign="top">
+    </#if>
+    <td align="left" style="vertical-align:text-top;padding-top:10px;">
       <h2>${productContentWrapper.get("PRODUCT_NAME")?if_exists}</h2>
       <div>${productContentWrapper.get("DESCRIPTION")?if_exists}</div>
       <div>${product.productId?if_exists}</div>
