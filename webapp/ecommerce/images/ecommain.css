@@ -292,8 +292,9 @@ font-size:1.6em;
 font-weight:bold;
 padding:10px 0 5px 5px;
 }
-.title h3{
+.title h3 {
 color:#443434;
+font-weight:inherit;
 font-size:1.3em;
 padding:0 0 10px 5px;
 }

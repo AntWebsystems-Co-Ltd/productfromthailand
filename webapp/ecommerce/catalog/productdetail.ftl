@@ -287,8 +287,8 @@ ${virtualJavaScript?if_exists}
   <#--tr><td colspan="2"><hr /></td></tr-->
 
   <#-- Product image/name/price -->
-  <tr>
-    <td valign="top" width="300px" style="max-height:150px;max-width:300px;text-align:center;">
+  <tr >
+    <td valign="top" style="max-height:150px;max-width:320px;text-align:center;width:40%">
       <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL")?if_exists />
       <#-- remove the next two lines to always display the virtual image first (virtual images must exist) -->
       <#if firstLargeImage?has_content>
@@ -576,7 +576,7 @@ ${virtualJavaScript?if_exists}
           <#else>
               <input type="text" size="5" name="quantity" value="1" />
               <input type="hidden" name="reservStartStr" value= "" />
-          </#if>
+          </#if><br/><br/>
           <a href="javascript:addShoplistSubmit();" class="buttontext">${uiLabelMap.OrderAddToShoppingList}</a>
         </form>
       <#else> <br />
