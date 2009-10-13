@@ -93,25 +93,42 @@ under the License.
     <Product productId="ThExport-10001" productTypeId="FINISHED_GOOD" internalName="Elephants" productName="Elephants" weight="15.0" weightUomId="WT_kg" 
         productHeight="1200.0" heightUomId="LEN_mm" productWidth="800.0" widthUomId="LEN_mm" productDepth="800.0" depthUomId="LEN_mm" billOfMaterialLevel="0"
         isVirtual="N" isVariant="N" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N" largeImageUrl="/pft/images/products/large/ThExport-10001.jpg" 
-        mediumImageUrl="/pft/images/products/large/ThExport-10001.jpg" smallImageUrl="/pft/images/products/large/ThExport-10001.jpg"/>
-    <Product productId="ThExport-10002" productTypeId="FINISHED_GOOD" internalName="Bamboo in the Sun " productName="Bamboo in the Sun " 
-        smallImageUrl="/pft/images/products/large/ThExport-10002.jpg" mediumImageUrl="/pft/images/products/large/ThExport-10002.jpg" 
+        mediumImageUrl="/pft/images/products/medium/ThExport-10001.jpg" smallImageUrl="/pft/images/products/small/ThExport-10001.jpg"/>
+    <Product productId="ThExport-10002" productTypeId="FINISHED_GOOD" internalName="Bamboo in the Sun" productName="Bamboo in the Sun" 
+        smallImageUrl="/pft/images/products/small/ThExport-10002.jpg" mediumImageUrl="/pft/images/products/medium/ThExport-10002.jpg" 
         largeImageUrl="/pft/images/products/large/ThExport-10002.jpg" 
         weight="300.0" weightUomId="WT_g" productHeight="280.0" heightUomId="LEN_mm" productWidth="128.0" widthUomId="LEN_mm" productDepth="128.0" depthUomId="LEN_mm" 
         isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
     <Product productId="ThExport-10003" productTypeId="FINISHED_GOOD" internalName="Bamboo Lamp" productName="Bamboo Lamp" 
-        smallImageUrl="/pft/images/products/large/ThExport-10003.jpg" mediumImageUrl="/pft/images/products/large/ThExport-10003.jpg" 
+        smallImageUrl="/pft/images/products/small/ThExport-10003.jpg" mediumImageUrl="/pft/images/products/medium/ThExport-10003.jpg" 
         largeImageUrl="/pft/images/products/large/ThExport-10003.jpg" 
         weight="5.0" weightUomId="WT_kg" productHeight="210.0" heightUomId="LEN_mm" productWidth="1200.0" widthUomId="LEN_mm" productDepth="1200.0" depthUomId="LEN_mm" 
+        isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
+    <Product productId="ThExport-10004" productTypeId="FINISHED_GOOD" internalName="Thai Royal Barge" productName="Thai Royal Barge" 
+        smallImageUrl="/pft/images/products/small/ThExport-10004.jpg" mediumImageUrl="/pft/images/products/small/ThExport-10004.jpg" 
+        largeImageUrl="/pft/images/products/small/ThExport-10004.jpg" 
+        weight="500.0" weightUomId="WT_g" productHeight="30.0" heightUomId="LEN_mm" productWidth="280.0" widthUomId="LEN_mm" productDepth="200.0" depthUomId="LEN_mm" 
         isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
     <ProductCategoryMember productCategoryId="FURNITURE" productId="ThExport-10001" sequenceNum="1" fromDate="2009-09-25 00:00:00.000"/>
     <ProductCategoryMember productCategoryId="FURNITURE" productId="ThExport-10002" sequenceNum="2" fromDate="2009-09-25 00:00:00.000"/>
     <ProductCategoryMember productCategoryId="FURNITURE" productId="ThExport-10003" sequenceNum="3" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductCategoryMember productCategoryId="CRAFTANDGIFT" productId="ThExport-10004" sequenceNum="4" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductCategoryMember productCategoryId="PFTPROMOTION" productId="ThExport-10004" fromDate="2009-09-25 00:00:00.000"/>
     <ProductPrice productId="ThExport-10001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="427" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
     <ProductPrice productId="ThExport-10002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="5" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
     <ProductPrice productId="ThExport-10003" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="31" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
+    <ProductPrice productId="ThExport-10004" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="77" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
     <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="USD" productId="ThExport-10001" lastPrice="384.3" supplierProductId="HDC-001" supplierProductName="Thai Handicraft Exports-Elephants" availableFromDate="2009-09-25 00:00:00.000"/>
-    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="USD" productId="ThExport-10002" lastPrice="4.5" supplierProductId="HDC-002" supplierProductName="Thai Handicraft Exports-" availableFromDate="2009-09-25 00:00:00.000"/>
-    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="USD" productId="ThExport-10003" lastPrice="27.9" supplierProductId="HDC-003" supplierProductName="Thai Handicraft Exports-" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="USD" productId="ThExport-10002" lastPrice="4.5" supplierProductId="HDC-002" supplierProductName="Thai Handicraft Exports-Bamboo in the Sun" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="USD" productId="ThExport-10003" lastPrice="27.9" supplierProductId="HDC-003" supplierProductName="Thai Handicraft Exports-Bamboo Lamp" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="USD" productId="ThExport-10004" lastPrice="69.3" supplierProductId="HDC-004" supplierProductName="Thai Handicraft Exports-Thai Royal Barge" availableFromDate="2009-09-25 00:00:00.000"/>
+    
+    <Product productId="BALGANISH" productTypeId="FINISHED_GOOD" primaryProductCategoryId="PFTPROMOTION" internalName="Bal Ganish" productName="Bal Ganish " 
+        description="The bal ganish is made of resin with teak wood frame." smallImageUrl="/pft/images/products/large/BALGANISH.jpg" 
+        mediumImageUrl="/pft/images/products/large/BALGANISH.jpg" largeImageUrl="/pft/images/products/large/BALGANISH.jpg" originalImageUrl="/pft/images/products/large/BALGANISH.jpg" 
+        quantityUomId="USD" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin" inShippingBox="N"/>
+    <ProductPrice productId="BALGANISH" productPriceTypeId="DEFAULT_PRICE" productPricePurposeId="PURCHASE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="10.000" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="admin"/>
+    <ProductCategoryMember productCategoryId="CRAFTANDGIFT" productId="BALGANISH" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductCategoryMember productCategoryId="PFTPROMOTION" productId="BALGANISH" fromDate="2009-09-25 00:00:00.000"/>
     
 </entity-engine-xml>
