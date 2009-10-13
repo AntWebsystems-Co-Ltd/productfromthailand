@@ -51,7 +51,7 @@ under the License.
                 <script location="component://ecommerce/widget/EcommerceSetup.groovy"/>
                 
                 <!-- Get the store VisualTheme -->
-                <set field="visualThemeId" from-field="productStore.visualThemeId" default-value="ECC_DEFAULT"/>
+                <set field="visualThemeId" from-field="productStore.visualThemeId" default-value="EC_PFT"/>
                 <service service-name="getVisualThemeResources">
                     <field-map field-name="visualThemeId"/>
                     <field-map field-name="themeResources" from-field="layoutSettings"/>
