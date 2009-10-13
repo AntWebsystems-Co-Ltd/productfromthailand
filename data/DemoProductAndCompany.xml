@@ -59,7 +59,7 @@
     <FacilityContactMech facilityId="pftWarehouse" contactMechId="pftFacilityAddr" fromDate="2009-09-25 10:37:46.351"/>
     <FacilityContactMechPurpose facilityId="pftWarehouse" contactMechId="pftFacilityAddr" contactMechPurposeTypeId="SHIP_ORIG_LOCATION" fromDate="2009-09-25 10:37:46.428"/>
     <FacilityContactMechPurpose facilityId="pftWarehouse" contactMechId="pftFacilityAddr" contactMechPurposeTypeId="SHIPPING_LOCATION" fromDate="2009-09-25 10:37:46.414"/>-->
-    
+
     <!-- General Ledger Setup for the Product from Thailand company -->
     <GlAccountOrganization glAccountId="900000" organizationPartyId="pft" fromDate="2009-09-25 00:00:00.000"/>
     <GlAccountOrganization glAccountId="810000" organizationPartyId="pft" fromDate="2009-09-25 00:00:00.000"/>
@@ -208,7 +208,7 @@
         itemDeclinedStatus="ITEM_REJECTED" headerCancelStatus="ORDER_CANCELLED" itemCancelStatus="ITEM_CANCELLED" 
         authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or call customer service." 
         authFraudMessage="Your order has been rejected and your account has been disabled due to fraud." 
-        authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email." visualThemeId="ECC_DEFAULT" 
+        authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email." visualThemeId="EC_PFT" 
         storeCreditAccountEnumId="FIN_ACCOUNT" usePrimaryEmailUsername="N" requireCustomerRole="N" autoInvoiceDigitalItems="Y" reqShipAddrForDigItems="Y" 
         showCheckoutGiftOptions="Y" selectPaymentTypePerItem="N" showPricesWithVatTax="N" showTaxIsExempt="Y" enableDigProdUpload="N" prodSearchExcludeVariants="Y" 
         autoOrderCcTryExp="Y" autoOrderCcTryOtherCards="Y" autoOrderCcTryLaterNsf="Y" storeCreditValidDays="90" autoApproveInvoice="Y" autoApproveOrder="Y" 
