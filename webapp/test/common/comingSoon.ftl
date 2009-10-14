@@ -91,7 +91,7 @@
     </div>
     <div class="footer">
         ${uiLabelMap.PartyPhoneNumber}: +66-53-483245, ${uiLabelMap.PartyFaxNumber} : +66-53-483246, ${uiLabelMap.PartyEmailAddress}:<a href="mailto:info@productfromthailand.com">info@productfromthailand.com</a></span></p>
-        <br/><a href="http://www.antwebsystems.com">${uiLabelMap.PFTCompanyName}</a> ${uiLabelMap.PFTCompanyAddress}
+        <br/>${uiLabelMap.PFTCompanyAddress}
     </div>
     
     

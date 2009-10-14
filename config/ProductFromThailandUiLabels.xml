@@ -53,7 +53,7 @@
     </property>
     <property key="PFTYourEmail">
         <value xml:lang="en">Your E-mail</value>
-        <value xml:lang="th">อีเมล์ของคุณ</value>
+        <value xml:lang="th">อีเมล์</value>
     </property>
     <property key="PFTProductCategories">
         <value xml:lang="en">Product Categories</value>
@@ -105,7 +105,7 @@
     </property>
     <property key="PFTFax">
         <value xml:lang="en">Fax</value>
-        <value xml:lang="th">หมายเลขแฟกซ์</value>
+        <value xml:lang="th">แฟกซ์</value>
     </property>
     <property key="PFTSearchYourProducts">
         <value xml:lang="en">Search Your Products</value>
@@ -129,7 +129,7 @@
     </property>
     <property key="PFTUnderConstruction">
         <value xml:lang="en">This page is under construction</value>
-        <value xml:lang="th">อระหว่างการปรับปรุงแก้ไข</value>
+        <value xml:lang="th">หน้านี้อยู่ระหว่างการปรับปรุงแก้ไข</value>
     </property>
     <property key="PFTClickToRegister">
         <value xml:lang="en">Click here to Register</value>

@@ -52,12 +52,25 @@ under the License.
                 </#if>
             </#list>
             <#if locale.toString() == "en_US">
-                <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
+                <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img  src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
             </#if>
         </div>
+        <div style="height:35px;padding-top:5px;">
+           <#assign shoppingCart = sessionAttributes.shoppingCart?if_exists>
+           <#if shoppingCart?has_content>
+                <#assign shoppingCartSize = shoppingCart.size()>
+                <#else>
+                <#assign shoppingCartSize = 0>
+           </#if>
+          <#if (shoppingCartSize > 0)>
+               <#if shoppingCart?has_content && (shoppingCart.getGrandTotal() > 0)>
+                 <a href="<@ofbizUrl>setPayPalCheckout</@ofbizUrl>"><img style="height:35px;" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" alt="[PayPal Express Checkout]" /></a>
+               </#if>
+          </#if>
+       </div>
         <div>
             <ul id="right-links">
-                <li id="header-bar-sitemap"><a href="<@ofbizUrl>sitemap</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSitemap}</div></a></li>
+                <#--li id="header-bar-sitemap"><a href="<@ofbizUrl>sitemap</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSitemap}</div></a></li-->
                 <li id="header-bar-help"><a href="<@ofbizUrl>main</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTHelpAndInstruction}</div></a></li>
               <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
                 <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><div class="menu-right">${uiLabelMap.CommonLogout}</div></a></li>
@@ -93,7 +106,16 @@ under the License.
               <li class="headermenu" <#if headerId?if_exists == "contactus">id="${headerId}"</#if> ><a href="<@ofbizUrl>contactus</@ofbizUrl>">${uiLabelMap.PFTContact}</a></li>
             </ul>
             <ul id="left-links">
-                <li class="headermenu" <#if headerId?if_exists == "showcart">id="${headerId}"</#if> ><a href="<@ofbizUrl>view/showcart</@ofbizUrl>">${uiLabelMap.OrderViewCart}</a></li>
+                <li class="headermenu" <#if headerId?if_exists == "showcart">id="${headerId}"</#if> >
+                <a href="<@ofbizUrl>view/showcart</@ofbizUrl>">${uiLabelMap.OrderViewCart}
+                 <#if (shoppingCartSize > 0)>
+                       <span style="font-size:0.7em"> (${shoppingCart.getTotalQuantity()} : 
+                        <#if shoppingCart.getTotalQuantity() == 1>${uiLabelMap.OrderItem}<#else/>${uiLabelMap.OrderItems}</#if>,
+                        <@ofbizCurrency amount=shoppingCart.getGrandTotal() isoCode=shoppingCart.getCurrency()/>
+                        )</span>
+                 </#if>
+                </a>
+                </li>
             </ul>
      </div>
      <div id="searchbar">

@@ -37,26 +37,27 @@ under the License.
         &nbsp;&nbsp;
     </div>
     <div>
-    	<table  align="right">
-    		<tbody>
-    			<tr>
-    				<td width="500" align="right">
-    					<a href="<@ofbizUrl>view/showcart</@ofbizUrl>">[${uiLabelMap.OrderViewCart}]</a>
-    					<#if (shoppingCartSize > 0)>
-				          <span id="quickCheckoutEnabled"><a href="<@ofbizUrl>quickcheckout</@ofbizUrl>">[${uiLabelMap.OrderCheckoutQuick}]</a></span>
-				          <span id="quickCheckoutDisabled" style="display:none" class="disabled">[${uiLabelMap.OrderCheckoutQuick}]</span>
-				          <span id="onePageCheckoutEnabled"><a href="<@ofbizUrl>onePageCheckout</@ofbizUrl>">[${uiLabelMap.EcommerceOnePageCheckout}]</a></span>
-				          <span id="onePageCheckoutDisabled" style="display:none" class="disabled">[${uiLabelMap.EcommerceOnePageCheckout}]</span>
-				        <#else>
-				          <span class="disabled">[${uiLabelMap.OrderCheckoutQuick}]</span>
-				          <span class="disabled">[${uiLabelMap.EcommerceOnePageCheckout}]</span>
-				        </#if>
+        <table  align="right">
+            <tbody>
+                <tr>
+                   <td width="500" align="right">
+                        <a href="<@ofbizUrl>view/showcart</@ofbizUrl>">[${uiLabelMap.OrderViewCart}]</a>
+                          <#if (shoppingCartSize > 0)>
+                          <span id="quickCheckoutEnabled"><a href="<@ofbizUrl>quickcheckout</@ofbizUrl>">[${uiLabelMap.OrderCheckoutQuick}]</a></span>
+                          <span id="quickCheckoutDisabled" style="display:none" class="disabled">[${uiLabelMap.OrderCheckoutQuick}]</span>
+                          <span id="onePageCheckoutEnabled"><a href="<@ofbizUrl>onePageCheckout</@ofbizUrl>">[${uiLabelMap.EcommerceOnePageCheckout}]</a></span>
+                          <span id="onePageCheckoutDisabled" style="display:none" class="disabled">[${uiLabelMap.EcommerceOnePageCheckout}]</span>
+                          <#if shoppingCart?has_content && (shoppingCart.getGrandTotal() > 0)>
+                             <li id="microCartPayPalCheckout"><a href="<@ofbizUrl>setPayPalCheckout</@ofbizUrl>"><img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" alt="[PayPal Express Checkout]" /></a></li>
+                          </#if>
+                        <#else>
+                          <span class="disabled">[${uiLabelMap.OrderCheckoutQuick}]</span>
+                          <span class="disabled">[${uiLabelMap.EcommerceOnePageCheckout}]</span>
+                        </#if>
                         &nbsp;&nbsp;
-    				</td>
-    			</tr>
-    		</tbody>
-    	</table>
-      
-      
+                   </td>
+                </tr>
+            </tbody>
+       </table>
     </div>
 </div>
