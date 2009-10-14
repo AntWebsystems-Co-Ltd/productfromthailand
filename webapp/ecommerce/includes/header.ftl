@@ -62,11 +62,11 @@ under the License.
                 <#else>
                 <#assign shoppingCartSize = 0>
            </#if>
-          <#if (shoppingCartSize > 0)>
+          <#--if (shoppingCartSize > 0)>
                <#if shoppingCart?has_content && (shoppingCart.getGrandTotal() > 0)>
                  <a href="<@ofbizUrl>setPayPalCheckout</@ofbizUrl>"><img style="height:35px;" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" alt="[PayPal Express Checkout]" /></a>
                </#if>
-          </#if>
+          </#if-->
        </div>
         <div>
             <ul id="right-links">

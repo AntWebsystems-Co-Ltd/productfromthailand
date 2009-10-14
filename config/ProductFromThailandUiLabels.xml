@@ -53,6 +53,10 @@
     </property>
     <property key="PFTYourEmail">
         <value xml:lang="en">Your E-mail</value>
+        <value xml:lang="th">อีเมล์ ของคุณ</value>
+    </property>
+    <property key="PFTEmail">
+        <value xml:lang="en">E-mail</value>
         <value xml:lang="th">อีเมล์</value>
     </property>
     <property key="PFTProductCategories">
@@ -101,11 +105,11 @@
     </property>
     <property key="PFTTel">
         <value xml:lang="en">Tel</value>
-        <value xml:lang="th">เบอร์โทรศัพท์</value>
+        <value xml:lang="th">โทรศัพท์</value>
     </property>
     <property key="PFTFax">
         <value xml:lang="en">Fax</value>
-        <value xml:lang="th">แฟกซ์</value>
+        <value xml:lang="th">โทรสาร</value>
     </property>
     <property key="PFTSearchYourProducts">
         <value xml:lang="en">Search Your Products</value>

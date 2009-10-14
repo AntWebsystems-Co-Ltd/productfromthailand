@@ -90,7 +90,7 @@
     </form><br>
     </div>
     <div class="footer">
-        ${uiLabelMap.PartyPhoneNumber}: +66-53-483245, ${uiLabelMap.PartyFaxNumber} : +66-53-483246, ${uiLabelMap.PartyEmailAddress}:<a href="mailto:info@productfromthailand.com">info@productfromthailand.com</a></span></p>
+        ${uiLabelMap.PFTTel}: +66-53-483245, ${uiLabelMap.PFTFax} : +66-53-483246, ${uiLabelMap.PFTEmail}:<a href="mailto:info@productfromthailand.com">info@productfromthailand.com</a></span></p>
         <br/>${uiLabelMap.PFTCompanyAddress}
     </div>
     
