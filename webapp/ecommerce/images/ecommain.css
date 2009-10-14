@@ -1239,7 +1239,7 @@ list-style-position:inside;
 padding: 10px 0px 0px 0px;
 }
 
-#sitemaptopic{
+#sitemaptopic, #helptext{
 margin-top:10px;
 }
 
@@ -1446,4 +1446,22 @@ width:700px;
 float:right;
 width:720px;
 padding-right:10px;
+}
+
+.head2 {
+font-size:1.3em;
+font-weight:700;
+margin-bottom:10px;
+}
+
+.browsehelplist {
+margin-left:10px;
+}
+
+.browsehelptext {
+background:url(/images/bg_bullet_full_2.gif) no-repeat 0 .5em;
+color:#1C334D;
+font-weight:700;
+padding-left:10px;
+text-align:left;
 }

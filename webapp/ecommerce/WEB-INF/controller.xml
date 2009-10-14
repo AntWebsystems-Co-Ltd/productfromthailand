@@ -46,12 +46,21 @@ under the License.
         <security https="true" auth="true"/>
         <response name="success" type="view" value="services"/>
     </request-map>
+    <request-map uri="help">
+        <security https="false" auth="false"/>
+        <response name="success" type="view" value="help"/>
+    </request-map>
     
     <request-map uri="createrequest">
         <security https="true" auth="true"/>
         <event type="service" invoke="createCustRequest"/>
         <response name="success" type="view" value="services"/>
         <response name="error" type="view" value="services"/>
+    </request-map>
+    
+    <request-map uri="showhelpcontent">
+        <security https="true" auth="false"/>
+        <response name="success" type="view" value="showhelpcontent"/>
     </request-map>
     
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
@@ -69,6 +78,7 @@ under the License.
     <view-map name="sitemap" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#sitemap"/>
     <view-map name="products" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#products"/>
     <view-map name="services" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#services"/>
+    <view-map name="help" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#help"/>
     
     <view-map name="keywordsearch" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#keywordsearch"/>
     <!-- Cart Views -->
@@ -86,4 +96,8 @@ under the License.
     
     <!-- Request Views -->
     <view-map name="ViewRequest" type="screen" page="component://productfromthailand/widget/CustRequestScreens.xml#ViewRequest"/>
+    <!-- Content Views -->
+    <view-map name="showhelpcontent" type="screen" page="component://productfromthailand/widget/ContentScreens.xml#showhelpcontent"/>
+    <view-map name="Showforum" type="screen" page="component://productfromthailand/widget/ContentScreens.xml#Showforum"/>
+    <view-map name="MainBlog" type="screen" page="component://productfromthailand/widget/ContentScreens.xml#MainBlog"/>
 </site-conf>

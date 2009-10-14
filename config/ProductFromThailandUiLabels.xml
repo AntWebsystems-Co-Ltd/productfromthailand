@@ -139,4 +139,8 @@
         <value xml:lang="en">Click here to Register</value>
         <value xml:lang="th">สมัครสมาชิกใหม่ คลิกที่นี่</value>
     </property>
+    <property key="PFTBrowseHelp">
+        <value xml:lang="en">Browse Help</value>
+        <value xml:lang="th">ดูตามหัวข้อ</value>
+    </property>
 </resource>

@@ -36,7 +36,7 @@ under the License.
     <div id="right">
         <div id="welcome-message">
             <#if sessionAttributes.autoName?has_content>
-            ${uiLabelMap.CommonWelcome}&nbsp;${sessionAttributes.autoName?html}!
+            ${uiLabelMap.CommonWelcome}&nbsp;<a href="<@ofbizUrl>viewprofile</@ofbizUrl>">${sessionAttributes.autoName?html}</a>!
             (${uiLabelMap.CommonNotYou}?&nbsp;<a href="<@ofbizUrl>autoLogout</@ofbizUrl>" class="linktext">${uiLabelMap.CommonClickHere}</a>)
             <#else/>
             ${uiLabelMap.CommonWelcome}!
@@ -71,7 +71,7 @@ under the License.
         <div>
             <ul id="right-links">
                 <#--li id="header-bar-sitemap"><a href="<@ofbizUrl>sitemap</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSitemap}</div></a></li-->
-                <li id="header-bar-help"><a href="<@ofbizUrl>main</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTHelpAndInstruction}</div></a></li>
+                <li id="header-bar-help"><a href="<@ofbizUrl>help</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTHelpAndInstruction}</div></a></li>
               <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
                 <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><div class="menu-right">${uiLabelMap.CommonLogout}</div></a></li>
               <#else/>
