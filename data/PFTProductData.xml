@@ -22,32 +22,32 @@ under the License.
     <!-- The Initial Product & Supplier -->
     <!-- Start with ProdCatalog -->
     <ProdCatalog prodCatalogId="PFTCatalog" catalogName="Product From Thailand Catalog" useQuickAdd="Y"/>
-    <ProductStoreCatalog productStoreId="PFTSTORE" prodCatalogId="PFTCatalog" fromDate="2009-09-25 00:00:00.000" sequenceNum="1"/>
+    <!--<ProductStoreCatalog productStoreId="PFTSTORE" prodCatalogId="PFTCatalog" fromDate="2009-09-25 00:00:00.000" sequenceNum="1"/>-->
     
     <!-- Paypal Payment Setting -->
     <PaymentGatewayPayPal paymentGatewayConfigId="PAYPAL_CONFIG" businessEmail="admin@productfromthailand.com" notifyUrl="http://www.productfromthailand.com/pft/control/payPalNotify" returnUrl="http://www.productfromthailand.com/pft/control/orderhistory" cancelReturnUrl="http://www.productfromthailand.com/pft/control/payPalCancel/main" imageUrl="http://www.productfromthailand.com/pft/images/logo.gif" confirmTemplate="/order/sendconfirmationemail.ftl" redirectUrl="https://www.paypal.com/cgi-bin/webscr" confirmUrl="http://www.paypal.com/cgi-bin/webscr" requireConfirmedShipping="N"/>
-    <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_AUTH" paymentService="" paymentCustomMethodId="PAYPAL_AUTH" paymentGatewayConfigId="PAYPAL_CONFIG"/>
+    <!--<ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_AUTH" paymentService="" paymentCustomMethodId="PAYPAL_AUTH" paymentGatewayConfigId="PAYPAL_CONFIG"/>-->
     
     <ProductCategory longDescription="Product From Thailand Catalog Browse Root Category"
         productCategoryId="PFT_ROOT" productCategoryTypeId="CATALOG_CATEGORY"/>
     <ProductCategory productCategoryId="PFTPROMOTION" productCategoryTypeId="CATALOG_CATEGORY" categoryName="Special Products" 
         detailScreen="component://ecommerce/widget/CatalogScreens.xml#categorydetailmatrix"/>
-    <ProductCategory description="Agricultural &amp; Forestry" primaryParentCategoryId="PFT_ROOT" productCategoryId="AGRICULTURAL" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Automobiles &amp; Auto Parts" primaryParentCategoryId="PFT_ROOT" productCategoryId="AUTOMOBILE" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Bag" primaryParentCategoryId="PFT_ROOT" productCategoryId="BAG" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Chemical Products" primaryParentCategoryId="PFT_ROOT" productCategoryId="CHEMICAL" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Clothing" primaryParentCategoryId="PFT_ROOT" productCategoryId="CLOTHING" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Computers &amp; Software" primaryParentCategoryId="PFT_ROOT" productCategoryId="SOFTWARE" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Construction" primaryParentCategoryId="PFT_ROOT" productCategoryId="CONSTRUCTION" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Craft &amp; Gift" primaryParentCategoryId="PFT_ROOT" productCategoryId="CRAFTANDGIFT" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Electrical Supplies" primaryParentCategoryId="PFT_ROOT" productCategoryId="ELECTRICAL" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Energy &amp; Petroleum" primaryParentCategoryId="PFT_ROOT" productCategoryId="ENERGY" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Environmental Protection" primaryParentCategoryId="PFT_ROOT" productCategoryId="ENV-PROTECTION" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Food &amp; Beverages" primaryParentCategoryId="PFT_ROOT" productCategoryId="BEVERAGE" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Footwear" primaryParentCategoryId="PFT_ROOT" productCategoryId="FOOTWEAR" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Furniture &amp; Decoration" primaryParentCategoryId="PFT_ROOT" productCategoryId="FURNITURE" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Health &amp; Medical Products" primaryParentCategoryId="PFT_ROOT" productCategoryId="HEALTH" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Household Applicances" primaryParentCategoryId="PFT_ROOT" productCategoryId="HOUSEHOLD" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="AGRICULTURAL" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="AUTOMOBILE" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="BAG" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="CHEMICAL" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="CLOTHING" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="SOFTWARE" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="CONSTRUCTION" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="CRAFTANDGIFT" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="ELECTRICAL" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="ENERGY" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="ENV-PROTECTION" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="BEVERAGE" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="FOOTWEAR" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="FURNITURE" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="HEALTH" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="HOUSEHOLD" productCategoryTypeId="CATALOG_CATEGORY"/>
     
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="AGRICULTURAL" sequenceNum="1"/>
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="AUTOMOBILE" sequenceNum="2"/>
@@ -134,5 +134,212 @@ under the License.
     <ProductPrice productId="BALGANISH" productPriceTypeId="DEFAULT_PRICE" productPricePurposeId="PURCHASE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="10.000" createdDate="2009-09-25 00:00:00.000"/>
     <ProductCategoryMember productCategoryId="CRAFTANDGIFT" productId="BALGANISH" fromDate="2009-09-25 00:00:00.000"/>
     <ProductCategoryMember productCategoryId="PFTPROMOTION" productId="BALGANISH" fromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Agricultural & Forestry category -->
+    <DataResource dataResourceId="AGRICULTURALDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="AGRICULTURALDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    
+    <ElectronicText dataResourceId="AGRICULTURALDESCTH" textData="สินค้าเกษตร"/>
+    <ElectronicText dataResourceId="AGRICULTURALDESCEN" textData="Agricultural &amp; Forestry"/>
+    
+    <Content contentId="AGRICULTURALDESCTH" contentTypeId="DOCUMENT" dataResourceId="AGRICULTURALDESCTH" description="DESCRIPTION TH Agricultural &amp; Forestry" localeString="th"/>
+    <Content contentId="AGRICULTURALDESCEN" contentTypeId="DOCUMENT" dataResourceId="AGRICULTURALDESCEN" description="DESCRIPTION EN Agricultural &amp; Forestry" localeString="en"/>
+    
+    <ProductCategoryContent productCategoryId="AGRICULTURAL" contentId="AGRICULTURALDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="AGRICULTURALDESCEN" contentIdTo="AGRICULTURALDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Automobiles & Auto Parts category -->
+    <DataResource dataResourceId="AUTOMOBILEDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="AUTOMOBILEDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    
+    <ElectronicText dataResourceId="AUTOMOBILEDESCTH" textData="รถยนต์และอะไหล่รถยนต์"/>
+    <ElectronicText dataResourceId="AUTOMOBILEDESCEN" textData="Automobiles &amp; Auto Parts"/>
+    
+    <Content contentId="AUTOMOBILEDESCTH" contentTypeId="DOCUMENT" dataResourceId="AUTOMOBILEDESCTH" description="DESCRIPTION TH Automobiles &amp; Auto Parts" localeString="th"/>
+    <Content contentId="AUTOMOBILEDESCEN" contentTypeId="DOCUMENT" dataResourceId="AUTOMOBILEDESCEN" description="DESCRIPTION EN Automobiles &amp; Auto Parts" localeString="en"/>
+    
+    <ProductCategoryContent productCategoryId="AGRICULTURAL" contentId="AGRICULTURALDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="AGRICULTURALDESCEN" contentIdTo="AGRICULTURALDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Bag category -->
+    <DataResource dataResourceId="BAGDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="BAGDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    
+    <ElectronicText dataResourceId="BAGDESCTH" textData="กระเป๋า"/>
+    <ElectronicText dataResourceId="BAGDESCEN" textData="Bag"/>
+    
+    <Content contentId="BAGDESCTH" contentTypeId="DOCUMENT" dataResourceId="BAGDESCTH" description="DESCRIPTION TH Bag" localeString="th"/>
+    <Content contentId="BAGDESCEN" contentTypeId="DOCUMENT" dataResourceId="BAGDESCEN" description="DESCRIPTION EN Bag" localeString="en"/>
+    
+    <ProductCategoryContent productCategoryId="BAG" contentId="BAGDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="BAGDESCEN" contentIdTo="BAGDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Chemical Products category -->
+    <DataResource dataResourceId="CHEMICALDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CHEMICALDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    
+    <ElectronicText dataResourceId="CHEMICALDESCTH" textData="ผลิตภัณฑ์เคมี"/>
+    <ElectronicText dataResourceId="CHEMICALDESCEN" textData="Chemical Products"/>
+    
+    <Content contentId="CHEMICALDESCTH" contentTypeId="DOCUMENT" dataResourceId="CHEMICALDESCTH" description="DESCRIPTION TH Chemical Products" localeString="th"/>
+    <Content contentId="CHEMICALDESCEN" contentTypeId="DOCUMENT" dataResourceId="CHEMICALDESCEN" description="DESCRIPTION EN Chemical Products" localeString="en"/>
+    
+    <ProductCategoryContent productCategoryId="CHEMICAL" contentId="CHEMICALDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="CHEMICALDESCEN" contentIdTo="CHEMICALDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Clothing category -->
+    <DataResource dataResourceId="CLOTHINGDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CLOTHINGDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    
+    <ElectronicText dataResourceId="CLOTHINGDESCTH" textData="เสื้อผ้า"/>
+    <ElectronicText dataResourceId="CLOTHINGDESCEN" textData="Clothing"/>
+    
+    <Content contentId="CLOTHINGDESCTH" contentTypeId="DOCUMENT" dataResourceId="CLOTHINGDESCTH" description="DESCRIPTION TH Clothing" localeString="th"/>
+    <Content contentId="CLOTHINGDESCEN" contentTypeId="DOCUMENT" dataResourceId="CLOTHINGDESCEN" description="DESCRIPTION EN Clothing" localeString="en"/>
+    
+    <ProductCategoryContent productCategoryId="CLOTHING" contentId="CLOTHINGDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="CLOTHINGDESCEN" contentIdTo="CLOTHINGDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Computers & Software category -->
+    <DataResource dataResourceId="SOFTWAREDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="SOFTWAREDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    
+    <ElectronicText dataResourceId="SOFTWAREDESCTH" textData="คอมพิวเตอร์และซอฟต์แวร์"/>
+    <ElectronicText dataResourceId="SOFTWAREDESCEN" textData="Computers &amp; Software"/>
+    
+    <Content contentId="SOFTWAREDESCTH" contentTypeId="DOCUMENT" dataResourceId="SOFTWAREDESCTH" description="DESCRIPTION TH Computers &amp; Software" localeString="th"/>
+    <Content contentId="SOFTWAREDESCEN" contentTypeId="DOCUMENT" dataResourceId="SOFTWAREDESCEN" description="DESCRIPTION EN Computers &amp; Software" localeString="en"/>
+    
+    <ProductCategoryContent productCategoryId="SOFTWARE" contentId="SOFTWAREDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="SOFTWAREDESCEN" contentIdTo="SOFTWAREDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Construction category -->
+    <DataResource dataResourceId="CONSTRUCTIONDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CONSTRUCTIONDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    
+    <ElectronicText dataResourceId="CONSTRUCTIONDESCTH" textData="สิ่งปลูกสร้าง"/>
+    <ElectronicText dataResourceId="CONSTRUCTIONDESCEN" textData="Construction"/>
+    
+    <Content contentId="CONSTRUCTIONDESCTH" contentTypeId="DOCUMENT" dataResourceId="CONSTRUCTIONDESCTH" description="DESCRIPTION TH Construction" localeString="th"/>
+    <Content contentId="CONSTRUCTIONDESCEN" contentTypeId="DOCUMENT" dataResourceId="CONSTRUCTIONDESCEN" description="DESCRIPTION EN Construction" localeString="en"/>
+    
+    <ProductCategoryContent productCategoryId="CONSTRUCTION" contentId="CONSTRUCTIONDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="CONSTRUCTIONDESCEN" contentIdTo="CONSTRUCTIONDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Craft & Gift category -->
+    <DataResource dataResourceId="CRAFTDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CRAFTDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    
+    <ElectronicText dataResourceId="CRAFTDESCTH" textData="สินค้าหัตถกรรมและของขวัญ"/>
+    <ElectronicText dataResourceId="CRAFTDESCEN" textData="Craft &amp; Gift"/>
+    
+    <Content contentId="CRAFTDESCTH" contentTypeId="DOCUMENT" dataResourceId="CRAFTDESCTH" description="DESCRIPTION TH Craft &amp; Gift" localeString="th"/>
+    <Content contentId="CRAFTDESCEN" contentTypeId="DOCUMENT" dataResourceId="CRAFTDESCEN" description="DESCRIPTION EN Craft &amp; Gift" localeString="en"/>
+    
+    <ProductCategoryContent productCategoryId="CRAFTANDGIFT" contentId="CRAFTDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="CRAFTDESCEN" contentIdTo="CRAFTDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
 
+    <!-- Electrical Supplies category -->
+    <DataResource dataResourceId="ELECTRICALDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="ELECTRICALDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    
+    <ElectronicText dataResourceId="ELECTRICALDESCTH" textData="อุปกรณ์ไฟฟ้า"/>
+    <ElectronicText dataResourceId="ELECTRICALDESCEN" textData="Electrical Supplies"/>
+    
+    <Content contentId="ELECTRICALDESCTH" contentTypeId="DOCUMENT" dataResourceId="ELECTRICALDESCTH" description="DESCRIPTION TH Electrical Supplies" localeString="th"/>
+    <Content contentId="ELECTRICALDESCEN" contentTypeId="DOCUMENT" dataResourceId="ELECTRICALDESCEN" description="DESCRIPTION EN Electrical Supplies" localeString="en"/>
+    
+    <ProductCategoryContent productCategoryId="ELECTRICAL" contentId="ELECTRICALDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="ELECTRICALDESCEN" contentIdTo="ELECTRICALDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Energy & Petroleum category -->
+    <DataResource dataResourceId="ENERGYDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="ENERGYDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    
+    <ElectronicText dataResourceId="ENERGYDESCTH" textData="พลังงานและปิโตรเลียม"/>
+    <ElectronicText dataResourceId="ENERGYDESCEN" textData="Energy &amp; Petroleum"/>
+    
+    <Content contentId="ENERGYDESCTH" contentTypeId="DOCUMENT" dataResourceId="ENERGYDESCTH" description="DESCRIPTION TH Energy &amp; Petroleum" localeString="th"/>
+    <Content contentId="ENERGYDESCEN" contentTypeId="DOCUMENT" dataResourceId="ENERGYDESCEN" description="DESCRIPTION EN Energy &amp; Petroleum" localeString="en"/>
+    
+    <ProductCategoryContent productCategoryId="ENERGY" contentId="ENERGYDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="ENERGYDESCEN" contentIdTo="ENERGYDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Environmental Protection category -->
+    <DataResource dataResourceId="ENVPROTDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="ENVPROTDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    
+    <ElectronicText dataResourceId="ENVPROTDESCTH" textData="ผลิตภัณฑ์คุ้มครองสิ่งแวดล้อม"/>
+    <ElectronicText dataResourceId="ENVPROTDESCEN" textData="Environmental Protection"/>
+    
+    <Content contentId="ENVPROTDESCTH" contentTypeId="DOCUMENT" dataResourceId="ENVPROTDESCTH" description="DESCRIPTION TH Environmental Protection" localeString="th"/>
+    <Content contentId="ENVPROTDESCEN" contentTypeId="DOCUMENT" dataResourceId="ENVPROTDESCEN" description="DESCRIPTION EN Environmental Protection" localeString="en"/>
+    
+    <ProductCategoryContent productCategoryId="ENV-PROTECTION" contentId="ENVPROTDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="ENVPROTDESCEN" contentIdTo="ENVPROTDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Food &amp; Beverages category -->
+    <DataResource dataResourceId="BEVERAGEDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="BEVERAGEDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    
+    <ElectronicText dataResourceId="BEVERAGEDESCTH" textData="อาหารและเครื่องดื่ม"/>
+    <ElectronicText dataResourceId="BEVERAGEDESCEN" textData="Food &amp; Beverages"/>
+    
+    <Content contentId="BEVERAGEDESCTH" contentTypeId="DOCUMENT" dataResourceId="BEVERAGEDESCTH" description="DESCRIPTION TH Food &amp; Beverages" localeString="th"/>
+    <Content contentId="BEVERAGEDESCEN" contentTypeId="DOCUMENT" dataResourceId="BEVERAGEDESCEN" description="DESCRIPTION EN Food &amp; Beverages" localeString="en"/>
+    
+    <ProductCategoryContent productCategoryId="BEVERAGE" contentId="BEVERAGEDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="BEVERAGEDESCEN" contentIdTo="BEVERAGEDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Footwear category -->
+    <DataResource dataResourceId="FOOTWEARDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="FOOTWEARDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    
+    <ElectronicText dataResourceId="FOOTWEARDESCTH" textData="รองเท้า"/>
+    <ElectronicText dataResourceId="FOOTWEARDESCEN" textData="Footwear"/>
+    
+    <Content contentId="FOOTWEARDESCTH" contentTypeId="DOCUMENT" dataResourceId="FOOTWEARDESCTH" description="DESCRIPTION TH Footwear" localeString="th"/>
+    <Content contentId="FOOTWEARDESCEN" contentTypeId="DOCUMENT" dataResourceId="FOOTWEARDESCEN" description="DESCRIPTION EN Footwear" localeString="en"/>
+    
+    <ProductCategoryContent productCategoryId="FOOTWEAR" contentId="FOOTWEARDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="FOOTWEARDESCEN" contentIdTo="FOOTWEARDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Furniture & Decoration category -->
+    <DataResource dataResourceId="FURNITUREDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="FURNITUREDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    
+    <ElectronicText dataResourceId="FURNITUREDESCTH" textData="เฟอร์นิเจอร์และของตกแต่ง"/>
+    <ElectronicText dataResourceId="FURNITUREDESCEN" textData="Furniture &amp; Decoration"/>
+    
+    <Content contentId="FURNITUREDESCTH" contentTypeId="DOCUMENT" dataResourceId="FURNITUREDESCTH" description="DESCRIPTION TH Furniture &amp; Decoration" localeString="th"/>
+    <Content contentId="FURNITUREDESCEN" contentTypeId="DOCUMENT" dataResourceId="FURNITUREDESCEN" description="DESCRIPTION EN Furniture &amp; Decoration" localeString="en"/>
+    
+    <ProductCategoryContent productCategoryId="FURNITURE" contentId="FURNITUREDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="FURNITUREDESCEN" contentIdTo="FURNITUREDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
+
+    <!-- Health & Medical Products category -->
+    <DataResource dataResourceId="HEALTHDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="HEALTHDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    
+    <ElectronicText dataResourceId="HEALTHDESCTH" textData="ผลิตภัณฑ์สุขภาพและยา"/>
+    <ElectronicText dataResourceId="HEALTHDESCEN" textData="Health &amp; Medical Products"/>
+    
+    <Content contentId="HEALTHDESCTH" contentTypeId="DOCUMENT" dataResourceId="HEALTHDESCTH" description="DESCRIPTION TH Health &amp; Medical Products" localeString="th"/>
+    <Content contentId="HEALTHDESCEN" contentTypeId="DOCUMENT" dataResourceId="HEALTHDESCEN" description="DESCRIPTION EN Health &amp; Medical Products" localeString="en"/>
+    
+    <ProductCategoryContent productCategoryId="HEALTH" contentId="HEALTHDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="HEALTHDESCEN" contentIdTo="HEALTHDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
+
+    <!-- Household Applicances category -->
+    <DataResource dataResourceId="HOUSEHOLDDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="HOUSEHOLDDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    
+    <ElectronicText dataResourceId="HOUSEHOLDDESCTH" textData="ของใช้ในครัวเรือน"/>
+    <ElectronicText dataResourceId="HOUSEHOLDDESCEN" textData="Household Applicances"/>
+    
+    <Content contentId="HOUSEHOLDDESCTH" contentTypeId="DOCUMENT" dataResourceId="HOUSEHOLDDESCTH" description="DESCRIPTION TH Household Applicances" localeString="th"/>
+    <Content contentId="HOUSEHOLDDESCEN" contentTypeId="DOCUMENT" dataResourceId="HOUSEHOLDDESCEN" description="DESCRIPTION EN Household Applicances" localeString="en"/>
+    
+    <ProductCategoryContent productCategoryId="HOUSEHOLD" contentId="HOUSEHOLDDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="HOUSEHOLDDESCEN" contentIdTo="HOUSEHOLDDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
 </entity-engine-xml>
