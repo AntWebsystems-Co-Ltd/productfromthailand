@@ -158,8 +158,8 @@ under the License.
     <Content contentId="AUTOMOBILEDESCTH" contentTypeId="DOCUMENT" dataResourceId="AUTOMOBILEDESCTH" description="DESCRIPTION TH Automobiles &amp; Auto Parts" localeString="th"/>
     <Content contentId="AUTOMOBILEDESCEN" contentTypeId="DOCUMENT" dataResourceId="AUTOMOBILEDESCEN" description="DESCRIPTION EN Automobiles &amp; Auto Parts" localeString="en"/>
     
-    <ProductCategoryContent productCategoryId="AGRICULTURAL" contentId="AGRICULTURALDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
-    <ContentAssoc contentId="AGRICULTURALDESCEN" contentIdTo="AGRICULTURALDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
+    <ProductCategoryContent productCategoryId="AUTOMOBILE" contentId="AUTOMOBILEDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="AUTOMOBILEDESCEN" contentIdTo="AUTOMOBILEDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
     
     <!-- Bag category -->
     <DataResource dataResourceId="BAGDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
