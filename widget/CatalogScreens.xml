@@ -141,6 +141,20 @@ under the License.
         </section>
     </screen>
 
+    <screen name="recentlyproductScreen">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/ProductSummary.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/recentproduct.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
     <screen name="breadcrumbs">
         <section>
             <actions>
@@ -474,6 +488,8 @@ under the License.
                         <condition-expr field-name="createdDate" operator="not-equals" value="${nullValue}"/>
                     </condition-list><order-by field-name="createdDate DESC"/>
                 </entity-condition>
+                <set field="recentlyproductScreen" value="component://productfromthailand/widget/CatalogScreens.xml#recentlyproductScreen"/>                
+                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/ProductSummary.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/recentlyproducts.ftl"/></html></platform-specific>

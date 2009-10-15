@@ -7,20 +7,8 @@
 <div class="screenlet-body">
 <#assign x=0>
 <#list productlist as product>
-    <#assign productUrl = Static["org.ofbiz.product.category.CatalogUrlServlet"].makeCatalogUrl(request, product.productId, categoryId, "")/>
-<div class="recentproduct">
-    <div class="recentproductimage">
-        <#if product.smallImageUrl?exists>
-        <a href="${productUrl}"><img src="${product.smallImageUrl}"/></a>
-        <#else>
-        <a href="${productUrl}"><img src="/images/defaultImage.jpg"/></a>
-        </#if>
-    </div>
-    <div id="recentproductdetail">
-         <div class="recentproductlabel"><a href="${productUrl?if_exists}">${product.internalName?if_exists}</a></div>
-         <p>${product.description?if_exists}</p>
-    </div>
-</div>
+${setRequestAttribute("optProductId", product.productId)}
+${screens.render(recentlyproductScreen)}
 <#assign x= x+1>
 <#if x=3><#break></#if>
 </#list>
