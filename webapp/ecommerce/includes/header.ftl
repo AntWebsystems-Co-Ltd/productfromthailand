@@ -18,8 +18,18 @@ under the License.
 -->
 <#--<#include "component://productfromthailand/webapp/ecommerce/includes/headerHead.ftl"/>-->
 <#include "component://ecommerce/webapp/ecommerce/includes/headerHead.ftl"/>
-
 <body>
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-11027029-1");
+        pageTracker._trackPageview();
+    } catch(err) {}
+</script>
+
 <center>
 <div id="ecom-header">
     <div id="left">
