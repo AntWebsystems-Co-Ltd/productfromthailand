@@ -37,7 +37,11 @@
     <div class="content">
         ${uiLabelMap.PFTIntroMarketPlace}
         ${uiLabelMap.PFTPleaseRegister}
-        
+        <div style="margin:10px 0 0 0;padding: 10px 0 15px 0;background:url(../pfdimages/preview.3.gif) no-repeat top center">
+                <a href="<@ofbizUrl>../pft</@ofbizUrl>" target="_blank" alt="${uiLabelMap.PFTPreview}" id="preview">
+                ${uiLabelMap.PFTPreview}
+                </a>
+        </div>
          <form name="signUpForContactListForm" action="signUpForContactList" method="post">
         <input type="hidden" name="reload"/>
         <div id="captchaCode"><input type="hidden" value="${parameters.ID_KEY}" name="captchaCode"/></div>
@@ -81,19 +85,16 @@
     }
 //-->
 </script>
-
         <div class="floatleft">${uiLabelMap.MyPortalVerifyCaptcha} :</div>
         <div class="floatright">
             <input type="text" autocomplete="off" id="subscribeForm_captcha" maxlength="30" size="10" class="required false" name="captcha"/>
         </div>
         <div class="submit"><input id="subscribeButton" value="Subscribe" type="submit">
-    </form><br>
+    </form>
     </div>
     <div class="footer">
         ${uiLabelMap.PFTTel}: +66-53-483245, ${uiLabelMap.PFTFax} : +66-53-483246, ${uiLabelMap.PFTEmail}:<a href="mailto:info@productfromthailand.com">info@productfromthailand.com</a></span></p>
         <br/>${uiLabelMap.PFTCompanyAddress}
     </div>
-    
-    
 </div>
 </body></html>

@@ -102,3 +102,11 @@ text-decoration:none;
 color:#c7b815;
 text-decoration:underline;
 }
+
+a#preview,a:visited#preview{
+font-weight:bold;letter-spacing:0.1em;
+color:black;
+}
+a:hover#preview {
+text-decoration:underline;
+}

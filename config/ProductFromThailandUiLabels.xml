@@ -51,6 +51,10 @@
         <value xml:lang="en">Please Register if you like to be notified when we go online.</value>
         <value xml:lang="th">คุณสามารถลงทะเบียนทิ้งไว้ แล้วทางเราจะแจ้งให้ท่านทราบเมื่อเรา online</value>
     </property>
+    <property key="PFTPreview">
+        <value xml:lang="en">Preview</value>
+        <value xml:lang="th">เข้าชมเว็บไซท์</value>
+    </property>
     <property key="PFTYourEmail">
         <value xml:lang="en">Your E-mail</value>
         <value xml:lang="th">อีเมล์ ของคุณ</value>
