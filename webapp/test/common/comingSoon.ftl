@@ -37,7 +37,7 @@
     <div class="content">
         ${uiLabelMap.PFTIntroMarketPlace}
         ${uiLabelMap.PFTPleaseRegister}
-        <div style="margin:10px 0 0 0;padding: 10px 0 15px 0;background:url(../pfdimages/preview.3.gif) no-repeat top center">
+        <div style="margin:10px 0 0 0;padding: 10px 0 15px 0;background:url(../pfdimages/preview.gif) no-repeat top center">
                 <a href="<@ofbizUrl>../pft</@ofbizUrl>" target="_blank" alt="${uiLabelMap.PFTPreview}" id="preview">
                 ${uiLabelMap.PFTPreview}
                 </a>
