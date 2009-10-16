@@ -95,9 +95,13 @@
         <value xml:lang="en">Sales conditions</value>
         <value xml:lang="th">เงื่อนไขในการขายสินค้า</value>
     </property>
-    <property key="PFTSignInOrRegister">
-        <value xml:lang="en">Sign in or Register</value>
-        <value xml:lang="th">เข้าสู่ระบบ/สมัครสมาชิก</value>
+    <property key="PFTSignIn">
+        <value xml:lang="en">Sign in</value>
+        <value xml:lang="th">เข้าสู่ระบบ</value>
+    </property>
+    <property key="PFTRegister">
+        <value xml:lang="en">Register</value>
+        <value xml:lang="th">ลงทะเบียน</value>
     </property>
     <property key="PFTHelpAndInstruction">
         <value xml:lang="en">Help &amp; Instruction</value>

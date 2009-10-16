@@ -85,7 +85,9 @@ under the License.
               <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
                 <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><div class="menu-right">${uiLabelMap.CommonLogout}</div></a></li>
               <#else/>
-                <li id="header-bar-login"><a href="<@ofbizUrl>${checkLoginUrl}</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSignInOrRegister}</div></a></li>
+                <li id="header-bar-login">
+                <a href="<@ofbizUrl>${checkLoginUrl}</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSignIn}</div></a> <a href="<@ofbizUrl>newcustomer</@ofbizUrl>"><div class="menu-right"> ${uiLabelMap.CommonOr} ${uiLabelMap.PFTRegister}</div></a>
+                </li>
               </#if>
             </ul>
         </div>
