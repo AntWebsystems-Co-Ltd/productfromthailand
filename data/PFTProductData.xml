@@ -345,105 +345,99 @@ under the License.
     
     <!-- Product Name and Discription -->
     <!-- BAL GANISH WOOD FRAME -->
-    <DataResource dataResourceId="BALGANISHEN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-14 17:43:37.64" createdByUserLogin="admin"/>
-    <DataResource dataResourceId="DRBALGANISHTH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_AVAILABLE" localeString="th" isPublic="Y" createdDate="2009-10-14 17:11:29.179" createdByUserLogin="admin"/>
-    <Content contentId="BALGANISHEN" contentTypeId="DOCUMENT" dataResourceId="BALGANISHEN" statusId="CTNT_IN_PROGRESS" description="Description Bal Ganish Teak Frame Eng" localeString="en" createdDate="2009-10-14 17:43:38.063" createdByUserLogin="admin"/>
-    <Content contentId="BALGANISHTH" contentTypeId="DOCUMENT" dataResourceId="DRBALGANISHTH" statusId="CTNT_IN_PROGRESS" description="Discripition Bal Ganish teak frame thai" localeString="th" createdDate="2009-10-14 17:08:36.928" createdByUserLogin="admin"/>
-    <ContentAssoc contentId="BALGANISHTH" contentIdTo="BALGANISHEN" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-14 17:49:47.739"/>
+    <DataResource dataResourceId="BALGANISHEN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-14 17:43:37.64"/>
+    <DataResource dataResourceId="DRBALGANISHTH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_AVAILABLE" localeString="th" isPublic="Y" createdDate="2009-10-14 17:11:29.179"/>
+    <Content contentId="BALGANISHEN" contentTypeId="DOCUMENT" dataResourceId="BALGANISHEN" statusId="CTNT_IN_PROGRESS" description="Description Bal Ganish Teak Frame Eng" localeString="en" createdDate="2009-10-14 17:43:38.063"/>
+    <Content contentId="BALGANISHTH" contentTypeId="DOCUMENT" dataResourceId="DRBALGANISHTH" statusId="CTNT_IN_PROGRESS" description="Discripition Bal Ganish teak frame thai" localeString="th" createdDate="2009-10-14 17:08:36.928"/>
     <ElectronicText dataResourceId="BALGANISHEN" textData="Bal Ganish made of rasin on the Teak Frame"/>
     <ElectronicText dataResourceId="DRBALGANISHTH" textData="กรอบไม้สัก พระพิฆเนศทำด้วยเรซิน"/>
     <ProductContent productId="BALGANISH" contentId="BALGANISHEN" productContentTypeId="DESCRIPTION" fromDate="2009-09-25 13:57:42.324"/>
-    <ProductContent productId="BALGANISH" contentId="BALGANISHTH" productContentTypeId="DESCRIPTION" fromDate="2009-10-14 17:25:48.052"/>
-    
-    <DataResource dataResourceId="PNAME_BALGANISH_EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:26:22.907" createdByUserLogin="admin"/>
-    <DataResource dataResourceId="PNAME_BALGANISH_TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="th" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:25:21.52" createdByUserLogin="admin"/>
-    <Content contentId="PNAME_BALGANISH_EN" contentTypeId="DOCUMENT" dataResourceId="PNAME_BALGANISH_EN" statusId="CTNT_IN_PROGRESS" localeString="en" createdDate="2009-10-15 11:26:23.397" createdByUserLogin="admin"/>
-    <Content contentId="PNAME_BALGANISH_TH" contentTypeId="DOCUMENT" dataResourceId="PNAME_BALGANISH_TH" statusId="CTNT_IN_PROGRESS" localeString="th" createdDate="2009-10-15 11:25:21.928" createdByUserLogin="admin"/>
-    <ContentAssoc contentId="PNAME_BALGANISH_EN" contentIdTo="PNAME_BALGANISH_TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-15 11:29:58.861" createdDate="2009-10-15 11:29:58.861" createdByUserLogin="admin"/>
+    <ContentAssoc contentId="BALGANISHEN" contentIdTo="BALGANISHTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-14 17:49:47.739"/>
+
+    <DataResource dataResourceId="PNAME_BALGANISH_EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:26:22.907"/>
+    <DataResource dataResourceId="PNAME_BALGANISH_TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="th" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:25:21.52"/>
+    <Content contentId="PNAME_BALGANISH_EN" contentTypeId="DOCUMENT" dataResourceId="PNAME_BALGANISH_EN" statusId="CTNT_IN_PROGRESS" localeString="en" createdDate="2009-10-15 11:26:23.397"/>
+    <Content contentId="PNAME_BALGANISH_TH" contentTypeId="DOCUMENT" dataResourceId="PNAME_BALGANISH_TH" statusId="CTNT_IN_PROGRESS" localeString="th" createdDate="2009-10-15 11:25:21.928"/>
     <ElectronicText dataResourceId="PNAME_BALGANISH_EN" textData="Bal Ganish Teak Frame"/>
     <ElectronicText dataResourceId="PNAME_BALGANISH_TH" textData="กรอบไม้สัก พระพิฆเนศ"/>
     <ProductContent productId="BALGANISH" contentId="PNAME_BALGANISH_EN" productContentTypeId="PRODUCT_NAME" fromDate="2009-10-15 11:26:03.0"/>
-    <ProductContent productId="BALGANISH" contentId="PNAME_BALGANISH_TH" productContentTypeId="PRODUCT_NAME" fromDate="2009-09-25 13:57:42.0"/>
+    <ContentAssoc contentId="PNAME_BALGANISH_EN" contentIdTo="PNAME_BALGANISH_TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-15 11:29:58.861" createdDate="2009-10-15 11:29:58.861"/>
+    
     <!-- Elephants Wood Crafts -->
-    <DataResource dataResourceId="DRTHEX10001EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-14 17:43:37.64" createdByUserLogin="admin"/>
-    <DataResource dataResourceId="DRTHEX10001TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_AVAILABLE" localeString="th" isPublic="Y" createdDate="2009-10-14 17:11:29.179" createdByUserLogin="admin"/>
-    <Content contentId="DRTHEX10001EN" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10001EN" statusId="CTNT_IN_PROGRESS" description="Description Elephant wood craft Eng" localeString="en" createdDate="2009-10-14 17:43:38.063" createdByUserLogin="admin"/>
-    <Content contentId="DRTHEX10001TH" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10001TH" statusId="CTNT_IN_PROGRESS" description="Description Elephant wood craft thai" localeString="th" createdDate="2009-10-14 17:08:36.928" createdByUserLogin="admin"/>
-    <ContentAssoc contentId="DRTHEX10001TH" contentIdTo="DRTHEX10001EN" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-14 17:49:47.739"/>
+    <DataResource dataResourceId="DRTHEX10001EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-14 17:43:37.64"/>
+    <DataResource dataResourceId="DRTHEX10001TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_AVAILABLE" localeString="th" isPublic="Y" createdDate="2009-10-14 17:11:29.179"/>
+    <Content contentId="DRTHEX10001EN" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10001EN" statusId="CTNT_IN_PROGRESS" description="Description Elephant wood craft Eng" localeString="en" createdDate="2009-10-14 17:43:38.063"/>
+    <Content contentId="DRTHEX10001TH" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10001TH" statusId="CTNT_IN_PROGRESS" description="Description Elephant wood craft thai" localeString="th" createdDate="2009-10-14 17:08:36.928"/>
     <ElectronicText dataResourceId="DRTHEX10001EN" textData="High Quality Elephants wood craft with the compatitive price"/>
     <ElectronicText dataResourceId="DRTHEX10001TH" textData="ช้างไม้แกะสลักคุณภาพดีจากช่างมืออาชีพ ราคาย่อมเยา"/>
     <ProductContent productId="ThExport-10001" contentId="DRTHEX10001EN" productContentTypeId="DESCRIPTION" fromDate="2009-09-25 13:57:42.324"/>
-    <ProductContent productId="ThExport-10001" contentId="DRTHEX10001TH" productContentTypeId="DESCRIPTION" fromDate="2009-10-14 17:25:48.052"/>
+    <ContentAssoc contentId="DRTHEX10001EN" contentIdTo="DRTHEX10001TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-14 17:49:47.739"/>
     
-    <DataResource dataResourceId="PNAME_THEX10001EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:26:22.907" createdByUserLogin="admin"/>
-    <DataResource dataResourceId="PNAME_THEX10001TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="th" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:25:21.52" createdByUserLogin="admin"/>
-    <Content contentId="PNAME_THEX10001EN" contentTypeId="DOCUMENT" dataResourceId="PNAME_THEX10001EN" statusId="CTNT_IN_PROGRESS" localeString="en" createdDate="2009-10-15 11:26:23.397" createdByUserLogin="admin"/>
-    <Content contentId="PNAME_THEX10001TH" contentTypeId="DOCUMENT" dataResourceId="PNAME_THEX10001TH" statusId="CTNT_IN_PROGRESS" localeString="th" createdDate="2009-10-15 11:25:21.928" createdByUserLogin="admin"/>
-    <ContentAssoc contentId="PNAME_THEX10001EN" contentIdTo="PNAME_THEX10001TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-15 11:29:58.861" createdDate="2009-10-15 11:29:58.861" createdByUserLogin="admin"/>
+    <DataResource dataResourceId="PNAME_THEX10001EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:26:22.907"/>
+    <DataResource dataResourceId="PNAME_THEX10001TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="th" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:25:21.52"/>
+    <Content contentId="PNAME_THEX10001EN" contentTypeId="DOCUMENT" dataResourceId="PNAME_THEX10001EN" statusId="CTNT_IN_PROGRESS" localeString="en" createdDate="2009-10-15 11:26:23.397"/>
+    <Content contentId="PNAME_THEX10001TH" contentTypeId="DOCUMENT" dataResourceId="PNAME_THEX10001TH" statusId="CTNT_IN_PROGRESS" localeString="th" createdDate="2009-10-15 11:25:21.928"/>
     <ElectronicText dataResourceId="PNAME_THEX10001EN" textData="Elephants wood Craft"/>
     <ElectronicText dataResourceId="PNAME_THEX10001TH" textData="ช้างไม้แกะสลัก"/>
     <ProductContent productId="ThExport-10001" contentId="PNAME_THEX10001EN" productContentTypeId="PRODUCT_NAME" fromDate="2009-10-15 11:26:03.0"/>
-    <ProductContent productId="ThExport-10001" contentId="PNAME_THEX10001TH" productContentTypeId="PRODUCT_NAME" fromDate="2009-09-25 13:57:42.0"/>
+    <ContentAssoc contentId="PNAME_THEX10001EN" contentIdTo="PNAME_THEX10001TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-15 11:29:58.861" createdDate="2009-10-15 11:29:58.861"/>
+    
     <!-- Bamboo In the Sun -->
-    <DataResource dataResourceId="DRTHEX10002EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-14 17:43:37.64" createdByUserLogin="admin"/>
-    <DataResource dataResourceId="DRTHEX10002TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_AVAILABLE" localeString="th" isPublic="Y" createdDate="2009-10-14 17:11:29.179" createdByUserLogin="admin"/>
-    <Content contentId="DRTHEX10002EN" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10002EN" statusId="CTNT_IN_PROGRESS" description="Description Floor Lamp Bamboo In the Sun Eng" localeString="en" createdDate="2009-10-14 17:43:38.063" createdByUserLogin="admin"/>
-    <Content contentId="DRTHEX10002TH" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10002TH" statusId="CTNT_IN_PROGRESS" description="Description Floor Lamp Bamboo In the Sun Thai" localeString="th" createdDate="2009-10-14 17:08:36.928" createdByUserLogin="admin"/>
+    <DataResource dataResourceId="DRTHEX10002EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-14 17:43:37.64"/>
+    <DataResource dataResourceId="DRTHEX10002TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_AVAILABLE" localeString="th" isPublic="Y" createdDate="2009-10-14 17:11:29.179"/>
+    <Content contentId="DRTHEX10002EN" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10002EN" statusId="CTNT_IN_PROGRESS" description="Description Floor Lamp Bamboo In the Sun Eng" localeString="en" createdDate="2009-10-14 17:43:38.063"/>
+    <Content contentId="DRTHEX10002TH" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10002TH" statusId="CTNT_IN_PROGRESS" description="Description Floor Lamp Bamboo In the Sun Thai" localeString="th" createdDate="2009-10-14 17:08:36.928"/>
     <ContentAssoc contentId="DRTHEX10002TH" contentIdTo="DRTHEX10002EN" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-14 17:49:47.739"/>
     <ElectronicText dataResourceId="DRTHEX10002EN" textData="Beautiful Bamboo In The Sun Floor Lamp from Chiang Mai"/>
     <ElectronicText dataResourceId="DRTHEX10002TH" textData="โคมไฟตั้งพี้นรูปกอไผ่ยามเย็น จากเชียงใหม่"/>
     <ProductContent productId="ThExport-10002" contentId="DRTHEX10002EN" productContentTypeId="DESCRIPTION" fromDate="2009-09-25 13:57:42.324"/>
     <ProductContent productId="ThExport-10002" contentId="DRTHEX10002TH" productContentTypeId="DESCRIPTION" fromDate="2009-10-14 17:25:48.052"/>
     
-    <DataResource dataResourceId="PNAME_THEX10002EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:26:22.907" createdByUserLogin="admin"/>
-    <DataResource dataResourceId="PNAME_THEX10002TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="th" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:25:21.52" createdByUserLogin="admin"/>
-    <Content contentId="PNAME_THEX10002EN" contentTypeId="DOCUMENT" dataResourceId="PNAME_THEX10002EN" statusId="CTNT_IN_PROGRESS" localeString="en" createdDate="2009-10-15 11:26:23.397" createdByUserLogin="admin"/>
-    <Content contentId="PNAME_THEX10002TH" contentTypeId="DOCUMENT" dataResourceId="PNAME_THEX10002TH" statusId="CTNT_IN_PROGRESS" localeString="th" createdDate="2009-10-15 11:25:21.928" createdByUserLogin="admin"/>
-    <ContentAssoc contentId="PNAME_THEX10002EN" contentIdTo="PNAME_THEX10002TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-15 11:29:58.861" createdDate="2009-10-15 11:29:58.861" createdByUserLogin="admin"/>
+    <DataResource dataResourceId="PNAME_THEX10002EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:26:22.907"/>
+    <DataResource dataResourceId="PNAME_THEX10002TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="th" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:25:21.52"/>
+    <Content contentId="PNAME_THEX10002EN" contentTypeId="DOCUMENT" dataResourceId="PNAME_THEX10002EN" statusId="CTNT_IN_PROGRESS" localeString="en" createdDate="2009-10-15 11:26:23.397"/>
+    <Content contentId="PNAME_THEX10002TH" contentTypeId="DOCUMENT" dataResourceId="PNAME_THEX10002TH" statusId="CTNT_IN_PROGRESS" localeString="th" createdDate="2009-10-15 11:25:21.928"/>
     <ElectronicText dataResourceId="PNAME_THEX10002EN" textData="Bamboo In the Sun Floor Lamp"/>
     <ElectronicText dataResourceId="PNAME_THEX10002TH" textData="โคมไฟตั้งพื้น รูปกอไผ่ยามเย็น"/>
     <ProductContent productId="ThExport-10002" contentId="PNAME_THEX10002EN" productContentTypeId="PRODUCT_NAME" fromDate="2009-10-15 11:26:03.0"/>
-    <ProductContent productId="ThExport-10002" contentId="PNAME_THEX10002TH" productContentTypeId="PRODUCT_NAME" fromDate="2009-09-25 13:57:42.0"/>
+    <ContentAssoc contentId="PNAME_THEX10002EN" contentIdTo="PNAME_THEX10002TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-15 11:29:58.861" createdDate="2009-10-15 11:29:58.861"/>
+    
     <!-- Bamboo Floor Lamp -->
-    <DataResource dataResourceId="DRTHEX10003EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-14 17:43:37.64" createdByUserLogin="admin"/>
-    <DataResource dataResourceId="DRTHEX10003TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_AVAILABLE" localeString="th" isPublic="Y" createdDate="2009-10-14 17:11:29.179" createdByUserLogin="admin"/>
-    <Content contentId="DRTHEX10003EN" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10003EN" statusId="CTNT_IN_PROGRESS" description="Description Floor Lamp Bamboo Eng" localeString="en" createdDate="2009-10-14 17:43:38.063" createdByUserLogin="admin"/>
-    <Content contentId="DRTHEX10003TH" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10003TH" statusId="CTNT_IN_PROGRESS" description="Description Floor Lamp Bamboo Thai" localeString="th" createdDate="2009-10-14 17:08:36.928" createdByUserLogin="admin"/>
-    <ContentAssoc contentId="DRTHEX10003TH" contentIdTo="DRTHEX10003EN" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-14 17:49:47.739"/>
+    <DataResource dataResourceId="DRTHEX10003EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-14 17:43:37.64"/>
+    <DataResource dataResourceId="DRTHEX10003TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_AVAILABLE" localeString="th" isPublic="Y" createdDate="2009-10-14 17:11:29.179"/>
+    <Content contentId="DRTHEX10003EN" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10003EN" statusId="CTNT_IN_PROGRESS" description="Description Floor Lamp Bamboo Eng" localeString="en" createdDate="2009-10-14 17:43:38.063"/>
+    <Content contentId="DRTHEX10003TH" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10003TH" statusId="CTNT_IN_PROGRESS" description="Description Floor Lamp Bamboo Thai" localeString="th" createdDate="2009-10-14 17:08:36.928"/>
     <ElectronicText dataResourceId="DRTHEX10003EN" textData="If you are Looking for a Good Designed Bamboo Lamp here is the choice."/>
     <ElectronicText dataResourceId="DRTHEX10003TH" textData="หากคุณกำลังหาโคมไฟที่ทำจากไม้ไผ่อยู่ละก้อ นี่เป็นอีกหนึ่งทางเลือกให้คุณ"/>
     <ProductContent productId="ThExport-10003" contentId="DRTHEX10003EN" productContentTypeId="DESCRIPTION" fromDate="2009-09-25 13:57:42.324"/>
-    <ProductContent productId="ThExport-10003" contentId="DRTHEX10003TH" productContentTypeId="DESCRIPTION" fromDate="2009-10-14 17:25:48.052"/>
+    <ContentAssoc contentId="DRTHEX10003EN" contentIdTo="DRTHEX10003TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-14 17:49:47.739"/>
     
-    <DataResource dataResourceId="PNAME_THEX10003EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:26:22.907" createdByUserLogin="admin"/>
-    <DataResource dataResourceId="PNAME_THEX10003TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="th" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:25:21.52" createdByUserLogin="admin"/>
-    <Content contentId="PNAME_THEX10003EN" contentTypeId="DOCUMENT" dataResourceId="PNAME_THEX10003EN" statusId="CTNT_IN_PROGRESS" localeString="en" createdDate="2009-10-15 11:26:23.397" createdByUserLogin="admin"/>
-    <Content contentId="PNAME_THEX10003TH" contentTypeId="DOCUMENT" dataResourceId="PNAME_THEX10003TH" statusId="CTNT_IN_PROGRESS" localeString="th" createdDate="2009-10-15 11:25:21.928" createdByUserLogin="admin"/>
-    <ContentAssoc contentId="PNAME_THEX10003EN" contentIdTo="PNAME_THEX10003TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-15 11:29:58.861" createdDate="2009-10-15 11:29:58.861" createdByUserLogin="admin"/>
+    <DataResource dataResourceId="PNAME_THEX10003EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:26:22.907"/>
+    <DataResource dataResourceId="PNAME_THEX10003TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="th" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:25:21.52"/>
+    <Content contentId="PNAME_THEX10003EN" contentTypeId="DOCUMENT" dataResourceId="PNAME_THEX10003EN" statusId="CTNT_IN_PROGRESS" localeString="en" createdDate="2009-10-15 11:26:23.397"/>
+    <Content contentId="PNAME_THEX10003TH" contentTypeId="DOCUMENT" dataResourceId="PNAME_THEX10003TH" statusId="CTNT_IN_PROGRESS" localeString="th" createdDate="2009-10-15 11:25:21.928"/>
     <ElectronicText dataResourceId="PNAME_THEX10003EN" textData="Bamboo Floor Lamp"/>
     <ElectronicText dataResourceId="PNAME_THEX10003TH" textData="โคมไฟทำด้วยไม้ไผ่"/>
     <ProductContent productId="ThExport-10003" contentId="PNAME_THEX10003EN" productContentTypeId="PRODUCT_NAME" fromDate="2009-10-15 11:26:03.0"/>
-    <ProductContent productId="ThExport-10003" contentId="PNAME_THEX10003TH" productContentTypeId="PRODUCT_NAME" fromDate="2009-09-25 13:57:42.0"/>
+    <ContentAssoc contentId="PNAME_THEX10003EN" contentIdTo="PNAME_THEX10003TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-15 11:29:58.861" createdDate="2009-10-15 11:29:58.861"/>
+    
     <!-- Thai Royal Barge -->
-    <DataResource dataResourceId="DRTHEX10004EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-14 17:43:37.64" createdByUserLogin="admin"/>
-    <DataResource dataResourceId="DRTHEX10004TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_AVAILABLE" localeString="th" isPublic="Y" createdDate="2009-10-14 17:11:29.179" createdByUserLogin="admin"/>
-    <Content contentId="DRTHEX10004EN" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10004EN" statusId="CTNT_IN_PROGRESS" description="Description Floor Lamp Bamboo Eng" localeString="en" createdDate="2009-10-14 17:43:38.063" createdByUserLogin="admin"/>
-    <Content contentId="DRTHEX10004TH" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10004TH" statusId="CTNT_IN_PROGRESS" description="Description Floor Lamp Bamboo Thai" localeString="th" createdDate="2009-10-14 17:08:36.928" createdByUserLogin="admin"/>
-    <ContentAssoc contentId="DRTHEX10004TH" contentIdTo="DRTHEX10004EN" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-14 17:49:47.739"/>
+    <DataResource dataResourceId="DRTHEX10004EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-14 17:43:37.64"/>
+    <DataResource dataResourceId="DRTHEX10004TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_AVAILABLE" localeString="th" isPublic="Y" createdDate="2009-10-14 17:11:29.179"/>
+    <Content contentId="DRTHEX10004EN" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10004EN" statusId="CTNT_IN_PROGRESS" description="Description Floor Lamp Bamboo Eng" localeString="en" createdDate="2009-10-14 17:43:38.063"/>
+    <Content contentId="DRTHEX10004TH" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10004TH" statusId="CTNT_IN_PROGRESS" description="Description Floor Lamp Bamboo Thai" localeString="th" createdDate="2009-10-14 17:08:36.928"/>
     <ElectronicText dataResourceId="DRTHEX10004EN" textData="Incredibly detail Thai Royal Barge,This is one of famous the water-borne royal barge procession. "/>
     <ElectronicText dataResourceId="DRTHEX10004TH" textData="งานฝีมือจำลองขบวนแห่เรือสุพรรณหงษ์วัสดุทำด้วยเงินใส่กรอบไม้"/>
     <ProductContent productId="ThExport-10004" contentId="DRTHEX10004EN" productContentTypeId="DESCRIPTION" fromDate="2009-09-25 13:57:42.324"/>
-    <ProductContent productId="ThExport-10004" contentId="DRTHEX10004TH" productContentTypeId="DESCRIPTION" fromDate="2009-10-14 17:25:48.052"/>
+    <ContentAssoc contentId="DRTHEX10004EN" contentIdTo="DRTHEX10004TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-14 17:49:47.739"/>
     
-    <DataResource dataResourceId="PNAME_THEX10004EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:26:22.907" createdByUserLogin="admin"/>
-    <DataResource dataResourceId="PNAME_THEX10004TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="th" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:25:21.52" createdByUserLogin="admin"/>
-    <Content contentId="PNAME_THEX10004EN" contentTypeId="DOCUMENT" dataResourceId="PNAME_THEX10004EN" statusId="CTNT_IN_PROGRESS" localeString="en" createdDate="2009-10-15 11:26:23.397" createdByUserLogin="admin"/>
-    <Content contentId="PNAME_THEX10004TH" contentTypeId="DOCUMENT" dataResourceId="PNAME_THEX10004TH" statusId="CTNT_IN_PROGRESS" localeString="th" createdDate="2009-10-15 11:25:21.928" createdByUserLogin="admin"/>
-    <ContentAssoc contentId="PNAME_THEX10004EN" contentIdTo="PNAME_THEX10004TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-15 11:29:58.861" createdDate="2009-10-15 11:29:58.861" createdByUserLogin="admin"/>
+    <DataResource dataResourceId="PNAME_THEX10004EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:26:22.907"/>
+    <DataResource dataResourceId="PNAME_THEX10004TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="th" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:25:21.52"/>
+    <Content contentId="PNAME_THEX10004EN" contentTypeId="DOCUMENT" dataResourceId="PNAME_THEX10004EN" statusId="CTNT_IN_PROGRESS" localeString="en" createdDate="2009-10-15 11:26:23.397"/>
+    <Content contentId="PNAME_THEX10004TH" contentTypeId="DOCUMENT" dataResourceId="PNAME_THEX10004TH" statusId="CTNT_IN_PROGRESS" localeString="th" createdDate="2009-10-15 11:25:21.928"/>
     <ElectronicText dataResourceId="PNAME_THEX10004EN" textData="Thai Royal Barge"/>
     <ElectronicText dataResourceId="PNAME_THEX10004TH" textData="เงินฉลุขบวนแห่เรือสุพรรณหงษ์"/>
     <ProductContent productId="ThExport-10004" contentId="PNAME_THEX10004EN" productContentTypeId="PRODUCT_NAME" fromDate="2009-10-15 11:26:03.0"/>
-    <ProductContent productId="ThExport-10004" contentId="PNAME_THEX10004TH" productContentTypeId="PRODUCT_NAME" fromDate="2009-09-25 13:57:42.0"/>
-    
+    <ContentAssoc contentId="PNAME_THEX10004EN" contentIdTo="PNAME_THEX10004TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-15 11:29:58.861" createdDate="2009-10-15 11:29:58.861"/>
     
 </entity-engine-xml>
