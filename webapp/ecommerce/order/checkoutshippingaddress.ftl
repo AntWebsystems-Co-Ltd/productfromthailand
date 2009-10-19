@@ -99,7 +99,7 @@ function toggleBillingAccount(box) {
                  </#list>
                </#if>
               </table>
-             <div>&nbsp;${uiLabelMap.AccountingAgreementInformation}</div>
+             <#--div>&nbsp;${uiLabelMap.AccountingAgreementInformation}</div>
                <table>
                  <#if agreements?exists>
                    <#if agreements.size()!=1>
@@ -127,11 +127,11 @@ function toggleBillingAccount(box) {
                      </#list>
                    </#if>
                  </#if>
-               </table>
+               </table-->
              <br />
             <#-- Party Tax Info -->
-            <div>&nbsp;${uiLabelMap.PartyTaxIdentification}</div>
-            ${screens.render("component://order/widget/ordermgr/OrderEntryOrderScreens.xml#customertaxinfo")}
+            <#--div>&nbsp;${uiLabelMap.PartyTaxIdentification}</div>
+            ${screens.render("component://order/widget/ordermgr/OrderEntryOrderScreens.xml#customertaxinfo")}-->
         </div>
     </div>
 </form>

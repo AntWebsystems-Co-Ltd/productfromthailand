@@ -86,7 +86,7 @@ under the License.
                 <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><div class="menu-right">${uiLabelMap.CommonLogout}</div></a></li>
               <#else/>
                 <li id="header-bar-login">
-                <a href="<@ofbizUrl>${checkLoginUrl}</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSignIn}</div></a> <a href="<@ofbizUrl>newcustomer</@ofbizUrl>"><div class="menu-right"> ${uiLabelMap.CommonOr} ${uiLabelMap.PFTRegister}</div></a>
+                <a href="<@ofbizUrl>${checkLoginUrl}</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSignIn}</div></a><div class="menu-right"> ${uiLabelMap.PFTOr}</div> <a href="<@ofbizUrl>newcustomer</@ofbizUrl>"><div class="menu-right"> ${uiLabelMap.PFTRegister}</div></a>
                 </li>
               </#if>
             </ul>
