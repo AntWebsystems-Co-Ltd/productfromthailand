@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<simple-methods xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/simple-methods.xsd">
+    
+    <simple-method method-name="createSupplier" short-description="create a customer profile [Supplier]" login-required="false">
+        <!-- Process all map -->
+        <call-map-processor xml-resource="component://party/script/org/ofbiz/party/contact/PartyContactMechMapProcs.xml"
+            processor-name="emailAddress" in-map-name="parameters" out-map-name="emailAddressCtx"/>
+        <call-map-processor xml-resource="component://ecommerce/script/org/ofbiz/ecommerce/customer/CheckoutMapProcs.xml"
+            processor-name="shipToAddress" in-map-name="parameters" out-map-name="shipToAddressCtx"/>
+        <call-map-processor xml-resource="component://ecommerce/script/org/ofbiz/ecommerce/customer/CheckoutMapProcs.xml"
+            processor-name="shipToPhone" in-map-name="parameters" out-map-name="shipToTelecomNumberCtx"/>
+        <check-errors/>
+        
+        <set field="createPartyGroupCtx.groupName" from-field="parameters.groupName"/>
+        <!-- create person -->
+        <call-service service-name="createPartyGroup" in-map-name="createPartyGroupCtx">
+            <result-to-field result-name="partyId" field="partyId"/>
+        </call-service>
+        <set field="parameters.partyId" from-field="partyId"/>
+        
+        <!-- create userLogin -->
+        <call-simple-method method-name="createUpdateUserLogin" xml-resource="component://ecommerce/script/org/ofbiz/ecommerce/customer/CustomerEvents.xml"/>
+        
+        <!-- Create party role-->
+        <set field="partyRoleContext.partyId" from-field="parameters.partyId"/>
+        <set field="partyRoleContext.roleTypeId" from-field="parameters.roleTypeId"/>
+        <set field="partyRoleContext.userLogin" from-field="parameters.userLogin"/>
+        <call-service service-name="createPartyRole" in-map-name="partyRoleContext"/>
+        
+        <!-- Create email address -->
+        <set field="emailAddressCtx.partyId" from-field="parameters.partyId"/>
+        <set field="emailAddressCtx.userLogin" from-field="parameters.userLogin"/>
+        <set field="emailAddressCtx.contactMechPurposeTypeId" from-field="parameters.emailContactMechPurposeTypeId"/>
+        <call-service service-name="createPartyEmailAddress" in-map-name="emailAddressCtx">
+            <result-to-field result-name="contactMechId" field="emailContactMechId"/>
+        </call-service>
+        <log level="info" message="Email Contact Created emailContactMechId is ${emailContactMechId}"/>
+        <!-- Create shipping address -->
+        <set field="shipToAddressCtx.partyId" from-field="parameters.partyId"/>
+        <set field="shipToAddressCtx.userLogin" from-field="parameters.userLogin"/>
+        <set field="shipToAddressCtx.setShippingPurpose" value="Y"/>
+        <set field="shipToAddressCtx.productStoreId" from-field="parameters.productStoreId"/>
+        <if-compare field="parameters.useShippingAddressForBilling" operator="equals" value="Y">
+            <set field="shipToAddressCtx.setBillingPurpose" value="Y"/>
+        </if-compare>
+        <call-service service-name="createPostalAddressAndPurposes" in-map-name="shipToAddressCtx">
+            <result-to-field result-name="contactMechId" field="shipToContactMechId"/>
+        </call-service>
+        <log level="info" message="Shipping address created with contactMechId ${shipToContactMechId}"/>
+        
+        <!-- create shipping telecom number  -->
+        <set field="shipToTelecomNumberCtx.partyId" from-field="parameters.partyId"/>
+        <set field="shipToTelecomNumberCtx.userLogin" from-field="parameters.userLogin"/>
+        <set field="shipToTelecomNumberCtx.contactMechPurposeTypeId" value="PHONE_SHIPPING"/>
+        <!-- call create telecom service -->
+        <call-service service-name="createPartyTelecomNumber" in-map-name="shipToTelecomNumberCtx">
+            <result-to-field result-name="contactMechId" field="parameters.shipToTelecomContactMechId"/>
+        </call-service>
+        <log level="info" message="Shipping telecom number is created with contactMechId ${parameters.shipToTelecomContactMechId}"/>
+        
+        <set-service-fields service-name="sendCreatePartyEmailNotification" map="emailAddressCtx" to-map="serviceInMap"/>
+        <call-service-asynch service-name="sendCreatePartyEmailNotification" in-map-name="serviceInMap"/>
+    </simple-method>
+</simple-methods>

@@ -63,8 +63,26 @@ under the License.
         <response name="success" type="view" value="showhelpcontent"/>
     </request-map>
     
+    <request-map uri="register">
+        <security https="true" auth="false"/>
+        <response name="success" type="view" value="register"/>
+    </request-map>
+    
+    <request-map uri="newsupplier">
+        <security https="true" auth="false"/>
+        <response name="success" type="view" value="newsupplier"/>
+    </request-map>
+    
+    <request-map uri="createsupplier">
+        <security https="true" auth="false"/>
+        <event type="simple" path="component://productfromthailand/script/org/ofbiz/productfromthailand/customer/CustomerEvents.xml" invoke="createSupplier"/>
+        <response name="success" type="view" value="main"/>
+        <response name="error" type="view" value="newsupplier"/>
+    </request-map>
+    
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
     <view-map name="main" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#main"/>
+    <view-map name="register" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#register"/>
     <view-map name="editShoppingList" type="screen" page="component://productfromthailand/widget/ShoppingListScreens.xml#editShoppingList"/>
     <view-map name="advancedsearch" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#advancedsearch"/>
     
@@ -72,6 +90,7 @@ under the License.
     <view-map name="product" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#product"/>
 
     <view-map name="newcustomer" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newcustomer"/>
+    <view-map name="newsupplier" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newsupplier"/>
     <view-map name="contactus" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#contactus"/>
     <view-map name="partner" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#partner"/>
     <view-map name="aboutus" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#aboutus"/>

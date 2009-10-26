@@ -1466,3 +1466,31 @@ font-weight:700;
 padding-left:10px;
 text-align:left;
 }
+.register{
+width:48%;
+border:none;}
+.register fieldset{
+border:1px #bbb solid;
+width:100%;
+vertical-align:text-bottom;
+padding:0 0 10px 0;
+height:200px;
+}
+.register a{
+color:black;
+}
+.register ul{
+padding: 0 0 15px 20px;
+list-style:circle;
+}
+.register .regBtt{
+text-align:center;
+padding: 10px 0 15px 0;
+background:url(../images/preview.gif) no-repeat top center;
+}
+#rightblock{float:right;}
+#leftblock{float:left;}
+#leftblock .reg legend,#rightblock .reg legend{
+background:none;
+color:#443434;
+}

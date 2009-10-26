@@ -27,6 +27,10 @@
         <value xml:lang="en">Shipping Address</value>
         <value xml:lang="th">ที่อยู่</value>
     </property>
+    <property key="PageTitleNewSupplier">
+        <value xml:lang="en">Create New Supplier</value>
+        <value xml:lang="th">สร้างร้านค้า/บริษัทใหม่</value>
+    </property>
     <property key="PFTCompanyName">
         <value xml:lang="en">Antwebsystems Co.,Ltd.</value>
         <value xml:lang="th">บริษัท แอนท์ เว็บซิสเต็มส์ จำกัด</value>
@@ -35,6 +39,10 @@
         <value xml:lang="en">171/28 , Moo 3 , Tambon Nhongkeaw , Aumphur Hang Dong , Chiang Mai, Thailand 50230</value>
         <value xml:lang="th">171/28 หมู่3 ต.หนองแก๋ว อ.เมือง จ.เชียงใหม่ ประเทศไทย 50230 </value>
     </property>
+    <property key="CompanyName">
+        <value xml:lang="en">Company Name</value>
+        <value xml:lang="th">ชื่อ ร้านค้า/บริษัท</value>
+    </property>
     <property key="PFTRegister">
         <value xml:lang="da">Registrer</value>
         <value xml:lang="en">Register</value>
@@ -42,6 +50,12 @@
         <value xml:lang="it">Registrati</value>
         <value xml:lang="zh">注册</value>
         <value xml:lang="th">สมัครสมาชิก</value>
+    </property>
+    <property key="PFTRegisterIntro">
+        <value xml:lang="en">There are two kinds of registration. If you are a customer who want to buy product(s) on this site,choose "Register as Customer" on the left
+            but if you are a supplier want to sell your products choose "Register as supplier" on the right. </value>
+        <value xml:lang="th">การสมัครสมาชิกจะมีสองแบบด้วยกัน ลูกค้าทั่วไป เลือก สมัครเป็นสมาชิก ทางด้านซ้ายมือ หากคุณเป็นร้านค้าหรือบริษัทที่ต้องการขายของในเว็บไซท์นี้
+        เลือก "สมัครสมาชิกเป็นผู้ค้า" ทางด้านขวามือ</value>
     </property>
     <property key="PFTIntroMarketPlace">
         <value xml:lang="en">A marketplace to buy but also to sell products orginated in Thailand.</value>

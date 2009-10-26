@@ -37,6 +37,22 @@ under the License.
         </section>
     </screen>
     
+    <screen name="newsupplier">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleNewSupplier"/>
+                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/customer/NewCustomer.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/customer/newsupplier.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
     <screen name="contactus">
         <section>
             <actions>
