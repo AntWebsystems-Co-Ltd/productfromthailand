@@ -37,7 +37,7 @@
         server="default-server"
         location="webapp/ecommerce"
         mount-point="/pft"
-        app-bar-display="false" base-permission="MYPORTAL"/>
+        app-bar-display="false"/>
     <webapp name="productfromthailand2"
         title="Product from thailand"
         menu-name="secondary"
