@@ -28,6 +28,7 @@
     <!--<entity-resource type="data" reader-name="seed" loader="main" location="data/DemoProductAndCompany.xml"/>-->
     <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTProductData.xml"/>
     <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTHelpData.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTPortletData.xml"/>
     <!--<entity-resource type="data" reader-name="demo" loader="main" location="data/DemoSupplier.xml"/>-->
     
     <webapp name="productfromthailand1"
@@ -36,7 +37,7 @@
         server="default-server"
         location="webapp/ecommerce"
         mount-point="/pft"
-        app-bar-display="true" base-permission="MYPORTAL"/>
+        app-bar-display="false" base-permission="MYPORTAL"/>
     <webapp name="productfromthailand2"
         title="Product from thailand"
         menu-name="secondary"
