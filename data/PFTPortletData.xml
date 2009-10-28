@@ -21,7 +21,8 @@ under the License.
 <entity-engine-xml>
     <SecurityPermission permissionId="MYPORTAL_SUPPLIER" description="Use the Supplier screens in myportal."/>
     <SecurityGroup description="Supplier user of myportal" groupId="MYPORTAL_SUPPLIER"/>
-        <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="CATALOG_ADMIN"/>
+    <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="CATALOG_ADMIN"/>
+    <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="CATALOG_PRICE_MAINT"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="PARTYMGR_VIEW"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="PARTYMGR_CME_CREATE"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="PARTYMGR_CME_UPDATE"/>
@@ -34,10 +35,21 @@ under the License.
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="ORDERMGR_VIEW"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="CONTENTMGR_ADMIN"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="PROJECTMGR_ROLE_VIEW"/>
-    <SecurityPermission permissionId="MYPORTAL_SUPPLIER" description="Use the customer screens in MYPORTAL."/>
     
-    <UserLoginSecurityGroup groupId="MYPORTAL_SUPPLIER" userLoginId="aaa" fromDate="2000-01-01 00:00:00.0"/>  
+    <UserLoginSecurityGroup groupId="MYPORTAL_SUPPLIER" userLoginId="HANDICARFTEXPORT" fromDate="2000-01-01 00:00:00.0"/>
     
+    <PortalPortlet portalPortletId="MyProducts"
+        portletName="List of My Products"
+        screenName="MyProducts"
+        screenLocation="component://productfromthailand/widget/CatalogScreens.xml"
+        description="List of my products"/>
+    <PortletPortletCategory portalPortletId="MyProducts" portletCategoryId="PRODUCTS"/>
+    <PortalPortlet portalPortletId="KeywordSearch"
+        portletName="Keyword search box"
+        screenName="leftkeywordsearchbox"
+        screenLocation="component://productfromthailand/widget/CatalogScreens.xml"
+        description="Keyword search box"/>
+    <PortletPortletCategory portalPortletId="KeywordSearch" portletCategoryId="PRODUCTS"/>
     
     <PortalPage portalPageId="MYPORTAL_SUPPLIER" sequenceNum="0" portalPageName="Main" description="The default OFBiz portal page for a suppliers" ownerUserLoginId="_NA_" securityGroupId="MYPORTAL_SUPPLIER"/>
     <PortalPage portalPageId="MYPORTAL_SUPPLIER1" sequenceNum="100" portalPageName="My Profile" description="The OFBiz My Portal Profile page" ownerUserLoginId="_NA_" parentPortalPageId="MYPORTAL_SUPPLIER"/>
@@ -45,9 +57,14 @@ under the License.
     <PortalPage portalPageId="MYPORTAL_SUPPLIER3" sequenceNum="300" portalPageName="Invoices" description="The OFBiz My Portal Invoices page" ownerUserLoginId="_NA_" parentPortalPageId="MYPORTAL_SUPPLIER"/>
     <PortalPage portalPageId="MYPORTAL_SUPPLIER4" sequenceNum="400" portalPageName="Orders" description="The OFBiz My Portal Order page" ownerUserLoginId="_NA_" parentPortalPageId="MYPORTAL_SUPPLIER"/>
     
+    <PortalPageColumn portalPageId="MYPORTAL_SUPPLIER" columnSeqId="00001"/>
     <PortalPageColumn portalPageId="MYPORTAL_SUPPLIER1" columnSeqId="00001" columnWidthPercentage="50"/>
     <PortalPageColumn portalPageId="MYPORTAL_SUPPLIER1" columnSeqId="00002"/><!-- no width in pixels or percent, use the rest of the space available -->
+    <PortalPageColumn portalPageId="MYPORTAL_SUPPLIER2" columnSeqId="00001" columnWidthPercentage="15"/>
+    <PortalPageColumn portalPageId="MYPORTAL_SUPPLIER2" columnSeqId="00002"/>
     
+    <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER" portalPortletId="INCOM_CUST_REQUESTS" portletSeqId="00001" columnSeqId="00001" sequenceNum="0"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER" portalPortletId="MyCommunications" portletSeqId="00001" columnSeqId="00001" sequenceNum="1"/>
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER1" portalPortletId="party" portletSeqId="00001" columnSeqId="00001" sequenceNum="0"/>
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER1" portalPortletId="partyRelContacts" portletSeqId="00001" columnSeqId="00001" sequenceNum="1"/>
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER1" portalPortletId="partyRelAccounts" portletSeqId="00001" columnSeqId="00001" sequenceNum="2"/>
@@ -62,4 +79,6 @@ under the License.
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER1" portalPortletId="Content" portletSeqId="00001" columnSeqId="00002" sequenceNum="5"/>
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER1" portalPortletId="Notes" portletSeqId="00001" columnSeqId="00002" sequenceNum="6"/>
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER1" portalPortletId="Visits" portletSeqId="00001" columnSeqId="00002" sequenceNum="7"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER2" portalPortletId="KeywordSearch" portletSeqId="00001" columnSeqId="00001" sequenceNum="0"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER2" portalPortletId="MyProducts" portletSeqId="00001" columnSeqId="00002" sequenceNum="0"/>
 </entity-engine-xml>
