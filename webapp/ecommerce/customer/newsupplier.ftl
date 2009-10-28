@@ -98,10 +98,10 @@ under the License.
             <span id="advice-required-shipToAreaCode" style="display:none" class="errorMessage"></span>
             <span id="advice-required-shipToContactNumber" style="display:none" class="errorMessage"></span>
             <span id="shipToPhoneRequired" style="display: none;" class="errorMessage">(required)</span>
-            <input type="text" name="shipToCountryCode" id="shipToCountryCode" class="required" value="${parameters.shipToCountryCode?if_exists}" size="3" maxlength="3" />
-            - <input type="text" name="shipToAreaCode" id="shipToAreaCode" class="required" value="${parameters.shipToAreaCode?if_exists}" size="3" maxlength="3" />
-            - <input type="text" name="shipToContactNumber" id="shipToContactNumber" class="required" value="${contactNumber?default("${parameters.shipToContactNumber?if_exists}")}" size="6" maxlength="7" />
-            - <input type="text" name="shipToExtension" id="shipToExtension" value="${extension?default("${parameters.shipToExtension?if_exists}")}" size="3" maxlength="3" />
+            <input type="text" name="shipToCountryCode" id="shipToCountryCode" title="Country Code" class="required" value="${parameters.shipToCountryCode?if_exists}" size="3" maxlength="3" />
+            - <input type="text" name="shipToAreaCode" id="shipToAreaCode" title="Area Code" class="required" value="${parameters.shipToAreaCode?if_exists}" size="3" maxlength="3" />
+            - <input type="text" name="shipToContactNumber" id="shipToContactNumber" title="Contact Number" class="required" value="${contactNumber?default("${parameters.shipToContactNumber?if_exists}")}" size="6" maxlength="7" />
+            - <input type="text" name="shipToExtension" id="shipToExtension" title="Extension" value="${extension?default("${parameters.shipToExtension?if_exists}")}" size="3" maxlength="3" />
           </div>
           </fieldset>
       <div style="margin-left:300px;"><a id="submitnewuserform" href="javascript:$('newuserform').submit()" class="button" style="color:black;">${uiLabelMap.CommonSubmit}</a></div>

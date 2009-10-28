@@ -27,7 +27,7 @@ under the License.
             processor-name="emailAddress" in-map-name="parameters" out-map-name="emailAddressCtx"/>
         <call-map-processor xml-resource="component://ecommerce/script/org/ofbiz/ecommerce/customer/CheckoutMapProcs.xml"
             processor-name="shipToAddress" in-map-name="parameters" out-map-name="shipToAddressCtx"/>
-        <call-map-processor xml-resource="component://ecommerce/script/org/ofbiz/ecommerce/customer/CheckoutMapProcs.xml"
+        <call-map-processor xml-resource="component://productfromthailand/script/org/ofbiz/productfromthailand/customer/CheckoutMapProcs.xml"
             processor-name="shipToPhone" in-map-name="parameters" out-map-name="shipToTelecomNumberCtx"/>
         <check-errors/>
         
@@ -77,6 +77,17 @@ under the License.
             <result-to-field result-name="contactMechId" field="parameters.shipToTelecomContactMechId"/>
         </call-service>
         <log level="info" message="Shipping telecom number is created with contactMechId ${parameters.shipToTelecomContactMechId}"/>
+       
+        <!-- Add UserLogin To Security Group -->
+        <make-value value-field="addUserToSecurityGroup" entity-name="UserLoginSecurityGroup"/>
+        <set field="addUserToSecurityGroup.groupId" value="MYPORTAL_SUPPLIER"/>
+        <set field="addUserToSecurityGroup.userLogin" from-field="parameters.userLogin"/>
+        <set field="addUserToSecurityGroup.userLoginId" from-field="parameters.userLogin.userLoginId"/>
+        <if-empty field="addUserToSecurityGroup.fromDate">
+            <now-timestamp field="nowTimestamp"/>
+            <set from-field="nowTimestamp" field="addUserToSecurityGroup.fromDate"/>
+        </if-empty>
+        <create-value value-field="addUserToSecurityGroup"/>
         
         <set-service-fields service-name="sendCreatePartyEmailNotification" map="emailAddressCtx" to-map="serviceInMap"/>
         <call-service-asynch service-name="sendCreatePartyEmailNotification" in-map-name="serviceInMap"/>

@@ -31,7 +31,7 @@ under the License.
             </ul>
             <legend>Register As customer</legend>
         <div class="regBtt">
-        <a href="<@ofbizUrl>newcustomer</@ofbizUrl>" target="_blank" alt="${uiLabelMap.PFTRegister}">
+        <a href="<@ofbizUrl>newcustomer</@ofbizUrl>" alt="${uiLabelMap.PFTRegister}">
         ${uiLabelMap.PFTRegister}
         </a>
         </div> 
@@ -47,7 +47,7 @@ under the License.
                 
             </ul>
         <div class="regBtt">
-        <a href="<@ofbizUrl>newsupplier</@ofbizUrl>" target="_blank" alt="${uiLabelMap.PFTRegister}">
+        <a href="<@ofbizUrl>newsupplier</@ofbizUrl>" alt="${uiLabelMap.PFTRegister}">
         ${uiLabelMap.PFTRegister}
         </a>
         </div> 
