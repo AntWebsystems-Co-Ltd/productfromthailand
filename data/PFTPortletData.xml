@@ -53,7 +53,7 @@ under the License.
     
     <PortalPage portalPageId="MYPORTAL_SUPPLIER" sequenceNum="0" portalPageName="Main" description="The default OFBiz portal page for a suppliers" ownerUserLoginId="_NA_" securityGroupId="MYPORTAL_SUPPLIER"/>
     <PortalPage portalPageId="MYPORTAL_SUPPLIER1" sequenceNum="100" portalPageName="My Profile" description="The OFBiz My Portal Profile page" ownerUserLoginId="_NA_" parentPortalPageId="MYPORTAL_SUPPLIER"/>
-    <PortalPage portalPageId="MYPORTAL_SUPPLIER2" sequenceNum="200" portalPageName="Catalogs" description="My Portal Catalogs page" ownerUserLoginId="_NA_" parentPortalPageId="MYPORTAL_SUPPLIER"/>
+    <PortalPage portalPageId="MYPORTAL_SUPPLIER2" sequenceNum="200" portalPageName="Products" description="My Portal Products page" ownerUserLoginId="_NA_" parentPortalPageId="MYPORTAL_SUPPLIER"/>
     <PortalPage portalPageId="MYPORTAL_SUPPLIER3" sequenceNum="300" portalPageName="Invoices" description="The OFBiz My Portal Invoices page" ownerUserLoginId="_NA_" parentPortalPageId="MYPORTAL_SUPPLIER"/>
     <PortalPage portalPageId="MYPORTAL_SUPPLIER4" sequenceNum="400" portalPageName="Orders" description="The OFBiz My Portal Order page" ownerUserLoginId="_NA_" parentPortalPageId="MYPORTAL_SUPPLIER"/>
     

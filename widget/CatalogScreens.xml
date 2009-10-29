@@ -22,7 +22,6 @@ under the License.
         xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
 
     <!-- Column Included Screens -->
-    
     <screen name="choosecatalog">
         <section>
             <actions>
@@ -488,11 +487,111 @@ under the License.
                         <condition-expr field-name="createdDate" operator="not-equals" value="${nullValue}"/>
                     </condition-list><order-by field-name="createdDate DESC"/>
                 </entity-condition>
-                <set field="recentlyproductScreen" value="component://productfromthailand/widget/CatalogScreens.xml#recentlyproductScreen"/>                
+                <set field="recentlyproductScreen" value="component://productfromthailand/widget/CatalogScreens.xml#recentlyproductScreen"/>
                 <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/ProductSummary.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/recentlyproducts.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!-- Portlet screen -->
+    <screen name="MyProducts">
+        <section>
+            <actions>
+                <property-map resource="ProductFromThailandUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/MyProducts.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/MyProducts.ftl"/></html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="CommonFindDecorator">
+        <section>
+            <actions>
+                <set field="leftbarScreenName" value="supplierleftbar"/>
+                <set field="leftbarScreenLocation" value="component://productfromthailand/widget/CommonScreens.xml"/>
+                <set field="MainColumnStyle" value="leftonly"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <!-- do check for CATALOG, _VIEW permission -->
+                            <condition>
+                                <if-has-permission permission="CATALOG" action="_VIEW"/>
+                            </condition>
+                            <widgets>
+                                <decorator-section-include name="body"/>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.ProductCatalogViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="leftkeywordsearchbox">
+        <section>
+            <actions>
+                <script location="component://product/webapp/catalog/WEB-INF/actions/find/keywordsearchbox.groovy"/>
+            </actions>
+            <widgets>
+                <screenlet id="ProductKeywordsPanel" title="${uiLabelMap.ProductSearchProducts}" collapsible="true">
+                    <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/leftkeywordsearchbox.ftl"/></html></platform-specific>
+                </screenlet>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="advancedproductsearch">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleAdvancedSearch"/>
+                <set field="headerItem" value="Advanced Search"/>
+                
+                <entity-condition entity-name="ProductCategory" list="productCategories">
+                    <condition-expr field-name="showInSelect" operator="not-equals" value="N"/>
+                    <order-by field-name="description"/>
+                </entity-condition>
+                <entity-condition entity-name="ProdCatalog" list="prodCatalogs">
+                    <order-by field-name="catalogName"/>
+                </entity-condition>
+                <script location="component://product/webapp/catalog/WEB-INF/actions/find/advancedsearchoptions.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonFindDecorator">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/advancedproductsearch.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="keywordsearchresults">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleSearchResults"/>
+                <script location="component://product/webapp/catalog/WEB-INF/actions/find/keywordsearch.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonFindDecorator">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://product/webapp/catalog/find/keywordsearch.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
             </widgets>
         </section>
     </screen>

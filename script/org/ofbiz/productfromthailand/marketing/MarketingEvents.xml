@@ -82,4 +82,20 @@
             </else>
         </if-compare>
     </simple-method>
+    
+    <simple-method method-name="createProductAndSupplierProduct" short-description="creat Product and also create SupplierProduct">
+        <set-service-fields service-name="createProduct" map="parameters" to-map="newEntity"/>
+        <call-service service-name="createProduct" in-map-name="newEntity">
+            <result-to-field result-name="productId" field="addSupplierProductCtx.productId"/>
+        </call-service>
+        
+        <set field="addSupplierProductCtx.supplierProductId" value="SP-${addSupplierProductCtx.productId}"/>
+        <set field="addSupplierProductCtx.partyId" from-field="userLogin.partyId"/>
+        <set field="addSupplierProductCtx.currencyUomId" value="USD"/>
+        <set field="addSupplierProductCtx.lastPrice" type="BigDecimal" value="0"/>
+        <set field="addSupplierProductCtx.minimumOrderQuantity" type="BigDecimal" value="0"/>
+        <now-timestamp field="addSupplierProductCtx.availableFromDate"/>
+        
+        <call-service service-name="createSupplierProduct" in-map-name="addSupplierProductCtx"/>
+    </simple-method>
 </simple-methods>

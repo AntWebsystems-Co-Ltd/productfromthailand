@@ -121,6 +121,16 @@ under the License.
             </widgets>
         </section>
     </screen>
+    <screen name="supplierleftbar">
+        <section>
+            <widgets>
+                <container style="left" id="leftSection">
+                    <include-screen name="leftkeywordsearchbox" location="component://productfromthailand/widget/CatalogScreens.xml"/>
+                </container>
+            </widgets>
+        </section>
+    </screen>
+    
     <!-- Common Decorators -->
     <screen name="CommonEmptyDecorator">
         <section>
