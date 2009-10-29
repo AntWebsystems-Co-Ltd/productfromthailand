@@ -1,0 +1,12 @@
+Index: specialpurpose/myportal/webapp/myportal/WEB-INF/controller.xml
+===================================================================
+--- specialpurpose/myportal/webapp/myportal/WEB-INF/controller.xml	(revision 830438)
++++ specialpurpose/myportal/webapp/myportal/WEB-INF/controller.xml	(working copy)
+@@ -29,6 +29,7 @@
+     <include location="component://order/webapp/ordermgr/WEB-INF/controller.xml"/>
+     <include location="component://workeffort/webapp/workeffort/WEB-INF/controller.xml"/>
+     <include location="component://projectmgr/webapp/projectmgr/WEB-INF/controller.xml"/>
++    <include location="component://productfromthailand/webapp/ecommerce/WEB-INF/controller.xml"/>
+     
+     <description>Show personal information in the system</description>
+ 
