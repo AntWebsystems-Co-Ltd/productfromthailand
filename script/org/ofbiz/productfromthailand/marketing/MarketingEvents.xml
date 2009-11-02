@@ -85,6 +85,7 @@
     
     <simple-method method-name="createProductAndSupplierProduct" short-description="creat Product and also create SupplierProduct">
         <set-service-fields service-name="createProduct" map="parameters" to-map="newEntity"/>
+        <set field="newEntity.requirementMethodEnumId" value="PRODRQM_DS"/>
         <call-service service-name="createProduct" in-map-name="newEntity">
             <result-to-field result-name="productId" field="addSupplierProductCtx.productId"/>
         </call-service>
@@ -94,6 +95,7 @@
         <set field="addSupplierProductCtx.currencyUomId" value="USD"/>
         <set field="addSupplierProductCtx.lastPrice" type="BigDecimal" value="0"/>
         <set field="addSupplierProductCtx.minimumOrderQuantity" type="BigDecimal" value="0"/>
+        <set field="addSupplierProductCtx.canDropShip" value="Y"/>
         <now-timestamp field="addSupplierProductCtx.availableFromDate"/>
         
         <call-service service-name="createSupplierProduct" in-map-name="addSupplierProductCtx"/>
