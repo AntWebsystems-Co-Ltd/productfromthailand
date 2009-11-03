@@ -149,4 +149,21 @@
         </section>
     </screen>
     
+    <!-- Screens Specific to portlet -->
+    <screen name="ListOrders">
+        <section>
+            <actions>
+                <property-map resource="ProductFromThailandUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <set field="roleTypeId" value="SUPPLIER_AGENT"/>
+                <set field="screenletTitle" from-field="uiLabelMap.PFTCustomerOrders"/>
+                <script location="component://common/webcommon/WEB-INF/actions/includes/retrievePortletAttributes.groovy"/>
+            </actions>
+            <widgets>
+                <screenlet title="${screenletTitle}" navigation-form-name="ListOrders" >
+                    <include-form name="ListOrders" location="component://productfromthailand/widget/OrderForms.xml"/>
+                </screenlet>
+            </widgets>
+        </section> 
+    </screen>
 </screens>

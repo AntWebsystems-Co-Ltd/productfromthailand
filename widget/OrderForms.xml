@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-form.xsd">
+   
+    <form name="ListOrders" type="list" target="" list-name="listIt" title="" odd-row-style="alternate-row" 
+        header-row-style="header-row-2" default-table-style="basic-table hover-bar">
+        <actions>
+            <entity-and entity-name="OrderHeaderAndRoles">
+                <field-map field-name="partyId" from-field="partyId"/>
+                <field-map field-name="roleTypeId" from-field="roleTypeId"/>
+                <order-by field-name="orderDate DESC"/>
+            </entity-and>
+        </actions>
+        <field name="orderTypeId" title="${uiLabelMap.FormFieldTitle_orderTypeId}">
+            <display-entity entity-name="OrderType" description="${description}"/>
+        </field>
+        <field name="orderId" title="${uiLabelMap.OrderOrderId}">
+            <hyperlink target="orderview" description="${orderId}">
+                <parameter param-name="orderId"/>
+            </hyperlink>
+        </field>
+        <field name="orderName" title="${uiLabelMap.OrderOrderName}"><display/></field>
+        <field name="remainingSubTotal" title="${uiLabelMap.FormFieldTitle_remainingSubTotal}"><display/></field>
+        <field name="grandTotal" title="${uiLabelMap.OrderGrandTotal}"><display/></field>
+        <field name="statusId"><display-entity entity-name="StatusItem" key-field-name="statusId" description="${description}"/></field>
+        <field name="orderDate" title="${uiLabelMap.OrderOrderDate}"><display/></field>
+        <field name="partyId" title="${uiLabelMap.PartyPartyId}">
+            <display-entity entity-name="PartyNameView" description="${groupName}"/>
+        </field>
+        <field name="roleTypeId" title="${uiLabelMap.FormFieldTitle_roleTypeId}">
+            <display-entity entity-name="RoleType" description="${description}"/>
+        </field>
+    </form>
+
+</forms>

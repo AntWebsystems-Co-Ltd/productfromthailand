@@ -28,11 +28,12 @@ under the License.
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="PARTYMGR_CME_UPDATE"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="PARTYMGR_CME_DELETE"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="PARTYMGR_CME-NOTE_CREATE"/>
-    <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="ORDERMGR_CRQ_CREATE"/>
-    <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="ORDERMGR_CRQ_UPDATE"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="PARTYMGR_CME_UPDATE"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="PARTYMGR_CME_CREATE"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="ORDERMGR_VIEW"/>
+    <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="ORDERMGR_UPDATE"/>
+    <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="ORDERMGR_CRQ_CREATE"/>
+    <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="ORDERMGR_CRQ_UPDATE"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="CONTENTMGR_ADMIN"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="PROJECTMGR_ROLE_VIEW"/>
     
@@ -79,6 +80,17 @@ under the License.
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER1" portalPortletId="Content" portletSeqId="00001" columnSeqId="00002" sequenceNum="5"/>
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER1" portalPortletId="Notes" portletSeqId="00001" columnSeqId="00002" sequenceNum="6"/>
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER1" portalPortletId="Visits" portletSeqId="00001" columnSeqId="00002" sequenceNum="7"/>
+    
+    <PortalPortlet portalPortletId="ListOrders"
+        portletName="ListOrders"
+        screenName="ListOrders"
+        screenLocation="component://productfromthailand/widget/OrderScreens.xml"
+        description="List of Orders To Supplier"/>
+    <PortletPortletCategory portalPortletId="ListOrders" portletCategoryId="ORDERMGR"/>
+    <PortalPageColumn portalPageId="MYPORTAL_SUPPLIER4" columnSeqId="00001"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER4" portalPortletId="ListOrders" portletSeqId="00001" columnSeqId="00001" sequenceNum="1"/>
+
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER2" portalPortletId="KeywordSearch" portletSeqId="00001" columnSeqId="00001" sequenceNum="0"/>
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER2" portalPortletId="MyProducts" portletSeqId="00001" columnSeqId="00002" sequenceNum="0"/>
+
 </entity-engine-xml>

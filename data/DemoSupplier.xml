@@ -177,15 +177,6 @@
     <SupplierProduct partyId="CMSOONTRI" minimumOrderQuantity="0" currencyUomId="USD" productId="ST-001" lastPrice="5.0" supplierProductId="CMST-001" supplierProductName="SOONTRI LADIES WEAR" availableFromDate="2009-09-25 00:00:00.000"/>
     <SupplierProduct partyId="CMSOONTRI" minimumOrderQuantity="0" currencyUomId="USD" productId="ST-002" lastPrice="7.0" supplierProductId="CMST-002" supplierProductName="SOONTRI HOUSE HOLD PRODUCT" availableFromDate="2009-09-25 00:00:00.000"/>
     
-    <!-- Drop ship products -->
-    <!--<ProductCategory description="DropShip Products" primaryParentCategoryId="CATALOG1" productCategoryId="dropShip" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategoryRollup fromDate="2001-05-13 12:00:00.0" parentProductCategoryId="CATALOG1" productCategoryId="dropShip"/>
-    
-    <Product productId="dropShip1" productTypeId="FINISHED_GOOD" internalName="DropShip from DemoSupplier" productName="DropShip from DemoSupplier" smallImageUrl="/images/products/small/dropShip1.jpg" mediumImageUrl="/images/products/medium/dropShip1.jpg" largeImageUrl="/images/products/large/dropShip1.jpg" isVirtual="N" isVariant="N" requirementMethodEnumId="PRODRQM_DS" billOfMaterialLevel="0" createdDate="2007-05-05 14:50:58.584" createdByUserLogin="admin" lastModifiedDate="2007-05-05 15:05:41.62" lastModifiedByUserLogin="admin" inShippingBox="N" lastUpdatedStamp="2007-05-06 15:02:03.466" lastUpdatedTxStamp="2007-05-06 15:02:02.465" createdStamp="2007-05-05 14:50:58.586" createdTxStamp="2007-05-05 14:50:58.21"/>
-    <ProductCategoryMember productCategoryId="dropShip" productId="dropShip1" sequenceNum="1" fromDate="2001-05-13 12:00:00.0"/>
-    <ProductPrice productId="dropShip1" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2001-05-13 12:00:00.0" price="13.99" createdDate="2001-05-13 12:00:00.0" createdByUserLogin="admin" lastModifiedDate="2001-05-13 12:00:00.0" lastModifiedByUserLogin="admin"/>
-    <SupplierProduct productId="dropShip1" partyId="DemoSupplier" availableFromDate="2007-01-01 14:51:52.627" minimumOrderQuantity="0.0" lastPrice="10.0" currencyUomId="USD" supplierProductName="Drop ship product from demo supplier" supplierProductId="dropShip1-DS" canDropShip="Y" supplierCommissionPerc="20.0" lastUpdatedStamp="2007-05-05 14:53:35.248" lastUpdatedTxStamp="2007-05-05 14:53:35.15" createdStamp="2007-05-05 14:53:35.248" createdTxStamp="2007-05-05 14:53:35.15"/>-->
-
     <ProductCategory productCategoryId="PFTPROMOTION" productCategoryTypeId="CATALOG_CATEGORY" categoryName="Special Products" detailScreen="component://ecommerce/widget/CatalogScreens.xml#categorydetailmatrix"/>    
     <ProdCatalogCategory prodCatalogId="PFTCatalog" productCategoryId="PFTPROMOTION" prodCatalogCategoryTypeId="PCCT_PROMOTIONS" fromDate="2009-10-02 13:57:42.324" />
     <ProductCategoryMember productCategoryId="PFTPROMOTION" productId="MH-003" fromDate="2009-10-01 11:03:04.0"/>

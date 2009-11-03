@@ -19,7 +19,7 @@ under the License.
 <#--<#include "component://productfromthailand/webapp/ecommerce/includes/headerHead.ftl"/>-->
 <#include "component://ecommerce/webapp/ecommerce/includes/headerHead.ftl"/>
 <body>
-<#--script type="text/javascript">
+<script type="text/javascript">
     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
 </script>
@@ -28,7 +28,7 @@ under the License.
         var pageTracker = _gat._getTracker("UA-11027029-1");
         pageTracker._trackPageview();
     } catch(err) {}
-</script-->
+</script>
 
 <center>
 <div id="ecom-header">
@@ -83,6 +83,9 @@ under the License.
                 <#--li id="header-bar-sitemap"><a href="<@ofbizUrl>sitemap</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSitemap}</div></a></li-->
                 <li id="header-bar-help"><a href="<@ofbizUrl>help</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTHelpAndInstruction}</div></a></li>
               <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
+              <#if security.hasEntityPermission("MYPORTAL", "_SUPPLIER", session)?exists>
+                <li id="header-bar-logout"><a href="<@ofbizUrl>../../myportal</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTStoreManagement}</div></a></li>
+              </#if>
                 <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><div class="menu-right">${uiLabelMap.CommonLogout}</div></a></li>
               <#else/>
                 <li id="header-bar-login">

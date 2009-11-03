@@ -165,6 +165,10 @@
         <value xml:lang="en">Browse Help</value>
         <value xml:lang="th">ดูตามหัวข้อ</value>
     </property>
+    <property key="PFTStoreManagement">
+        <value xml:lang="en">Store Management</value>
+        <value xml:lang="th">จัดการร้านค้า</value>
+    </property>
     <property key="PFTProductsOf">
         <value xml:lang="en">Products of</value>
         <value xml:lang="th">สินค้าของ</value>
@@ -172,5 +176,9 @@
     <property key="PFTUploadProductSpreadsheet">
         <value xml:lang="en">Upload Products Spreadsheet</value>
         <value xml:lang="th">อัพโหลดข้อมูลสินค้าจากไฟล์</value>
+    </property>
+    <property key="PFTCustomerOrders">
+        <value xml:lang="en">Customer Orders</value>
+        <value xml:lang="th">รายการสั่งซื้อจากลูกค้า</value>
     </property>
 </resource>
