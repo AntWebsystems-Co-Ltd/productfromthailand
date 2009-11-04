@@ -281,8 +281,4 @@
     <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD203" periodTypeId="FISCAL_QUARTER" fromDate="2010-07-01" thruDate="2010-10-01" isClosed="N" periodNum="3" periodName="2010/Q3" parentPeriodId="PFTPERIOD200"/>
     <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD204" periodTypeId="FISCAL_QUARTER" fromDate="2010-10-01" thruDate="2011-01-01" isClosed="N" periodNum="4" periodName="2010/Q4" parentPeriodId="PFTPERIOD200"/>
     
-    <ContactList contactListId="PFT0001" contactListTypeId="ANNOUNCEMENT" contactMechTypeId="EMAIL_ADDRESS" marketingCampaignId=""
-        contactListName="Product From Thailand Announcements" description="Product From Thailand Announcements Mailing List (email)" comments="" isPublic="Y" ownerPartyId="pft"
-        verifyEmailFrom="" verifyEmailScreen=""
-        verifyEmailSubject="" verifyEmailWebSiteId=""/>
 </entity-engine-xml>
