@@ -58,25 +58,24 @@ under the License.
         <!-- Create shipping address -->
         <set field="shipToAddressCtx.partyId" from-field="parameters.partyId"/>
         <set field="shipToAddressCtx.userLogin" from-field="parameters.userLogin"/>
-        <set field="shipToAddressCtx.setShippingPurpose" value="Y"/>
+        <set field="shipToAddressCtx.setPaymentPurpose" value="Y"/>
+        <set field="shipToAddressCtx.setGeneralPurpose" value="Y"/>
         <set field="shipToAddressCtx.productStoreId" from-field="parameters.productStoreId"/>
-        <if-compare field="parameters.useShippingAddressForBilling" operator="equals" value="Y">
-            <set field="shipToAddressCtx.setBillingPurpose" value="Y"/>
-        </if-compare>
-        <call-service service-name="createPostalAddressAndPurposes" in-map-name="shipToAddressCtx">
-            <result-to-field result-name="contactMechId" field="shipToContactMechId"/>
+        <set field="shipToAddressCtx.setBillingPurpose" value="Y"/>
+        <call-service service-name="createSupplierPostalAddressAndPurposes" in-map-name="shipToAddressCtx">
+            <result-to-field result-name="contactMechId" field="billToContactMechId"/>
         </call-service>
-        <log level="info" message="Shipping address created with contactMechId ${shipToContactMechId}"/>
+        <log level="info" message="Billing address created with contactMechId ${billToContactMechId}"/>
         
-        <!-- create shipping telecom number  -->
+        <!-- create billing telecom number  -->
         <set field="shipToTelecomNumberCtx.partyId" from-field="parameters.partyId"/>
         <set field="shipToTelecomNumberCtx.userLogin" from-field="parameters.userLogin"/>
-        <set field="shipToTelecomNumberCtx.contactMechPurposeTypeId" value="PHONE_SHIPPING"/>
+        <set field="shipToTelecomNumberCtx.contactMechPurposeTypeId" value="PHONE_BILLING"/>
         <!-- call create telecom service -->
         <call-service service-name="createPartyTelecomNumber" in-map-name="shipToTelecomNumberCtx">
             <result-to-field result-name="contactMechId" field="parameters.shipToTelecomContactMechId"/>
         </call-service>
-        <log level="info" message="Shipping telecom number is created with contactMechId ${parameters.shipToTelecomContactMechId}"/>
+        <log level="info" message="Billing telecom number is created with contactMechId ${parameters.shipToTelecomContactMechId}"/>
        
         <!-- Add UserLogin To Security Group -->
         <make-value value-field="addUserToSecurityGroup" entity-name="UserLoginSecurityGroup"/>
@@ -91,5 +90,80 @@ under the License.
         
         <set-service-fields service-name="sendCreatePartyEmailNotification" map="emailAddressCtx" to-map="serviceInMap"/>
         <call-service-asynch service-name="sendCreatePartyEmailNotification" in-map-name="serviceInMap"/>
+    </simple-method>
+    
+    <simple-method method-name="createSupplierPostalAddressAndPurposes" short-description="Create postal address, purposes and set them defaults" login-required="false">
+        <call-service service-name="createPartyPostalAddress" in-map-name="parameters" >
+            <result-to-field result-name="contactMechId" field="parameters.contactMechId"/>
+            <result-to-result result-name="contactMechId"/>
+        </call-service>
+        <if>
+            <condition>
+                <or>
+                    <not><if-empty field="parameters.setGeneralPurpose"/></not>
+                    <not><if-empty field="parameters.setBillingPurpose"/></not>
+                    <not><if-empty field="parameters.setPaymentPurpose"/></not>
+                </or>
+            </condition>
+            <then>
+                <set-service-fields service-name="createPartyContactMechPurpose" map="parameters" to-map="serviceContext"/>
+                <set field="serviceContext.partyId" from-field="userLogin.partyId"/>
+                <if-compare field="parameters.setGeneralPurpose" operator="equals" value="Y">
+                    <entity-and entity-name="PartyContactMechPurpose" list="pcmpList" filter-by-date="true">
+                        <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                        <field-map field-name="contactMechPurposeTypeId" value="GENERAL_LOCATION"/>
+                    </entity-and>
+                    <if-not-empty field="pcmpList">
+                        <first-from-list entry="pcmp" list="pcmpList"/>
+                        <set-service-fields service-name="deletePartyContactMechPurposeIfExists" map="pcmp" to-map="serviceInMap"/>
+                        <call-service service-name="deletePartyContactMechPurposeIfExists" in-map-name="serviceInMap"/>
+                        <clear-field field="serviceInMap"/>
+                    </if-not-empty>
+                    <set field="serviceContext.contactMechPurposeTypeId" value="GENERAL_LOCATION"/>
+                    <call-service service-name="createPartyContactMechPurpose" in-map-name="serviceContext"/>
+                    
+                    <set-service-fields service-name="setPartyProfileDefaults" map="parameters" to-map="partyProfileDefaultsCtx"/>
+                    <set field="partyProfileDefaultsCtx.defaultShipAddr" from-field="parameters.contactMechId"/>
+                    <set field="partyProfileDefaultsCtx.partyId" from-field="userLogin.partyId"/>
+                    <call-service service-name="setPartyProfileDefaults" in-map-name="partyProfileDefaultsCtx"/>
+                </if-compare>
+                <if-compare field="parameters.setBillingPurpose" operator="equals" value="Y">
+                    <entity-and entity-name="PartyContactMechPurpose" list="pcmpList" filter-by-date="true">
+                        <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                        <field-map field-name="contactMechPurposeTypeId" value="BILLING_LOCATION"/>
+                    </entity-and>
+                    <if-not-empty field="pcmpList">
+                        <first-from-list entry="pcmp" list="pcmpList"/>
+                        <set-service-fields service-name="deletePartyContactMechPurposeIfExists" map="pcmp" to-map="serviceInMap"/>
+                        <call-service service-name="deletePartyContactMechPurposeIfExists" in-map-name="serviceInMap"/>
+                    </if-not-empty>
+                    <set field="serviceContext.contactMechPurposeTypeId" value="BILLING_LOCATION"/>
+                    <call-service service-name="createPartyContactMechPurpose" in-map-name="serviceContext"/>
+                    
+                    <set-service-fields service-name="setPartyProfileDefaults" map="parameters" to-map="partyProfileDefaultsCtx"/>
+                    <set field="partyProfileDefaultsCtx.defaultBillAddr" from-field="parameters.contactMechId"/>
+                    <set field="partyProfileDefaultsCtx.partyId" from-field="userLogin.partyId"/>
+                    <call-service service-name="setPartyProfileDefaults" in-map-name="partyProfileDefaultsCtx"/>
+                </if-compare>
+                <if-compare field="parameters.setPaymentPurpose" operator="equals" value="Y">
+                    <entity-and entity-name="PartyContactMechPurpose" list="pcmpList" filter-by-date="true">
+                        <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                        <field-map field-name="contactMechPurposeTypeId" value="PAYMENT_LOCATION"/>
+                    </entity-and>
+                    <if-not-empty field="pcmpList">
+                        <first-from-list entry="pcmp" list="pcmpList"/>
+                        <set-service-fields service-name="deletePartyContactMechPurposeIfExists" map="pcmp" to-map="serviceInMap"/>
+                        <call-service service-name="deletePartyContactMechPurposeIfExists" in-map-name="serviceInMap"/>
+                    </if-not-empty>
+                    <set field="serviceContext.contactMechPurposeTypeId" value="PAYMENT_LOCATION"/>
+                    <call-service service-name="createPartyContactMechPurpose" in-map-name="serviceContext"/>
+                    
+                    <set-service-fields service-name="setPartyProfileDefaults" map="parameters" to-map="partyProfileDefaultsCtx"/>
+                    <set field="partyProfileDefaultsCtx.defaultBillAddr" from-field="parameters.contactMechId"/>
+                    <set field="partyProfileDefaultsCtx.partyId" from-field="userLogin.partyId"/>
+                    <call-service service-name="setPartyProfileDefaults" in-map-name="partyProfileDefaultsCtx"/>
+                </if-compare>
+            </then>
+        </if>
     </simple-method>
 </simple-methods>
