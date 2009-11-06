@@ -87,10 +87,11 @@
         <set-service-fields service-name="createProduct" map="parameters" to-map="newEntity"/>
         <set field="newEntity.requirementMethodEnumId" value="PRODRQM_DS"/>
         <call-service service-name="createProduct" in-map-name="newEntity">
-            <result-to-field result-name="productId" field="addSupplierProductCtx.productId"/>
+            <result-to-field result-name="productId" field="productId"/>
         </call-service>
         
-        <set field="addSupplierProductCtx.supplierProductId" value="SP-${addSupplierProductCtx.productId}"/>
+        <set field="addSupplierProductCtx.productId" from-field="productId"/>
+        <set field="addSupplierProductCtx.supplierProductId" from-field="parameters.supplierProductId"/>
         <set field="addSupplierProductCtx.partyId" from-field="userLogin.partyId"/>
         <set field="addSupplierProductCtx.currencyUomId" value="USD"/>
         <set field="addSupplierProductCtx.lastPrice" type="BigDecimal" value="0"/>
@@ -99,5 +100,7 @@
         <now-timestamp field="addSupplierProductCtx.availableFromDate"/>
         
         <call-service service-name="createSupplierProduct" in-map-name="addSupplierProductCtx"/>
+            
+        <field-to-request field="productId"/>
     </simple-method>
 </simple-methods>
