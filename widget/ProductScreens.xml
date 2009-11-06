@@ -93,12 +93,16 @@ under the License.
                 
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
+                <entity-and entity-name="SupplierProduct" list="supplierProduct">
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                </entity-and>
             </actions>
             <widgets>
                 <decorator-screen name="CommonProductDecorator">
                     <decorator-section name="body">
                         <screenlet title="${uiLabelMap.PageTitleEditProduct}">
-                            <include-form name="EditProduct" location="component://product/widget/catalog/ProductForms.xml"/>
+                            <include-form name="EditProduct" location="component://productfromthailand/widget/ProductForms.xml"/>
                         </screenlet>
                         
                         <!--<section>
