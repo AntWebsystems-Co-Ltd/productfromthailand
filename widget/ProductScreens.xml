@@ -24,6 +24,7 @@ under the License.
     <screen name="CommonProductDecorator">
         <section>
             <actions>
+                <property-map resource="ProductFromThailandUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
                 <set field="leftbarScreenName" value="supplierleftbar"/>
@@ -1172,6 +1173,27 @@ under the License.
                     <decorator-section name="body">
                         <screenlet title="${uiLabelMap.ProductAddCommunicationEvent}">
                             <include-form name="EditCommEvent" location="component://product/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="uploadproducts">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PFTUploadProductSpreadsheet"/>
+                <set field="tabButtonItem" value="EditProduct"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductDecorator">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.PFTUploadProductSpreadsheet}">
+                            <platform-specific>
+                                <html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/UploadProductsFromSpreadsheet.ftl"/></html>
+                            </platform-specific>
                         </screenlet>
                     </decorator-section>
                 </decorator-screen>

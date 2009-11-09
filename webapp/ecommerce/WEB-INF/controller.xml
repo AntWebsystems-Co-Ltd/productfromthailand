@@ -95,6 +95,17 @@ under the License.
         <security https="true" auth="true"/>
         <response name="success" type="view" value="advancedproductsearch"/>
     </request-map>
+    
+    <request-map uri="uploadproducts">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="uploadproducts"/>
+    </request-map>
+    <request-map uri="UploadProductFromSpreadsheet">
+        <security https="true" auth="true"/>
+        <event type="java" path="org.ofbiz.productfromthailand.ImportProduct" invoke="importProductFromSpreadsheet"/>
+        <response name="success" type="view" value="uploadproducts"/>
+        <response name="error" type="view" value="uploadproducts"/>
+    </request-map>
 
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
     <view-map name="main" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#main"/>
@@ -139,6 +150,7 @@ under the License.
     <view-map name="EditProduct" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#EditProduct"/>
     <view-map name="EditProductPrices" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#EditProductPrices"/>
     <view-map name="EditProductContent" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#EditProductContent"/>
+    <view-map name="EditProductContentContent" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#EditProductContentContent"/>
     <view-map name="EditProductKeyword" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#EditProductKeyword"/>
     <view-map name="EditProductFeatures" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#EditProductFeatures"/>
     <view-map name="ApplyFeaturesFromCategory" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#ApplyFeaturesFromCategory"/>
@@ -148,4 +160,7 @@ under the License.
     
     <view-map name="ViewProductOrder" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#ViewProductOrder"/>
     <view-map name="EditProductCommunicationEvents" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#EditProductCommunicationEvents"/>
+    
+    <view-map name="uploadproducts" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#uploadproducts"/>
+    
 </site-conf>

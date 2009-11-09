@@ -174,8 +174,16 @@
         <value xml:lang="th">สินค้าของ</value>
     </property>
     <property key="PFTUploadProductSpreadsheet">
-        <value xml:lang="en">Upload Products Spreadsheet</value>
-        <value xml:lang="th">อัพโหลดข้อมูลสินค้าจากไฟล์</value>
+        <value xml:lang="en">Upload Products from Spreadsheet</value>
+        <value xml:lang="th">อัพโหลดข้อมูลสินค้าจากไฟล์ตารางจัดการ</value>
+    </property>
+    <property key="PFTUploadProduct">
+        <value xml:lang="en">Upload Product</value>
+        <value xml:lang="th">อัพโหลดข้อมูลสินค้า</value>
+    </property>
+    <property key="PFTMyProducts">
+        <value xml:lang="en">My Products</value>
+        <value xml:lang="th">รายการสินค้าของฉัน</value>
     </property>
     <property key="PFTCustomerOrders">
         <value xml:lang="en">Customer Orders</value>
