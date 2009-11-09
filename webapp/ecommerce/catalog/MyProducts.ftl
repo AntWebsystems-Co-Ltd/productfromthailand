@@ -18,24 +18,29 @@ under the License.
 -->
 
     <a href="<@ofbizUrl>EditProduct</@ofbizUrl>" class="buttontext">${uiLabelMap.ProductNewProduct}</a>&nbsp;&nbsp;
-    <a href="<@ofbizUrl>main</@ofbizUrl>" class="buttontext">${uiLabelMap.PFTUploadProductSpreadsheet}</a><br/><br/>
+    <a href="<@ofbizUrl>uploadproducts</@ofbizUrl>" class="buttontext">${uiLabelMap.PFTUploadProductSpreadsheet}</a><br/><br/>
 <div class="screenlet">
     <div class="screenlet-title-bar">
         <#if (listSize > 0)>
             <div class="boxhead-right">
-                <#if (viewIndex > 1)>
-                    <a href="<@ofbizUrl>EditCategoryProducts?productCategoryId=${productCategoryId?if_exists}&VIEW_SIZE=${viewSize}&VIEW_INDEX=${viewIndex-1}</@ofbizUrl>" class="submenutext">${uiLabelMap.CommonPrevious}</a> |
+                <#if (0 < viewIndex)>
+                    <a href="<@ofbizUrl>showPortalPage?portalPageId=${(parameters.portalPageId)?if_exists}&parentPortalPageId=${(parameters.parentPortalPageId)?if_exists}&VIEW_SIZE=${viewSize}&VIEW_INDEX=${viewIndex-1}</@ofbizUrl>" class="submenutext">${uiLabelMap.CommonPrevious}</a> |
+                <#else>
+                  <span class="submenutextdisabled">${uiLabelMap.CommonPrevious}</span>
                 </#if>
+                <#if 0 < listSize>
                 <span class="submenutextinfo">${lowIndex} - ${highIndex} ${uiLabelMap.CommonOf} ${listSize}</span>
+                </#if>
                 <#if (listSize > highIndex)>
-                    | <a class="lightbuttontext" href="<@ofbizUrl>EditCategoryProducts?productCategoryId=${productCategoryId?if_exists}&VIEW_SIZE=${viewSize}&VIEW_INDEX=${viewIndex+1}</@ofbizUrl>" class="submenutextright">${uiLabelMap.CommonNext}</a>
+                    | <a class="lightbuttontext" href="<@ofbizUrl>showPortalPage?portalPageId=${(parameters.portalPageId)?if_exists}&parentPortalPageId=${(parameters.parentPortalPageId)?if_exists}&VIEW_SIZE=${viewSize}&VIEW_INDEX=${viewIndex+1}</@ofbizUrl>" class="submenutextright">${uiLabelMap.CommonNext}</a>
+                <#else>
+                  <span class="submenutextrightdisabled">${uiLabelMap.CommonNext}</span>
                 </#if>
                 &nbsp;
             </div>
             <div class="boxhead-left">
-                ${uiLabelMap.PFTProductsOf} ${supplier.groupName}
+                &nbsp;${uiLabelMap.PFTProductsOf} ${supplier.groupName}
             </div>
-            <div class="boxhead-fill">&nbsp;</div>
         </#if>
     </div>
     <div class="screenlet-body">
@@ -48,7 +53,7 @@ under the License.
             <tr><td>
               <#assign rowClass = "2">
               <#assign rowCount = 0>
-              <#list supplierProducts as supplierProduct>
+              <#list supplierProducts[lowIndex..highIndex-1] as supplierProduct>
                 <#assign suffix = "_o_" + supplierProduct_index>
                 <#assign product = supplierProduct.getRelatedOne("Product")>
                 <#assign hasntStarted = false>
@@ -58,8 +63,7 @@ under the License.
                 <form method="post" action="<@ofbizUrl>updateSupplierProduct</@ofbizUrl>" name="EditProduct">
                   <input type="hidden" name="VIEW_SIZE" value="${viewSize}"/>
                   <input type="hidden" name="VIEW_INDEX" value="${viewIndex}"/>
-                  
-                  <input type="hidden" name="productCategoryId" value="${productCategoryId?if_exists}">
+
                   <tr valign="middle"<#if rowClass == "1"> class="alternate-row"</#if>>
                     <td colspan="3">
                         <a href="<@ofbizUrl>EditProduct?productId=${(supplierProduct.productId)?if_exists}</@ofbizUrl>"><img alt="Small Image" src="<@ofbizContentUrl>${(product.smallImageUrl)?default("/images/defaultImage.jpg")}</@ofbizContentUrl>" height="80" width="80" align="middle"></a>
