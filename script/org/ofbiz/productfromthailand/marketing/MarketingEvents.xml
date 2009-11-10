@@ -120,9 +120,7 @@
                 <set field="updateSupplierProduct.supplierProductId" from-field="parameters.supplierProductId"/> 
             </if-compare-field>
             <call-service service-name="updateSupplierProduct" in-map-name="updateSupplierProduct"/>
-            <log level="always" message="=================== ${updateSupplierProduct}"></log>
         </iterate>
         <field-to-request field="productId"/>
-        <log level="always" message=">>>>>>>>>>>>>>>>>>>>>>>>>>>> ${productId}"/>
     </simple-method>
 </simple-methods>
