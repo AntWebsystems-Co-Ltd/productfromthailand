@@ -93,14 +93,36 @@
         <set field="addSupplierProductCtx.productId" from-field="productId"/>
         <set field="addSupplierProductCtx.supplierProductId" from-field="parameters.supplierProductId"/>
         <set field="addSupplierProductCtx.partyId" from-field="userLogin.partyId"/>
-        <set field="addSupplierProductCtx.currencyUomId" value="USD"/>
+        <set field="addSupplierProductCtx.currencyUomId" value="THB"/>
         <set field="addSupplierProductCtx.lastPrice" type="BigDecimal" value="0"/>
-        <set field="addSupplierProductCtx.minimumOrderQuantity" type="BigDecimal" value="0"/>
+        <set field="addSupplierProductCtx.minimumOrderQuantity" type="BigDecimal" value="1"/>
         <set field="addSupplierProductCtx.canDropShip" value="Y"/>
         <now-timestamp field="addSupplierProductCtx.availableFromDate"/>
         
         <call-service service-name="createSupplierProduct" in-map-name="addSupplierProductCtx"/>
             
         <field-to-request field="productId"/>
+    </simple-method>
+    
+    <simple-method method-name="updateProductAndSupplierProduct" short-description="Update Product And Supplier Product">
+        <set-service-fields service-name="updateProduct" map="parameters" to-map="callUpdateProductMap"/>
+        <call-service service-name="updateProduct" in-map-name="callUpdateProductMap"/>
+        <set field="productId" from-field="parameters.productId"/>
+        
+        <entity-and entity-name="SupplierProduct" list="supplierProducts">
+            <field-map field-name="productId" from-field="productId"/>
+        </entity-and>
+        
+        <iterate entry="supplierProduct" list="supplierProducts">
+            <set-service-fields service-name="updateSupplierProduct" map="supplierProduct" to-map="updateSupplierProduct"/>
+            <set field="supplierProduct.productId" from-field="productId"/>
+            <if-compare-field field="parameters.supplierProductId" operator="not-equals" to-field="supplierProduct.supplierProductId">
+                <set field="updateSupplierProduct.supplierProductId" from-field="parameters.supplierProductId"/> 
+            </if-compare-field>
+            <call-service service-name="updateSupplierProduct" in-map-name="updateSupplierProduct"/>
+            <log level="always" message="=================== ${updateSupplierProduct}"></log>
+        </iterate>
+        <field-to-request field="productId"/>
+        <log level="always" message=">>>>>>>>>>>>>>>>>>>>>>>>>>>> ${productId}"/>
     </simple-method>
 </simple-methods>

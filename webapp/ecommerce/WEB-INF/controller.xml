@@ -86,6 +86,13 @@ under the License.
         <response name="success" type="view" value="EditProduct"/>
         <response name="error" type="view" value="EditProduct"/>
     </request-map>
+    <request-map uri="updateProduct">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://productfromthailand/script/org/ofbiz/productfromthailand/marketing/MarketingEvents.xml" invoke="updateProductAndSupplierProduct"/>
+        <response name="success" type="view" value="EditProduct"/>
+        <response name="error" type="view" value="EditProduct"/>
+    </request-map>
+    
 
     <request-map uri="leftkeywordsearch">
         <security https="true" auth="true"/>
