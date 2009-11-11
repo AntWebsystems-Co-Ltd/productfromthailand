@@ -53,13 +53,6 @@ under the License.
         description="Keyword search box"/>
     <PortletPortletCategory portalPortletId="KeywordSearch" portletCategoryId="PRODUCTS"/>
     
-    <PortalPortlet portalPortletId="ListOrders"
-        portletName="ListOrders"
-        screenName="ListOrders"
-        screenLocation="component://productfromthailand/widget/OrderScreens.xml"
-        description="List of Orders To Supplier"/>
-    <PortletPortletCategory portalPortletId="ListOrders" portletCategoryId="ORDERMGR"/>
-    
     <PortalPage portalPageId="MYPORTAL_SUPPLIER" sequenceNum="0" portalPageName="Main" description="The default OFBiz portal page for a suppliers" ownerUserLoginId="_NA_" securityGroupId="MYPORTAL_SUPPLIER"/>
     <PortalPage portalPageId="MYPORTAL_SUPPLIER1" sequenceNum="100" portalPageName="My Profile" description="The OFBiz My Portal Profile page" ownerUserLoginId="_NA_" parentPortalPageId="MYPORTAL_SUPPLIER"/>
     <PortalPage portalPageId="MYPORTAL_SUPPLIER2" sequenceNum="200" portalPageName="Products" description="My Portal Products page" ownerUserLoginId="_NA_" parentPortalPageId="MYPORTAL_SUPPLIER"/>
@@ -93,6 +86,6 @@ under the License.
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER2" portalPortletId="KeywordSearch" portletSeqId="00001" columnSeqId="00001" sequenceNum="0"/>
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER2" portalPortletId="MyProducts" portletSeqId="00001" columnSeqId="00002" sequenceNum="0"/>
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER3" portalPortletId="ListCustomerInvoices" portletSeqId="00001" columnSeqId="00001"  sequenceNum="0"/>
-    <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER4" portalPortletId="ListOrders" portletSeqId="00001" columnSeqId="00001" sequenceNum="1"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER4" portalPortletId="ListPurchaseOrders" portletSeqId="00001" columnSeqId="00001" sequenceNum="0"/>
 
 </entity-engine-xml>
