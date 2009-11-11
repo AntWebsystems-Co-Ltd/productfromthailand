@@ -31,8 +31,5 @@ under the License.
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_FTR_TMPLT_LOC" resourceValue="component://productfromthailand/webapp/ecommerce/includes/footer.ftl" sequenceId="01"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_SCREENSHOT" resourceValue="/images/ecdefaulttheme.jpg" sequenceId="01"/>
     
-    <ContactList contactListId="PFT0001" contactListTypeId="ANNOUNCEMENT" contactMechTypeId="EMAIL_ADDRESS" marketingCampaignId=""
-        contactListName="Product From Thailand Announcements" description="Product From Thailand Announcements Mailing List (email)" comments="" isPublic="Y" ownerPartyId="pft"
-        verifyEmailFrom="" verifyEmailScreen=""
-        verifyEmailSubject="" verifyEmailWebSiteId=""/>
+    
 </entity-engine-xml>
