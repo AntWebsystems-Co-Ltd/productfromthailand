@@ -189,4 +189,8 @@
         <value xml:lang="en">Customer Orders</value>
         <value xml:lang="th">รายการสั่งซื้อจากลูกค้า</value>
     </property>
+    <property key="SupplierProductPrice">
+        <value xml:lang="en">Supplier Product Price</value>
+        <value xml:lang="th">ราคาขายส่ง</value>
+    </property>
 </resource>

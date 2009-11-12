@@ -28,13 +28,16 @@ under the License.
     -->
     <form name="EditProduct" type="single" target="updateProduct" title="" default-map-name="product"
         header-row-style="header-row" default-table-style="basic-table"  extends="EditProduct" extends-resource="component://product/widget/catalog/ProductForms.xml">
-        <field name="supplierProductId" use-when="supplierProduct!=null"><text size="20" maxlength="20" default-value="${supplierProduct[0].supplierProductId}"/></field>
-        <field name="supplierProductId" use-when="supplierProduct==null"><text size="20" maxlength="20"/></field>
+        <field name="supplierProductId" use-when="supplierProduct!=null" position="1"><text size="20" maxlength="20" default-value="${supplierProduct[0].supplierProductId}"/></field>
+        <field name="supplierProductId" use-when="supplierProduct==null" position="1"><text size="20" maxlength="20"/></field>
+        <field name="lastPrice" title="${uiLabelMap.SupplierProductPrice}" use-when="supplierProduct!=null" position="2"><text size="20" maxlength="20" default-value="${supplierProduct[0].lastPrice}"/></field>
+        <field name="lastPrice" title="${uiLabelMap.SupplierProductPrice}" use-when="supplierProduct==null" position="2"><text size="20" maxlength="20"/></field>
         <sort-order>
             <field-group>
                 <sort-field name="productId"/>
                 <sort-field name="productTypeId"/>
                 <sort-field name="supplierProductId"/>
+                <sort-field name="lastPrice"/>
             </field-group>
             <field-group title="${uiLabelMap.ProductWordingAndComment}" collapsible="true">
                 <sort-field name="internalName"/>

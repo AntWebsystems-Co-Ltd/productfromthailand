@@ -96,7 +96,12 @@
         <if-empty field="addSupplierProductCtx.currencyUomId">
             <property-to-field resource="general" property="currency.uom.id.default" field="addSupplierProductCtx.currencyUomId"/>
         </if-empty>
-        <set field="addSupplierProductCtx.lastPrice" type="BigDecimal" value="0"/>
+        <if-empty field="parameters.lastPrice">
+            <set field="addSupplierProductCtx.lastPrice" type="BigDecimal" value="0"/>
+            <else>
+                <set field="addSupplierProductCtx.lastPrice" type="BigDecimal" from-field="parameters.lastPrice"/>
+            </else>
+        </if-empty>
         <set field="addSupplierProductCtx.minimumOrderQuantity" type="BigDecimal" value="1"/>
         <set field="addSupplierProductCtx.canDropShip" value="Y"/>
         <now-timestamp field="addSupplierProductCtx.availableFromDate"/>
@@ -120,6 +125,9 @@
             <set field="supplierProduct.productId" from-field="productId"/>
             <if-compare-field field="parameters.supplierProductId" operator="not-equals" to-field="supplierProduct.supplierProductId">
                 <set field="updateSupplierProduct.supplierProductId" from-field="parameters.supplierProductId"/> 
+            </if-compare-field>
+            <if-compare-field field="parameters.lastPrice" operator="not-equals" to-field="supplierProduct.lastPrice">
+                    <set field="updateSupplierProduct.lastPrice" type="BigDecimal" from-field="parameters.lastPrice"/>
             </if-compare-field>
             <call-service service-name="updateSupplierProduct" in-map-name="updateSupplierProduct"/>
         </iterate>
