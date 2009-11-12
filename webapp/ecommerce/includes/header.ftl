@@ -84,7 +84,7 @@ under the License.
                 <li id="header-bar-help"><a href="<@ofbizUrl>help</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTHelpAndInstruction}</div></a></li>
               <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
               <#if security.hasEntityPermission("MYPORTAL", "_SUPPLIER", session)?exists>
-                <li id="header-bar-logout"><a href="<@ofbizUrl>../../myportal</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTStoreManagement}</div></a></li>
+                <li id="header-bar-store"><a href="<@ofbizUrl>../../myportal</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTStoreManagement}</div></a></li>
               </#if>
                 <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><div class="menu-right">${uiLabelMap.CommonLogout}</div></a></li>
               <#else/>
