@@ -93,7 +93,9 @@
         <set field="addSupplierProductCtx.productId" from-field="productId"/>
         <set field="addSupplierProductCtx.supplierProductId" from-field="parameters.supplierProductId"/>
         <set field="addSupplierProductCtx.partyId" from-field="userLogin.partyId"/>
-        <set field="addSupplierProductCtx.currencyUomId" value="THB"/>
+        <if-empty field="addSupplierProductCtx.currencyUomId">
+            <property-to-field resource="general" property="currency.uom.id.default" field="addSupplierProductCtx.currencyUomId"/>
+        </if-empty>
         <set field="addSupplierProductCtx.lastPrice" type="BigDecimal" value="0"/>
         <set field="addSupplierProductCtx.minimumOrderQuantity" type="BigDecimal" value="1"/>
         <set field="addSupplierProductCtx.canDropShip" value="Y"/>

@@ -113,7 +113,11 @@ under the License.
         <response name="success" type="view" value="uploadproducts"/>
         <response name="error" type="view" value="uploadproducts"/>
     </request-map>
-
+    <request-map uri="orderview">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="orderview"/>
+    </request-map>
+    <view-map name="orderview" type="screen" page="component://productfromthailand/widget/OrderViewScreens.xml#OrderHeaderView"/>
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
     <view-map name="main" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#main"/>
     <view-map name="register" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#register"/>

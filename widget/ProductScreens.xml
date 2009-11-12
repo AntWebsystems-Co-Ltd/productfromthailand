@@ -102,7 +102,7 @@ under the License.
             <widgets>
                 <decorator-screen name="CommonProductDecorator">
                     <decorator-section name="body">
-                        <screenlet title="${uiLabelMap.PageTitleEditProduct}  ----${productId} >>${parameters.productId}">
+                        <screenlet title="${uiLabelMap.PageTitleEditProduct}">
                             <include-form name="EditProduct" location="component://productfromthailand/widget/ProductForms.xml"/>
                         </screenlet>
                         
