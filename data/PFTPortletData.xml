@@ -32,6 +32,7 @@ under the License.
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="PARTYMGR_CME_CREATE"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="ORDERMGR_VIEW"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="ORDERMGR_UPDATE"/>
+    <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="ORDERMGR_NOTE"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="ORDERMGR_CRQ_CREATE"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="ORDERMGR_CRQ_UPDATE"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="CONTENTMGR_ADMIN"/>
