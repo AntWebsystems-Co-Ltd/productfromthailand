@@ -48,6 +48,7 @@ under the License.
           <tr class="header-row">
             <td align="left" colspan="3">${uiLabelMap.ProductProductNameId}</td>
             <td>${uiLabelMap.CommonFromDateTime}</td>
+            <td>${uiLabelMap.SupplierProductPrice}</td>
           </tr>
           <#if (listSize > 0)>
             <tr><td>
@@ -70,6 +71,7 @@ under the License.
                       <a href="<@ofbizUrl>EditProduct?productId=${(supplierProduct.productId)?if_exists}</@ofbizUrl>" class="buttontext"><#if product?exists>${(product.internalName)?if_exists}</#if> [${(supplierProduct.productId)?if_exists}]</a>
                     </td>
                     <td <#if hasntStarted> style="color: red;"</#if>>${(product.createdDate)?if_exists}</td>
+                    <td >${(supplierProduct.lastPrice)?if_exists}</td>
                     <input type="hidden" name="productId${suffix}" value="${(supplierProduct.productId)?if_exists}">
                   </tr>
                   <#-- toggle the row color -->

@@ -18,9 +18,12 @@
  */
 
 import org.ofbiz.base.util.*
+import org.ofbiz.entity.util.EntityUtil;
 
 supplierPartyId = userLogin.partyId;
-supplierProducts = delegator.findByAnd("SupplierProduct", [partyId: supplierPartyId]);
+
+supplierProducts =delegator.findByAnd("SupplierProduct", [partyId : supplierPartyId]);
+supplierProducts = EntityUtil.filterByDate(supplierProducts, UtilDateTime.nowTimestamp(), "availableFromDate", "availableThruDate", true);
 supplier = delegator.findByPrimaryKey("PartyGroup", [partyId: supplierPartyId]);
 
 //set the page parameters
