@@ -1,0 +1,23 @@
+Index: applications/marketing/script/org/ofbiz/marketing/contact/ContactListServices.xml
+===================================================================
+--- applications/marketing/script/org/ofbiz/marketing/contact/ContactListServices.xml	(revision 835203)
++++ applications/marketing/script/org/ofbiz/marketing/contact/ContactListServices.xml	(working copy)
+@@ -104,11 +104,13 @@
+         <check-errors/>
+ 
+         <!-- get party email address if not provided -->
+-        <if-empty field="parameters.contactMechId">
+-            <set field="partyEmail.partyId" from-field="parameters.partyId"/>
+-            <call-service service-name="getPartyEmail" in-map-name="partyEmail">
+-                <result-to-field result-name="contactMechId" field="parameters.preferredContactMechId"/>
+-            </call-service>        
++        <if-empty field="parameters.preferredContactMechId">
++            <if-empty field="parameters.contactMechId">
++                <set field="partyEmail.partyId" from-field="parameters.partyId"/>
++                <call-service service-name="getPartyEmail" in-map-name="partyEmail">
++                    <result-to-field result-name="contactMechId" field="parameters.preferredContactMechId"/>
++                </call-service>
++            </if-empty>
+         </if-empty>
+ 
+         <make-value entity-name="ContactListParty" value-field="newEntity"/>
