@@ -18,6 +18,7 @@
     <ContactMech contactMechId="PFT10114" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="PFT10113" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="PFT10112" contactMechTypeId="POSTAL_ADDRESS"/>
+    <ContactMech contactMechId="PFT10111" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="PFT10110" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="PFT10109" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10108" contactMechTypeId="TELECOM_NUMBER"/>
@@ -65,9 +66,14 @@
     <ContactMech contactMechId="PFT10066" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10065" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10064" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="PFT10063" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="PFT10062" contactMechTypeId="ELECTRONIC_ADDRESS" infoString="phan@giftsbythai.com"/>
     <ContactMech contactMechId="PFT10061" contactMechTypeId="ELECTRONIC_ADDRESS" infoString="sales@gifttsbythai.com"/>
+    <ContactMech contactMechId="PFT10060" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="PFT10059" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="PFT10058" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="PFT10057" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="PFT10056" contactMechTypeId="EMAIL_ADDRESS" infoString="soontri_07@hotmail.com"/>
     <ContactMech contactMechId="PFT10055" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10054" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="PFT10053" contactMechTypeId="TELECOM_NUMBER"/>
@@ -77,7 +83,7 @@
     <ContactMech contactMechId="PFT10049" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10048" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10047" contactMechTypeId="EMAIL_ADDRESS" infoString="sapaper@cm.ksc.co.th"/>
-    <ContactMech contactMechId="PFT10046" contactMechTypeId="EMAIL_ADDRESS" infoString="soontri_07@hotmail.com"/>
+    <ContactMech contactMechId="PFT10046" contactMechTypeId="ELECTRONIC_ADDRESS" infoString="sootri_07@hotmail.com"/>
     <ContactMech contactMechId="PFT10045" contactMechTypeId="EMAIL_ADDRESS" infoString="chiangmai_sapaper@hotmail.com"/>
     <ContactMech contactMechId="PFT10044" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="PFT10043" contactMechTypeId="TELECOM_NUMBER"/>
@@ -111,7 +117,7 @@
     <PartyGroup partyId="PFT10025" groupName="CM Oldwood Design Co.,LTD" lastUpdatedStamp="2009-11-16 14:01:09.007" lastUpdatedTxStamp="2009-11-16 14:01:08.783" createdStamp="2009-11-16 11:23:42.322" createdTxStamp="2009-11-16 11:23:42.302"/>
     <PartyGroup partyId="PFT10024" groupName="Chiang Mai Thai Gift LTD.,Part" lastUpdatedStamp="2009-11-16 14:04:48.632" lastUpdatedTxStamp="2009-11-16 14:04:48.292" createdStamp="2009-11-16 11:19:38.371" createdTxStamp="2009-11-16 11:19:38.324"/>
     <PartyGroup partyId="PFT10022" groupName="Chiangmai Bonaga Import-Export LTD.,part" lastUpdatedStamp="2009-11-16 13:37:57.471" lastUpdatedTxStamp="2009-11-16 13:37:57.11" createdStamp="2009-11-16 10:57:59.185" createdTxStamp="2009-11-16 10:57:59.141"/>
-    <PartyGroup partyId="PFT10021" groupName="Chiangmai Soontri Ltd.,part" lastUpdatedStamp="2009-11-16 10:57:46.41" lastUpdatedTxStamp="2009-11-16 10:57:46.348" createdStamp="2009-11-16 10:57:46.41" createdTxStamp="2009-11-16 10:57:46.348"/>
+    <PartyGroup partyId="PFT10021" groupName="chiangmai soontri ltd.,part" lastUpdatedStamp="2009-11-16 10:57:46.41" lastUpdatedTxStamp="2009-11-16 10:57:46.348" createdStamp="2009-11-16 10:57:46.41" createdTxStamp="2009-11-16 10:57:46.348"/>
     <PartyGroup partyId="PFT10020" groupName="Classic Model co.,LTD" lastUpdatedStamp="2009-11-16 10:45:10.222" lastUpdatedTxStamp="2009-11-16 10:45:10.012" createdStamp="2009-11-16 10:45:10.222" createdTxStamp="2009-11-16 10:45:10.012"/>
     
     <PartyContactMech partyId="PFT10034" contactMechId="PFT10129" fromDate="2009-11-16 14:30:47.227" lastUpdatedStamp="2009-11-16 14:30:47.23" lastUpdatedTxStamp="2009-11-16 14:30:47.057" createdStamp="2009-11-16 14:30:47.23" createdTxStamp="2009-11-16 14:30:47.057"/>
@@ -193,6 +199,7 @@
     <PartyContactMech partyId="PFT10024" contactMechId="PFT10064" fromDate="2009-11-16 11:22:53.446" thruDate="2009-11-16 11:23:11.105" lastUpdatedStamp="2009-11-16 11:23:11.11" lastUpdatedTxStamp="2009-11-16 11:23:10.732" createdStamp="2009-11-16 11:22:53.446" createdTxStamp="2009-11-16 11:22:53.077"/>
     <PartyContactMech partyId="PFT10024" contactMechId="PFT10062" fromDate="2009-11-16 11:21:27.123" lastUpdatedStamp="2009-11-16 11:21:27.123" lastUpdatedTxStamp="2009-11-16 11:21:26.796" createdStamp="2009-11-16 11:21:27.123" createdTxStamp="2009-11-16 11:21:26.796"/>
     <PartyContactMech partyId="PFT10024" contactMechId="PFT10061" fromDate="2009-11-16 11:20:49.416" lastUpdatedStamp="2009-11-16 11:20:49.416" lastUpdatedTxStamp="2009-11-16 11:20:49.172" createdStamp="2009-11-16 11:20:49.416" createdTxStamp="2009-11-16 11:20:49.172"/>
+    <PartyContactMech partyId="PFT10021" contactMechId="PFT10058" fromDate="2009-11-16 11:17:08.504" thruDate="2009-11-16 13:53:55.747" lastUpdatedStamp="2009-11-16 13:53:55.748" lastUpdatedTxStamp="2009-11-16 13:53:55.364" createdStamp="2009-11-16 11:17:08.504" createdTxStamp="2009-11-16 11:17:08.156"/>
     <PartyContactMech partyId="PFT10021" contactMechId="PFT10055" fromDate="2009-11-16 11:13:25.837" lastUpdatedStamp="2009-11-16 11:13:25.84" lastUpdatedTxStamp="2009-11-16 11:13:25.573" createdStamp="2009-11-16 11:13:25.84" createdTxStamp="2009-11-16 11:13:25.573"/>
     <PartyContactMech partyId="PFT10021" contactMechId="PFT10055" fromDate="2009-11-16 11:13:12.888" thruDate="2009-11-16 11:13:25.837" lastUpdatedStamp="2009-11-16 11:13:25.838" lastUpdatedTxStamp="2009-11-16 11:13:25.573" createdStamp="2009-11-16 11:13:12.888" createdTxStamp="2009-11-16 11:13:12.541"/>
     <PartyContactMech partyId="PFT10022" contactMechId="PFT10054" fromDate="2009-11-16 11:12:29.29" thruDate="2009-11-16 13:38:47.735" lastUpdatedStamp="2009-11-16 13:38:47.737" lastUpdatedTxStamp="2009-11-16 13:38:46.996" createdStamp="2009-11-16 11:12:29.29" createdTxStamp="2009-11-16 11:12:28.823"/>
@@ -353,10 +360,11 @@
     <PostalAddress contactMechId="PFT10118" toName="Chiang Mai Thai Gift LTD.,Part" address1="211/1 M.1 T.Sanpong  A.Mae Rim " city="Chiang Mai" postalCode="50180" countryGeoId="THA" lastUpdatedStamp="2009-11-16 14:05:33.387" lastUpdatedTxStamp="2009-11-16 14:05:33.142" createdStamp="2009-11-16 14:05:33.387" createdTxStamp="2009-11-16 14:05:33.142"/>
     <PostalAddress contactMechId="PFT10117" toName="CM Oldwood Design Co.,LTD" address1="151/1 M.7 T.Thawangtal A.Saraphi " city="Chiang Mai" postalCode="501410" countryGeoId="THA" lastUpdatedStamp="2009-11-16 14:03:41.441" lastUpdatedTxStamp="2009-11-16 14:03:41.156" createdStamp="2009-11-16 14:03:41.441" createdTxStamp="2009-11-16 14:03:41.156"/>
     <PostalAddress contactMechId="PFT10116" toName="CM Oldwood Design Co.,LTD" address1="151/1 M.7 T.Thawangtai A.Saraphi " city="Chiang Mai" postalCode="501410" countryGeoId="THA" lastUpdatedStamp="2009-11-16 14:01:59.756" lastUpdatedTxStamp="2009-11-16 14:01:59.519" createdStamp="2009-11-16 14:01:59.756" createdTxStamp="2009-11-16 14:01:59.519"/>
-    <PostalAddress contactMechId="PFT10115" toName="Chiang Mai Soontri Ltd.,part" address1="79 M.7 T.Sankampang A.Sankampang   " city="Chiang Mai " postalCode="50230 " countryGeoId="THA" lastUpdatedStamp="2009-11-16 13:53:55.651" lastUpdatedTxStamp="2009-11-16 13:53:55.364" createdStamp="2009-11-16 13:53:55.651" createdTxStamp="2009-11-16 13:53:55.364"/>
+    <PostalAddress contactMechId="PFT10115" toName="Chiang Mai Soontri ltd.,part" address1="79 M.7 T.Sankampang A.Sankampang   " city="Chiang Mai " postalCode="50230 " countryGeoId="THA" lastUpdatedStamp="2009-11-16 13:53:55.651" lastUpdatedTxStamp="2009-11-16 13:53:55.364" createdStamp="2009-11-16 13:53:55.651" createdTxStamp="2009-11-16 13:53:55.364"/>
     <PostalAddress contactMechId="PFT10114" toName="Classic Model co.,LTD" address1="118/5 M.12 T.Padaet A.Maung" city="Chiang Mai " postalCode="50100" countryGeoId="THA" lastUpdatedStamp="2009-11-16 13:52:25.042" lastUpdatedTxStamp="2009-11-16 13:52:24.768" createdStamp="2009-11-16 13:52:25.042" createdTxStamp="2009-11-16 13:52:24.768"/>
     <PostalAddress contactMechId="PFT10113" toName="Cangmai Bonaga Import-Export LTD.,parthi" address1="121 M.4 T.Nam Phare A.Hang Dong " city="Chiangmai" postalCode="50230" countryGeoId="THA" lastUpdatedStamp="2009-11-16 13:43:28.852" lastUpdatedTxStamp="2009-11-16 13:43:28.508" createdStamp="2009-11-16 13:43:28.852" createdTxStamp="2009-11-16 13:43:28.508"/>
     <PostalAddress contactMechId="PFT10112" toName="Cangmai Bonaga Impord-Expord LTD.,parthi" address1="121 M.4 T.Nam Phare A.Hang Dong " city="Chiangmai" postalCode="50230" countryGeoId="THA" lastUpdatedStamp="2009-11-16 13:38:47.292" lastUpdatedTxStamp="2009-11-16 13:38:46.996" createdStamp="2009-11-16 13:38:47.292" createdTxStamp="2009-11-16 13:38:46.996"/>
+    <PostalAddress contactMechId="PFT10111" toName="Chiang Mai Soontri Ltd.,part" address1="79 M.7 sankamphaeng " city="Chiangmai" postalCode="50130" countryGeoId="THA" lastUpdatedStamp="2009-11-16 12:08:35.363" lastUpdatedTxStamp="2009-11-16 12:08:35.152" createdStamp="2009-11-16 12:08:35.363" createdTxStamp="2009-11-16 12:08:35.152"/>
     <PostalAddress contactMechId="PFT10110" toName="Chiangmai Raem Co.,Ltd" address1="165/1 M. 1 baanrai,Baanwaen Hangdong" city="Chaingmai" postalCode="50230" countryGeoId="THA" lastUpdatedStamp="2009-11-16 12:06:30.217" lastUpdatedTxStamp="2009-11-16 12:06:29.971" createdStamp="2009-11-16 12:06:30.217" createdTxStamp="2009-11-16 12:06:29.971"/>
     <PostalAddress contactMechId="PFT10104" toName="B.A.T.CO.,LTD." address1="188 M.4 sansailoungsansai" city="Chiangmai" postalCode="50210" countryGeoId="THA" lastUpdatedStamp="2009-11-16 12:02:03.343" lastUpdatedTxStamp="2009-11-16 12:02:02.839" createdStamp="2009-11-16 12:02:03.343" createdTxStamp="2009-11-16 12:02:02.839"/>
     <PostalAddress contactMechId="PFT10101" toName="CMD Woodan products co.,LTD" address1="18/1 M.11 Nongkhway T.Hangdong " city="Chaingmai" postalCode="50230" countryGeoId="THA" lastUpdatedStamp="2009-11-16 12:00:03.714" lastUpdatedTxStamp="2009-11-16 12:00:02.957" createdStamp="2009-11-16 12:00:03.714" createdTxStamp="2009-11-16 12:00:02.957"/>
@@ -368,6 +376,8 @@
     <PostalAddress contactMechId="PFT10077" toName="Chiang sai shop" address1="Crafts canter ban thawai zone 4 t.khun dong,A.hang Done  " address2=" " city=" Chiang mai" postalCode=" 50230" countryGeoId="THA" lastUpdatedStamp="2009-11-16 11:39:46.778" lastUpdatedTxStamp="2009-11-16 11:39:46.481" createdStamp="2009-11-16 11:39:46.778" createdTxStamp="2009-11-16 11:39:46.481"/>
     <PostalAddress contactMechId="PFT10072" toName="CM oldwood design co.,LTD" address1="151/1 M.7 T.thawangtai A.saraphi " city="chiangmai" postalCode="501410" countryGeoId="THA" lastUpdatedStamp="2009-11-16 11:34:22.798" lastUpdatedTxStamp="2009-11-16 11:34:22.573" createdStamp="2009-11-16 11:34:22.798" createdTxStamp="2009-11-16 11:34:22.573"/>
     <PostalAddress contactMechId="PFT10069" toName="Chingmai thai Gift LTD.,part" address1="211/1 M.1.T.sanpong A.Maerim " city="Chiangmai" postalCode="50180" countryGeoId="THA" lastUpdatedStamp="2009-11-16 11:31:41.498" lastUpdatedTxStamp="2009-11-16 11:31:40.949" createdStamp="2009-11-16 11:31:41.498" createdTxStamp="2009-11-16 11:31:40.949"/>
+    <PostalAddress contactMechId="PFT10063" toName="chiangmai soontri lit.,part" address1="79 M.7 T.sankampang A.sankampang " city="chiangmai" postalCode="50230" countryGeoId="THA" lastUpdatedStamp="2009-11-16 11:22:04.587" lastUpdatedTxStamp="2009-11-16 11:22:04.349" createdStamp="2009-11-16 11:22:04.587" createdTxStamp="2009-11-16 11:22:04.349"/>
+    <PostalAddress contactMechId="PFT10058" toName="chiangmai soontri ltd.,part" address1="79 M.7 T.sankampang A.sankampang   " city="chiang Mai " postalCode="50230 " countryGeoId="THA" lastUpdatedStamp="2009-11-16 11:17:08.413" lastUpdatedTxStamp="2009-11-16 11:17:08.156" createdStamp="2009-11-16 11:17:08.413" createdTxStamp="2009-11-16 11:17:08.156"/>
     <PostalAddress contactMechId="PFT10054" toName="Cangmai Bonaga Impord-Expord LTD.,parthi" address1="121 M.4 T.nam Phare A.hangdong " city="chiangmai" postalCode="50230" countryGeoId="THA" lastUpdatedStamp="2009-11-16 11:12:29.17" lastUpdatedTxStamp="2009-11-16 11:12:28.823" createdStamp="2009-11-16 11:12:29.17" createdTxStamp="2009-11-16 11:12:28.823"/>
     <PostalAddress contactMechId="PFT10044" toName="Classic Model co.,LTD" address1="118/5 M.12 T.padart A.maung" city="chiangmai " postalCode="50100" countryGeoId="THA" lastUpdatedStamp="2009-11-16 10:54:43.304" lastUpdatedTxStamp="2009-11-16 10:54:43.003" createdStamp="2009-11-16 10:54:43.304" createdTxStamp="2009-11-16 10:54:43.003"/>
     <TelecomNumber contactMechId="PFT10109" countryCode="66" areaCode="53" contactNumber="31339" lastUpdatedStamp="2009-11-16 12:05:33.648" lastUpdatedTxStamp="2009-11-16 12:05:33.386" createdStamp="2009-11-16 12:05:33.648" createdTxStamp="2009-11-16 12:05:33.386"/>
@@ -396,6 +406,8 @@
     <TelecomNumber contactMechId="PFT10066" countryCode="66" areaCode="53" contactNumber="465151" lastUpdatedStamp="2009-11-16 11:25:59.574" lastUpdatedTxStamp="2009-11-16 11:25:59.241" createdStamp="2009-11-16 11:25:59.574" createdTxStamp="2009-11-16 11:25:59.241"/>
     <TelecomNumber contactMechId="PFT10065" countryCode="66" areaCode="81" contactNumber="0308316" lastUpdatedStamp="2009-11-16 11:24:26.155" lastUpdatedTxStamp="2009-11-16 11:24:25.875" createdStamp="2009-11-16 11:24:26.155" createdTxStamp="2009-11-16 11:24:25.875"/>
     <TelecomNumber contactMechId="PFT10064" countryCode="66" areaCode="53" contactNumber="465515" lastUpdatedStamp="2009-11-16 11:22:53.358" lastUpdatedTxStamp="2009-11-16 11:22:53.077" createdStamp="2009-11-16 11:22:53.358" createdTxStamp="2009-11-16 11:22:53.077"/>
+    <TelecomNumber contactMechId="PFT10060" countryCode="66" areaCode="81" contactNumber="9521385" lastUpdatedStamp="2009-11-16 11:20:08.666" lastUpdatedTxStamp="2009-11-16 11:20:08.348" createdStamp="2009-11-16 11:20:08.666" createdTxStamp="2009-11-16 11:20:08.348"/>
+    <TelecomNumber contactMechId="PFT10059" countryCode="66" areaCode="81" contactNumber="9521385" lastUpdatedStamp="2009-11-16 11:18:40.416" lastUpdatedTxStamp="2009-11-16 11:18:40.116" createdStamp="2009-11-16 11:18:40.416" createdTxStamp="2009-11-16 11:18:40.116"/>
     <TelecomNumber contactMechId="PFT10057" countryCode="66" areaCode="53" contactNumber="331127" lastUpdatedStamp="2009-11-16 11:16:51.826" lastUpdatedTxStamp="2009-11-16 11:16:51.581" createdStamp="2009-11-16 11:16:51.826" createdTxStamp="2009-11-16 11:16:51.581"/>
     <TelecomNumber contactMechId="PFT10055" countryCode="66" areaCode="53" contactNumber="331339" lastUpdatedStamp="2009-11-16 11:13:12.807" lastUpdatedTxStamp="2009-11-16 11:13:12.541" createdStamp="2009-11-16 11:13:12.807" createdTxStamp="2009-11-16 11:13:12.541"/>
     <TelecomNumber contactMechId="PFT10053" countryCode="66" areaCode="81" contactNumber="9521385" lastUpdatedStamp="2009-11-16 11:10:17.569" lastUpdatedTxStamp="2009-11-16 11:10:17.329" createdStamp="2009-11-16 11:10:17.569" createdTxStamp="2009-11-16 11:10:17.329"/>

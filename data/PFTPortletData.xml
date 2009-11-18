@@ -40,6 +40,7 @@ under the License.
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="FACILITY_VIEW"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="FACILITY_CREATE"/>  
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="FACILITY_UPDATE"/>
+    <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="MYPORTAL_SUPPLIER"/>
     
     <UserLoginSecurityGroup groupId="MYPORTAL_SUPPLIER" userLoginId="HANDICARFTEXPORT" fromDate="2000-01-01 00:00:00.0"/>
     
