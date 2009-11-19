@@ -281,4 +281,17 @@
     <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD203" periodTypeId="FISCAL_QUARTER" fromDate="2010-07-01" thruDate="2010-10-01" isClosed="N" periodNum="3" periodName="2010/Q3" parentPeriodId="PFTPERIOD200"/>
     <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD204" periodTypeId="FISCAL_QUARTER" fromDate="2010-10-01" thruDate="2011-01-01" isClosed="N" periodNum="4" periodName="2010/Q4" parentPeriodId="PFTPERIOD200"/>
     
+    <Party partyId="admin" partyTypeId="PERSON"/>
+    <PartyRole partyId="admin" roleTypeId="EMAIL_ADMIN"/>
+    <PartyRole partyId="admin" roleTypeId="BUYER"/>
+    <PartyRole partyId="admin" roleTypeId="MANAGER"/>
+    <PartyRole partyId="admin" roleTypeId="ORDER_CLERK"/>
+    <PartyRole partyId="admin" roleTypeId="SHIPMENT_CLERK"/>
+    <PartyRole partyId="admin" roleTypeId="SALES_REP"/>
+    <PartyRole partyId="admin" roleTypeId="_NA_"/>
+    <PartyRelationship partyIdFrom="admin" roleTypeIdFrom="EMAIL_ADMIN" partyIdTo="pft" roleTypeIdTo="_NA_" fromDate="2009-01-01 00:00:00.0"/>
+    
+    <ContactMech contactMechId="admin" contactMechTypeId="EMAIL_ADDRESS" infoString="admin@productfromthailand.com"/>
+    <PartyContactMech partyId="admin" contactMechId="admin" fromDate="2009-01-01 00:00:00.0" allowSolicitation="Y"/>
+    <PartyContactMechPurpose contactMechPurposeTypeId="PRIMARY_EMAIL" partyId="admin" contactMechId="admin" fromDate="2009-01-01 00:00:00.0"/>
 </entity-engine-xml>
