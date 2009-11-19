@@ -114,18 +114,38 @@ public class ImportProduct {
         }
         // read all xls file and create workbook one by one.
         List<Map<String, Object>> products = FastList.newInstance();
-        List<Map<String, Object>> supplierProducts = FastList.newInstance();
-        List<Map<String, Object>> productPrices = FastList.newInstance();
-        List<Map<String, Object>> pNameEnDataResources = FastList.newInstance();
-        List<Map<String, Object>> pNameThDataResources = FastList.newInstance();
+        List<Map<String, Object>> createSupplierProducts = FastList.newInstance();
+        List<Map<String, Object>> updateSupplierProducts = FastList.newInstance();
+        List<Map<String, Object>> removeSupplierProducts = FastList.newInstance();
+        List<Map<String, Object>> createProductPrices = FastList.newInstance();
+        List<Map<String, Object>> updateProductPrices = FastList.newInstance();
+        List<Map<String, Object>> removeProductPrices = FastList.newInstance();
+        
+        List<Map<String, Object>> createPNameEnDataResources = FastList.newInstance();
+        List<Map<String, Object>> updatePNameEnDataResources = FastList.newInstance();
+        List<Map<String, Object>> createPNameThDataResources = FastList.newInstance();
+        List<Map<String, Object>> updatePNameThDataResources = FastList.newInstance();
         List<Map<String, Object>> pNameEnContents = FastList.newInstance();
         List<Map<String, Object>> pNameThContents = FastList.newInstance();
-        List<Map<String, Object>> pDescEnDataResources = FastList.newInstance();
-        List<Map<String, Object>> pDescThDataResources = FastList.newInstance();
+        
+        List<Map<String, Object>> createPDescEnDataResources = FastList.newInstance();
+        List<Map<String, Object>> updatePDescEnDataResources = FastList.newInstance();
+        List<Map<String, Object>> createPDescThDataResources = FastList.newInstance();
+        List<Map<String, Object>> updatePDescThDataResources = FastList.newInstance();
         List<Map<String, Object>> pDescEnContents = FastList.newInstance();
         List<Map<String, Object>> pDescThContents = FastList.newInstance();
-        List<Map<String, Object>> pNameProductContents = FastList.newInstance();
-        List<Map<String, Object>> pDescProductContents = FastList.newInstance();
+        
+        List<Map<String, Object>> createNameProductContents = FastList.newInstance();
+        List<Map<String, Object>> createDescProductContents = FastList.newInstance();
+        
+        List<Map<String, Object>> removeNameProductContents = FastList.newInstance();
+        List<Map<String, Object>> removeDescProductContents = FastList.newInstance();
+        
+        List<Map<String, Object>> createNameContentAssocs = FastList.newInstance();
+        List<Map<String, Object>> createDescContentAssocs = FastList.newInstance();
+        List<Map<String, Object>> removeNameContentAssocs = FastList.newInstance();
+        List<Map<String, Object>> removeDescContentAssocs = FastList.newInstance();
+        
         List<Map<String, Object>> pNameDataAndContents = FastList.newInstance();
         List<Map<String, Object>> pDescDataAndContents = FastList.newInstance();
         
@@ -148,184 +168,391 @@ public class ImportProduct {
                 HSSFRow row = sheet.getRow(j);
                 if (row != null) {
                     String productId = null;
-                    // starts from 0"
-                    // read supplierProductId from first column
-                    HSSFCell cell0 = row.getCell((int) 0);
-                    String supplierProductId = null;
-                    if(UtilValidate.isNotEmpty(cell0)){
-                        supplierProductId= toStringValue(cell0);
+                    // read action from ninth column
+                    HSSFCell cell8 = row.getCell((int) 8);
+                    String actionField = null;
+                    if(UtilValidate.isNotEmpty(cell8)){
+                        actionField = toStringValue(cell8);
                     }
-                    if(supplierProductId == null){
-                        supplierProductId = "SP_" + productId;
-                    }else{
-                        List<GenericValue> supplierProductList = null;
-                        try {
-                            supplierProductList = delegator.findByAnd("SupplierProduct", UtilMisc.toMap("supplierProductId", supplierProductId));
-                        } catch (GenericEntityException e) {
-                            request.setAttribute("_ERROR_MESSAGE_", "Error getting SupplierProduct.");
+                    
+                    if (actionField != null) {
+                        actionField = actionField.toLowerCase();
+                        // starts from 0"
+                        // read supplierProductId from first column
+                        HSSFCell cell0 = row.getCell((int) 0);
+                        String supplierProductId = null;
+                        if(UtilValidate.isNotEmpty(cell0)){
+                            supplierProductId= toStringValue(cell0);
                         }
-                        if(supplierProductList != null && supplierProductList.size()>0){
-                            GenericValue supplierProduct = EntityUtil.getFirst(supplierProductList);
-                            productId = supplierProduct.getString("productId");
-                        }
-                    }
-                    if(productId == null){
-                        productId = delegator.getNextSeqId("Product");
-                    }
-                    
-                    // read productName from second column
-                    HSSFCell cell1 = row.getCell((int) 1);
-                    String productName = null;
-                    if(UtilValidate.isNotEmpty(cell1)){
-                        cell1.setCellType(HSSFCell.CELL_TYPE_STRING);
-                        productName = cell1.getRichStringCellValue().toString();
-                    }
-                    
-                    // read productName in Thai language from third column
-                    HSSFCell cell2 = row.getCell((int) 2);
-                    String productNameTH = null;
-                    if(UtilValidate.isNotEmpty(cell2)){
-                        cell2.setCellType(HSSFCell.CELL_TYPE_STRING);
-                        productNameTH  = cell2.getRichStringCellValue().toString();
-                    }
-                    
-                    HSSFCell cell3 = row.getCell((int) 3);
-                    String internalName = null;
-                    if(UtilValidate.isNotEmpty(cell3)){
-                        cell3.setCellType(HSSFCell.CELL_TYPE_STRING);
-                        internalName = cell3.getRichStringCellValue().toString();
-                    }
-                    if(internalName == null){
-                        internalName = "Product_" + productId;
-                    }
-                    
-                    HSSFCell cell4 = row.getCell((int) 4);
-                    String description = null;
-                    if(UtilValidate.isNotEmpty(cell4)){
-                        cell4.setCellType(HSSFCell.CELL_TYPE_STRING);
-                        description = cell4.getRichStringCellValue().toString();
-                    }
-                    
-                    HSSFCell cell5 = row.getCell((int) 5);
-                    String descriptionTH = null;
-                    if(UtilValidate.isNotEmpty(cell5)){
-                        cell5.setCellType(HSSFCell.CELL_TYPE_STRING);
-                        descriptionTH = cell5.getRichStringCellValue().toString();
-                    }
-                    
-                    // read price from eighth column
-                    HSSFCell cell6 = row.getCell((int) 6);
-                    BigDecimal price = BigDecimal.ZERO;
-                    if (cell6 != null && cell6.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
-                        price = new BigDecimal(cell6.getNumericCellValue());
-                    
-                    HSSFCell cell7 = row.getCell((int) 7);
-                    BigDecimal supplierPrice = BigDecimal.ZERO;
-                    if (cell7 != null && cell7.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
-                        supplierPrice = new BigDecimal(cell7.getNumericCellValue());
-                    
-                    Map<String,Object> priceData =  FastMap.newInstance();
-                    if (productId != null && !productId.trim().equalsIgnoreCase("")) {
-                        products.add(prepareProduct(productId, internalName, userLogin));
-                        
-                        // create ProductContent for product name & description in Thai and Eng language
-                        if(productName != null){
-                            String pNameEnDataResourceId = null;
-                            String pNameThDataResourceId = null;
-                            boolean pNameContentExists = false;
-                            // check if a ProductContent already exists update it, otherwise create new one
-                            if(!checkProductContentExists(productId, "PRODUCT_NAME", delegator)){
-                                pNameEnDataResourceId = productId + "-PNAMEEN";
-                                pNameThDataResourceId = productId + "-PNAMETH";
-                            }else{
-                                // update DataResource
-                                pNameContentExists = true;
-                                pNameEnDataResourceId = getDataResourceId(productId , "PRODUCT_NAME", "en" , delegator);
-                                pNameThDataResourceId = getDataResourceId(productId , "PRODUCT_NAME", "th" , delegator);
-                            }
-                            
-                            pNameEnDataResources.add(prepareDataResource(pNameEnDataResourceId, "en", productName , userLogin));
-                            pNameEnContents.add(prepareContent(pNameEnDataResourceId, "en", userLogin));
-                            if(productNameTH != null){
-                                pNameThDataResources.add(prepareDataResource(pNameThDataResourceId, "th", productNameTH , userLogin));
-                                pNameThContents.add(prepareContent(pNameThDataResourceId, "th", userLogin));
-                            }
-                            Map<String, Object> context = FastMap.newInstance();
-                            context.put("productId", productId);
-                            pNameDataAndContents.add(context);
-
-                            if(!pNameContentExists)
-                                pNameProductContents.add(prepareProductContent(productId, pNameEnDataResourceId, "PRODUCT_NAME", userLogin));
-                        }
-                        if(description != null){
-                            String pDescEnDataResourceId = null;
-                            String pDescThDataResourceId = null;
-                            boolean contentExists = false;
-                            // check if description in ProductContent already exists update it, otherwise create new one
-                            if(!checkProductContentExists(productId, "DESCRIPTION", delegator)){
-                                pDescEnDataResourceId = productId + "-DESCEN";
-                                pDescThDataResourceId = productId + "-DESCTH";
-                            }else{
-                                // update DataResource
-                                contentExists = true;
-                                pDescEnDataResourceId = getDataResourceId(productId , "DESCRIPTION", "en" , delegator);
-                                pDescThDataResourceId = getDataResourceId(productId , "DESCRIPTION", "th" , delegator);
-                            }
-                            
-                            pDescEnDataResources.add(ImportProduct.prepareDataResource(pDescEnDataResourceId, "en", description , userLogin));
-                            pDescEnContents.add(prepareContent(pDescEnDataResourceId, "en", userLogin));
-                            if(descriptionTH != null){
-                                pDescThDataResources.add(ImportProduct.prepareDataResource(pDescThDataResourceId, "th", descriptionTH , userLogin));
-                                pDescThContents.add(prepareContent(pDescThDataResourceId, "th", userLogin));
-                            }
-                            Map<String, Object> context = FastMap.newInstance();
-                            context.put("productId", productId);
-                            pDescDataAndContents.add(context);
-                            if(!contentExists)
-                                pDescProductContents.add(prepareProductContent(productId, pDescEnDataResourceId, "DESCRIPTION", userLogin));
-                        }
-                    
-                        if (!checkSupplierProductExists(productId, delegator)) {
-                            if(supplierProductId == null)
-                                supplierProductId = "SP-"+productId;
-                            supplierProducts.add(prepareSupplierProduct(productId, supplierProductId, supplierPartyId, supplierPrice
-                                    , UtilDateTime.nowTimestamp(), BigDecimal.ZERO, "THB" , userLogin));
+    
+                        if(supplierProductId == null){
+                            supplierProductId = "SP-"+delegator.getNextSeqId("SupplierProduct");
                         }else{
-                            List<GenericValue> tmpSupplierProducts = null;
+                            List<GenericValue> supplierProductList = null;
                             try {
-                                tmpSupplierProducts = delegator.findByAnd("SupplierProduct", UtilMisc.toMap("productId", productId));
+                                supplierProductList = delegator.findByAnd("SupplierProduct", UtilMisc.toMap("supplierProductId", supplierProductId));
                             } catch (GenericEntityException e) {
                                 request.setAttribute("_ERROR_MESSAGE_", "Error getting SupplierProduct.");
                             }
-                            GenericValue supplierProductGV = EntityUtil.getFirst(tmpSupplierProducts);
-                            supplierProducts.add(prepareSupplierProduct(productId, supplierProductGV.getString("supplierProductId"), supplierPartyId, supplierPrice,
-                                    (Timestamp) supplierProductGV.get("availableFromDate"),(BigDecimal) supplierProductGV.get("minimumOrderQuantity"), supplierProductGV.getString("currencyUomId"), userLogin));
+                            if(supplierProductList != null && supplierProductList.size()>0){
+                                GenericValue supplierProduct = EntityUtil.getFirst(supplierProductList);
+                                productId = supplierProduct.getString("productId");
+                            }
+                        }
+                        if(productId == null){
+                            productId = delegator.getNextSeqId("Product");
                         }
                         
-                        Map<String, ?> productPriceCtx = checkProductPriceExists(productId, delegator);
-                        Boolean productPriceExists = (Boolean) productPriceCtx.get("productPriceExists");
-                        if (!productPriceExists) {
-                            priceData.put("productId", productId);
-                            priceData.put("price", price);
-                            priceData.put("productPriceTypeId","DEFAULT_PRICE");
-                            priceData.put("currencyUomId", "THB");
-                            priceData.put("productStoreGroupId","_NA_");
-                            priceData.put("fromDate",UtilDateTime.nowTimestamp());
-                            priceData.put("productPricePurposeId","PURCHASE");
-                            
-                        }else{
-                            GenericValue productPriceGV = (GenericValue) productPriceCtx.get("productPriceGV");
-                            priceData.put("productId", productId);
-                            priceData.put("price", price);
-                            priceData.put("productPriceTypeId", productPriceGV.get("productPriceTypeId"));
-                            priceData.put("currencyUomId", productPriceGV.get("currencyUomId"));
-                            priceData.put("productStoreGroupId", productPriceGV.get("productStoreGroupId"));
-                            priceData.put("fromDate", productPriceGV.get("fromDate"));
-                            priceData.put("productPricePurposeId", productPriceGV.get("productPricePurposeId"));
+                        // read productName from second column
+                        HSSFCell cell1 = row.getCell((int) 1);
+                        String productName = null;
+                        if(UtilValidate.isNotEmpty(cell1)){
+                            productName = toStringValue(cell1);
                         }
-                        priceData.put("userLogin", userLogin);
-                        productPrices.add(priceData);
+                        
+                        // read productName in Thai language from third column
+                        HSSFCell cell2 = row.getCell((int) 2);
+                        String productNameTH = null;
+                        if(UtilValidate.isNotEmpty(cell2)){
+                            productNameTH  = toStringValue(cell2);
+                        }
+    
+                        HSSFCell cell3 = row.getCell((int) 3);
+                        String internalName = null;
+                        if(UtilValidate.isNotEmpty(cell3)){
+                            internalName = toStringValue(cell3);
+                        }
+                        if(internalName == null){
+                            internalName = "Product_" + productId;
+                        }
+                        
+                        HSSFCell cell4 = row.getCell((int) 4);
+                        String description = null;
+                        if(UtilValidate.isNotEmpty(cell4)){
+                            description = toStringValue(cell4);
+                        }
+                        
+                        HSSFCell cell5 = row.getCell((int) 5);
+                        String descriptionTH = null;
+                        if(UtilValidate.isNotEmpty(cell5)){
+                            descriptionTH  = toStringValue(cell5);
+                        }
+                        
+                        // read price from eighth column
+                        HSSFCell cell6 = row.getCell((int) 6);
+                        BigDecimal price = BigDecimal.ZERO;
+                        if (cell6 != null && cell6.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
+                            price = new BigDecimal(cell6.getNumericCellValue());
+                        
+                        HSSFCell cell7 = row.getCell((int) 7);
+                        BigDecimal supplierPrice = BigDecimal.ZERO;
+                        if (cell7 != null && cell7.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
+                            supplierPrice = new BigDecimal(cell7.getNumericCellValue());
+    
+                        Timestamp now = UtilDateTime.nowTimestamp();
+
+                        products.add(prepareProduct(productId, internalName, actionField, userLogin));
+                        // check if SupplierProduct already exists update it, otherwise create new one 
+                        List<GenericValue> tmpSupplierProducts = null;
+                        GenericValue supplierProductGV = null;
+                        if (checkSupplierProductExists(productId, delegator)) {
+                             try {
+                                 tmpSupplierProducts = delegator.findByAnd("SupplierProduct", UtilMisc.toMap("productId", productId));
+                             } catch (GenericEntityException e) {
+                                 request.setAttribute("_ERROR_MESSAGE_", "Error getting SupplierProduct.");
+                             }
+                             tmpSupplierProducts = EntityUtil.filterByDate(tmpSupplierProducts, UtilDateTime.nowTimestamp(), "availableFromDate", "availableThruDate", true);
+                             supplierProductGV = EntityUtil.getFirst(tmpSupplierProducts);
+                        }
+
+                        Map<String, ?> productPriceCtx = checkProductPriceExists(productId, delegator);
+                        GenericValue productPriceGV = null;
+                        if(productPriceCtx.size() > 0){
+                            productPriceGV = (GenericValue) productPriceCtx.get("productPriceGV");
+                        }
+                        
+                        // prepare variable for create/update/delete ProductContent for product name & description in Thai and Eng language
+                        String pNameEnDataResourceId = null;
+                        String pNameThDataResourceId = null;
+                        String pNameEnContentId = null;
+                        String pNameThContentId = null;
+                        String pDescEnDataResourceId = null;
+                        String pDescThDataResourceId = null;
+                        String pDescEnContentId = null;
+                        String pDescThContentId = null;
+                        Map<String, Object> pNameCtx = FastMap.newInstance();
+                        Map<String, Object> pDescCtx = FastMap.newInstance();
+
+                        if("add".equals(actionField)){
+                            if (!checkSupplierProductExists(productId, delegator)) {
+                                createSupplierProducts.add(prepareSupplierProduct(productId, supplierProductId, supplierPartyId, supplierPrice
+                                        , UtilDateTime.nowTimestamp(), actionField, BigDecimal.ZERO, "THB" , userLogin));
+                            }else{
+                                request.setAttribute("_ERROR_MESSAGE_", "Error setting SupplierProduct: "+ supplierProductId+ " already exists.");
+                                return "error";
+                            }
+                            createProductPrices.add(prepareProductPrice(productId, price, now, "THB", "_NA_", actionField, userLogin));
+                            
+                            // create ProductContent for product name & description in Thai and Eng language
+                            if(productName != null){
+                                // Create new ProductContent
+                                pNameEnDataResourceId = productId + "-PNAMEEN";
+                                pNameThDataResourceId = productId + "-PNAMETH";
+
+                                pNameEnContentId = pNameEnDataResourceId;
+                                createPNameEnDataResources.add(prepareDataResource(pNameEnDataResourceId, "en", productName , userLogin));
+                                pNameEnContents.add(prepareContent(pNameEnContentId, pNameEnDataResourceId, "en", userLogin));
+
+                                if(productNameTH != null){
+                                    pNameThContentId = pNameThDataResourceId;
+                                    createPNameThDataResources.add(prepareDataResource(pNameThDataResourceId, "th", productNameTH , userLogin));
+                                    pNameThContents.add(prepareContent(pNameThContentId, pNameThDataResourceId, "th", userLogin));
+                                    if(pNameEnContentId != null)
+                                        createNameContentAssocs.add(prepareContentAssoc(pNameEnContentId, pNameThContentId, now, userLogin));
+                                }
+                                createNameProductContents.add(prepareProductContent(productId, pNameEnDataResourceId, now, "PRODUCT_NAME", actionField, userLogin));
+                                
+                                pNameCtx.put("productId", productId);
+                            }
+                            
+                            if(description != null){
+                                pDescEnDataResourceId = productId + "-DESCEN";
+                                pDescThDataResourceId = productId + "-DESCTH";
+                                
+                                pDescEnContentId = pDescEnDataResourceId;
+                                createPDescEnDataResources.add(prepareDataResource(pDescEnDataResourceId, "en", description , userLogin));
+                                pDescEnContents.add(prepareContent(pDescEnContentId, pDescEnDataResourceId, "en", userLogin));
+                                
+                                if(descriptionTH != null){
+                                    pDescThContentId = pDescThDataResourceId;
+                                    createPDescThDataResources.add(prepareDataResource(pDescThDataResourceId, "th", descriptionTH , userLogin));
+                                    pDescThContents.add(prepareContent(pDescThContentId, pDescThDataResourceId, "th", userLogin));
+                                    if(pDescEnContentId != null)
+                                        createDescContentAssocs.add(prepareContentAssoc(pDescEnContentId, pDescThContentId, now, userLogin));
+                                }
+                                createDescProductContents.add(prepareProductContent(productId, pDescEnContentId, now, "DESCRIPTION", actionField, userLogin));
+                                pDescCtx.put("productId", productId);
+                            }
+                        }else if("update".equals(actionField)){
+                            if(supplierProductGV != null){
+                                updateSupplierProducts.add(prepareSupplierProduct(productId, supplierProductGV.getString("supplierProductId"), supplierPartyId, supplierPrice,
+                                        (Timestamp) supplierProductGV.get("availableFromDate"), actionField,(BigDecimal) supplierProductGV.get("minimumOrderQuantity")
+                                        , supplierProductGV.getString("currencyUomId"), userLogin));
+                            }else{
+                                request.setAttribute("_ERROR_MESSAGE_", "Error updating SupplierProduct: "+ supplierProductId+ " not found.");
+                                return "error";
+                            }
+                            if(productPriceGV != null){
+                                updateProductPrices.add(prepareProductPrice(productId, price, productPriceGV.getTimestamp("fromDate"), productPriceGV.getString("currencyUomId")
+                                        , productPriceGV.getString("productStoreGroupId"), actionField, userLogin));
+                            }else{
+                                request.setAttribute("_ERROR_MESSAGE_", "Error updating ProductPrice: ");
+                                return "error";
+                            }
+                            
+                            // check if a ProductContent already exists update it
+                            if(productName != null){
+                                 Map<String, Object> pNameEnContentResults = getDataResourceAndContent(productId , "PRODUCT_NAME", "en" , delegator);
+                                 if(pNameEnContentResults.size() > 0){
+                                     pNameEnDataResourceId = (String) pNameEnContentResults.get("dataResourceId");
+                                     pNameEnContentId = (String) pNameEnContentResults.get("contentId");
+                                 }
+                                 Map<String, Object> pNameThContentResults = getDataResourceAndContent(productId , "PRODUCT_NAME", "th" , delegator);
+                                 if(pNameThContentResults.size() > 0){
+                                     pNameThDataResourceId = (String) pNameThContentResults.get("dataResourceId");
+                                     pNameThContentId = (String) pNameThContentResults.get("contentId");
+                                 }
+                                if(pNameEnDataResourceId != null){
+                                    updatePNameEnDataResources.add(prepareDataResource(pNameEnDataResourceId, "en", productName , userLogin));
+                                    
+                                }else{
+                                    pNameEnDataResourceId = productId + "-PNAMEEN";
+                                    createPNameEnDataResources.add(prepareDataResource(pNameEnDataResourceId, "en", productName , userLogin));
+                                    if(pNameEnContentId == null)
+                                        pNameEnContentId = pNameEnDataResourceId;
+                                    pNameEnContents.add(prepareContent(pNameEnContentId, pNameEnDataResourceId, "en", userLogin));
+                                }
+                                
+                                if(productNameTH != null){
+                                    if(pNameThDataResourceId != null){
+                                        updatePNameThDataResources.add(prepareDataResource(pNameThDataResourceId, "th", productNameTH , userLogin));
+                                    }else{
+                                        pNameThDataResourceId = productId + "-PNAMETH";
+                                        createPNameThDataResources.add(prepareDataResource(pNameThDataResourceId, "th", productNameTH , userLogin));
+                                        if(pNameThContentId == null)
+                                            pNameThContentId = pNameThDataResourceId;
+                                        pNameThContents.add(prepareContent(pNameThContentId, pNameThDataResourceId, "th", userLogin));
+                                        if(pNameEnContentId != null)
+                                            createNameContentAssocs.add(prepareContentAssoc(pNameEnContentId, pNameThContentId, now, userLogin));
+                                    }
+                                }
+                                if(!checkProductContentExists(productId, "PRODUCT_NAME", delegator)){
+                                    createNameProductContents.add(prepareProductContent(productId, pNameEnContentId, now, "PRODUCT_NAME", actionField, userLogin));
+                                }
+                                pNameCtx.put("productId", productId);
+                            }
+
+                            if(description != null){
+                                Map<String, Object> pDescEnContentResults = getDataResourceAndContent(productId , "DESCRIPTION", "en" , delegator);
+                                if(pDescEnContentResults.size() > 0){
+                                    pDescEnDataResourceId = (String) pDescEnContentResults.get("dataResourceId");
+                                    pDescEnContentId = (String) pDescEnContentResults.get("contentId");
+                                }
+                                Map<String, Object> pDescThContentResults = getDataResourceAndContent(productId , "DESCRIPTION", "th" , delegator);
+                                if(pDescThContentResults.size() > 0){
+                                    pDescThDataResourceId = (String) pDescThContentResults.get("dataResourceId");
+                                    pDescThContentId = (String) pDescThContentResults.get("contentId");
+                                }
+                                
+                                if(pDescEnDataResourceId != null){
+                                    updatePDescEnDataResources.add(prepareDataResource(pDescEnDataResourceId, "en", description , userLogin));
+                                }else{
+                                    pDescEnDataResourceId = productId + "-DESCEN";
+                                    createPDescEnDataResources.add(prepareDataResource(pDescEnDataResourceId, "en", description , userLogin));
+                                    if(pDescEnContentId == null)
+                                        pDescEnContentId = pDescEnDataResourceId;
+                                    pDescEnContents.add(prepareContent(pDescEnContentId, pDescEnDataResourceId, "en", userLogin));
+                                }
+                                
+                                if(descriptionTH != null){
+                                    if(pDescThDataResourceId != null){
+                                        updatePDescThDataResources.add(prepareDataResource(pDescThDataResourceId, "th", descriptionTH , userLogin));
+                                    }else{
+                                        pDescThDataResourceId = productId + "-DESCTH";
+                                        createPDescThDataResources.add(prepareDataResource(pDescThDataResourceId, "th", descriptionTH , userLogin));
+                                        if(pDescThContentId == null)
+                                            pDescThContentId = pDescThDataResourceId;
+                                        pDescThContents.add(prepareContent(pDescThContentId, pDescThDataResourceId, "th", userLogin));
+                                        
+                                        if(pDescEnContentId != null)
+                                            createDescContentAssocs.add(prepareContentAssoc(pDescEnContentId, pDescThContentId, now, userLogin));
+                                    }
+                                }
+                                // check if description in ProductContent already exists update it, otherwise create new one
+                                if(!checkProductContentExists(productId, "DESCRIPTION", delegator))
+                                    createDescProductContents.add(prepareProductContent(productId, pDescEnContentId, now, "DESCRIPTION", actionField, userLogin));
+ 
+                                pDescCtx.put("productId", productId);
+                            }
+                        }else if("delete".equals(actionField)){
+                            if(supplierProductGV != null){
+                                Map<String, Object> removeSupplierProductCtx = FastMap.newInstance();
+                                removeSupplierProductCtx.put("productId", productId);
+                                removeSupplierProductCtx.put("currencyUomId", supplierProductGV.getString("currencyUomId"));
+                                removeSupplierProductCtx.put("availableFromDate", supplierProductGV.get("availableFromDate"));
+                                removeSupplierProductCtx.put("minimumOrderQuantity", supplierProductGV.get("minimumOrderQuantity"));
+                                removeSupplierProductCtx.put("partyId", supplierPartyId);
+                                removeSupplierProductCtx.put("userLogin", userLogin);
+                                
+                                removeSupplierProducts.add(removeSupplierProductCtx);
+                            }else{
+                                request.setAttribute("_ERROR_MESSAGE_", "Error removing SupplierProduct: "+ supplierProductId+ " not found.");
+                                return "error";
+                            }
+                            
+                            if(productPriceGV != null){
+                                removeProductPrices.add(prepareProductPrice(productId, price, productPriceGV.getTimestamp("fromDate"), productPriceGV.getString("currencyUomId")
+                                        , productPriceGV.getString("productStoreGroupId"), actionField, userLogin));
+                                
+                            }else{
+                                request.setAttribute("_ERROR_MESSAGE_", "Error updating ProductPrice: ");
+                                return "error";
+                            }
+                            if(productName != null){
+                                if(checkProductContentExists(productId, "PRODUCT_NAME", delegator)){
+                                    Map<String, Object> pNameEnContentResults = getDataResourceAndContent(productId , "PRODUCT_NAME", "en" , delegator);
+                                    
+                                    if(pNameEnContentResults.size() > 0){
+                                        pNameEnDataResourceId = (String) pNameEnContentResults.get("dataResourceId");
+                                        pNameEnContentId = (String) pNameEnContentResults.get("contentId");
+                                    }
+                                    Map<String, Object> pNameThContentResults = getDataResourceAndContent(productId , "PRODUCT_NAME", "th" , delegator);
+                                    
+                                    if(pNameThContentResults.size() > 0){
+                                        pNameThDataResourceId = (String) pNameThContentResults.get("dataResourceId");
+                                        pNameThContentId = (String) pNameThContentResults.get("contentId");
+                                    }
+                                }
+                                
+                                if(pNameEnDataResourceId != null){
+                                    // prepare to remove ContentAssoc
+                                    List<GenericValue> contentAssocs = null;
+                                    try {
+                                        contentAssocs = EntityUtil.filterByDate(delegator.findByAnd("ContentAssoc", 
+                                                UtilMisc.toMap("contentId", pNameEnContentId, "contentAssocTypeId", "ALTERNATE_LOCALE", "contentIdTo", pNameThContentId)));
+                                    } catch (GenericEntityException e) {
+                                        Debug.logError("Error finding ProductContent", module);
+                                    }
+                                    if(contentAssocs.size()>0){
+                                        GenericValue contentAssocGV = EntityUtil.getFirst(contentAssocs);
+                                        removeNameContentAssocs.add(prepareContentAssoc(pNameEnContentId, pNameThContentId, contentAssocGV.getTimestamp("fromDate"), userLogin));
+                                    }
+                                    
+                                    List<GenericValue> productContents = null;
+                                    try {
+                                        productContents = EntityUtil.filterByDate(delegator.findByAnd("ProductContent", 
+                                                UtilMisc.toMap("productId", productId, "productContentTypeId", "PRODUCT_NAME")));
+                                    } catch (GenericEntityException e) {
+                                        Debug.logError("Error finding ProductContent", module);
+                                    }
+                                    if(productContents.size()>0){
+                                        GenericValue productContentGV = EntityUtil.getFirst(productContents);
+                                        removeNameProductContents.add(prepareProductContent(productId, productContentGV.getString("contentId"), productContentGV.getTimestamp("fromDate"), 
+                                                "PRODUCT_NAME", actionField, userLogin));
+                                    }
+                                }
+                                pNameCtx.put("productId", productId);
+                            }
+
+                            if(description != null){
+                                // check if description in ProductContent already exists delete it
+                                if(checkProductContentExists(productId, "DESCRIPTION", delegator)){
+                                    Map<String, Object> pDescEnContentResults = getDataResourceAndContent(productId , "DESCRIPTION", "en" , delegator);
+                                    if(pDescEnContentResults.size() > 0){
+                                        pDescEnDataResourceId = (String) pDescEnContentResults.get("dataResourceId");
+                                        pDescEnContentId = (String) pDescEnContentResults.get("contentId");
+                                    }
+                                    Map<String, Object> pDescThContentResults = getDataResourceAndContent(productId , "DESCRIPTION", "th" , delegator);
+                                    
+                                    if(pDescThContentResults.size() > 0){
+                                        pDescThDataResourceId = (String) pDescThContentResults.get("dataResourceId");
+                                        pDescThContentId = (String) pDescThContentResults.get("contentId");
+                                    }
+                                }
+                                
+                                if(pDescEnDataResourceId != null){
+                                    // prepare to remove ContentAssoc
+                                    List<GenericValue> contentAssocs = null;
+                                    try {
+                                        contentAssocs = EntityUtil.filterByDate(delegator.findByAnd("ContentAssoc", 
+                                                UtilMisc.toMap("contentId", pDescEnContentId, "contentAssocTypeId", "ALTERNATE_LOCALE", "contentIdTo", pDescThContentId)));
+                                    } catch (GenericEntityException e) {
+                                        Debug.logError("Error finding ProductContent", module);
+                                    }
+                                    if(contentAssocs.size()>0){
+                                        GenericValue contentAssocGV = EntityUtil.getFirst(contentAssocs);
+                                        removeDescContentAssocs.add(prepareContentAssoc(pDescEnContentId, pDescThContentId, contentAssocGV.getTimestamp("fromDate"), userLogin));
+                                    }
+                                    List<GenericValue> productContents = null;
+                                    try {
+                                        productContents = EntityUtil.filterByDate(delegator.findByAnd("ProductContent", 
+                                                UtilMisc.toMap("productId", productId, "productContentTypeId", "DESCRIPTION")));
+                                    } catch (GenericEntityException e) {
+                                        Debug.logError("Error finding ProductContent", module);
+                                    }
+                                    if(productContents.size()>0){
+                                        GenericValue productContentGV = EntityUtil.getFirst(productContents);
+                                        removeDescProductContents.add(prepareProductContent(productId, productContentGV.getString("contentId"), productContentGV.getTimestamp("fromDate"), 
+                                                "DESCRIPTION", actionField, userLogin));
+                                    }
+                                }
+                                pDescCtx.put("productId", productId);
+                            }
+                        }
+                        pNameDataAndContents.add(pNameCtx);
+                        pDescDataAndContents.add(pDescCtx);
                     }
+                 
 //                    int rowNum = row.getRowNum() + 1;
 //                    if (row.toString() != null && !row.toString().trim().equalsIgnoreCase("") && productExists) {
 //                        Debug.logWarning("Row number " + rowNum + " not imported from " + sheetnameFi.getName(), module);
@@ -363,60 +590,107 @@ public class ImportProduct {
                     return "error";
                 }
             }
-           
-            // create/update values in "SupplierProduct" entity
-            if (!checkSupplierProductExists(tmpProductId, delegator)) {
-                try {
-                    Map<String, Object> createSupplierProductResult = dispatcher.runSync("createSupplierProduct", supplierProducts.get(j));
-                    if (ServiceUtil.isError(createSupplierProductResult)) {
-                        request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(createSupplierProductResult));
+            // create values in "SupplierProduct" entity
+            if(createSupplierProducts.size() > 0 && createSupplierProducts.size() > j){
+                if(!createSupplierProducts.get(j).isEmpty()){
+                    try {
+                        Map<String, Object> createSupplierProductResult = dispatcher.runSync("createSupplierProduct", createSupplierProducts.get(j));
+                        if (ServiceUtil.isError(createSupplierProductResult)) {
+                            request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(createSupplierProductResult));
+                            return "error";
+                        }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error setting SupplierProduct : " + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
                         return "error";
                     }
-                } catch (GenericServiceException e) {
-                    String errMsg = "Error update product : " + e.toString();
-                    request.setAttribute("_ERROR_MESSAGE_", errMsg);
-                    return "error";
-                }
-            }else{
-                try {
-                    Map<String, Object> updateSupplierProductResult = dispatcher.runSync("updateSupplierProduct", supplierProducts.get(j));
-                    if (ServiceUtil.isError(updateSupplierProductResult)) {
-                        request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(updateSupplierProductResult));
-                        return "error";
-                    }
-                } catch (GenericServiceException e) {
-                    String errMsg = "Error update product : " + e.toString();
-                    request.setAttribute("_ERROR_MESSAGE_", errMsg);
-                    return "error";
                 }
             }
             
-            // create/update values in "ProductPrice" entity
-            Map<String, ?> productPriceCtx = ImportProduct.checkProductPriceExists(tmpProductId, delegator);
-            Boolean productPriceExists = (Boolean) productPriceCtx.get("productPriceExists");
-            if (!productPriceExists) {
-                try {
-                    Map<String, Object> createProductPriceResult = dispatcher.runSync("createProductPrice", productPrices.get(j));
-                    if (ServiceUtil.isError(createProductPriceResult)) {
-                        request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(createProductPriceResult));
+            // update values in "SupplierProduct" entity
+            if(updateSupplierProducts.size() > 0 && updateSupplierProducts.size() > j){
+                if(!updateSupplierProducts.get(j).isEmpty()){
+                    try {
+                        Map<String, Object> updateSupplierProductResult = dispatcher.runSync("updateSupplierProduct", updateSupplierProducts.get(j));
+                        if (ServiceUtil.isError(updateSupplierProductResult)) {
+                            request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(updateSupplierProductResult));
+                            return "error";
+                        }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error updating SupplierProduct : " + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
                         return "error";
                     }
-                } catch (GenericServiceException e) {
-                    String errMsg = "Error update product : " + e.toString();
-                    request.setAttribute("_ERROR_MESSAGE_", errMsg);
-                    return "error";
                 }
-            }else{
-                try {
-                    Map<String, Object> updateProductPriceResult = dispatcher.runSync("updateProductPrice", productPrices.get(j));
-                    if (ServiceUtil.isError(updateProductPriceResult)) {
-                        request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(updateProductPriceResult));
+                
+            }
+            
+            // remove values in "SupplierProduct" entity
+            if(removeSupplierProducts.size() > 0 && removeSupplierProducts.size() > j){
+                if(!removeSupplierProducts.get(j).isEmpty()){
+                    try {
+                        Map<String, Object> removeSupplierProductResult = dispatcher.runSync("removeSupplierProduct", removeSupplierProducts.get(j));
+                        if (ServiceUtil.isError(removeSupplierProductResult)) {
+                            request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(removeSupplierProductResult));
+                            return "error";
+                        }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error removing SupplierProduct : " + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
                         return "error";
                     }
-                } catch (GenericServiceException e) {
-                    String errMsg = "Error update product : " + e.toString();
-                    request.setAttribute("_ERROR_MESSAGE_", errMsg);
-                    return "error";
+                }
+            }
+            
+            // create values in "ProductPrice" entity
+            if(createProductPrices.size() > 0 && createProductPrices.size() > j){
+                if(!createProductPrices.get(j).isEmpty()){
+                    try {
+                        Map<String, Object> createProductPriceResult = dispatcher.runSync("createProductPrice", createProductPrices.get(j));
+                        if (ServiceUtil.isError(createProductPriceResult)) {
+                            request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(createProductPriceResult));
+                            return "error";
+                        }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error setting SupplierProduct : " + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                        return "error";
+                    }
+                }
+                
+            }
+            
+            // update values in "ProductPrice" entity
+            if(updateProductPrices.size() > 0 && updateProductPrices.size() > j){
+                if(!updateProductPrices.get(j).isEmpty()){
+                    try {
+                        Map<String, Object> updateProductPriceResult = dispatcher.runSync("updateProductPrice", updateProductPrices.get(j));
+                        if (ServiceUtil.isError(updateProductPriceResult)) {
+                            request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(updateProductPriceResult));
+                            return "error";
+                        }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error updating SupplierProduct : " + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                        return "error";
+                    }
+                }
+            }
+            
+            // remove values in "ProductPrice" entity
+            if(removeProductPrices.size() > 0 && removeProductPrices.size() > j){
+                if(!removeProductPrices.get(j).isEmpty()){
+                    try {
+                        Map<String, Object> removeProductPriceResult = dispatcher.runSync("deleteProductPrice", removeProductPrices.get(j));
+                        if (ServiceUtil.isError(removeProductPriceResult)) {
+                            request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(removeProductPriceResult));
+                            return "error";
+                        }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error removing SupplierProduct : " + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                        return "error";
+                    }
                 }
             }
         }
@@ -425,11 +699,14 @@ public class ImportProduct {
         for (int j = 0; j < pNameDataAndContents.size(); j++) {
             Map<String, Object> tmpProductContents = pNameDataAndContents.get(j);
             currentProductId = (String) tmpProductContents.get("productId");
+            String pNameEnContentId = null;
+            String pNameThContentId = null;
+            
             // create DataResource, Content, ContentAssoc and ProductContent for product name 
-            if(!checkProductContentExists(currentProductId, "PRODUCT_NAME", delegator)){
-                if(!pNameEnDataResources.get(j).isEmpty()){
+            if(createPNameEnDataResources.size() > 0 && createPNameEnDataResources.size() > j){
+                if(!createPNameEnDataResources.get(j).isEmpty()){
                     try {
-                        Map<String, Object> pNameEnDataResourceResults = dispatcher.runSync("createDataResourceAndText", pNameEnDataResources.get(j));
+                        Map<String, Object> pNameEnDataResourceResults = dispatcher.runSync("createDataResourceAndText", createPNameEnDataResources.get(j));
                         if (ServiceUtil.isError(pNameEnDataResourceResults)) {
                             request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(pNameEnDataResourceResults));
                             return "error";
@@ -439,23 +716,7 @@ public class ImportProduct {
                         request.setAttribute("_ERROR_MESSAGE_", errMsg);
                         return "error";
                     }
-                }
-                if(!pNameThDataResources.get(j).isEmpty()){
-                    try {
-                        Map<String, Object> pNameThDataResourceResults = dispatcher.runSync("createDataResourceAndText", pNameThDataResources.get(j));
-                        if (ServiceUtil.isError(pNameThDataResourceResults)) {
-                            request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(pNameThDataResourceResults));
-                            return "error";
-                        }
-                    } catch (GenericServiceException e) {
-                        String errMsg = "Error setting DataResource and Text for product name in Th language: " + e.toString();
-                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
-                        return "error";
-                    }
-                }
-                String pNameEnContentId = null;
-                String pNameThContentId = null;
-                if(!pNameEnContents.get(j).isEmpty()){
+                    
                     try {
                         Map<String, Object> pNameEnContentResults = dispatcher.runSync("createContent", pNameEnContents.get(j));
                         if(pNameEnContentResults.size()>0){
@@ -466,40 +727,56 @@ public class ImportProduct {
                         request.setAttribute("_ERROR_MESSAGE_", errMsg);
                         return "error";
                     }
-                    
                 }
-                if(!pNameThContents.get(j).isEmpty()){
+            }
+            
+            if(createPNameThDataResources.size() > 0 && createPNameThDataResources.size() > j){
+                if(!createPNameThDataResources.get(j).isEmpty()){
                     try {
-                        Map<String, Object> pNameThContentResults = dispatcher.runSync("createContent", pNameThContents.get(j));
-                        if(pNameThContentResults.size()>0){
-                            pNameThContentId = (String) pNameThContentResults.get("contentId");
+                        Map<String, Object> pNameThDataResourceResults = dispatcher.runSync("createDataResourceAndText", createPNameThDataResources.get(j));
+                        if (ServiceUtil.isError(pNameThDataResourceResults)) {
+                            request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(pNameThDataResourceResults));
+                            return "error";
                         }
                     } catch (GenericServiceException e) {
-                        String errMsg = "Error setting content for product name in Th language: " + e.toString();
+                        String errMsg = "Error setting DataResource and Text for product name in Th language: " + e.toString();
                         request.setAttribute("_ERROR_MESSAGE_", errMsg);
                         return "error";
                     }
                     
+                    try {
+                        Map<String, Object> pNameThContentResults = dispatcher.runSync("createContent", pNameThContents.get(j));
+                        if(pNameThContentResults.size()>0){
+                            pNameEnContentId = (String) pNameThContentResults.get("contentId");
+                        }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error setting content for product name in En language: " + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                        return "error";
+                    }
                 }
-
-                if(pNameEnContentId != null){
-                    // create ContentAssoc
-                    if(pNameThContentId != null){
-                        try {
-                            Map<String, Object> createContentAssocResult = dispatcher.runSync("createContentAssoc", UtilMisc.toMap("contentId", pNameEnContentId 
-                                , "contentIdTo" , pNameThContentId , "contentAssocTypeId", "ALTERNATE_LOCALE" , "userLogin", userLogin));
-                            if (ServiceUtil.isError(createContentAssocResult)) {
-                                request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(createContentAssocResult));
-                                return "error";
-                            }
-                        } catch (GenericServiceException e) {
-                            String errMsg = "Error setting ContentAssoc for product name: " + e.toString();
-                            request.setAttribute("_ERROR_MESSAGE_", errMsg);
+            }
+            
+            // create ContentAssoc
+            if(createNameContentAssocs.size() > 0 && createNameContentAssocs.size() > j){
+                if(!createNameContentAssocs.get(j).isEmpty()){
+                    try {
+                        Map<String, Object> createContentAssocResult = dispatcher.runSync("createContentAssoc", createNameContentAssocs.get(j));
+                        if (ServiceUtil.isError(createContentAssocResult)) {
+                            request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(createContentAssocResult));
                             return "error";
                         }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error setting ContentAssoc for product name: " + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                        return "error";
                     }
+                }
+            }
+            if(createNameProductContents.size() > 0 && createNameProductContents.size() > j){
+                if(!createNameProductContents.get(j).isEmpty()){
                     try {
-                        Map<String, Object> createProductContentResult = dispatcher.runSync("createProductContent", pNameProductContents.get(j));
+                        Map<String, Object> createProductContentResult = dispatcher.runSync("createProductContent", createNameProductContents.get(j));
                         if (ServiceUtil.isError(createProductContentResult)) {
                             request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(createProductContentResult));
                             return "error";
@@ -510,11 +787,12 @@ public class ImportProduct {
                         return "error";
                     }
                 }
-            }else{
-                // update DataResource, Content, ContentAssoc and ProductContent for product name 
-                if(!pNameEnDataResources.get(j).isEmpty()){
+            }
+
+            if(updatePNameEnDataResources.size() > 0 && updatePNameEnDataResources.size() > j){
+                if(!updatePNameEnDataResources.get(j).isEmpty()){
                     try {
-                        Map<String, Object> pNameEnDataResourceResults = dispatcher.runSync("updateDataResourceAndText", pNameEnDataResources.get(j));
+                        Map<String, Object> pNameEnDataResourceResults = dispatcher.runSync("updateDataResourceAndText", updatePNameEnDataResources.get(j));
                         if (ServiceUtil.isError(pNameEnDataResourceResults)) {
                             request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(pNameEnDataResourceResults));
                             return "error";
@@ -525,152 +803,224 @@ public class ImportProduct {
                         return "error";
                     }
                 }
-                if(!pNameThDataResources.get(j).isEmpty()){
+            }
+
+            if(updatePNameThDataResources.size() > 0 && updatePNameThDataResources.size() > j){
+                if(!updatePNameThDataResources.get(j).isEmpty()){
                     try {
-                        Map<String, Object> pNameThDataResourceResults = dispatcher.runSync("updateDataResourceAndText", pNameThDataResources.get(j));
+                        Map<String, Object> pNameThDataResourceResults = dispatcher.runSync("updateDataResourceAndText", updatePNameThDataResources.get(j));
                         if (ServiceUtil.isError(pNameThDataResourceResults)) {
                             request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(pNameThDataResourceResults));
                             return "error";
                         }
                     } catch (GenericServiceException e) {
-                        String errMsg = "Error updating DataResource and Text for product name in En language:" + e.toString();
+                        String errMsg = "Error updating DataResource and Text for product name in Th language:" + e.toString();
                         request.setAttribute("_ERROR_MESSAGE_", errMsg);
                         return "error";
                     }
                 }
             }
-
+            
+            if(removeNameContentAssocs.size() > 0 && removeNameContentAssocs.size() > j){
+                if(!removeNameContentAssocs.get(j).isEmpty()){
+                    // set thruDate to ContentAssoc
+                    try {
+                        Map<String, Object> removeContentAssocResults = dispatcher.runSync("removeContentAssoc", removeNameContentAssocs.get(j));
+                        if (ServiceUtil.isError(removeContentAssocResults)) {
+                            request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(removeContentAssocResults));
+                            return "error";
+                        }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error removing ContentAssoc for product name: " + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                        return "error";
+                    }
+                }
+            }
+            
+            if(removeNameProductContents.size() > 0 && removeNameProductContents.size() > j){
+                if(!removeNameProductContents.get(j).isEmpty()){
+                    // set thruDate to ProductContent
+                    try {
+                        Map<String, Object> removeProductContentResults = dispatcher.runSync("removeProductContent", removeNameProductContents.get(j));
+                        if (ServiceUtil.isError(removeProductContentResults)) {
+                            request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(removeProductContentResults));
+                            return "error";
+                        }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error removing ProductContent for product name: " + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                        return "error";
+                    }
+                }
+            }
         }
         
         for (int j = 0; j < pDescDataAndContents.size(); j++) {
             Map<String, Object> tmpProductContents = pDescDataAndContents.get(j);
             currentProductId = (String) tmpProductContents.get("productId");
+            String pDescEnContentId = null;
+            String pDescThContentId = null;
             
             // create DataResource, Content, ContentAssoc and ProductContent for product description 
-            if(!checkProductContentExists(currentProductId, "DESCRIPTION", delegator)){
-                 if(!pDescEnDataResources.get(j).isEmpty()){
-                     try {
-                         Map<String, Object> pDescEnDataResourceResults = dispatcher.runSync("createDataResourceAndText", pDescEnDataResources.get(j));
-                         if (ServiceUtil.isError(pDescEnDataResourceResults)) {
-                             request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(pDescEnDataResourceResults));
-                             return "error";
-                         }
-                     } catch (GenericServiceException e) {
-                         String errMsg = "Error setting DataResource and Text for product description in En language: " + e.toString();
-                         request.setAttribute("_ERROR_MESSAGE_", errMsg);
-                         return "error";
-                     }
-                 }
-                 if(!pDescThDataResources.get(j).isEmpty()){
-                     try {
-                         Map<String, Object> pDescThDataResourceResults = dispatcher.runSync("createDataResourceAndText", pDescThDataResources.get(j));
-                         if (ServiceUtil.isError(pDescThDataResourceResults)) {
-                             request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(pDescThDataResourceResults));
-                             return "error";
-                         }
-                     } catch (GenericServiceException e) {
-                         String errMsg = "Error setting DataResource and Text for product description in Th language: " + e.toString();
-                         request.setAttribute("_ERROR_MESSAGE_", errMsg);
-                         return "error";
-                     }
-                 }
-                 String pDescEnContentId = null;
-                 String pDescThContentId = null;
-                 if(!pDescEnContents.get(j).isEmpty()){
-                     try {
-                         Map<String, Object> pDescEnContentResults = dispatcher.runSync("createContent", pDescEnContents.get(j));
-                         if(pDescEnContentResults.size()>0){
-                             pDescEnContentId = (String) pDescEnContentResults.get("contentId");
-                         }
-                     } catch (GenericServiceException e) {
-                         String errMsg = "Error setting content for product description in En language: " + e.toString();
-                         request.setAttribute("_ERROR_MESSAGE_", errMsg);
-                         return "error";
-                     }
-                     
-                 }
-                 if(!pDescThContents.get(j).isEmpty()){
-                     try {
-                         Map<String, Object> pDescThContentResults = dispatcher.runSync("createContent", pDescThContents.get(j));
-                         if(pDescThContentResults.size()>0){
-                             pDescThContentId = (String) pDescThContentResults.get("contentId");
-                         }
-                     } catch (GenericServiceException e) {
-                         String errMsg = "Error setting content for product description in Th language: " + e.toString();
-                         request.setAttribute("_ERROR_MESSAGE_", errMsg);
-                         return "error";
-                     }
-                     
-                 }
-
-                 if(pDescEnContentId != null){
-                     // create ContentAssoc
-                     if(pDescThContentId != null){
-                         try {
-                             Map<String, Object> createContentAssocResult = dispatcher.runSync("createContentAssoc", UtilMisc.toMap("contentId", pDescEnContentId 
-                                 , "contentIdTo" , pDescThContentId , "contentAssocTypeId", "ALTERNATE_LOCALE" , "userLogin", userLogin));
-                             if (ServiceUtil.isError(createContentAssocResult)) {
-                                 request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(createContentAssocResult));
-                                 return "error";
-                             }
-                         } catch (GenericServiceException e) {
-                             String errMsg = "Error setting ContentAssoc for product description: " + e.toString();
-                             request.setAttribute("_ERROR_MESSAGE_", errMsg);
-                             return "error";
-                         }
-                     }
-
-                     try {
-                         Map<String, Object> createProductContentResult = dispatcher.runSync("createProductContent", pDescProductContents.get(j));
-                         if (ServiceUtil.isError(createProductContentResult)) {
-                             request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(createProductContentResult));
-                             return "error";
-                         }
-                     } catch (GenericServiceException e) {
-                         String errMsg = "Error setting ProductContent for product description: " + e.toString();
-                         request.setAttribute("_ERROR_MESSAGE_", errMsg);
-                         return "error";
-                     }
-                 }
-                
-            }else{
-                // update DataResource, Content, ContentAssoc and ProductContent for product description
-                if(!pDescEnDataResources.get(j).isEmpty()){
+            if(createPDescEnDataResources.size() > 0 && createPDescEnDataResources.size() > j){
+                if(!createPDescEnDataResources.get(j).isEmpty()){
                     try {
-                        Map<String, Object> pDescEnDataResourceResults = dispatcher.runSync("updateDataResourceAndText", pDescEnDataResources.get(j));
+                        Map<String, Object> pDescEnDataResourceResults = dispatcher.runSync("createDataResourceAndText", createPDescEnDataResources.get(j));
                         if (ServiceUtil.isError(pDescEnDataResourceResults)) {
                             request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(pDescEnDataResourceResults));
                             return "error";
                         }
                     } catch (GenericServiceException e) {
-                        String errMsg = "Error updating DataResource and Text for product description in En language: " + e.toString();
+                        String errMsg = "Error setting DataResource and Text for product description in En language: " + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                        return "error";
+                    }
+                    
+                    try {
+                        Map<String, Object> pDescEnContentResults = dispatcher.runSync("createContent", pDescEnContents.get(j));
+                        if(pDescEnContentResults.size()>0){
+                            pDescEnContentId = (String) pDescEnContentResults.get("contentId");
+                        }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error setting content for product description in En language: " + e.toString();
                         request.setAttribute("_ERROR_MESSAGE_", errMsg);
                         return "error";
                     }
                 }
-                if(!pDescThDataResources.get(j).isEmpty()){
+            }
+            if(createPDescThDataResources.size() > 0 && createPDescThDataResources.size() > j){
+                if(!createPDescThDataResources.get(j).isEmpty()){
                     try {
-                        Map<String, Object> pDescThDataResourceResults = dispatcher.runSync("updateDataResourceAndText", pDescThDataResources.get(j));
+                        Map<String, Object> pDescThDataResourceResults = dispatcher.runSync("createDataResourceAndText", createPDescThDataResources.get(j));
                         if (ServiceUtil.isError(pDescThDataResourceResults)) {
                             request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(pDescThDataResourceResults));
                             return "error";
                         }
                     } catch (GenericServiceException e) {
-                        String errMsg = "Error updating DataResource and Text for product description in Th language: " + e.toString();
+                        String errMsg = "Error setting DataResource and Text for product description in Th language: " + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                        return "error";
+                    }
+                    
+                    try {
+                        Map<String, Object> pDescThContentResults = dispatcher.runSync("createContent", pDescThContents.get(j));
+                        if(pDescThContentResults.size()>0){
+                            pDescThContentId = (String) pDescThContentResults.get("contentId");
+                        }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error setting content for product description in Th language: " + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                        return "error";
+                    }
+                }
+            }
+            
+            // create ContentAssoc
+            if(createDescContentAssocs.size() > 0 && createDescContentAssocs.size() > j){
+                if(!createDescContentAssocs.get(j).isEmpty()){
+                    try {
+                        Map<String, Object> createContentAssocResult = dispatcher.runSync("createContentAssoc", createDescContentAssocs.get(j));
+                        if (ServiceUtil.isError(createContentAssocResult)) {
+                            request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(createContentAssocResult));
+                            return "error";
+                        }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error setting ContentAssoc for product description: " + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                        return "error";
+                    }
+                }
+            }
+            if(createDescProductContents.size() > 0 && createDescProductContents.size() > j){
+                if(!createDescProductContents.get(j).isEmpty()){
+                    try {
+                        Map<String, Object> createProductContentResult = dispatcher.runSync("createProductContent", createDescProductContents.get(j));
+                        if (ServiceUtil.isError(createProductContentResult)) {
+                            request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(createProductContentResult));
+                            return "error";
+                        }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error setting ProductContent for product description: " + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                        return "error";
+                    }
+                }
+            }
+
+            if(updatePDescEnDataResources.size() > 0 && updatePDescEnDataResources.size() > j){
+                if(!updatePDescEnDataResources.get(j).isEmpty()){
+                    try {
+                        Map<String, Object> pDescEnDataResourceResults = dispatcher.runSync("updateDataResourceAndText", updatePDescEnDataResources.get(j));
+                        if (ServiceUtil.isError(pDescEnDataResourceResults)) {
+                            request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(pDescEnDataResourceResults));
+                            return "error";
+                        }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error updating DataResource and Text for product description in En language:" + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                        return "error";
+                    }
+                }
+            }
+
+            if(updatePDescThDataResources.size() > 0 && updatePDescThDataResources.size() > j){
+                if(!updatePDescThDataResources.get(j).isEmpty()){
+                    try {
+                        Map<String, Object> pDescThDataResourceResults = dispatcher.runSync("updateDataResourceAndText", updatePDescThDataResources.get(j));
+                        if (ServiceUtil.isError(pDescThDataResourceResults)) {
+                            request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(pDescThDataResourceResults));
+                            return "error";
+                        }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error updating DataResource and Text for product description in Th language:" + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                        return "error";
+                    }
+                }
+            }
+            
+            if(removeDescContentAssocs.size() > 0 && removeDescContentAssocs.size() > j){
+                if(!removeDescContentAssocs.get(j).isEmpty()){
+                    // set thruDate to ContentAssoc
+                    try {
+                        Map<String, Object> removeContentAssocResults = dispatcher.runSync("removeContentAssoc", removeDescContentAssocs.get(j));
+                        if (ServiceUtil.isError(removeContentAssocResults)) {
+                            request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(removeContentAssocResults));
+                            return "error";
+                        }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error removing ContentAssoc for product description: " + e.toString();
+                        request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                        return "error";
+                    }
+                }
+            }
+            
+            if(removeDescProductContents.size() > 0 && removeDescProductContents.size() > j){
+                if(!removeDescProductContents.get(j).isEmpty()){
+                    // set thruDate to ProductContent
+                    try {
+                        Map<String, Object> removeProductContentResults = dispatcher.runSync("removeProductContent", removeDescProductContents.get(j));
+                        if (ServiceUtil.isError(removeProductContentResults)) {
+                            request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(removeProductContentResults));
+                            return "error";
+                        }
+                    } catch (GenericServiceException e) {
+                        String errMsg = "Error removing ProductContent for product description: " + e.toString();
                         request.setAttribute("_ERROR_MESSAGE_", errMsg);
                         return "error";
                     }
                 }
             }
         }
-        
         
         int uploadedProducts = products.size();
         if (products.size() > 0){
             Debug.logInfo(">>>>>>>>>>>>>>> Uploaded " + uploadedProducts + " products from file " + sheetnameFi.getName(), module);
             request.setAttribute("_EVENT_MESSAGE_", "Uploaded " + uploadedProducts + " products from file " + sheetnameFi.getName());
         }else{
-        	Debug.logInfo("Do not have product information in file " + sheetnameFi.getName(), module);
+            Debug.logInfo("Do not have product information in file " + sheetnameFi.getName(), module);
             request.setAttribute("_ERROR_MESSAGE_","Please enter product information into file " +sheetnameFi.getName() + " and try again.");
             return "error";
         }
@@ -749,7 +1099,7 @@ public class ImportProduct {
     }
     
  // prepare the product map
-    public static Map<String, Object> prepareProduct(String productId, String internalName, GenericValue userLogin) {
+    public static Map<String, Object> prepareProduct(String productId, String internalName, String actionField, GenericValue userLogin) {
         Map<String, Object> fields = FastMap.newInstance();
         fields.put("productId", productId);
         fields.put("internalName", internalName);
@@ -757,6 +1107,8 @@ public class ImportProduct {
         fields.put("requirementMethodEnumId", "PRODRQM_DS");
         fields.put("isVirtual", "N");
         fields.put("isVariant", "N");
+        if("delete".equals(actionField))
+            fields.put("salesDiscontinuationDate",UtilDateTime.nowTimestamp());
         fields.put("userLogin", userLogin);
         return fields;
     }
@@ -775,10 +1127,10 @@ public class ImportProduct {
     }
     
     // prepare the product map
-    public static Map<String, Object> prepareContent(String dataResourceId,
+    public static Map<String, Object> prepareContent(String contentId, String dataResourceId,
             String localeString, GenericValue userLogin) {
         Map<String, Object> fields = FastMap.newInstance();
-        fields.put("contentId", dataResourceId);
+        fields.put("contentId", contentId);
         fields.put("dataResourceId", dataResourceId);
         fields.put("contentTypeId", "DOCUMENT");
         fields.put("statusId", "CTNT_IN_PROGRESS");
@@ -786,21 +1138,35 @@ public class ImportProduct {
         fields.put("userLogin", userLogin);
         return fields;
     }
-    
+
     // prepare the ProductContent map
-    public static Map<String, Object> prepareProductContent(String productId, String contentId,
-            String productContentTypeId, GenericValue userLogin) {
+    public static Map<String, Object> prepareContentAssoc(String contentId, String contentIdTo, Timestamp fromDate, GenericValue userLogin) {
         Map<String, Object> fields = FastMap.newInstance();
-        fields.put("productId", productId);
         fields.put("contentId", contentId);
-        fields.put("productContentTypeId", productContentTypeId);
+        fields.put("contentIdTo", contentIdTo);
+        fields.put("contentAssocTypeId", "ALTERNATE_LOCALE");
+        fields.put("fromDate", fromDate);
         fields.put("userLogin", userLogin);
         return fields;
     }
     
     // prepare the ProductContent map
-    public static Map<String, Object> prepareSupplierProduct(String productId, String supplierProductId, String supplierPartyId,
-            BigDecimal supplierPrice, Timestamp availableFromDate, BigDecimal minimumOrderQuantity, String currencyUomId, GenericValue userLogin) {
+    public static Map<String, Object> prepareProductContent(String productId, String contentId, Timestamp fromDate,
+            String productContentTypeId, String actionField, GenericValue userLogin) {
+        Map<String, Object> fields = FastMap.newInstance();
+        fields.put("productId", productId);
+        fields.put("contentId", contentId);
+        fields.put("productContentTypeId", productContentTypeId);
+        fields.put("fromDate", fromDate);
+        if("delete".equals(actionField))
+            fields.put("thruDate",UtilDateTime.nowTimestamp());
+        fields.put("userLogin", userLogin);
+        return fields;
+    }
+    
+    // prepare the SupplierProduct map
+    public static Map<String, Object> prepareSupplierProduct(String productId, String supplierProductId, String supplierPartyId,BigDecimal supplierPrice, 
+            Timestamp availableFromDate, String actionField, BigDecimal minimumOrderQuantity, String currencyUomId, GenericValue userLogin) {
         Map<String, Object> fields = FastMap.newInstance();
         fields.put("productId", productId);
         fields.put("partyId", supplierPartyId);
@@ -810,13 +1176,33 @@ public class ImportProduct {
         fields.put("currencyUomId", currencyUomId);
         fields.put("minimumOrderQuantity",minimumOrderQuantity);
         fields.put("availableFromDate",availableFromDate);
+        if("delete".equals(actionField))
+            fields.put("availableThruDate",UtilDateTime.nowTimestamp());
         fields.put("canDropShip","Y");
         fields.put("userLogin", userLogin);
         return fields;
     }
     
-    public static String getDataResourceId(String productId, String productContentTypeId, String localeString, Delegator delegator) {
+    // prepare the ProductContent map
+    public static Map<String, Object> prepareProductPrice(String productId, BigDecimal price, Timestamp fromDate, String currencyUomId, String productStoreGroupId
+            , String actionField, GenericValue userLogin) {
+        Map<String, Object> fields = FastMap.newInstance();
+        fields.put("productId", productId);
+        fields.put("productPriceTypeId", "DEFAULT_PRICE");
+        fields.put("currencyUomId", currencyUomId);
+        fields.put("productStoreGroupId", productStoreGroupId);
+        fields.put("fromDate", fromDate);
+        fields.put("productPricePurposeId", "PURCHASE");
+        fields.put("userLogin", userLogin);
+        if(!"delete".equals(actionField))
+            fields.put("price", price);
+        return fields;
+    }
+    
+    public static Map<String, Object> getDataResourceAndContent(String productId, String productContentTypeId, String localeString, Delegator delegator) {
+        Map<String, Object> results = FastMap.newInstance();
         String dataResourceId = null;
+        String contentId = null;
         GenericValue productContentGV = null;
         try {
             List<GenericValue> productContents = EntityUtil.filterByDate(delegator.findByAnd("ProductContent", 
@@ -830,10 +1216,10 @@ public class ImportProduct {
         if(productContentGV != null){
             try {
                 GenericValue content = productContentGV.getRelatedOne("Content");
-
                 if("en".equals(localeString)){
                     GenericValue dataResource = content.getRelatedOne("DataResource");
                     dataResourceId = dataResource.getString("dataResourceId");
+                    contentId = content.getString("contentId");
                 }else if("th".equals(localeString)){
                     EntityConditionList<EntityCondition> contentAssocConditions = EntityCondition.makeCondition(UtilMisc.toList(
                             EntityCondition.makeCondition("contentIdStart", EntityOperator.EQUALS, content.get("contentId")),
@@ -846,13 +1232,16 @@ public class ImportProduct {
                     if(contentAssocList.size()>0){
                         GenericValue contentAssoc = EntityUtil.getFirst(contentAssocList);
                         dataResourceId = contentAssoc.getString("dataResourceId");
+                        contentId = contentAssoc.getString("caContentIdTo");
                     }
                 }
+                results.put("contentId", contentId);
+                results.put("dataResourceId", dataResourceId);
             } catch (GenericEntityException e) {
                 Debug.logError("Error finding Content", module);
             }
         }
-        return dataResourceId;
+        return results;
     }
     
     public static String toStringValue(HSSFCell cell){
