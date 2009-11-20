@@ -458,96 +458,96 @@ public class ImportProduct {
                                 request.setAttribute("_ERROR_MESSAGE_", "Error updating ProductPrice: ");
                                 return "error";
                             }
-                            if(productName != null){
-                                if(checkProductContentExists(productId, "PRODUCT_NAME", delegator)){
-                                    Map<String, Object> pNameEnContentResults = getDataResourceAndContent(productId , "PRODUCT_NAME", "en" , delegator);
-                                    
-                                    if(pNameEnContentResults.size() > 0){
-                                        pNameEnDataResourceId = (String) pNameEnContentResults.get("dataResourceId");
-                                        pNameEnContentId = (String) pNameEnContentResults.get("contentId");
-                                    }
-                                    Map<String, Object> pNameThContentResults = getDataResourceAndContent(productId , "PRODUCT_NAME", "th" , delegator);
-                                    
-                                    if(pNameThContentResults.size() > 0){
-                                        pNameThDataResourceId = (String) pNameThContentResults.get("dataResourceId");
-                                        pNameThContentId = (String) pNameThContentResults.get("contentId");
-                                    }
+                            
+                            // remove product name
+                            if(checkProductContentExists(productId, "PRODUCT_NAME", delegator)){
+                                Map<String, Object> pNameEnContentResults = getDataResourceAndContent(productId , "PRODUCT_NAME", "en" , delegator);
+                                
+                                if(pNameEnContentResults.size() > 0){
+                                    pNameEnDataResourceId = (String) pNameEnContentResults.get("dataResourceId");
+                                    pNameEnContentId = (String) pNameEnContentResults.get("contentId");
+                                }
+                                Map<String, Object> pNameThContentResults = getDataResourceAndContent(productId , "PRODUCT_NAME", "th" , delegator);
+                                
+                                if(pNameThContentResults.size() > 0){
+                                    pNameThDataResourceId = (String) pNameThContentResults.get("dataResourceId");
+                                    pNameThContentId = (String) pNameThContentResults.get("contentId");
+                                }
+                            }
+                            
+                            if(pNameEnDataResourceId != null){
+                                // prepare to remove ContentAssoc
+                                List<GenericValue> contentAssocs = null;
+                                try {
+                                    contentAssocs = EntityUtil.filterByDate(delegator.findByAnd("ContentAssoc", 
+                                            UtilMisc.toMap("contentId", pNameEnContentId, "contentAssocTypeId", "ALTERNATE_LOCALE", "contentIdTo", pNameThContentId)));
+                                } catch (GenericEntityException e) {
+                                    Debug.logError("Error finding ProductContent", module);
+                                }
+                                if(contentAssocs.size()>0){
+                                    GenericValue contentAssocGV = EntityUtil.getFirst(contentAssocs);
+                                    removeNameContentAssocs.add(prepareContentAssoc(pNameEnContentId, pNameThContentId, contentAssocGV.getTimestamp("fromDate"), userLogin));
                                 }
                                 
-                                if(pNameEnDataResourceId != null){
-                                    // prepare to remove ContentAssoc
-                                    List<GenericValue> contentAssocs = null;
-                                    try {
-                                        contentAssocs = EntityUtil.filterByDate(delegator.findByAnd("ContentAssoc", 
-                                                UtilMisc.toMap("contentId", pNameEnContentId, "contentAssocTypeId", "ALTERNATE_LOCALE", "contentIdTo", pNameThContentId)));
-                                    } catch (GenericEntityException e) {
-                                        Debug.logError("Error finding ProductContent", module);
-                                    }
-                                    if(contentAssocs.size()>0){
-                                        GenericValue contentAssocGV = EntityUtil.getFirst(contentAssocs);
-                                        removeNameContentAssocs.add(prepareContentAssoc(pNameEnContentId, pNameThContentId, contentAssocGV.getTimestamp("fromDate"), userLogin));
-                                    }
-                                    
-                                    List<GenericValue> productContents = null;
-                                    try {
-                                        productContents = EntityUtil.filterByDate(delegator.findByAnd("ProductContent", 
-                                                UtilMisc.toMap("productId", productId, "productContentTypeId", "PRODUCT_NAME")));
-                                    } catch (GenericEntityException e) {
-                                        Debug.logError("Error finding ProductContent", module);
-                                    }
-                                    if(productContents.size()>0){
-                                        GenericValue productContentGV = EntityUtil.getFirst(productContents);
-                                        removeNameProductContents.add(prepareProductContent(productId, productContentGV.getString("contentId"), productContentGV.getTimestamp("fromDate"), 
-                                                "PRODUCT_NAME", actionField, userLogin));
-                                    }
+                                List<GenericValue> productContents = null;
+                                try {
+                                    productContents = EntityUtil.filterByDate(delegator.findByAnd("ProductContent", 
+                                            UtilMisc.toMap("productId", productId, "productContentTypeId", "PRODUCT_NAME")));
+                                } catch (GenericEntityException e) {
+                                    Debug.logError("Error finding ProductContent", module);
                                 }
-                                pNameCtx.put("productId", productId);
+                                if(productContents.size()>0){
+                                    GenericValue productContentGV = EntityUtil.getFirst(productContents);
+                                    removeNameProductContents.add(prepareProductContent(productId, productContentGV.getString("contentId"), productContentGV.getTimestamp("fromDate"), 
+                                            "PRODUCT_NAME", actionField, userLogin));
+                                    pNameCtx.put("productId", productId);
+                                }
                             }
-
-                            if(description != null){
-                                // check if description in ProductContent already exists delete it
-                                if(checkProductContentExists(productId, "DESCRIPTION", delegator)){
-                                    Map<String, Object> pDescEnContentResults = getDataResourceAndContent(productId , "DESCRIPTION", "en" , delegator);
-                                    if(pDescEnContentResults.size() > 0){
-                                        pDescEnDataResourceId = (String) pDescEnContentResults.get("dataResourceId");
-                                        pDescEnContentId = (String) pDescEnContentResults.get("contentId");
-                                    }
-                                    Map<String, Object> pDescThContentResults = getDataResourceAndContent(productId , "DESCRIPTION", "th" , delegator);
-                                    
-                                    if(pDescThContentResults.size() > 0){
-                                        pDescThDataResourceId = (String) pDescThContentResults.get("dataResourceId");
-                                        pDescThContentId = (String) pDescThContentResults.get("contentId");
-                                    }
+                            
+                            // check if description in ProductContent already exists delete it
+                            if(checkProductContentExists(productId, "DESCRIPTION", delegator)){
+                                Map<String, Object> pDescEnContentResults = getDataResourceAndContent(productId , "DESCRIPTION", "en" , delegator);
+                                if(pDescEnContentResults.size() > 0){
+                                    pDescEnDataResourceId = (String) pDescEnContentResults.get("dataResourceId");
+                                    pDescEnContentId = (String) pDescEnContentResults.get("contentId");
                                 }
+                                Map<String, Object> pDescThContentResults = getDataResourceAndContent(productId , "DESCRIPTION", "th" , delegator);
                                 
-                                if(pDescEnDataResourceId != null){
-                                    // prepare to remove ContentAssoc
-                                    List<GenericValue> contentAssocs = null;
-                                    try {
-                                        contentAssocs = EntityUtil.filterByDate(delegator.findByAnd("ContentAssoc", 
-                                                UtilMisc.toMap("contentId", pDescEnContentId, "contentAssocTypeId", "ALTERNATE_LOCALE", "contentIdTo", pDescThContentId)));
-                                    } catch (GenericEntityException e) {
-                                        Debug.logError("Error finding ProductContent", module);
-                                    }
-                                    if(contentAssocs.size()>0){
-                                        GenericValue contentAssocGV = EntityUtil.getFirst(contentAssocs);
-                                        removeDescContentAssocs.add(prepareContentAssoc(pDescEnContentId, pDescThContentId, contentAssocGV.getTimestamp("fromDate"), userLogin));
-                                    }
-                                    List<GenericValue> productContents = null;
-                                    try {
-                                        productContents = EntityUtil.filterByDate(delegator.findByAnd("ProductContent", 
-                                                UtilMisc.toMap("productId", productId, "productContentTypeId", "DESCRIPTION")));
-                                    } catch (GenericEntityException e) {
-                                        Debug.logError("Error finding ProductContent", module);
-                                    }
-                                    if(productContents.size()>0){
-                                        GenericValue productContentGV = EntityUtil.getFirst(productContents);
-                                        removeDescProductContents.add(prepareProductContent(productId, productContentGV.getString("contentId"), productContentGV.getTimestamp("fromDate"), 
-                                                "DESCRIPTION", actionField, userLogin));
-                                    }
+                                if(pDescThContentResults.size() > 0){
+                                    pDescThDataResourceId = (String) pDescThContentResults.get("dataResourceId");
+                                    pDescThContentId = (String) pDescThContentResults.get("contentId");
                                 }
-                                pDescCtx.put("productId", productId);
                             }
+                            
+                            if(pDescEnDataResourceId != null){
+                                // prepare to remove ContentAssoc
+                                List<GenericValue> contentAssocs = null;
+                                try {
+                                    contentAssocs = EntityUtil.filterByDate(delegator.findByAnd("ContentAssoc", 
+                                            UtilMisc.toMap("contentId", pDescEnContentId, "contentAssocTypeId", "ALTERNATE_LOCALE", "contentIdTo", pDescThContentId)));
+                                } catch (GenericEntityException e) {
+                                    Debug.logError("Error finding ProductContent", module);
+                                }
+                                if(contentAssocs.size()>0){
+                                    GenericValue contentAssocGV = EntityUtil.getFirst(contentAssocs);
+                                    removeDescContentAssocs.add(prepareContentAssoc(pDescEnContentId, pDescThContentId, contentAssocGV.getTimestamp("fromDate"), userLogin));
+                                }
+                                List<GenericValue> productContents = null;
+                                try {
+                                    productContents = EntityUtil.filterByDate(delegator.findByAnd("ProductContent", 
+                                            UtilMisc.toMap("productId", productId, "productContentTypeId", "DESCRIPTION")));
+                                } catch (GenericEntityException e) {
+                                    Debug.logError("Error finding ProductContent", module);
+                                }
+                                if(productContents.size()>0){
+                                    GenericValue productContentGV = EntityUtil.getFirst(productContents);
+                                    removeDescProductContents.add(prepareProductContent(productId, productContentGV.getString("contentId"), productContentGV.getTimestamp("fromDate"), 
+                                            "DESCRIPTION", actionField, userLogin));
+                                    pDescCtx.put("productId", productId);
+                                }
+                            }
+                            
+                            
                         }
                         pNameDataAndContents.add(pNameCtx);
                         pDescDataAndContents.add(pDescCtx);
