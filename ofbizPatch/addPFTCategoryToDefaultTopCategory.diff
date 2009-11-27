@@ -1,0 +1,15 @@
+Index: applications/product/config/catalog.properties
+===================================================================
+--- applications/product/config/catalog.properties	(revision 880589)
++++ applications/product/config/catalog.properties	(working copy)
+@@ -29,8 +29,8 @@
+ image.filename.additionalviewsize.format=${location}/${viewtype}/${sizetype}/${id}
+ 
+ # -- Which default top category to display... --
+-top.category.default=CATALOG1
+-all.product.category=CATALOG1
++top.category.default=PFT_ROOT
++all.product.category=PFT_ROOT
+ 
+ # Flag to re-active products when they are received
+ reactivate.product.from.receipt=Y
