@@ -19,10 +19,6 @@ under the License.
 -->
 
 <entity-engine-xml>
-    <ContactList contactListId="PFT0001" contactListTypeId="ANNOUNCEMENT" contactMechTypeId="EMAIL_ADDRESS" marketingCampaignId=""
-        contactListName="Product From Thailand Announcements" description="Product From Thailand Announcements Mailing List (email)" comments="" isPublic="Y" ownerPartyId="pft"
-        verifyEmailFrom="" verifyEmailScreen=""
-        verifyEmailSubject="" verifyEmailWebSiteId=""/>
     <!-- The Initial Product & Supplier -->
     <!-- Start with ProdCatalog -->
     <ProdCatalog prodCatalogId="PFTCatalog" catalogName="Product From Thailand Catalog" useQuickAdd="Y"/>
