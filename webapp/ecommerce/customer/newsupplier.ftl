@@ -16,7 +16,20 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-
+<#if getUsername>
+<script type="text/javascript">
+  //<![CDATA[
+     
+     function hideShowUsaStates() {
+         if ($('customerCountry').value == "USA" || $('customerCountry').value == "UMI") {
+             $('customerState').style.display = "block";
+         } else {
+             $('customerState').style.display = "none";
+         }
+     }
+   //]]>
+</script>
+</#if>
 
   <h2>${uiLabelMap.PageTitleNewSupplier}</h2>
 
@@ -75,21 +88,21 @@ under the License.
           </div>
           <div>
             <label for="shipToCountryGeoId">${uiLabelMap.PartyCountry}* <span id="advice-required-shipToCountryGeoId" style="display: none" class="errorMessage">(required)</span></label>
-              <select name="shipToCountryGeoId" id="shipToCountryGeoId">
-                <#if shipToCountryGeoId??>
-                  <option value="${shipToCountryGeoId!}">${shipToCountryProvinceGeo!(shipToCountryGeoId!)}</option>
+              <select name="shipToCountryGeoId" onclick="hideShowUsaStates();" id="customerCountry">
+                <#if requestParameters.shipToCountryGeoId?exists>
+                  <option value='${requestParameters.shipToCountryGeoId}'>${selectedCountryName?default(requestParameters.shipToCountryGeoId)}</option>
                 </#if>
                 ${screens.render("component://common/widget/CommonScreens.xml#countries")}
               </select>
           </div>
           <div id='shipToStates'>
             <label for="shipToStateProvinceGeoId">${uiLabelMap.CommonState}*<span id="advice-required-shipToStateProvinceGeoId" style="display: none" class="errorMessage">(required)</span></label>
-              <select id="shipToStateProvinceGeoId" name="shipToStateProvinceGeoId">
-                <#if shipToStateProvinceGeoId?has_content>
-                  <option value='${shipToStateProvinceGeoId!}'>${shipToStateProvinceGeo!(shipToStateProvinceGeoId!)}</option>
-                <#else>
-                  <option value="_NA_">${uiLabelMap.PartyNoState}</option>
+              <select name="shipToStateProvinceGeoId" id="customerState">
+                <#if requestParameters.shipToStateProvinceGeoId?exists>
+                  <option value='${requestParameters.shipToStateProvinceGeoId}'>${selectedStateName?default(requestParameters.shipToStateProvinceGeoId)}</option>
                 </#if>
+                <option value="">${uiLabelMap.PartyNoState}</option>
+                ${screens.render("component://common/widget/CommonScreens.xml#states")}
               </select>
           </div>
           <div>
@@ -107,3 +120,8 @@ under the License.
       <div style="margin-left:300px;"><a id="submitnewuserform" href="javascript:$('newuserform').submit()" class="button" style="color:black;">${uiLabelMap.CommonSubmit}</a></div>
       
     </form>
+<script type="text/javascript">
+  //<![CDATA[
+      hideShowUsaStates();
+  //]]>
+</script>

@@ -41,7 +41,7 @@ under the License.
         <section>
             <actions>
                 <set field="titleProperty" value="PageTitleNewSupplier"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/customer/NewCustomer.groovy"/>
+                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/NewSupplier.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
