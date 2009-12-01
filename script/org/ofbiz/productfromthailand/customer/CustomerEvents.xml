@@ -24,9 +24,41 @@ under the License.
     <simple-method method-name="createSupplier" short-description="create a customer profile [Supplier]" login-required="false">
         <!-- Process all map -->
         <call-map-processor xml-resource="component://party/script/org/ofbiz/party/contact/PartyContactMechMapProcs.xml"
-            processor-name="emailAddress" in-map-name="parameters" out-map-name="emailAddressCtx"/>
-        <call-map-processor xml-resource="component://ecommerce/script/org/ofbiz/ecommerce/customer/CheckoutMapProcs.xml"
-            processor-name="shipToAddress" in-map-name="parameters" out-map-name="shipToAddressCtx"/>
+        processor-name="emailAddress" in-map-name="parameters" out-map-name="emailAddressCtx"/>
+        
+        <call-map-processor in-map-name="parameters" out-map-name="shipToAddressCtx">
+            <simple-map-processor name="shipToAddress">
+                <process field="shipToContactMechId"><copy to-field="contactMechId" set-if-null="false"/></process>
+                <process field="shipToName"><copy to-field="toName" set-if-null="false"/></process>
+                <process field="shipToAttnName"><copy to-field="attnName" set-if-null="false"/></process>
+                <process field="shipToAddress1">
+                    <copy to-field="address1"/>
+                    <not-empty>
+                        <fail-property resource="PartyUiLabels" property="PartyAddressLine1MissingError"/>
+                    </not-empty>
+                </process>
+                <process field="shipToAddress2"><copy to-field="address2"/></process>
+                <process field="shipToCity">
+                    <copy to-field="city"/>
+                    <not-empty>
+                        <fail-property resource="PartyUiLabels" property="PartyCityMissing"/>
+                    </not-empty>
+                </process>
+                <process field="shipToStateProvinceGeoId"><copy to-field="stateProvinceGeoId"/></process>
+                <process field="shipToPostalCode">
+                    <copy to-field="postalCode"/>
+                    <not-empty>
+                        <fail-property resource="PartyUiLabels" property="PartyPostalInformationNotFound"/>
+                    </not-empty>
+                </process>
+                <process field="shipToCountryGeoId">
+                    <copy to-field="countryGeoId"/>
+                    <not-empty>
+                        <fail-property resource="PartyUiLabels" property="PartyCountryMissing"/>
+                    </not-empty>
+                </process>
+            </simple-map-processor>
+        </call-map-processor>
         <call-map-processor xml-resource="component://productfromthailand/script/org/ofbiz/productfromthailand/customer/CheckoutMapProcs.xml"
             processor-name="shipToPhone" in-map-name="parameters" out-map-name="shipToTelecomNumberCtx"/>
         <check-errors/>

@@ -28,14 +28,14 @@ context.createAllowPassword = "Y".equals(productStore.allowPassword);
 context.getUsername = !"Y".equals(productStore.usePrimaryEmailUsername);
 
 // load the geo names for selected countries and states/regions
-if (parameters.CUSTOMER_COUNTRY) {
+if (parameters.shipToCountryGeoId) {
     geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : parameters.shipToCountryGeoId]);
     if (geoValue) {
         context.selectedCountryName = geoValue.geoName;
     }
 }
 
-if (parameters.CUSTOMER_STATE) {
+if (parameters.shipToStateProvinceGeoId) {
     geoValue = delegator.findByPrimaryKeyCache("Geo", [geoId : parameters.shipToStateProvinceGeoId]);
     if (geoValue) {
         context.selectedStateName = geoValue.geoName;
