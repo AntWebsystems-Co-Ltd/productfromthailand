@@ -168,11 +168,11 @@ public class ImportProduct {
                 HSSFRow row = sheet.getRow(j);
                 if (row != null) {
                     String productId = null;
-                    // read action from ninth column
-                    HSSFCell cell8 = row.getCell((int) 8);
+                    // read action from thirteenth column
+                    HSSFCell cell12 = row.getCell((int) 12);
                     String actionField = null;
-                    if(UtilValidate.isNotEmpty(cell8)){
-                        actionField = toStringValue(cell8);
+                    if(UtilValidate.isNotEmpty(cell12)){
+                        actionField = toStringValue(cell12);
                     }
                     
                     if (actionField != null) {
@@ -248,10 +248,35 @@ public class ImportProduct {
                         BigDecimal supplierPrice = BigDecimal.ZERO;
                         if (cell7 != null && cell7.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
                             supplierPrice = new BigDecimal(cell7.getNumericCellValue());
-    
+                        
+                        // read productWidth from ninth column
+                        HSSFCell cell8 = row.getCell((int) 8);
+                        BigDecimal productWidth = BigDecimal.ZERO;
+                        if (cell8 != null && cell8.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
+                        	productWidth = new BigDecimal(cell8.getNumericCellValue());
+                        
+                        // read productDepth from tenth column
+                        HSSFCell cell9 = row.getCell((int) 9);
+                        BigDecimal productDepth = BigDecimal.ZERO;
+                        if (cell9 != null && cell9.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
+                        	productDepth = new BigDecimal(cell9.getNumericCellValue());
+
+                        // read productHeight from eleventh column
+                        HSSFCell cell10 = row.getCell((int) 10);
+                        BigDecimal productHeight = BigDecimal.ZERO;
+                        if (cell10 != null && cell10.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
+                        	productHeight = new BigDecimal(cell10.getNumericCellValue());
+                        
+                        // read imageUrl from twelveth column
+                        HSSFCell cell11 = row.getCell((int) 11);
+                        String imageUrl = null;
+                        if(UtilValidate.isNotEmpty(cell11)){
+                        	imageUrl = toStringValue(cell11);
+                        }
+                        
                         Timestamp now = UtilDateTime.nowTimestamp();
 
-                        products.add(prepareProduct(productId, internalName, actionField, userLogin));
+                        products.add(prepareProduct(productId, internalName, productWidth, productDepth, productHeight, imageUrl, actionField, userLogin));
                         // check if SupplierProduct already exists update it, otherwise create new one 
                         List<GenericValue> tmpSupplierProducts = null;
                         GenericValue supplierProductGV = null;
@@ -264,7 +289,6 @@ public class ImportProduct {
                              tmpSupplierProducts = EntityUtil.filterByDate(tmpSupplierProducts, UtilDateTime.nowTimestamp(), "availableFromDate", "availableThruDate", true);
                              supplierProductGV = EntityUtil.getFirst(tmpSupplierProducts);
                         }
-
                         Map<String, ?> productPriceCtx = checkProductPriceExists(productId, delegator);
                         GenericValue productPriceGV = null;
                         if(productPriceCtx.size() > 0){
@@ -1099,7 +1123,8 @@ public class ImportProduct {
     }
     
  // prepare the product map
-    public static Map<String, Object> prepareProduct(String productId, String internalName, String actionField, GenericValue userLogin) {
+    public static Map<String, Object> prepareProduct(String productId, String internalName, BigDecimal productWidth, BigDecimal productDepth, BigDecimal productHeight, 
+    		String imageUrl, String actionField, GenericValue userLogin) {
         Map<String, Object> fields = FastMap.newInstance();
         fields.put("productId", productId);
         fields.put("internalName", internalName);
@@ -1107,6 +1132,29 @@ public class ImportProduct {
         fields.put("requirementMethodEnumId", "PRODRQM_DS");
         fields.put("isVirtual", "N");
         fields.put("isVariant", "N");
+        
+        if(imageUrl != null){
+        	String prefixSmallImage = "/images/products/small/";
+        	String prefixMediumImage = "/images/products/medium/";
+        	String prefixLargeImage = "/images/products/large/";
+        	
+        	fields.put("smallImageUrl", prefixSmallImage+imageUrl);
+        	fields.put("mediumImageUrl", prefixMediumImage+imageUrl);
+        	fields.put("largeImageUrl", prefixLargeImage+imageUrl);
+        }
+        if(productWidth.compareTo(BigDecimal.ZERO) > 0){
+        	fields.put("productWidth", productWidth);
+        	fields.put("widthUomId", "LEN_m");
+        }
+        if(productDepth.compareTo(BigDecimal.ZERO) > 0){
+        	fields.put("productDepth", productDepth);
+        	fields.put("depthUomId", "LEN_m");
+        }
+        if(productHeight.compareTo(BigDecimal.ZERO) > 0){
+        	fields.put("productHeight", productHeight);
+        	fields.put("heightUomId", "LEN_m");
+        }
+        
         if("delete".equals(actionField))
             fields.put("salesDiscontinuationDate",UtilDateTime.nowTimestamp());
         fields.put("userLogin", userLogin);
