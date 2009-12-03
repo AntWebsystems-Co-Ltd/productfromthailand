@@ -323,4 +323,7 @@
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_EMAIL_VERIFY" bodyScreenLocation="component://party/widget/partymgr/EmailPartyScreens.xml#VerifyEmailAddressNotification" subject="Email Address Verification" bccAddress="info@productfromthailand.com" fromAddress="info@productfromthailand.com"/>
     
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="CONT_NOTI_EMAIL" bodyScreenLocation="component://ecommerce/widget/EmailContactListScreens.xml#ContactUsEmailNotification" subject="Contact-us Information Notification" fromAddress="info@productfromthailand.com" />
+    
+    <Enumeration description="Party Group Registration Confirmation" enumCode="PARTYGRP_REGIS" enumId="PARTYGRP_REGISTER" sequenceId="06" enumTypeId="PARTY_EMAIL"/>
+    <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PARTYGRP_REGISTER" bodyScreenLocation="component://productfromthailand/widget/EmailScreens.xml#CreatePartyGroupNotification" subject="New Account Created" bccAddress="info@productfromthailand.com" fromAddress="info@productfromthailand.com"/>
 </entity-engine-xml>
