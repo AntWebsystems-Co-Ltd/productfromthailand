@@ -105,20 +105,89 @@ under the License.
                 ${screens.render("component://common/widget/CommonScreens.xml#states")}
               </select>
           </div>
-          <div>
-            <label>${uiLabelMap.PartyPhoneNumber}*</label>
-            <span id="advice-required-shipToCountryCode" style="display:none" class="errorMessage"></span>
-            <span id="advice-required-shipToAreaCode" style="display:none" class="errorMessage"></span>
-            <span id="advice-required-shipToContactNumber" style="display:none" class="errorMessage"></span>
-            <span id="shipToPhoneRequired" style="display: none;" class="errorMessage">(required)</span>
-            <input type="text" name="shipToCountryCode" id="shipToCountryCode" title="Country Code" class="required" value="${parameters.shipToCountryCode?if_exists}" size="3" maxlength="3" />
-            - <input type="text" name="shipToAreaCode" id="shipToAreaCode" title="Area Code" class="required" value="${parameters.shipToAreaCode?if_exists}" size="3" maxlength="3" />
-            - <input type="text" name="shipToContactNumber" id="shipToContactNumber" title="Contact Number" class="required" value="${contactNumber?default("${parameters.shipToContactNumber?if_exists}")}" size="6" maxlength="7" />
-            - <input type="text" name="shipToExtension" id="shipToExtension" title="Extension" value="${extension?default("${parameters.shipToExtension?if_exists}")}" size="3" maxlength="3" />
-          </div>
-          </fieldset>
-      <div style="margin-left:300px;"><a id="submitnewuserform" href="javascript:$('newuserform').submit()" class="button" style="color:black;">${uiLabelMap.CommonSubmit}</a></div>
-      
+      </fieldset>
+      <fieldset>
+        <legend>${uiLabelMap.PartyPhoneNumbers}</legend>
+        <table summary="Tabular form for entering multiple telecom numbers for different purposes. Each row allows user to enter telecom number for a purpose">
+          <thead>
+            <tr>
+              <th></th>
+              <th scope="col">${uiLabelMap.PartyCountry}</th>
+              <th scope="col">${uiLabelMap.PartyAreaCode}</th>
+              <th scope="col">${uiLabelMap.PartyContactNumber}</th>
+              <th scope="col">${uiLabelMap.PartyExtension}</th>
+              <th scope="col">${uiLabelMap.PartyAllowSolicitation}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">${uiLabelMap.PartyHomePhone}</th>
+              <td><input type="text" name="SUPPLIER_HOME_COUNTRY" size="5" value="${requestParameters.SUPPLIER_HOME_COUNTRY?if_exists}" /></td>
+              <td><input type="text" name="SUPPLIER_HOME_AREA" size="5" value="${requestParameters.SUPPLIER_HOME_AREA?if_exists}" /></td>
+              <td><input type="text" name="SUPPLIER_HOME_CONTACT" value="${requestParameters.SUPPLIER_HOME_CONTACT?if_exists}" /></td>
+              <td><input type="text" name="SUPPLIER_HOME_EXT" size="6" value="${requestParameters.SUPPLIER_HOME_EXT?if_exists}"/></td>
+              <td>
+                <select name="SUPPLIER_HOME_ALLOW_SOL">
+                  <#if (((requestParameters.SUPPLIER_HOME_ALLOW_SOL)!"") == "Y")><option value="Y">${uiLabelMap.CommonY}</option></#if>
+                  <#if (((requestParameters.SUPPLIER_HOME_ALLOW_SOL)!"") == "N")><option value="N">${uiLabelMap.CommonN}</option></#if>
+                  <option></option>
+                  <option value="Y">${uiLabelMap.CommonY}</option>
+                  <option value="N">${uiLabelMap.CommonN}</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">${uiLabelMap.PartyBusinessPhone}</th>
+              <td><input type="text" name="SUPPLIER_WORK_COUNTRY" size="5" value="${requestParameters.SUPPLIER_WORK_COUNTRY?if_exists}" /></td>
+              <td><input type="text" name="SUPPLIER_WORK_AREA" size="5" value="${requestParameters.SUPPLIER_WORK_AREA?if_exists}" /></td>
+              <td><input type="text" name="SUPPLIER_WORK_CONTACT" value="${requestParameters.SUPPLIER_WORK_CONTACT?if_exists}" /></td>
+              <td><input type="text" name="SUPPLIER_WORK_EXT" size="6" value="${requestParameters.SUPPLIER_WORK_EXT?if_exists}" /></td>
+              <td>
+                <select name="SUPPLIER_WORK_ALLOW_SOL">
+                  <#if (((requestParameters.SUPPLIER_WORK_ALLOW_SOL)!"") == "Y")><option value="Y">${uiLabelMap.CommonY}</option></#if>
+                  <#if (((requestParameters.SUPPLIER_WORK_ALLOW_SOL)!"") == "N")><option value="N">${uiLabelMap.CommonN}</option></#if>
+                  <option></option>
+                  <option value="Y">${uiLabelMap.CommonY}</option>
+                  <option value="N">${uiLabelMap.CommonN}</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">${uiLabelMap.PartyFaxNumber}</th>
+              <td><input type="text" name="SUPPLIER_FAX_COUNTRY" size="5" value="${requestParameters.SUPPLIER_FAX_COUNTRY?if_exists}" /></td>
+              <td><input type="text" name="SUPPLIER_FAX_AREA" size="5" value="${requestParameters.SUPPLIER_FAX_AREA?if_exists}" /></td>
+              <td><input type="text" name="SUPPLIER_FAX_CONTACT" value="${requestParameters.SUPPLIER_FAX_CONTACT?if_exists}" /></td>
+              <td></td>
+              <td>
+                <select name="SUPPLIER_FAX_ALLOW_SOL">
+                  <#if (((requestParameters.SUPPLIER_FAX_ALLOW_SOL)!"") == "Y")><option value="Y">${uiLabelMap.CommonY}</option></#if>
+                  <#if (((requestParameters.SUPPLIER_FAX_ALLOW_SOL)!"") == "N")><option value="N">${uiLabelMap.CommonN}</option></#if>
+                  <option></option>
+                  <option value="Y">${uiLabelMap.CommonY}</option>
+                  <option value="N">${uiLabelMap.CommonN}</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">${uiLabelMap.PartyMobilePhone}</th>
+              <td><input type="text" name="SUPPLIER_MOBILE_COUNTRY" size="5" value="${requestParameters.SUPPLIER_MOBILE_COUNTRY?if_exists}" /></td>
+              <td><input type="text" name="SUPPLIER_MOBILE_AREA" size="5" value="${requestParameters.SUPPLIER_MOBILE_AREA?if_exists}" /></td>
+              <td><input type="text" name="SUPPLIER_MOBILE_CONTACT" value="${requestParameters.SUPPLIER_MOBILE_CONTACT?if_exists}" /></td>
+              <td></td>
+              <td>
+                <select name="SUPPLIER_MOBILE_ALLOW_SOL">
+                  <#if (((requestParameters.SUPPLIER_MOBILE_ALLOW_SOL)!"") == "Y")><option value="Y">${uiLabelMap.CommonY}</option></#if>
+                  <#if (((requestParameters.SUPPLIER_MOBILE_ALLOW_SOL)!"") == "N")><option value="N">${uiLabelMap.CommonN}</option></#if>
+                  <option></option>
+                  <option value="Y">${uiLabelMap.CommonY}</option>
+                  <option value="N">${uiLabelMap.CommonN}</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+        <div style="margin-left:300px;"><a id="submitnewuserform" href="javascript:$('newuserform').submit()" class="button" style="color:black;">${uiLabelMap.CommonSubmit}</a></div>
     </form>
 <script type="text/javascript">
   //<![CDATA[
