@@ -71,7 +71,7 @@ under the License.
                       <a href="<@ofbizUrl>EditProduct?productId=${(supplierProduct.productId)?if_exists}</@ofbizUrl>" class="buttontext"><#if product?exists>${(product.internalName)?if_exists}</#if> [${(supplierProduct.productId)?if_exists}]</a>
                     </td>
                     <td <#if hasntStarted> style="color: red;"</#if>>${(product.createdDate)?if_exists}</td>
-                    <td >${(supplierProduct.lastPrice)?if_exists}</td>
+                    <td><div><@ofbizCurrency amount=supplierProduct.lastPrice isoCode=supplierProduct.currencyUomId/></div></span>
                     <input type="hidden" name="productId${suffix}" value="${(supplierProduct.productId)?if_exists}">
                   </tr>
                   <#-- toggle the row color -->
