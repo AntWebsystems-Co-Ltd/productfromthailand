@@ -125,7 +125,7 @@ under the License.
     <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="THB" productId="ThExport-10001" lastPrice="13450.5" supplierProductId="HDC-001" supplierProductName="Thai Handicraft Exports-Elephants" availableFromDate="2009-09-25 00:00:00.000" canDropShip="Y"/>
     <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="THB" productId="ThExport-10002" lastPrice="157.5" supplierProductId="HDC-002" supplierProductName="Thai Handicraft Exports-Bamboo in the Sun" availableFromDate="2009-09-25 00:00:00.000" canDropShip="Y"/>
     <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="THB" productId="ThExport-10003" lastPrice="976.5" supplierProductId="HDC-003" supplierProductName="Thai Handicraft Exports-Bamboo Lamp" availableFromDate="2009-09-25 00:00:00.000" canDropShip="Y"/>
-    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="THB" productId="ThExport-10004" lastPrice="69.3" supplierProductId="HDC-004" supplierProductName="Thai Handicraft Exports-Thai Royal Barge" availableFromDate="2009-09-25 00:00:00.000" canDropShip="Y"/>
+    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="THB" productId="ThExport-10004" lastPrice="2425.5" supplierProductId="HDC-004" supplierProductName="Thai Handicraft Exports-Thai Royal Barge" availableFromDate="2009-09-25 00:00:00.000" canDropShip="Y"/>
     
     <Product productId="BALGANISH" productTypeId="FINISHED_GOOD" primaryProductCategoryId="" internalName="Bal Ganish" productName="" 
         description="" smallImageUrl="/pft/images/products/large/BALGANISH.jpg"  requirementMethodEnumId="PRODRQM_DS"
