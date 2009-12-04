@@ -41,6 +41,7 @@ under the License.
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="FACILITY_CREATE"/>  
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="FACILITY_UPDATE"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="MYPORTAL_SUPPLIER"/>
+    <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="ACCOUNTING_VIEW"/>
     
     <UserLoginSecurityGroup groupId="MYPORTAL_SUPPLIER" userLoginId="HANDICARFTEXPORT" fromDate="2000-01-01 00:00:00.0"/>
     
@@ -90,7 +91,7 @@ under the License.
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER1" portalPortletId="Visits" portletSeqId="00001" columnSeqId="00002" sequenceNum="7"/>
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER2" portalPortletId="KeywordSearch" portletSeqId="00001" columnSeqId="00001" sequenceNum="0"/>
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER2" portalPortletId="MyProducts" portletSeqId="00001" columnSeqId="00002" sequenceNum="0"/>
-    <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER3" portalPortletId="ListCustomerInvoices" portletSeqId="00001" columnSeqId="00001"  sequenceNum="0"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER3" portalPortletId="ListSupplierInvoices" portletSeqId="00001" columnSeqId="00001"  sequenceNum="0"/>
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER4" portalPortletId="ListPurchaseOrders" portletSeqId="00001" columnSeqId="00001" sequenceNum="0"/>
 
 </entity-engine-xml>
