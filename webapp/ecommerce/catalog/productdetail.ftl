@@ -553,37 +553,7 @@ ${virtualJavaScript?if_exists}
           </#if>
         </#if>
       </form>
-    <div>
-      <#if sessionAttributes.userLogin?has_content && sessionAttributes.userLogin.userLoginId != "anonymous">
-        <hr />
-        <form name="addToShoppingList" method="post" action="<@ofbizUrl>addItemToShoppingList<#if requestAttributes._CURRENT_VIEW_?exists>/${requestAttributes._CURRENT_VIEW_}</#if></@ofbizUrl>">
-          <input type="hidden" name="productId" value="${product.productId}" />
-          <input type="hidden" name="product_id" value="${product.productId}" />
-          <input type="hidden" name="productStoreId" value="${productStoreId}" />
-          <input type="hidden" name="reservStart" value= "" />
-          <select name="shoppingListId">
-            <#if shoppingLists?has_content>
-              <#list shoppingLists as shoppingList>
-                <option value="${shoppingList.shoppingListId}">${shoppingList.listName}</option>
-              </#list>
-            </#if>
-            <option value="">---</option>
-            <option value="">${uiLabelMap.OrderNewShoppingList}</option>
-          </select>
-          &nbsp;&nbsp;
-          <#if product.productTypeId?if_exists == "ASSET_USAGE">
-              <table><tr><td>&nbsp;</td><td align="right">${uiLabelMap.CommonStartDate} (yyyy-mm-dd)</td><td><input type="text" size="10" name="reservStartStr" ></td><td>Number of&nbsp;days</td><td><input type="text" size="4" name="reservLength"></td><td>&nbsp;</td><td align="right">Number of&nbsp;persons</td><td><input type="text" size="4" name="reservPersons" value="1"></td><td align="right">Qty&nbsp;</td><td><input type="text" size="5" name="quantity" value="1"></td></tr></table>
-          <#else>
-              <input type="text" size="5" name="quantity" value="1" />
-              <input type="hidden" name="reservStartStr" value= "" />
-          </#if><br/><br/>
-          <a href="javascript:addShoplistSubmit();" class="buttontext">${uiLabelMap.OrderAddToShoppingList}</a>
-        </form>
-      <#else> <br />
-        ${uiLabelMap.OrderYouMust} <a href="<@ofbizUrl>checkLogin/showcart</@ofbizUrl>" class="buttontext">${uiLabelMap.CommonBeLogged}</a>
-        ${uiLabelMap.OrderToAddSelectedItemsToShoppingList}.&nbsp;
-      </#if>
-      </div>
+    
       <#-- Prefill first select box (virtual products only) -->
       <#if variantTree?exists && 0 &lt; variantTree.size()>
         <script language="JavaScript" type="text/javascript">eval("list" + "${featureOrderFirst}" + "()");</script>

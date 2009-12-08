@@ -368,9 +368,9 @@ function setAlternateGwp(field) {
           <td>&nbsp;</td>
         </tr>
         </#if>
-        <tr>
+        <#--tr>
           <td>
-              <#if sessionAttributes.userLogin?has_content && sessionAttributes.userLogin.userLoginId != "anonymous">
+              <#--if sessionAttributes.userLogin?has_content && sessionAttributes.userLogin.userLoginId != "anonymous">
               <select name="shoppingListId" class="selectBox">
                 <#if shoppingLists?has_content>
                   <#list shoppingLists as shoppingList>
@@ -400,7 +400,7 @@ function setAlternateGwp(field) {
                 ${uiLabelMap.EcommerceToOrderCreateCustRequestFromCart}.&nbsp;
               </#if>
           </td>
-        </tr>
+        </tr-->
         <tr>
           <td>
             <input type="checkbox" onclick="javascript:document.cartform.submit()" name="alwaysShowcart" <#if shoppingCart.viewCartOnAdd()>checked</#if> />&nbsp;${uiLabelMap.EcommerceAlwaysViewCartAfterAddingAnItem}.</div>
