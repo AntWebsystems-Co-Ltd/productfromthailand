@@ -326,4 +326,7 @@
     
     <Enumeration description="Party Group Registration Confirmation" enumCode="PARTYGRP_REGIS" enumId="PARTYGRP_REGISTER" sequenceId="06" enumTypeId="PARTY_EMAIL"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PARTYGRP_REGISTER" bodyScreenLocation="component://productfromthailand/widget/EmailScreens.xml#CreatePartyGroupNotification" subject="New Account Created" bccAddress="info@productfromthailand.com" fromAddress="info@productfromthailand.com"/>
+    
+    <Enumeration description="Purchase Order Confirmation" enumCode="PRCHS_ODR_CONFIRM" enumId="PRCHS_ODR_CONFIRM" sequenceId="01" enumTypeId="PARTY_EMAIL"/>
+    <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRCHS_ODR_CONFIRM" bodyScreenLocation="component://productfromthailand/widget/EmailScreens.xml#NewPurchaseOrderNotice" subject="You have got a new purchase order from a customer #${orderId}" bccAddress="info@productfromthailand.com" fromAddress="info@productfromthailand.com"/>
 </entity-engine-xml>

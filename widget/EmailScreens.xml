@@ -31,4 +31,17 @@
             </widgets>
         </section>
     </screen>
+    
+    <screen name="NewPurchaseOrderNotice">
+        <section>
+            <actions>
+                <property-map resource="ProductFromThailandUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="orderId" from-field="parameters.orderId"/>
+                <set field="title" value="${uiLabelMap.PurchaseOrderConfirmNotice}"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/order/purchaseOrderNotice.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
 </screens>

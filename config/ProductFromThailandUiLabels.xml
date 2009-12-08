@@ -193,4 +193,12 @@
         <value xml:lang="en">Supplier Product Price</value>
         <value xml:lang="th">ราคาขายส่ง</value>
     </property>
+    <property key="PurchaseOrderConfirmNotice">
+        <value xml:lang="en">Purchase Order Confirm Notice</value>
+        <value xml:lang="th">แจ้งรายการสั่งซื้อ</value>
+    </property>
+    <property key="PurchaseOrderContent">
+        <value xml:lang="en">You have got a new purchase order from a customer. Please check follow the link below.</value>
+        <value xml:lang="th">คุณได้รับ รายการสั่งซื้อจากลูกค้า ตรวจสอบได้จากลิ้งค์ข้างล่างนี้ค่ะ</value>
+    </property>
 </resource>

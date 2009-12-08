@@ -26,13 +26,13 @@
     <ContactMech contactMechId="PFT10106" contactMechTypeId="EMAIL_ADDRESS" infoString="soontri@loxinfo.co.th"/>
     <ContactMech contactMechId="PFT10105" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10104" contactMechTypeId="POSTAL_ADDRESS"/>
-    <ContactMech contactMechId="PFT10103" contactMechTypeId="ELECTRONIC_ADDRESS" infoString="sales@raem.com"/>
+    <ContactMech contactMechId="PFT10103" contactMechTypeId="EMAIL_ADDRESS" infoString="sales@raem.com"/>
     <ContactMech contactMechId="PFT10102" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10101" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="PFT10100" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10099" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10098" contactMechTypeId="TELECOM_NUMBER"/>
-    <ContactMech contactMechId="PFT10097" contactMechTypeId="ELECTRONIC_ADDRESS" infoString="cmd@cmdwood.com"/>
+    <ContactMech contactMechId="PFT10097" contactMechTypeId="EMAIL_ADDRESS" infoString="cmd@cmdwood.com"/>
     <ContactMech contactMechId="PFT10096" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="PFT10095" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="PFT10094" contactMechTypeId="TELECOM_NUMBER"/>
@@ -42,7 +42,7 @@
     <ContactMech contactMechId="PFT10090" contactMechTypeId="EMAIL_ADDRESS" infoString="siamxi@hotmail.com"/>
     <ContactMech contactMechId="PFT10089" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10088" contactMechTypeId="POSTAL_ADDRESS"/>
-    <ContactMech contactMechId="PFT10087" contactMechTypeId="ELECTRONIC_ADDRESS" infoString="cmgreen@loxinfo.co.th"/>
+    <ContactMech contactMechId="PFT10087" contactMechTypeId="EMAIL_ADDRESS" infoString="cmgreen@loxinfo.co.th"/>
     <ContactMech contactMechId="PFT10086" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="PFT10085" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10084" contactMechTypeId="TELECOM_NUMBER"/>
@@ -50,7 +50,7 @@
     <ContactMech contactMechId="PFT10082" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10081" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="PFT10080" contactMechTypeId="TELECOM_NUMBER"/>
-    <ContactMech contactMechId="PFT10079" contactMechTypeId="ELECTRONIC_ADDRESS" infoString="cmp_dolls00000@lycos.com"/>
+    <ContactMech contactMechId="PFT10079" contactMechTypeId="EMAIL_ADDRESS" infoString="cmp_dolls00000@lycos.com"/>
     <ContactMech contactMechId="PFT10078" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10077" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="PFT10076" contactMechTypeId="TELECOM_NUMBER"/>
@@ -58,7 +58,7 @@
     <ContactMech contactMechId="PFT10074" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10073" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10072" contactMechTypeId="POSTAL_ADDRESS"/>
-    <ContactMech contactMechId="PFT10071" contactMechTypeId="ELECTRONIC_ADDRESS" infoString="chaingsai@yohoo.com"/>
+    <ContactMech contactMechId="PFT10071" contactMechTypeId="EMAIL_ADDRESS" infoString="chiangsai@yohoo.com"/>
     <ContactMech contactMechId="PFT10070" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10069" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="PFT10068" contactMechTypeId="TELECOM_NUMBER"/>
@@ -67,8 +67,8 @@
     <ContactMech contactMechId="PFT10065" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10064" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10063" contactMechTypeId="POSTAL_ADDRESS"/>
-    <ContactMech contactMechId="PFT10062" contactMechTypeId="ELECTRONIC_ADDRESS" infoString="phan@giftsbythai.com"/>
-    <ContactMech contactMechId="PFT10061" contactMechTypeId="ELECTRONIC_ADDRESS" infoString="sales@gifttsbythai.com"/>
+    <ContactMech contactMechId="PFT10062" contactMechTypeId="EMAIL_ADDRESS" infoString="phan@giftsbythai.com"/>
+    <ContactMech contactMechId="PFT10061" contactMechTypeId="EMAIL_ADDRESS" infoString="sales@gifttsbythai.com"/>
     <ContactMech contactMechId="PFT10060" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10059" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10058" contactMechTypeId="POSTAL_ADDRESS"/>
@@ -83,13 +83,13 @@
     <ContactMech contactMechId="PFT10049" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10048" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10047" contactMechTypeId="EMAIL_ADDRESS" infoString="sapaper@cm.ksc.co.th"/>
-    <ContactMech contactMechId="PFT10046" contactMechTypeId="ELECTRONIC_ADDRESS" infoString="sootri_07@hotmail.com"/>
+    <ContactMech contactMechId="PFT10046" contactMechTypeId="EMAIL_ADDRESS" infoString="soontri_07@hotmail.com"/>
     <ContactMech contactMechId="PFT10045" contactMechTypeId="EMAIL_ADDRESS" infoString="chiangmai_sapaper@hotmail.com"/>
     <ContactMech contactMechId="PFT10044" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="PFT10043" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10042" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFT10041" contactMechTypeId="TELECOM_NUMBER"/>
-    <ContactMech contactMechId="PFT10040" contactMechTypeId="ELECTRONIC_ADDRESS" infoString="air444@hotmail.com"/>
+    <ContactMech contactMechId="PFT10040" contactMechTypeId="EMAIL_ADDRESS" infoString="air444@hotmail.com"/>
     <Party partyId="PFT10034" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" createdDate="2009-11-16 12:00:49.648" createdByUserLogin="admin" lastModifiedDate="2009-11-16 12:00:49.648" lastModifiedByUserLogin="admin" lastUpdatedStamp="2009-11-16 12:00:49.663" lastUpdatedTxStamp="2009-11-16 12:00:49.645" createdStamp="2009-11-16 12:00:49.663" createdTxStamp="2009-11-16 12:00:49.645"/>
     <Party partyId="PFT10033" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" createdDate="2009-11-16 11:55:34.747" createdByUserLogin="admin" lastModifiedDate="2009-11-16 11:55:34.747" lastModifiedByUserLogin="admin" lastUpdatedStamp="2009-11-16 11:55:34.752" lastUpdatedTxStamp="2009-11-16 11:55:34.745" createdStamp="2009-11-16 11:55:34.752" createdTxStamp="2009-11-16 11:55:34.745"/>
     <Party partyId="PFT10032" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" createdDate="2009-11-16 11:54:50.691" createdByUserLogin="admin" lastModifiedDate="2009-11-16 11:54:50.691" lastModifiedByUserLogin="admin" lastUpdatedStamp="2009-11-16 14:25:37.616" lastUpdatedTxStamp="2009-11-16 14:25:37.239" createdStamp="2009-11-16 11:54:50.695" createdTxStamp="2009-11-16 11:54:50.689"/>
@@ -117,7 +117,7 @@
     <PartyGroup partyId="PFT10025" groupName="CM Oldwood Design Co.,LTD" lastUpdatedStamp="2009-11-16 14:01:09.007" lastUpdatedTxStamp="2009-11-16 14:01:08.783" createdStamp="2009-11-16 11:23:42.322" createdTxStamp="2009-11-16 11:23:42.302"/>
     <PartyGroup partyId="PFT10024" groupName="Chiang Mai Thai Gift LTD.,Part" lastUpdatedStamp="2009-11-16 14:04:48.632" lastUpdatedTxStamp="2009-11-16 14:04:48.292" createdStamp="2009-11-16 11:19:38.371" createdTxStamp="2009-11-16 11:19:38.324"/>
     <PartyGroup partyId="PFT10022" groupName="Chiangmai Bonaga Import-Export LTD.,part" lastUpdatedStamp="2009-11-16 13:37:57.471" lastUpdatedTxStamp="2009-11-16 13:37:57.11" createdStamp="2009-11-16 10:57:59.185" createdTxStamp="2009-11-16 10:57:59.141"/>
-    <PartyGroup partyId="PFT10021" groupName="chiangmai soontri ltd.,part" lastUpdatedStamp="2009-11-16 10:57:46.41" lastUpdatedTxStamp="2009-11-16 10:57:46.348" createdStamp="2009-11-16 10:57:46.41" createdTxStamp="2009-11-16 10:57:46.348"/>
+    <PartyGroup partyId="PFT10021" groupName="Chiang Mai Soontri Ltd.,Part" lastUpdatedStamp="2009-11-16 10:57:46.41" lastUpdatedTxStamp="2009-11-16 10:57:46.348" createdStamp="2009-11-16 10:57:46.41" createdTxStamp="2009-11-16 10:57:46.348"/>
     <PartyGroup partyId="PFT10020" groupName="Classic Model co.,LTD" lastUpdatedStamp="2009-11-16 10:45:10.222" lastUpdatedTxStamp="2009-11-16 10:45:10.012" createdStamp="2009-11-16 10:45:10.222" createdTxStamp="2009-11-16 10:45:10.012"/>
     
     <PartyContactMech partyId="PFT10034" contactMechId="PFT10129" fromDate="2009-11-16 14:30:47.227" lastUpdatedStamp="2009-11-16 14:30:47.23" lastUpdatedTxStamp="2009-11-16 14:30:47.057" createdStamp="2009-11-16 14:30:47.23" createdTxStamp="2009-11-16 14:30:47.057"/>
