@@ -23,6 +23,6 @@ ${screens.render(recentlyproductScreen)}
         <embed src="http://www.youtube.com/v/NA0UC4dIcbQ&hl=en&fs=1&" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="240">
     </embed>
     </object><br/>
-    <div style="float:right">
+    <#--div style="float:right">
         <a href="#"><h2>More Videos...</h2></a>
-    </div>
+    </div-->
