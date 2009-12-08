@@ -116,7 +116,6 @@ under the License.
               <th scope="col">${uiLabelMap.PartyAreaCode}</th>
               <th scope="col">${uiLabelMap.PartyContactNumber}</th>
               <th scope="col">${uiLabelMap.PartyExtension}</th>
-              <th scope="col">${uiLabelMap.PartyAllowSolicitation}</th>
             </tr>
           </thead>
           <tbody>
@@ -126,15 +125,6 @@ under the License.
               <td><input type="text" name="SUPPLIER_HOME_AREA" size="5" value="${requestParameters.SUPPLIER_HOME_AREA?if_exists}" /></td>
               <td><input type="text" name="SUPPLIER_HOME_CONTACT" value="${requestParameters.SUPPLIER_HOME_CONTACT?if_exists}" /></td>
               <td><input type="text" name="SUPPLIER_HOME_EXT" size="6" value="${requestParameters.SUPPLIER_HOME_EXT?if_exists}"/></td>
-              <td>
-                <select name="SUPPLIER_HOME_ALLOW_SOL">
-                  <#if (((requestParameters.SUPPLIER_HOME_ALLOW_SOL)!"") == "Y")><option value="Y">${uiLabelMap.CommonY}</option></#if>
-                  <#if (((requestParameters.SUPPLIER_HOME_ALLOW_SOL)!"") == "N")><option value="N">${uiLabelMap.CommonN}</option></#if>
-                  <option></option>
-                  <option value="Y">${uiLabelMap.CommonY}</option>
-                  <option value="N">${uiLabelMap.CommonN}</option>
-                </select>
-              </td>
             </tr>
             <tr>
               <th scope="row">${uiLabelMap.PartyBusinessPhone}</th>
@@ -142,15 +132,6 @@ under the License.
               <td><input type="text" name="SUPPLIER_WORK_AREA" size="5" value="${requestParameters.SUPPLIER_WORK_AREA?if_exists}" /></td>
               <td><input type="text" name="SUPPLIER_WORK_CONTACT" value="${requestParameters.SUPPLIER_WORK_CONTACT?if_exists}" /></td>
               <td><input type="text" name="SUPPLIER_WORK_EXT" size="6" value="${requestParameters.SUPPLIER_WORK_EXT?if_exists}" /></td>
-              <td>
-                <select name="SUPPLIER_WORK_ALLOW_SOL">
-                  <#if (((requestParameters.SUPPLIER_WORK_ALLOW_SOL)!"") == "Y")><option value="Y">${uiLabelMap.CommonY}</option></#if>
-                  <#if (((requestParameters.SUPPLIER_WORK_ALLOW_SOL)!"") == "N")><option value="N">${uiLabelMap.CommonN}</option></#if>
-                  <option></option>
-                  <option value="Y">${uiLabelMap.CommonY}</option>
-                  <option value="N">${uiLabelMap.CommonN}</option>
-                </select>
-              </td>
             </tr>
             <tr>
               <th scope="row">${uiLabelMap.PartyFaxNumber}</th>
@@ -158,15 +139,6 @@ under the License.
               <td><input type="text" name="SUPPLIER_FAX_AREA" size="5" value="${requestParameters.SUPPLIER_FAX_AREA?if_exists}" /></td>
               <td><input type="text" name="SUPPLIER_FAX_CONTACT" value="${requestParameters.SUPPLIER_FAX_CONTACT?if_exists}" /></td>
               <td></td>
-              <td>
-                <select name="SUPPLIER_FAX_ALLOW_SOL">
-                  <#if (((requestParameters.SUPPLIER_FAX_ALLOW_SOL)!"") == "Y")><option value="Y">${uiLabelMap.CommonY}</option></#if>
-                  <#if (((requestParameters.SUPPLIER_FAX_ALLOW_SOL)!"") == "N")><option value="N">${uiLabelMap.CommonN}</option></#if>
-                  <option></option>
-                  <option value="Y">${uiLabelMap.CommonY}</option>
-                  <option value="N">${uiLabelMap.CommonN}</option>
-                </select>
-              </td>
             </tr>
             <tr>
               <th scope="row">${uiLabelMap.PartyMobilePhone}</th>
@@ -174,15 +146,6 @@ under the License.
               <td><input type="text" name="SUPPLIER_MOBILE_AREA" size="5" value="${requestParameters.SUPPLIER_MOBILE_AREA?if_exists}" /></td>
               <td><input type="text" name="SUPPLIER_MOBILE_CONTACT" value="${requestParameters.SUPPLIER_MOBILE_CONTACT?if_exists}" /></td>
               <td></td>
-              <td>
-                <select name="SUPPLIER_MOBILE_ALLOW_SOL">
-                  <#if (((requestParameters.SUPPLIER_MOBILE_ALLOW_SOL)!"") == "Y")><option value="Y">${uiLabelMap.CommonY}</option></#if>
-                  <#if (((requestParameters.SUPPLIER_MOBILE_ALLOW_SOL)!"") == "N")><option value="N">${uiLabelMap.CommonN}</option></#if>
-                  <option></option>
-                  <option value="Y">${uiLabelMap.CommonY}</option>
-                  <option value="N">${uiLabelMap.CommonN}</option>
-                </select>
-              </td>
             </tr>
           </tbody>
         </table>

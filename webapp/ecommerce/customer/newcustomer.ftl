@@ -223,18 +223,6 @@ will generally always be reserved for the logo at the top of the page.
         ${screens.render("component://common/widget/CommonScreens.xml#states")}
       </select>
     </div>
-
-    <div>
-      <label for="CUSTOMER_ADDRESS_ALLOW_SOL">${uiLabelMap.PartyAllowAddressSolicitation}</label>
-      <select name="CUSTOMER_ADDRESS_ALLOW_SOL" id="CUSTOMER_ADDRESS_ALLOW_SOL">
-        <#if (((requestParameters.CUSTOMER_ADDRESS_ALLOW_SOL)!"") == "Y")><option value="Y">${uiLabelMap.CommonY}</option></#if>
-        <#if (((requestParameters.CUSTOMER_ADDRESS_ALLOW_SOL)!"") == "N")><option value="N">${uiLabelMap.CommonN}</option></#if>
-        <option></option>
-        <option value="Y">${uiLabelMap.CommonY}</option>
-        <option value="N">${uiLabelMap.CommonN}</option>
-      </select>
-    </div>
-
   </fieldset>
 
   <fieldset>
@@ -247,7 +235,6 @@ will generally always be reserved for the logo at the top of the page.
           <th scope="col">${uiLabelMap.PartyAreaCode}</th>
           <th scope="col">${uiLabelMap.PartyContactNumber}</th>
           <th scope="col">${uiLabelMap.PartyExtension}</th>
-          <th scope="col">${uiLabelMap.PartyAllowSolicitation}</th>
         </tr>
       </thead>
       <tbody>
@@ -257,47 +244,6 @@ will generally always be reserved for the logo at the top of the page.
           <td><input type="text" name="CUSTOMER_HOME_AREA" size="5" value="${requestParameters.CUSTOMER_HOME_AREA?if_exists}" /></td>
           <td><input type="text" name="CUSTOMER_HOME_CONTACT" value="${requestParameters.CUSTOMER_HOME_CONTACT?if_exists}" /></td>
           <td><input type="text" name="CUSTOMER_HOME_EXT" size="6" value="${requestParameters.CUSTOMER_HOME_EXT?if_exists}"/></td>
-          <td>
-            <select name="CUSTOMER_HOME_ALLOW_SOL">
-              <#if (((requestParameters.CUSTOMER_HOME_ALLOW_SOL)!"") == "Y")><option value="Y">${uiLabelMap.CommonY}</option></#if>
-              <#if (((requestParameters.CUSTOMER_HOME_ALLOW_SOL)!"") == "N")><option value="N">${uiLabelMap.CommonN}</option></#if>
-              <option></option>
-              <option value="Y">${uiLabelMap.CommonY}</option>
-              <option value="N">${uiLabelMap.CommonN}</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">${uiLabelMap.PartyBusinessPhone}</th>
-          <td><input type="text" name="CUSTOMER_WORK_COUNTRY" size="5" value="${requestParameters.CUSTOMER_WORK_COUNTRY?if_exists}" /></td>
-          <td><input type="text" name="CUSTOMER_WORK_AREA" size="5" value="${requestParameters.CUSTOMER_WORK_AREA?if_exists}" /></td>
-          <td><input type="text" name="CUSTOMER_WORK_CONTACT" value="${requestParameters.CUSTOMER_WORK_CONTACT?if_exists}" /></td>
-          <td><input type="text" name="CUSTOMER_WORK_EXT" size="6" value="${requestParameters.CUSTOMER_WORK_EXT?if_exists}" /></td>
-          <td>
-            <select name="CUSTOMER_WORK_ALLOW_SOL">
-              <#if (((requestParameters.CUSTOMER_WORK_ALLOW_SOL)!"") == "Y")><option value="Y">${uiLabelMap.CommonY}</option></#if>
-              <#if (((requestParameters.CUSTOMER_WORK_ALLOW_SOL)!"") == "N")><option value="N">${uiLabelMap.CommonN}</option></#if>
-              <option></option>
-              <option value="Y">${uiLabelMap.CommonY}</option>
-              <option value="N">${uiLabelMap.CommonN}</option>
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">${uiLabelMap.PartyFaxNumber}</th>
-          <td><input type="text" name="CUSTOMER_FAX_COUNTRY" size="5" value="${requestParameters.CUSTOMER_FAX_COUNTRY?if_exists}" /></td>
-          <td><input type="text" name="CUSTOMER_FAX_AREA" size="5" value="${requestParameters.CUSTOMER_FAX_AREA?if_exists}" /></td>
-          <td><input type="text" name="CUSTOMER_FAX_CONTACT" value="${requestParameters.CUSTOMER_FAX_CONTACT?if_exists}" /></td>
-          <td></td>
-          <td>
-            <select name="CUSTOMER_FAX_ALLOW_SOL">
-              <#if (((requestParameters.CUSTOMER_FAX_ALLOW_SOL)!"") == "Y")><option value="Y">${uiLabelMap.CommonY}</option></#if>
-              <#if (((requestParameters.CUSTOMER_FAX_ALLOW_SOL)!"") == "N")><option value="N">${uiLabelMap.CommonN}</option></#if>
-              <option></option>
-              <option value="Y">${uiLabelMap.CommonY}</option>
-              <option value="N">${uiLabelMap.CommonN}</option>
-            </select>
-          </td>
         </tr>
         <tr>
           <th scope="row">${uiLabelMap.PartyMobilePhone}</th>
@@ -305,15 +251,6 @@ will generally always be reserved for the logo at the top of the page.
           <td><input type="text" name="CUSTOMER_MOBILE_AREA" size="5" value="${requestParameters.CUSTOMER_MOBILE_AREA?if_exists}" /></td>
           <td><input type="text" name="CUSTOMER_MOBILE_CONTACT" value="${requestParameters.CUSTOMER_MOBILE_CONTACT?if_exists}" /></td>
           <td></td>
-          <td>
-            <select name="CUSTOMER_MOBILE_ALLOW_SOL">
-              <#if (((requestParameters.CUSTOMER_MOBILE_ALLOW_SOL)!"") == "Y")><option value="Y">${uiLabelMap.CommonY}</option></#if>
-              <#if (((requestParameters.CUSTOMER_MOBILE_ALLOW_SOL)!"") == "N")><option value="N">${uiLabelMap.CommonN}</option></#if>
-              <option></option>
-              <option value="Y">${uiLabelMap.CommonY}</option>
-              <option value="N">${uiLabelMap.CommonN}</option>
-            </select>
-          </td>
         </tr>
       </tbody>
     </table>
@@ -325,16 +262,6 @@ will generally always be reserved for the logo at the top of the page.
       <@fieldErrors fieldName="CUSTOMER_EMAIL"/>
       <label for= "CUSTOMER_EMAIL">${uiLabelMap.PartyEmailAddress}*</label>
       <input type="text" name="CUSTOMER_EMAIL" id="CUSTOMER_EMAIL" value="${requestParameters.CUSTOMER_EMAIL?if_exists}" onchange="changeEmail()" onkeyup="changeEmail()" />
-    </div>
-    <div>
-      <label for="CUSTOMER_EMAIL_ALLOW_SOL">${uiLabelMap.PartyAllowSolicitation}</label>
-      <select name="CUSTOMER_EMAIL_ALLOW_SOL" id="CUSTOMER_EMAIL_ALLOW_SOL">
-        <#if (((requestParameters.CUSTOMER_EMAIL_ALLOW_SOL)!"") == "Y")><option value="Y">${uiLabelMap.CommonY}</option></#if>
-        <#if (((requestParameters.CUSTOMER_EMAIL_ALLOW_SOL)!"") == "N")><option value="N">${uiLabelMap.CommonN}</option></#if>
-        <option></option>
-        <option value="Y">${uiLabelMap.CommonY}</option>
-        <option value="N">${uiLabelMap.CommonN}</option>
-      </select>
     </div>
   </fieldset>
 
@@ -368,12 +295,6 @@ will generally always be reserved for the logo at the top of the page.
         <@fieldErrors fieldName="CONFIRM_PASSWORD"/>
         <label for="CONFIRM_PASSWORD">${uiLabelMap.PartyRepeatPassword}*</label>
         <input type="password" class='inputBox' name="CONFIRM_PASSWORD" id="CONFIRM_PASSWORD" value="" maxlength="50"/>
-      </div>
-
-      <div>
-        <label for="PASSWORD_HINT">${uiLabelMap.PartyPasswordHint}</label>
-        <@fieldErrors fieldName="PASSWORD_HINT"/>
-        <input type="text" class='inputBox' name="PASSWORD_HINT" id="PASSWORD_HINT" value="${requestParameters.PASSWORD_HINT?if_exists}" maxlength="100"/>
       </div>
     <#else/>
       <div>
