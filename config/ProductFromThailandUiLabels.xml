@@ -134,8 +134,8 @@
         <value xml:lang="th">โทรสาร</value>
     </property>
     <property key="PFTSearchYourProducts">
-        <value xml:lang="en">Search Your Products</value>
-        <value xml:lang="th">ค้นหาสินค้าที่คุณต้องการ</value>
+        <value xml:lang="en">Search our product catalog</value>
+        <value xml:lang="th">ค้นหาตามหมวดหมู่สินค้า</value>
     </property>
     <property key="PFTSelectByCategories">
         <value xml:lang="en">Select by Categories</value>
