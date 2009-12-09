@@ -108,7 +108,7 @@ function setAlternateGwp(field) {
           <#assign continueLink = "/main" />
         </#if>
         <a href="<@ofbizUrl>${continueLink}</@ofbizUrl>" class="submenutext">${uiLabelMap.EcommerceContinueShopping}</a>
-        <#if (shoppingCartSize > 0)><a href="<@ofbizUrl>checkoutoptions</@ofbizUrl>" class="submenutext">${uiLabelMap.OrderCheckout}</a><#else><span class="submenutextrightdisabled">${uiLabelMap.OrderCheckout}</span></#if>
+        <#if (shoppingCartSize > 0)><a href="<@ofbizUrl>quickcheckout</@ofbizUrl>" class="submenutext">${uiLabelMap.OrderCheckout}</a><#else><span class="submenutextrightdisabled">${uiLabelMap.OrderCheckout}</span></#if>
         ${uiLabelMap.CommonQuickAdd}
     </h2>
     <div>
@@ -151,7 +151,7 @@ function setAlternateGwp(field) {
                 <span class="submenutextdisabled">${uiLabelMap.EcommerceEmptyCart}</span>
                 <span class="submenutextdisabled">${uiLabelMap.EcommerceRemoveSelected}</span>
               </#if>
-              <#if (shoppingCartSize > 0)><a href="<@ofbizUrl>checkoutoptions</@ofbizUrl>" class="submenutextright">${uiLabelMap.OrderCheckout}</a><#else><span class="submenutextrightdisabled">${uiLabelMap.OrderCheckout}</span></#if>
+              <#if (shoppingCartSize > 0)><a href="<@ofbizUrl>quickcheckout</@ofbizUrl>" class="submenutextright">${uiLabelMap.OrderCheckout}</a><#else><span class="submenutextrightdisabled">${uiLabelMap.OrderCheckout}</span></#if>
             </div>
         </div>
 <div>
