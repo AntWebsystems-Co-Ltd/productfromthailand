@@ -85,15 +85,12 @@ ${virtualJavaScript?if_exists}
            alert("Please select all of the required options.");
            return;
        } else {
-       var confirmMessage = confirm("This product will be added to your cart !")
-       if(confirmMessage){
            if (isVirtual(document.addform.add_product_id.value)) {
                document.location = '<@ofbizUrl>product?category_id=${categoryId?if_exists}&product_id=</@ofbizUrl>' + document.addform.add_product_id.value;
                return;
            } else {
                document.addform.submit();
            }
-        }
        }
     }
 

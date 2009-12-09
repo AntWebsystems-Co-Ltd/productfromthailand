@@ -1,0 +1,12 @@
+Index: applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.java
+===================================================================
+--- applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.java	(revision 885358)
++++ applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.java	(working copy)
+@@ -562,6 +562,7 @@
+             if (cart.viewCartOnAdd()) {
+                 return "viewcart";
+             } else {
++                request.setAttribute("_EVENT_MESSAGE_", UtilProperties.getMessage(resource_error, "cart.addToCart.orderAddedProductToCart",UtilMisc.toMap("productId",productId), locale));
+                 return "success";
+             }
+         }
