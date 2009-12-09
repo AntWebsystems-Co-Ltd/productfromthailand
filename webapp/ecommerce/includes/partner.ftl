@@ -18,7 +18,11 @@ under the License.
 -->
 <div id="contentbox" class="screenlet">
      <h1>${uiLabelMap.PFTSalesconditions} :</h1>
-    <div class="screenlet-body">
+     <div class="screenlet-body">
+        <p>For a company who wants to sell your products on this site. We allow you to sell your products, manage your catalog and you will see all existing purchase from your customer.
+         You can only upload your products with existing excel file format or create your products manually via our application.
+         <br/><br/><a href="<@ofbizUrl>newsupplier</@ofbizUrl>">${uiLabelMap.PFTClickToRegister}.</a></p><br/><br/>
+
         <ul class="partnerconditions">
           <li class="partnerconditions">The supplier is free to maintain his own products at our website without any further costs.</li>
           <li class="partnerconditions">The supplier will provide product information with at least one picture, title, longer description and price.</li>
