@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
 -->
 <#-- variable setup and worker calls -->
-<#if (requestAttributes.topLevelList)?exists><#assign topLevelList = requestAttributes.topLevelList></#if>
+<#if (requestAttributes.topCategoryList)?exists><#assign topCategoryList = requestAttributes.topCategoryList></#if>
 <#if (requestAttributes.curCategoryId)?exists><#assign curCategoryId = requestAttributes.curCategoryId></#if>
 
 <#-- looping macro -->
@@ -69,14 +69,14 @@ under the License.
   </#if>
 </#macro>
 
-<#if topLevelList?has_content>
+<#if topCategoryList?has_content>
 <div id="sidedeepcategory" class="leftbarscreenlet">
     <div class="leftbarscreenlet-header">
         <div class="boxhead">${uiLabelMap.PFTProductCategories}</div>
     </div>
     <div class="leftbarscreenlet-body">
         <ul class="browsecategorylist">
-          <#list topLevelList as category>
+          <#list topCategoryList as category>
             <@categoryList parentCategory="" category=category wrapInBox="N"/>
           </#list>
         </ul>
