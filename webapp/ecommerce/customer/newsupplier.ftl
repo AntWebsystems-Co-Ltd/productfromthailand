@@ -53,12 +53,12 @@ under the License.
             </div>
             <div>
               <label for="password">${uiLabelMap.CommonPassword}* <span id="advice-required-password" style="display: none" class="errorMessage">(required)</span></label>
-              <input type="password" name="password" id="password" class="required validate-password" value="${parameters.password?if_exists}" maxlength="16" />
+              <input type="password" name="password" id="password" class="required validate-password" value="" maxlength="16" />
               <span id="advice-validate-password-password" class="errorMessage" style="display:none">${uiLabelMap["loginservices.password_may_not_equal_username"]}</span>
             </div>
             <div>
               <label for="passwordVerify">${uiLabelMap.PartyRepeatPassword}* <span id="advice-required-passwordVerify" style="display: none" class="errorMessage">(required)</span></label>
-              <input type="password" name="passwordVerify" id="passwordVerify" class="required validate-passwordVerify" value="${parameters.passwordVerify?if_exists}" maxlength="16" />
+              <input type="password" name="passwordVerify" id="passwordVerify" class="required validate-passwordVerify" value="" maxlength="16" />
               <span id="advice-validate-passwordVerify-passwordVerify" class="errorMessage" style="display:none">${uiLabelMap["loginservices.password_did_not_match_verify_password"]}</span>
             </div>
             <br/>
