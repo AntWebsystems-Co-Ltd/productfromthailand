@@ -1,18 +1,18 @@
-Index: applications/order/config/OrderErrorUiLabels.xml
+Index: applications/order/config/OrderUiLabels.xml
 ===================================================================
---- applications/order/config/OrderErrorUiLabels.xml	(revision 885358)
-+++ applications/order/config/OrderErrorUiLabels.xml	(working copy)
-@@ -2903,6 +2903,10 @@
-         <value xml:lang="th">เพิ่ม ${totalQuantity} รายการลงตระกร้า</value>
-         <value xml:lang="zh">把 ${totalQuantity} 明细添加到购物车。</value>
+--- applications/order/config/OrderUiLabels.xml	(revision 885358)
++++ applications/order/config/OrderUiLabels.xml	(working copy)
+@@ -1223,6 +1223,10 @@
+         <value xml:lang="zh">添加代码</value>
+         <value xml:lang="zh_CN">添加代码</value>
      </property>
-+    <property key="cart.addToCart.orderAddedProductToCart">
++    <property key="OrderAddedProductToCart">
 +        <value xml:lang="en">Product ${productId} has been added to your cart.</value>
 +        <value xml:lang="th">สินค้า ${productId} ได้เพิ่มเข้าในตระกร้าของคุณแล้ว.</value>
 +    </property>
-     <property key="cart.addToCart.rental.endDate">
-         <value xml:lang="en">Problems parsing Reservation end string.</value>
-         <value xml:lang="it">Problema durante il parsing della stringa reservation end</value>
+     <property key="OrderAddNote">
+         <value xml:lang="de">Anmerkung hinzufügen</value>
+         <value xml:lang="en">Add Note</value>
 Index: applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.java
 ===================================================================
 --- applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.java	(revision 885358)
@@ -21,7 +21,7 @@ Index: applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.ja
              if (cart.viewCartOnAdd()) {
                  return "viewcart";
              } else {
-+                request.setAttribute("_EVENT_MESSAGE_", UtilProperties.getMessage(resource_error, "cart.addToCart.orderAddedProductToCart",UtilMisc.toMap("productId",productId), locale));
++                request.setAttribute("_EVENT_MESSAGE_", UtilProperties.getMessage(resource, "OrderAddedProductToCart",UtilMisc.toMap("productId",productId), locale));
                  return "success";
              }
          }
