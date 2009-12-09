@@ -137,7 +137,7 @@ function submitForm(form, mode, value) {
                   <input type="text" class="inputBox" name="correspondingPoId" size="15" value="${currentPoNumber?if_exists}"/>
                 </td>
               </tr>
-              <#if productStore.showCheckoutGiftOptions?if_exists != "N">
+              <#--if productStore.showCheckoutGiftOptions?if_exists != "N">
               <tr><td colspan="2"><hr/></td></tr>
               <tr>
                 <td colspan="2">
@@ -161,7 +161,7 @@ function submitForm(form, mode, value) {
               </tr>
               <#else/>
               <input type="hidden" name="is_gift" value="false"/>
-              </#if>
+              </#if-->
               <tr><td colspan="2"><hr/></td></tr>
               <tr>
                 <td colspan="2">
