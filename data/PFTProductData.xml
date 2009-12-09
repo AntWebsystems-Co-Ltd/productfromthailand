@@ -166,7 +166,7 @@ under the License.
     <DataResource dataResourceId="BAGDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
     
     <ElectronicText dataResourceId="BAGDESCTH" textData="กระเป๋า"/>
-    <ElectronicText dataResourceId="BAGDESCEN" textData="Bag"/>
+    <ElectronicText dataResourceId="BAGDESCEN" textData="Bags"/>
     
     <Content contentId="BAGDESCTH" contentTypeId="DOCUMENT" dataResourceId="BAGDESCTH" description="DESCRIPTION TH Bag" localeString="th"/>
     <Content contentId="BAGDESCEN" contentTypeId="DOCUMENT" dataResourceId="BAGDESCEN" description="DESCRIPTION EN Bag" localeString="en"/>
@@ -231,7 +231,7 @@ under the License.
     <DataResource dataResourceId="CRAFTDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
     
     <ElectronicText dataResourceId="CRAFTDESCTH" textData="สินค้าหัตถกรรมและของขวัญ"/>
-    <ElectronicText dataResourceId="CRAFTDESCEN" textData="Craft &amp; Gift"/>
+    <ElectronicText dataResourceId="CRAFTDESCEN" textData="Crafts &amp; Gifts"/>
     
     <Content contentId="CRAFTDESCTH" contentTypeId="DOCUMENT" dataResourceId="CRAFTDESCTH" description="DESCRIPTION TH Craft &amp; Gift" localeString="th"/>
     <Content contentId="CRAFTDESCEN" contentTypeId="DOCUMENT" dataResourceId="CRAFTDESCEN" description="DESCRIPTION EN Craft &amp; Gift" localeString="en"/>
@@ -296,7 +296,7 @@ under the License.
     <DataResource dataResourceId="FOOTWEARDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
     
     <ElectronicText dataResourceId="FOOTWEARDESCTH" textData="รองเท้า"/>
-    <ElectronicText dataResourceId="FOOTWEARDESCEN" textData="Footwear"/>
+    <ElectronicText dataResourceId="FOOTWEARDESCEN" textData="Footwears"/>
     
     <Content contentId="FOOTWEARDESCTH" contentTypeId="DOCUMENT" dataResourceId="FOOTWEARDESCTH" description="DESCRIPTION TH Footwear" localeString="th"/>
     <Content contentId="FOOTWEARDESCEN" contentTypeId="DOCUMENT" dataResourceId="FOOTWEARDESCEN" description="DESCRIPTION EN Footwear" localeString="en"/>
@@ -309,7 +309,7 @@ under the License.
     <DataResource dataResourceId="FURNITUREDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
     
     <ElectronicText dataResourceId="FURNITUREDESCTH" textData="เฟอร์นิเจอร์และของตกแต่ง"/>
-    <ElectronicText dataResourceId="FURNITUREDESCEN" textData="Furniture &amp; Decoration"/>
+    <ElectronicText dataResourceId="FURNITUREDESCEN" textData="Furnitures &amp; Decorations"/>
     
     <Content contentId="FURNITUREDESCTH" contentTypeId="DOCUMENT" dataResourceId="FURNITUREDESCTH" description="DESCRIPTION TH Furniture &amp; Decoration" localeString="th"/>
     <Content contentId="FURNITUREDESCEN" contentTypeId="DOCUMENT" dataResourceId="FURNITUREDESCEN" description="DESCRIPTION EN Furniture &amp; Decoration" localeString="en"/>
