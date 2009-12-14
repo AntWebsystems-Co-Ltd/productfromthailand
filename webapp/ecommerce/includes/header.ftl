@@ -46,7 +46,7 @@ under the License.
     <div id="right">
         <div id="welcome-message">
             <#if sessionAttributes.autoName?has_content>
-            ${uiLabelMap.CommonWelcome}&nbsp;<a href="<@ofbizUrl>viewprofile</@ofbizUrl>">${sessionAttributes.autoName?html}</a>!
+            ${uiLabelMap.CommonWelcome}&nbsp;${sessionAttributes.autoName?html}!
             (${uiLabelMap.CommonNotYou}?&nbsp;<a href="<@ofbizUrl>autoLogout</@ofbizUrl>" class="linktext">${uiLabelMap.CommonClickHere}</a>)
             <#else/>
             ${uiLabelMap.CommonWelcome}!
@@ -83,9 +83,11 @@ under the License.
                 <#--li id="header-bar-sitemap"><a href="<@ofbizUrl>sitemap</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSitemap}</div></a></li-->
                 <li id="header-bar-help"><a href="<@ofbizUrl>help</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTHelpAndInstruction}</div></a></li>
               <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
-              <#if security.hasEntityPermission("MYPORTAL", "_SUPPLIER", session)>
-                <li id="header-bar-store"><a href="<@ofbizUrl>../../myportal</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTStoreManagement}</div></a></li>
-              </#if>
+	              <#if security.hasEntityPermission("MYPORTAL", "_SUPPLIER", session)>
+	                <li id="header-bar-store"><a href="<@ofbizUrl>../../myportal</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTStoreManagement}</div></a></li>
+                  <#else>
+                    <li id="header-bar-account"><a href="<@ofbizUrl>viewprofile</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTYourAccount}</div></a></li>
+	              </#if>
                 <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><div class="menu-right">${uiLabelMap.CommonLogout}</div></a></li>
               <#else/>
                 <li id="header-bar-login">

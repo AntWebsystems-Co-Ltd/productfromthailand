@@ -39,12 +39,11 @@ border:0;
 margin:0; 
 outline:0; 
 padding:0;
-font-size: 100%; 
+font-size: 100%;
+vertical-align: baseline;
 }
 
 table {border-collapse: collapse; border-spacing: 0;}
-
-caption, th, td {text-align: left; font-weight: normal;}
 
 p,ul,ol,dl,blockquote,pre {margin: 0 0 0.1em;}
 
@@ -59,11 +58,11 @@ font-weight: normal;
 text-decoration: none;
 }
 
-body, caption, th {
-text-align: left;
-}
+caption, th, td {text-align: left; font-weight: normal;}
 
-h1, h2, h3, h4, h5, h6 {
+body {line-height: 1; color: black; background: white;}
+
+h1, h2, h3, h4, h5, h6,strong,b,dt,th {
 font-family: Vernada, Arial, Helvetica, sans-serif;
 font-weight:700;
 
@@ -263,7 +262,7 @@ padding: 0px 8px 0px 8px;
 float:right;
 }
 
-#ecom-header li#header-bar-sitemap,#header-bar-help,#header-bar-store {
+#ecom-header li#header-bar-sitemap,#header-bar-help,#header-bar-store,#header-bar-account {
 border-left:1px solid #827B00;
 }
 
@@ -954,8 +953,8 @@ text-align: right;
 .matrix .productsummary {
 border: none;
 padding:5px;
-height: 160px;
-width: 115px;
+height: 250px;
+width: 130px;
 }
 
 .matrix .productsummary .smallimage {
@@ -972,7 +971,7 @@ text-align: left;
 }
 
 .productsummary .productinfo {
-text-align: center;
+text-align: left;
 }
 
 /* ===== Product Detail Styles ===== */
@@ -1379,7 +1378,7 @@ padding:.4em 1em .2em;
 }
 thead th.table-head {
 font-size:1em;
-font-weight:normal;
+font-weight:700;
 text-transform:uppercase;
 color:#fff;
 background:#555;
