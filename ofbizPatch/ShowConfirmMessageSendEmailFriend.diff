@@ -1,0 +1,45 @@
+Index: applications/product/src/org/ofbiz/product/product/ProductEvents.java
+===================================================================
+--- applications/product/src/org/ofbiz/product/product/ProductEvents.java	(revision 887048)
++++ applications/product/src/org/ofbiz/product/product/ProductEvents.java	(working copy)
+@@ -22,6 +22,7 @@
+ import java.sql.Timestamp;
+ import java.util.Iterator;
+ import java.util.List;
++import java.util.Locale;
+ import java.util.Map;
+ import java.util.Set;
+ 
+@@ -986,7 +987,8 @@
+         Delegator delegator = (Delegator) request.getAttribute("delegator");
+         String emailType = "PRDS_TELL_FRIEND";
+         String defaultScreenLocation = "component://ecommerce/widget/EmailProductScreens.xml#TellFriend";
+-
++        Locale locale = UtilHttp.getLocale(request);
++        
+         GenericValue productStore = ProductStoreWorker.getProductStore(request);
+         if (productStore == null) {
+             String errMsg = "Could not send tell a friend email, no ProductStore found";
+@@ -1038,6 +1040,7 @@
+             request.setAttribute("_ERROR_MESSAGE_", errMsg);
+             return "error";
+         }
++        request.setAttribute("_EVENT_MESSAGE_", UtilProperties.getMessage("ProductUiLabels", "ProductTellAFriendConfirmMessage",UtilMisc.toMap("sendTo",paramMap.get("sendTo")), locale));
+         return "success";
+     }
+ 
+Index: applications/product/config/ProductUiLabels.xml
+===================================================================
+--- applications/product/config/ProductUiLabels.xml	(revision 887048)
++++ applications/product/config/ProductUiLabels.xml	(working copy)
+@@ -20011,6 +20011,10 @@
+         <value xml:lang="th">บุคคลซึ่งต้องเสียภาษี</value>
+         <value xml:lang="zh">应征税的</value>
+     </property>
++    <property key="ProductTellAFriendConfirmMessage">
++        <value xml:lang="en">Your message has been sent to ${sendTo} successfully.</value>
++        <value xml:lang="th">ข้อความของคุณได้ส่งถึง ${sendTo} แล้ว.</value>
++    </property>
+     <property key="ProductTemplatePath">
+         <value xml:lang="de">Template Pfad</value>
+         <value xml:lang="en">Template Path</value>

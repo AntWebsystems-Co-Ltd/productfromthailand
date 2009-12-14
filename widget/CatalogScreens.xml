@@ -390,12 +390,16 @@ under the License.
     <screen name="tellafriend">
         <section>
             <actions>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/ecommain.css" global="true"/>
                 <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
             </actions>
             <widgets>
                 <platform-specific>
-                    <html><html-template location="component://ecommerce/webapp/ecommerce/catalog/tellafriend.ftl"/></html>
+                    <html><html-template location="component://common/webcommon/includes/messages.ftl"/></html>
+                </platform-specific>
+                <platform-specific>
+                    <html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/tellafriend.ftl"/></html>
                 </platform-specific>
             </widgets>
         </section>
