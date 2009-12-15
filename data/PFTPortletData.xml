@@ -43,6 +43,13 @@ under the License.
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="MYPORTAL_SUPPLIER"/>
     <SecurityGroupPermission groupId="MYPORTAL_SUPPLIER" permissionId="ACCOUNTING_VIEW"/>
     
+    <SecurityPermission permissionId="MYPORTAL_MARKETER" description="The security for marketer in myportal."/>
+    <SecurityGroup description="Marketing user of myportal" groupId="MYPORTAL_MARKETER"/>
+    <SecurityGroupPermission groupId="MYPORTAL_MARKETER" permissionId="PARTYMGR_CREATE"/>
+    <SecurityGroupPermission groupId="MYPORTAL_MARKETER" permissionId="PARTYMGR_UPDATE"/>
+    <SecurityGroupPermission groupId="MYPORTAL_MARKETER" permissionId="PARTYMGR_DELETE"/>
+    <SecurityGroupPermission groupId="MYPORTAL_MARKETER" permissionId="PARTYMGR_MARKETER"/>
+    
     <UserLoginSecurityGroup groupId="MYPORTAL_SUPPLIER" userLoginId="HANDICARFTEXPORT" fromDate="2000-01-01 00:00:00.0"/>
     
     <PortalPortlet portalPortletId="MyProducts"
