@@ -240,10 +240,9 @@ under the License.
             <actions>
                 <set field="numCol" value="3"/>
                 <set field="searchInCategory" value="N"/>
-                <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="6"/>
             </actions>
             <widgets>
-                <include-screen name="categorydetail"/>
+                <include-screen name="promocategorydetail"/>
             </widgets>
             <fail-widgets>
                 <section>
@@ -596,6 +595,25 @@ under the License.
                         </platform-specific>
                     </decorator-section>
                 </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="promocategorydetail">
+        <section>
+            <actions>
+                <set field="productsummaryScreen" value="component://productfromthailand/widget/CatalogScreens.xml#productsummary"/>
+                <set field="productCategoryLinkScreen" value="component://productfromthailand/widget/CatalogScreens.xml#ProductCategoryLink"/>
+                
+                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/showPromoProduct.groovy"/>
+                
+                <entity-and entity-name="ProductCategoryLink" list="productCategoryLinks" use-cache="true" filter-by-date="true">
+                    <field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                    <order-by field-name="sequenceNum"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/categorydetail.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
