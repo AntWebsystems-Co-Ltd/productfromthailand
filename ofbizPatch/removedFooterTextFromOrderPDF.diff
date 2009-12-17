@@ -1,0 +1,13 @@
+Index: applications/order/webapp/ordermgr/order/orderReportConditions.fo.ftl
+===================================================================
+--- applications/order/webapp/ordermgr/order/orderReportConditions.fo.ftl	(revision 891160)
++++ applications/order/webapp/ordermgr/order/orderReportConditions.fo.ftl	(working copy)
+@@ -51,7 +51,7 @@
+ 
+ <fo:block space-after="40pt"/>
+ <#if orderHeader.getString("orderTypeId") == "SALES_ORDER">
+-  <fo:block font-size="14pt" font-weight="bold" text-align="center">THANK YOU FOR YOUR PATRONAGE!</fo:block>
++  <#--fo:block font-size="14pt" font-weight="bold" text-align="center">THANK YOU FOR YOUR PATRONAGE!</fo:block-->
+   <fo:block font-size="8pt">
+     <#--    Here is a good place to put policies and return information. -->
+   </fo:block>
