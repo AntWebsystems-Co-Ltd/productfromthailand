@@ -104,4 +104,28 @@ under the License.
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER3" portalPortletId="ListSupplierInvoices" portletSeqId="00001" columnSeqId="00001"  sequenceNum="0"/>
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER4" portalPortletId="ListPurchaseOrders" portletSeqId="00001" columnSeqId="00001" sequenceNum="0"/>
 
+    <!-- Portal Page for Marketing -->
+    <PortalPage portalPageId="MYPORTAL_MARKETING" sequenceNum="0" portalPageName="Main" description="The default OFBiz portal page for a suppliers" ownerUserLoginId="_NA_" securityGroupId="MYPORTAL_MARKETER"/>
+    <PortalPage portalPageId="MYPORTAL_MARKETING1" sequenceNum="100" portalPageName="Marketing Email" description="The OFBiz My Portal Marketing Email page" ownerUserLoginId="_NA_" parentPortalPageId="MYPORTAL_MARKETER"/>
+    
+    <PortalPageColumn portalPageId="MYPORTAL_MARKETING" columnSeqId="00001" columnWidthPercentage="50"/>
+    <PortalPageColumn portalPageId="MYPORTAL_MARKETING" columnSeqId="00002"/><!-- no width in pixels or percent, use the rest of the space available -->
+    <PortalPageColumn portalPageId="MYPORTAL_MARKETING1" columnSeqId="00001"/>
+    
+    <PortalPagePortlet portalPageId="MYPORTAL_MARKETING" portalPortletId="party" portletSeqId="00001" columnSeqId="00001" sequenceNum="0"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_MARKETING" portalPortletId="partyRelContacts" portletSeqId="00001" columnSeqId="00001" sequenceNum="1"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_MARKETING" portalPortletId="partyRelAccounts" portletSeqId="00001" columnSeqId="00001" sequenceNum="2"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_MARKETING" portalPortletId="contact" portletSeqId="00001" columnSeqId="00001" sequenceNum="3"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_MARKETING" portalPortletId="LoyaltyPoints" portletSeqId="00001" columnSeqId="00001" sequenceNum="4"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_MARKETING" portalPortletId="PaymentMethods" portletSeqId="00001" columnSeqId="00001" sequenceNum="5"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_MARKETING" portalPortletId="PartyIdentifications" portletSeqId="00001" columnSeqId="00001" sequenceNum="6"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_MARKETING" portalPortletId="UserLogin" portletSeqId="00001" columnSeqId="00002" sequenceNum="1"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_MARKETING" portalPortletId="Attributes" portletSeqId="00001" columnSeqId="00002" sequenceNum="2"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_MARKETING" portalPortletId="AvsSettings" portletSeqId="00001" columnSeqId="00002" sequenceNum="3"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_MARKETING" portalPortletId="Visits" portletSeqId="00001" columnSeqId="00002" sequenceNum="4"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_MARKETING" portalPortletId="Content" portletSeqId="00001" columnSeqId="00002" sequenceNum="5"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_MARKETING" portalPortletId="Notes" portletSeqId="00001" columnSeqId="00002" sequenceNum="6"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_MARKETING" portalPortletId="Visits" portletSeqId="00001" columnSeqId="00002" sequenceNum="7"/>
+    <PortalPagePortlet portalPageId="MYPORTAL_MARKETING1" portalPortletId="MyCommunications" portletSeqId="00001" columnSeqId="00001" sequenceNum="0"/>
+    <PortletAttribute portalPageId="MYPORTAL_MARKETING1" portalPortletId="MyCommunications" portletSeqId="00001" attrName="communicationPartyId" attrValue="MARKETING"/>
 </entity-engine-xml>
