@@ -114,6 +114,7 @@ public class ImportProduct {
         }
         // read all xls file and create workbook one by one.
         List<Map<String, Object>> products = FastList.newInstance();
+        List<Map<String, Object>> productCategoryMembers = FastList.newInstance();
         List<Map<String, Object>> createSupplierProducts = FastList.newInstance();
         List<Map<String, Object>> updateSupplierProducts = FastList.newInstance();
         List<Map<String, Object>> removeSupplierProducts = FastList.newInstance();
@@ -253,25 +254,25 @@ public class ImportProduct {
                         HSSFCell cell8 = row.getCell((int) 8);
                         BigDecimal productWidth = BigDecimal.ZERO;
                         if (cell8 != null && cell8.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
-                        	productWidth = new BigDecimal(cell8.getNumericCellValue());
+                            productWidth = new BigDecimal(cell8.getNumericCellValue());
                         
                         // read productDepth from tenth column
                         HSSFCell cell9 = row.getCell((int) 9);
                         BigDecimal productDepth = BigDecimal.ZERO;
                         if (cell9 != null && cell9.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
-                        	productDepth = new BigDecimal(cell9.getNumericCellValue());
+                            productDepth = new BigDecimal(cell9.getNumericCellValue());
 
                         // read productHeight from eleventh column
                         HSSFCell cell10 = row.getCell((int) 10);
                         BigDecimal productHeight = BigDecimal.ZERO;
                         if (cell10 != null && cell10.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
-                        	productHeight = new BigDecimal(cell10.getNumericCellValue());
+                            productHeight = new BigDecimal(cell10.getNumericCellValue());
                         
                         // read imageUrl from twelveth column
                         HSSFCell cell11 = row.getCell((int) 11);
                         String imageUrl = null;
                         if(UtilValidate.isNotEmpty(cell11)){
-                        	imageUrl = toStringValue(cell11);
+                            imageUrl = toStringValue(cell11);
                         }
                         
                         Timestamp now = UtilDateTime.nowTimestamp();
@@ -357,6 +358,7 @@ public class ImportProduct {
                                 createDescProductContents.add(prepareProductContent(productId, pDescEnContentId, now, "DESCRIPTION", actionField, userLogin));
                                 pDescCtx.put("productId", productId);
                             }
+                            
                         }else if("update".equals(actionField)){
                             if(supplierProductGV != null){
                                 updateSupplierProducts.add(prepareSupplierProduct(productId, supplierProductGV.getString("supplierProductId"), supplierPartyId, supplierPrice,
@@ -464,6 +466,7 @@ public class ImportProduct {
                                 removeSupplierProductCtx.put("productId", productId);
                                 removeSupplierProductCtx.put("currencyUomId", supplierProductGV.getString("currencyUomId"));
                                 removeSupplierProductCtx.put("availableFromDate", supplierProductGV.get("availableFromDate"));
+                                removeSupplierProductCtx.put("availableThruDate", now);
                                 removeSupplierProductCtx.put("minimumOrderQuantity", supplierProductGV.get("minimumOrderQuantity"));
                                 removeSupplierProductCtx.put("partyId", supplierPartyId);
                                 removeSupplierProductCtx.put("userLogin", userLogin);
@@ -473,7 +476,7 @@ public class ImportProduct {
                                 request.setAttribute("_ERROR_MESSAGE_", "Error removing SupplierProduct: "+ supplierProductId+ " not found.");
                                 return "error";
                             }
-                            
+                            /*
                             if(productPriceGV != null){
                                 removeProductPrices.add(prepareProductPrice(productId, price, productPriceGV.getTimestamp("fromDate"), productPriceGV.getString("currencyUomId")
                                         , productPriceGV.getString("productStoreGroupId"), actionField, userLogin));
@@ -570,7 +573,7 @@ public class ImportProduct {
                                     pDescCtx.put("productId", productId);
                                 }
                             }
-                            
+                            */
                             
                         }
                         pNameDataAndContents.add(pNameCtx);
@@ -653,7 +656,7 @@ public class ImportProduct {
             if(removeSupplierProducts.size() > 0 && removeSupplierProducts.size() > j){
                 if(!removeSupplierProducts.get(j).isEmpty()){
                     try {
-                        Map<String, Object> removeSupplierProductResult = dispatcher.runSync("removeSupplierProduct", removeSupplierProducts.get(j));
+                        Map<String, Object> removeSupplierProductResult = dispatcher.runSync("updateSupplierProduct", removeSupplierProducts.get(j));
                         if (ServiceUtil.isError(removeSupplierProductResult)) {
                             request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(removeSupplierProductResult));
                             return "error";
@@ -1122,9 +1125,9 @@ public class ImportProduct {
         return productContentExists;
     }
     
- // prepare the product map
+    // prepare the product map
     public static Map<String, Object> prepareProduct(String productId, String internalName, BigDecimal productWidth, BigDecimal productDepth, BigDecimal productHeight, 
-    		String imageUrl, String actionField, GenericValue userLogin) {
+            String imageUrl, String actionField, GenericValue userLogin) {
         Map<String, Object> fields = FastMap.newInstance();
         fields.put("productId", productId);
         fields.put("internalName", internalName);
@@ -1134,27 +1137,26 @@ public class ImportProduct {
         fields.put("isVariant", "N");
         
         if(imageUrl != null){
-        	String prefixSmallImage = "/images/products/small/";
-        	String prefixMediumImage = "/images/products/medium/";
-        	String prefixLargeImage = "/images/products/large/";
-        	
-        	fields.put("smallImageUrl", prefixSmallImage+imageUrl);
-        	fields.put("mediumImageUrl", prefixMediumImage+imageUrl);
-        	fields.put("largeImageUrl", prefixLargeImage+imageUrl);
+            String prefixSmallImage = "/images/products/small/";
+            String prefixMediumImage = "/images/products/medium/";
+            String prefixLargeImage = "/images/products/large/";
+            
+            fields.put("smallImageUrl", prefixSmallImage+imageUrl);
+            fields.put("mediumImageUrl", prefixMediumImage+imageUrl);
+            fields.put("largeImageUrl", prefixLargeImage+imageUrl);
         }
         if(productWidth.compareTo(BigDecimal.ZERO) > 0){
-        	fields.put("productWidth", productWidth);
-        	fields.put("widthUomId", "LEN_m");
+            fields.put("productWidth", productWidth);
+            fields.put("widthUomId", "LEN_m");
         }
         if(productDepth.compareTo(BigDecimal.ZERO) > 0){
-        	fields.put("productDepth", productDepth);
-        	fields.put("depthUomId", "LEN_m");
+            fields.put("productDepth", productDepth);
+            fields.put("depthUomId", "LEN_m");
         }
         if(productHeight.compareTo(BigDecimal.ZERO) > 0){
-        	fields.put("productHeight", productHeight);
-        	fields.put("heightUomId", "LEN_m");
+            fields.put("productHeight", productHeight);
+            fields.put("heightUomId", "LEN_m");
         }
-        
         if("delete".equals(actionField))
             fields.put("salesDiscontinuationDate",UtilDateTime.nowTimestamp());
         fields.put("userLogin", userLogin);
