@@ -20,7 +20,7 @@
 
 <entity-engine-xml>
     <Party partyId="pft" partyTypeId="PARTY_GROUP" createdDate="2009-09-25 10:35:14.088"/>
-    <PartyGroup partyId="pft" groupName="Antwebsystems Co.,Ltd." logoImageUrl="/pft/images/logo.gif"/>
+    <PartyGroup partyId="pft" groupName="P.F.T. Trading Co.,Ltd." logoImageUrl="/pft/images/logo.gif"/>
 
     <PartyRole partyId="pft" roleTypeId="CARRIER"/>
     <PartyRole partyId="pft" roleTypeId="INTERNAL_ORGANIZATIO"/>
@@ -32,8 +32,8 @@
     <ContactMech contactMechId="PFTEMAIL" contactMechTypeId="EMAIL_ADDRESS" infoString="info@productfromthailand.com"/>
     <!--<ContactMech contactMechId="pftFacilityAddr" contactMechTypeId="POSTAL_ADDRESS"/>-->
 
-    <PostalAddress contactMechId="PFTADDR" toName="Antwebsystems Co.,Ltd." address1="171/28, Moo 3, Tambol Nhongkeaw, Aumphur Hang Dong" city="Chiang Mai" postalCode="50230" countryGeoId="THA"/>
-    <!--<PostalAddress contactMechId="pftFacilityAddr" toName="Antwebsystems Co.,Ltd." address1="171/28, Moo 3, Thumbol Nhongkeaw, Aumphur Hang Dong" city="Chiangmai" postalCode="50230" countryGeoId="THA"/>-->
+    <PostalAddress contactMechId="PFTADDR" toName="P.F.T. Trading Co.,Ltd." address1="171/28, Moo 3, Tambol Nhongkeaw, Aumphur Hang Dong" city="Chiang Mai" postalCode="50230" countryGeoId="THA"/>
+    <!--<PostalAddress contactMechId="pftFacilityAddr" toName="P.F.T. Trading Co.,Ltd." address1="171/28, Moo 3, Thumbol Nhongkeaw, Aumphur Hang Dong" city="Chiangmai" postalCode="50230" countryGeoId="THA"/>-->
 
     <TelecomNumber contactMechId="PFTPHONE" countryCode="+66" areaCode="053" contactNumber="483245"/>
     <TelecomNumber contactMechId="PFTFAX" countryCode="+66" areaCode="053" contactNumber="483246"/>
@@ -300,6 +300,42 @@
     <PartyRole partyId="system" roleTypeId="PACKER"/>
     <UserLogin userLoginId="system" partyId="system"/>
     <UserLogin userLoginId="system" enabled="N" isSystem="Y"/>
+    
+    <!-- Create Marketing, Support party -->
+    <Party partyId="MARKETING" partyTypeId="PARTY_GROUP"/>
+    <Party partyId="SUPPORT" partyTypeId="PARTY_GROUP"/>
+    
+    <PartyGroup partyId="MARKETING" groupName="Marketing department"/>
+    <PartyGroup partyId="SUPPORT" groupName="Support department"/>
+    
+    <PartyRole partyId="MARKETING" roleTypeId="INTERNAL_ORGANIZATIO"/>
+    <PartyRole partyId="MARKETING" roleTypeId="_NA_"/>
+    <PartyRole partyId="SUPPORT" roleTypeId="INTERNAL_ORGANIZATIO"/>
+    <PartyRole partyId="SUPPORT" roleTypeId="_NA_"/>
+    
+    <ContactMech contactMechId="MARKETING" contactMechTypeId="EMAIL_ADDRESS" infoString="sales@productfromthailand.com"/>
+    <PartyContactMech partyId="MARKETING" contactMechId="MARKETING" fromDate="2003-01-01 00:00:00.0" allowSolicitation="Y"/>
+    <PartyContactMechPurpose contactMechPurposeTypeId="PRIMARY_EMAIL" partyId="MARKETING" contactMechId="MARKETING" fromDate="2009-01-01 00:00:00.0"/>
+    
+    <ContactMech contactMechId="SUPPORT" contactMechTypeId="EMAIL_ADDRESS" infoString="support@productfromthailand.com"/>
+    <PartyContactMech partyId="SUPPORT" contactMechId="SUPPORT" fromDate="2003-01-01 00:00:00.0" allowSolicitation="Y"/>
+    <PartyContactMechPurpose contactMechPurposeTypeId="PRIMARY_EMAIL" partyId="SUPPORT" contactMechId="SUPPORT" fromDate="2009-01-01 00:00:00.0"/>
+    
+    <PartyRelationship partyIdFrom="pft" partyIdTo="MARKETING" partyRelationshipTypeId="GROUP_ROLLUP" roleTypeIdFrom="_NA_" roleTypeIdTo="_NA_" fromDate="2009-01-01 00:00:00.0"/>
+    <PartyRelationship partyIdFrom="pft" partyIdTo="SUPPORT" partyRelationshipTypeId="GROUP_ROLLUP" roleTypeIdFrom="_NA_" roleTypeIdTo="_NA_" fromDate="2009-01-01 00:00:00.0"/>
+    
+    <!-- Assign new party as admin then she can read Marketing EMail and Company EMail -->
+    <Party partyId="tukkata" partyTypeId="PERSON"/>
+    <Person partyId="tukkata" firstName="Supatthra" lastName="Techathep"/>
+    <PartyRole partyId="tukkata" roleTypeId="EMAIL_ADMIN"/>
+    <!-- allow tukkata to read Marketing EMail -->
+    <PartyRelationship partyIdFrom="tukkata" roleTypeIdFrom="EMAIL_ADMIN" partyIdTo="MARKETING" roleTypeIdTo="_NA_" fromDate="2009-01-01 00:00:00.0"/>
+    <!-- allow tukkata to read Company EMail -->
+    <PartyRelationship partyIdFrom="tukkata" roleTypeIdFrom="EMAIL_ADMIN" partyIdTo="pft" roleTypeIdTo="_NA_" fromDate="2009-01-01 00:00:00.0"/>
+    
+    <UserLogin userLoginId="tukkata" partyId="tukkata"/>
+    <UserLogin userLoginId="tukkata" currentPassword="{SHA}47ca69ebb4bdc9ae0adec130880165d2cc05db1a" passwordHint=""/>
+    <UserLoginSecurityGroup groupId="FULLADMIN" userLoginId="tukkata" fromDate="2001-01-01 12:00:00.0"/>
     
     <ContactList contactListId="PFT0001" contactListTypeId="ANNOUNCEMENT" contactMechTypeId="EMAIL_ADDRESS" marketingCampaignId=""
         contactListName="Product From Thailand Announcements" description="Product From Thailand Announcements Mailing List (email)" comments="" isPublic="Y" ownerPartyId="pft"
