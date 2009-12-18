@@ -45,6 +45,7 @@ under the License.
     
     <SecurityPermission permissionId="MYPORTAL_MARKETER" description="The security for marketer in myportal."/>
     <SecurityGroup description="Marketing user of myportal" groupId="MYPORTAL_MARKETER"/>
+    <SecurityGroupPermission groupId="MYPORTAL_MARKETER" permissionId="PARTYMGR_VIEW"/>
     <SecurityGroupPermission groupId="MYPORTAL_MARKETER" permissionId="PARTYMGR_CREATE"/>
     <SecurityGroupPermission groupId="MYPORTAL_MARKETER" permissionId="PARTYMGR_UPDATE"/>
     <SecurityGroupPermission groupId="MYPORTAL_MARKETER" permissionId="PARTYMGR_DELETE"/>
