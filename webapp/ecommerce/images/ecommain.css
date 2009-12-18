@@ -1322,9 +1322,11 @@ padding: 0px;
 height:100% !important;
 }
 .banner{
-float:right;
+float:left;
+width:475px;
+height:195px;
 margin:0px;
-padding:0 10px 5px 0;
+padding:0 0 5px 10px;
 }
 
 #breadcrumbs ul{
