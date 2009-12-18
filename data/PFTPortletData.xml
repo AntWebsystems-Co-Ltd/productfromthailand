@@ -49,6 +49,8 @@ under the License.
     <SecurityGroupPermission groupId="MYPORTAL_MARKETER" permissionId="PARTYMGR_UPDATE"/>
     <SecurityGroupPermission groupId="MYPORTAL_MARKETER" permissionId="PARTYMGR_DELETE"/>
     <SecurityGroupPermission groupId="MYPORTAL_MARKETER" permissionId="PARTYMGR_MARKETER"/>
+    <SecurityGroupPermission groupId="MYPORTAL_MARKETER" permissionId="PARTYMGR_CME-EMAIL_CREATE"/>
+    <SecurityGroupPermission groupId="MYPORTAL_MARKETER" permissionId="PARTYMGR_CME-EMAIL_UPDATE"/>
     
     <UserLoginSecurityGroup groupId="MYPORTAL_SUPPLIER" userLoginId="HANDICARFTEXPORT" fromDate="2000-01-01 00:00:00.0"/>
     
