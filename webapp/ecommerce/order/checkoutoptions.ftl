@@ -158,17 +158,17 @@ function submitForm(form, mode, value) {
       <td bgcolor="white" width="1">&nbsp;&nbsp;</td>
       <td height="100%">
         <div class="screenlet" style="height: 100%;">
-            <div class="screenlet-title-bar">
+            <#--div class="screenlet-title-bar">
                 <#if shipping == true>
                     <div class="h3">2)&nbsp;${uiLabelMap.OrderHowShallWeShipIt}?</div>
                 <#else>
                     <div class="h3">2)&nbsp;${uiLabelMap.OrderOptions}?</div>
                 </#if>
-            </div>
+            </div-->
             <div class="screenlet-body" style="height: 100%;">
                 <table width="100%" cellpadding="1" border="0" cellpadding="0" cellspacing="0">
                  <#if shipping == true>
-                  <#list carrierShipmentMethodList as carrierShipmentMethod>
+                  <#--list carrierShipmentMethodList as carrierShipmentMethod>
                     <#assign shippingMethod = carrierShipmentMethod.shipmentMethodTypeId + "@" + carrierShipmentMethod.partyId>
                     <tr>
                       <td width="1%" valign="top">
@@ -195,7 +195,8 @@ function submitForm(form, mode, value) {
                       </td>
                     </tr>
                   </#if>
-                  <tr><td colspan="2"><hr/></td></tr>
+                  <tr><td colspan="2"><hr/></td></tr-->
+                  <input name="shipping_method" type="hidden" value="Default"/>
                   <tr>
                     <td colspan="2">
                       <h2>${uiLabelMap.OrderShipAllAtOnce}?</h2>
@@ -267,7 +268,7 @@ function submitForm(form, mode, value) {
 
         <div class="screenlet" style="height: 100%;">
             <div class="screenlet-title-bar">
-                <div class="h3">3)${uiLabelMap.OrderHowShallYouPay}?</div>
+                <div class="h3">2)${uiLabelMap.OrderHowShallYouPay}?</div>
             </div>
             <div class="screenlet-body" style="height: 100%;">
                 <table width="100%" cellpadding="1" cellspacing="0" border="0">
