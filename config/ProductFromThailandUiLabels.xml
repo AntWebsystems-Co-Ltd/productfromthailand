@@ -201,8 +201,8 @@
         <value xml:lang="en">You have got a new purchase order from a customer. Please check follow the link below.</value>
         <value xml:lang="th">คุณได้รับ รายการสั่งซื้อจากลูกค้า ตรวจสอบได้จากลิ้งค์ข้างล่างนี้ค่ะ</value>
     </property>
-    <property key="PFTYourAccount">
-        <value xml:lang="en">Your Account</value>
-        <value xml:lang="th">บัญชีของคุณ</value>
+    <property key="PFTRecentlyAddedItems">
+        <value xml:lang="en">Recently Added Items</value>
+        <value xml:lang="th">สินค้าใหม่ล่าสุด</value>
     </property>
 </resource>

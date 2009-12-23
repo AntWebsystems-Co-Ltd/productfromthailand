@@ -218,19 +218,19 @@
     <!--<ProductStoreCatalog productStoreId="PFTSTORE" prodCatalogId="DemoCatalog" fromDate="2009-09-25 10:38:07.561"/>-->
     <WebSite webSiteId="ProductFromThailand" siteName="Product from Thailand website" visualThemeSetId="ECOMMERCE" productStoreId="PFTSTORE"/>
 
-    <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_BILLACT" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
+    <!--<ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_BILLACT" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
     <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_COD" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
     <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_OFFLINE" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
-    <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_WORLDPAY" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentGatewayConfigId="WORLDPAY_CONFIG"/>
+    <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_WORLDPAY" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentGatewayConfigId="WORLDPAY_CONFIG"/>-->
     <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL" paymentGatewayConfigId="PAYPAL_CONFIG"/>
-    <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="GIFT_CARD" paymentServiceTypeEnumId="PRDS_PAY_RELEASE" paymentService="testGCRelease" paymentCustomMethodId="GIFT_RELEASE_TEST"/>
+    <!--<ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="GIFT_CARD" paymentServiceTypeEnumId="PRDS_PAY_RELEASE" paymentService="testGCRelease" paymentCustomMethodId="GIFT_RELEASE_TEST"/>
     <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="GIFT_CARD" paymentServiceTypeEnumId="PRDS_PAY_AUTH" paymentService="alwaysApproveGCProcessor" paymentCustomMethodId="GIFT_AUTH_ALWAYSAPPR"/>
     <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EFT_ACCOUNT" paymentServiceTypeEnumId="PRDS_PAY_AUTH" paymentService="alwaysApproveEFTProcessor" paymentCustomMethodId="EFT_AUTH_ALWAYSAPPRO"/>
     <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_REFUND" paymentService="testCCRefund" paymentCustomMethodId="CC_REFUND_TEST"/>
     <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_REAUTH" paymentService="alwaysApproveCCProcessor" paymentCustomMethodId="CC_AUTH_ALWAYSAPPROV"/>
     <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_CAPTURE" paymentService="testCCCapture" paymentCustomMethodId="CC_CAPTURE_TEST"/>
     <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_RELEASE" paymentService="testCCRelease" paymentCustomMethodId="CC_RELEASE_TEST"/>
-    <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_AUTH" paymentService="alwaysApproveCCProcessor" paymentCustomMethodId="CC_AUTH_ALWAYSAPPROV"/>
+    <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_AUTH" paymentService="alwaysApproveCCProcessor" paymentCustomMethodId="CC_AUTH_ALWAYSAPPROV"/>-->
     
     <ProductStoreShipmentMeth productStoreShipMethId="10016" productStoreId="PFTSTORE" shipmentMethodTypeId="GROUND_HOME" partyId="FEDEX" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="N" sequenceNumber="17"/>
     <ProductStoreShipmentMeth productStoreShipMethId="10015" productStoreId="PFTSTORE" shipmentMethodTypeId="GROUND" partyId="FEDEX" roleTypeId="CARRIER" allowUspsAddr="N" requireUspsAddr="N" includeNoChargeItems="N" sequenceNumber="16"/>

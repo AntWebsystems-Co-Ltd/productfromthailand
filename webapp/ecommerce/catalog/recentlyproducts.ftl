@@ -1,7 +1,7 @@
 <div id="recentlyproducts" class="screenlet" style="-moz-border-radius: 5px;">
     <div class="screenlet-title-bar">
 <ul>
-<li class="h3">Recently Products</li>
+<li class="h3">${uiLabelMap.PFTRecentlyAddedItems}</li>
 </ul>
 </div>
 <div class="screenlet-body">
