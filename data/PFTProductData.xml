@@ -118,23 +118,23 @@ under the License.
     <ProductCategoryMember productCategoryId="FURNITURE" productId="ThExport-10003" sequenceNum="3" fromDate="2009-09-25 00:00:00.000"/>
     <ProductCategoryMember productCategoryId="CRAFTANDGIFT" productId="ThExport-10004" sequenceNum="4" fromDate="2009-09-25 00:00:00.000"/>
     <ProductCategoryMember productCategoryId="PFTPROMOTION" productId="ThExport-10004" fromDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="ThExport-10001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="14945" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/>
+
+    <!--ProductPrice productId="ThExport-10001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="15050" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/>
     <ProductPrice productId="ThExport-10002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="175" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/>
     <ProductPrice productId="ThExport-10003" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="1085" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/>
-    <ProductPrice productId="ThExport-10004" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="2695" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/>
-    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="THB" productId="ThExport-10001" lastPrice="13450.5" supplierProductId="HDC-001" supplierProductName="Thai Handicraft Exports-Elephants" availableFromDate="2009-09-25 00:00:00.000" canDropShip="Y"/>
-    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="THB" productId="ThExport-10002" lastPrice="157.5" supplierProductId="HDC-002" supplierProductName="Thai Handicraft Exports-Bamboo in the Sun" availableFromDate="2009-09-25 00:00:00.000" canDropShip="Y"/>
-    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="THB" productId="ThExport-10003" lastPrice="976.5" supplierProductId="HDC-003" supplierProductName="Thai Handicraft Exports-Bamboo Lamp" availableFromDate="2009-09-25 00:00:00.000" canDropShip="Y"/>
-    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="THB" productId="ThExport-10004" lastPrice="2425.5" supplierProductId="HDC-004" supplierProductName="Thai Handicraft Exports-Thai Royal Barge" availableFromDate="2009-09-25 00:00:00.000" canDropShip="Y"/>
+    <ProductPrice productId="ThExport-10004" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="2695" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/-->
     
-    <Product productId="BALGANISH" productTypeId="FINISHED_GOOD" primaryProductCategoryId="" internalName="Bal Ganish" productName="" 
-        description="" smallImageUrl="/pft/images/products/large/BALGANISH.jpg"  requirementMethodEnumId="PRODRQM_DS"
-        mediumImageUrl="/pft/images/products/large/BALGANISH.jpg" largeImageUrl="/pft/images/products/large/BALGANISH.jpg" originalImageUrl="/pft/images/products/large/BALGANISH.jpg" 
-        quantityUomId="USD" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" inShippingBox="N"/>
-    <ProductPrice productId="BALGANISH" productPriceTypeId="DEFAULT_PRICE" productPricePurposeId="PURCHASE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="350.000" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductCategoryMember productCategoryId="CRAFTANDGIFT" productId="BALGANISH" fromDate="2009-09-25 00:00:00.000"/>
-    <ProductCategoryMember productCategoryId="PFTPROMOTION" productId="BALGANISH" fromDate="2009-09-25 00:00:00.000"/>
-   
+    <!-- Price in USD -->
+    <ProductPrice productId="ThExport-10001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="430" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/>
+    <ProductPrice productId="ThExport-10002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="5" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/>
+    <ProductPrice productId="ThExport-10003" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="31" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/>
+    <ProductPrice productId="ThExport-10004" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="77" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/>
+    
+    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="USD" productId="ThExport-10001" lastPrice="387" supplierProductId="HDC-001" supplierProductName="Thai Handicraft Exports-Elephants" availableFromDate="2009-09-25 00:00:00.000" canDropShip="Y"/>
+    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="USD" productId="ThExport-10002" lastPrice="4.5" supplierProductId="HDC-002" supplierProductName="Thai Handicraft Exports-Bamboo in the Sun" availableFromDate="2009-09-25 00:00:00.000" canDropShip="Y"/>
+    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="USD" productId="ThExport-10003" lastPrice="27.9" supplierProductId="HDC-003" supplierProductName="Thai Handicraft Exports-Bamboo Lamp" availableFromDate="2009-09-25 00:00:00.000" canDropShip="Y"/>
+    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="USD" productId="ThExport-10004" lastPrice="69.3" supplierProductId="HDC-004" supplierProductName="Thai Handicraft Exports-Thai Royal Barge" availableFromDate="2009-09-25 00:00:00.000" canDropShip="Y"/>
+    
     <!-- Agricultural & Forestry category -->
     <DataResource dataResourceId="AGRICULTURALDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
     <DataResource dataResourceId="AGRICULTURALDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
@@ -344,25 +344,6 @@ under the License.
     <ContentAssoc contentId="HOUSEHOLDDESCEN" contentIdTo="HOUSEHOLDDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
     
     <!-- Product Name and Discription -->
-    <!-- BAL GANISH WOOD FRAME -->
-    <DataResource dataResourceId="BALGANISHEN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-14 17:43:37.64"/>
-    <DataResource dataResourceId="DRBALGANISHTH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_AVAILABLE" localeString="th" isPublic="Y" createdDate="2009-10-14 17:11:29.179"/>
-    <Content contentId="BALGANISHEN" contentTypeId="DOCUMENT" dataResourceId="BALGANISHEN" statusId="CTNT_IN_PROGRESS" description="Description Bal Ganish Teak Frame Eng" localeString="en" createdDate="2009-10-14 17:43:38.063"/>
-    <Content contentId="BALGANISHTH" contentTypeId="DOCUMENT" dataResourceId="DRBALGANISHTH" statusId="CTNT_IN_PROGRESS" description="Discripition Bal Ganish teak frame thai" localeString="th" createdDate="2009-10-14 17:08:36.928"/>
-    <ElectronicText dataResourceId="BALGANISHEN" textData="Bal Ganish made of rasin on the Teak Frame"/>
-    <ElectronicText dataResourceId="DRBALGANISHTH" textData="กรอบไม้สัก พระพิฆเนศทำด้วยเรซิน"/>
-    <ProductContent productId="BALGANISH" contentId="BALGANISHEN" productContentTypeId="DESCRIPTION" fromDate="2009-09-25 13:57:42.324"/>
-    <ContentAssoc contentId="BALGANISHEN" contentIdTo="BALGANISHTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-14 17:49:47.739"/>
-
-    <DataResource dataResourceId="PNAME_BALGANISH_EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:26:22.907"/>
-    <DataResource dataResourceId="PNAME_BALGANISH_TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="th" mimeTypeId="application/octet-stream" createdDate="2009-10-15 11:25:21.52"/>
-    <Content contentId="PNAME_BALGANISH_EN" contentTypeId="DOCUMENT" dataResourceId="PNAME_BALGANISH_EN" statusId="CTNT_IN_PROGRESS" localeString="en" createdDate="2009-10-15 11:26:23.397"/>
-    <Content contentId="PNAME_BALGANISH_TH" contentTypeId="DOCUMENT" dataResourceId="PNAME_BALGANISH_TH" statusId="CTNT_IN_PROGRESS" localeString="th" createdDate="2009-10-15 11:25:21.928"/>
-    <ElectronicText dataResourceId="PNAME_BALGANISH_EN" textData="Bal Ganish Teak Frame"/>
-    <ElectronicText dataResourceId="PNAME_BALGANISH_TH" textData="กรอบไม้สัก พระพิฆเนศ"/>
-    <ProductContent productId="BALGANISH" contentId="PNAME_BALGANISH_EN" productContentTypeId="PRODUCT_NAME" fromDate="2009-10-15 11:26:03.0"/>
-    <ContentAssoc contentId="PNAME_BALGANISH_EN" contentIdTo="PNAME_BALGANISH_TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-15 11:29:58.861" createdDate="2009-10-15 11:29:58.861"/>
-    
     <!-- Elephants Wood Crafts -->
     <DataResource dataResourceId="DRTHEX10001EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-14 17:43:37.64"/>
     <DataResource dataResourceId="DRTHEX10001TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_AVAILABLE" localeString="th" isPublic="Y" createdDate="2009-10-14 17:11:29.179"/>
