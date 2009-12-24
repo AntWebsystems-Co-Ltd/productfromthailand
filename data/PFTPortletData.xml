@@ -109,8 +109,8 @@ under the License.
     <PortalPagePortlet portalPageId="MYPORTAL_SUPPLIER4" portalPortletId="ListPurchaseOrders" portletSeqId="00001" columnSeqId="00001" sequenceNum="0"/>
 
     <!-- Portal Page for Marketing -->
-    <PortalPage portalPageId="MYPORTAL_MARKETING" sequenceNum="0" portalPageName="Main" description="The default OFBiz portal page for a suppliers" ownerUserLoginId="_NA_" securityGroupId="MYPORTAL_MARKETER"/>
-    <PortalPage portalPageId="MYPORTAL_MARKETING1" sequenceNum="100" portalPageName="Marketing Email" description="The OFBiz My Portal Marketing Email page" ownerUserLoginId="_NA_" parentPortalPageId="MYPORTAL_MARKETER"/>
+    <PortalPage portalPageId="MYPORTAL_MARKETING" sequenceNum="0" portalPageName="Main" description="The default OFBiz portal page for a marketings" ownerUserLoginId="_NA_" securityGroupId="MYPORTAL_MARKETER"/>
+    <PortalPage portalPageId="MYPORTAL_MARKETING1" sequenceNum="100" portalPageName="Marketing Email" description="The OFBiz My Portal Marketing Email page" ownerUserLoginId="_NA_" parentPortalPageId="MYPORTAL_MARKETING"/>
     
     <PortalPageColumn portalPageId="MYPORTAL_MARKETING" columnSeqId="00001" columnWidthPercentage="50"/>
     <PortalPageColumn portalPageId="MYPORTAL_MARKETING" columnSeqId="00002"/><!-- no width in pixels or percent, use the rest of the space available -->
