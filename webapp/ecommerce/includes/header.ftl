@@ -158,7 +158,7 @@ under the License.
                 <a href="<@ofbizUrl>view/showcart</@ofbizUrl>">${uiLabelMap.OrderViewCart}
                  <#if (shoppingCartSize > 0)>
                     <#-- show current currency -->
-                    <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.ofbiz.base.util.UtilMisc"].toMap("uomId", shoppingCart.getCurrency(), "uomIdTo", currencyUom, "userLogin", userLogin?default("defaultUserLogin")))/>
+                    <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.ofbiz.base.util.UtilMisc"].toMap("uomId", shoppingCart.getCurrency(), "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
                     <#assign conversionRate = rateResult.conversionRate>
                     <#assign grandTotal = shoppingCart.getGrandTotal()*conversionRate>
                        <span style="font-size:0.7em"> (${shoppingCart.getTotalQuantity()} : 
