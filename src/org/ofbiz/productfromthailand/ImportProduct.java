@@ -311,12 +311,12 @@ public class ImportProduct {
                         if("add".equals(actionField)){
                             if (!checkSupplierProductExists(productId, delegator)) {
                                 createSupplierProducts.add(prepareSupplierProduct(productId, supplierProductId, supplierPartyId, supplierPrice
-                                        , UtilDateTime.nowTimestamp(), actionField, BigDecimal.ZERO, "THB" , userLogin));
+                                        , UtilDateTime.nowTimestamp(), actionField, BigDecimal.ZERO, "USD" , userLogin));
                             }else{
                                 request.setAttribute("_ERROR_MESSAGE_", "Error setting SupplierProduct: "+ supplierProductId+ " already exists.");
                                 return "error";
                             }
-                            createProductPrices.add(prepareProductPrice(productId, price, now, "THB", "_NA_", actionField, userLogin));
+                            createProductPrices.add(prepareProductPrice(productId, price, now, "USD", "_NA_", actionField, userLogin));
                             
                             // create ProductContent for product name & description in Thai and Eng language
                             if(productName != null){

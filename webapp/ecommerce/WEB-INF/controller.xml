@@ -117,6 +117,11 @@ under the License.
         <security https="true" auth="true"/>
         <response name="success" type="view" value="orderview"/>
     </request-map>
+    <request-map uri="setCurrencyUom">
+        <security https="false" auth="false"/>
+        <response name="success" type="view-last" value="main"/>
+        <response name="error" type="view" value="main"/>
+    </request-map>
 
     <view-map name="orderview" type="screen" page="component://productfromthailand/widget/OrderViewScreens.xml#OrderHeaderView"/>
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>

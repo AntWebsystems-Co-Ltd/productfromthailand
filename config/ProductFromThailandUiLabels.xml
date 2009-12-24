@@ -205,4 +205,16 @@
         <value xml:lang="en">Recently Added Items</value>
         <value xml:lang="th">สินค้าใหม่ล่าสุด</value>
     </property>
+    <property key="PFTSelectOptions">
+        <value xml:lang="en">Select Options</value>
+        <value xml:lang="th">เลือกทางเลือก</value>
+    </property>
+    <property key="PFTSwitchCurrency">
+        <value xml:lang="en">Switch Currency</value>
+        <value xml:lang="th">เปลี่ยนสกุลเงิน</value>
+    </property>
+    <property key="PFTYourAccount">
+        <value xml:lang="en">Your Account</value>
+        <value xml:lang="th">บัญชีชองคุณ</value>
+    </property>
 </resource>

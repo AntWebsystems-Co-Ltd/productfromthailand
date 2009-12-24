@@ -64,8 +64,39 @@ under the License.
             <#if locale.toString() == "en_US">
                 <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img  src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
             </#if>
+            <script type="text/javascript">
+                function checkCurrency() {
+                   if (document.switchcurrencyform.newCurrency.value == 'NULL') {
+                       alert("Please select the required currency.");
+                       return;
+                   } else {
+                       document.switchcurrencyform.submit();
+                   }
+                }
+            </script>
+            <br/>
+            <form name="switchcurrencyform" action"<@ofbizUrl>setCurrencyUom</@ofbizUrl>" method="post">
+                ${uiLabelMap.PFTSwitchCurrency}
+                <select name="newCurrency" onChange="javascript:checkCurrency();">
+                    
+                    <option value="select" selected="selected">${uiLabelMap.PFTSelectOptions}</option>
+                    <#if currencyUom?exists>
+                        <option value="USD" <#if currencyUom == "USD">selected="selected"</#if>>United States Dollar</option>
+                        <option value="EUR" <#if currencyUom == "EUR">selected="selected"</#if>>Euro</option>
+                        <option value="THB" <#if currencyUom == "THB">selected="selected"</#if>>Thailand Baht</option>
+                    <#else>
+                       
+                       <option value="USD">United States Dollar</option>
+                       <option value="THB">Thailand Baht</option>
+                       <option value="THB">Euro</option>
+                    </#if>
+                </select>
+            <form>
+            <!--href="<@ofbizUrl>setSessionCurrencyUom</@ofbizUrl>?newCurrency=USD"><img  src="<@ofbizContentUrl>/pfdimages/EngFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
+            <a href="<@ofbizUrl>setSessionCurrencyUom</@ofbizUrl>?newCurrency=EUR"><img  src="<@ofbizContentUrl>/pfdimages/EngFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
+            <a href="<@ofbizUrl>setSessionCurrencyUom</@ofbizUrl>?newCurrency=THB"><img  src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a-->
         </div>
-        <div style="height:35px;padding-top:5px;">
+        <div style="height:12px;">
            <#assign shoppingCart = sessionAttributes.shoppingCart?if_exists>
            <#if shoppingCart?has_content>
                 <#assign shoppingCartSize = shoppingCart.size()>
@@ -83,11 +114,11 @@ under the License.
                 <#--li id="header-bar-sitemap"><a href="<@ofbizUrl>sitemap</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSitemap}</div></a></li-->
                 <li id="header-bar-help"><a href="<@ofbizUrl>help</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTHelpAndInstruction}</div></a></li>
               <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
-	              <#if security.hasEntityPermission("MYPORTAL", "_SUPPLIER", session)>
-	                <li id="header-bar-store"><a href="<@ofbizUrl>../../myportal</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTStoreManagement}</div></a></li>
+                  <#if security.hasEntityPermission("MYPORTAL", "_SUPPLIER", session)>
+                    <li id="header-bar-store"><a href="<@ofbizUrl>../../myportal</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTStoreManagement}</div></a></li>
                   <#else>
                     <li id="header-bar-account"><a href="<@ofbizUrl>viewprofile</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTYourAccount}</div></a></li>
-	              </#if>
+                  </#if>
                 <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><div class="menu-right">${uiLabelMap.CommonLogout}</div></a></li>
               <#else/>
                 <li id="header-bar-login">
@@ -126,9 +157,14 @@ under the License.
                 <li class="headermenu" <#if headerId?if_exists == "showcart">id="${headerId}"</#if> >
                 <a href="<@ofbizUrl>view/showcart</@ofbizUrl>">${uiLabelMap.OrderViewCart}
                  <#if (shoppingCartSize > 0)>
+                    <#-- show current currency -->
+                    <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.ofbiz.base.util.UtilMisc"].toMap("uomId", shoppingCart.getCurrency(), "uomIdTo", currencyUom, "userLogin", userLogin?default("defaultUserLogin")))/>
+                    <#assign conversionRate = rateResult.conversionRate>
+                    <#assign grandTotal = shoppingCart.getGrandTotal()*conversionRate>
                        <span style="font-size:0.7em"> (${shoppingCart.getTotalQuantity()} : 
                         <#if shoppingCart.getTotalQuantity() == 1>${uiLabelMap.OrderItem}<#else/>${uiLabelMap.OrderItems}</#if>,
-                        <@ofbizCurrency amount=shoppingCart.getGrandTotal() isoCode=shoppingCart.getCurrency()/>
+                        <#--@ofbizCurrency amount=shoppingCart.getGrandTotal() isoCode=shoppingCart.getCurrency()/-->
+                        <@ofbizCurrency amount=grandTotal isoCode=currencyUom/>
                         )</span>
                  </#if>
                 </a>

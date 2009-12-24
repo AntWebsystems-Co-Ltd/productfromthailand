@@ -31,6 +31,8 @@ import org.ofbiz.product.config.ProductConfigWorker;
 import org.ofbiz.product.catalog.*;
 import org.ofbiz.product.store.*;
 import org.ofbiz.order.shoppingcart.*;
+import java.math.BigDecimal;
+import org.ofbiz.base.util.UtilNumber;
 
 
 //either optProduct, optProductId or productId must be specified
@@ -108,7 +110,25 @@ if (product) {
 
         context.price = priceMap;
     }
+    // get current currenct
+    if(userLogin == null){
+        userLogin = delegator.findByPrimaryKeyCache("UserLogin", [userLoginId : "system"]);
+    }
+    decimals = UtilNumber.getBigDecimalScale("invoice.decimals");
+    rounding = UtilNumber.getBigDecimalRoundingMode("invoice.rounding");
 
+    if(currencyUom.equals(priceMap.currencyUsed)){
+        currentPrice = priceMap.price;
+        conversionRate = new BigDecimal(1);
+    }else{
+        results = dispatcher.runSync("getFXConversion", [uomId : priceMap.currencyUsed, uomIdTo : currencyUom, userLogin : userLogin]);
+        conversionRate = results.get("conversionRate");
+        BigDecimal price = priceMap.price;
+        currentPrice = price.multiply(conversionRate).setScale(decimals, rounding);
+    }
+    context.conversionRate = conversionRate;
+    context.currentPrice = currentPrice;
+    
     // get aggregated product totalPrice
     if ("AGGREGATED".equals(product.productTypeId)) {
         configWrapper = ProductConfigWorker.getProductConfigWrapper(productId, cart.getCurrency(), request);

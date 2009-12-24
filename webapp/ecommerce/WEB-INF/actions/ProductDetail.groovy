@@ -151,7 +151,7 @@ if (product) {
         wrapper = new ProductStoreSurveyWrapper(survey, surveyPartyId, surveyContext);
         context.surveyWrapper = wrapper;
     }
-
+    
     // get the product price
     catalogId = CatalogWorker.getCurrentCatalogId(request);
     currentCatalogId = catalogId;
@@ -175,7 +175,24 @@ if (product) {
         priceMap = dispatcher.runSync("calculatePurchasePrice", priceContext);
         context.priceMap = priceMap;
     }
-
+    //  get current currenct
+    if(userLogin == null){
+        userLogin = delegator.findByPrimaryKeyCache("UserLogin", [userLoginId : "system"]);
+    }
+    decimals = UtilNumber.getBigDecimalScale("invoice.decimals");
+    rounding = UtilNumber.getBigDecimalRoundingMode("invoice.rounding");
+    if(currencyUom.equals(priceMap.currencyUsed)){
+        currentPrice = priceMap.price;
+        conversionRate = new BigDecimal(1);
+    }else{
+        results = dispatcher.runSync("getFXConversion", [uomId : priceMap.currencyUsed, uomIdTo : currencyUom, userLogin : userLogin]);
+        conversionRate = results.get("conversionRate");
+        BigDecimal price = priceMap.price;
+        currentPrice = price.multiply(conversionRate).setScale(decimals, rounding);
+    }
+    context.conversionRate = conversionRate;
+    context.currentPrice = currentPrice;
+    
     // get the product review(s)
     reviewByAnd = [statusId : "PRR_APPROVED", productStoreId : productStoreId];
     reviews = product.getRelatedCache("ProductReview", reviewByAnd, ["-postedDateTime"]);
