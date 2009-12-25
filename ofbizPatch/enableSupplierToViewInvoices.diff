@@ -1,0 +1,12 @@
+Index: applications/accounting/widget/InvoiceScreens.xml
+===================================================================
+--- applications/accounting/widget/InvoiceScreens.xml	(revision 891160)
++++ applications/accounting/widget/InvoiceScreens.xml	(working copy)
+@@ -573,6 +573,7 @@
+                         <condition-expr field-name="partyIdFrom" operator="equals" from-field="myCompanyId"/>
+                         <condition-expr field-name="invoiceTypeId" operator="equals" value="PURCHASE_INVOICE"/>
+                         <condition-list combine="or">
++                            <condition-expr field-name="statusId" operator="equals" value="INVOICE_IN_PROCESS"/>
+                             <condition-expr field-name="statusId" operator="equals" value="INVOICE_APPROVED"/>
+                             <condition-expr field-name="statusId" operator="equals" value="INVOICE_SENT"/>
+                             <condition-expr field-name="statusId" operator="equals" value="INVOICE_READY"/>

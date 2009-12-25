@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
 -->
 <#if product?exists>
-    <#assign productUrl = Static["org.ofbiz.product.category.CatalogUrlServlet"].makeCatalogUrl(request, product.productId, product.primaryProductCategoryId,"")/>
+    <#assign productUrl = Static["org.ofbiz.product.category.CatalogUrlServlet"].makeCatalogUrl(request, product.productId, categoryId,"")/>
 <div class="recentproduct">
     <div class="recentproductimage">
         <#if product.smallImageUrl?exists>

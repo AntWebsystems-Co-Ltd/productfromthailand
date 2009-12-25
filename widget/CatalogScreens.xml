@@ -139,7 +139,22 @@ under the License.
             </widgets>
         </section>
     </screen>
-
+    <screen name="recentlyproducts">
+        <section>
+            <actions>
+                <entity-condition entity-name="Product" list="productlist">
+                    <condition-list combine="and">
+                        <condition-expr field-name="productTypeId" value="FINISHED_GOOD"/>
+                        <condition-expr field-name="createdDate" operator="not-equals" value="${nullValue}"/>
+                    </condition-list><order-by field-name="createdDate DESC"/>
+                </entity-condition>
+                <set field="recentlyproductScreen" value="component://productfromthailand/widget/CatalogScreens.xml#recentlyproductScreen"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/recentlyproducts.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
     <screen name="recentlyproductScreen">
         <section>
             <actions>
@@ -147,6 +162,10 @@ under the License.
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
                 <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/ProductSummary.groovy"/>
+                <entity-and entity-name="ProductCategoryMember" list="prodCatMembers">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <set field="categoryId" from-field="prodCatMembers[0].productCategoryId"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/recentproduct.ftl"/></html></platform-specific>
@@ -481,23 +500,6 @@ under the License.
         </section>
     </screen>
     
-    <screen name="recentlyproducts">
-        <section>
-            <actions>
-                <entity-condition entity-name="Product" list="productlist">
-                    <condition-list combine="and">
-                        <condition-expr field-name="productTypeId" value="FINISHED_GOOD"/>
-                        <condition-expr field-name="createdDate" operator="not-equals" value="${nullValue}"/>
-                    </condition-list><order-by field-name="createdDate DESC"/>
-                </entity-condition>
-                <set field="recentlyproductScreen" value="component://productfromthailand/widget/CatalogScreens.xml#recentlyproductScreen"/>
-                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/ProductSummary.groovy"/>
-            </actions>
-            <widgets>
-                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/recentlyproducts.ftl"/></html></platform-specific>
-            </widgets>
-        </section>
-    </screen>
     <!-- Portlet screen -->
     <screen name="MyProducts">
         <section>
