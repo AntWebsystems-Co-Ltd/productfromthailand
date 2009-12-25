@@ -122,6 +122,18 @@ under the License.
         <response name="success" type="view-last" value="main"/>
         <response name="error" type="view" value="main"/>
     </request-map>
+    
+    <request-map uri="checkouterror">
+        <security https="true" auth="true"/>
+        <event type="java" path="org.ofbiz.order.shoppingcart.CheckOutEvents" invoke="setCheckOutError"/>
+        <response name="shippingaddress" type="view" value="checkoutshippingaddress"/>
+        <response name="shippingoptions" type="view" value="checkoutshippingoptions"/>
+        <response name="payment" type="view" value="checkoutpayment"/>
+        <response name="confirm" type="request" value="calcShipping"/>
+        <response name="quick" type="view" value="quickcheckout"/>
+        <response name="error" type="view" value="quickcheckout"/>
+        <response name="success" type="view" value="checkoutshippingaddress"/>
+    </request-map>
 
     <view-map name="orderview" type="screen" page="component://productfromthailand/widget/OrderViewScreens.xml#OrderHeaderView"/>
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
@@ -182,4 +194,7 @@ under the License.
     
     <view-map name="uploadproducts" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#uploadproducts"/>
     
+    <!-- PDFs  -->
+    <view-map name="OrderPDF" type="screenfop" page="component://productfromthailand/widget/OrderScreens.xml#OrderPDF" content-type="application/pdf" encoding="none"/>
+    <view-map name="InvoicePDF" type="screenfop" page="component://productfromthailand/widget/OrderScreens.xml#InvoicePDF" content-type="application/pdf" encoding="none"/>
 </site-conf>

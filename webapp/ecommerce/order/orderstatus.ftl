@@ -23,7 +23,7 @@ under the License.
     <input type="hidden" name="orderId" value="${orderHeader.orderId}">
     ${screens.render("component://ecommerce/widget/OrderScreens.xml#orderheader")}
     <br/>
-    ${screens.render("component://ecommerce/widget/OrderScreens.xml#orderitems")}
+    ${screens.render("component://productfromthailand/widget/OrderScreens.xml#orderitems")}
   </form>
 
 <#else>

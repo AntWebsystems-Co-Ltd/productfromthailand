@@ -20,7 +20,7 @@ under the License.
 <#if !isDemoStore?exists || isDemoStore><p>${uiLabelMap.OrderDemoFrontNote}.</p></#if>
 <#if orderHeader?has_content>
   ${screens.render("component://ecommerce/widget/OrderScreens.xml#orderheader")}
-  ${screens.render("component://ecommerce/widget/OrderScreens.xml#orderitems")}
+  ${screens.render("component://productfromthailand/widget/OrderScreens.xml#orderitems")}
   <a href="<@ofbizUrl>main</@ofbizUrl>" class="buttontextbig">${uiLabelMap.EcommerceContinueShopping}</a>
   <a href="<@ofbizUrl>main</@ofbizUrl>" class="buttontextbig">${uiLabelMap.EcommerceContinueShopping}</a>
 <#else>

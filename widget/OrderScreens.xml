@@ -167,4 +167,126 @@
             </widgets>
         </section>
     </screen>
+    
+    <screen name="orderitems">
+        <section>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/order/orderitems.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <!-- generate a PDF for the order, sharing the same BSH file as the HTML page for viewing the order -->
+    <screen name="OrderPDF">
+        <section>
+            <actions>
+                <set field="titleProperty" value="OrderOrder"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/order/OrderView.groovy"/>
+                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/PFTSetup.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="FoReportDecorator" location="component://common/widget/CommonScreens.xml">
+                    <!-- at the top left of every page we put the logo and company information -->
+                    <decorator-section name="topLeft">
+                        <section>
+                            <widgets>
+                                <include-screen name="CompanyLogo" location="component://order/widget/ordermgr/OrderPrintScreens.xml"/>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                    <!-- at the top right of every page we put the order information -->
+                    <decorator-section name="topRight">
+                        <section>
+                            <widgets>
+                                <platform-specific>
+                                    <xsl-fo><html-template location="component://order/webapp/ordermgr/order/orderReportHeaderInfo.fo.ftl"/></xsl-fo>
+                                </platform-specific>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+                                <!-- the contach mechanisms, terms, payment and shipping methods are shown in the first page -->
+                                <platform-specific>
+                                    <xsl-fo><html-template location="component://order/webapp/ordermgr/order/orderReportContactMechs.fo.ftl"/></xsl-fo>
+                                </platform-specific>
+                                <!-- order items and totals -->
+                                <platform-specific>
+                                    <xsl-fo><html-template location="component://productfromthailand/webapp/ecommerce/order/orderReportBody.fo.ftl"/></xsl-fo>
+                                </platform-specific>
+                                <!-- return policies and notes are shown in the last page -->
+                                <platform-specific>
+                                    <xsl-fo><html-template location="component://order/webapp/ordermgr/order/orderReportConditions.fo.ftl"/></xsl-fo>
+                                </platform-specific>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="InvoicePDF">
+        <section>
+            <actions>
+                <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="AccountingInvoice"/>
+                <script location="component://accounting/webapp/accounting/WEB-INF/actions/invoice/EditInvoice.groovy"/>
+                <script location="component://party/webapp/partymgr/WEB-INF/actions/party/GetMyCompany.groovy"/>
+                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/PFTSetup.groovy"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <or>
+                            <if-has-permission permission="ACCOUNTING" action="_VIEW"/>
+                            <!-- can always see own invoice -->
+                            <if-compare field="invoice.partyIdFrom" operator="equals" value="${userLogin.partyId}"/>
+                            <if-compare field="invoice.partyId" operator="equals" value="${userLogin.partyId}"/>
+                            <!-- or is a contact of a company who owns the invoice-->
+                            <if-compare field="invoice.partyIdFrom" operator="equals" value="${myCompanyId}"/>
+                            <if-compare field="invoice.partyId" operator="equals" value="${myCompanyId}"/>
+                        </or>
+                    </condition>
+                    <widgets>
+                        <decorator-screen name="FoReportDecorator" location="component://common/widget/CommonScreens.xml">
+                            <decorator-section name="topLeft">
+                                <include-screen name="CompanyLogo" location="component://order/widget/ordermgr/OrderPrintScreens.xml"/>
+                            </decorator-section>
+                            <decorator-section name="topRight">
+                                <platform-specific>
+                                    <xsl-fo><html-template location="component://accounting/webapp/accounting/invoice/invoiceReportHeaderInfo.fo.ftl"/></xsl-fo>
+                                </platform-specific>
+                            </decorator-section>
+                            <decorator-section name="body">
+                                <platform-specific>
+                                    <xsl-fo><html-template location="component://accounting/webapp/accounting/invoice/invoiceReportContactMechs.fo.ftl"/></xsl-fo>
+                                </platform-specific>
+                                <platform-specific>
+                                    <xsl-fo><html-template location="component://productfromthailand/webapp/ecommerce/invoice/invoiceReportItems.fo.ftl"/></xsl-fo>
+                                </platform-specific>
+                            </decorator-section>
+                        </decorator-screen>
+                    </widgets>
+                    <fail-widgets>
+                        <decorator-screen name="FoReportDecorator" location="component://common/widget/CommonScreens.xml">
+                            <decorator-section name="body">
+                                <platform-specific>
+                                    <xsl-fo><html-template location="component://accounting/webapp/accounting/invoice/NoAccountingView.fo.ftl"/></xsl-fo>
+                                </platform-specific>
+                            </decorator-section>
+                        </decorator-screen>
+                    </fail-widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
 </screens>

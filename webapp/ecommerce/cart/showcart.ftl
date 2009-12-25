@@ -156,7 +156,7 @@ function setAlternateGwp(field) {
         </div>
 <div>
   <#if (shoppingCartSize > 0)>
-    <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.ofbiz.base.util.UtilMisc"].toMap("uomId", shoppingCart.getCurrency(), "uomIdTo", currencyUom, "userLogin", userLogin))/>
+    <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.ofbiz.base.util.UtilMisc"].toMap("uomId", shoppingCart.getCurrency(), "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
     <#assign conversionRate = rateResult.conversionRate>
     <form method="post" action="<@ofbizUrl>modifycart</@ofbizUrl>" name="cartform" >
       <fieldset>

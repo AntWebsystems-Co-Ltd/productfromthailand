@@ -46,4 +46,4 @@ session.setAttribute("currencyUom", currencyUom);
 globalContext.currencyUom = currencyUom;
 
 if(userLogin == null)
-    context.defaultUserLogin = delegator.findByPrimaryKeyCache("UserLogin", [userLoginId : "system"]);
+	globalContext.defaultUserLogin = delegator.findByPrimaryKeyCache("UserLogin", [userLoginId : "system"]);

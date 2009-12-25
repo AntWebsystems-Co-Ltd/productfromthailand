@@ -106,10 +106,12 @@ under the License.
         <#if orderHeaderList?has_content>
           <#list orderHeaderList as orderHeader>
             <#assign status = orderHeader.getRelatedOneCache("StatusItem") />
+            <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.ofbiz.base.util.UtilMisc"].toMap("uomId", orderHeader.currencyUom, "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
+            <#assign conversionRate = rateResult.conversionRate>
             <tr>
               <td>${orderHeader.orderDate.toString()}</td>
               <td>${orderHeader.orderId}</td>
-              <td><@ofbizCurrency amount=orderHeader.grandTotal isoCode=orderHeader.currencyUom /></td>
+              <td><@ofbizCurrency amount=orderHeader.grandTotal*conversionRate isoCode=currencyUom /></td>
               <td>${status.get("description",locale)}</td>
               <#-- invoices -->
               <#assign invoices = delegator.findByAnd("OrderItemBilling", Static["org.ofbiz.base.util.UtilMisc"].toMap("orderId", "${orderHeader.orderId}"), Static["org.ofbiz.base.util.UtilMisc"].toList("invoiceId")) />
