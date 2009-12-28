@@ -65,7 +65,8 @@ under the License.
                 <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img  src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
             </#if>
             <script type="text/javascript">
-                function checkCurrency() {
+                function checkCurrency(newCurrency) {
+                   document.switchcurrencyform.newCurrency.value = newCurrency;
                    if (document.switchcurrencyform.newCurrency.value == 'NULL') {
                        alert("Please select the required currency.");
                        return;
@@ -75,26 +76,20 @@ under the License.
                 }
             </script>
             <br/>
-            <form name="switchcurrencyform" action"<@ofbizUrl>setCurrencyUom</@ofbizUrl>" method="post">
+            <form name="switchcurrencyform" action"<@ofbizUrl>setCurrencyUom</@ofbizUrl>" method="post" style="margin-top: 5px;">
                 ${uiLabelMap.PFTSwitchCurrency}
-                <select name="newCurrency" onChange="javascript:checkCurrency();">
-                    
-                    <option value="select" selected="selected">${uiLabelMap.PFTSelectOptions}</option>
-                    <#if currencyUom?exists>
-                        <option value="USD" <#if currencyUom == "USD">selected="selected"</#if>>United States Dollar</option>
-                        <option value="EUR" <#if currencyUom == "EUR">selected="selected"</#if>>Euro</option>
-                        <option value="THB" <#if currencyUom == "THB">selected="selected"</#if>>Thailand Baht</option>
-                    <#else>
-                       
-                       <option value="USD">United States Dollar</option>
-                       <option value="THB">Thailand Baht</option>
-                       <option value="THB">Euro</option>
-                    </#if>
-                </select>
+                <input type="hidden" name="newCurrency"/>
+                <#if currencyUom == "USD">
+                    <a href="javascript:checkCurrency('EUR');"><img src="<@ofbizContentUrl>/pfdimages/EU_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Euro"></a>
+                    <a href="javascript:checkCurrency('THB');"><img src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Thailand Baht"></a>
+                <#elseif currencyUom == "EUR">
+                    <a href="javascript:checkCurrency('USD');"><img src="<@ofbizContentUrl>/pfdimages/USA_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="United States Dollar"></a>
+                    <a href="javascript:checkCurrency('THB');"><img src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Thailand Baht"></a>
+                <#elseif currencyUom == "THB">
+                    <a href="javascript:checkCurrency('USD');"><img src="<@ofbizContentUrl>/pfdimages/USA_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="United States Dollar"></a>
+                    <a href="javascript:checkCurrency('EUR');"><img src="<@ofbizContentUrl>/pfdimages/EU_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Euro"></a>
+                </#if>
             <form>
-            <!--href="<@ofbizUrl>setSessionCurrencyUom</@ofbizUrl>?newCurrency=USD"><img  src="<@ofbizContentUrl>/pfdimages/EngFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
-            <a href="<@ofbizUrl>setSessionCurrencyUom</@ofbizUrl>?newCurrency=EUR"><img  src="<@ofbizContentUrl>/pfdimages/EngFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
-            <a href="<@ofbizUrl>setSessionCurrencyUom</@ofbizUrl>?newCurrency=THB"><img  src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a-->
         </div>
         <div style="height:12px;">
            <#assign shoppingCart = sessionAttributes.shoppingCart?if_exists>
