@@ -1,0 +1,78 @@
+Index: applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java
+===================================================================
+--- applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java	(revision 891160)
++++ applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java	(working copy)
+@@ -251,7 +251,38 @@
+         // if supplierProduct has no supplierProductName, use the regular supplierProductId
+         if (supplierProduct != null) {
+             newItem.setName(getPurchaseOrderItemDescription(product, supplierProduct, cart.getLocale()));
+-            newItem.setBasePrice(supplierProduct.getBigDecimal("lastPrice"));
++            //  newItem.setBasePrice(supplierProduct.getBigDecimal("lastPrice"));
++            Map priceContext = FastMap.newInstance();
++            priceContext.put("currencyUomId", cart.getCurrency());
++
++            String partyId = cart.getPartyId();
++            if (partyId != null) {
++                priceContext.put("partyId", partyId);
++            }
++            priceContext.put("product", product);
++            priceContext.put("webSiteId", cart.getWebSiteId());
++            priceContext.put("productStoreId", cart.getProductStoreId());
++            priceContext.put("agreementId", cart.getAgreementId());
++            priceContext.put("productPricePurposeId", "PURCHASE");
++            priceContext.put("checkIncludeVat", "Y");
++
++            try {
++                Map priceResult = dispatcher.runSync("calculateProductPrice", priceContext);
++                if (ServiceUtil.isError(priceResult)) {
++                    throw new CartItemModifyException("There was an error while calculating the price: " + ServiceUtil.getErrorMessage(priceResult));
++                }
++
++                Boolean validPriceFound = (Boolean) priceResult.get("validPriceFound");
++                if (Boolean.FALSE.equals(validPriceFound)) {
++                    throw new CartItemModifyException("Could not find a valid price for the product with ID [" + product.get("productId") + "], not adding to cart.");
++                }
++
++                if (priceResult.get("basePrice") != null) {
++                    newItem.setBasePrice(((BigDecimal) priceResult.get("basePrice")));
++                }
++            }catch (GenericServiceException e) {
++                Debug.logError(e, "Unable to get product price from product : " + product.get("productId"), module);
++            }
+         } else {
+             newItem.setName(product.getString("internalName"));
+         }
+Index: applications/order/src/org/ofbiz/order/order/OrderServices.java
+===================================================================
+--- applications/order/src/org/ofbiz/order/order/OrderServices.java	(revision 891160)
++++ applications/order/src/org/ofbiz/order/order/OrderServices.java	(working copy)
+@@ -4563,7 +4563,29 @@
+                             CheckOutHelper coh = new CheckOutHelper(dispatcher, delegator, cart);
+                             Map resultOrderMap = coh.createOrder(userLogin);
+                             String purchaseOrderId = (String)resultOrderMap.get("orderId");
++                            
++                            // create OrderAdjustment for service charge 7% of grand total
++                            OrderReadHelper orderReadHelper = new OrderReadHelper(delegator, purchaseOrderId);
++                            BigDecimal grandTotal = orderReadHelper.getOrderGrandTotal();
++                            BigDecimal surcharge = grandTotal.multiply(new BigDecimal("7")).divide(new BigDecimal("100"), orderDecimals, orderRounding);
+ 
++                            if (grandTotal.compareTo(new BigDecimal("0")) != 0) {
++                                Map<String, Object> createOrderAdjustmentContext = FastMap.newInstance();
++                                createOrderAdjustmentContext.put("orderId", purchaseOrderId);
++                                createOrderAdjustmentContext.put("orderAdjustmentTypeId", "SURCHARGE_ADJUSTMENT");
++                                createOrderAdjustmentContext.put("description", "Surcharge 7% for Order #" + purchaseOrderId);
++                                createOrderAdjustmentContext.put("amount", surcharge.negate());
++                                createOrderAdjustmentContext.put("userLogin", userLogin);
++                                String shippingOrderAdjustmentId = null;
++                                try {
++                                    Map<String, Object> createOrderAdjustmentResult = dispatcher.runSync("createOrderAdjustment", createOrderAdjustmentContext);
++                                    shippingOrderAdjustmentId = (String) createOrderAdjustmentResult.get("orderAdjustmentId");
++                                } catch (GenericServiceException e) {
++                                    String errMsg = "Trouble calling createOrderAdjustment service";
++                                    Debug.logError(e, errMsg, module);
++                                    return ServiceUtil.returnError(errMsg);
++                                }
++                            }
+                             // TODO: associate the new purchase order with the sales order (ship group)
+                         } else {
+                             // if there are no items to drop ship, then clear out the supplier partyId
