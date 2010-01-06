@@ -216,7 +216,7 @@
     
     <!--<ProductStoreFacility productStoreId="PFTSTORE" facilityId="pftWarehouse" fromDate="2009-09-25 10:38:07.561"/>-->
     <!--<ProductStoreCatalog productStoreId="PFTSTORE" prodCatalogId="DemoCatalog" fromDate="2009-09-25 10:38:07.561"/>-->
-    <WebSite webSiteId="ProductFromThailand" siteName="Product from Thailand website" visualThemeSetId="ECOMMERCE" productStoreId="PFTSTORE"/>
+    <WebSite webSiteId="ProductFromThailand" siteName="Product from Thailand website" standardContentPrefix="http://www.productfromthailand.com" visualThemeSetId="ECOMMERCE" productStoreId="PFTSTORE"/>
 
     <!--<ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_BILLACT" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
     <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_COD" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
@@ -371,4 +371,8 @@
     <UomConversionDated uomId="EUR" uomIdTo="THB" fromDate="2001-01-01 00:00:00.0" conversionFactor="0.02"/>
     <UomConversionDated uomId="THB" uomIdTo="USD" fromDate="2001-01-01 00:00:00.0" conversionFactor="35"/>
     <UomConversionDated uomId="THB" uomIdTo="EUR" fromDate="2001-01-01 00:00:00.0" conversionFactor="54"/>
+    
+    <!-- Google Base Configuration Data -->
+    <WebSite webSiteId="GOOGLEBASE" standardContentPrefix="http://www.productfromthailand.com" productStoreId="PFTSTORE"/>
+    <GoogleBaseConfig productStoreId="PFTSTORE" developerKey="ABQIAAAAtllOIMnA_SSaX6-q_-0NqBQ7yogk7ltS6O8c1NB_asTLHULnfxRsRVBa5bgcryXeo0AOht5OtQ78_Q" authenticationUrl="https://www.google.com/accounts/ClientLogin" accountEmail="admin@productfromthailand.com" accountPassword="pft44444" postItemsUrl="http://www.google.com/base/feeds/items/batch" webSiteId="ProductFromThailand"/>
 </entity-engine-xml>
