@@ -89,7 +89,7 @@ under the License.
                     <a href="javascript:checkCurrency('USD');"><img src="<@ofbizContentUrl>/pfdimages/USA_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="United States Dollar"></a>
                     <a href="javascript:checkCurrency('EUR');"><img src="<@ofbizContentUrl>/pfdimages/EU_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Euro"></a>
                 </#if>
-            <form>
+            </form>
         </div>
         <div style="height:12px;">
            <#assign shoppingCart = sessionAttributes.shoppingCart?if_exists>
