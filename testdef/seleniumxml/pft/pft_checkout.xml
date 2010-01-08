@@ -1,0 +1,25 @@
+<testcase>
+    <open value="/pft/control/logout" />
+    <open value="/pft/control/main"/>
+    <waitForPageToLoad value="10000"/>
+    <click locator="link=Furnitures &amp; Decorations"/>
+    <waitForPageToLoad value="10000"/>
+    <click locator="//div[@id='ecom-mainarea']/div[2]/div[3]/table/tbody/tr[1]/td[2]/div/div[3]/form/a"/>
+    <waitForPageToLoad value="10000"/>
+    <click locator="//div[@id='ecom-mainarea']/div[2]/div[3]/table/tbody/tr[1]/td[3]/div/div[3]/form/a"/>
+    <waitForPageToLoad value="10000"/>
+    <click locator="//ul[@id='left-links']/li/a"/>
+    <waitForPageToLoad value="10000"/>
+    <click locator="//div[@id='ecom-mainarea']/div[2]/div[2]/div[1]/div/a[4]"/>
+    <waitForPageToLoad value="10000"/>
+    <type name="userName" value="tuktuk"/>
+    <type name="password" value="111111"/>
+    <click locator="//input[@value='Login']"/>
+    <waitForPageToLoad value="10000"/>
+    <click locator="shipping_contact_mech_id"/>
+    <click locator="//input[@name='checkOutPaymentId' and @value='10010']"/>
+    <click locator="link=Continue to Final Order Review"/>
+    <waitForPageToLoad value="10000"/>
+    <click locator="processButton"/>
+    <waitForPageToLoad value="10000"/>
+</testcase>

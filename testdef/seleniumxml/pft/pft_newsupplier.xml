@@ -1,0 +1,23 @@
+<testcase>
+    <open value="/pft/control/logout" />
+    <open value="/pft/control/main"/>
+    <waitForPageToLoad value="10000"/>
+    <click locator="//li[@id='header-bar-login']/a[2]/div"/>
+    <waitForPageToLoad value="10000"/>
+    <click locator="//div[@id='rightblock']/fieldset/div/a"/>
+    <waitForPageToLoad value="10000"/>
+    <type name="groupName" value="AT cosmatic"/>
+    <type name="username" value="atcosmatic"/>
+    <type name="password" value="111111"/>
+    <type name="passwordVerify" value="111111"/>
+    <type name="emailAddress" value="atcosmatic@gmail.com"/>
+    <type name="shipToAddress1" value="233"/>
+    <type name="shipToCity" value="Chiang Mai"/>
+    <type name="shipToPostalCode" value="51000"/>
+    <select locator="customerCountry" option="label=Thailand"/>
+    <click locator="//option[@value='THA']"/>
+    <type name="SUPPLIER_HOME_COUNTRY" value="+66"/>
+    <type name="SUPPLIER_HOME_AREA" value="53"/>
+    <type name="SUPPLIER_HOME_CONTACT" value="12345678"/>
+    <click locator="submitnewuserform"/>
+</testcase>

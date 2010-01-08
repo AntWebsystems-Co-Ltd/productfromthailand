@@ -421,4 +421,6 @@ under the License.
     <ProductContent productId="ThExport-10004" contentId="PNAME_THEX10004EN" productContentTypeId="PRODUCT_NAME" fromDate="2009-10-15 11:26:03.0"/>
     <ContentAssoc contentId="PNAME_THEX10004EN" contentIdTo="PNAME_THEX10004TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-15 11:29:58.861" createdDate="2009-10-15 11:29:58.861"/>
     
+    <!-- example test suite -->
+    <SeleniumTestSuitePath testSuiteId="PFT_TESTSUITE" testSuiteName="pft_testsuite" testSuitePath="productfromthailand/testdef/seleniumxml/pft/pft_testsuite.xml" description="test suite for productfromthailand component"/>
 </entity-engine-xml>

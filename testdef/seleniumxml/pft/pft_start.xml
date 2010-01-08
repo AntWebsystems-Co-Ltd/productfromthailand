@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<testcase>
+    <open value="/pft/control/logout"/>
+</testcase>

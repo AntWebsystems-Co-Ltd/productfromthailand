@@ -1,0 +1,24 @@
+<testcase>
+    <open value="/pft/control/logout" />
+    <open value="/pft/control/main"/>
+    <waitForPageToLoad value="10000"/>
+    <click locator="//li[@id='header-bar-login']/a[2]/div"/>
+    <waitForPageToLoad value="10000"/>
+    <click locator="//a[contains(text(),'Register')]"/>
+    <waitForPageToLoad value="10000"/>
+    <type name="USER_FIRST_NAME" value="Supatthra"/>
+    <type name="USER_LAST_NAME" value="st"/>
+    <type name="CUSTOMER_ADDRESS1" value="155"/>
+    <type name="CUSTOMER_CITY" value="Chiangmai"/>
+    <type name="CUSTOMER_POSTAL_CODE" value="51130"/>
+    <select locator="customerCountry" option="label=Thailand"/>
+    <click locator="//option[@value='THA']"/>
+    <type name="CUSTOMER_HOME_COUNTRY" value="+66"/>
+    <type name="CUSTOMER_HOME_AREA" value="53"/>
+    <type name="CUSTOMER_HOME_CONTACT" value="578233"/>
+    <type name="CUSTOMER_EMAIL" value="tuk@gmail.com"/>
+    <type name="USERNAME" value="tuktuk"/>
+    <type name="PASSWORD" value="111111"/>
+    <type name="CONFIRM_PASSWORD" value="111111"/>
+    <click locator="link=Save"/>
+</testcase>

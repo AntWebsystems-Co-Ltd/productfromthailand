@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testcase>
+    <setSpeed value="500" />
+    <windowMaximize />
+    <testcase file="pft_start.xml"/>
+    <testcase file="pft_login.xml"/>
+    <testcase file="pft_searchproduct.xml"/>
+    <testcase file="pft_newcustomer.xml"/>
+    <testcase file="pft_newsupplier.xml"/>
+    <testcase file="pft_checkout.xml"/>
+</testcase>
