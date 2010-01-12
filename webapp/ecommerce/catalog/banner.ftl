@@ -1,5 +1,5 @@
 <#if parameters._CURRENT_VIEW_=="main">
 <div class="banner">
-    <img src="<@ofbizContentUrl>/pft/images/banner.jpg</@ofbizContentUrl>" />
+    <a href="${Static["org.ofbiz.product.category.CatalogUrlServlet"].makeCatalogUrl(request, "", "THAISILK", "")}"><img src="<@ofbizContentUrl>/pft/images/banner.jpg</@ofbizContentUrl>" /></a>
 </div>
 </#if>

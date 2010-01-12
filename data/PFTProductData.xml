@@ -48,6 +48,7 @@ under the License.
     <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="FURNITURE" productCategoryTypeId="CATALOG_CATEGORY"/>
     <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="HEALTH" productCategoryTypeId="CATALOG_CATEGORY"/>
     <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="HOUSEHOLD" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="THAISILK" productCategoryTypeId="CATALOG_CATEGORY"/>
     
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="AGRICULTURAL" sequenceNum="1"/>
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="AUTOMOBILE" sequenceNum="2"/>
@@ -65,6 +66,7 @@ under the License.
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="FURNITURE" sequenceNum="14"/>
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="HEALTH" sequenceNum="15"/>
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="HOUSEHOLD" sequenceNum="16"/>
+    <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="THAISILK" sequenceNum="17"/>
     
     <ProdCatalogCategory prodCatalogId="PFTCatalog" productCategoryId="PFT_ROOT" fromDate="2009-09-25 00:00:00.000"
         sequenceNum="1" prodCatalogCategoryTypeId="PCCT_BROWSE_ROOT"/>
@@ -342,6 +344,19 @@ under the License.
     
     <ProductCategoryContent productCategoryId="HOUSEHOLD" contentId="HOUSEHOLDDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
     <ContentAssoc contentId="HOUSEHOLDDESCEN" contentIdTo="HOUSEHOLDDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Thai Silk category -->
+    <DataResource dataResourceId="THAISILKDDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="THAISILKDDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    
+    <ElectronicText dataResourceId="THAISILKDDESCTH" textData="ผ้าไหมไทย"/>
+    <ElectronicText dataResourceId="THAISILKDDESCEN" textData="Thai Silk"/>
+    
+    <Content contentId="THAISILKDDESCTH" contentTypeId="DOCUMENT" dataResourceId="THAISILKDDESCTH" description="DESCRIPTION TH Thai Silk" localeString="th"/>
+    <Content contentId="THAISILKDDESCEN" contentTypeId="DOCUMENT" dataResourceId="THAISILKDDESCEN" description="DESCRIPTION EN Thai Silk" localeString="en"/>
+    
+    <ProductCategoryContent productCategoryId="THAISILK" contentId="THAISILKDDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
+    <ContentAssoc contentId="THAISILKDDESCEN" contentIdTo="THAISILKDDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
     
     <!-- Product Name and Discription -->
     <!-- Elephants Wood Crafts -->
