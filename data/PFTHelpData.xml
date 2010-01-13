@@ -81,4 +81,11 @@ Welcome to Product From Thailand! We are glad you are here. We will help you lea
     <Content contentId="HELP_SEARCH" contentTypeId="DOCUMENT" ownerContentId="HELPROOT" dataResourceId="HELP_SEARCH" statusId="CTNT_PUBLISHED" privilegeEnumId="CNT_PRV_BRONZE" contentName="Search products" description="How to search products?" createdDate="2009-09-25 00:00:00.000"/>
     <ContentAssoc contentId="HELPROOT" contentIdTo="HELP_SEARCH" contentAssocTypeId="SUB_CONTENT" sequenceNum="4" fromDate="2009-09-25 00:00:00.000" createdDate="2009-09-25 00:00:00.000" />
 
+    <DataResource dataResourceId="CREATE_NEW_PRODUCT" localeString="en" dataResourceTypeId="OFBIZ_FILE" dataTemplateTypeId="FTL" statusId="CTNT_PUBLISHED" 
+        dataResourceName="Create New Product" mimeTypeId="text/html" isPublic="Y" objectInfo="hot-deploy/productfromthailand/data/helpdata/createNewProduct.ftl"/>
+    <Content contentId="CREATE_NEW_PRODUCT" contentTypeId="DOCUMENT" dataResourceId="CREATE_NEW_PRODUCT" statusId="CTNT_PUBLISHED" 
+        contentName="Create New Product" description="Create New Product" mimeTypeId="text/html"/>
+    <ContentAssoc contentId="HELPROOT" contentIdTo="CREATE_NEW_PRODUCT" contentAssocTypeId="SUB_CONTENT" sequenceNum="6" fromDate="2006-01-12 01:01:01"/>
+
+
 </entity-engine-xml>
