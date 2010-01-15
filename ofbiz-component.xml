@@ -40,13 +40,13 @@
         menu-name="secondary"
         server="default-server"
         location="webapp/ecommerce"
-        mount-point="/pft"
+        mount-point="/"
         app-bar-display="false"/>
-    <webapp name="productfromthailand2"
+    <!--<webapp name="productfromthailand2"
         title="Product from thailand"
         menu-name="secondary"
         server="default-server"
         location="webapp/test"
         mount-point="/"
-        app-bar-display="false"/>
+        app-bar-display="false"/>-->
 </ofbiz-component>
