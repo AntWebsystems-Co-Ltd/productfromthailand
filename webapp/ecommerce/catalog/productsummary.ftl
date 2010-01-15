@@ -116,16 +116,16 @@ under the License.
           <div>
               <b>${product.productId?if_exists}</b>
                 <#if totalPrice?exists>
-                  <#assign totalPrice = totalPrice*conversionRate>
-                  <div>${uiLabelMap.ProductAggregatedPrice}: <span class='basePrice'><@ofbizCurrency amount=totalPrice isoCode=currencyUom/><#--@ofbizCurrency amount=totalPrice isoCode=totalPrice.currencyUsed/--></span></div>
+                  <#--assign totalPrice = totalPrice*conversionRate-->
+                  <div>${uiLabelMap.ProductAggregatedPrice}: <span class='basePrice'><@ofbizCurrency amount=totalPrice isoCode=totalPrice.currencyUsed/></span></div>
                 <#else>
                 <#if price.competitivePrice?exists && price.price?exists && price.price?double < price.competitivePrice?double>
-                  <#assign competitivePrice = price.competitivePrice*conversionRate>
-                  ${uiLabelMap.ProductCompareAtPrice}: <span class='basePrice'><@ofbizCurrency amount=competitivePrice isoCode=currencyUom/><#--@ofbizCurrency amount=price.competitivePrice isoCode=price.currencyUsed/--></span>
+                  <#--assign competitivePrice = price.competitivePrice*conversionRate-->
+                  ${uiLabelMap.ProductCompareAtPrice}: <span class='basePrice'><@ofbizCurrency amount=price.competitivePrice isoCode=price.currencyUsed/></span>
                 </#if>
                 <#if price.listPrice?exists && price.price?exists && price.price?double < price.listPrice?double>
-                  <#assign listPrice = price.listPrice*conversionRate>
-                  ${uiLabelMap.ProductListPrice}: <span class="basePrice"><@ofbizCurrency amount=listPrice isoCode=currencyUomd/><#--@ofbizCurrency amount=price.listPrice isoCode=price.currencyUsed/--></span>
+                  <#--assign listPrice = price.listPrice*conversionRate-->
+                  ${uiLabelMap.ProductListPrice}: <span class="basePrice"><@ofbizCurrency amount=price.listPrice isoCode=price.currencyUsed/></span>
                 </#if>
                 <b>
                   <#if price.isSale?exists && price.isSale>
@@ -136,14 +136,14 @@ under the License.
                   </#if>
 
                   <#if (price.price?default(0) > 0 && product.requireAmount?default("N") == "N")>
-                    ${uiLabelMap.OrderYourPrice}: <#if "Y" = product.isVirtual?if_exists> ${uiLabelMap.CommonFrom} </#if><span class="${priceStyle}"><@ofbizCurrency amount=currentPrice isoCode=currencyUom/><#--@ofbizCurrency amount=price.price isoCode=price.currencyUsed/--></span>
+                    ${uiLabelMap.OrderYourPrice}: <#if "Y" = product.isVirtual?if_exists> ${uiLabelMap.CommonFrom} </#if><span class="${priceStyle}"><@ofbizCurrency amount=price.price isoCode=price.currencyUsed/></span>
                   </#if>
                 </b>
                 <#if price.listPrice?exists && price.price?exists && price.price?double < price.listPrice?double>
                   <#assign priceSaved = price.listPrice?double - price.price?double>
                   <#assign percentSaved = (priceSaved?double / price.listPrice?double) * 100>
-                  <#assign priceSaved = priceSaved*conversionRate>
-                    ${uiLabelMap.OrderSave}: <span class="basePrice"><@ofbizCurrency amount=priceSaved isoCode=currencyUom/><#--@ofbizCurrency amount=priceSaved isoCode=price.currencyUsed/--> (${percentSaved?int}%)</span>
+                  <#--assign priceSaved = priceSaved*conversionRate-->
+                    ${uiLabelMap.OrderSave}: <span class="basePrice"><@ofbizCurrency amount=priceSaved isoCode=price.currencyUsed/> (${percentSaved?int}%)</span>
                 </#if>
                 </#if>
                 <#-- show price details ("showPriceDetails" field can be set in the screen definition) -->

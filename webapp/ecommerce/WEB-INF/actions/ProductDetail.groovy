@@ -175,7 +175,7 @@ if (product) {
         priceMap = dispatcher.runSync("calculatePurchasePrice", priceContext);
         context.priceMap = priceMap;
     }
-    //  get current currenct
+    /*  get current currenct
     if(userLogin == null){
         userLogin = delegator.findByPrimaryKeyCache("UserLogin", [userLoginId : "system"]);
     }
@@ -191,7 +191,7 @@ if (product) {
         currentPrice = price.multiply(conversionRate).setScale(decimals, rounding);
     }
     context.conversionRate = conversionRate;
-    context.currentPrice = currentPrice;
+    context.currentPrice = currentPrice;*/
     
     // get the product review(s)
     reviewByAnd = [statusId : "PRR_APPROVED", productStoreId : productStoreId];

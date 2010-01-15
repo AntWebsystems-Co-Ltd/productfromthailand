@@ -26,7 +26,7 @@ under the License.
 
     <context-param>
         <param-name>webSiteId</param-name>
-        <param-value>ProductFromThailand</param-value>
+        <param-value>PFT_USD</param-value>
         <description>A unique ID used to look up the WebSite entity</description>
     </context-param>
     <context-param>
@@ -60,7 +60,7 @@ under the License.
         </init-param>
         <init-param>
             <param-name>allowedPaths</param-name>
-            <param-value>/control:/products:/select:/index.html:/index.jsp:/default.html:/default.jsp:/images</param-value>
+            <param-value>/control:/products:/select:/index.html:/index.jsp:/default.html:/default.jsp:/images:/site</param-value>
         </init-param>
         <init-param>
             <param-name>errorCode</param-name>
@@ -109,6 +109,14 @@ under the License.
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <servlet>
+        <servlet-name>LocaleUrlServlet</servlet-name>
+        <display-name>LocaleUrlServlet</display-name>
+        <description>Locale (Language) URL Servlet</description>
+        <servlet-class>org.ofbiz.productfromthailand.LocaleUrlServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>ControlServlet</servlet-name>
         <url-pattern>/control/*</url-pattern>
@@ -122,6 +130,11 @@ under the License.
     <servlet-mapping>
         <servlet-name>CatalogUrlServlet</servlet-name>
         <url-pattern>/products/*</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>LocaleUrlServlet</servlet-name>
+        <url-pattern>/site/*</url-pattern>
     </servlet-mapping>
 
     <session-config>

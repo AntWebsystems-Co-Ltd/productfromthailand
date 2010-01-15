@@ -64,30 +64,19 @@ under the License.
             <#if locale.toString() == "en_US">
                 <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img  src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
             </#if>
-            <script type="text/javascript">
-                function checkCurrency(newCurrency) {
-                   document.switchcurrencyform.newCurrency.value = newCurrency;
-                   if (document.switchcurrencyform.newCurrency.value == 'NULL') {
-                       alert("Please select the required currency.");
-                       return;
-                   } else {
-                       document.switchcurrencyform.submit();
-                   }
-                }
-            </script>
             <br/>
-            <form name="switchcurrencyform" action"<@ofbizUrl>setCurrencyUom</@ofbizUrl>" method="post" style="margin-top: 5px;">
+            <form name="switchcurrencyform" method="post" style="margin-top: 5px;">
                 ${uiLabelMap.PFTSwitchCurrency}
-                <input type="hidden" name="newCurrency"/>
-                <#if currencyUom == "USD">
-                    <a href="javascript:checkCurrency('EUR');"><img src="<@ofbizContentUrl>/pfdimages/EU_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Euro"></a>
-                    <a href="javascript:checkCurrency('THB');"><img src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Thailand Baht"></a>
-                <#elseif currencyUom == "EUR">
-                    <a href="javascript:checkCurrency('USD');"><img src="<@ofbizContentUrl>/pfdimages/USA_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="United States Dollar"></a>
-                    <a href="javascript:checkCurrency('THB');"><img src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Thailand Baht"></a>
-                <#elseif currencyUom == "THB">
-                    <a href="javascript:checkCurrency('USD');"><img src="<@ofbizContentUrl>/pfdimages/USA_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="United States Dollar"></a>
-                    <a href="javascript:checkCurrency('EUR');"><img src="<@ofbizContentUrl>/pfdimages/EU_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Euro"></a>
+                <input type="hidden" name="newProductStoreId"/>
+                <#if productStoreId == "PFTSTORE_USD">
+                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "en")}"><img src="<@ofbizContentUrl>/pfdimages/EU_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Euro"></a>
+                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "th")}"><img src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Thailand Baht"></a>
+                <#elseif productStoreId == "PFTSTORE_EUR">
+                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "en_US")}"><img src="<@ofbizContentUrl>/pfdimages/USA_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="United States Dollar"></a>
+                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "th")}"><img src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Thailand Baht"></a>
+                <#elseif productStoreId == "PFTSTORE_THB">
+                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "en_US")}"><img src="<@ofbizContentUrl>/pfdimages/USA_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="United States Dollar"></a>
+                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "en")}"><img src="<@ofbizContentUrl>/pfdimages/EU_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Euro"></a>
                 </#if>
             </form>
         </div>

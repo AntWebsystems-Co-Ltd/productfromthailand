@@ -110,7 +110,7 @@ if (product) {
 
         context.price = priceMap;
     }
-    // get current currenct
+    /* get current currenct
     if(userLogin == null){
         userLogin = delegator.findByPrimaryKeyCache("UserLogin", [userLoginId : "system"]);
     }
@@ -127,7 +127,7 @@ if (product) {
         currentPrice = price.multiply(conversionRate).setScale(decimals, rounding);
     }
     context.conversionRate = conversionRate;
-    context.currentPrice = currentPrice;
+    context.currentPrice = currentPrice;*/
     
     // get aggregated product totalPrice
     if ("AGGREGATED".equals(product.productTypeId)) {

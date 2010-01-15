@@ -156,8 +156,8 @@ function setAlternateGwp(field) {
         </div>
 <div>
   <#if (shoppingCartSize > 0)>
-    <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.ofbiz.base.util.UtilMisc"].toMap("uomId", shoppingCart.getCurrency(), "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
-    <#assign conversionRate = rateResult.conversionRate>
+    <#--assign rateResult = dispatcher.runSync("getFXConversion", Static["org.ofbiz.base.util.UtilMisc"].toMap("uomId", shoppingCart.getCurrency(), "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
+    <#assign conversionRate = rateResult.conversionRate-->
     <form method="post" action="<@ofbizUrl>modifycart</@ofbizUrl>" name="cartform" >
       <fieldset>
 
@@ -318,12 +318,12 @@ function setAlternateGwp(field) {
                 </#if>
             </td>
            
-            <#assign displayPrice = cartLine.getDisplayPrice()*conversionRate>
+            <#--assign displayPrice = cartLine.getDisplayPrice()*conversionRate>
             <#assign otherAdjustments = cartLine.getOtherAdjustments()*conversionRate>
-            <#assign itemSubTotal = cartLine.getDisplayItemSubTotal()*conversionRate>
-            <td><@ofbizCurrency amount=displayPrice isoCode=currencyUom/><#--@ofbizCurrency amount=cartLine.getDisplayPrice() isoCode=shoppingCart.getCurrency()/--></td>
-            <td<@ofbizCurrency amount=otherAdjustments isoCode=currencyUom/><#--@ofbizCurrency amount=cartLine.getOtherAdjustments() isoCode=shoppingCart.getCurrency()/--></td>
-            <td><@ofbizCurrency amount=itemSubTotal isoCode=currencyUom/><#--@ofbizCurrency amount=cartLine.getDisplayItemSubTotal() isoCode=shoppingCart.getCurrency()/--></td>
+            <#assign itemSubTotal = cartLine.getDisplayItemSubTotal()*conversionRate-->
+            <td><@ofbizCurrency amount=cartLine.getDisplayPrice() isoCode=shoppingCart.getCurrency()/></td>
+            <td<@ofbizCurrency amount=cartLine.getOtherAdjustments() isoCode=shoppingCart.getCurrency()/></td>
+            <td><@ofbizCurrency amount=cartLine.getDisplayItemSubTotal() isoCode=shoppingCart.getCurrency()/></td>
             <td><#if !cartLine.getIsPromo()><input type="checkbox" name="selectedItem" value="${cartLineIndex}" onclick="javascript:checkToggle(this);" /><#else>&nbsp;</#if></td>
           </tr>
         </#list>
@@ -333,8 +333,8 @@ function setAlternateGwp(field) {
         <#if shoppingCart.getAdjustments()?has_content>
             <tr>
               <th>${uiLabelMap.CommonSubTotal}:</th>
-              <#assign subTotal = shoppingCart.getDisplaySubTotal()*conversionRate>
-              <td><@ofbizCurrency amount=subTotal isoCode=currencyUom/><#--@ofbizCurrency amount=shoppingCart.getDisplaySubTotal() isoCode=shoppingCart.getCurrency()/--></td>
+              <#--assign subTotal = shoppingCart.getDisplaySubTotal()*conversionRate-->
+              <td><@ofbizCurrency amount=shoppingCart.getDisplaySubTotal() isoCode=shoppingCart.getCurrency()/></td>
               <td>&nbsp;</td>
             </tr>
             <#if (shoppingCart.getDisplayTaxIncluded() > 0.0)>
@@ -358,8 +358,8 @@ function setAlternateGwp(field) {
         </#if>
         <tr>
           <th>${uiLabelMap.EcommerceCartTotal}:</th>
-          <#assign displayGrandTotal = shoppingCart.getDisplaySubTotal()*conversionRate>
-          <td><@ofbizCurrency amount=displayGrandTotal isoCode=currencyUom/><#--@ofbizCurrency amount=shoppingCart.getDisplayGrandTotal() isoCode=shoppingCart.getCurrency()/--></td>
+          <#--assign displayGrandTotal = shoppingCart.getDisplaySubTotal()*conversionRate-->
+          <td><@ofbizCurrency amount=shoppingCart.getDisplayGrandTotal() isoCode=shoppingCart.getCurrency()/></td>
         </tr>
         <#if itemsFromList>
         <tr>

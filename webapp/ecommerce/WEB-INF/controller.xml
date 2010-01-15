@@ -117,8 +117,16 @@ under the License.
         <security https="true" auth="true"/>
         <response name="success" type="view" value="orderview"/>
     </request-map>
-    <request-map uri="setCurrencyUom">
+
+    <request-map uri="en">
         <security https="false" auth="false"/>
+        <event type="java" path="org.ofbiz.productfromthailand.PFTEvents" invoke="setProductStoreAndSessionLocale"/>
+        <response name="success" type="view-last" value="main"/>
+        <response name="error" type="view" value="main"/>
+    </request-map>
+    <request-map uri="th">
+        <security https="false" auth="false"/>
+        <event type="java" path="org.ofbiz.productfromthailand.PFTEvents" invoke="setProductStoreAndSessionLocale"/>
         <response name="success" type="view-last" value="main"/>
         <response name="error" type="view" value="main"/>
     </request-map>

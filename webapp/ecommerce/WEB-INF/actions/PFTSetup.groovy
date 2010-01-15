@@ -25,8 +25,31 @@ import org.ofbiz.product.store.ProductStoreWorker;
 import org.ofbiz.common.CommonWorkers;
 import org.ofbiz.order.shoppingcart.*;
 import org.ofbiz.webapp.control.*;
+import org.ofbiz.base.util.UtilHttp;
+import org.ofbiz.entity.GenericValue;
+import org.ofbiz.entity.util.EntityUtil;
 
 productStore = ProductStoreWorker.getProductStore(request);
+productStoreId = ProductStoreWorker.getProductStoreId(request);
+
+currencyUom = ProductStoreWorker.getStoreCurrencyUomId(request);
+session.setAttribute("currencyUom", currencyUom);
+globalContext.currencyUom = currencyUom;
+
+webSiteList = productStore.getRelatedByAnd("WebSite", [productStoreId : productStoreId]);
+webSite = EntityUtil.getFirst(webSiteList);
+
+servletContext = session.getServletContext();
+servletContext.setAttribute("webSiteId", webSite.webSiteId);
+
+cart = ShoppingCartEvents.getCartObject(request);
+cart.setCurrency(dispatcher, currencyUom);
+lastProductStoreId = cart.getProductStoreId();
+if(!lastProductStoreId.equals(productStoreId)){
+    if(cart.size() == 0){
+        cart.setProductStoreId(productStoreId);
+    }
+}
 
 prodCatalog = CatalogWorker.getProdCatalog(request);
 if (prodCatalog) {
@@ -39,11 +62,7 @@ if (prodCatalog) {
 globalContext.productStore = productStore;
 globalContext.checkLoginUrl = LoginWorker.makeLoginUrl(request, "checkLogin");
 globalContext.catalogQuickaddUse = CatalogWorker.getCatalogQuickaddUse(request);
-
-currencyUom = parameters.newCurrency ?: ProductStoreWorker.getStoreCurrencyUomId(request)
-
-session.setAttribute("currencyUom", currencyUom);
-globalContext.currencyUom = currencyUom;
+globalContext.productStoreId = productStoreId;
 
 if(userLogin == null)
-	globalContext.defaultUserLogin = delegator.findByPrimaryKeyCache("UserLogin", [userLoginId : "system"]);
+    globalContext.defaultUserLogin = delegator.findByPrimaryKeyCache("UserLogin", [userLoginId : "system"]);
