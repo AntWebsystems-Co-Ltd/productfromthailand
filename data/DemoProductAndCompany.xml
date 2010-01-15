@@ -200,7 +200,7 @@
     <!-- ProductStore for USD -->
     <ProductStore productStoreId="PFTSTORE_USD" storeName="Product from Thailand Store" companyName="Product from Thailand Co.,Ltd" payToPartyId="pft" 
         daysToCancelNonPay="30" manualAuthIsCapture="N" prorateShipping="Y" prorateTaxes="Y" viewCartOnAdd="N" autoSaveCart="N" autoApproveReviews="N" 
-        isDemoStore="Y" title="ยินดีต้อนรับเข้าสู่ Product FromThailand.com" subtitle="Thailand Located in Southeast Asia, Thailand is commonly known as the land of smiles. Thailand's major exports include textiles, fishery products and electrical applicances. Look through the categories below to find more Thai products." 
+        isDemoStore="Y" title="Welcome to Product FromThailand.com" subtitle="Thailand Located in Southeast Asia, Thailand is commonly known as the land of smiles. Thailand's major exports include textiles, fishery products and electrical applicances. Look through the categories below to find more Thai products." 
         isImmediatelyFulfilled="N" oneInventoryFacility="N" checkInventory="N" reserveInventory="N" 
         reserveOrderEnumId="INVRO_FIFO_REC" requireInventory="N" balanceResOnOrderCreation="Y" orderNumberPrefix="WS" defaultLocaleString="en_US" 
         defaultCurrencyUomId="USD" defaultSalesChannelEnumId="WEB_SALES_CHANNEL" allowPassword="Y" explodeOrderItems="N" checkGcBalance="N" retryFailedAuths="Y" 
@@ -217,7 +217,7 @@
     <!-- ProductStore for THB -->
     <ProductStore productStoreId="PFTSTORE_THB" storeName="Product from Thailand Store" companyName="Product from Thailand Co.,Ltd" payToPartyId="pft" 
         daysToCancelNonPay="30" manualAuthIsCapture="N" prorateShipping="Y" prorateTaxes="Y" viewCartOnAdd="N" autoSaveCart="N" autoApproveReviews="N" 
-        isDemoStore="Y" title="Welcome to Product FromThailand.com" subtitle="ประเทศไทยตั้งอยู่ในทวีปเอเชียตะวันออกเฉียงใต้ ประเทศไทยเป็นที่รู้จักโดยทั่วไปว่าเป็นสยามเมืองยิ้ม ประเทศไทย มีการส่งออกสินค้าหลักที่สำคัญ ได้แก่ ผลิตภัณฑ์สิ่งทอ สินค้าด้านการประมง และ ชิ้นส่วนอิเล็กทรอนิกส์ อุปกรณ์ไฟฟ้า" 
+        isDemoStore="Y" title="ยินดีต้อนรับเข้าสู่ Product FromThailand.com" subtitle="ประเทศไทยตั้งอยู่ในทวีปเอเชียตะวันออกเฉียงใต้ ประเทศไทยเป็นที่รู้จักโดยทั่วไปว่าเป็นสยามเมืองยิ้ม ประเทศไทย มีการส่งออกสินค้าหลักที่สำคัญ ได้แก่ ผลิตภัณฑ์สิ่งทอ สินค้าด้านการประมง และ ชิ้นส่วนอิเล็กทรอนิกส์ อุปกรณ์ไฟฟ้า" 
         isImmediatelyFulfilled="N" oneInventoryFacility="N" checkInventory="N" reserveInventory="N" 
         reserveOrderEnumId="INVRO_FIFO_REC" requireInventory="N" balanceResOnOrderCreation="Y" orderNumberPrefix="WS" defaultLocaleString="th" 
         defaultCurrencyUomId="THB" defaultSalesChannelEnumId="WEB_SALES_CHANNEL" allowPassword="Y" explodeOrderItems="N" checkGcBalance="N" retryFailedAuths="Y" 
@@ -250,9 +250,9 @@
     
     <!--<ProductStoreFacility productStoreId="PFTSTORE_USD" facilityId="pftWarehouse" fromDate="2009-09-25 10:38:07.561"/>-->
     <!--<ProductStoreCatalog productStoreId="PFTSTORE_USD" prodCatalogId="DemoCatalog" fromDate="2009-09-25 10:38:07.561"/>-->
-    <WebSite webSiteId="PFT_USD" siteName="Product from Thailand EN website" standardContentPrefix="http://www.productfromthailand.com/pft/en" visualThemeSetId="ECOMMERCE" productStoreId="PFTSTORE_USD"/>
-    <WebSite webSiteId="PFT_THB" siteName="Product from Thailand TH website" standardContentPrefix="http://www.productfromthailand.com/pft/th" visualThemeSetId="ECOMMERCE" productStoreId="PFTSTORE_THB"/>
-    <WebSite webSiteId="PFT_EUR" siteName="Product from Thailand EU website" standardContentPrefix="http://www.productfromthailand.com/pft/en" visualThemeSetId="ECOMMERCE" productStoreId="PFTSTORE_EUR"/>
+    <WebSite webSiteId="PFT_USD" siteName="Product from Thailand EN website" standardContentPrefix="http://www.productfromthailand.com" visualThemeSetId="ECOMMERCE" productStoreId="PFTSTORE_USD"/>
+    <WebSite webSiteId="PFT_THB" siteName="Product from Thailand TH website" standardContentPrefix="http://www.productfromthailand.com" visualThemeSetId="ECOMMERCE" productStoreId="PFTSTORE_THB"/>
+    <WebSite webSiteId="PFT_EUR" siteName="Product from Thailand EU website" standardContentPrefix="http://www.productfromthailand.com" visualThemeSetId="ECOMMERCE" productStoreId="PFTSTORE_EUR"/>
 
     <!--<ProductStorePaymentSetting productStoreId="PFTSTORE_USD" paymentMethodTypeId="EXT_BILLACT" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
     <ProductStorePaymentSetting productStoreId="PFTSTORE_USD" paymentMethodTypeId="EXT_COD" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
