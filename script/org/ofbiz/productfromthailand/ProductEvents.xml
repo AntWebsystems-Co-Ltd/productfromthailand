@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+    
+    http://www.apache.org/licenses/LICENSE-2.0
+    
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+
+<simple-methods xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/simple-methods.xsd">
+        
+    <simple-method method-name="createMissingProductPrice" short-description="Create Missing Product Price" login-required="false">
+        <!--<property-to-field resource="general" property="locales.available" field="locales"/>-->
+        <entity-and entity-name="Product" list="productList">
+            <field-map field-name=""/>
+        </entity-and>
+        <iterate entry="product" list="productList">
+              <entity-and entity-name="ProductPrice" list="productPriceList">
+                  <field-map field-name="productId" from-field="product.productId"/>
+              </entity-and>
+              <call-simple-method method-name="checkCurrency"/>
+        </iterate>
+    </simple-method>
+    <simple-method method-name="checkCurrency" short-description="Check Currency" login-required="false">
+        <if-not-empty field="productPriceList">
+            <entity-and entity-name="Uom" list="currencyList">
+                <field-map field-name="uomTypeId" value="CURRENCY_MEASURE"/>
+            </entity-and>
+            <iterate entry="currency" list="currencyList">
+                <iterate entry="productPrice" list="productPriceList">
+                    <if-compare-field field="currency.uomId" operator="equals" to-field="productPrice.currencyUomId">
+                        <else>
+                            <entity-condition entity-name="UomConversionDated" list="uomConversionDated">
+                                <condition-list combine="and">
+                                    <condition-expr field-name="uomId" from-field="productPrice.currencyUomId"/>
+                                    <condition-expr field-name="uomIdTo" from-field="currency.uomId"/>
+                                </condition-list>
+                            </entity-condition>
+                            <if-not-empty field="uomConversionDated">
+                                <entity-and entity-name="ProductPrice" list="checkPriceExist">
+                                    <field-map field-name="productId" from-field="productPrice.productId"/>
+                                    <field-map field-name="currencyUomId" from-field="currency.uomId"/>
+                                </entity-and>
+                                <if-empty field="checkPriceExist">
+                                    <entity-one entity-name="UserLogin" value-field="parameters.userLogin" auto-field-map="false">
+                                        <field-map field-name="userLoginId" value="system"/>
+                                    </entity-one>
+                                        <set field="convertCurrency.uomId" from-field="productPrice.currencyUomId"/>
+                                        <set field="convertCurrency.uomIdTo" from-field="currency.uomId"/>
+                                    <set field="convertCurrency.userLogin" from-field="parameters.userLogin"/>
+                                        <call-service service-name="getFXConversion" in-map-name="convertCurrency" include-user-login="false">
+                                            <result-to-field result-name="conversionRate"/>
+                                        </call-service>
+                                        <set field="newProductPrice.currencyUomId" from-field="currency.uomId"/>
+                                        <set field="newProductPrice.productId" from-field="productPrice.productId"/>
+                                        <set field="newProductPrice.productPricePurposeId" value="PURCHASE"/>
+                                        <set field="newProductPrice.productPriceTypeId" value="DEFAULT_PRICE"/>
+                                        <set field="newPrice" value="0.0" type="BigDecimal"/>
+                                        <calculate field="newPrice">
+                                            <calcop operator="multiply" field="conversionRate">
+                                                <calcop operator="get" field="productPrice.price"/>
+                                            </calcop>
+                                        </calculate>
+                                        
+                                        <set field="newProductPrice.price" from-field="newPrice"/>
+                                        <set field="newProductPrice.productStoreGroupId" value="_NA_"/>
+                                        <set field="newProductPrice.userLogin" from-field="parameters.userLogin"/>
+                                        <call-service service-name="createProductPrice" in-map-name="newProductPrice" include-user-login="false"/>
+                                    <else>
+                                        <log level="always" message=">>>>>> currency ${currency.uomId} is not empty in ProductPrice...."></log>
+                                    </else>
+                                </if-empty>
+                            </if-not-empty>
+                        </else>
+                    </if-compare-field>
+                </iterate>
+            </iterate>
+        </if-not-empty>
+    </simple-method>
+</simple-methods>

@@ -32,4 +32,7 @@ under the License.
         <attribute name="setPaymentPurpose" type="String" mode="IN" optional="true"/>
         <attribute name="productStoreId" type="String" mode="IN" optional="true"/>
     </service>
+    <service name="createMissingProductPrice" engine="simple" invoke="createMissingProductPrice" location="component://productfromthailand/script/org/ofbiz/productfromthailand/ProductEvents.xml">
+        <description>To Create Missing Product Price in Other Currencies</description>
+    </service>
 </services>
