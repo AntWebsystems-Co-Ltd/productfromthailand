@@ -22,11 +22,11 @@ under the License.
     <!-- Ecommerce Default Visual Theme -->
     <VisualTheme visualThemeId="EC_PFT" visualThemeSetId="ECOMMERCE" description="Product From Thailand Ecommerce Floating Layout"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_STYLESHEET" resourceValue="/ecommerce/images/blog.css" sequenceId="01"/>
-    <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_STYLESHEET" resourceValue="/pft/images/ecommain.css" sequenceId="02"/>
+    <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_STYLESHEET" resourceValue="/pftimages/ecommain.css" sequenceId="02"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_STYLESHEET" resourceValue="/images/prototypejs/popup.css" sequenceId="03"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_STYLESHEET" resourceValue="/content/images/contentForum.css" sequenceId="04"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_SHORTCUT_ICON" resourceValue="/images/ofbiz.ico" sequenceId="01"/>
-    <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_HDR_IMAGE_URL" resourceValue="/pft/images/logo.gif" sequenceId="01"/>
+    <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_HDR_IMAGE_URL" resourceValue="/pftimages/logo.gif" sequenceId="01"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_HDR_TMPLT_LOC" resourceValue="component://productfromthailand/webapp/ecommerce/includes/header.ftl" sequenceId="01"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_FTR_TMPLT_LOC" resourceValue="component://productfromthailand/webapp/ecommerce/includes/footer.ftl" sequenceId="01"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_SCREENSHOT" resourceValue="/images/ecdefaulttheme.jpg" sequenceId="01"/>
