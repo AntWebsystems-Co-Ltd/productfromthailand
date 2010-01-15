@@ -55,28 +55,28 @@ under the License.
             <#list availableLocales as availableLocale>
                 <#if locale.toString() == availableLocale.toString()>
                     <#if locale.toString() == "en">
-                        <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
+                        <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="<@ofbizContentUrl>/pftimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
                     <#elseif locale.toString() == "th">
-                        <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=en"><img src="<@ofbizContentUrl>/pfdimages/EngFlag.jpg</@ofbizContentUrl>"  alt="English" width="25"/></a>
+                        <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=en"><img src="<@ofbizContentUrl>/pftimages/EngFlag.jpg</@ofbizContentUrl>"  alt="English" width="25"/></a>
                     </#if>
                 </#if>
             </#list>
             <#if locale.toString() == "en_US">
-                <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img  src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
+                <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img  src="<@ofbizContentUrl>/pftimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
             </#if>
             <br/>
             <form name="switchcurrencyform" method="post" style="margin-top: 5px;">
                 ${uiLabelMap.PFTSwitchCurrency}
                 <input type="hidden" name="newProductStoreId"/>
                 <#if productStoreId == "PFTSTORE_USD">
-                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "en")}"><img src="<@ofbizContentUrl>/pfdimages/EU_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Euro"></a>
-                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "th")}"><img src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Thailand Baht"></a>
+                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "en")}"><img src="<@ofbizContentUrl>/pftimages/EU_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Euro"></a>
+                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "th")}"><img src="<@ofbizContentUrl>/pftimages/ThaiFlag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Thailand Baht"></a>
                 <#elseif productStoreId == "PFTSTORE_EUR">
-                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "en_US")}"><img src="<@ofbizContentUrl>/pfdimages/USA_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="United States Dollar"></a>
-                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "th")}"><img src="<@ofbizContentUrl>/pfdimages/ThaiFlag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Thailand Baht"></a>
+                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "en_US")}"><img src="<@ofbizContentUrl>/pftimages/USA_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="United States Dollar"></a>
+                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "th")}"><img src="<@ofbizContentUrl>/pftimages/ThaiFlag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Thailand Baht"></a>
                 <#elseif productStoreId == "PFTSTORE_THB">
-                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "en_US")}"><img src="<@ofbizContentUrl>/pfdimages/USA_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="United States Dollar"></a>
-                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "en")}"><img src="<@ofbizContentUrl>/pfdimages/EU_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Euro"></a>
+                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "en_US")}"><img src="<@ofbizContentUrl>/pftimages/USA_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="United States Dollar"></a>
+                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "en")}"><img src="<@ofbizContentUrl>/pftimages/EU_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Euro"></a>
                 </#if>
             </form>
         </div>
