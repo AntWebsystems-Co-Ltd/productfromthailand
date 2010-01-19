@@ -66,13 +66,13 @@ under the License.
                 
                 <container id="ecom-mainarea">
                     <!-- by default will render left-bar only if left/rightbarScreenName value not empty -->
+                    <!-- render messages -->
+                    <platform-specific><html><html-template location="component://common/webcommon/includes/messages.ftl"/></html></platform-specific>
                     <include-screen name="${leftbarScreenName}" location="${leftbarScreenLocation}"/>
                     <include-screen name="${bannerScreenName}" location="${bannerScreenLocation}"/>
                     <include-screen name="${rightbarScreenName}" location="${rightbarScreenLocation}"/>
                     
                     <container style="${MainColumnStyle}">
-                        <!-- render messages -->
-                        <platform-specific><html><html-template location="component://common/webcommon/includes/messages.ftl"/></html></platform-specific>
                         <decorator-section-include name="body"/>
                     </container>
                     

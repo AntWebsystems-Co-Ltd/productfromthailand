@@ -79,7 +79,7 @@
                                         <set field="newProductPrice.userLogin" from-field="parameters.userLogin"/>
                                         <call-service service-name="createProductPrice" in-map-name="newProductPrice" include-user-login="false"/>
                                     <else>
-                                        <log level="always" message=">>>>>> currency ${currency.uomId} is not empty in ProductPrice...."></log>
+                                        <!--<log level="always" message=">>>>>> currency ${currency.uomId} is not empty in ProductPrice...."></log>-->
                                     </else>
                                 </if-empty>
                             </if-not-empty>
