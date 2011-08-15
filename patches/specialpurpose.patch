@@ -1,0 +1,28 @@
+Index: specialpurpose/googlebase/config/googleBaseExport.properties
+===================================================================
+--- specialpurpose/googlebase/config/googleBaseExport.properties	(revision 1156566)
++++ specialpurpose/googlebase/config/googleBaseExport.properties	(working copy)
+@@ -20,8 +20,8 @@
+ # OFBiz Product Export Settings
+ ####
+ # Google Base Export Products
+-googleBaseExport.developerKey=
++googleBaseExport.developerKey=ABQIAAAAtllOIMnA_SSaX6-q_-0NqBQ7yogk7ltS6O8c1NB_asTLHULnfxRsRVBa5bgcryXeo0AOht5OtQ78_Q
+ googleBaseExport.authenticationUrl=https://www.google.com/accounts/ClientLogin
+-googleBaseExport.accountEmail=
+-googleBaseExport.accountPassword=
++googleBaseExport.accountEmail=admin@productfromthailand.com
++googleBaseExport.accountPassword=pft44444
+ googleBaseExport.postItemsUrl=http://www.google.com/base/feeds/items/batch
+Index: specialpurpose/myportal/webapp/myportal/WEB-INF/controller.xml
+===================================================================
+--- specialpurpose/myportal/webapp/myportal/WEB-INF/controller.xml	(revision 1156566)
++++ specialpurpose/myportal/webapp/myportal/WEB-INF/controller.xml	(working copy)
+@@ -29,6 +29,7 @@
+     <include location="component://order/webapp/ordermgr/WEB-INF/controller.xml"/>
+     <include location="component://workeffort/webapp/workeffort/WEB-INF/controller.xml"/>
+     <include location="component://projectmgr/webapp/projectmgr/WEB-INF/controller.xml"/>
++    <include location="component://productfromthailand/webapp/ecommerce/WEB-INF/controller.xml"/>
+     
+     <description>Show personal information in the system</description>
+ 
