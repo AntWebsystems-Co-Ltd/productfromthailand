@@ -36,8 +36,7 @@ currencyUom = ProductStoreWorker.getStoreCurrencyUomId(request);
 session.setAttribute("currencyUom", currencyUom);
 globalContext.currencyUom = currencyUom;
 
-webSiteList = productStore.getRelatedByAnd("WebSite", [productStoreId : productStoreId]);
-webSite = EntityUtil.getFirst(webSiteList);
+webSite = CatalogWorker.getWebSite(request);
 
 servletContext = session.getServletContext();
 servletContext.setAttribute("webSiteId", webSite.webSiteId);
@@ -58,7 +57,6 @@ if (prodCatalog) {
     catalogHeaderLogo = prodCatalog.headerLogo;
     if (catalogHeaderLogo) globalContext.catalogHeaderLogo = catalogHeaderLogo;
 }
-
 globalContext.productStore = productStore;
 globalContext.checkLoginUrl = LoginWorker.makeLoginUrl(request, "checkLogin");
 globalContext.catalogQuickaddUse = CatalogWorker.getCatalogQuickaddUse(request);

@@ -27,6 +27,8 @@ under the License.
     <ProductStoreCatalog productStoreId="PFTSTORE_EUR" prodCatalogId="PFTCatalog" fromDate="2009-09-25 00:00:00.000" sequenceNum="3"/>-->
     
     <!-- Paypal Payment Setting -->
+    <PaymentGatewayConfigType paymentGatewayConfigTypeId="PAYPAL" hasTable="N" description="PayPal Payment Gateway"/>
+    <PaymentGatewayConfig paymentGatewayConfigId="PAYPAL_CONFIG" paymentGatewayConfigTypeId="PAYPAL" description="PayPal Config"/>
     <PaymentGatewayPayPal paymentGatewayConfigId="PAYPAL_CONFIG" businessEmail="admin@productfromthailand.com" notifyUrl="http://www.productfromthailand.com/pft/control/payPalNotify" returnUrl="http://www.productfromthailand.com/pft/control/orderhistory" cancelReturnUrl="http://www.productfromthailand.com/pft/control/payPalCancel/main" imageUrl="http://www.productfromthailand.com/pft/images/logo.gif" confirmTemplate="/order/sendconfirmationemail.ftl" redirectUrl="https://www.paypal.com/cgi-bin/webscr" confirmUrl="http://www.paypal.com/cgi-bin/webscr" requireConfirmedShipping="N"/>
     <!--<ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_AUTH" paymentService="" paymentCustomMethodId="PAYPAL_AUTH" paymentGatewayConfigId="PAYPAL_CONFIG"/>-->
     

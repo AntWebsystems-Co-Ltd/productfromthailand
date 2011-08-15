@@ -488,5 +488,5 @@
     
     <!-- Google Base Configuration Data -->
     <WebSite webSiteId="GOOGLEBASE" standardContentPrefix="http://www.productfromthailand.com" productStoreId="PFTSTORE_USD"/>
-    <GoogleBaseConfig productStoreId="PFTSTORE_USD" developerKey="ABQIAAAAtllOIMnA_SSaX6-q_-0NqBQ7yogk7ltS6O8c1NB_asTLHULnfxRsRVBa5bgcryXeo0AOht5OtQ78_Q" authenticationUrl="https://www.google.com/accounts/ClientLogin" accountEmail="admin@productfromthailand.com" accountPassword="pft44444" postItemsUrl="http://www.google.com/base/feeds/items/batch" webSiteId="ProductFromThailand"/>
+    <GoogleBaseConfig productStoreId="PFTSTORE_USD" developerKey="ABQIAAAAtllOIMnA_SSaX6-q_-0NqBQ7yogk7ltS6O8c1NB_asTLHULnfxRsRVBa5bgcryXeo0AOht5OtQ78_Q" authenticationUrl="https://www.google.com/accounts/ClientLogin" accountEmail="admin@productfromthailand.com" accountPassword="pft44444" postItemsUrl="http://www.google.com/base/feeds/items/batch" webSiteId="PFT_USD"/>
 </entity-engine-xml>
