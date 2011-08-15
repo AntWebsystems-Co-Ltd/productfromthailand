@@ -1,6 +1,6 @@
 Index: framework/common/widget/CommonScreens.xml
 ===================================================================
---- framework/common/widget/CommonScreens.xml	(revision 1156566)
+--- framework/common/widget/CommonScreens.xml	(revision 1157735)
 +++ framework/common/widget/CommonScreens.xml	(working copy)
 @@ -416,7 +416,7 @@
              <actions>
@@ -21,7 +21,7 @@ Index: framework/common/widget/CommonScreens.xml
                  <platform-specific>
 Index: framework/common/config/general.properties
 ===================================================================
---- framework/common/config/general.properties	(revision 1156566)
+--- framework/common/config/general.properties	(revision 1157735)
 +++ framework/common/config/general.properties	(working copy)
 @@ -21,7 +21,7 @@
  unique.instanceId=ofbiz1
@@ -67,7 +67,7 @@ Index: framework/common/config/general.properties
  # -- These added fields also work for Yahoo business mail for instance
 Index: framework/webapp/config/fop.xconf
 ===================================================================
---- framework/webapp/config/fop.xconf	(revision 1156566)
+--- framework/webapp/config/fop.xconf	(revision 1157735)
 +++ framework/webapp/config/fop.xconf	(working copy)
 @@ -84,7 +84,10 @@
                            | 500 | 600 | 700 | 800 | 900
