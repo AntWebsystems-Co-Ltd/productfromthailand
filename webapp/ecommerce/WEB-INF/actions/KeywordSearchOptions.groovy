@@ -23,7 +23,9 @@
  */
 
 import org.ofbiz.product.catalog.*;
+import org.ofbiz.product.category.*;
 import org.ofbiz.entity.*;
+import javolution.util.FastMap;
 
 currentCatalogId = CatalogWorker.getCurrentCatalogId(request);
 searchCategoryId = CatalogWorker.getCatalogSearchCategoryId(request, currentCatalogId);
@@ -36,6 +38,11 @@ if (!"AND".equals(searchOperator) && !"OR".equals(searchOperator)) {
   searchOperator = "OR";
 }
 
+if (allProductCategories) {
+    catContentWrappers = FastMap.newInstance();
+    CategoryWorker.getCategoryContentWrappers(catContentWrappers, allProductCategories, request);
+    context.catContentWrappers = catContentWrappers;
+}
 context.currentCatalogId = currentCatalogId;
 context.searchCategoryId = searchCategoryId;
 context.otherSearchProdCatalogCategories = otherSearchProdCatalogCategories;

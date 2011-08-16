@@ -69,8 +69,8 @@ under the License.
   </#if>
 </#macro>
 
-<#if topCategoryList?has_content>
 <div id="sidedeepcategory" class="leftbarscreenlet">
+<#if topCategoryList?has_content>
     <div class="leftbarscreenlet-header">
         <div class="boxhead">${uiLabelMap.PFTProductCategories}</div>
     </div>
@@ -81,5 +81,5 @@ under the License.
           </#list>
         </ul>
     </div>
-</div>
 </#if>
+</div>

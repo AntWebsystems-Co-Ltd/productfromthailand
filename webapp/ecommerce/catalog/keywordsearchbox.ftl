@@ -30,19 +30,19 @@ under the License.
                 <input type="submit" class="smallSubmit" value="${uiLabelMap.CommonFind}"/>
             </span>
             <span class="boxhead_sb">${uiLabelMap.PFTSelectByCategories}:<br/>
-                <#if 0 < allProductCategories?size>
+                <#if allProductCategories?has_content>
                   <select name="SEARCH_CATEGORY_ID" size="1">
                     <option value="${searchCategoryId?if_exists}">${uiLabelMap.PFTInAllCategories}</option>
                     <#list allProductCategories as allProductCategory>
                       <#assign searchProductCategory = allProductCategory.getRelatedOneCache("CurrentProductCategory")>
                       <#if searchProductCategory?exists>
-                        <option value="${searchProductCategory.productCategoryId}">${searchProductCategory.description?default("No Description " + searchProductCategory.productCategoryId)}</option>
+                        <option value="${searchProductCategory.productCategoryId}">${catContentWrappers[searchProductCategory.productCategoryId].get("DESCRIPTION")?default("No Description " + searchProductCategory.productCategoryId)}</option>
                       </#if>
                     </#list>
                   </select>
-              <#else>
+                <#else>
                    <input type="hidden" name="SEARCH_CATEGORY_ID" value="${searchCategoryId?if_exists}"/>
-              </#if>
+                </#if>
             </span>
         </form>
     </div>
