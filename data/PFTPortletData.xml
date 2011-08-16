@@ -57,7 +57,7 @@ under the License.
     <SecurityGroupPermission groupId="MYPORTAL_MARKETER" permissionId="PARTYMGR_PCM_UPDATE"/>
     <SecurityGroupPermission groupId="MYPORTAL_MARKETER" permissionId="OFBTOOLS_VIEW"/>
     
-    <UserLoginSecurityGroup groupId="MYPORTAL_SUPPLIER" userLoginId="HANDICARFTEXPORT" fromDate="2000-01-01 00:00:00.0"/>
+<!--    <UserLoginSecurityGroup groupId="MYPORTAL_SUPPLIER" userLoginId="HANDICARFTEXPORT" fromDate="2000-01-01 00:00:00.0"/>-->
     
     <PortalPortlet portalPortletId="MyProducts"
         portletName="List of My Products"

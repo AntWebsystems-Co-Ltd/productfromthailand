@@ -22,151 +22,52 @@ under the License.
     <!-- The Initial Product & Supplier -->
     <!-- Start with ProdCatalog -->
     <ProdCatalog prodCatalogId="PFTCatalog" catalogName="Product From Thailand Catalog" useQuickAdd="Y"/>
-    <!--<ProductStoreCatalog productStoreId="PFTSTORE_USD" prodCatalogId="PFTCatalog" fromDate="2009-09-25 00:00:00.000" sequenceNum="1"/>
-    <ProductStoreCatalog productStoreId="PFTSTORE_THB" prodCatalogId="PFTCatalog" fromDate="2009-09-25 00:00:00.000" sequenceNum="2"/>
-    <ProductStoreCatalog productStoreId="PFTSTORE_EUR" prodCatalogId="PFTCatalog" fromDate="2009-09-25 00:00:00.000" sequenceNum="3"/>-->
-    
-    <!-- Paypal Payment Setting -->
-    <PaymentGatewayConfigType paymentGatewayConfigTypeId="PAYPAL" hasTable="N" description="PayPal Payment Gateway"/>
-    <PaymentGatewayConfig paymentGatewayConfigId="PAYPAL_CONFIG" paymentGatewayConfigTypeId="PAYPAL" description="PayPal Config"/>
-    <PaymentGatewayPayPal paymentGatewayConfigId="PAYPAL_CONFIG" businessEmail="admin@productfromthailand.com" notifyUrl="http://www.productfromthailand.com/pft/control/payPalNotify" returnUrl="http://www.productfromthailand.com/pft/control/orderhistory" cancelReturnUrl="http://www.productfromthailand.com/pft/control/payPalCancel/main" imageUrl="http://www.productfromthailand.com/pft/images/logo.gif" confirmTemplate="/order/sendconfirmationemail.ftl" redirectUrl="https://www.paypal.com/cgi-bin/webscr" confirmUrl="http://www.paypal.com/cgi-bin/webscr" requireConfirmedShipping="N"/>
-    <!--<ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_AUTH" paymentService="" paymentCustomMethodId="PAYPAL_AUTH" paymentGatewayConfigId="PAYPAL_CONFIG"/>-->
     
     <ProductCategory longDescription="Product From Thailand Catalog Browse Root Category"
         productCategoryId="PFT_ROOT" productCategoryTypeId="CATALOG_CATEGORY"/>
     <ProductCategory productCategoryId="PFTPROMOTION" productCategoryTypeId="CATALOG_CATEGORY" categoryName="Special Products" 
         detailScreen="component://ecommerce/widget/CatalogScreens.xml#categorydetailmatrix"/>
-    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="AGRICULTURAL" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="AUTOMOBILE" productCategoryTypeId="CATALOG_CATEGORY"/>
+<!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="AGRICULTURAL" productCategoryTypeId="CATALOG_CATEGORY"/>-->
+<!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="AUTOMOBILE" productCategoryTypeId="CATALOG_CATEGORY"/>-->
     <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="BAG" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="CHEMICAL" productCategoryTypeId="CATALOG_CATEGORY"/>
+<!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="CHEMICAL" productCategoryTypeId="CATALOG_CATEGORY"/>-->
     <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="CLOTHING" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="SOFTWARE" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="CONSTRUCTION" productCategoryTypeId="CATALOG_CATEGORY"/>
+<!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="SOFTWARE" productCategoryTypeId="CATALOG_CATEGORY"/>-->
+<!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="CONSTRUCTION" productCategoryTypeId="CATALOG_CATEGORY"/>-->
     <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="CRAFTANDGIFT" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="ELECTRICAL" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="ENERGY" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="ENV-PROTECTION" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="BEVERAGE" productCategoryTypeId="CATALOG_CATEGORY"/>
+<!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="ELECTRICAL" productCategoryTypeId="CATALOG_CATEGORY"/>-->
+<!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="ENERGY" productCategoryTypeId="CATALOG_CATEGORY"/>-->
+<!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="ENV-PROTECTION" productCategoryTypeId="CATALOG_CATEGORY"/>-->
+<!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="BEVERAGE" productCategoryTypeId="CATALOG_CATEGORY"/>-->
     <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="FOOTWEAR" productCategoryTypeId="CATALOG_CATEGORY"/>
     <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="FURNITURE" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="HEALTH" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="HOUSEHOLD" productCategoryTypeId="CATALOG_CATEGORY"/>
+<!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="HEALTH" productCategoryTypeId="CATALOG_CATEGORY"/>-->
+<!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="HOUSEHOLD" productCategoryTypeId="CATALOG_CATEGORY"/>-->
     <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="THAISILK" productCategoryTypeId="CATALOG_CATEGORY"/>
     
+    <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="BAG" sequenceNum="1"/>
+    <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="CLOTHING" sequenceNum="2"/>
+    <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="CRAFTANDGIFT" sequenceNum="3"/>
+    <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="FOOTWEAR" sequenceNum="4"/>
+    <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="FURNITURE" sequenceNum="5"/>
+    <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="THAISILK" sequenceNum="6"/>
+    <!-- 
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="AGRICULTURAL" sequenceNum="1"/>
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="AUTOMOBILE" sequenceNum="2"/>
-    <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="BAG" sequenceNum="3"/>
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="CHEMICAL" sequenceNum="4"/>
-    <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="CLOTHING" sequenceNum="5"/>
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="SOFTWARE" sequenceNum="6"/>
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="CONSTRUCTION" sequenceNum="7"/>
-    <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="CRAFTANDGIFT" sequenceNum="8"/>
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="ELECTRICAL" sequenceNum="9"/>
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="ENERGY" sequenceNum="10"/>
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="ENV-PROTECTION" sequenceNum="11"/>
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="BEVERAGE" sequenceNum="12"/>
-    <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="FOOTWEAR" sequenceNum="13"/>
-    <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="FURNITURE" sequenceNum="14"/>
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="HEALTH" sequenceNum="15"/>
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="HOUSEHOLD" sequenceNum="16"/>
-    <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="THAISILK" sequenceNum="17"/>
-    
+     -->
     <ProdCatalogCategory prodCatalogId="PFTCatalog" productCategoryId="PFT_ROOT" fromDate="2009-09-25 00:00:00.000"
         sequenceNum="1" prodCatalogCategoryTypeId="PCCT_BROWSE_ROOT"/>
     <ProdCatalogCategory prodCatalogId="PFTCatalog" productCategoryId="PFTPROMOTION" prodCatalogCategoryTypeId="PCCT_PROMOTIONS" fromDate="2009-09-25 00:00:00.000" />
 
-    <Party partyId="HANDICARFTEXPORT" partyTypeId="PARTY_GROUP"/>
-    <PartyGroup partyId="HANDICARFTEXPORT" groupName="Thai Handicraft Exports"/>
-    <PartyRole  partyId="HANDICARFTEXPORT" roleTypeId="SUPPLIER"/>
-    <PartyRole partyId="HANDICARFTEXPORT" roleTypeId="ACCOUNT"/>
-    <ContactMech contactMechId="HDCEXP_ADDR" contactMechTypeId="POSTAL_ADDRESS"/>
-    <ContactMech contactMechId="HDCEXP_TELE" contactMechTypeId="TELECOM_NUMBER"/>
-    <ContactMech contactMechId="HDCEXP_EMAIL" contactMechTypeId="EMAIL_ADDRESS" infoString="james@thai-handicraft-exports.com"/>
-    
-    <PartyContactMech partyId="HANDICARFTEXPORT" contactMechId="HDCEXP_ADDR" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
-    <PartyContactMech partyId="HANDICARFTEXPORT" contactMechId="HDCEXP_TELE" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
-    <PartyContactMech partyId="HANDICARFTEXPORT" contactMechId="HDCEXP_EMAIL" fromDate="2001-05-13 00:00:00.000" allowSolicitation="Y"/>
-    
-    <TelecomNumber contactMechId="HDCEXP_TELE" countryCode="+66" areaCode="" contactNumber="856266739"/>
-    <PostalAddress contactMechId="HDCEXP_ADDR" toName="James Wyatt-Carter " address1="143/33 Moo. 10, T. Suthep, A. Muang" city="Chiang Mai" postalCode="50200" countryGeoId="THA"/>
-    
-    <PartyContactMechPurpose partyId="HANDICARFTEXPORT" contactMechId="HDCEXP_ADDR" contactMechPurposeTypeId="BILLING_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
-    <PartyContactMechPurpose partyId="HANDICARFTEXPORT" contactMechId="HDCEXP_ADDR" contactMechPurposeTypeId="GENERAL_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
-    <PartyContactMechPurpose partyId="HANDICARFTEXPORT" contactMechId="HDCEXP_ADDR" contactMechPurposeTypeId="PAYMENT_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
-    <PartyContactMechPurpose partyId="HANDICARFTEXPORT" contactMechId="HDCEXP_EMAIL" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2009-09-25 00:00:00.000"/>
-    <PartyContactMechPurpose partyId="HANDICARFTEXPORT" contactMechId="HDCEXP_TELE" contactMechPurposeTypeId="PRIMARY_PHONE" fromDate="2009-09-25 00:00:00.000"/>
-    
-    <UserLogin userLoginId="HANDICARFTEXPORT" currentPassword="{SHA}47ca69ebb4bdc9ae0adec130880165d2cc05db1a" partyId="HANDICARFTEXPORT"/>
-    
-    <!-- Product from Thai Handicraft Exports -->
-    <Product productId="ThExport-10001" productTypeId="FINISHED_GOOD" internalName="Elephants Wood Craft" productName="" weight="15.0" weightUomId="WT_kg" 
-        productHeight="1200.0" heightUomId="LEN_mm" productWidth="800.0" widthUomId="LEN_mm" productDepth="800.0" depthUomId="LEN_mm" billOfMaterialLevel="0"
-        isVirtual="N" isVariant="N" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT" inShippingBox="N" requirementMethodEnumId="PRODRQM_DS"
-        largeImageUrl="/pft/images/products/large/ThExport-10001.jpg" mediumImageUrl="/pft/images/products/medium/ThExport-10001.jpg" smallImageUrl="/pft/images/products/small/ThExport-10001.jpg"/>
-    <Product productId="ThExport-10002" productTypeId="FINISHED_GOOD" internalName="Bamboo in the Sun" productName="" requirementMethodEnumId="PRODRQM_DS"
-        smallImageUrl="/pft/images/products/small/ThExport-10002.jpg" mediumImageUrl="/pft/images/products/medium/ThExport-10002.jpg" 
-        largeImageUrl="/pft/images/products/large/ThExport-10002.jpg" weight="300.0" weightUomId="WT_g" productHeight="280.0" heightUomId="LEN_mm" 
-        productWidth="128.0" widthUomId="LEN_mm" productDepth="128.0" depthUomId="LEN_mm" isVirtual="N" isVariant="N" billOfMaterialLevel="0" 
-        createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT" inShippingBox="N"/>
-    <Product productId="ThExport-10003" productTypeId="FINISHED_GOOD" internalName="Bamboo Lamp" productName="" requirementMethodEnumId="PRODRQM_DS"
-        smallImageUrl="/pft/images/products/small/ThExport-10003.jpg" mediumImageUrl="/pft/images/products/medium/ThExport-10003.jpg" 
-        largeImageUrl="/pft/images/products/large/ThExport-10003.jpg" 
-        weight="5.0" weightUomId="WT_kg" productHeight="210.0" heightUomId="LEN_mm" productWidth="1200.0" widthUomId="LEN_mm" productDepth="1200.0" depthUomId="LEN_mm" 
-        isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT" inShippingBox="N"/>
-    <Product productId="ThExport-10004" productTypeId="FINISHED_GOOD" internalName="Thai Royal Barge" productName="" requirementMethodEnumId="PRODRQM_DS"
-        smallImageUrl="/pft/images/products/small/ThExport-10004.jpg" mediumImageUrl="/pft/images/products/small/ThExport-10004.jpg" 
-        largeImageUrl="/pft/images/products/small/ThExport-10004.jpg" 
-        weight="500.0" weightUomId="WT_g" productHeight="30.0" heightUomId="LEN_mm" productWidth="280.0" widthUomId="LEN_mm" productDepth="200.0" depthUomId="LEN_mm" 
-        isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT" inShippingBox="N"/>
-    <ProductCategoryMember productCategoryId="FURNITURE" productId="ThExport-10001" sequenceNum="1" fromDate="2009-09-25 00:00:00.000"/>
-    <ProductCategoryMember productCategoryId="FURNITURE" productId="ThExport-10002" sequenceNum="2" fromDate="2009-09-25 00:00:00.000"/>
-    <ProductCategoryMember productCategoryId="FURNITURE" productId="ThExport-10003" sequenceNum="3" fromDate="2009-09-25 00:00:00.000"/>
-    <ProductCategoryMember productCategoryId="CRAFTANDGIFT" productId="ThExport-10004" sequenceNum="4" fromDate="2009-09-25 00:00:00.000"/>
-    <ProductCategoryMember productCategoryId="PFTPROMOTION" productId="ThExport-10004" fromDate="2009-09-25 00:00:00.000"/>
-
-    <!--ProductPrice productId="ThExport-10001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="15050" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/>
-    <ProductPrice productId="ThExport-10002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="175" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/>
-    <ProductPrice productId="ThExport-10003" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="1085" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/>
-    <ProductPrice productId="ThExport-10004" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="2695" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/-->
-    
-    <!-- Price in USD -->
-    <ProductPrice productId="ThExport-10001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="430" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/>
-    <ProductPrice productId="ThExport-10002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="5" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/>
-    <ProductPrice productId="ThExport-10003" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="31" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/>
-    <ProductPrice productId="ThExport-10004" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="77" createdDate="2009-09-25 00:00:00.000" createdByUserLogin="HANDICARFTEXPORT"/>
-    
-    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="USD" productId="ThExport-10001" lastPrice="387" supplierProductId="HDC-001" supplierProductName="Thai Handicraft Exports-Elephants" availableFromDate="2009-09-25 00:00:00.000" canDropShip="Y"/>
-    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="USD" productId="ThExport-10002" lastPrice="4.5" supplierProductId="HDC-002" supplierProductName="Thai Handicraft Exports-Bamboo in the Sun" availableFromDate="2009-09-25 00:00:00.000" canDropShip="Y"/>
-    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="USD" productId="ThExport-10003" lastPrice="27.9" supplierProductId="HDC-003" supplierProductName="Thai Handicraft Exports-Bamboo Lamp" availableFromDate="2009-09-25 00:00:00.000" canDropShip="Y"/>
-    <SupplierProduct partyId="HANDICARFTEXPORT" minimumOrderQuantity="0" currencyUomId="USD" productId="ThExport-10004" lastPrice="69.3" supplierProductId="HDC-004" supplierProductName="Thai Handicraft Exports-Thai Royal Barge" availableFromDate="2009-09-25 00:00:00.000" canDropShip="Y"/>
-    
-    <!-- Agricultural & Forestry category -->
-    <DataResource dataResourceId="AGRICULTURALDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="AGRICULTURALDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    
-    <ElectronicText dataResourceId="AGRICULTURALDESCTH" textData="สินค้าเกษตร"/>
-    <ElectronicText dataResourceId="AGRICULTURALDESCEN" textData="Agricultural &amp; Forestry"/>
-    
-    <Content contentId="AGRICULTURALDESCTH" contentTypeId="DOCUMENT" dataResourceId="AGRICULTURALDESCTH" description="DESCRIPTION TH Agricultural &amp; Forestry" localeString="th"/>
-    <Content contentId="AGRICULTURALDESCEN" contentTypeId="DOCUMENT" dataResourceId="AGRICULTURALDESCEN" description="DESCRIPTION EN Agricultural &amp; Forestry" localeString="en"/>
-    
-    <ProductCategoryContent productCategoryId="AGRICULTURAL" contentId="AGRICULTURALDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
-    <ContentAssoc contentId="AGRICULTURALDESCEN" contentIdTo="AGRICULTURALDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
-    
-    <!-- Automobiles & Auto Parts category -->
-    <DataResource dataResourceId="AUTOMOBILEDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="AUTOMOBILEDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    
-    <ElectronicText dataResourceId="AUTOMOBILEDESCTH" textData="รถยนต์และอะไหล่รถยนต์"/>
-    <ElectronicText dataResourceId="AUTOMOBILEDESCEN" textData="Automobiles &amp; Auto Parts"/>
-    
-    <Content contentId="AUTOMOBILEDESCTH" contentTypeId="DOCUMENT" dataResourceId="AUTOMOBILEDESCTH" description="DESCRIPTION TH Automobiles &amp; Auto Parts" localeString="th"/>
-    <Content contentId="AUTOMOBILEDESCEN" contentTypeId="DOCUMENT" dataResourceId="AUTOMOBILEDESCEN" description="DESCRIPTION EN Automobiles &amp; Auto Parts" localeString="en"/>
-    
-    <ProductCategoryContent productCategoryId="AUTOMOBILE" contentId="AUTOMOBILEDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
-    <ContentAssoc contentId="AUTOMOBILEDESCEN" contentIdTo="AUTOMOBILEDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
-    
     <!-- Bag category -->
     <DataResource dataResourceId="BAGDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
     <DataResource dataResourceId="BAGDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
@@ -179,20 +80,7 @@ under the License.
     
     <ProductCategoryContent productCategoryId="BAG" contentId="BAGDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
     <ContentAssoc contentId="BAGDESCEN" contentIdTo="BAGDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
-    
-    <!-- Chemical Products category -->
-    <DataResource dataResourceId="CHEMICALDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="CHEMICALDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    
-    <ElectronicText dataResourceId="CHEMICALDESCTH" textData="ผลิตภัณฑ์เคมี"/>
-    <ElectronicText dataResourceId="CHEMICALDESCEN" textData="Chemical Products"/>
-    
-    <Content contentId="CHEMICALDESCTH" contentTypeId="DOCUMENT" dataResourceId="CHEMICALDESCTH" description="DESCRIPTION TH Chemical Products" localeString="th"/>
-    <Content contentId="CHEMICALDESCEN" contentTypeId="DOCUMENT" dataResourceId="CHEMICALDESCEN" description="DESCRIPTION EN Chemical Products" localeString="en"/>
-    
-    <ProductCategoryContent productCategoryId="CHEMICAL" contentId="CHEMICALDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
-    <ContentAssoc contentId="CHEMICALDESCEN" contentIdTo="CHEMICALDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
-    
+
     <!-- Clothing category -->
     <DataResource dataResourceId="CLOTHINGDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
     <DataResource dataResourceId="CLOTHINGDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
@@ -205,33 +93,7 @@ under the License.
     
     <ProductCategoryContent productCategoryId="CLOTHING" contentId="CLOTHINGDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
     <ContentAssoc contentId="CLOTHINGDESCEN" contentIdTo="CLOTHINGDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
-    
-    <!-- Computers & Software category -->
-    <DataResource dataResourceId="SOFTWAREDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="SOFTWAREDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    
-    <ElectronicText dataResourceId="SOFTWAREDESCTH" textData="คอมพิวเตอร์และซอฟต์แวร์"/>
-    <ElectronicText dataResourceId="SOFTWAREDESCEN" textData="Computers &amp; Software"/>
-    
-    <Content contentId="SOFTWAREDESCTH" contentTypeId="DOCUMENT" dataResourceId="SOFTWAREDESCTH" description="DESCRIPTION TH Computers &amp; Software" localeString="th"/>
-    <Content contentId="SOFTWAREDESCEN" contentTypeId="DOCUMENT" dataResourceId="SOFTWAREDESCEN" description="DESCRIPTION EN Computers &amp; Software" localeString="en"/>
-    
-    <ProductCategoryContent productCategoryId="SOFTWARE" contentId="SOFTWAREDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
-    <ContentAssoc contentId="SOFTWAREDESCEN" contentIdTo="SOFTWAREDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
-    
-    <!-- Construction category -->
-    <DataResource dataResourceId="CONSTRUCTIONDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="CONSTRUCTIONDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    
-    <ElectronicText dataResourceId="CONSTRUCTIONDESCTH" textData="สิ่งปลูกสร้าง"/>
-    <ElectronicText dataResourceId="CONSTRUCTIONDESCEN" textData="Construction"/>
-    
-    <Content contentId="CONSTRUCTIONDESCTH" contentTypeId="DOCUMENT" dataResourceId="CONSTRUCTIONDESCTH" description="DESCRIPTION TH Construction" localeString="th"/>
-    <Content contentId="CONSTRUCTIONDESCEN" contentTypeId="DOCUMENT" dataResourceId="CONSTRUCTIONDESCEN" description="DESCRIPTION EN Construction" localeString="en"/>
-    
-    <ProductCategoryContent productCategoryId="CONSTRUCTION" contentId="CONSTRUCTIONDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
-    <ContentAssoc contentId="CONSTRUCTIONDESCEN" contentIdTo="CONSTRUCTIONDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
-    
+
     <!-- Craft & Gift category -->
     <DataResource dataResourceId="CRAFTDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
     <DataResource dataResourceId="CRAFTDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
@@ -245,58 +107,6 @@ under the License.
     <ProductCategoryContent productCategoryId="CRAFTANDGIFT" contentId="CRAFTDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
     <ContentAssoc contentId="CRAFTDESCEN" contentIdTo="CRAFTDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
 
-    <!-- Electrical Supplies category -->
-    <DataResource dataResourceId="ELECTRICALDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="ELECTRICALDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    
-    <ElectronicText dataResourceId="ELECTRICALDESCTH" textData="อุปกรณ์ไฟฟ้า"/>
-    <ElectronicText dataResourceId="ELECTRICALDESCEN" textData="Electrical Supplies"/>
-    
-    <Content contentId="ELECTRICALDESCTH" contentTypeId="DOCUMENT" dataResourceId="ELECTRICALDESCTH" description="DESCRIPTION TH Electrical Supplies" localeString="th"/>
-    <Content contentId="ELECTRICALDESCEN" contentTypeId="DOCUMENT" dataResourceId="ELECTRICALDESCEN" description="DESCRIPTION EN Electrical Supplies" localeString="en"/>
-    
-    <ProductCategoryContent productCategoryId="ELECTRICAL" contentId="ELECTRICALDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
-    <ContentAssoc contentId="ELECTRICALDESCEN" contentIdTo="ELECTRICALDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
-    
-    <!-- Energy & Petroleum category -->
-    <DataResource dataResourceId="ENERGYDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="ENERGYDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    
-    <ElectronicText dataResourceId="ENERGYDESCTH" textData="พลังงานและปิโตรเลียม"/>
-    <ElectronicText dataResourceId="ENERGYDESCEN" textData="Energy &amp; Petroleum"/>
-    
-    <Content contentId="ENERGYDESCTH" contentTypeId="DOCUMENT" dataResourceId="ENERGYDESCTH" description="DESCRIPTION TH Energy &amp; Petroleum" localeString="th"/>
-    <Content contentId="ENERGYDESCEN" contentTypeId="DOCUMENT" dataResourceId="ENERGYDESCEN" description="DESCRIPTION EN Energy &amp; Petroleum" localeString="en"/>
-    
-    <ProductCategoryContent productCategoryId="ENERGY" contentId="ENERGYDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
-    <ContentAssoc contentId="ENERGYDESCEN" contentIdTo="ENERGYDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
-    
-    <!-- Environmental Protection category -->
-    <DataResource dataResourceId="ENVPROTDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="ENVPROTDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    
-    <ElectronicText dataResourceId="ENVPROTDESCTH" textData="ผลิตภัณฑ์คุ้มครองสิ่งแวดล้อม"/>
-    <ElectronicText dataResourceId="ENVPROTDESCEN" textData="Environmental Protection"/>
-    
-    <Content contentId="ENVPROTDESCTH" contentTypeId="DOCUMENT" dataResourceId="ENVPROTDESCTH" description="DESCRIPTION TH Environmental Protection" localeString="th"/>
-    <Content contentId="ENVPROTDESCEN" contentTypeId="DOCUMENT" dataResourceId="ENVPROTDESCEN" description="DESCRIPTION EN Environmental Protection" localeString="en"/>
-    
-    <ProductCategoryContent productCategoryId="ENV-PROTECTION" contentId="ENVPROTDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
-    <ContentAssoc contentId="ENVPROTDESCEN" contentIdTo="ENVPROTDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
-    
-    <!-- Food & Beverages category -->
-    <DataResource dataResourceId="BEVERAGEDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="BEVERAGEDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    
-    <ElectronicText dataResourceId="BEVERAGEDESCTH" textData="อาหารและเครื่องดื่ม"/>
-    <ElectronicText dataResourceId="BEVERAGEDESCEN" textData="Food &amp; Beverages"/>
-    
-    <Content contentId="BEVERAGEDESCTH" contentTypeId="DOCUMENT" dataResourceId="BEVERAGEDESCTH" description="DESCRIPTION TH Food &amp; Beverages" localeString="th"/>
-    <Content contentId="BEVERAGEDESCEN" contentTypeId="DOCUMENT" dataResourceId="BEVERAGEDESCEN" description="DESCRIPTION EN Food &amp; Beverages" localeString="en"/>
-    
-    <ProductCategoryContent productCategoryId="BEVERAGE" contentId="BEVERAGEDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
-    <ContentAssoc contentId="BEVERAGEDESCEN" contentIdTo="BEVERAGEDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
-    
     <!-- Footwear category -->
     <DataResource dataResourceId="FOOTWEARDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
     <DataResource dataResourceId="FOOTWEARDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
@@ -323,32 +133,6 @@ under the License.
     <ProductCategoryContent productCategoryId="FURNITURE" contentId="FURNITUREDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
     <ContentAssoc contentId="FURNITUREDESCEN" contentIdTo="FURNITUREDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
 
-    <!-- Health & Medical Products category -->
-    <DataResource dataResourceId="HEALTHDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="HEALTHDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    
-    <ElectronicText dataResourceId="HEALTHDESCTH" textData="ผลิตภัณฑ์สุขภาพและยา"/>
-    <ElectronicText dataResourceId="HEALTHDESCEN" textData="Health &amp; Medical Products"/>
-    
-    <Content contentId="HEALTHDESCTH" contentTypeId="DOCUMENT" dataResourceId="HEALTHDESCTH" description="DESCRIPTION TH Health &amp; Medical Products" localeString="th"/>
-    <Content contentId="HEALTHDESCEN" contentTypeId="DOCUMENT" dataResourceId="HEALTHDESCEN" description="DESCRIPTION EN Health &amp; Medical Products" localeString="en"/>
-    
-    <ProductCategoryContent productCategoryId="HEALTH" contentId="HEALTHDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
-    <ContentAssoc contentId="HEALTHDESCEN" contentIdTo="HEALTHDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
-
-    <!-- Household Applicances category -->
-    <DataResource dataResourceId="HOUSEHOLDDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="HOUSEHOLDDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    
-    <ElectronicText dataResourceId="HOUSEHOLDDESCTH" textData="ของใช้ในครัวเรือน"/>
-    <ElectronicText dataResourceId="HOUSEHOLDDESCEN" textData="Household Applicances"/>
-    
-    <Content contentId="HOUSEHOLDDESCTH" contentTypeId="DOCUMENT" dataResourceId="HOUSEHOLDDESCTH" description="DESCRIPTION TH Household Applicances" localeString="th"/>
-    <Content contentId="HOUSEHOLDDESCEN" contentTypeId="DOCUMENT" dataResourceId="HOUSEHOLDDESCEN" description="DESCRIPTION EN Household Applicances" localeString="en"/>
-    
-    <ProductCategoryContent productCategoryId="HOUSEHOLD" contentId="HOUSEHOLDDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
-    <ContentAssoc contentId="HOUSEHOLDDESCEN" contentIdTo="HOUSEHOLDDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
-    
     <!-- Thai Silk category -->
     <DataResource dataResourceId="THAISILKDDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
     <DataResource dataResourceId="THAISILKDDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
@@ -361,9 +145,9 @@ under the License.
     
     <ProductCategoryContent productCategoryId="THAISILK" contentId="THAISILKDDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-09-25 00:00:00.000"/>
     <ContentAssoc contentId="THAISILKDDESCEN" contentIdTo="THAISILKDDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-25 00:00:00.000"/>
-    
+    <!-- Example product -->
     <!-- Product Name and Discription -->
-    <!-- Elephants Wood Crafts -->
+    <!-- Elephants Wood Crafts 
     <DataResource dataResourceId="DRTHEX10001EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-14 17:43:37.64"/>
     <DataResource dataResourceId="DRTHEX10001TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_AVAILABLE" localeString="th" isPublic="Y" createdDate="2009-10-14 17:11:29.179"/>
     <Content contentId="DRTHEX10001EN" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10001EN" statusId="CTNT_IN_PROGRESS" description="Description Elephant wood craft Eng" localeString="en" createdDate="2009-10-14 17:43:38.063"/>
@@ -381,8 +165,8 @@ under the License.
     <ElectronicText dataResourceId="PNAME_THEX10001TH" textData="ช้างไม้แกะสลัก"/>
     <ProductContent productId="ThExport-10001" contentId="PNAME_THEX10001EN" productContentTypeId="PRODUCT_NAME" fromDate="2009-10-15 11:26:03.0"/>
     <ContentAssoc contentId="PNAME_THEX10001EN" contentIdTo="PNAME_THEX10001TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-15 11:29:58.861" createdDate="2009-10-15 11:29:58.861"/>
-    
-    <!-- Bamboo In the Sun -->
+    -->
+    <!-- Bamboo In the Sun 
     <DataResource dataResourceId="DRTHEX10002EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-14 17:43:37.64"/>
     <DataResource dataResourceId="DRTHEX10002TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_AVAILABLE" localeString="th" isPublic="Y" createdDate="2009-10-14 17:11:29.179"/>
     <Content contentId="DRTHEX10002EN" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10002EN" statusId="CTNT_IN_PROGRESS" description="Description Floor Lamp Bamboo In the Sun Eng" localeString="en" createdDate="2009-10-14 17:43:38.063"/>
@@ -401,8 +185,8 @@ under the License.
     <ElectronicText dataResourceId="PNAME_THEX10002TH" textData="โคมไฟตั้งพื้น รูปกอไผ่ยามเย็น"/>
     <ProductContent productId="ThExport-10002" contentId="PNAME_THEX10002EN" productContentTypeId="PRODUCT_NAME" fromDate="2009-10-15 11:26:03.0"/>
     <ContentAssoc contentId="PNAME_THEX10002EN" contentIdTo="PNAME_THEX10002TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-15 11:29:58.861" createdDate="2009-10-15 11:29:58.861"/>
-    
-    <!-- Bamboo Floor Lamp -->
+    -->
+    <!-- Bamboo Floor Lamp 
     <DataResource dataResourceId="DRTHEX10003EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-14 17:43:37.64"/>
     <DataResource dataResourceId="DRTHEX10003TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_AVAILABLE" localeString="th" isPublic="Y" createdDate="2009-10-14 17:11:29.179"/>
     <Content contentId="DRTHEX10003EN" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10003EN" statusId="CTNT_IN_PROGRESS" description="Description Floor Lamp Bamboo Eng" localeString="en" createdDate="2009-10-14 17:43:38.063"/>
@@ -420,8 +204,8 @@ under the License.
     <ElectronicText dataResourceId="PNAME_THEX10003TH" textData="โคมไฟทำด้วยไม้ไผ่"/>
     <ProductContent productId="ThExport-10003" contentId="PNAME_THEX10003EN" productContentTypeId="PRODUCT_NAME" fromDate="2009-10-15 11:26:03.0"/>
     <ContentAssoc contentId="PNAME_THEX10003EN" contentIdTo="PNAME_THEX10003TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-15 11:29:58.861" createdDate="2009-10-15 11:29:58.861"/>
-    
-    <!-- Thai Royal Barge -->
+    -->
+    <!-- Thai Royal Barge 
     <DataResource dataResourceId="DRTHEX10004EN" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="FTL" statusId="CTNT_IN_PROGRESS" localeString="en" mimeTypeId="application/octet-stream" createdDate="2009-10-14 17:43:37.64"/>
     <DataResource dataResourceId="DRTHEX10004TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_AVAILABLE" localeString="th" isPublic="Y" createdDate="2009-10-14 17:11:29.179"/>
     <Content contentId="DRTHEX10004EN" contentTypeId="DOCUMENT" dataResourceId="DRTHEX10004EN" statusId="CTNT_IN_PROGRESS" description="Description Floor Lamp Bamboo Eng" localeString="en" createdDate="2009-10-14 17:43:38.063"/>
@@ -439,7 +223,7 @@ under the License.
     <ElectronicText dataResourceId="PNAME_THEX10004TH" textData="เงินฉลุขบวนแห่เรือสุพรรณหงษ์"/>
     <ProductContent productId="ThExport-10004" contentId="PNAME_THEX10004EN" productContentTypeId="PRODUCT_NAME" fromDate="2009-10-15 11:26:03.0"/>
     <ContentAssoc contentId="PNAME_THEX10004EN" contentIdTo="PNAME_THEX10004TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-15 11:29:58.861" createdDate="2009-10-15 11:29:58.861"/>
-    
+    -->
     <!-- example test suite -->
     <SeleniumTestSuitePath testSuiteId="PFT_TESTSUITE" testSuiteName="pft_testsuite" testSuitePath="productfromthailand/testdef/seleniumxml/pft/pft_testsuite.xml" description="test suite for productfromthailand component"/>
 </entity-engine-xml>

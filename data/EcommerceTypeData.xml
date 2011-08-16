@@ -30,6 +30,4 @@ under the License.
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_HDR_TMPLT_LOC" resourceValue="component://productfromthailand/webapp/ecommerce/includes/header.ftl" sequenceId="01"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_FTR_TMPLT_LOC" resourceValue="component://productfromthailand/webapp/ecommerce/includes/footer.ftl" sequenceId="01"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_SCREENSHOT" resourceValue="/images/ecdefaulttheme.jpg" sequenceId="01"/>
-    
-    
 </entity-engine-xml>
