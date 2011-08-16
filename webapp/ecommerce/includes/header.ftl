@@ -51,7 +51,7 @@ under the License.
             <#else/>
             ${uiLabelMap.CommonWelcome}!
             </#if>&nbsp;&nbsp;
-            <#assign availableLocales = Static["org.ofbiz.base.util.UtilMisc"].availableLocales()/>
+            <#--assign availableLocales = Static["org.ofbiz.base.util.UtilMisc"].availableLocales()/>
             <#list availableLocales as availableLocale>
                 <#if locale.toString() == availableLocale.toString()>
                     <#if locale.toString() == "en">
@@ -63,7 +63,15 @@ under the License.
             </#list>
             <#if locale.toString() == "en_US">
                 <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img  src="<@ofbizContentUrl>/pftimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
+            </#if-->
+            <#if parameters.locale?default("en")=="th">
+                <a href="<@ofbizUrl>setSessionLocale?newLocale=en</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pftimages/flags/en.jpg</@ofbizContentUrl>" alt="English"/></a>
+            <#else>
+                <a href="<@ofbizUrl>setSessionLocale?newLocale=th</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pftimages/flags/th.png</@ofbizContentUrl>" alt="Thai"/></a>
             </#if>
+            <br/>
+            
+            <#-- 
             <br/>
             <form name="switchcurrencyform" method="post" style="margin-top: 5px;">
                 ${uiLabelMap.PFTSwitchCurrency}
@@ -79,6 +87,34 @@ under the License.
                     <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "en")}"><img src="<@ofbizContentUrl>/pftimages/EU_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Euro"></a>
                 </#if>
             </form>
+            -->
+        </div>
+        <#-- Twitter share  -->
+        <div id="google-plus-top">
+            <span class="twitter-share">
+                <a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="Product_Thai">Tweet</a>
+                <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+                <script type="text/javascript">
+                    jQuery(".twitter-share-button").each(function(index) {
+                        iframeSrc = jQuery(jQuery(".twitter-share-button")[index]).attr("src");
+                        if (iframeSrc.substring(0, 5) == "https") {
+                            iframeSrc = "http" + iframeSrc.substring(5, iframeSrc.length);
+                            jQuery(jQuery(".twitter-share-button")[index]).attr("src", iframeSrc);
+                        }
+                    });
+                </script>
+            </span>
+            <span class="google-one-ck">
+                <g:plusone size="medium" count="false"></g:plusone>
+            </span>
+            <script type="text/javascript">
+              (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+              })();
+            </script>
+            <br/>
         </div>
         <div style="height:12px;">
            <#assign shoppingCart = sessionAttributes.shoppingCart?if_exists>
@@ -93,7 +129,7 @@ under the License.
                </#if>
           </#if-->
        </div>
-        <div>
+        <div style="display: inline;">
             <ul id="right-links">
                 <#--li id="header-bar-sitemap"><a href="<@ofbizUrl>sitemap</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSitemap}</div></a></li-->
                 <li id="header-bar-help"><a href="<@ofbizUrl>help</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTHelpAndInstruction}</div></a></li>

@@ -1506,3 +1506,17 @@ background:url(../pftimages/preview.gif) no-repeat top center;
 background:none;
 color:#443434;
 }
+
+#google-plus-top {
+    float: right;
+    padding: 5px 0;
+    display: inline;
+    position: relative;
+    width: 100%;
+}
+.google-one-ck {
+padding: 5px;
+}
+.twitter-share {
+padding: 5px;
+}
