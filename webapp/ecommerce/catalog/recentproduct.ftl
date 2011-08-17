@@ -17,18 +17,17 @@ specific language governing permissions and limitations
 under the License.
 -->
 <#if product?exists>
-    <#assign productUrl = Static["org.ofbiz.product.category.CatalogUrlServlet"].makeCatalogUrl(request, product.productId, categoryId,"")/>
 <div class="recentproduct">
     <div class="recentproductimage">
         <#if product.smallImageUrl?exists>
-        <a href="${productUrl}"><img src="${product.smallImageUrl}"/></a>
+        <a href="<@ofbizCatalogAltUrl productCategoryId=categoryId productId=product.productId!""/>"><img src="${product.smallImageUrl}"/></a>
         <#else>
-        <a href="${productUrl}"><img src="/images/defaultImage.jpg"/></a>
+        <a href="<@ofbizCatalogAltUrl productCategoryId=categoryId productId=product.productId!""/>"><img src="/images/defaultImage.jpg"/></a>
         </#if>
     </div>
     <div id="recentproductdetail">
          <div class="recentproductlabel">
-             <a href="${productUrl}" class="linktext">${productContentWrapper.get("PRODUCT_NAME")?if_exists}</a>
+             <a href="<@ofbizCatalogAltUrl productCategoryId=categoryId productId=product.productId!""/>" class="linktext">${productContentWrapper.get("PRODUCT_NAME")?if_exists}</a>
          </div>
          <p>${productContentWrapper.get("DESCRIPTION")?if_exists}</p> 
     </div>
