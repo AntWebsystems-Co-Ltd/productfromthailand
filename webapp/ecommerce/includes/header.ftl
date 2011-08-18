@@ -45,12 +45,31 @@ under the License.
     </div>
     <div id="right">
         <div id="welcome-message">
+            <ul id="right-links">
+            <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
+                  <#if security.hasEntityPermission("MYPORTAL", "_SUPPLIER", session)>
+                    <li id="header-bar-store"><a href="<@ofbizUrl>../../myportal</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTStoreManagement}</div></a></li>
+                  <#else>
+                    <li id="header-bar-account"><a href="<@ofbizUrl>viewprofile</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTYourAccount}</div></a></li>
+                  </#if>
+                <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><div class="menu-right">${uiLabelMap.CommonLogout}</div></a></li>
+            <#else/>
+                <li id="header-bar-login">
+                <a href="<@ofbizUrl>${checkLoginUrl}</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSignIn}</div></a><div class="menu-right"> ${uiLabelMap.PFTOr}</div> <a href="<@ofbizUrl>register</@ofbizUrl>"><div class="menu-right"> ${uiLabelMap.PFTRegister}</div></a>
+                </li>
+            </#if>
             <#if sessionAttributes.autoName?has_content>
             ${uiLabelMap.CommonWelcome}&nbsp;${sessionAttributes.autoName?html}!
             (${uiLabelMap.CommonNotYou}?&nbsp;<a href="<@ofbizUrl>autoLogout</@ofbizUrl>" class="linktext">${uiLabelMap.CommonClickHere}</a>)
             <#else/>
             ${uiLabelMap.CommonWelcome}!
             </#if>&nbsp;&nbsp;
+            <#if parameters.locale?default("en")=="th">
+                <a href="<@ofbizUrl>setSessionLocale?newLocale=en</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pftimages/flags/en.jpg</@ofbizContentUrl>" alt="English"/></a>
+            <#else>
+                <a href="<@ofbizUrl>setSessionLocale?newLocale=th</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pftimages/flags/th.png</@ofbizContentUrl>" alt="Thai"/></a>
+            </#if>
+            </ul>
             <#--assign availableLocales = Static["org.ofbiz.base.util.UtilMisc"].availableLocales()/>
             <#list availableLocales as availableLocale>
                 <#if locale.toString() == availableLocale.toString()>
@@ -64,30 +83,6 @@ under the License.
             <#if locale.toString() == "en_US">
                 <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img  src="<@ofbizContentUrl>/pftimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
             </#if-->
-            <#if parameters.locale?default("en")=="th">
-                <a href="<@ofbizUrl>setSessionLocale?newLocale=en</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pftimages/flags/en.jpg</@ofbizContentUrl>" alt="English"/></a>
-            <#else>
-                <a href="<@ofbizUrl>setSessionLocale?newLocale=th</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pftimages/flags/th.png</@ofbizContentUrl>" alt="Thai"/></a>
-            </#if>
-            <br/>
-            
-            <#-- 
-            <br/>
-            <form name="switchcurrencyform" method="post" style="margin-top: 5px;">
-                ${uiLabelMap.PFTSwitchCurrency}
-                <input type="hidden" name="newProductStoreId"/>
-                <#if productStoreId == "PFTSTORE_USD">
-                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "en")}"><img src="<@ofbizContentUrl>/pftimages/EU_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Euro"></a>
-                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "th")}"><img src="<@ofbizContentUrl>/pftimages/ThaiFlag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Thailand Baht"></a>
-                <#elseif productStoreId == "PFTSTORE_EUR">
-                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "en_US")}"><img src="<@ofbizContentUrl>/pftimages/USA_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="United States Dollar"></a>
-                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "th")}"><img src="<@ofbizContentUrl>/pftimages/ThaiFlag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Thailand Baht"></a>
-                <#elseif productStoreId == "PFTSTORE_THB">
-                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "en_US")}"><img src="<@ofbizContentUrl>/pftimages/USA_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="United States Dollar"></a>
-                    <a href="${Static["org.ofbiz.productfromthailand.LocaleUrlServlet"].makeLocaleUrl(request, "en")}"><img src="<@ofbizContentUrl>/pftimages/EU_flag.jpg</@ofbizContentUrl>" width="25" border="0" alt="Euro"></a>
-                </#if>
-            </form>
-            -->
         </div>
         <#-- Twitter share  -->
         <div id="google-plus-top">
@@ -129,23 +124,18 @@ under the License.
                </#if>
           </#if-->
        </div>
-        <div style="display: inline;">
-            <ul id="right-links">
-                <#--li id="header-bar-sitemap"><a href="<@ofbizUrl>sitemap</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSitemap}</div></a></li-->
+       <#--div class="currencyprice">
+            
+        </div-->
+        <div class="currencyprice">
+            <#--ul id="right-links">
+                <li id="header-bar-sitemap"><a href="<@ofbizUrl>sitemap</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSitemap}</div></a></li>
                 <li id="header-bar-help"><a href="<@ofbizUrl>help</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTHelpAndInstruction}</div></a></li>
-              <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
-                  <#if security.hasEntityPermission("MYPORTAL", "_SUPPLIER", session)>
-                    <li id="header-bar-store"><a href="<@ofbizUrl>../../myportal</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTStoreManagement}</div></a></li>
-                  <#else>
-                    <li id="header-bar-account"><a href="<@ofbizUrl>viewprofile</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTYourAccount}</div></a></li>
-                  </#if>
-                <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><div class="menu-right">${uiLabelMap.CommonLogout}</div></a></li>
-              <#else/>
-                <li id="header-bar-login">
-                <a href="<@ofbizUrl>${checkLoginUrl}</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSignIn}</div></a><div class="menu-right"> ${uiLabelMap.PFTOr}</div> <a href="<@ofbizUrl>register</@ofbizUrl>"><div class="menu-right"> ${uiLabelMap.PFTRegister}</div></a>
-                </li>
-              </#if>
-            </ul>
+            </ul-->
+            ${uiLabelMap.PFTSwitchCurrency} : 
+            <a href="<@ofbizUrl>setSessionCurrencyUom?currencyUom=THB</@ofbizUrl>"><img src="<@ofbizContentUrl>/pftimages/flags/flag_th.png</@ofbizContentUrl>"/></a>
+            <a href="<@ofbizUrl>setSessionCurrencyUom?currencyUom=USD</@ofbizUrl>"><img src="<@ofbizContentUrl>/pftimages/flags/flag_us.png</@ofbizContentUrl>"/></a>
+            <a href="<@ofbizUrl>setSessionCurrencyUom?currencyUom=EUR</@ofbizUrl>"><img src="<@ofbizContentUrl>/pftimages/flags/flag_euro.png</@ofbizContentUrl>"/></a>
         </div>
     </div>
   </div>
@@ -172,6 +162,7 @@ under the License.
               <li class="headermenu" <#if headerId?if_exists  == "partner">id="${headerId}"</#if> ><a href="<@ofbizUrl>partner</@ofbizUrl>">${uiLabelMap.PFTPartner}</a></li>
               <li class="headermenu" <#if headerId?if_exists == "aboutus">id="${headerId}"</#if> ><a href="<@ofbizUrl>aboutus</@ofbizUrl>">${uiLabelMap.PFTAboutUs}</a></li>
               <li class="headermenu" <#if headerId?if_exists == "contactus">id="${headerId}"</#if> ><a href="<@ofbizUrl>contactus</@ofbizUrl>">${uiLabelMap.PFTContact}</a></li>
+              <li class="headermenu" <#if headerId?if_exists == "help">id="${headerId}"</#if> ><a href="<@ofbizUrl>help</@ofbizUrl>">${uiLabelMap.PFTHelpAndInstruction}</a></li>
             </ul>
             <ul id="left-links">
                 <li class="headermenu" <#if headerId?if_exists == "showcart">id="${headerId}"</#if> >
