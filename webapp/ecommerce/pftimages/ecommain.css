@@ -1445,8 +1445,8 @@ background-color:white;
 
 .menu-right {
 color: #827B00;
-font-weight:normal;
-font-size: 1.4em;
+font-weight:bold;
+font-size: 1em;
 display:inline;
 }
 
@@ -1509,9 +1509,10 @@ color:#443434;
 
 #google-plus-top {
     float: right;
-    padding: 5px 0;
     display: inline;
     position: relative;
+    padding-top: 5px;
+    padding-bottom: 5px;
     width: 100%;
 }
 .google-one-ck {
@@ -1519,4 +1520,119 @@ padding: 5px;
 }
 .twitter-share {
 padding: 5px;
+}
+.currencyprice {
+    width: 50%;
+    display: inline-block; vertical-align: bottom;
+    text-align: right;
+    float:right;
+    font-weight: 600;
+    color: #FFE4B5;
+}
+/*===================For ProductDetail page.===========================================*/
+#productdetail {
+width: 730px;
+display: inline-block;
+}
+
+#productImageBox {
+width:650px;
+/*border-top: 1px #BBBBBB solid;*/
+display: inline-block;
+}
+div.additionalImage {
+display: inline;
+}
+
+#productadditionalimage {
+width: 200px;
+height:200px;
+overflow:auto;
+}
+
+#detailImageBox {
+float: left;
+width:50%;
+}
+#additionalImageBox {
+float: left;
+}
+
+#productDetailBox {
+float: right;
+width:50%;
+margin-bottom:15px;
+}
+
+#addItemForm {
+clear: both;
+text-indent: 0px;
+}
+
+#addItemForm input{
+margin-top:0.7em;
+float: left;
+}
+#addItemForm button{
+float: left;
+margin: 0.8em 0 0;
+}
+#paginationBox {
+border-top: 1px #BBBBBB solid;
+border-bottom: 1px #BBBBBB solid;
+}
+button.buttonaddtocart { 
+    background:none repeat 0 50%; 
+    border:0 none; 
+    cursor:pointer;  
+    font-size:10px; 
+    height:20px !important; 
+    overflow:visible; 
+    width:auto; 
+    vertical-align: top; 
+    margin-left:5px\9;
+}
+button.buttonaddtocart span { 
+    background:url(/pftimages/button1_1_border_left.png) no-repeat  left top !important; 
+    display:block; 
+    height:20px !important; 
+    margin:0;
+}
+button.buttonaddtocart span span { 
+    background:url(/pftimages/button1_1_border_right.png) no-repeat  right top !important; 
+    display:block; 
+    height:20px !important; 
+    padding:0 5px;
+    /*padding-top:5px;
+    padding-right:0px;
+    padding-bottom:5px;
+    padding-left:5px;*/
+    #margin-right:-7px;
+}
+button.buttonaddtocart span span span { 
+    font-size:10px; 
+    background:url(/pftimages/button1_1.png) repeat-x  left top !important; 
+    color:#FFFFFF; 
+    display:block; 
+    font-weight:700; 
+    line-height:normal; 
+    overflow:hidden !important; 
+    padding-top:4px; 
+    text-align:center; 
+    white-space:nowrap;
+    width:auto;
+    #width:70px;
+}
+button.buttonaddtocart:hover {
+    border:none;
+    background:none;
+}
+
+button.button1 { background:none repeat 0 50%; border:0 none; cursor:pointer;  font-size:10px; height:20px !important; overflow:visible; width:auto; vertical-align: top; margin-left:5px\9;}
+button.button1 span { background:url(/pftimages/button1_border_left.gif) no-repeat  left top !important; display:block; height:20px !important; margin:0; }
+button.button1 span span { background:url(/pftimages/button1_border_right.gif) no-repeat  right top !important; display:block; height:20px !important; padding:0 5px; }
+button.button1 span span span { font-size:10px; background:url(/pftimages/button1.gif) repeat-x  left top !important; color:#FFFFFF; display:block; font-weight:700; line-height:normal; overflow:hidden !important; padding-top:4px; text-align:center; white-space:nowrap; }
+button.button1:hover {
+    border:none;
+    background:none;
 }

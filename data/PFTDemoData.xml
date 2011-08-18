@@ -1745,7 +1745,7 @@ but they are grouped here for convenience purposes -->
         storeCreditAccountEnumId="FIN_ACCOUNT" usePrimaryEmailUsername="N" requireCustomerRole="N" autoInvoiceDigitalItems="Y" reqShipAddrForDigItems="Y" 
         showCheckoutGiftOptions="Y" selectPaymentTypePerItem="N" showPricesWithVatTax="N" showTaxIsExempt="Y" enableDigProdUpload="N" prodSearchExcludeVariants="Y" 
         autoOrderCcTryExp="Y" autoOrderCcTryOtherCards="Y" autoOrderCcTryLaterNsf="Y" storeCreditValidDays="90" autoApproveInvoice="Y" autoApproveOrder="Y" 
-        shipIfCaptureFails="Y" reqReturnInventoryReceive="N" showOutOfStockProducts="Y"/>
+        shipIfCaptureFails="Y" reqReturnInventoryReceive="N" showOutOfStockProducts="Y" inventoryFacilityId="pftWarehouse"/>
     
     <ProductStoreFacility productStoreId="PFTSTORE" facilityId="pftWarehouse" fromDate="2009-09-25 10:38:07.561"/>
     <!--<ProductStoreCatalog productStoreId="PFTSTORE" prodCatalogId="DemoCatalog" fromDate="2009-09-25 10:38:07.561"/>-->
@@ -1897,6 +1897,7 @@ but they are grouped here for convenience purposes -->
     <PartyRole partyId="admin" roleTypeId="SALES_REP"/>
     <PartyRole partyId="admin" roleTypeId="_NA_"/>
     <PartyRelationship partyIdFrom="admin" roleTypeIdFrom="EMAIL_ADMIN" partyIdTo="pft" roleTypeIdTo="_NA_" fromDate="2009-01-01 00:00:00.0"/>
+    <UserLogin userLoginId="admin" partyId="admin"/>
     
     <ContactMech contactMechId="admin" contactMechTypeId="EMAIL_ADDRESS" infoString="admin@productfromthailand.com"/>
     <PartyContactMech partyId="admin" contactMechId="admin" fromDate="2009-01-01 00:00:00.0" allowSolicitation="Y"/>
@@ -1977,6 +1978,7 @@ but they are grouped here for convenience purposes -->
     <UomConversionDated uomId="USD" uomIdTo="EUR" fromDate="2011-01-01 00:00:00.0" conversionFactor="0.7" roundingMode="HalfUp" decimalScale="2"/>
     <UomConversionDated uomId="EUR" uomIdTo="USD" fromDate="2011-01-01 00:00:00.0" conversionFactor="1.428" roundingMode="HalfUp" decimalScale="2"/>
     <UomConversionDated uomId="USD" uomIdTo="USD" fromDate="2011-01-01 00:00:00.0" conversionFactor="1" roundingMode="HalfUp" decimalScale="2"/>
+    <UomConversionDated uomId="USD" uomIdTo="THB" fromDate="2011-01-01 00:00:00.0" conversionFactor="30" roundingMode="HalfUp" decimalScale="2"/>
     <UomConversionDated uomId="THB" uomIdTo="EUR" fromDate="2011-01-01 00:00:00.0" conversionFactor="0.023" roundingMode="HalfUp" decimalScale="2"/>
     <UomConversionDated uomId="THB" uomIdTo="USD" fromDate="2011-01-01 00:00:00.0" conversionFactor="0.033" roundingMode="HalfUp" decimalScale="2"/>
     

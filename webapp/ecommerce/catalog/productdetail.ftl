@@ -18,10 +18,12 @@ under the License.
 -->
 <#-- variable setup -->
 <#assign price = priceMap?if_exists />
+<#assign productImageList = productImageList?if_exists />
 <#-- end variable setup -->
 
 <#-- virtual product javascript -->
 ${virtualJavaScript?if_exists}
+${virtualVariantJavaScript?if_exists}
 <script type="text/javascript">
 //<![CDATA[
     var detailImageUrl = null;
@@ -82,11 +84,11 @@ ${virtualJavaScript?if_exists}
     }
     function addItem() {
        if (document.addform.add_product_id.value == 'NULL') {
-           alert("Please select all of the required options.");
+           showErrorAlert("${uiLabelMap.CommonErrorMessage2}","${uiLabelMap.CommonPleaseSelectAllRequiredOptions}");
            return;
        } else {
            if (isVirtual(document.addform.add_product_id.value)) {
-               document.location = '<@ofbizUrl>product?category_id=${categoryId?if_exists}&product_id=</@ofbizUrl>' + document.addform.add_product_id.value;
+               document.location = '<@ofbizUrl>product?category_id=${categoryId?if_exists}&amp;product_id=</@ofbizUrl>' + document.addform.add_product_id.value;
                return;
            } else {
                document.addform.submit();
@@ -94,24 +96,29 @@ ${virtualJavaScript?if_exists}
        }
     }
 
-    function popupDetail() {
-        var defaultDetailImage = "${firstDetailImage?default(mainDetailImageUrl?default("_NONE_"))}";
-        if (defaultDetailImage == null || defaultDetailImage == "null" || defaultDetailImage == "") {
-            defaultDetailImage = "_NONE_";
+    function popupDetail(specificDetailImageUrl) {
+        if( specificDetailImageUrl ) {
+            detailImageUrl = specificDetailImageUrl;
         }
+        else {
+            var defaultDetailImage = "${firstDetailImage?default(mainDetailImageUrl?default("_NONE_"))}";
+            if (defaultDetailImage == null || defaultDetailImage == "null" || defaultDetailImage == "") {
+               defaultDetailImage = "_NONE_";
+            }
 
-        if (detailImageUrl == null || detailImageUrl == "null") {
-            detailImageUrl = defaultDetailImage;
+            if (detailImageUrl == null || detailImageUrl == "null") {
+                detailImageUrl = defaultDetailImage;
+            }
         }
 
         if (detailImageUrl == "_NONE_") {
             hack = document.createElement('span');
             hack.innerHTML="${uiLabelMap.CommonNoDetailImageAvailableToDisplay}";
-            alert(hack.innerHTML);
+            showErrorAlert("${uiLabelMap.CommonErrorMessage2}","${uiLabelMap.CommonNoDetailImageAvailableToDisplay}");
             return;
         }
         detailImageUrl = detailImageUrl.replace(/\&\#47;/g, "/");
-        popUp("<@ofbizUrl>detailImage?detail=" + detailImageUrl + "</@ofbizUrl>", 'detailImage', '400', '550');
+        popUp("<@ofbizUrl>detailImage?detail=" + detailImageUrl + "</@ofbizUrl>", 'detailImage', '600', '600');
     }
 
     function toggleAmt(toggle) {
@@ -170,6 +177,9 @@ ${virtualJavaScript?if_exists}
 
             // using the selected index locate the sku
             var sku = document.forms["addform"].elements[name].options[indexSelected].value;
+            
+            // display alternative packaging dropdown
+            ajaxUpdateArea("product_uom", "<@ofbizUrl>ProductUomDropDownOnly</@ofbizUrl>", "productId=" + sku);
 
             // set the product ID
             setAddProductId(sku);
@@ -187,21 +197,25 @@ ${virtualJavaScript?if_exists}
         msg[0]="Please use correct date format [yyyy-mm-dd]";
 
         var y=x.split("-");
-        if(y.length!=3){ alert(msg[0]);return false; }
-        if((y[2].length>2)||(parseInt(y[2])>31)) { alert(msg[0]); return false; }
+        if(y.length!=3){ showAlert(msg[0]);return false; }
+        if((y[2].length>2)||(parseInt(y[2])>31)) { showAlert(msg[0]); return false; }
         if(y[2].length==1){ y[2]="0"+y[2]; }
-        if((y[1].length>2)||(parseInt(y[1])>12)){ alert(msg[0]); return false; }
+        if((y[1].length>2)||(parseInt(y[1])>12)){ showAlert(msg[0]); return false; }
         if(y[1].length==1){ y[1]="0"+y[1]; }
-        if(y[0].length>4){ alert(msg[0]); return false; }
+        if(y[0].length>4){ showAlert(msg[0]); return false; }
         if(y[0].length<4) {
             if(y[0].length==2) {
                 y[0]="20"+y[0];
             } else {
-                alert(msg[0]);
+                showAlert(msg[0]);
                 return false;
             }
         }
         return (y[0]+"-"+y[1]+"-"+y[2]);
+    }
+
+    function showAlert(msg){
+        showErrorAlert("${uiLabelMap.CommonErrorMessage2}", msg);
     }
 
     function additemSubmit(){
@@ -259,483 +273,559 @@ ${virtualJavaScript?if_exists}
             block2.style.display = "none";
         }
     </#if>
+    
+    function displayProductVirtualVariantId(variantId) {
+        if(variantId){
+            document.addform.product_id.value = variantId;
+        }else{
+            document.addform.product_id.value = '';
+            variantId = '';
+        }
+        
+        var elem = document.getElementById('product_id_display');
+        var txt = document.createTextNode(variantId);
+        if(elem.hasChildNodes()) {
+            elem.replaceChild(txt, elem.firstChild);
+        } else {
+            elem.appendChild(txt);
+        }
+        
+        var priceElem = document.getElementById('variant_price_display');
+        var price = getVariantPrice(variantId);
+        var priceTxt = null;
+        if(price){
+            priceTxt = document.createTextNode(price);
+        }else{
+            priceTxt = document.createTextNode('');
+        }
+        if(priceElem.hasChildNodes()) {
+            priceElem.replaceChild(priceTxt, priceElem.firstChild);
+        } else {
+            priceElem.appendChild(priceTxt);
+        }
+    }
 //]]>
  </script>
 
-<div id="productdetail">
-<#assign productAdditionalImage1 = productContentWrapper.get("ADDITIONAL_IMAGE_1")?if_exists />
-<#assign productAdditionalImage2 = productContentWrapper.get("ADDITIONAL_IMAGE_2")?if_exists />
-<#assign productAdditionalImage3 = productContentWrapper.get("ADDITIONAL_IMAGE_3")?if_exists />
-<#assign productAdditionalImage4 = productContentWrapper.get("ADDITIONAL_IMAGE_4")?if_exists />
-
-<table border="0" cellpadding="2" cellspacing="0" width="98%">
-  <#-- Category next/previous -->
-  <#--if category?exists>
-    <tr>
-      <td colspan="3" align="right" style="text-align:right;">
-        <#if previousProductId?exists>
-          <a href="<@ofbizUrl>product/~category_id=${categoryId?if_exists}/~product_id=${previousProductId?if_exists}</@ofbizUrl>" class="buttontext">${uiLabelMap.CommonPrevious}</a>&nbsp;|&nbsp;
-        </#if>
-        <a href="<@ofbizUrl>category/~category_id=${categoryId?if_exists}</@ofbizUrl>" class="linktext">${(category.categoryName)?default(category.description)?if_exists}</a>
-        <#if nextProductId?exists>
-          &nbsp;|&nbsp;<a href="<@ofbizUrl>product/~category_id=${categoryId?if_exists}/~product_id=${nextProductId?if_exists}</@ofbizUrl>" class="buttontext">${uiLabelMap.CommonNext}</a>
-        </#if>
-      </td>
-    </tr>
-  </#if-->
-
-  <#--tr><td colspan="2"><hr /></td></tr-->
-
-  <#-- Product image/name/price -->
-  <tr >
-    <td valign="top" style="max-height:150px;max-width:320px;text-align:center;width:40%">
-      <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL")?if_exists />
-      <#-- remove the next two lines to always display the virtual image first (virtual images must exist) -->
-      <#if firstLargeImage?has_content>
-        <#assign productLargeImageUrl = firstLargeImage />
-      </#if>
-      <#if productLargeImageUrl?string?has_content>
-        <a href="javascript:popupDetail();"><img id="detailImage" src="<@ofbizContentUrl>${contentPathPrefix?if_exists}${productLargeImageUrl?if_exists}</@ofbizContentUrl>" name="mainImage" vspace="5" hspace="5" border="0" width="200" /></a>
-        <input type="hidden" id="originalImage" name="originalImage" value="<@ofbizContentUrl>${contentPathPrefix?if_exists}${productLargeImageUrl?if_exists}</@ofbizContentUrl>" />
-      </#if>
-      <#if !productLargeImageUrl?string?has_content>
-        <img id="detailImage" src="/images/defaultImage.jpg" name="mainImage" />
-      </#if>
-    </td>
-    <#if productAdditionalImage1?string?has_content || productAdditionalImage2?string?has_content || productAdditionalImage3?string?has_content || productAdditionalImage4?string?has_content>
-    <td style="vertical-align:top;>
-      <#if productAdditionalImage1?string?has_content>
-        <div class="additionalImage">
-          <a href="javascript:void(0);" swapDetail="<@ofbizContentUrl>${productAdditionalImage1}</@ofbizContentUrl>"><img src="<@ofbizContentUrl>${productAdditionalImage1}</@ofbizContentUrl>" vspace="5" hspace="5" border="0" width="75" /></a>
-        </div><br />
-      </#if>
-      <#if productAdditionalImage2?string?has_content>
-        <div class="additionalImage">
-          <a href="javascript:void(0);" swapDetail="<@ofbizContentUrl>${productAdditionalImage2}</@ofbizContentUrl>"><img src="<@ofbizContentUrl>${productAdditionalImage2}</@ofbizContentUrl>" vspace="5" hspace="5" border="0" width="75" /></a>
-         </div><br />
-      </#if>
-      <#if productAdditionalImage3?string?has_content>
-        <div class="additionalImage">
-          <a href="javascript:void(0);" swapDetail="<@ofbizContentUrl>${productAdditionalImage3}</@ofbizContentUrl>"><img src="<@ofbizContentUrl>${productAdditionalImage3}</@ofbizContentUrl>" vspace="5" hspace="5" border="0" width="75" /></a>
-        </div>
-      </#if>
-      <#if productAdditionalImage4?string?has_content>
-        <div class="additionalImage">
-          <a href="javascript:void(0);" swapDetail="<@ofbizContentUrl>${productAdditionalImage4}</@ofbizContentUrl>"><img src="<@ofbizContentUrl>${productAdditionalImage4}</@ofbizContentUrl>" vspace="5" hspace="5" border="0" width="75" /></a>
-        </div>
-        </#if>
-    </td>
-    </#if>
-    <td align="left" style="vertical-align:text-top;padding-top:10px;">
-      <h2>${productContentWrapper.get("PRODUCT_NAME")?if_exists}</h2>
-      <div>${productContentWrapper.get("DESCRIPTION")?if_exists}</div>
-      <div>${product.productId?if_exists}</div>
-      <#-- example of showing a certain type of feature with the product -->
-      <#if sizeProductFeatureAndAppls?has_content>
-        <div>
-          <#if (sizeProductFeatureAndAppls?size == 1)>
-            <#-- TODO : i18n -->
-            Size:
-          <#else>
-            Sizes Available:
-          </#if>
-          <#list sizeProductFeatureAndAppls as sizeProductFeatureAndAppl>
-            ${sizeProductFeatureAndAppl.description?default(sizeProductFeatureAndAppl.abbrev?default(sizeProductFeatureAndAppl.productFeatureId))}<#if sizeProductFeatureAndAppl_has_next>,</#if>
+<#macro showUnavailableVarients>
+  <#if unavailableVariants?exists>
+    <ul>
+      <#list unavailableVariants as prod>
+        <#assign features = prod.getRelated("ProductFeatureAppl")/>
+        <li>
+          <#list features as feature>
+            <em>${feature.getRelatedOne("ProductFeature").description}</em><#if feature_has_next>, </#if>
           </#list>
-        </div>
-      </#if>
-
-      <#-- for prices:
-              - if price < competitivePrice, show competitive or "Compare At" price
-              - if price < listPrice, show list price
-              - if price < defaultPrice and defaultPrice < listPrice, show default
-              - if isSale show price with salePrice style and print "On Sale!"
-      -->
-      <#if price.competitivePrice?exists && price.price?exists && price.price &lt; price.competitivePrice>
-        <#--assign competitivePrice = price.competitivePrice*conversionRate-->
-        <div>${uiLabelMap.ProductCompareAtPrice}: <span class="basePrice"><@ofbizCurrency amount=price.competitivePrice isoCode=price.currencyUsed/></span></div>
-      </#if>
-      <#if price.listPrice?exists && price.price?exists && price.price &lt; price.listPrice>
-        <#--assign listPrice = price.listPrice*conversionRate-->
-        <div>${uiLabelMap.ProductListPrice}: <span class="basePrice"><@ofbizCurrency amount=price.listPrice isoCode=price.currencyUsed/></span></div>
-      </#if>
-      <#if price.listPrice?exists && price.defaultPrice?exists && price.price?exists && price.price &lt; price.defaultPrice && price.defaultPrice &lt; price.listPrice>
-        <#--assign defaultPrice = price.defaultPrice*conversionRate-->
-        <div>${uiLabelMap.ProductRegularPrice}: <span class="basePrice"><@ofbizCurrency amount=price.defaultPrice isoCode=price.currencyUsed/></span></div>
-      </#if>
-      <#if price.specialPromoPrice?exists>
-        <#--assign specialPromoPrice = price.specialPromoPrice*conversionRate-->
-        <div>${uiLabelMap.ProductSpecialPromoPrice}: <span class="basePrice"><@@ofbizCurrency amount=price.specialPromoPrice isoCode=price.currencyUsed/></span></div>
-      </#if>
-      
-      <div>
-        <b>
-          <#if price.isSale?exists && price.isSale>
-            <span class="salePrice">${uiLabelMap.OrderOnSale}!</span>
-            <#assign priceStyle = "salePrice" />
-          <#else>
-            <#assign priceStyle = "regularPrice" />
-          </#if>
-            ${uiLabelMap.OrderYourPrice}: <#if "Y" = product.isVirtual?if_exists> ${uiLabelMap.CommonFrom} </#if><span class="${priceStyle}"><@ofbizCurrency amount=price.price isoCode=currencyUom/></span>
-             <#if product.productTypeId?if_exists == "ASSET_USAGE">
-            <#if product.reserv2ndPPPerc?exists && product.reserv2ndPPPerc != 0><br /><span class="${priceStyle}">${uiLabelMap.ProductReserv2ndPPPerc}<#if !product.reservNthPPPerc?exists || product.reservNthPPPerc == 0>${uiLabelMap.CommonUntil} ${product.reservMaxPersons?if_exists}</#if> <@ofbizCurrency amount=product.reserv2ndPPPerc*price.price/100 isoCode=price.currencyUsed /></span></#if>
-            <#if product.reservNthPPPerc?exists &&product.reservNthPPPerc != 0><br /><span class="${priceStyle}">${uiLabelMap.ProductReservNthPPPerc} <#if !product.reserv2ndPPPerc?exists || product.reserv2ndPPPerc == 0>${uiLabelMap.ProductReservSecond} <#else> ${uiLabelMap.ProductReservThird} </#if> ${uiLabelMap.CommonUntil} ${product.reservMaxPersons?if_exists}, ${uiLabelMap.ProductEach}: <@ofbizCurrency amount=product.reservNthPPPerc*price.price/100 isoCode=price.currencyUsed /></span></#if>
-            <#if (!product.reserv2ndPPPerc?exists || product.reserv2ndPPPerc == 0) && (!product.reservNthPPPerc?exists || product.reservNthPPPerc == 0)><br />${uiLabelMap.ProductMaximum} ${product.reservMaxPersons?if_exists} ${uiLabelMap.ProductPersons}.</#if>
-             </#if>
-         </b>
-      </div>
-      <#if price.listPrice?exists && price.price?exists && price.price &lt; price.listPrice>
-        <#assign priceSaved = price.listPrice - price.price />
-        <#assign percentSaved = (priceSaved / price.listPrice) * 100 />
-        <#--assign priceSaved = priceSaved*conversionRate-->
-        <div>${uiLabelMap.OrderSave}: <span class="basePrice"><@ofbizCurrency amount=priceSaved isoCode=price.currencyUsed /> (${percentSaved?int}%)</span></div>
-      </#if>
-      <#-- show price details ("showPriceDetails" field can be set in the screen definition) -->
-      <#if (showPriceDetails?exists && showPriceDetails?default("N") == "Y")>
-          <#if price.orderItemPriceInfos?exists>
-              <#list price.orderItemPriceInfos as orderItemPriceInfo>
-                  <div>${orderItemPriceInfo.description?if_exists}</div>
-              </#list>
-          </#if>
-      </#if>
-
-      <#-- Included quantities/pieces -->
-      <#if product.piecesIncluded?exists && product.piecesIncluded?long != 0>
-        <div>
-          ${uiLabelMap.OrderPieces}: ${product.piecesIncluded}
-        </div>
-      </#if>
-      <#if (product.quantityIncluded?exists && product.quantityIncluded != 0) || product.quantityUomId?has_content>
-        <#assign quantityUom = product.getRelatedOneCache("QuantityUom")?if_exists />
-        <div>
-          ${uiLabelMap.CommonQuantity}: ${product.quantityIncluded?if_exists} ${((quantityUom.abbreviation)?default(product.quantityUomId))?if_exists}
-        </div>
-      </#if>
-
-      <#if (product.weight?exists && product.weight != 0) || product.weightUomId?has_content>
-        <#assign weightUom = product.getRelatedOneCache("WeightUom")?if_exists />
-        <div>
-          ${uiLabelMap.CommonWeight}: ${product.weight?if_exists} ${((weightUom.abbreviation)?default(product.weightUomId))?if_exists}
-        </div>
-      </#if>
-      <#if (product.productHeight?exists && product.productHeight != 0) || product.heightUomId?has_content>
-        <#assign heightUom = product.getRelatedOneCache("HeightUom")?if_exists />
-        <div>
-          ${uiLabelMap.CommonHeight}: ${product.productHeight?if_exists} ${((heightUom.abbreviation)?default(product.heightUomId))?if_exists}
-        </div>
-      </#if>
-      <#if (product.productWidth?exists && product.productWidth != 0) || product.widthUomId?has_content>
-        <#assign widthUom = product.getRelatedOneCache("WidthUom")?if_exists />
-        <div>
-          ${uiLabelMap.CommonWidth}: ${product.productWidth?if_exists} ${((widthUom.abbreviation)?default(product.widthUomId))?if_exists}
-        </div>
-      </#if>
-      <#if (product.productDepth?exists && product.productDepth != 0) || product.depthUomId?has_content>
-        <#assign depthUom = product.getRelatedOneCache("DepthUom")?if_exists />
-        <div>
-          ${uiLabelMap.CommonDepth}: ${product.productDepth?if_exists} ${((depthUom.abbreviation)?default(product.depthUomId))?if_exists}
-        </div>
-      </#if>
-
-      <#if daysToShip?exists>
-        <div><b>${uiLabelMap.ProductUsuallyShipsIn} <font color="red">${daysToShip}</font> ${uiLabelMap.CommonDays}!<b></div>
-      </#if>
-
-      <#-- show tell a friend details only in ecommerce application -->
-      <div>&nbsp;</div>
-      <div>
-          <a href="javascript:popUpSmall('<@ofbizUrl>tellafriend?productId=${product.productId}</@ofbizUrl>','tellafriend');" class="buttontext">${uiLabelMap.CommonTellAFriend}</a>
-      </div>
-      <br />
-
-      <#if disFeatureList?exists && 0 &lt; disFeatureList.size()>
-      <p>&nbsp;</p>
-        <#list disFeatureList as currentFeature>
-            <#assign disFeatureType = currentFeature.getRelatedOneCache("ProductFeatureType") />
-            <div>
-                <#if disFeatureType.description?exists>${disFeatureType.get("description", locale)}<#else>${currentFeature.productFeatureTypeId}</#if>:&nbsp;${currentFeature.description}
-            </div>
-        </#list>
-            <div>&nbsp;</div>
-      </#if>
-
-      <form method="post" action="<@ofbizUrl>additem</@ofbizUrl>" name="addform"  style="margin: 0;">
-        <#assign inStock = true />
-        <#-- Variant Selection -->
-        <#if product.isVirtual?if_exists?upper_case == "Y">
-          <#if product.virtualVariantMethodEnum?if_exists == "VV_FEATURETREE" && featureLists?has_content>
-            <#list featureLists as featureList>
-                <#list featureList as feature>
-                    <#if feature_index == 0>
-                        <div>${feature.description}: <select id="FT${feature.productFeatureTypeId}" name="FT${feature.productFeatureTypeId}" onChange="javascript:checkRadioButton();">
-                        <option value="select" selected="selected"> select option </option>
-                    <#else>
-                        <option value="${feature.productFeatureId}">${feature.description} <#if feature.price?exists>(+ <@ofbizCurrency amount=feature.price?string isoCode=feature.currencyUomId />)</#if></option>
-                    </#if>
-                </#list>
-                </select>
-                </div>
-            </#list>
-              <input type="hidden" name="add_product_id" value="${product.productId}" />
-            <div id="addCart1" style="display:none;>
-              <span style="white-space: nowrap;"><b>${uiLabelMap.CommonQuantity}:</b></span>&nbsp;
-              <input type="text" size="5" name="quantity" value="1" />
-              <a href="javascript:javascript:addItem();" class="buttontext"><span style="white-space: nowrap;">${uiLabelMap.OrderAddToCart}</span></a>
-              &nbsp;
-            </div>
-            <div id="addCart2" style="display:block;>
-              <span style="white-space: nowrap;"><b>${uiLabelMap.CommonQuantity}:</b></span>&nbsp;
-              <input type="text" size="5" value="1" disabled="disabled" />
-              <a href="javascript:alert('Please select all features first');" class="buttontext"><span style="white-space: nowrap;">${uiLabelMap.OrderAddToCart}</span></a>
-              &nbsp;
-            </div>
-          </#if>
-          <#if !product.virtualVariantMethodEnum?exists || product.virtualVariantMethodEnum == "VV_VARIANTTREE">
-           <#if variantTree?exists && (variantTree.size() &gt; 0)>
-            <#list featureSet as currentType>
-              <div>
-                <select name="FT${currentType}" onchange="javascript:getList(this.name, (this.selectedIndex-1), 1);">
-                  <option>${featureTypes.get(currentType)}</option>
-                </select>
-              </div>
-            </#list>
-            <input type="hidden" name="add_product_id" value="NULL"/>
-            <div>
-              <b><span id="product_id_display"> </span></b>
-              <b><div id="variant_price_display"> </div></b>
-            </div>
-          <#else>
-            <input type="hidden" name="add_product_id" value="NULL"/>
-            <div><b>${uiLabelMap.ProductItemOutOfStock}.</b></div>
-            <#assign inStock = false />
-          </#if>
-         </#if>
-        <#else>
-          <input type="hidden" name="add_product_id" value="${product.productId}" />
-          <#assign isStoreInventoryNotAvailable = !(Static["org.ofbiz.product.store.ProductStoreWorker"].isStoreInventoryAvailable(request, product, 1.0)) />
-          <#assign isStoreInventoryRequired = Static["org.ofbiz.product.store.ProductStoreWorker"].isStoreInventoryRequired(request, product) />
-          <#if isStoreInventoryNotAvailable>
-            <#if isStoreInventoryRequired>
-              <div><b>${uiLabelMap.ProductItemOutOfStock}.</b></div>
-              <#assign inStock = false />
-            <#else>
-              <div><b>${product.inventoryMessage?if_exists}</b></div>
-            </#if>
-          </#if>
-        </#if>
-      </td></tr><tr><td  align="right" style="text-align:right;">
-        <#-- check to see if introductionDate hasnt passed yet -->
-        <#if product.introductionDate?exists && nowTimestamp.before(product.introductionDate)>
-        <p>&nbsp;</p>
-          <div style="color: red;">${uiLabelMap.ProductProductNotYetMadeAvailable}.</div>
-        <#-- check to see if salesDiscontinuationDate has passed -->
-        <#elseif product.salesDiscontinuationDate?exists && nowTimestamp.after(product.salesDiscontinuationDate)>
-          <div style="color: red;">${uiLabelMap.ProductProductNoLongerAvailable}.</div>
-        <#-- check to see if the product requires inventory check and has inventory -->
-        <#elseif product.virtualVariantMethodEnum?if_exists != "VV_FEATURETREE">
-          <#if inStock>
-            <#if product.requireAmount?default("N") == "Y">
-              <#assign hiddenStyle = "visible" />
-            <#else>
-              <#assign hiddenStyle = "hidden"/>
-            </#if>
-            <div id="add_amount" class="${hiddenStyle}">
-              <span style="white-space: nowrap;"><b>${uiLabelMap.CommonAmount}:</b></span>&nbsp;
-              <input type="text" size="5" name="add_amount" value=""/>
-            </div>
-            <#if product.productTypeId?if_exists == "ASSET_USAGE">
-                <table width="100%"><tr>
-                <td nowrap align="right">Start Date<br/>(yyyy-mm-dd)</td><td><input type="text" size="10" name="reservStart"/><a href="javascript:call_cal_notime(document.addform.reservStart, '${nowTimestamp.toString().substring(0,10)}');"><img src="<@ofbizContentUrl>/images/cal.gif</@ofbizContentUrl>" width="16" height="16" border="0" alt="Calendar"/></a></td>
-                <td nowrap align="right">End Date<br/>(yyyy-mm-dd)</td><td><input type="text" size="10" name="reservEnd"/><a href="javascript:call_cal_notime(document.addform.reservEnd, '${nowTimestamp.toString().substring(0,10)}');"><img src="<@ofbizContentUrl>/images/cal.gif</@ofbizContentUrl>" width="16" height="16" border="0" alt="Calendar"/></a></td></tr>
-                <tr>
-                <#--td nowrap align="right">Number<br/>of days</td><td><input type="textt" size="4" name="reservLength"/></td></tr><tr><td>&nbsp;</td><td align="right" nowrap>&nbsp;</td-->
-                <td nowrap align="right">Number of persons</td><td><input type="text" size="4" name="reservPersons" value="2"/></td>
-                <td nowrap align="right">Number of rooms</td><td><input type="text" size="5" name="quantity" value="1"/></td></tr></table>
-            <#else>
-                <input type="text" size="5" name="quantity" value="1"<#if product.isVirtual?if_exists?upper_case == "Y"> disabled="disabled"</#if> />
-            </#if>
-            <#-- This calls addItem() so that variants of virtual products cant be added before distinguishing features are selected, it should not be changed to additemSubmit() -->
-            <a href="javascript:addItem()" class="buttontext"><span style="white-space: nowrap;">${uiLabelMap.OrderAddToCart}</span></a>&nbsp;
-          </#if>
-        </#if>
-      </form>
-    
-      <#-- Prefill first select box (virtual products only) -->
-      <#if variantTree?exists && 0 &lt; variantTree.size()>
-        <script language="JavaScript" type="text/javascript">eval("list" + "${featureOrderFirst}" + "()");</script>
-      </#if>
-
-      <#-- Swatches (virtual products only) -->
-      <#if variantSample?exists && 0 &lt; variantSample.size()>
-        <#assign imageKeys = variantSample.keySet() />
-        <#assign imageMap = variantSample />
-        <p>&nbsp;</p>
-        <table cellspacing="0" cellpadding="0">
-          <tr>
-            <#assign maxIndex = 7 />
-            <#assign indexer = 0 />
-            <#list imageKeys as key>
-              <#assign swatchProduct = imageMap.get(key) />
-              <#if swatchProduct?has_content && indexer &lt; maxIndex>
-                <#assign imageUrl = Static["org.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(swatchProduct, "SMALL_IMAGE_URL", request)?if_exists />
-                <#if !imageUrl?string?has_content>
-                  <#assign imageUrl = productContentWrapper.get("SMALL_IMAGE_URL")?if_exists />
-                </#if>
-                <#if !imageUrl?string?has_content>
-                  <#assign imageUrl = "/images/defaultImage.jpg" />
-                </#if>
-                <td align="center" valign="bottom">
-                  <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1);"><img src="<@ofbizContentUrl>${contentPathPrefix?if_exists}${imageUrl}</@ofbizContentUrl>" border="0" width="60" height="60" /></a>
-                  <br />
-                  <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1);" class="linktext">${key}</a>
-                </td>
-              </#if>
-              <#assign indexer = indexer + 1 />
-            </#list>
-            <#if (indexer > maxIndex)>
-              <div><b>${uiLabelMap.ProductMoreOptions}</b></div>
-            </#if>
-          </tr>
-        </table>
-      </#if>
-    </td>
-  </tr>
-</table>
-
-  <#-- Digital Download Files Associated with this Product -->
-  <#if downloadProductContentAndInfoList?has_content>
-    <div id="download-files">
-      <div>${uiLabelMap.OrderDownloadFilesTitle}:</div>
-      <#list downloadProductContentAndInfoList as downloadProductContentAndInfo>
-        <div>${downloadProductContentAndInfo.contentName?if_exists}<#if downloadProductContentAndInfo.description?has_content> - ${downloadProductContentAndInfo.description}</#if></div>
+          <span>${uiLabelMap.ProductItemOutOfStock}</span>
+        </li>
       </#list>
-    </div>
-  </#if>
-
-  <#-- Long description of product -->
-  <div id="long-description">
-      <div>${productContentWrapper.get("LONG_DESCRIPTION")?if_exists}</div>
-      <div>${productContentWrapper.get("WARNINGS")?if_exists}</div>
-  </div>
-
-  <#-- Any attributes/etc may go here -->
-
-  <#-- Product Reviews -->
-    <div id="reviews">
-      <div>${uiLabelMap.OrderCustomerReviews}:</div>
-      <#if averageRating?exists && (averageRating &gt; 0) && numRatings?exists && (numRatings &gt; 1)>
-          <div>${uiLabelMap.OrderAverageRating}: ${averageRating} <#if numRatings?exists>(${uiLabelMap.CommonFrom} ${numRatings} ${uiLabelMap.OrderRatings})</#if></div>
-      </#if>
-
-      <#if productReviews?has_content>
-        <#list productReviews as productReview>
-          <#assign postedUserLogin = productReview.getRelatedOne("UserLogin") />
-          <#assign postedPerson = postedUserLogin.getRelatedOne("Person")?if_exists />
-              <table border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td>
-                    <div><b>${uiLabelMap.CommonBy}: </b><#if productReview.postedAnonymous?default("N") == "Y"> ${uiLabelMap.OrderAnonymous}<#else> ${postedPerson.firstName} ${postedPerson.lastName}&nbsp;</#if></div>
-                  </td>
-                  <td>
-                    <div><b>${uiLabelMap.CommonAt}: </b>${productReview.postedDateTime?if_exists}&nbsp;</div>
-                  </td>
-                  <td>
-                    <div><b>${uiLabelMap.OrderRanking}: </b>${productReview.productRating?if_exists?string}</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="3">
-                    <div>&nbsp;</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="3">
-                    <div>${productReview.productReview?if_exists}</div>
-                  </td>
-                </tr>
-                <tr><td colspan="3"><hr /></td></tr>
-              </table>
-        </#list>
-        <div>
-            <a href="<@ofbizUrl>reviewProduct?category_id=${categoryId?if_exists}&product_id=${product.productId}</@ofbizUrl>" class="linktext">${uiLabelMap.ProductReviewThisProduct}!</a>
-        </div>
-      <#else>
-        <div>${uiLabelMap.ProductProductNotReviewedYet}.</div>
-        <div>
-            <a href="<@ofbizUrl>reviewProduct?category_id=${categoryId?if_exists}&product_id=${product.productId}</@ofbizUrl>" class="linktext">${uiLabelMap.ProductBeTheFirstToReviewThisProduct}</a>
-        </div>
-      </#if>
-    </div>
-
-<#-- Upgrades/Up-Sell/Cross-Sell -->
-  <#macro associated assocProducts beforeName showName afterName formNamePrefix targetRequestName>
-  <#assign targetRequest = "product" />
-  <#if targetRequestName?has_content>
-    <#assign targetRequest = targetRequestName />
-  </#if>
-  <#if assocProducts?has_content>
-    <h2>${beforeName?if_exists}<#if showName == "Y">${productContentWrapper.get("PRODUCT_NAME")?if_exists}</#if>${afterName?if_exists}</h2>
-
-    <div class="productsummary-container">
-    <#list assocProducts as productAssoc>
-        <#if productAssoc.productId == product.productId>
-            <#assign assocProductId = productAssoc.productIdTo />
-        <#else>
-            <#assign assocProductId = productAssoc.productId />
-        </#if>
-        <div>
-          <a href="<@ofbizUrl>${targetRequest}/<#if categoryId?exists>~category_id=${categoryId}/</#if>~product_id=${assocProductId}</@ofbizUrl>" class="buttontext">
-            ${assocProductId}
-          </a>
-        <#if productAssoc.reason?has_content>
-          - <b>${productAssoc.reason}</b>
-        </#if>
-        </div>
-      ${setRequestAttribute("optProductId", assocProductId)}
-      ${setRequestAttribute("listIndex", listIndex)}
-      ${setRequestAttribute("formNamePrefix", formNamePrefix)}
-      <#if targetRequestName?has_content>
-        ${setRequestAttribute("targetRequestName", targetRequestName)}
-      </#if>
-          ${screens.render(productsummaryScreen)}
-      <#local listIndex = listIndex + 1 /><br class="bothclear"/>
-    </#list>
-    </div>
-
-    ${setRequestAttribute("optProductId", "")}
-    ${setRequestAttribute("formNamePrefix", "")}
-    ${setRequestAttribute("targetRequestName", "")}
+    </ul>
   </#if>
 </#macro>
 
-<#assign productValue = product />
-<#assign listIndex = 1 />
-${setRequestAttribute("productValue", productValue)}
-<div id="associated-products">
-    <#-- also bought -->
-    <@associated assocProducts=alsoBoughtProducts beforeName="" showName="N" afterName="${uiLabelMap.ProductAlsoBought}" formNamePrefix="albt" targetRequestName="" />
-    <#-- obsolete -->
-    <@associated assocProducts=obsoleteProducts beforeName="" showName="Y" afterName=" ${uiLabelMap.ProductObsolete}" formNamePrefix="obs" targetRequestName="" />
-    <#-- cross sell -->
-    <@associated assocProducts=crossSellProducts beforeName="" showName="N" afterName="${uiLabelMap.ProductCrossSell}" formNamePrefix="cssl" targetRequestName="crosssell" />
-    <#-- up sell -->
-    <@associated assocProducts=upSellProducts beforeName="${uiLabelMap.ProductUpSell} " showName="Y" afterName=":" formNamePrefix="upsl" targetRequestName="upsell" />
-    <#-- obsolescence -->
-    <@associated assocProducts=obsolenscenseProducts beforeName="" showName="Y" afterName=" ${uiLabelMap.ProductObsolescense}" formNamePrefix="obce" targetRequestName="" />
-</div>
-
-<#-- special cross/up-sell area using commonFeatureResultIds (from common feature product search) -->
-<#if comsmonFeatureResultIds?has_content>
-    <h2>${uiLabelMap.ProductSimilarProducts}</h2>
-
-    <div class="productsummary-container">
-        <#list commonFeatureResultIds as commonFeatureResultId>
-            ${setRequestAttribute("optProductId", commonFeatureResultId)}
-            ${setRequestAttribute("listIndex", commonFeatureResultId_index)}
-            ${setRequestAttribute("formNamePrefix", "cfeatcssl")}
-            <#-- ${setRequestAttribute("targetRequestName", targetRequestName)} -->
-            ${screens.render(productsummaryScreen)}
+<div id="productdetail">
+    <#assign productAdditionalImage1 = productContentWrapper.get("ADDITIONAL_IMAGE_1")?if_exists />
+    <#assign productAdditionalImage2 = productContentWrapper.get("ADDITIONAL_IMAGE_2")?if_exists />
+    <#assign productAdditionalImage3 = productContentWrapper.get("ADDITIONAL_IMAGE_3")?if_exists />
+    <#assign productAdditionalImage4 = productContentWrapper.get("ADDITIONAL_IMAGE_4")?if_exists />
+    
+      <#-- Category next/previous -->
+    
+    <div id="productImageBox">
+        <#if productImageList != null && productImageList?has_content>
+            <#-- Product image/name/price -->
+            <div id="detailImageBox">
+                <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL")?if_exists />
+                <#-- remove the next two lines to always display the virtual image first (virtual images must exist) -->
+                <#if firstLargeImage?has_content>
+                    <#assign productLargeImageUrl = firstLargeImage />
+                </#if>
+                <#if productLargeImageUrl?string?has_content>
+                    <div id="productadditionalimage"
+                        <a href="javascript:popupDetail();"><img id="detailImage" src="<@ofbizContentUrl>${contentPathPrefix?if_exists}${productLargeImageUrl?if_exists}</@ofbizContentUrl>" name="mainImage" vspace="5" hspace="5" alt="" /></a>
+                        <input type="hidden" id="originalImage" name="originalImage" value="<@ofbizContentUrl>${contentPathPrefix?if_exists}${productLargeImageUrl?if_exists}</@ofbizContentUrl>" />
+                    </div>
+                </#if>
+                <#if !productLargeImageUrl?string?has_content>
+                    <img id="detailImage" src="/images/defaultImage.jpg" name="mainImage" alt="" />
+                </#if>
+                <#-- Show Image Approved -->
+                <div id="additionalImageBox">
+                    <#if productImageList?has_content>
+                        <#list productImageList as productImage>
+                            <div class="additionalImage">
+                                <a href="javascript:void(0);" swapDetail="<@ofbizContentUrl>${productImage.productImage}</@ofbizContentUrl>"><img src="<@ofbizContentUrl>${productImage.productImageThumb}</@ofbizContentUrl>" vspace="5" hspace="5" alt="" width="70px;" height="70px;"/></a>
+                            </div>
+                        </#list>
+                    </#if>
+                </div>
+            </div>
+            <#-- Show Image Approved -->
+            <#--div id="additionalImageBox">
+                <#if productImageList?has_content>
+                    <#list productImageList as productImage>
+                        <div class="additionalImage">
+                            <a href="javascript:void(0);" swapDetail="<@ofbizContentUrl>${productImage.productImage}</@ofbizContentUrl>"><img src="<@ofbizContentUrl>${productImage.productImageThumb}</@ofbizContentUrl>" vspace="5" hspace="5" alt="" /></a>
+                        </div>
+                    </#list>
+                </#if>
+            </div-->
+        <#else>
+            <#-- Product image/name/price -->
+            <div id="detailImageBox">
+                <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL")?if_exists />
+                <#-- remove the next two lines to always display the virtual image first (virtual images must exist) -->
+                <#if firstLargeImage?has_content>
+                    <#assign productLargeImageUrl = firstLargeImage />
+                </#if>
+                <#if productLargeImageUrl?string?has_content>
+                    <a href="javascript:popupDetail();"><img id="detailImage" src="<@ofbizContentUrl>${contentPathPrefix?if_exists}${productLargeImageUrl?if_exists}</@ofbizContentUrl>" name="mainImage" vspace="5" hspace="5" width="200" alt="" /></a>
+                    <input type="hidden" id="originalImage" name="originalImage" value="<@ofbizContentUrl>${contentPathPrefix?if_exists}${productLargeImageUrl?if_exists}</@ofbizContentUrl>" />
+                </#if>
+                <#if !productLargeImageUrl?string?has_content>
+                    <img id="detailImage" src="/images/defaultImage.jpg" name="mainImage" alt="" />
+                </#if>
+            </div>
+            <div id="additionalImageBox">
+                <#if productAdditionalImage1?string?has_content>
+                    <div class="additionalImage">
+                        <a href="javascript:void(0);" swapDetail="<@ofbizContentUrl>${productAdditionalImage1}</@ofbizContentUrl>"><img src="<@ofbizContentUrl>${productAdditionalImage1}</@ofbizContentUrl>" vspace="5" hspace="5" width="200" alt="" /></a>
+                    </div>
+                </#if>
+                <#if productAdditionalImage2?string?has_content>
+                    <div class="additionalImage">
+                        <a href="javascript:void(0);" swapDetail="<@ofbizContentUrl>${productAdditionalImage2}</@ofbizContentUrl>"><img src="<@ofbizContentUrl>${productAdditionalImage2}</@ofbizContentUrl>" vspace="5" hspace="5" width="200" alt="" /></a>
+                    </div>
+                </#if>
+                <#if productAdditionalImage3?string?has_content>
+                    <div class="additionalImage">
+                        <a href="javascript:void(0);" swapDetail="<@ofbizContentUrl>${productAdditionalImage3}</@ofbizContentUrl>"><img src="<@ofbizContentUrl>${productAdditionalImage3}</@ofbizContentUrl>" vspace="5" hspace="5" width="200" alt="" /></a>
+                    </div>
+                </#if>
+                <#if productAdditionalImage4?string?has_content>
+                    <div class="additionalImage">
+                        <a href="javascript:void(0);" swapDetail="<@ofbizContentUrl>${productAdditionalImage4}</@ofbizContentUrl>"><img src="<@ofbizContentUrl>${productAdditionalImage4}</@ofbizContentUrl>" vspace="5" hspace="5" width="200" alt="" /></a>
+                    </div>
+                </#if>
+            </div>
+        </#if>
+        
+        <div id="productDetailBox">
+          <h2>${productContentWrapper.get("PRODUCT_NAME")?if_exists}</h2>
+          <div>${productContentWrapper.get("DESCRIPTION")?if_exists}</div>
+          <div>${product.productId?if_exists}</div>
+          <#-- example of showing a certain type of feature with the product -->
+          <#if sizeProductFeatureAndAppls?has_content>
+            <div>
+              <#if (sizeProductFeatureAndAppls?size == 1)>
+                <#-- TODO : i18n -->
+                Size:
+              <#else>
+                Sizes Available:
+              </#if>
+              <#list sizeProductFeatureAndAppls as sizeProductFeatureAndAppl>
+                ${sizeProductFeatureAndAppl.description?default(sizeProductFeatureAndAppl.abbrev?default(sizeProductFeatureAndAppl.productFeatureId))}<#if sizeProductFeatureAndAppl_has_next>,</#if>
+              </#list>
+            </div>
+          </#if>
+    
+          <#-- for prices:
+                  - if price < competitivePrice, show competitive or "Compare At" price
+                  - if price < listPrice, show list price
+                  - if price < defaultPrice and defaultPrice < listPrice, show default
+                  - if isSale show price with salePrice style and print "On Sale!"
+          -->
+          <#if price.competitivePrice?exists && price.price?exists && price.price &lt; price.competitivePrice>
+            <div>${uiLabelMap.ProductCompareAtPrice}: <span class="baseprice"><@ofbizCurrency amount=price.competitivePrice isoCode=price.currencyUsed /></span></div>
+          </#if>
+          <#if price.listPrice?exists && price.price?exists && price.price &lt; price.listPrice>
+            <div>${uiLabelMap.ProductListPrice}: <span class="baseprice"><@ofbizCurrency amount=price.listPrice isoCode=price.currencyUsed /></span></div>
+          </#if>
+          <#if price.listPrice?exists && price.defaultPrice?exists && price.price?exists && price.price &lt; price.defaultPrice && price.defaultPrice &lt; price.listPrice>
+            <div>${uiLabelMap.ProductRegularPrice}: <span class="baseprice"><@ofbizCurrency amount=price.defaultPrice isoCode=price.currencyUsed /></span></div>
+          </#if>
+          <#if price.specialPromoPrice?exists>
+            <div>${uiLabelMap.ProductSpecialPromoPrice}: <span class="baseprice"><@ofbizCurrency amount=price.specialPromoPrice isoCode=price.currencyUsed /></span></div>
+          </#if>
+          <div>
+            <strong>
+              <#if price.isSale?exists && price.isSale>
+                <span class="saleprice">${uiLabelMap.OrderOnSale}!</span>
+                <#assign priceStyle = "saleprice" />
+              <#else>
+                <#assign priceStyle = "normalprice" />
+              </#if>
+                ${uiLabelMap.OrderYourPrice}: <#if "Y" = product.isVirtual?if_exists> ${uiLabelMap.CommonFrom} </#if><span class="${priceStyle}"><@ofbizCurrency amount=price.price isoCode=price.currencyUsed /></span>
+                 <#if product.productTypeId?if_exists == "ASSET_USAGE">
+                <#if product.reserv2ndPPPerc?exists && product.reserv2ndPPPerc != 0><br /><span class="${priceStyle}">${uiLabelMap.ProductReserv2ndPPPerc}<#if !product.reservNthPPPerc?exists || product.reservNthPPPerc == 0>${uiLabelMap.CommonUntil} ${product.reservMaxPersons?if_exists}</#if> <@ofbizCurrency amount=product.reserv2ndPPPerc*price.price/100 isoCode=price.currencyUsed /></span></#if>
+                <#if product.reservNthPPPerc?exists &&product.reservNthPPPerc != 0><br /><span class="${priceStyle}">${uiLabelMap.ProductReservNthPPPerc} <#if !product.reserv2ndPPPerc?exists || product.reserv2ndPPPerc == 0>${uiLabelMap.ProductReservSecond} <#else> ${uiLabelMap.ProductReservThird} </#if> ${uiLabelMap.CommonUntil} ${product.reservMaxPersons?if_exists}, ${uiLabelMap.ProductEach}: <@ofbizCurrency amount=product.reservNthPPPerc*price.price/100 isoCode=price.currencyUsed /></span></#if>
+                <#if (!product.reserv2ndPPPerc?exists || product.reserv2ndPPPerc == 0) && (!product.reservNthPPPerc?exists || product.reservNthPPPerc == 0)><br />${uiLabelMap.ProductMaximum} ${product.reservMaxPersons?if_exists} ${uiLabelMap.ProductPersons}.</#if>
+                 </#if>
+             </strong>
+          </div>
+          <#if price.listPrice?exists && price.price?exists && price.price &lt; price.listPrice>
+            <#assign priceSaved = price.listPrice - price.price />
+            <#assign percentSaved = (priceSaved / price.listPrice) * 100 />
+            <div>${uiLabelMap.OrderSave}: <span class="baseprice"><@ofbizCurrency amount=priceSaved isoCode=price.currencyUsed /> (${percentSaved?int}%)</span></div>
+          </#if>
+          <#-- show price details ("showPriceDetails" field can be set in the screen definition) -->
+          <#if (showPriceDetails?exists && showPriceDetails?default("N") == "Y")>
+              <#if price.orderItemPriceInfos?exists>
+                  <#list price.orderItemPriceInfos as orderItemPriceInfo>
+                      <div>${orderItemPriceInfo.description?if_exists}</div>
+                  </#list>
+              </#if>
+          </#if>
+    
+          <#-- Included quantities/pieces -->
+          <#if product.piecesIncluded?exists && product.piecesIncluded?long != 0>
+            <div>
+              ${uiLabelMap.OrderPieces}: ${product.piecesIncluded}
+            </div>
+          </#if>
+          <#if (product.quantityIncluded?exists && product.quantityIncluded != 0) || product.quantityUomId?has_content>
+            <#assign quantityUom = product.getRelatedOneCache("QuantityUom")?if_exists />
+            <div>
+              ${uiLabelMap.CommonQuantity}: ${product.quantityIncluded?if_exists} ${((quantityUom.abbreviation)?default(product.quantityUomId))?if_exists}
+            </div>
+          </#if>
+    
+          <#if (product.weight?exists && product.weight != 0) || product.weightUomId?has_content>
+            <#assign weightUom = product.getRelatedOneCache("WeightUom")?if_exists />
+            <div>
+              ${uiLabelMap.CommonWeight}: ${product.weight?if_exists} ${((weightUom.abbreviation)?default(product.weightUomId))?if_exists}
+            </div>
+          </#if>
+          <#if (product.productHeight?exists && product.productHeight != 0) || product.heightUomId?has_content>
+            <#assign heightUom = product.getRelatedOneCache("HeightUom")?if_exists />
+            <div>
+              ${uiLabelMap.CommonHeight}: ${product.productHeight?if_exists} ${((heightUom.abbreviation)?default(product.heightUomId))?if_exists}
+            </div>
+          </#if>
+          <#if (product.productWidth?exists && product.productWidth != 0) || product.widthUomId?has_content>
+            <#assign widthUom = product.getRelatedOneCache("WidthUom")?if_exists />
+            <div>
+              ${uiLabelMap.CommonWidth}: ${product.productWidth?if_exists} ${((widthUom.abbreviation)?default(product.widthUomId))?if_exists}
+            </div>
+          </#if>
+          <#if (product.productDepth?exists && product.productDepth != 0) || product.depthUomId?has_content>
+            <#assign depthUom = product.getRelatedOneCache("DepthUom")?if_exists />
+            <div>
+              ${uiLabelMap.CommonDepth}: ${product.productDepth?if_exists} ${((depthUom.abbreviation)?default(product.depthUomId))?if_exists}
+            </div>
+          </#if>
+    
+          <#--if daysToShip?exists>
+            <div><strong>${uiLabelMap.ProductUsuallyShipsIn} ${daysToShip} ${uiLabelMap.CommonDays}!</strong></div>
+          </#if-->
+    
+          
+    
+          <#if disFeatureList?exists && 0 &lt; disFeatureList.size()>
+          <p>&nbsp;</p>
+            <#list disFeatureList as currentFeature>
+                <#assign disFeatureType = currentFeature.getRelatedOneCache("ProductFeatureType") />
+                <div>
+                    <#if disFeatureType.description?exists>${disFeatureType.get("description", locale)}<#else>${currentFeature.productFeatureTypeId}</#if>:&nbsp;${currentFeature.description}
+                </div>
+            </#list>
+                <div>&nbsp;</div>
+          </#if>
+          
+          <form method="post" action="<@ofbizUrl>additem</@ofbizUrl>" name="addform"  style="margin: 0;">
+          <fieldset>
+            <#assign inStock = true />
+            <#-- Variant Selection -->
+            <#if product.isVirtual?if_exists?upper_case == "Y">
+              <#if product.virtualVariantMethodEnum?if_exists == "VV_FEATURETREE" && featureLists?has_content>
+                <#list featureLists as featureList>
+                    <#list featureList as feature>
+                        <#if feature_index == 0>
+                            <div>${feature.description}: <select id="FT${feature.productFeatureTypeId}" name="FT${feature.productFeatureTypeId}" onchange="javascript:checkRadioButton();">
+                            <option value="select" selected="selected"> select option </option>
+                        <#else>
+                            <option value="${feature.productFeatureId}">${feature.description} <#if feature.price?exists>(+ <@ofbizCurrency amount=feature.price?string isoCode=feature.currencyUomId />)</#if></option>
+                        </#if>
+                    </#list>
+                    </select>
+                    </div>
+                </#list>
+                  <input type="hidden" name="add_product_id" value="${product.productId}" />
+                <div id="addCart1" style="display:none;">
+                  <span style="white-space: nowrap;"><strong>${uiLabelMap.CommonQuantity}:</strong></span>&nbsp;
+                  <input type="text" size="5" name="quantity" value="1" />
+                  <a href="javascript:javascript:addItem();" class="buttontext"><span style="white-space: nowrap;">${uiLabelMap.OrderAddToCart}</span></a>
+                  &nbsp;
+                </div>
+                <div id="addCart2" style="display:block;">
+                  <span style="white-space: nowrap;"><strong>${uiLabelMap.CommonQuantity}:</strong></span>&nbsp;
+                  <input type="text" size="5" value="1" disabled="disabled" />
+                  <a href="javascript:showErrorAlert("${uiLabelMap.CommonErrorMessage2}","${uiLabelMap.CommonPleaseSelectAllFeaturesFirst}");" class="buttontext"><span style="white-space: nowrap;">${uiLabelMap.OrderAddToCart}</span></a>
+                  &nbsp;
+                </div>
+              </#if>
+              <#if !product.virtualVariantMethodEnum?exists || product.virtualVariantMethodEnum == "VV_VARIANTTREE">
+               <#if variantTree?exists && (variantTree.size() &gt; 0)>
+                <#list featureSet as currentType>
+                  <div class="proddetailfield">
+                    <select name="FT${currentType}" onchange="javascript:getList(this.name, (this.selectedIndex-1), 1);">
+                      <option>${featureTypes.get(currentType)}</option>
+                    </select>
+                  </div>
+                </#list>
+                <div><span id="product_uom"></span></div>
+                <input type="hidden" name="product_id" value="${product.productId}"/>
+                <input type="hidden" name="add_product_id" value="NULL"/>
+                <div>
+                  <strong><span id="product_id_display"> </span></strong>
+                  <strong><div id="variant_price_display"> </div></strong>
+                </div>
+              <#else>
+                <input type="hidden" name="add_product_id" value="NULL"/>
+                <#assign inStock = false />
+              </#if>
+             </#if>
+            <#else>
+              <input type="hidden" name="add_product_id" value="${product.productId}" />
+              <#if mainProducts?has_content>
+                <input type="hidden" name="product_id" value=""/>
+                <select name="productVariantId" onchange="javascript:displayProductVirtualVariantId(this.value);">
+                    <option value="">Select Unit Of Measure</option>
+                    <#list mainProducts as mainProduct>
+                        <option value="${mainProduct.productId}">${mainProduct.uomDesc} : ${mainProduct.piecesIncluded}</option>
+                    </#list>
+                </select><br/>
+                <div>
+                  <strong><span id="product_id_display"> </span></strong>
+                  <strong><div id="variant_price_display"> </div></strong>
+                </div>
+              </#if>
+              <#if (availableInventory?exists) && (availableInventory <= 0)>
+                <#assign inStock = false />
+              </#if>
+            </#if>
+            <#-- check to see if introductionDate hasnt passed yet -->
+            <#if product.introductionDate?exists && nowTimestamp.before(product.introductionDate)>
+            <p>&nbsp;</p>
+              <div style="color: red;">${uiLabelMap.ProductProductNotYetMadeAvailable}.</div>
+            <#-- check to see if salesDiscontinuationDate has passed -->
+            <#elseif product.salesDiscontinuationDate?exists && nowTimestamp.after(product.salesDiscontinuationDate)>
+              <div style="color: red;">${uiLabelMap.ProductProductNoLongerAvailable}.</div>
+            <#-- check to see if the product requires inventory check and has inventory -->
+            <#elseif product.virtualVariantMethodEnum?if_exists != "VV_FEATURETREE">
+              <#if inStock>
+                <#if product.requireAmount?default("N") == "Y">
+                  <#assign hiddenStyle = "visible" />
+                <#else>
+                  <#assign hiddenStyle = "hidden"/>
+                </#if>
+                <div id="add_amount" class="${hiddenStyle}">
+                  <span style="white-space: nowrap;"><strong>${uiLabelMap.CommonAmount}:</strong></span>&nbsp;
+                  <input type="text" size="5" name="add_amount" value=""/>
+                </div>
+                <#if product.productTypeId?if_exists == "ASSET_USAGE">
+                  <div class="inline">
+                    <label>Start Date(yyyy-mm-dd)</label><@htmlTemplate.renderDateTimeField event="" action="" name="reservStart" className="" alert="" title="Format: yyyy-MM-dd HH:mm:ss.SSS" value="" size="25" maxlength="30" id="reservStart1" dateType="date" shortDateInput=true timeDropdownParamName="" defaultDateTimeString="" localizedIconTitle="" timeDropdown="" timeHourName="" classString="" hour1="" hour2="" timeMinutesName="" minutes="" isTwelveHour="" ampmName="" amSelected="" pmSelected="" compositeType="" formName=""/>
+                    <label>End Date(yyyy-mm-dd)</label><@htmlTemplate.renderDateTimeField event="" action="" name="reservEnd" className="" alert="" title="Format: yyyy-MM-dd HH:mm:ss.SSS" value="" size="25" maxlength="30" id="reservEnd1" dateType="date" shortDateInput=true timeDropdownParamName="" defaultDateTimeString="" localizedIconTitle="" timeDropdown="" timeHourName="" classString="" hour1="" hour2="" timeMinutesName="" minutes="" isTwelveHour="" ampmName="" amSelected="" pmSelected="" compositeType="" formName=""/>
+                  </div>
+                  <div>
+                    <#--td nowrap="nowrap" align="right">Number<br />of days</td><td><input type="textt" size="4" name="reservLength"/></td></tr><tr><td>&nbsp;</td><td align="right" nowrap="nowrap">&nbsp;</td-->
+                    Number of persons<input type="text" size="4" name="reservPersons" value="2"/>
+                    Number of rooms<input type="text" size="5" name="quantity" value="1"/>
+                  </div>
+                <#else>
+                  <br/>
+                  <div>
+                      <input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" <#if product.isVirtual!?upper_case == "Y">disabled="disabled"</#if> />
+                      <#--button type="button" class="button1" onclick="addItem()" id="addToCart" name="addToCart">
+                          <span><span><span id="ieaddtocart">${uiLabelMap.OrderAddToCart}</span></span></span>
+                      </button><br/><br/><br/-->
+                      <button type="button" class="buttonaddtocart" onclick="addItem()" id="addToCart" name="addToCart">
+                          <span><span><span>${uiLabelMap.OrderAddToCart}</span></span></span>
+                      </button>
+                      <#--a href="javascript:void(0);" disabled="disabled" class="buttonaddtocart">${uiLabelMap.OrderAddToCart}</a-->
+                  <div>
+                  <@showUnavailableVarients/>
+                </#if>
+                <#else>
+                  <#if productStore?exists>
+                    <#if productStore.requireInventory?exists && productStore.requireInventory == "N">
+                      <#--span>
+                          <input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" <#if product.isVirtual!?upper_case == "Y">disabled="disabled"</#if> />
+                      </span>
+                      <a href="javascript:addItem()" id="addToCart" name="addToCart" class="button1">${uiLabelMap.OrderAddToCart}</a-->
+                      <div>
+                          <input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" <#if product.isVirtual!?upper_case == "Y">disabled="disabled"</#if> />
+                          <button type="button" class="button1" onclick="addItem()" id="addToCart" name="addToCart">
+                              <span><span><span id="ieaddtocart">${uiLabelMap.OrderAddToCart}</span></span></span>
+                          </button>
+                      <div>
+                      <@showUnavailableVarients/>
+                    <#else>
+                      <span>
+                          <input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" disabled="disabled" />
+                      </span>
+                      <a href="javascript:void(0);" disabled="disabled" class="button1">${uiLabelMap.OrderAddToCart}</a><br />
+                      <span>${uiLabelMap.ProductItemOutOfStock}<#if product.inventoryMessage?exists>&mdash; ${product.inventoryMessage}</#if></span>
+                    </#if>
+                  </#if>
+              </#if>
+            </#if>
+            <#if variantPriceList?exists>
+              <#list variantPriceList as vpricing>
+                <#assign variantName = vpricing.get("variantName")?if_exists>
+                <#assign secondVariantName = vpricing.get("secondVariantName")?if_exists>
+                <#assign minimumQuantity = vpricing.get("minimumQuantity")>
+                <#if minimumQuantity &gt; 0>
+                  <div>minimum order quantity for ${secondVariantName!} ${variantName!} is ${minimumQuantity!}</div>
+                </#if>
+              </#list>
+            <#elseif minimumQuantity?exists && minimumQuantity?has_content && minimumQuantity &gt; 0>
+               <div>minimum order quantity for ${productContentWrapper.get("PRODUCT_NAME")?if_exists} is ${minimumQuantity!}</div>
+            </#if>
+            </fieldset>
+          </form>
+          
+          
+          <#-- show tell a friend details only in ecommerce application -->
+          <div>&nbsp;</div>
+          <div>
+              <button onclick="popUpSmall('<@ofbizUrl>tellafriend?productId=${product.productId}</@ofbizUrl>','tellafriend');" class="button1" type="button">
+                  <span><span><span id="ietellafriend">${uiLabelMap.CommonTellAFriend}</span></span></span>
+              </button>
+          </div>
+          
+        </div>
+    
+        <div id="addItemForm">
+          
+        </div>
+        
+          <#-- Prefill first select box (virtual products only) -->
+          <#if variantTree?exists && 0 &lt; variantTree.size()>
+            <script type="text/javascript">eval("list" + "${featureOrderFirst}" + "()");</script>
+          </#if>
+    
+          <#-- Swatches (virtual products only) -->
+          <#if variantSample?exists && 0 &lt; variantSample.size()>
+            <#assign imageKeys = variantSample.keySet() />
+            <#assign imageMap = variantSample />
+            <p>&nbsp;</p>
+                <#assign maxIndex = 7 />
+                <#assign indexer = 0 />
+                <#list imageKeys as key>
+                  <#assign swatchProduct = imageMap.get(key) />
+                  <#if swatchProduct?has_content && indexer &lt; maxIndex>
+                    <#assign imageUrl = Static["org.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(swatchProduct, "SMALL_IMAGE_URL", request)?if_exists />
+                    <#if !imageUrl?string?has_content>
+                      <#assign imageUrl = productContentWrapper.get("SMALL_IMAGE_URL")?if_exists />
+                    </#if>
+                    <#if !imageUrl?string?has_content>
+                      <#assign imageUrl = "/images/defaultImage.jpg" />
+                    </#if>
+                      <#--a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1);"><img src="<@ofbizContentUrl>${contentPathPrefix?if_exists}${imageUrl}</@ofbizContentUrl>" width="60" height="60" alt="" /></a>
+                      <br />
+                      <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1);" class="linktext">${key}</a-->
+                  </#if>
+                  <#assign indexer = indexer + 1 />
+                </#list>
+                <#if (indexer > maxIndex)>
+                  <div><strong>${uiLabelMap.ProductMoreOptions}</strong></div>
+                </#if>
+          </#if>
+    
+      <#-- Digital Download Files Associated with this Product -->
+      <#if downloadProductContentAndInfoList?has_content>
+        <div id="download-files">
+          <div>${uiLabelMap.OrderDownloadFilesTitle}:</div>
+          <#list downloadProductContentAndInfoList as downloadProductContentAndInfo>
+            <div>${downloadProductContentAndInfo.contentName?if_exists}<#if downloadProductContentAndInfo.description?has_content> - ${downloadProductContentAndInfo.description}</#if></div>
+          </#list>
+        </div>
+      </#if>
+    
+      <#-- Long description of product -->
+      <div id="long-description">
+          <div>${productContentWrapper.get("LONG_DESCRIPTION")?if_exists}</div>
+          <div>${productContentWrapper.get("WARNINGS")?if_exists}</div>
+      </div><br/><br/><br/>
+    
+      <#-- Any attributes/etc may go here -->
+    
+      <#-- Product Reviews -->
+        
+    <#-- Upgrades/Up-Sell/Cross-Sell -->
+      <#macro associated assocProducts beforeName showName afterName formNamePrefix targetRequestName>
+      <#assign pageProduct = product />
+      <#assign targetRequest = "product" />
+      <#if targetRequestName?has_content>
+        <#assign targetRequest = targetRequestName />
+      </#if>
+      <#if assocProducts?has_content>
+        <h2>${beforeName?if_exists}<#if showName == "Y">${productContentWrapper.get("PRODUCT_NAME")?if_exists}</#if>${afterName?if_exists}</h2>
+    
+        <div class="productsummary-container">
+        <#list assocProducts as productAssoc>
+            <#if productAssoc.productId == product.productId>
+                <#assign assocProductId = productAssoc.productIdTo />
+            <#else>
+                <#assign assocProductId = productAssoc.productId />
+            </#if>
+            <div>
+              <a href="<@ofbizUrl>${targetRequest}/<#if categoryId?exists>~category_id=${categoryId}/</#if>~product_id=${assocProductId}</@ofbizUrl>" class="button1">
+                ${assocProductId}
+              </a>
+            <#if productAssoc.reason?has_content>
+              - <strong>${productAssoc.reason}</strong>
+            </#if>
+            </div>
+          ${setRequestAttribute("optProductId", assocProductId)}
+          ${setRequestAttribute("listIndex", listIndex)}
+          ${setRequestAttribute("formNamePrefix", formNamePrefix)}
+          <#if targetRequestName?has_content>
+            ${setRequestAttribute("targetRequestName", targetRequestName)}
+          </#if>
+              ${screens.render(productsummaryScreen)}
+          <#assign product = pageProduct />
+          <#local listIndex = listIndex + 1 />
         </#list>
+        </div>
+    
+        ${setRequestAttribute("optProductId", "")}
+        ${setRequestAttribute("formNamePrefix", "")}
+        ${setRequestAttribute("targetRequestName", "")}
+      </#if>
+    </#macro>
+    
+    <#assign productValue = product />
+    <#assign listIndex = 1 />
+    ${setRequestAttribute("productValue", productValue)}
+    <#--div id="associated-products"-->
+        <#-- also bought -->
+        <#--@associated assocProducts=alsoBoughtProducts beforeName="" showName="N" afterName="${uiLabelMap.ProductAlsoBought}" formNamePrefix="albt" targetRequestName="" /-->
+        <#-- obsolete -->
+        <#--@associated assocProducts=obsoleteProducts beforeName="" showName="Y" afterName=" ${uiLabelMap.ProductObsolete}" formNamePrefix="obs" targetRequestName="" /-->
+        <#-- cross sell -->
+        <#--@associated assocProducts=crossSellProducts beforeName="" showName="N" afterName="${uiLabelMap.ProductCrossSell}" formNamePrefix="cssl" targetRequestName="crosssell" /-->
+        <#-- up sell -->
+        <#--@associated assocProducts=upSellProducts beforeName="${uiLabelMap.ProductUpSell} " showName="Y" afterName=":" formNamePrefix="upsl" targetRequestName="upsell" /-->
+        <#-- obsolescence -->
+        <#--@associated assocProducts=obsolenscenseProducts beforeName="" showName="Y" afterName=" ${uiLabelMap.ProductObsolescense}" formNamePrefix="obce" targetRequestName="" /-->
+    <#--/div-->
+    
+    <#-- special cross/up-sell area using commonFeatureResultIds (from common feature product search) -->
+    <#if comsmonFeatureResultIds?has_content>
+        <h2>${uiLabelMap.ProductSimilarProducts}</h2>
+    
+        <div class="productsummary-container">
+            <#list commonFeatureResultIds as commonFeatureResultId>
+                ${setRequestAttribute("optProductId", commonFeatureResultId)}
+                ${setRequestAttribute("listIndex", commonFeatureResultId_index)}
+                ${setRequestAttribute("formNamePrefix", "cfeatcssl")}
+                <#-- ${setRequestAttribute("targetRequestName", targetRequestName)} -->
+                ${screens.render(productsummaryScreen)}
+            </#list>
+        </div>
+    </#if>
     </div>
-</#if>
 </div>
