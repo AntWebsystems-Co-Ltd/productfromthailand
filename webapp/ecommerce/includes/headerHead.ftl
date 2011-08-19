@@ -97,4 +97,11 @@ under the License.
       dojo.require("dojo.widget.*");
     </script>
   </#if>
+  <#if webAnalyticsConfigs?has_content>
+    <script language="JavaScript" type="text/javascript">
+    <#list webAnalyticsConfigs as webAnalyticsConfig>
+        ${StringUtil.wrapString(webAnalyticsConfig.webAnalyticsCode?if_exists)}
+    </#list>
+    </script>
+  </#if>
 </head>

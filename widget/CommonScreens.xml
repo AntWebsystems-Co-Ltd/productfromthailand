@@ -56,6 +56,10 @@ under the License.
                 <set field="layoutSettings" from-field="themeResources" default-value="${layoutSettings}" global="true"/>
                 <set field="headerTemplateLocation" from-field="layoutSettings.VT_HDR_TMPLT_LOC[0]" default-value="component://productfromthailand/webapp/ecommerce/includes/header.ftl"/>
                 <set field="footerTemplateLocation" from-field="layoutSettings.VT_FTR_TMPLT_LOC[0]" default-value="component://productfromthailand/webapp/ecommerce/includes/footer.ftl"/>
+                <entity-and list="webAnalyticsConfigs" entity-name="WebAnalyticsConfig">
+                    <field-map field-name="webSiteId"/>
+                    <field-map field-name="isEnabled" value="Y"/>
+                </entity-and>
             </actions>
             <widgets>
                 <!-- render header -->
