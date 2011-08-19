@@ -1628,10 +1628,10 @@ button.buttonaddtocart:hover {
     background:none;
 }
 
-button.button1 { background:none repeat 0 50%; border:0 none; cursor:pointer;  font-size:10px; height:20px !important; overflow:visible; width:auto; vertical-align: top; margin-left:5px\9;}
-button.button1 span { background:url(/pftimages/button1_border_left.gif) no-repeat  left top !important; display:block; height:20px !important; margin:0; }
-button.button1 span span { background:url(/pftimages/button1_border_right.gif) no-repeat  right top !important; display:block; height:20px !important; padding:0 5px; }
-button.button1 span span span { font-size:10px; background:url(/pftimages/button1.gif) repeat-x  left top !important; color:#FFFFFF; display:block; font-weight:700; line-height:normal; overflow:hidden !important; padding-top:4px; text-align:center; white-space:nowrap; }
+button.button1 { background:none repeat 0 50%; border:0 none; cursor:pointer;  font-size:10px; height:30px !important; overflow:visible; width:auto; vertical-align: top; margin-left:5px\9;}
+button.button1 span { background:url(/pftimages/btn_left.gif) no-repeat  left top !important; display:block; height:20px !important; margin:0; }
+button.button1 span span { background:url(/pftimages/btn_right.gif) no-repeat  right top !important; display:block; height:20px !important; padding:0 5px; }
+button.button1 span span span { font-size:10px; background:url(/pftimages/btn_middle.gif) repeat-x  left top !important; color:#FFFFFF; display:block; font-weight:700; line-height:normal; overflow:hidden !important; padding-top:4px; text-align:center; white-space:nowrap; }
 button.button1:hover {
     border:none;
     background:none;
