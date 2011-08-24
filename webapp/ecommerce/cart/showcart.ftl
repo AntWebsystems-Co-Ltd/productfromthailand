@@ -230,7 +230,7 @@ function setAlternateGwp(field) {
                     </#if>
                     <#-- end code to display a small image of the product -->
                     <#-- ${cartLineIndex} - -->
-                    <a href="<@ofbizUrl>product?product_id=${parentProductId}</@ofbizUrl>" class="linktext">${cartLine.getProductId()} -
+                    <a href="<@ofbizCatalogAltUrl productId=parentProductId/>" class="linktext">${cartLine.getProductId()} -
                     ${cartLine.getName()?if_exists}</a> : ${cartLine.getDescription()?if_exists}
                     <#-- For configurable products, the selected options are shown -->
                     <#if cartLine.getConfigWrapper()?exists>
