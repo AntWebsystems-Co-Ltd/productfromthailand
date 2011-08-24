@@ -16,48 +16,73 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
+<script type="text/javascript">
+    function callDocumentByPaginate(info) {
+        var str = info.split('~');
+        var checkUrl = '<@ofbizUrl>categoryAjaxFired</@ofbizUrl>';
+        if(checkUrl.search("http"))
+            var ajaxUrl = '<@ofbizUrl>categoryAjaxFired</@ofbizUrl>';
+        else
+            var ajaxUrl = '<@ofbizUrl>categoryAjaxFiredSecure</@ofbizUrl>';
+            
+        //jQuerry Ajax Request
+        jQuery.ajax({
+            url: ajaxUrl,
+            type: 'POST',
+            data: {"category_id" : str[0], "VIEW_SIZE" : str[1], "VIEW_INDEX" : str[2]},
+            error: function(msg) {
+                alert("An error occured loading content! : " + msg);
+            },
+            success: function(msg) {
+                jQuery('#div3').html(msg);
+            }
+        });
+     }
+</script>
+
 <#macro paginationControls>
     <#assign viewIndexMax = Static["java.lang.Math"].ceil((listSize - 1)?double / viewSize?double)>
       <#if (viewIndexMax?int > 0)>
         <div class="product-prevnext">
             <#-- Start Page Select Drop-Down -->
-            <select name="pageSelect" onchange="window.location=this[this.selectedIndex].value;">
+            <#-- select name="pageSelect" onchange="window.location=this[this.selectedIndex].value;">
                 <option value="#">${uiLabelMap.CommonPage} ${viewIndex?int} ${uiLabelMap.CommonOf} ${viewIndexMax + 1}</option>
                 <#list 0..viewIndexMax as curViewNum>
-                     <option value="<@ofbizUrl>category/~category_id=${productCategoryId}/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${curViewNum?int + 1}</@ofbizUrl>">${uiLabelMap.CommonGotoPage} ${curViewNum + 1}</option>
+                     <option value="<@ofbizCatalogAltUrl productCategoryId=productCategoryId viewSize=viewSize viewIndex=(curViewNum?int + 1)/>">${uiLabelMap.CommonGotoPage} ${curViewNum + 1}</option>
+                </#list>
+            </select -->
+            <select name="pageSelect" onchange="callDocumentByPaginate(this[this.selectedIndex].value);">
+                <option value="#">${uiLabelMap.CommonPage} ${viewIndex?int} ${uiLabelMap.CommonOf} ${viewIndexMax + 1}</option>
+                <#list 0..viewIndexMax as curViewNum>
+                     <option value="${productCategoryId}~${viewSize}~${curViewNum?int + 1}">${uiLabelMap.CommonGotoPage} ${curViewNum + 1}</option>
                 </#list>
             </select>
             <#-- End Page Select Drop-Down -->
             <#if (viewIndex?int > 1)>
-                <a href="<@ofbizUrl>category/~category_id=${productCategoryId}/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${viewIndex?int - 1}</@ofbizUrl>" class="buttontext">${uiLabelMap.CommonPrevious}</a> |
+                <#-- a href="<@ofbizUrl>category/~category_id=${productCategoryId}/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${viewIndex?int - 1}</@ofbizUrl>" class="buttontext">${uiLabelMap.CommonPrevious}</a --> |
+                <a href="javascript: void(0);" onclick="callDocumentByPaginate('${productCategoryId}~${viewSize}~${viewIndex?int - 1}');" class="buttontext">${uiLabelMap.CommonPrevious}</a> |
             </#if>
             <#if ((listSize?int - viewSize?int) > 0)>
                 <span>${lowIndex} - ${highIndex} ${uiLabelMap.CommonOf} ${listSize}</span>
             </#if>
             <#if highIndex?int < listSize?int>
-             | <a href="<@ofbizUrl>category/~category_id=${productCategoryId}/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${viewIndex?int + 1}</@ofbizUrl>" class="buttontext">${uiLabelMap.CommonNext}</a>
+             <#-- | <a href="<@ofbizUrl>category/~category_id=${productCategoryId}/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${viewIndex?int + 1}</@ofbizUrl>" class="buttontext">${uiLabelMap.CommonNext}</a -->
+             | <a href="javascript: void(0);" onclick="callDocumentByPaginate('${productCategoryId}~${viewSize}~${viewIndex?int + 1}');" class="buttontext">${uiLabelMap.CommonNext}</a>
             </#if>
         </div>
     </#if>
 </#macro>
 
-<#if parameters._CURRENT_VIEW_=="main">
-<div class="title">
-      <#if (productStore.title)?exists><h1>${productStore.title}</h1></#if>
-      <#if (productStore.subtitle)?exists><h3>${productStore.subtitle}</h3></#if>
-  </div>
-</#if>
+
 <#if productCategory?exists>
     <#assign categoryName = categoryContentWrapper.get("CATEGORY_NAME")?if_exists/>
     <#assign categoryDescription = categoryContentWrapper.get("DESCRIPTION")?if_exists/>
-    <div style="display:inline;">
     <#if categoryName?has_content>
-        <h1 style="color:#443434;font-weight:bold;font-size:1.45em;">${categoryName}</h1>
+        <h1>${categoryName}</h1>
     </#if>
     <#if categoryDescription?has_content>
-        <h3>${categoryDescription}</h3>
+        <h1>${categoryDescription}</h1>
     </#if>
-    </div>
     <#if hasQuantities?exists>
       <form method="post" action="<@ofbizUrl>addCategoryDefaults<#if requestAttributes._CURRENT_VIEW_?exists>/${requestAttributes._CURRENT_VIEW_}</#if></@ofbizUrl>" name="thecategoryform" style='margin: 0;'>
         <input type='hidden' name='add_category_id' value='${productCategory.productCategoryId}'/>
@@ -78,7 +103,7 @@ under the License.
       <div>
         <#if categoryImageUrl?string?has_content>
           <#assign height=100/>
-          <img src='<@ofbizContentUrl>${categoryImageUrl}</@ofbizContentUrl>' vspace='5' hspace='5' border='1' height='${height}' align='left'/>
+          <img src='<@ofbizContentUrl>${categoryImageUrl}</@ofbizContentUrl>' vspace='5' hspace='5' border='1' height='${height}' align='left' alt="" />
         </#if>
         <#if longDescription?has_content>
           ${longDescription}
@@ -97,9 +122,7 @@ under the License.
 </#if>
 
 <#if productCategoryMembers?has_content>
-      <#if parameters._CURRENT_VIEW_!="main">
-            <@paginationControls/>
-      </#if>
+    <@paginationControls/>
       <#assign numCol = numCol?default(1)>
       <#assign numCol = numCol?number>
       <#assign tabCol = 1>
@@ -133,10 +156,8 @@ under the License.
         </table>
       </#if>
       </div>
-      <#if parameters._CURRENT_VIEW_!="main">
-            <@paginationControls/>
-      </#if>
+    <@paginationControls/>
 <#else>
-    <hr/>
+    <hr />
     <div>${uiLabelMap.ProductNoProductsInThisCategory}</div>
 </#if>

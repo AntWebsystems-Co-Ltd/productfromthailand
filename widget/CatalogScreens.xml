@@ -619,4 +619,49 @@ under the License.
             </widgets>
         </section>
     </screen>
+    
+    <screen name="productCategoryList">
+        <section>
+            <condition>
+                <if-empty field="parameters.mainSubmited"/>
+            </condition>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/Category.groovy"/>
+                <set field="check" type="PlainString" value="${groovy: return request.getAttribute('checkValue');}"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-compare operator="equals" value="check" field="check" type="PlainString"/>
+                    </condition>
+                    <widgets>
+                        <include-screen name="category"/>
+                    </widgets>
+                    <fail-widgets>
+                        <section>
+                            <condition>
+                                <if-empty field="category_id"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="newbreadcrumbs" share-scope="true" location="component://ecommerce/widget/CatalogScreens.xml"/>
+                            </widgets>
+                            <fail-widgets>
+                                <include-screen name="breadcrumbs" share-scope="true"/>
+                            </fail-widgets>
+                        </section>
+                        <include-screen name="category-include" share-scope="true"/>
+                    </fail-widgets>
+                </section>
+            </widgets>
+            <fail-widgets>
+                <section>
+                   <widgets>
+                        <include-screen name="category"/>
+                   </widgets>
+                </section>
+            </fail-widgets>
+        </section>
+    </screen>
 </screens>

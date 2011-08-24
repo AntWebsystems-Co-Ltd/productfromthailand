@@ -45,11 +45,14 @@ under the License.
     <request-map uri="reloadCaptchaCode">
         <security https="false" auth="false"/>
         <response name="success" type="view" value="reloadCaptchaCode"/>
-    </request-map>   
+    </request-map>
+    
+    
     <view-map name="main" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#comingSoon"/>
     <view-map name="comingSoon" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#comingSoon"/>
     <view-map name="reloadCaptchaCode" type="screen" page="component://myportal/widget/CommonScreens.xml#reloadCaptchaCode"/>     
     <view-map name="reloadCaptchaImage" type="screen" page="component://myportal/widget/CommonScreens.xml#reloadCaptchaImage"/>        
+    
     
 </site-conf>
 

@@ -373,9 +373,8 @@ background-color: #ffffff;
 
 #ecom-mainarea .left {
 /* alt: position: absolute; left: 0px; top: 0px; */
-padding-left:10px;
+padding-left:5px;
 float: left;
-
 width: 200px;
 /* border:1px solid #000; */
 }
@@ -383,7 +382,7 @@ width: 200px;
 /* alt: position: absolute; right: 0px; top: 0px; */
 float: right;
 width: 240px;
-padding-right:10px;
+padding-right:5px;
 }
 
 #ecom-mainarea .right #minipromotext A.linktext {

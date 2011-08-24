@@ -69,15 +69,14 @@ under the License.
                     <!-- by default will render left-bar only if left/rightbarScreenName value not empty -->
                     <!-- render messages -->
                     <platform-specific><html><html-template location="component://common/webcommon/includes/messages.ftl"/></html></platform-specific>
-                    <include-screen name="${leftbarScreenName}" location="${leftbarScreenLocation}"/>
-                    <include-screen name="${bannerScreenName}" location="${bannerScreenLocation}"/>
-                    <include-screen name="${rightbarScreenName}" location="${rightbarScreenLocation}"/>
-                    
-                    <container style="${MainColumnStyle}">
-                        <decorator-section-include name="body"/>
+                    <container id="div1" style="left"><include-screen name="${leftbarScreenName}" location="${leftbarScreenLocation}"/></container>
+                    <container id="div2" style="right"><include-screen name="${rightbarScreenName}" location="${rightbarScreenLocation}"/></container>
+
+                    <container id="div3" style="${MainColumnStyle}">
+                       <decorator-section-include name="body"/>
                     </container>
-                    
-                    <container style="endcolumns"/>
+
+                    <container id="div4" style="endcolumns"/>
                 </container>
                 
                 <!-- render footer -->
@@ -503,7 +502,7 @@ under the License.
                 <set field="titleProperty" value="PFTProducts"/>
                 <set field="headerItem" value="products"/>
                 <set field="MainColumnStyle" value="leftonly"/>
-                <set field="rightbarScreenName" value="leftbar"/>
+                <set field="leftbarScreenName" value="leftbar"/>
                 <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/Main.groovy"/>
                 <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/Category.groovy"/>
             </actions>
