@@ -217,4 +217,8 @@
         <value xml:lang="en">Your Account</value>
         <value xml:lang="th">บัญชีชองคุณ</value>
     </property>
+    <property key="PFTFollowUsOnTwitter">
+        <value xml:lang="en">Follow us on Twitter</value>
+        <value xml:lang="th">ติดตามเราทาง Twitter</value>
+    </property>
 </resource>

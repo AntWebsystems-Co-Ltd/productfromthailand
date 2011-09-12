@@ -86,6 +86,9 @@ under the License.
         </div>
         <#-- Twitter share  -->
         <div id="google-plus-top">
+            <iframe allowtransparency="true" frameborder="0" scrolling="no"
+            src="http://platform.twitter.com/widgets/follow_button.html?screen_name=Product_Thai&link_color=BCB104"
+            style="width:150px; height:20px;">Follow @Product_Thai</iframe>
             <span class="twitter-share">
                 <a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="Product_Thai">Tweet</a>
                 <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
