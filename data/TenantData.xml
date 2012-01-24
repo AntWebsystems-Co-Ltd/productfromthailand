@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+
+    <Tenant tenantId="PFT" tenantName="Product From Thailand" domainName="productfromthailand.ofbizdemo.com" initialPath="/productfromthailand"/>
+    <TenantComponent tenantId="PFT" componentName="book2bits" sequenceNum="01"/>
+    <TenantDataSource tenantId="PFT" entityGroupName="org.ofbiz"
+        jdbcUri="jdbc:postgresql://127.0.0.1/pftofbiz" jdbcUsername="ofbiz" jdbcPassword="ofbiz"/>
+    <TenantDataSource tenantId="PFT" entityGroupName="org.ofbiz.olap"
+        jdbcUri="jdbc:postgresql://127.0.0.1/pftolap" jdbcUsername="ofbiz" jdbcPassword="ofbiz"/>
+
+</entity-engine-xml>
