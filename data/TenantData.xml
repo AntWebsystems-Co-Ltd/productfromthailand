@@ -2,7 +2,7 @@
 <entity-engine-xml>
 
     <Tenant tenantId="PFT" tenantName="Product From Thailand" domainName="productfromthailand.ofbizdemo.com" initialPath="/productfromthailand"/>
-    <TenantComponent tenantId="PFT" componentName="book2bits" sequenceNum="01"/>
+    <TenantComponent tenantId="PFT" componentName="productfromthailand" sequenceNum="01"/>
     <TenantDataSource tenantId="PFT" entityGroupName="org.ofbiz"
         jdbcUri="jdbc:postgresql://127.0.0.1/pftofbiz" jdbcUsername="ofbiz" jdbcPassword="ofbiz"/>
     <TenantDataSource tenantId="PFT" entityGroupName="org.ofbiz.olap"
