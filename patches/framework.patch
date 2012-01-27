@@ -23,15 +23,6 @@ Index: framework/common/config/general.properties
 ===================================================================
 --- framework/common/config/general.properties	(revision 1157735)
 +++ framework/common/config/general.properties	(working copy)
-@@ -21,7 +21,7 @@
- unique.instanceId=ofbiz1
- 
- # -- the default currency to use for prices, etc
--currency.uom.id.default=USD
-+currency.uom.id.default=THB
- 
- # These values override the _NA_ DEFAULT values in user preferences for the GLOBAL_PREFERENCES userPrefGroupTypeId
- # -- the default organizationPartyId for used in dropdowns and reports
 @@ -41,8 +41,10 @@
  # -- Locales made available, separated by commas. This property controls
  #    which locales the user can select from. If this property is not used,
