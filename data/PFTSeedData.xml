@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<entity-engine-xml>
+    <!-- general.properties adjustment -->
+    <SystemProperty systemResourceId="general" systemPropertyId="locales.available" systemPropertyValue="en,th"/>
+    <SystemProperty systemResourceId="general" systemPropertyId="mail.notifications.enabled" systemPropertyValue="Y"/>
+    <SystemProperty systemResourceId="general" systemPropertyId="mail.smtp.relay.host" systemPropertyValue="smtp.productfromthailand.com"/>
+    <SystemProperty systemResourceId="general" systemPropertyId="mail.smtp.auth.user" systemPropertyValue="info@productfromthailand.com"/>
+    <SystemProperty systemResourceId="general" systemPropertyId="mail.smtp.auth.password" systemPropertyValue="pft44"/>
+    
+    <!-- catalog.properties adjustment -->
+    <SystemProperty systemResourceId="catalog" systemPropertyId="top.category.default" systemPropertyValue="PFT_ROOT"/>
+    <SystemProperty systemResourceId="catalog" systemPropertyId="all.product.category" systemPropertyValue="PFT_ROOT"/>
+    
+    <!-- googleBaseExport.properties adjustment -->
+    <SystemProperty systemResourceId="googleBaseExport" systemPropertyId="googleBaseExport.developerKey" systemPropertyValue="ABQIAAAAtllOIMnA_SSaX6-q_-0NqBQ7yogk7ltS6O8c1NB_asTLHULnfxRsRVBa5bgcryXeo0AOht5OtQ78_Q"/>
+    <SystemProperty systemResourceId="googleBaseExport" systemPropertyId="googleBaseExport.accountEmail" systemPropertyValue="admin@productfromthailand.com"/>
+    <SystemProperty systemResourceId="googleBaseExport" systemPropertyId="googleBaseExport.accountPassword" systemPropertyValue="pft44444"/>
+</entity-engine-xml>

@@ -1,8 +1,8 @@
 Index: framework/common/widget/CommonScreens.xml
 ===================================================================
---- framework/common/widget/CommonScreens.xml	(revision 1157735)
+--- framework/common/widget/CommonScreens.xml	(revision 1294526)
 +++ framework/common/widget/CommonScreens.xml	(working copy)
-@@ -416,7 +416,7 @@
+@@ -476,7 +476,7 @@
              <actions>
                  <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
                  <set field="logoImageUrl" value="/images/ofbiz_logo.gif"/>
@@ -11,7 +11,7 @@ Index: framework/common/widget/CommonScreens.xml
              </actions>
              <widgets>
                  <platform-specific><xsl-fo><html-template location="component://common/webcommon/includes/reportTemplate.fo.ftl"/></xsl-fo></platform-specific>
-@@ -429,6 +429,7 @@
+@@ -489,6 +489,7 @@
          <section>
              <actions>
                  <set field="layoutSettings.commonHeaderImageUrl" value="/images/ofbiz_logo.gif"/>
@@ -19,46 +19,9 @@ Index: framework/common/widget/CommonScreens.xml
              </actions>
              <widgets>
                  <platform-specific>
-Index: framework/common/config/general.properties
-===================================================================
---- framework/common/config/general.properties	(revision 1157735)
-+++ framework/common/config/general.properties	(working copy)
-@@ -41,8 +41,10 @@
- # -- Locales made available, separated by commas. This property controls
- #    which locales the user can select from. If this property is not used,
- #    then the user will be able to select from all the locales available
-+
- #    in the JVM. The list below corresponds to the languages really available OOTB (2010-16-02)
- #locales.available=ar,de,en,es,fr,hi,it,nl,pt,ro,ru,th,zh
-+locales.available=en,th
- 
- # -- Time zones made available, separated by commas. This property controls
- #    which time zones the user can select from. If this property is not used,
-@@ -71,17 +73,17 @@
- # as 'baseUrl' and 'baseSecureUrl' are set in the url.properties file. 
- 
- # -- mail notifications enabled (Y|N)
--mail.notifications.enabled=N
-+mail.notifications.enabled=Y
- 
- # -- redirect all mail notifications to this address for testing
- #mail.notifications.redirectTo=
- 
- # -- the default mail server to use
--mail.smtp.relay.host=localhost
-+mail.smtp.relay.host=smtp.productfromthailand.com
- 
- # -- SMTP Auth settings
--#mail.smtp.auth.user=
--#mail.smtp.auth.password=
-+mail.smtp.auth.user=info@productfromthailand.com
-+mail.smtp.auth.password=pft44
- 
- # -- Additional Required Fields needed for Gmail and other non traditional smtp servers
- # -- These added fields also work for Yahoo business mail for instance
 Index: framework/webapp/config/fop.xconf
 ===================================================================
---- framework/webapp/config/fop.xconf	(revision 1157735)
+--- framework/webapp/config/fop.xconf	(revision 1294526)
 +++ framework/webapp/config/fop.xconf	(working copy)
 @@ -84,7 +84,10 @@
                            | 500 | 600 | 700 | 800 | 900

@@ -1,8 +1,8 @@
 Index: applications/product/config/ProductUiLabels.xml
 ===================================================================
---- applications/product/config/ProductUiLabels.xml	(revision 1157735)
+--- applications/product/config/ProductUiLabels.xml	(revision 1294526)
 +++ applications/product/config/ProductUiLabels.xml	(working copy)
-@@ -23723,6 +23723,10 @@
+@@ -23824,6 +23824,10 @@
          <value xml:lang="zh">应征税的</value>
          <value xml:lang="zh_TW">應征稅的</value>
      </property>
@@ -13,24 +13,9 @@ Index: applications/product/config/ProductUiLabels.xml
      <property key="ProductTemplatePath">
          <value xml:lang="de">Template Pfad</value>
          <value xml:lang="en">Template Path</value>
-Index: applications/product/config/catalog.properties
-===================================================================
---- applications/product/config/catalog.properties	(revision 1157735)
-+++ applications/product/config/catalog.properties	(working copy)
-@@ -29,8 +29,8 @@
- image.filename.additionalviewsize.format=${location}/${id}/${viewtype}/${sizetype}
- 
- # -- Which default top category to display... --
--top.category.default=CATALOG1
--all.product.category=CATALOG1
-+top.category.default=PFT_ROOT
-+all.product.category=PFT_ROOT
- 
- # Flag to re-active products when they are received
- reactivate.product.from.receipt=Y
 Index: applications/product/src/org/ofbiz/product/product/ProductEvents.java
 ===================================================================
---- applications/product/src/org/ofbiz/product/product/ProductEvents.java	(revision 1157735)
+--- applications/product/src/org/ofbiz/product/product/ProductEvents.java	(revision 1294526)
 +++ applications/product/src/org/ofbiz/product/product/ProductEvents.java	(working copy)
 @@ -22,6 +22,7 @@
  import java.sql.Timestamp;
@@ -39,8 +24,8 @@ Index: applications/product/src/org/ofbiz/product/product/ProductEvents.java
 +import java.util.Locale;
  import java.util.Map;
  import java.util.Set;
- 
-@@ -987,7 +988,8 @@
+ import java.util.regex.Matcher;
+@@ -989,7 +990,8 @@
          Delegator delegator = (Delegator) request.getAttribute("delegator");
          String emailType = "PRDS_TELL_FRIEND";
          String defaultScreenLocation = "component://ecommerce/widget/EmailProductScreens.xml#TellFriend";
@@ -50,7 +35,7 @@ Index: applications/product/src/org/ofbiz/product/product/ProductEvents.java
          GenericValue productStore = ProductStoreWorker.getProductStore(request);
          if (productStore == null) {
              String errMsg = "Could not send tell a friend email, no ProductStore found";
-@@ -1039,6 +1041,7 @@
+@@ -1041,6 +1043,7 @@
              request.setAttribute("_ERROR_MESSAGE_", errMsg);
              return "error";
          }
@@ -60,7 +45,7 @@ Index: applications/product/src/org/ofbiz/product/product/ProductEvents.java
  
 Index: applications/accounting/widget/InvoiceScreens.xml
 ===================================================================
---- applications/accounting/widget/InvoiceScreens.xml	(revision 1157735)
+--- applications/accounting/widget/InvoiceScreens.xml	(revision 1294526)
 +++ applications/accounting/widget/InvoiceScreens.xml	(working copy)
 @@ -579,6 +579,7 @@
                          <condition-expr field-name="partyIdFrom" operator="equals" from-field="myCompanyId"/>
@@ -72,7 +57,7 @@ Index: applications/accounting/widget/InvoiceScreens.xml
                              <condition-expr field-name="statusId" operator="equals" value="INVOICE_READY"/>
 Index: applications/order/config/OrderUiLabels.xml
 ===================================================================
---- applications/order/config/OrderUiLabels.xml	(revision 1157735)
+--- applications/order/config/OrderUiLabels.xml	(revision 1294526)
 +++ applications/order/config/OrderUiLabels.xml	(working copy)
 @@ -1466,6 +1466,10 @@
          <value xml:lang="zh_CN">添加代码</value>
@@ -83,11 +68,11 @@ Index: applications/order/config/OrderUiLabels.xml
 +        <value xml:lang="th">สินค้า ${productId} ได้เพิ่มเข้าในตระกร้าของคุณแล้ว.</value>
 +    </property>
      <property key="OrderAddGiftCertificate">
+         <value xml:lang="de">Gutschein hinzufügen</value>
          <value xml:lang="en">Add Gift Certificate</value>
-         <value xml:lang="fr">Ajouter carte cadeau</value>
 Index: applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java
 ===================================================================
---- applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java	(revision 1157735)
+--- applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java	(revision 1294526)
 +++ applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java	(working copy)
 @@ -259,7 +259,38 @@
          if (supplierProduct != null) {
@@ -131,9 +116,9 @@ Index: applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java
          }
 Index: applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.java
 ===================================================================
---- applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.java	(revision 1157735)
+--- applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.java	(revision 1294526)
 +++ applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.java	(working copy)
-@@ -596,6 +596,7 @@
+@@ -605,6 +605,7 @@
              if (cart.viewCartOnAdd()) {
                  return "viewcart";
              } else {
@@ -143,7 +128,7 @@ Index: applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.ja
          }
 Index: applications/order/src/org/ofbiz/order/order/OrderServices.java
 ===================================================================
---- applications/order/src/org/ofbiz/order/order/OrderServices.java	(revision 1157735)
+--- applications/order/src/org/ofbiz/order/order/OrderServices.java	(revision 1294526)
 +++ applications/order/src/org/ofbiz/order/order/OrderServices.java	(working copy)
 @@ -21,6 +21,7 @@
  import java.math.BigDecimal;
@@ -153,21 +138,7 @@ Index: applications/order/src/org/ofbiz/order/order/OrderServices.java
  import java.util.Collection;
  import java.util.Date;
  import java.util.HashMap;
-@@ -32,12 +33,10 @@
- import java.util.Set;
- import java.util.TreeSet;
- import java.util.concurrent.Callable;
--
--import javax.transaction.Transaction;
--
- import javolution.util.FastList;
- import javolution.util.FastMap;
- import javolution.util.FastSet;
-+import javax.transaction.Transaction;
- 
- import org.ofbiz.base.util.Debug;
- import org.ofbiz.base.util.GeneralException;
-@@ -49,6 +48,7 @@
+@@ -49,6 +50,7 @@
  import org.ofbiz.base.util.UtilNumber;
  import org.ofbiz.base.util.UtilProperties;
  import org.ofbiz.base.util.UtilValidate;
@@ -175,109 +146,105 @@ Index: applications/order/src/org/ofbiz/order/order/OrderServices.java
  import org.ofbiz.common.DataModelConstants;
  import org.ofbiz.entity.Delegator;
  import org.ofbiz.entity.GenericEntity;
-@@ -83,8 +83,6 @@
- import org.ofbiz.service.ModelService;
- import org.ofbiz.service.ServiceUtil;
- 
--import com.ibm.icu.util.Calendar;
--
- /**
-  * Order Processing Services
-  */
-@@ -4822,8 +4820,90 @@
-                             cart.setShippingContactMechId(shipGroup.getString("contactMechId"));
+@@ -4984,7 +4986,94 @@
+                             cartShipInfo.setAssociatedShipGroupSeqId(shipGroup.getString("shipGroupSeqId"));
                              // create the order
                              CheckOutHelper coh = new CheckOutHelper(dispatcher, delegator, cart);
+-                            coh.createOrder(userLogin);
 +                            
-+                            Map resultOrderMap = coh.createOrder(userLogin);
++                            Map<String,Object> resultOrderMap = coh.createOrder(userLogin);
 +                            String purchaseOrderId = (String)resultOrderMap.get("orderId");
-+                            
-+                            // get the email setting for this email type
-+                            GenericValue productStoreEmail = null;
-+                            String emailType = "PRCHS_ODR_CONFIRM";
-+                            try {
-+                                productStoreEmail = delegator.findByPrimaryKey("ProductStoreEmailSetting", UtilMisc.toMap("productStoreId","PFTSTORE", "emailType", emailType));
-+                            } catch (GenericEntityException e) {
-+                                Debug.logError(e, "Unable to get product store email setting for order confirm", module);
-+                            }
-+                            if (productStoreEmail == null) {
-+                                Debug.logError("No order confirm email setting found for this store; cannot send order information", module);
-+                            } else {
-+                                ResourceBundleMapWrapper uiLabelMap = (ResourceBundleMapWrapper) UtilProperties.getResourceBundleMap("EcommerceUiLabels", locale);
-+                             
-+                                Map emailCtx = new HashMap();
-+                                String bodyScreenLocation = productStoreEmail.getString("bodyScreenLocation");
-+                             
-+                                // get the email of the supplier
-+                                String sendToEmail = null;
-+                                GenericValue fromCm;
-+                                try {
-+                                    List<GenericValue> fromCms = delegator.findByAnd("PartyAndContactMech", UtilMisc.toMap("partyId", supplierPartyId,"contactMechTypeId","EMAIL_ADDRESS"), UtilMisc.toList("-fromDate"));
-+                                    fromCms = EntityUtil.filterByDate(fromCms);
-+                                    fromCm = EntityUtil.getFirst(fromCms);
-+                                } catch (GenericEntityException e) {
-+                                    Debug.logError(e, module);
-+                                    return ServiceUtil.returnError(e.getMessage());
-+                                }
-+                                if (fromCm != null) {
-+                                    sendToEmail = fromCm.getString("infoString");
-+                                }
-+                                if (UtilValidate.isEmpty(bodyScreenLocation)) {
-+                                    bodyScreenLocation = ProductStoreWorker.getDefaultProductStoreEmailScreenLocation(emailType);
-+                                }
-+                                
-+                                Map bodyParameters = UtilMisc.toMap("orderId", purchaseOrderId,"partyId",supplierPartyId,"uiLabelMap", uiLabelMap, "locale", locale);
-+                                String sendBcc = null;
-+                                emailCtx.put("bodyScreenUri", bodyScreenLocation);
-+                                emailCtx.put("bodyParameters", bodyParameters);
-+                                emailCtx.put("sendTo", sendToEmail);
-+                                emailCtx.put("contentType", productStoreEmail.get("contentType"));
-+                                emailCtx.put("sendFrom", productStoreEmail.get("fromAddress"));
-+                                emailCtx.put("sendCc", productStoreEmail.get("ccAddress"));
-+                                emailCtx.put("sendBcc", productStoreEmail.get("bccAddress"));
-+                                emailCtx.put("emailType", emailType);
-+                                emailCtx.put("subject", productStoreEmail.getString("subject"));
-+                                // send off the email async so we will retry on failed attempts
-+                                // SC 20060405: Changed to runSync because runAsync kept getting an error:
-+                                // Problem serializing service attributes (Cannot serialize object of class java.util.PropertyResourceBundle)
-+                                try {
-+                                    dispatcher.runSync("sendMailFromScreen", emailCtx);
-+                                } catch (GenericServiceException e) {
-+                                    Debug.logError(e, "Problem sending mail", module);
-+                                    // this is fatal; we will rollback and try again later
-+                                    return ServiceUtil.returnError("Error sending Order Confirm notice email: " + e.toString());
-+                                }
-+                            }
-                             coh.createOrder(userLogin);
-                             
-+                            // create OrderAdjustment for service charge 7% of grand total
-+                            OrderReadHelper orderReadHelper = new OrderReadHelper(delegator, purchaseOrderId);
-+                            BigDecimal grandTotal = orderReadHelper.getOrderGrandTotal();
-+                            BigDecimal surcharge = grandTotal.multiply(new BigDecimal("7")).divide(new BigDecimal("100"), orderDecimals, orderRounding);
++                            String productStoreId = orh.getProductStoreId();
++                            // Check if product store is productfromthailand store
++                            if (UtilValidate.isNotEmpty(productStoreId)) {
++                                if("PFTSTORE".equals(productStoreId)){
++                                	// get the email setting for this email type
++                                    GenericValue productStoreEmail = null;
++                                    String emailType = "PRCHS_ODR_CONFIRM";
++                                    try {
++                                        productStoreEmail = delegator.findByPrimaryKey("ProductStoreEmailSetting", UtilMisc.toMap("productStoreId","PFTSTORE", "emailType", emailType));
++                                    } catch (GenericEntityException e) {
++                                        Debug.logError(e, "Unable to get product store email setting for order confirm", module);
++                                    }
++                                    if (productStoreEmail == null) {
++                                        Debug.logError("No order confirm email setting found for this store; cannot send order information", module);
++                                    } else {
++                                        ResourceBundleMapWrapper uiLabelMap = (ResourceBundleMapWrapper) UtilProperties.getResourceBundleMap("EcommerceUiLabels", locale);
++                                     
++                                        Map<String, Object> emailCtx = FastMap.newInstance();
++                                        String bodyScreenLocation = productStoreEmail.getString("bodyScreenLocation");
++                                     
++                                        // get the email of the supplier
++                                        String sendToEmail = null;
++                                        GenericValue fromCm;
++                                        try {
++                                            List<GenericValue> fromCms = delegator.findByAnd("PartyAndContactMech", UtilMisc.toMap("partyId", supplierPartyId,"contactMechTypeId","EMAIL_ADDRESS"), UtilMisc.toList("-fromDate"));
++                                            fromCms = EntityUtil.filterByDate(fromCms);
++                                            fromCm = EntityUtil.getFirst(fromCms);
++                                        } catch (GenericEntityException e) {
++                                            Debug.logError(e, module);
++                                            return ServiceUtil.returnError(e.getMessage());
++                                        }
++                                        if (fromCm != null) {
++                                            sendToEmail = fromCm.getString("infoString");
++                                        }
++                                        if (UtilValidate.isEmpty(bodyScreenLocation)) {
++                                            bodyScreenLocation = ProductStoreWorker.getDefaultProductStoreEmailScreenLocation(emailType);
++                                        }
++                                        
++                                        Map<String, Object> bodyParameters = UtilMisc.toMap("orderId", purchaseOrderId,"partyId",supplierPartyId,"uiLabelMap", uiLabelMap, "locale", locale);
++                                        emailCtx.put("bodyScreenUri", bodyScreenLocation);
++                                        emailCtx.put("bodyParameters", bodyParameters);
++                                        emailCtx.put("sendTo", sendToEmail);
++                                        emailCtx.put("contentType", productStoreEmail.get("contentType"));
++                                        emailCtx.put("sendFrom", productStoreEmail.get("fromAddress"));
++                                        emailCtx.put("sendCc", productStoreEmail.get("ccAddress"));
++                                        emailCtx.put("sendBcc", productStoreEmail.get("bccAddress"));
++                                        emailCtx.put("emailType", emailType);
++                                        emailCtx.put("subject", productStoreEmail.getString("subject"));
++                                        // send off the email async so we will retry on failed attempts
++                                        // SC 20060405: Changed to runSync because runAsync kept getting an error:
++                                        // Problem serializing service attributes (Cannot serialize object of class java.util.PropertyResourceBundle)
++                                        try {
++                                            dispatcher.runSync("sendMailFromScreen", emailCtx);
++                                        } catch (GenericServiceException e) {
++                                            Debug.logError(e, "Problem sending mail", module);
++                                            // this is fatal; we will rollback and try again later
++                                            return ServiceUtil.returnError("Error sending Order Confirm notice email: " + e.toString());
++                                        }
++                                    }
++                                    coh.createOrder(userLogin);
++                                    
++                                    // create OrderAdjustment for service charge 7% of grand total
++                                    OrderReadHelper orderReadHelper = new OrderReadHelper(delegator, purchaseOrderId);
++                                    BigDecimal grandTotal = orderReadHelper.getOrderGrandTotal();
++                                    BigDecimal surcharge = grandTotal.multiply(new BigDecimal("7")).divide(new BigDecimal("100"), orderDecimals, orderRounding);
 +
-+                            if (grandTotal.compareTo(new BigDecimal("0")) != 0) {
-+                                Map<String, Object> createOrderAdjustmentContext = FastMap.newInstance();
-+                                createOrderAdjustmentContext.put("orderId", purchaseOrderId);
-+                                createOrderAdjustmentContext.put("orderAdjustmentTypeId", "SURCHARGE_ADJUSTMENT");
-+                                createOrderAdjustmentContext.put("description", "Surcharge 7% for Order #" + purchaseOrderId);
-+                                createOrderAdjustmentContext.put("amount", surcharge.negate());
-+                                createOrderAdjustmentContext.put("userLogin", userLogin);
-+                                String shippingOrderAdjustmentId = null;
-+                                try {
-+                                    Map<String, Object> createOrderAdjustmentResult = dispatcher.runSync("createOrderAdjustment", createOrderAdjustmentContext);
-+                                    shippingOrderAdjustmentId = (String) createOrderAdjustmentResult.get("orderAdjustmentId");
-+                                } catch (GenericServiceException e) {
-+                                    String errMsg = "Trouble calling createOrderAdjustment service";
-+                                    Debug.logError(e, errMsg, module);
-+                                    return ServiceUtil.returnError(errMsg);
++                                    if (grandTotal.compareTo(new BigDecimal("0")) != 0) {
++                                        Map<String, Object> createOrderAdjustmentContext = FastMap.newInstance();
++                                        createOrderAdjustmentContext.put("orderId", purchaseOrderId);
++                                        createOrderAdjustmentContext.put("orderAdjustmentTypeId", "SURCHARGE_ADJUSTMENT");
++                                        createOrderAdjustmentContext.put("description", "Surcharge 7% for Order #" + purchaseOrderId);
++                                        createOrderAdjustmentContext.put("amount", surcharge.negate());
++                                        createOrderAdjustmentContext.put("userLogin", userLogin);
++                                        String shippingOrderAdjustmentId = null;
++                                        try {
++                                            Map<String, Object> createOrderAdjustmentResult = dispatcher.runSync("createOrderAdjustment", createOrderAdjustmentContext);
++                                            shippingOrderAdjustmentId = (String) createOrderAdjustmentResult.get("orderAdjustmentId");
++                                        } catch (GenericServiceException e) {
++                                            String errMsg = "Trouble calling createOrderAdjustment service";
++                                            Debug.logError(e, errMsg, module);
++                                            return ServiceUtil.returnError(errMsg);
++                                        }
++                                    }
 +                                }
 +                            }
-                             // TODO: associate the new purchase order with the sales order (ship group)
                          } else {
                              // if there are no items to drop ship, then clear out the supplier partyId
+                             Debug.logWarning("No drop ship items found for order [" + shipGroup.getString("orderId") + "] and ship group [" + shipGroup.getString("shipGroupSeqId") + "] and supplier party [" + shipGroup.getString("supplierPartyId") + "].  Supplier party information will be cleared for this ship group", module);
 Index: applications/order/webapp/ordermgr/order/orderReportConditions.fo.ftl
 ===================================================================
---- applications/order/webapp/ordermgr/order/orderReportConditions.fo.ftl	(revision 1157735)
+--- applications/order/webapp/ordermgr/order/orderReportConditions.fo.ftl	(revision 1294526)
 +++ applications/order/webapp/ordermgr/order/orderReportConditions.fo.ftl	(working copy)
 @@ -51,7 +51,7 @@
  
