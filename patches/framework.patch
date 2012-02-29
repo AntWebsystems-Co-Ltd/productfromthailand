@@ -1,16 +1,7 @@
 Index: framework/common/widget/CommonScreens.xml
 ===================================================================
---- framework/common/widget/CommonScreens.xml	(revision 1294526)
+--- framework/common/widget/CommonScreens.xml	(revision 1294940)
 +++ framework/common/widget/CommonScreens.xml	(working copy)
-@@ -476,7 +476,7 @@
-             <actions>
-                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
-                 <set field="logoImageUrl" value="/images/ofbiz_logo.gif"/>
--                <!--<set field="defaultFontFamily" value="Arial"/>-->
-+                <set field="defaultFontFamily" value="Loma"/>
-             </actions>
-             <widgets>
-                 <platform-specific><xsl-fo><html-template location="component://common/webcommon/includes/reportTemplate.fo.ftl"/></xsl-fo></platform-specific>
 @@ -489,6 +489,7 @@
          <section>
              <actions>
@@ -21,7 +12,7 @@ Index: framework/common/widget/CommonScreens.xml
                  <platform-specific>
 Index: framework/webapp/config/fop.xconf
 ===================================================================
---- framework/webapp/config/fop.xconf	(revision 1294526)
+--- framework/webapp/config/fop.xconf	(revision 1294940)
 +++ framework/webapp/config/fop.xconf	(working copy)
 @@ -84,7 +84,10 @@
                            | 500 | 600 | 700 | 800 | 900

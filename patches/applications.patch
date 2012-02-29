@@ -1,6 +1,6 @@
 Index: applications/product/config/ProductUiLabels.xml
 ===================================================================
---- applications/product/config/ProductUiLabels.xml	(revision 1294526)
+--- applications/product/config/ProductUiLabels.xml	(revision 1294940)
 +++ applications/product/config/ProductUiLabels.xml	(working copy)
 @@ -23824,6 +23824,10 @@
          <value xml:lang="zh">应征税的</value>
@@ -15,7 +15,7 @@ Index: applications/product/config/ProductUiLabels.xml
          <value xml:lang="en">Template Path</value>
 Index: applications/product/src/org/ofbiz/product/product/ProductEvents.java
 ===================================================================
---- applications/product/src/org/ofbiz/product/product/ProductEvents.java	(revision 1294526)
+--- applications/product/src/org/ofbiz/product/product/ProductEvents.java	(revision 1294940)
 +++ applications/product/src/org/ofbiz/product/product/ProductEvents.java	(working copy)
 @@ -22,6 +22,7 @@
  import java.sql.Timestamp;
@@ -43,21 +43,9 @@ Index: applications/product/src/org/ofbiz/product/product/ProductEvents.java
          return "success";
      }
  
-Index: applications/accounting/widget/InvoiceScreens.xml
-===================================================================
---- applications/accounting/widget/InvoiceScreens.xml	(revision 1294526)
-+++ applications/accounting/widget/InvoiceScreens.xml	(working copy)
-@@ -579,6 +579,7 @@
-                         <condition-expr field-name="partyIdFrom" operator="equals" from-field="myCompanyId"/>
-                         <condition-expr field-name="invoiceTypeId" operator="equals" value="PURCHASE_INVOICE"/>
-                         <condition-list combine="or">
-+                            <condition-expr field-name="statusId" operator="equals" value="INVOICE_IN_PROCESS"/>
-                             <condition-expr field-name="statusId" operator="equals" value="INVOICE_APPROVED"/>
-                             <condition-expr field-name="statusId" operator="equals" value="INVOICE_SENT"/>
-                             <condition-expr field-name="statusId" operator="equals" value="INVOICE_READY"/>
 Index: applications/order/config/OrderUiLabels.xml
 ===================================================================
---- applications/order/config/OrderUiLabels.xml	(revision 1294526)
+--- applications/order/config/OrderUiLabels.xml	(revision 1294940)
 +++ applications/order/config/OrderUiLabels.xml	(working copy)
 @@ -1466,6 +1466,10 @@
          <value xml:lang="zh_CN">添加代码</value>
@@ -72,7 +60,7 @@ Index: applications/order/config/OrderUiLabels.xml
          <value xml:lang="en">Add Gift Certificate</value>
 Index: applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java
 ===================================================================
---- applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java	(revision 1294526)
+--- applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java	(revision 1294940)
 +++ applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java	(working copy)
 @@ -259,7 +259,38 @@
          if (supplierProduct != null) {
@@ -116,7 +104,7 @@ Index: applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java
          }
 Index: applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.java
 ===================================================================
---- applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.java	(revision 1294526)
+--- applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.java	(revision 1294940)
 +++ applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.java	(working copy)
 @@ -605,6 +605,7 @@
              if (cart.viewCartOnAdd()) {
@@ -128,7 +116,7 @@ Index: applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.ja
          }
 Index: applications/order/src/org/ofbiz/order/order/OrderServices.java
 ===================================================================
---- applications/order/src/org/ofbiz/order/order/OrderServices.java	(revision 1294526)
+--- applications/order/src/org/ofbiz/order/order/OrderServices.java	(revision 1294940)
 +++ applications/order/src/org/ofbiz/order/order/OrderServices.java	(working copy)
 @@ -21,6 +21,7 @@
  import java.math.BigDecimal;
@@ -146,7 +134,16 @@ Index: applications/order/src/org/ofbiz/order/order/OrderServices.java
  import org.ofbiz.common.DataModelConstants;
  import org.ofbiz.entity.Delegator;
  import org.ofbiz.entity.GenericEntity;
-@@ -4984,7 +4986,94 @@
+@@ -83,8 +85,6 @@
+ import org.ofbiz.service.ModelService;
+ import org.ofbiz.service.ServiceUtil;
+ 
+-import com.ibm.icu.util.Calendar;
+-
+ /**
+  * Order Processing Services
+  */
+@@ -4984,7 +4984,94 @@
                              cartShipInfo.setAssociatedShipGroupSeqId(shipGroup.getString("shipGroupSeqId"));
                              // create the order
                              CheckOutHelper coh = new CheckOutHelper(dispatcher, delegator, cart);
@@ -192,7 +189,7 @@ Index: applications/order/src/org/ofbiz/order/order/OrderServices.java
 +                                            bodyScreenLocation = ProductStoreWorker.getDefaultProductStoreEmailScreenLocation(emailType);
 +                                        }
 +                                        
-+                                        Map<String, Object> bodyParameters = UtilMisc.toMap("orderId", purchaseOrderId,"partyId",supplierPartyId,"uiLabelMap", uiLabelMap, "locale", locale);
++                                        Map bodyParameters = UtilMisc.toMap("orderId", purchaseOrderId,"partyId",supplierPartyId,"uiLabelMap", uiLabelMap, "locale", locale);
 +                                        emailCtx.put("bodyScreenUri", bodyScreenLocation);
 +                                        emailCtx.put("bodyParameters", bodyParameters);
 +                                        emailCtx.put("sendTo", sendToEmail);
@@ -242,16 +239,3 @@ Index: applications/order/src/org/ofbiz/order/order/OrderServices.java
                          } else {
                              // if there are no items to drop ship, then clear out the supplier partyId
                              Debug.logWarning("No drop ship items found for order [" + shipGroup.getString("orderId") + "] and ship group [" + shipGroup.getString("shipGroupSeqId") + "] and supplier party [" + shipGroup.getString("supplierPartyId") + "].  Supplier party information will be cleared for this ship group", module);
-Index: applications/order/webapp/ordermgr/order/orderReportConditions.fo.ftl
-===================================================================
---- applications/order/webapp/ordermgr/order/orderReportConditions.fo.ftl	(revision 1294526)
-+++ applications/order/webapp/ordermgr/order/orderReportConditions.fo.ftl	(working copy)
-@@ -51,7 +51,7 @@
- 
- <fo:block space-after="40pt"/>
- <#if orderHeader.getString("orderTypeId") == "SALES_ORDER">
--  <fo:block font-size="14pt" font-weight="bold" text-align="center">THANK YOU FOR YOUR PATRONAGE!</fo:block>
-+  <#--fo:block font-size="14pt" font-weight="bold" text-align="center">THANK YOU FOR YOUR PATRONAGE!</fo:block-->
-   <fo:block font-size="8pt">
-     <#--    Here is a good place to put policies and return information. -->
-   </fo:block>

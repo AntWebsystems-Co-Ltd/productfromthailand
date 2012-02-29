@@ -21,6 +21,20 @@
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
     
+    <!-- fo decorator for pdf documents (invoices, sales orders, purchase orders etc...). -->
+    <screen name="FoReportDecorator">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="logoImageUrl" value="/images/ofbiz_logo.gif"/>
+                <set field="defaultFontFamily" value="Loma"/>
+            </actions>
+            <widgets>
+                <platform-specific><xsl-fo><html-template location="component://common/webcommon/includes/reportTemplate.fo.ftl"/></xsl-fo></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
     <screen name="checkoutshippingaddress">
         <section>
             <actions>
@@ -189,7 +203,7 @@
                 <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/PFTSetup.groovy"/>
             </actions>
             <widgets>
-                <decorator-screen name="FoReportDecorator" location="component://common/widget/CommonScreens.xml">
+                <decorator-screen name="FoReportDecorator">
                     <!-- at the top left of every page we put the logo and company information -->
                     <decorator-section name="topLeft">
                         <section>
@@ -221,7 +235,7 @@
                                 </platform-specific>
                                 <!-- return policies and notes are shown in the last page -->
                                 <platform-specific>
-                                    <xsl-fo><html-template location="component://order/webapp/ordermgr/order/orderReportConditions.fo.ftl"/></xsl-fo>
+                                    <xsl-fo><html-template location="component://productfromthailand/webapp/ecommerce/order/orderReportConditions.fo.ftl"/></xsl-fo>
                                 </platform-specific>
                             </widgets>
                         </section>
@@ -257,7 +271,7 @@
                         </or>
                     </condition>
                     <widgets>
-                        <decorator-screen name="FoReportDecorator" location="component://common/widget/CommonScreens.xml">
+                        <decorator-screen name="FoReportDecorator">
                             <decorator-section name="topLeft">
                                 <include-screen name="CompanyLogo" location="component://order/widget/ordermgr/OrderPrintScreens.xml"/>
                             </decorator-section>
@@ -277,7 +291,7 @@
                         </decorator-screen>
                     </widgets>
                     <fail-widgets>
-                        <decorator-screen name="FoReportDecorator" location="component://common/widget/CommonScreens.xml">
+                        <decorator-screen name="FoReportDecorator">
                             <decorator-section name="body">
                                 <platform-specific>
                                     <xsl-fo><html-template location="component://accounting/webapp/accounting/invoice/NoAccountingView.fo.ftl"/></xsl-fo>
