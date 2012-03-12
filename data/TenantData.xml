@@ -14,4 +14,7 @@
     <TenantDomainName tenantId="PFT" domainName="productfromthailandbackend.ofbizdemo.com" initialPath="/productfromthailand"/>
     <TenantDomainName tenantId="PFT" domainName="productfromthailand.localhost" initialPath="/productfromthailand"/>
     <TenantDomainName tenantId="PFT" domainName="productfromthailandbackend.localhost" initialPath="/productfromthailand"/>
+    <TenantDomainName tenantId="PFT" domainName="productfromthailand.localhost" initialPath="/productfromthailand"/>
+    <TenantDomainName tenantId="PFT" domainName="productfromthailandbackend.localhost" initialPath="/productfromthailand"/>
+    <TenantDomainName tenantId="PFT" domainName="productfromthailand.antwebsystems.com" initialPath="/"/>
 </entity-engine-xml>

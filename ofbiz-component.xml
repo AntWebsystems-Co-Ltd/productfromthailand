@@ -45,6 +45,7 @@
         location="webapp/ecommerce"
         mount-point="/"
         app-bar-display="false">
+        <virtual-host host-name="productfromthailand.antwebsystems.com"/>
         <virtual-host host-name="productfromthailand.ofbizsaas.com"/>
         <virtual-host host-name="productfromthailand.ofbizdemo.com"/>
         <virtual-host host-name="productfromthailand.localhost"/>
