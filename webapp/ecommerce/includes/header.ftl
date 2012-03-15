@@ -65,23 +65,23 @@ under the License.
             ${uiLabelMap.CommonWelcome}!
             </#if>&nbsp;&nbsp;
             <#if parameters.locale?default("en")=="th">
-                <a href="<@ofbizUrl>setSessionLocale?newLocale=en</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pftimages/flags/en.jpg</@ofbizContentUrl>" alt="English"/></a>
+                <a href="<@ofbizUrl>setSessionLocale?newLocale=en</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pft-default/pftimages/flags/en.jpg</@ofbizContentUrl>" alt="English"/></a>
             <#else>
-                <a href="<@ofbizUrl>setSessionLocale?newLocale=th</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pftimages/flags/th.png</@ofbizContentUrl>" alt="Thai"/></a>
+                <a href="<@ofbizUrl>setSessionLocale?newLocale=th</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pft-default/pftimages/flags/th.png</@ofbizContentUrl>" alt="Thai"/></a>
             </#if>
             </ul>
             <#--assign availableLocales = Static["org.ofbiz.base.util.UtilMisc"].availableLocales()/>
             <#list availableLocales as availableLocale>
                 <#if locale.toString() == availableLocale.toString()>
                     <#if locale.toString() == "en">
-                        <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="<@ofbizContentUrl>/pftimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
+                        <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img src="<@ofbizContentUrl>/pft-default/pftimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
                     <#elseif locale.toString() == "th">
-                        <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=en"><img src="<@ofbizContentUrl>/pftimages/EngFlag.jpg</@ofbizContentUrl>"  alt="English" width="25"/></a>
+                        <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=en"><img src="<@ofbizContentUrl>/pft-default/pftimages/EngFlag.jpg</@ofbizContentUrl>"  alt="English" width="25"/></a>
                     </#if>
                 </#if>
             </#list>
             <#if locale.toString() == "en_US">
-                <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img  src="<@ofbizContentUrl>/pftimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
+                <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img  src="<@ofbizContentUrl>/pft-default/pftimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
             </#if-->
         </div>
         <#-- Twitter share  -->
@@ -95,9 +95,11 @@ under the License.
                 <script type="text/javascript">
                     jQuery(".twitter-share-button").each(function(index) {
                         iframeSrc = jQuery(jQuery(".twitter-share-button")[index]).attr("src");
-                        if (iframeSrc.substring(0, 5) == "https") {
-                            iframeSrc = "http" + iframeSrc.substring(5, iframeSrc.length);
-                            jQuery(jQuery(".twitter-share-button")[index]).attr("src", iframeSrc);
+                        if (iframeSrc) {
+                            if (iframeSrc.substring(0, 5) == "https") {
+                                iframeSrc = "http" + iframeSrc.substring(5, iframeSrc.length);
+                                jQuery(jQuery(".twitter-share-button")[index]).attr("src", iframeSrc);
+                            }
                         }
                     });
                 </script>
@@ -136,9 +138,9 @@ under the License.
                 <li id="header-bar-help"><a href="<@ofbizUrl>help</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTHelpAndInstruction}</div></a></li>
             </ul-->
             ${uiLabelMap.PFTSwitchCurrency} : 
-            <a href="<@ofbizUrl>setSessionCurrencyUom?currencyUom=THB</@ofbizUrl>"><img src="<@ofbizContentUrl>/pftimages/flags/flag_th.png</@ofbizContentUrl>"/></a>
-            <a href="<@ofbizUrl>setSessionCurrencyUom?currencyUom=USD</@ofbizUrl>"><img src="<@ofbizContentUrl>/pftimages/flags/flag_us.png</@ofbizContentUrl>"/></a>
-            <a href="<@ofbizUrl>setSessionCurrencyUom?currencyUom=EUR</@ofbizUrl>"><img src="<@ofbizContentUrl>/pftimages/flags/flag_euro.png</@ofbizContentUrl>"/></a>
+            <a href="<@ofbizUrl>setSessionCurrencyUom?currencyUom=THB</@ofbizUrl>"><img src="<@ofbizContentUrl>/pft-default/pftimages/flags/flag_th.png</@ofbizContentUrl>"/></a>
+            <a href="<@ofbizUrl>setSessionCurrencyUom?currencyUom=USD</@ofbizUrl>"><img src="<@ofbizContentUrl>/pft-default/pftimages/flags/flag_us.png</@ofbizContentUrl>"/></a>
+            <a href="<@ofbizUrl>setSessionCurrencyUom?currencyUom=EUR</@ofbizUrl>"><img src="<@ofbizContentUrl>/pft-default/pftimages/flags/flag_euro.png</@ofbizContentUrl>"/></a>
         </div>
     </div>
   </div>

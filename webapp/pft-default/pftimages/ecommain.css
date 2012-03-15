@@ -107,7 +107,7 @@ font-family: Verdana, Arial, Helvetica, sans-serif;
 }*/
 
 body {
-background-image:url(/pftimages/background.jpg);
+background-image:url(/pft-default/pftimages/background.jpg);
 background-attachment:fixed;
 color:black;
 font-family: Verdana, Arial, Helvetica, sans-serif;
@@ -229,11 +229,11 @@ float: right;
 #right-links li#home,#right-links li#products,
 #right-links li#services,#right-links li#partner,
 #right-links li#aboutus,#right-links li#contactus, #left-links li#showcart{
-background:url(/pftimages/point.gif) no-repeat bottom center;
+background:url(/pft-default/pftimages/point.gif) no-repeat bottom center;
 }
 
 #ecom-header-bar #searchbar {
-background-image:url(/pftimages/searchbar.gif);
+background-image:url(/pft-default/pftimages/searchbar.gif);
 overflow:hidden;
 height: 60px;
 width: 933px;
@@ -320,7 +320,7 @@ margin:0px;
 padding:0px;
 }
 #ecom-header-bar .leftcorner{
-background: url(/pftimages/leftTopCorner.gif) top left no-repeat;
+background: url(/pft-default/pftimages/leftTopCorner.gif) top left no-repeat;
 width:2%;
 float:left;
 }
@@ -449,7 +449,7 @@ padding:1px 4px 3px;
 .boxhead {
 text-align:center;
 height:25px;
-background-image:url(/pftimages/bt_bg.jpg);
+background-image:url(/pft-default/pftimages/bt_bg.jpg);
 background-repeat:repeat-x;
 font-size: 10pt;
 font-weight: bold;
@@ -1425,7 +1425,7 @@ width: 955px;
 }
 
 #endpage .leftbottomcorner{
-background: url(/pftimages/leftBottomCorner.gif) bottom left;
+background: url(/pft-default/pftimages/leftBottomCorner.gif) bottom left;
 background-repeat:no-repeat;
 width:15px;
 float:left;
@@ -1471,7 +1471,7 @@ margin-left:10px;
 }
 
 .browsehelptext {
-background:url(/pftimages/bg_bullet_full_2.gif) no-repeat 0 .5em;
+background:url(/pft-default/pftimages/bg_bullet_full_2.gif) no-repeat 0 .5em;
 color:#1C334D;
 font-weight:700;
 padding-left:10px;
@@ -1592,13 +1592,13 @@ button.buttonaddtocart {
     margin-left:5px\9;
 }
 button.buttonaddtocart span { 
-    background:url(/pftimages/button1_1_border_left.png) no-repeat  left top !important; 
+    background:url(/pft-default/pftimages/button1_1_border_left.png) no-repeat  left top !important; 
     display:block; 
     height:20px !important; 
     margin:0;
 }
 button.buttonaddtocart span span { 
-    background:url(/pftimages/button1_1_border_right.png) no-repeat  right top !important; 
+    background:url(/pft-default/pftimages/button1_1_border_right.png) no-repeat  right top !important; 
     display:block; 
     height:20px !important; 
     padding:0 5px;
@@ -1610,7 +1610,7 @@ button.buttonaddtocart span span {
 }
 button.buttonaddtocart span span span { 
     font-size:10px; 
-    background:url(/pftimages/button1_1.png) repeat-x  left top !important; 
+    background:url(/pft-default/pftimages/button1_1.png) repeat-x  left top !important; 
     color:#FFFFFF; 
     display:block; 
     font-weight:700; 
@@ -1628,9 +1628,9 @@ button.buttonaddtocart:hover {
 }
 
 button.button1 { background:none repeat 0 50%; border:0 none; cursor:pointer;  font-size:10px; height:30px !important; overflow:visible; width:auto; vertical-align: top; margin-left:5px\9;}
-button.button1 span { background:url(/pftimages/btn_left.gif) no-repeat  left top !important; display:block; height:20px !important; margin:0; }
-button.button1 span span { background:url(/pftimages/btn_right.gif) no-repeat  right top !important; display:block; height:20px !important; padding:0 5px; }
-button.button1 span span span { font-size:10px; background:url(/pftimages/btn_middle.gif) repeat-x  left top !important; color:#FFFFFF; display:block; font-weight:700; line-height:normal; overflow:hidden !important; padding-top:4px; text-align:center; white-space:nowrap; }
+button.button1 span { background:url(/pft-default/pftimages/btn_left.gif) no-repeat  left top !important; display:block; height:20px !important; margin:0; }
+button.button1 span span { background:url(/pft-default/pftimages/btn_right.gif) no-repeat  right top !important; display:block; height:20px !important; padding:0 5px; }
+button.button1 span span span { font-size:10px; background:url(/pft-default/pftimages/btn_middle.gif) repeat-x  left top !important; color:#FFFFFF; display:block; font-weight:700; line-height:normal; overflow:hidden !important; padding-top:4px; text-align:center; white-space:nowrap; }
 button.button1:hover {
     border:none;
     background:none;

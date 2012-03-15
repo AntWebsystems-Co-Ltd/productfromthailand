@@ -1749,7 +1749,7 @@ but they are grouped here for convenience purposes -->
     
     <ProductStoreFacility productStoreId="PFTSTORE" facilityId="pftWarehouse" fromDate="2009-09-25 10:38:07.561"/>
     <!--<ProductStoreCatalog productStoreId="PFTSTORE" prodCatalogId="DemoCatalog" fromDate="2009-09-25 10:38:07.561"/>-->
-    <WebSite webSiteId="PFT" siteName="Product from Thailand EN website" standardContentPrefix="http://www.productfromthailand.com" visualThemeSetId="ECOMMERCE" productStoreId="PFTSTORE"/>
+    <WebSite webSiteId="PFT" standardContentPrefix="http://productfromthailandbackend.ofbizdemo.com" secureContentPrefix="https://productfromthailandbackend.ofbizdemo.com" httpHost="productfromthailand.ofbizdemo.com" httpsHost="productfromthailand.ofbizdemo.com"/>
 
     <!--<ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_BILLACT" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
     <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_OFFLINE" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>

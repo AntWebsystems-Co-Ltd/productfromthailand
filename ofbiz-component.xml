@@ -25,6 +25,7 @@
     <classpath type="jar" location="build/lib/*"/>
     <classpath type="dir" location="config"/>
 
+    <entity-resource type="data" reader-name="seed-initial" loader="main" location="data/AdminUserLoginData.xml"/>
     <entity-resource type="data" reader-name="seed" loader="main" location="data/EcommerceTypeData.xml"/>
     <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTSeedData.xml"/>
     <entity-resource type="data" reader-name="demo" loader="main" location="data/PFTDemoData.xml"/>
@@ -45,6 +46,7 @@
         location="webapp/ecommerce"
         mount-point="/"
         app-bar-display="false">
+        <virtual-host host-name="productfromthailand.com"/>
         <virtual-host host-name="productfromthailand.antwebsystems.com"/>
         <virtual-host host-name="productfromthailand.ofbizsaas.com"/>
         <virtual-host host-name="productfromthailand.ofbizdemo.com"/>
@@ -57,4 +59,13 @@
         location="webapp/test"
         mount-point="/"
         app-bar-display="false"/>-->
+    
+    <!-- Themes -->
+    <webapp name="pft-default"
+        title="Product From Thailand Default Theme"
+        menu-name="secondary"
+        server="default-server"
+        location="webapp/pft-default"
+        mount-point="/pft-default"
+        app-bar-display="false"/>
 </ofbiz-component>

@@ -33,4 +33,6 @@ under the License.
     <SystemProperty systemResourceId="googleBaseExport" systemPropertyId="googleBaseExport.developerKey" systemPropertyValue="ABQIAAAAtllOIMnA_SSaX6-q_-0NqBQ7yogk7ltS6O8c1NB_asTLHULnfxRsRVBa5bgcryXeo0AOht5OtQ78_Q"/>
     <SystemProperty systemResourceId="googleBaseExport" systemPropertyId="googleBaseExport.accountEmail" systemPropertyValue="admin@productfromthailand.com"/>
     <SystemProperty systemResourceId="googleBaseExport" systemPropertyId="googleBaseExport.accountPassword" systemPropertyValue="pft44444"/>
+    
+    <WebSite webSiteId="PFT" siteName="Product from Thailand EN website" standardContentPrefix="http://productfromthailandbackend.ofbizsaas.com" secureContentPrefix="https://productfromthailandbackend.ofbizsaas.com" httpHost="productfromthailand.ofbizsaas.com" httpsHost="productfromthailand.ofbizsaas.com" httpPort="80" httpsPort="443" enableHttps="Y" visualThemeSetId="ECOMMERCE" productStoreId="PFTSTORE"/>
 </entity-engine-xml>
