@@ -18,6 +18,10 @@ under the License.
 -->
 
 <#-- Render the category page -->
+<div class="title">
+    <h1>${productStore.title}</h1>
+    <h3>${productStore.subtitle}</h3>
+</div>
 <#if requestAttributes.productCategoryId?has_content>
   ${screens.render("component://productfromthailand/widget/CatalogScreens.xml#category-include")}
 <#else>

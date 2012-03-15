@@ -69,6 +69,14 @@ under the License.
                     <!-- render messages -->
                     <platform-specific><html><html-template location="component://common/webcommon/includes/messages.ftl"/></html></platform-specific>
                     <container id="div1" style="left"><include-screen name="${leftbarScreenName}" location="${leftbarScreenLocation}"/></container>
+                    <section>
+                        <condition>
+                            <not><if-empty field="bannerScreenName"/></not>
+                        </condition>
+                        <widgets>
+                            <container style="banner"><include-screen name="${bannerScreenName}"/></container>
+                        </widgets>
+                    </section>
                     <container id="div2" style="right"><include-screen name="${rightbarScreenName}" location="${rightbarScreenLocation}"/></container>
 
                     <container id="div3" style="${MainColumnStyle}">
