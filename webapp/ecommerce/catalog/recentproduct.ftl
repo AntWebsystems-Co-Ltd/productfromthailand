@@ -20,9 +20,9 @@ under the License.
 <div class="recentproduct">
     <div class="recentproductimage">
         <#if product.smallImageUrl?exists>
-        <a href="<@ofbizCatalogAltUrl productCategoryId=categoryId productId=product.productId!""/>"><img src="${product.smallImageUrl}"/></a>
+        <a href="<@ofbizCatalogAltUrl productCategoryId=categoryId productId=product.productId!""/>"><img src="<@ofbizContentUrl>${product.smallImageUrl}</@ofbizContentUrl>"/></a>
         <#else>
-        <a href="<@ofbizCatalogAltUrl productCategoryId=categoryId productId=product.productId!""/>"><img src="/images/defaultImage.jpg"/></a>
+        <a href="<@ofbizCatalogAltUrl productCategoryId=categoryId productId=product.productId!""/>"><img src="<@ofbizContentUrl>/images/defaultImage.jpg</@ofbizContentUrl>"/></a>
         </#if>
     </div>
     <div id="recentproductdetail">
