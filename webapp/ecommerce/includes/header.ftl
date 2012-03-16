@@ -87,22 +87,11 @@ under the License.
         <#-- Twitter share  -->
         <div id="google-plus-top">
             <iframe allowtransparency="true" frameborder="0" scrolling="no"
-            src="http://platform.twitter.com/widgets/follow_button.html?screen_name=Product_Thai&link_color=BCB104"
+            src="https://platform.twitter.com/widgets/follow_button.html?screen_name=Product_Thai&link_color=BCB104"
             style="width:150px; height:20px;">Follow @Product_Thai</iframe>
             <span class="twitter-share">
-                <a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="Product_Thai">Tweet</a>
-                <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-                <script type="text/javascript">
-                    jQuery(".twitter-share-button").each(function(index) {
-                        iframeSrc = jQuery(jQuery(".twitter-share-button")[index]).attr("src");
-                        if (iframeSrc) {
-                            if (iframeSrc.substring(0, 5) == "https") {
-                                iframeSrc = "http" + iframeSrc.substring(5, iframeSrc.length);
-                                jQuery(jQuery(".twitter-share-button")[index]).attr("src", iframeSrc);
-                            }
-                        }
-                    });
-                </script>
+                <script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>
+                <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="Product_Thai">Tweet</a>
             </span>
             <span class="google-one-ck">
                 <g:plusone size="medium" count="false"></g:plusone>
