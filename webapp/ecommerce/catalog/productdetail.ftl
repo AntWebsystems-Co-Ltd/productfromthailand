@@ -347,7 +347,7 @@ ${virtualVariantJavaScript?if_exists}
                     </div>
                 </#if>
                 <#if !productLargeImageUrl?string?has_content>
-                    <img id="detailImage" src="/images/defaultImage.jpg" name="mainImage" alt="" />
+                    <img id="detailImage" src="<@ofbizContentUrl>/images/defaultImage.jpg</@ofbizContentUrl>" name="mainImage" alt="" />
                 </#if>
                 <#-- Show Image Approved -->
                 <div id="additionalImageBox">
@@ -383,7 +383,7 @@ ${virtualVariantJavaScript?if_exists}
                     <input type="hidden" id="originalImage" name="originalImage" value="<@ofbizContentUrl>${contentPathPrefix?if_exists}${productLargeImageUrl?if_exists}</@ofbizContentUrl>" />
                 </#if>
                 <#if !productLargeImageUrl?string?has_content>
-                    <img id="detailImage" src="/images/defaultImage.jpg" name="mainImage" alt="" />
+                    <img id="detailImage" src="<@ofbizContentUrl>/images/defaultImage.jpg</@ofbizContentUrl>" name="mainImage" alt="" />
                 </#if>
             </div>
             <div id="additionalImageBox">
