@@ -25,6 +25,12 @@ under the License.
     <SystemProperty systemResourceId="general" systemPropertyId="mail.smtp.auth.user" systemPropertyValue="info@productfromthailand.com"/>
     <SystemProperty systemResourceId="general" systemPropertyId="mail.smtp.auth.password" systemPropertyValue="pft44"/>
     
+    <!-- mail system properties -->
+    <SystemProperty systemResourceId="mail" systemPropertyId="mail.store.protocol" systemPropertyValue="imaps"/>
+    <SystemProperty systemResourceId="mail" systemPropertyId="mail.host" systemPropertyValue="imap.gmail.com"/>
+    <SystemProperty systemResourceId="mail" systemPropertyId="mail.user" systemPropertyValue="mailUser"/>
+    <SystemProperty systemResourceId="mail" systemPropertyId="mail.pass" systemPropertyValue="mailPass"/>
+    
     <!-- catalog.properties adjustment -->
     <SystemProperty systemResourceId="catalog" systemPropertyId="top.category.default" systemPropertyValue="PFT_ROOT"/>
     <SystemProperty systemResourceId="catalog" systemPropertyId="all.product.category" systemPropertyValue="PFT_ROOT"/>
