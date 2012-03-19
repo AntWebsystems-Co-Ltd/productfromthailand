@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <SecurityPermission description="View operations in the Product From Thailand Component." permissionId="PFT_VIEW"/>
+    <SecurityPermission description="Create operations in the Product From Thailand Component." permissionId="PFT_CREATE"/>
+    <SecurityPermission description="Update operations in the Product From Thailand Component." permissionId="PFT_UPDATE"/>
+    <SecurityPermission description="Delete operations in the Product From Thailand Component." permissionId="PFT_DELETE"/>
+    <SecurityPermission description="ALL operations in the Product From Thailand Component." permissionId="PFT_ADMIN"/>
+    <SecurityGroupPermission groupId="FULLADMIN" permissionId="PFT_ADMIN"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="PFT_CREATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="PFT_DELETE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="PFT_UPDATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="PFT_VIEW"/>
+    <SecurityGroupPermission groupId="VIEWADMIN" permissionId="PFT_VIEW"/>
+    <SecurityGroupPermission groupId="BIZADMIN" permissionId="PFT_ADMIN"/>
+</entity-engine-xml>
+
