@@ -34,7 +34,7 @@
     <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTHelpData.xml"/>
     <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTPortletData.xml"/>
 <!--    <entity-resource type="data" reader-name="seed" loader="main" location="data/suppliersList.xml"/>-->
-    <!--<entity-resource type="data" reader-name="demo" loader="main" location="data/DemoSupplier.xml"/>-->
+    <entity-resource type="data" reader-name="demo" loader="main" location="data/DemoSupplier.xml"/>
 
 	<entity-resource type="data" reader-name="tenant" loader="main" location="data/TenantData.xml"/>    
 
