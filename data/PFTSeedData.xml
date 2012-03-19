@@ -40,5 +40,85 @@ under the License.
     <SystemProperty systemResourceId="googleBaseExport" systemPropertyId="googleBaseExport.accountEmail" systemPropertyValue="admin@productfromthailand.com"/>
     <SystemProperty systemResourceId="googleBaseExport" systemPropertyId="googleBaseExport.accountPassword" systemPropertyValue="pft44444"/>
     
+    <Party partyId="pft" partyTypeId="PARTY_GROUP" createdDate="2009-09-25 10:35:14.088"/>
+    <PartyGroup partyId="pft" groupName="P.F.T. Trading Co.,Ltd." logoImageUrl="/pft/images/logo.gif"/>
+
+    <PartyRole partyId="pft" roleTypeId="CARRIER"/>
+    <PartyRole partyId="pft" roleTypeId="INTERNAL_ORGANIZATIO"/>
+    <PartyRole partyId="pft" roleTypeId="_NA_"/>
+
+    <ContactMech contactMechId="PFTADDR" contactMechTypeId="POSTAL_ADDRESS"/>
+    <ContactMech contactMechId="PFTPHONE" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="PFTFAX" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="PFTEMAIL" contactMechTypeId="EMAIL_ADDRESS" infoString="info@productfromthailand.com"/>
+    <!--<ContactMech contactMechId="pftFacilityAddr" contactMechTypeId="POSTAL_ADDRESS"/>-->
+
+    <PostalAddress contactMechId="PFTADDR" toName="P.F.T. Trading Co.,Ltd." address1="171/28, Moo 3, Tambol Nhongkeaw, Aumphur Hang Dong" city="Chiang Mai" postalCode="50230" countryGeoId="THA"/>
+    <!--<PostalAddress contactMechId="pftFacilityAddr" toName="P.F.T. Trading Co.,Ltd." address1="171/28, Moo 3, Thumbol Nhongkeaw, Aumphur Hang Dong" city="Chiangmai" postalCode="50230" countryGeoId="THA"/>-->
+
+    <TelecomNumber contactMechId="PFTPHONE" countryCode="+66" areaCode="053" contactNumber="483245"/>
+    <TelecomNumber contactMechId="PFTFAX" countryCode="+66" areaCode="053" contactNumber="483246"/>
+
+    <PartyContactMech partyId="pft" contactMechId="PFTEMAIL" fromDate="2009-09-25 10:35:15.962" roleTypeId="INTERNAL_ORGANIZATIO" allowSolicitation="Y"/>
+    <PartyContactMech partyId="pft" contactMechId="PFTPHONE" fromDate="2009-09-25 10:35:15.909" roleTypeId="INTERNAL_ORGANIZATIO" allowSolicitation="Y"/>
+    <PartyContactMech partyId="pft" contactMechId="PFTFAX" fromDate="2009-09-25 10:35:15.909" roleTypeId="INTERNAL_ORGANIZATIO" allowSolicitation="Y"/>
+    <PartyContactMech partyId="pft" contactMechId="PFTADDR" fromDate="2009-09-25 10:35:15.777" roleTypeId="INTERNAL_ORGANIZATIO" allowSolicitation="Y"/>
+
+    <PartyContactMechPurpose partyId="pft" contactMechId="PFTEMAIL" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="pft" contactMechId="PFTPHONE" contactMechPurposeTypeId="PRIMARY_PHONE" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="pft" contactMechId="PFTFAX" contactMechPurposeTypeId="FAX_NUMBER" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="pft" contactMechId="PFTADDR" contactMechPurposeTypeId="BILLING_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="pft" contactMechId="PFTADDR" contactMechPurposeTypeId="GENERAL_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="pft" contactMechId="PFTADDR" contactMechPurposeTypeId="PAYMENT_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
+    
+    <!-- Start of Shipping demo data -->
+    <Party partyId="_NA_" partyTypeId="PERSON"/>
+    <Party partyId="USPS" partyTypeId="PARTY_GROUP"/>
+    <Party partyId="UPS" partyTypeId="PARTY_GROUP"/>
+    <Party partyId="DHL" partyTypeId="PARTY_GROUP"/>
+    <Party partyId="FEDEX" partyTypeId="PARTY_GROUP"/>
+
+    <Person partyId="_NA_"/>
+    <PartyGroup partyId="USPS" groupName="USPS"/>
+    <PartyGroup partyId="UPS" groupName="UPS"/>
+    <PartyGroup partyId="DHL" groupName="DHL"/>
+    <PartyGroup partyId="FEDEX" groupName="Federal Express"/>
+
+    <PartyRole partyId="USPS" roleTypeId="CARRIER"/>
+    <PartyRole partyId="UPS" roleTypeId="CARRIER"/>
+    <PartyRole partyId="DHL" roleTypeId="CARRIER"/>
+    <PartyRole partyId="_NA_" roleTypeId="CARRIER"/>
+    <PartyRole partyId="FEDEX" roleTypeId="CARRIER"/>
+    
+    <GlJournal glJournalId="pftGlJournal" glJournalName="Suspense transactions" organizationPartyId="pft"/>
+    <PartyAcctgPreference partyId="pft" taxFormId="US_IRS_1120" cogsMethodId="COGS_LIFO" baseCurrencyUomId="USD"
+        invoiceSeqCustMethId="INV_HOOK_ENF_SEQ" invoiceIdPrefix="PRCI"
+        quoteIdPrefix="PFTQ"
+        orderIdPrefix="PFTO"
+        errorGlJournalId="pftGlJournal"/>
+
+    <Facility facilityId="pftWarehouse" facilityTypeId="WAREHOUSE" ownerPartyId="pft" defaultInventoryItemTypeId="NON_SERIAL_INV_ITEM" 
+        facilityName="Product from Thailand Warehouse" defaultDaysToShip="25" defaultWeightUomId="WT_lb"/>
+    <FacilityContactMech facilityId="pftWarehouse" contactMechId="PFTADDR" fromDate="2009-09-25 10:37:46.351"/>
+    <FacilityContactMechPurpose facilityId="pftWarehouse" contactMechId="PFTADDR" contactMechPurposeTypeId="SHIP_ORIG_LOCATION" fromDate="2009-09-25 10:37:46.428"/>
+    <FacilityContactMechPurpose facilityId="pftWarehouse" contactMechId="PFTADDR" contactMechPurposeTypeId="SHIPPING_LOCATION" fromDate="2009-09-25 10:37:46.414"/>
+    
+    <ProductStore productStoreId="PFTSTORE" storeName="Product from Thailand Store" companyName="Product from Thailand Co.,Ltd" payToPartyId="pft" 
+        daysToCancelNonPay="30" manualAuthIsCapture="N" prorateShipping="Y" prorateTaxes="Y" viewCartOnAdd="N" autoSaveCart="N" autoApproveReviews="N" 
+        isDemoStore="N" title="Welcome to Product FromThailand.com" subtitle="Thailand Located in Southeast Asia, Thailand is commonly known as the land of smiles. Thailand's major exports include textiles, fishery products and electrical applicances. Look through the categories below to find more Thai products." 
+        isImmediatelyFulfilled="N" oneInventoryFacility="N" checkInventory="N" reserveInventory="N" 
+        reserveOrderEnumId="INVRO_FIFO_REC" requireInventory="N" balanceResOnOrderCreation="Y" orderNumberPrefix="PFTS" defaultLocaleString="en_US" 
+        defaultCurrencyUomId="USD" defaultSalesChannelEnumId="WEB_SALES_CHANNEL" allowPassword="Y" explodeOrderItems="N" checkGcBalance="N" retryFailedAuths="Y" 
+        headerApprovedStatus="ORDER_APPROVED" itemApprovedStatus="ITEM_APPROVED" digitalItemApprovedStatus="ITEM_APPROVED" headerDeclinedStatus="ORDER_REJECTED" 
+        itemDeclinedStatus="ITEM_REJECTED" headerCancelStatus="ORDER_CANCELLED" itemCancelStatus="ITEM_CANCELLED" 
+        authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or call customer service." 
+        authFraudMessage="Your order has been rejected and your account has been disabled due to fraud." 
+        authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email." visualThemeId="EC_PFT" 
+        storeCreditAccountEnumId="FIN_ACCOUNT" usePrimaryEmailUsername="N" requireCustomerRole="N" autoInvoiceDigitalItems="Y" reqShipAddrForDigItems="Y" 
+        showCheckoutGiftOptions="Y" selectPaymentTypePerItem="N" showPricesWithVatTax="N" showTaxIsExempt="Y" enableDigProdUpload="N" prodSearchExcludeVariants="Y" 
+        autoOrderCcTryExp="Y" autoOrderCcTryOtherCards="Y" autoOrderCcTryLaterNsf="Y" storeCreditValidDays="90" autoApproveInvoice="Y" autoApproveOrder="Y" 
+        shipIfCaptureFails="Y" reqReturnInventoryReceive="N" showOutOfStockProducts="Y" inventoryFacilityId="pftWarehouse"/>
+    
+    <ProductStoreFacility productStoreId="PFTSTORE" facilityId="pftWarehouse" fromDate="2009-09-25 10:38:07.561"/>
     <WebSite webSiteId="PFT" siteName="Product from Thailand EN website" standardContentPrefix="http://productfromthailandbackend.ofbizsaas.com" secureContentPrefix="https://productfromthailandbackend.ofbizsaas.com" httpHost="productfromthailand.ofbizsaas.com" httpsHost="productfromthailand.ofbizsaas.com" httpPort="80" httpsPort="443" enableHttps="Y" visualThemeSetId="ECOMMERCE" productStoreId="PFTSTORE"/>
 </entity-engine-xml>
