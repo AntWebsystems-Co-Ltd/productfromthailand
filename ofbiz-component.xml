@@ -68,11 +68,5 @@
         server="default-server"
         location="webapp/pft-default"
         mount-point="/pft-default"
-        app-bar-display="false">
-        <virtual-host host-name="www.productfromthailand.com"/>
-        <virtual-host host-name="productfromthailand.antwebsystems.com"/>
-        <virtual-host host-name="productfromthailand.ofbizsaas.com"/>
-        <virtual-host host-name="productfromthailand.ofbizdemo.com"/>
-        <virtual-host host-name="productfromthailand.localhost"/>
-    </webapp>
+        app-bar-display="false"/>
 </ofbiz-component>
