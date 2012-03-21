@@ -69,4 +69,13 @@
         location="webapp/pft-default"
         mount-point="/pft-default"
         app-bar-display="false"/>
+        
+    <!-- ROOT -->
+    <webapp name="ROOT"
+        title="ROOT Web Application"
+        menu-name="secondary"
+        server="default-server"
+        location="webapp/ROOT"
+        mount-point="/"
+        app-bar-display="false"/>
 </ofbiz-component>
