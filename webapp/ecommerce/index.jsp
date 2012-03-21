@@ -17,4 +17,12 @@ specific language governing permissions and limitations
 under the License.
 --%>
 
-<%response.sendRedirect("control/main");%>
+<%
+String serverName 	= 	request.getServerName();	// name of the host
+
+if (serverName.equalsIgnoreCase("productfromthailand.com"))
+    response.sendRedirect("http://www.productfromthailand.com");
+else
+    response.sendRedirect("control/main");
+
+%>
