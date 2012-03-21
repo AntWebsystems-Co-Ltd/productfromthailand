@@ -1,6 +1,6 @@
 Index: specialpurpose/myportal/webapp/myportal/WEB-INF/controller.xml
 ===================================================================
---- specialpurpose/myportal/webapp/myportal/WEB-INF/controller.xml	(revision 1294940)
+--- specialpurpose/myportal/webapp/myportal/WEB-INF/controller.xml	(revision 1303268)
 +++ specialpurpose/myportal/webapp/myportal/WEB-INF/controller.xml	(working copy)
 @@ -29,6 +29,7 @@
      <include location="component://order/webapp/ordermgr/WEB-INF/controller.xml"/>

@@ -1,6 +1,6 @@
 Index: applications/product/config/ProductUiLabels.xml
 ===================================================================
---- applications/product/config/ProductUiLabels.xml	(revision 1294940)
+--- applications/product/config/ProductUiLabels.xml	(revision 1303268)
 +++ applications/product/config/ProductUiLabels.xml	(working copy)
 @@ -23824,6 +23824,10 @@
          <value xml:lang="zh">应征税的</value>
@@ -15,7 +15,7 @@ Index: applications/product/config/ProductUiLabels.xml
          <value xml:lang="en">Template Path</value>
 Index: applications/product/src/org/ofbiz/product/product/ProductEvents.java
 ===================================================================
---- applications/product/src/org/ofbiz/product/product/ProductEvents.java	(revision 1294940)
+--- applications/product/src/org/ofbiz/product/product/ProductEvents.java	(revision 1303268)
 +++ applications/product/src/org/ofbiz/product/product/ProductEvents.java	(working copy)
 @@ -22,6 +22,7 @@
  import java.sql.Timestamp;
@@ -45,7 +45,7 @@ Index: applications/product/src/org/ofbiz/product/product/ProductEvents.java
  
 Index: applications/order/config/OrderUiLabels.xml
 ===================================================================
---- applications/order/config/OrderUiLabels.xml	(revision 1294940)
+--- applications/order/config/OrderUiLabels.xml	(revision 1303268)
 +++ applications/order/config/OrderUiLabels.xml	(working copy)
 @@ -1466,6 +1466,10 @@
          <value xml:lang="zh_CN">添加代码</value>
@@ -60,7 +60,7 @@ Index: applications/order/config/OrderUiLabels.xml
          <value xml:lang="en">Add Gift Certificate</value>
 Index: applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java
 ===================================================================
---- applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java	(revision 1294940)
+--- applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java	(revision 1303268)
 +++ applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java	(working copy)
 @@ -259,7 +259,38 @@
          if (supplierProduct != null) {
@@ -104,7 +104,7 @@ Index: applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartItem.java
          }
 Index: applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.java
 ===================================================================
---- applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.java	(revision 1294940)
+--- applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.java	(revision 1303268)
 +++ applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.java	(working copy)
 @@ -605,6 +605,7 @@
              if (cart.viewCartOnAdd()) {
@@ -116,7 +116,7 @@ Index: applications/order/src/org/ofbiz/order/shoppingcart/ShoppingCartEvents.ja
          }
 Index: applications/order/src/org/ofbiz/order/order/OrderServices.java
 ===================================================================
---- applications/order/src/org/ofbiz/order/order/OrderServices.java	(revision 1294940)
+--- applications/order/src/org/ofbiz/order/order/OrderServices.java	(revision 1303268)
 +++ applications/order/src/org/ofbiz/order/order/OrderServices.java	(working copy)
 @@ -21,6 +21,7 @@
  import java.math.BigDecimal;
@@ -143,7 +143,7 @@ Index: applications/order/src/org/ofbiz/order/order/OrderServices.java
  /**
   * Order Processing Services
   */
-@@ -4984,7 +4984,94 @@
+@@ -4854,7 +4854,94 @@
                              cartShipInfo.setAssociatedShipGroupSeqId(shipGroup.getString("shipGroupSeqId"));
                              // create the order
                              CheckOutHelper coh = new CheckOutHelper(dispatcher, delegator, cart);
