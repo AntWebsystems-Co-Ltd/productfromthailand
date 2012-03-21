@@ -11,11 +11,13 @@
     <TenantDomainName tenantId="PFT" domainName="www.productfromthailand.com" initialPath="/"/>
     <TenantDomainName tenantId="PFT" domainName="backend.productfromthailand.com" initialPath="/catalog"/>
     <TenantDomainName tenantId="PFT" domainName="productfromthailand.ofbizsaas.com" initialPath="/"/>
-    <TenantDomainName tenantId="PFT" domainName="productfromthailandbackend.ofbizsaas.com" initialPath="/"/>
+    <TenantDomainName tenantId="PFT" domainName="productfromthailandbackend.ofbizsaas.com" initialPath="/catalog"/>
     <TenantDomainName tenantId="PFT" domainName="productfromthailand.ofbizdemo.com" initialPath="/"/>
     <TenantDomainName tenantId="PFT" domainName="productfromthailandbackend.ofbizdemo.com" initialPath="/catalog"/>
     <TenantDomainName tenantId="PFT" domainName="productfromthailand.localhost" initialPath="/"/>
     <TenantDomainName tenantId="PFT" domainName="productfromthailandbackend.localhost" initialPath="/catalog"/>
     <TenantDomainName tenantId="PFT" domainName="productfromthailand.antwebsystems.com" initialPath="/"/>
     <TenantDomainName tenantId="PFT" domainName="productfromthailandbackend.antwebsystems.com" initialPath="/catalog"/>
+    <TenantDomainName tenantId="PFT" domainName="www.productfromthailand.com" initialPath="/"/>
+    <TenantDomainName tenantId="PFT" domainName="backend.productfromthailand.com" initialPath="/catalog"/>
 </entity-engine-xml>
