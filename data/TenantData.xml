@@ -8,6 +8,7 @@
         jdbcUri="jdbc:postgresql://127.0.0.1/pftofbiz" jdbcUsername="demo" jdbcPassword="aws455"/>
     <TenantDataSource tenantId="PFT" entityGroupName="org.ofbiz.olap"
         jdbcUri="jdbc:postgresql://127.0.0.1/pftolap" jdbcUsername="demo" jdbcPassword="aws455"/>
+    <TenantDomainName tenantId="PFT" domainName="productfromthailand.com" initialPath="/"/>
     <TenantDomainName tenantId="PFT" domainName="www.productfromthailand.com" initialPath="/"/>
     <TenantDomainName tenantId="PFT" domainName="backend.productfromthailand.com" initialPath="/catalog"/>
     <TenantDomainName tenantId="PFT" domainName="productfromthailand.ofbizsaas.com" initialPath="/"/>
