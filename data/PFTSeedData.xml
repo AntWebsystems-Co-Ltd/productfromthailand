@@ -40,8 +40,11 @@ under the License.
     <SystemProperty systemResourceId="googleBaseExport" systemPropertyId="googleBaseExport.accountEmail" systemPropertyValue="admin@productfromthailand.com"/>
     <SystemProperty systemResourceId="googleBaseExport" systemPropertyId="googleBaseExport.accountPassword" systemPropertyValue="pft44444"/>
     
+    <SystemProperty systemResourceId="fop" systemPropertyId="fop.path" systemPropertyValue="${sys:getProperty('ofbiz.home')}/hot-deploy/productfromthailand/config"/>
+    <SystemProperty systemResourceId="fop" systemPropertyId="fop.font.base.url" systemPropertyValue="file:///${sys:getProperty('ofbiz.home')}/hot-deploy/productfromthailand/config"/>
+    
     <Party partyId="pft" partyTypeId="PARTY_GROUP" createdDate="2009-09-25 10:35:14.088"/>
-    <PartyGroup partyId="pft" groupName="P.F.T. Trading Co.,Ltd." logoImageUrl="/pft/images/logo.gif"/>
+    <PartyGroup partyId="pft" groupName="P.F.T. Trading Co.,Ltd." logoImageUrl="/pft-default/pftimages/logo.gif"/>
 
     <PartyRole partyId="pft" roleTypeId="CARRIER"/>
     <PartyRole partyId="pft" roleTypeId="INTERNAL_ORGANIZATIO"/>
