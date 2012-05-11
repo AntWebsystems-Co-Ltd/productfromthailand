@@ -59,11 +59,19 @@ under the License.
                 <entity-and list="webAnalyticsConfigs" entity-name="WebAnalyticsConfig">
                     <field-map field-name="webSiteId"/>
                 </entity-and>
+				<property-to-field field="isDemo" resource="tenant" property="isDemo"/>
             </actions>
             <widgets>
                 <!-- render header -->
                 <platform-specific><html><html-template location="${headerTemplateLocation}"/></html></platform-specific>
-                
+                <section>
+                    <condition>
+                        <if-compare field="isDemo" operator="equals" value="Y"/>
+                    </condition>
+	                <widgets>
+    	                <include-screen name="demoAnnounceMessage" location="component://ofbizdemo/widget/CommonScreens.xml"/>
+        	        </widgets>
+                </section>
                 <container id="ecom-mainarea">
                     <!-- by default will render left-bar only if left/rightbarScreenName value not empty -->
                     <!-- render messages -->
