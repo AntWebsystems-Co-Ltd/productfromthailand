@@ -195,7 +195,7 @@ public class ImportProduct {
                         }else{
                             List<GenericValue> supplierProductList = null;
                             try {
-                                supplierProductList = delegator.findByAnd("SupplierProduct", UtilMisc.toMap("supplierProductId", supplierProductId));
+                                supplierProductList = delegator.findByAnd("SupplierProduct", UtilMisc.toMap("supplierProductId", supplierProductId), null, false);
                             } catch (GenericEntityException e) {
                                 request.setAttribute("_ERROR_MESSAGE_", "Error getting SupplierProduct.");
                             }
@@ -287,7 +287,7 @@ public class ImportProduct {
                         GenericValue supplierProductGV = null;
                         if (checkSupplierProductExists(productId, delegator)) {
                              try {
-                                 tmpSupplierProducts = delegator.findByAnd("SupplierProduct", UtilMisc.toMap("productId", productId));
+                                 tmpSupplierProducts = delegator.findByAnd("SupplierProduct", UtilMisc.toMap("productId", productId), null, false);
                              } catch (GenericEntityException e) {
                                  request.setAttribute("_ERROR_MESSAGE_", "Error getting SupplierProduct.");
                              }
@@ -1069,7 +1069,7 @@ public class ImportProduct {
         GenericValue tmpProductGV = null;
         boolean productExists = false;
         try {
-            tmpProductGV = delegator.findByPrimaryKey("Product", UtilMisc.toMap("productId", productId));
+            tmpProductGV = delegator.findOne("Product", UtilMisc.toMap("productId", productId), false);
             if (tmpProductGV != null && tmpProductGV.getString("productId") == productId)
                 productExists = true;
         } catch (GenericEntityException e) {
@@ -1083,7 +1083,7 @@ public class ImportProduct {
         GenericValue tmpSupplierProductGV = null;
         boolean supplierProductExists = false;
         try {
-            List<GenericValue> tmpSupplierProducts = delegator.findByAnd("SupplierProduct", UtilMisc.toMap("productId", productId));
+            List<GenericValue> tmpSupplierProducts = delegator.findByAnd("SupplierProduct", UtilMisc.toMap("productId", productId), null, false);
             tmpSupplierProductGV = EntityUtil.getFirst(tmpSupplierProducts);
             if (tmpSupplierProductGV != null)
                 supplierProductExists = true;
@@ -1100,7 +1100,7 @@ public class ImportProduct {
         boolean productPriceExists = false;
         try {
             List<GenericValue> tmpProductPrices = delegator.findByAnd("ProductPrice", UtilMisc.toMap("productId", productId
-                    , "productPriceTypeId", "DEFAULT_PRICE", "productPricePurposeId", "PURCHASE"));
+                    , "productPriceTypeId", "DEFAULT_PRICE", "productPricePurposeId", "PURCHASE"), null, false);
             tmpProductPriceGV = EntityUtil.getFirst(tmpProductPrices);
             results.put("productPriceGV", tmpProductPriceGV);
             if (tmpProductPriceGV != null)
@@ -1119,7 +1119,7 @@ public class ImportProduct {
         boolean productContentExists = false;
         try {
             List<GenericValue> tmpProductContents = EntityUtil.filterByDate(delegator.findByAnd("ProductContent", 
-                    UtilMisc.toMap("productId", productId, "productContentTypeId", productContentTypeId)));
+                    UtilMisc.toMap("productId", productId, "productContentTypeId", productContentTypeId), null, false));
             tmpProductContentGV = EntityUtil.getFirst(tmpProductContents);
             if (tmpProductContentGV != null)
                 productContentExists = true;
@@ -1260,7 +1260,7 @@ public class ImportProduct {
         GenericValue productContentGV = null;
         try {
             List<GenericValue> productContents = EntityUtil.filterByDate(delegator.findByAnd("ProductContent", 
-                    UtilMisc.toMap("productId", productId, "productContentTypeId", productContentTypeId)));
+                    UtilMisc.toMap("productId", productId, "productContentTypeId", productContentTypeId), null, false));
             if(productContents.size()>0){
                 productContentGV = EntityUtil.getFirst(productContents);
             }

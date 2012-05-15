@@ -24,7 +24,7 @@ public class PFTEvents {
         GenericValue productStore = null;
         GenericValue webSite = null;
         try {
-            productStore = EntityUtil.getFirst(delegator.findByAnd("ProductStore", UtilMisc.toMap("defaultLocaleString", defaultLocaleString)));
+            productStore = EntityUtil.getFirst(delegator.findByAnd("ProductStore", UtilMisc.toMap("defaultLocaleString", defaultLocaleString), null, false));
         } catch (GenericEntityException e) {
             Debug.logError(e, "Problems getting ProductStore", module);
             return "error";
