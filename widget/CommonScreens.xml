@@ -63,7 +63,7 @@ under the License.
             </actions>
             <widgets>
                 <!-- render header -->
-                <platform-specific><html><html-template location="${headerTemplateLocation}"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/ecommerce/includes/headerHead.ftl"/></html></platform-specific>
                 <section>
                     <condition>
                         <if-compare field="isDemo" operator="equals" value="Y"/>
@@ -72,6 +72,7 @@ under the License.
     	                <include-screen name="demoAnnounceMessage" location="component://ofbizdemo/widget/CommonScreens.xml"/>
         	        </widgets>
                 </section>
+                <platform-specific><html><html-template location="${headerTemplateLocation}"/></html></platform-specific>
                 <container id="ecom-mainarea">
                     <!-- by default will render left-bar only if left/rightbarScreenName value not empty -->
                     <!-- render messages -->
