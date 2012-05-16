@@ -159,7 +159,7 @@ Index: applications/order/src/org/ofbiz/order/order/OrderServices.java
 +                                    GenericValue productStoreEmail = null;
 +                                    String emailType = "PRCHS_ODR_CONFIRM";
 +                                    try {
-+                                        productStoreEmail = delegator.findByPrimaryKey("ProductStoreEmailSetting", UtilMisc.toMap("productStoreId","PFTSTORE", "emailType", emailType));
++                                        productStoreEmail = delegator.findOne("ProductStoreEmailSetting", UtilMisc.toMap("productStoreId","PFTSTORE", "emailType", emailType), false);
 +                                    } catch (GenericEntityException e) {
 +                                        Debug.logError(e, "Unable to get product store email setting for order confirm", module);
 +                                    }
@@ -175,7 +175,7 @@ Index: applications/order/src/org/ofbiz/order/order/OrderServices.java
 +                                        String sendToEmail = null;
 +                                        GenericValue fromCm;
 +                                        try {
-+                                            List<GenericValue> fromCms = delegator.findByAnd("PartyAndContactMech", UtilMisc.toMap("partyId", supplierPartyId,"contactMechTypeId","EMAIL_ADDRESS"), UtilMisc.toList("-fromDate"));
++                                            List<GenericValue> fromCms = delegator.findByAnd("PartyAndContactMech", UtilMisc.toMap("partyId", supplierPartyId,"contactMechTypeId","EMAIL_ADDRESS"), UtilMisc.toList("-fromDate"), false);
 +                                            fromCms = EntityUtil.filterByDate(fromCms);
 +                                            fromCm = EntityUtil.getFirst(fromCms);
 +                                        } catch (GenericEntityException e) {
