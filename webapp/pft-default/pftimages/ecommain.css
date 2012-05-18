@@ -19,6 +19,13 @@
 
 /* ===== This file contains the eCommerce specific styles ===== */
 
+.top-message{
+    color: white;
+    font-size: 15px;
+    font-weight: normal;
+    margin: 5px;
+}
+
 /* ===== Resets/Browser Normalization ===== */
 @import url("forms.css");
 
@@ -1635,3 +1642,4 @@ button.button1:hover {
     border:none;
     background:none;
 }
+

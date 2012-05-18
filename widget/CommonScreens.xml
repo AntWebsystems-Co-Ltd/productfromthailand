@@ -59,14 +59,14 @@ under the License.
                 <entity-and list="webAnalyticsConfigs" entity-name="WebAnalyticsConfig">
                     <field-map field-name="webSiteId"/>
                 </entity-and>
-				<property-to-field field="isDemo" resource="tenant" property="isDemo"/>
+                <set field="isDemo" value="${groovy:org.ofbiz.base.component.ComponentConfig.componentExists(&quot;ofbizdemo&quot;)}" type="Boolean"/>
             </actions>
             <widgets>
                 <!-- render header -->
                 <platform-specific><html><html-template location="component://ecommerce/webapp/ecommerce/includes/headerHead.ftl"/></html></platform-specific>
                 <section>
                     <condition>
-                        <if-compare field="isDemo" operator="equals" value="Y"/>
+                        <if-compare field="isDemo" operator="equals" value="true" type="Boolean"/>
                     </condition>
 	                <widgets>
     	                <include-screen name="demoAnnounceMessage" location="component://ofbizdemo/widget/CommonScreens.xml"/>
