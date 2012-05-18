@@ -19,13 +19,13 @@
 
 /* ===== This file contains the eCommerce specific styles ===== */
 
-.top-message{
-    color: white;
+.top-message {
     font-size: 15px;
+    color: white;
     font-weight: normal;
+    /*margin-bottom: 5px;*/
     margin: 5px;
 }
-
 /* ===== Resets/Browser Normalization ===== */
 @import url("forms.css");
 
