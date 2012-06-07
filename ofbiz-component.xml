@@ -25,9 +25,18 @@
     <classpath type="jar" location="build/lib/*"/>
     <classpath type="dir" location="config"/>
 
+	<!--security -->
+    <entity-resource type="data" reader-name="seed" loader="main" location="../../framework/security/data/SecurityData.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="../../framework/webtools/data/WebtoolsSecurityData.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="../../applications/party/data/PartySecurityData.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="../../applications/content/data/ContentSecurityData.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="../../applications/product/data/ProductSecurityData.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="../../applications/order/data/OrderSecurityData.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTSecurityData.xml"/>
+
+
     <entity-resource type="data" reader-name="seed-initial" loader="main" location="data/AdminUserLoginData.xml"/>
     <entity-resource type="data" reader-name="seed" loader="main" location="data/EcommerceTypeData.xml"/>
-    <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTSecurityData.xml"/>
     <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTSeedData.xml"/>
     <entity-resource type="data" reader-name="demo" loader="main" location="data/PFTDemoData.xml"/>
     <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTProductData.xml"/>
