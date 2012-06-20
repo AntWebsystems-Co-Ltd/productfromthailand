@@ -1,8 +1,8 @@
 Index: framework/common/widget/CommonScreens.xml
 ===================================================================
---- framework/common/widget/CommonScreens.xml	(revision 1327866)
+--- framework/common/widget/CommonScreens.xml	(revision 1351214)
 +++ framework/common/widget/CommonScreens.xml	(working copy)
-@@ -524,6 +524,7 @@
+@@ -525,6 +525,7 @@
          <section>
              <actions>
                  <set field="layoutSettings.commonHeaderImageUrl" value="/images/ofbiz_logo.gif"/>
