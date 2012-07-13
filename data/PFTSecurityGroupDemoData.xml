@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <SecurityGroupPermission groupId="FULLADMIN" permissionId="PFT_ADMIN"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="PFT_CREATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="PFT_DELETE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="PFT_UPDATE"/>
+    <SecurityGroupPermission groupId="FLEXADMIN" permissionId="PFT_VIEW"/>
+    <SecurityGroupPermission groupId="VIEWADMIN" permissionId="PFT_VIEW"/>
+    <SecurityGroupPermission groupId="BIZADMIN" permissionId="PFT_ADMIN"/>
+</entity-engine-xml>
+
