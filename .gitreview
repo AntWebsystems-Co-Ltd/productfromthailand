@@ -1,0 +1,7 @@
+[gerrit]
+host=gerrit.antwebsystems.com
+port=55555
+project=productfromthailand
+defaultbranch=master
+defaultrebase=0
+
