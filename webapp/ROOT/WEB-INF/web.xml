@@ -27,7 +27,7 @@ under the License.
     <filter>
         <filter-name>ContextFilter</filter-name>
         <display-name>ContextFilter</display-name>
-        <filter-class>org.ofbiz.webapp.control.ContextFilter</filter-class>
+        <filter-class>org.apache.ofbiz.webapp.control.ContextFilter</filter-class>
         <init-param>
             <param-name>allowedPaths</param-name>
             <param-value>/error:/control:/select:/index.html:/index.jsp:/default.html:/default.jsp:/images:/includes/maincss.css</param-value>

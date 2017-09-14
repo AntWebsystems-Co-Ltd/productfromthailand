@@ -23,11 +23,10 @@ under the License.
     <VisualTheme visualThemeId="EC_PFT" visualThemeSetId="ECOMMERCE" description="Product From Thailand Ecommerce Floating Layout"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_STYLESHEET" resourceValue="/ecommerce/images/blog.css" sequenceId="01"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_STYLESHEET" resourceValue="/pft-default/pftimages/ecommain.css" sequenceId="02"/>
-    <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_STYLESHEET" resourceValue="/images/prototypejs/popup.css" sequenceId="03"/>
-    <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_STYLESHEET" resourceValue="/content/images/contentForum.css" sequenceId="04"/>
-    <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_SHORTCUT_ICON" resourceValue="/images/ofbiz.ico" sequenceId="01"/>
-    <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_HDR_IMAGE_URL" resourceValue="/pft-default/pftimages/logo.gif" sequenceId="01"/>
-    <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_HDR_TMPLT_LOC" resourceValue="component://productfromthailand/webapp/ecommerce/includes/header.ftl" sequenceId="01"/>
-    <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_FTR_TMPLT_LOC" resourceValue="component://productfromthailand/webapp/ecommerce/includes/footer.ftl" sequenceId="01"/>
+    <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_STYLESHEET" resourceValue="/content/contentForum.css" sequenceId="03"/>
+    <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_SHORTCUT_ICON" resourceValue="/pft-default/pftimages/pft-icon.ico" sequenceId="04"/>
+    <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_HDR_IMAGE_URL" resourceValue="/pft-default/pftimages/pft-logo.png" sequenceId="05"/>
+    <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_HDR_TMPLT_LOC" resourceValue="component://productfromthailand/webapp/ecommerce/includes/header.ftl" sequenceId="06"/>
+    <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_FTR_TMPLT_LOC" resourceValue="component://productfromthailand/webapp/ecommerce/includes/footer.ftl" sequenceId="07"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_SCREENSHOT" resourceValue="/images/ecdefaulttheme.jpg" sequenceId="01"/>
 </entity-engine-xml>

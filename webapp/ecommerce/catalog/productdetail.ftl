@@ -716,7 +716,7 @@ ${virtualVariantJavaScript?if_exists}
                 <#list imageKeys as key>
                   <#assign swatchProduct = imageMap.get(key) />
                   <#if swatchProduct?has_content && indexer &lt; maxIndex>
-                    <#assign imageUrl = Static["org.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(swatchProduct, "SMALL_IMAGE_URL", request)?if_exists />
+                    <#assign imageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(swatchProduct, "SMALL_IMAGE_URL", request)?if_exists />
                     <#if !imageUrl?string?has_content>
                       <#assign imageUrl = productContentWrapper.get("SMALL_IMAGE_URL")?if_exists />
                     </#if>

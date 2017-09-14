@@ -27,9 +27,9 @@ under the License.
     </div>
     <div id="recentproductdetail">
          <div class="recentproductlabel">
-             <a href="<@ofbizCatalogAltUrl productCategoryId=categoryId productId=product.productId!""/>" class="linktext">${productContentWrapper.get("PRODUCT_NAME")?if_exists}</a>
+             <a href="<@ofbizCatalogAltUrl productCategoryId=categoryId productId=product.productId!""/>" class="linktext">${productContentWrapper.get("PRODUCT_NAME", "html")!}</a>
          </div>
-         <p>${productContentWrapper.get("DESCRIPTION")?if_exists}</p> 
+         <p>${productContentWrapper.get("DESCRIPTION", "html")!}</p> 
     </div>
 </div>
 <#else>

@@ -35,13 +35,13 @@ under the License.
        </fo:table-header>
 
             <fo:table-body>
-          <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.ofbiz.base.util.UtilMisc"].toMap("uomId", currencyUomId, "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
+          <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("uomId", currencyUomId, "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
           <#assign conversionRate = rateResult.conversionRate>
            <#list orderItemList as orderItem>
                  <#assign orderItemType = orderItem.getRelatedOne("OrderItemType")?if_exists>
                  <#assign productId = orderItem.productId?if_exists>
                     <#assign remainingQuantity = (orderItem.quantity?default(0) - orderItem.cancelQuantity?default(0))>
-                 <#assign itemAdjustment = Static["org.ofbiz.order.order.OrderReadHelper"].getOrderItemAdjustmentsTotal(orderItem, orderAdjustments, true, false, false)>
+                 <#assign itemAdjustment = Static["org.apache.ofbiz.order.order.OrderReadHelper"].getOrderItemAdjustmentsTotal(orderItem, orderAdjustments, true, false, false)>
                   <fo:table-row>
                         <fo:table-cell>
                             <fo:block>
@@ -58,8 +58,8 @@ under the License.
                             <fo:table-cell text-align="right"><fo:block><@ofbizCurrency amount=orderItem.unitPrice*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=orderItem.unitPrice isoCode=currencyUomId/--></fo:block></fo:table-cell>
                             <fo:table-cell text-align="right"><fo:block>
                             <#if orderItem.statusId != "ITEM_CANCELLED">
-                                <@ofbizCurrency amount=Static["org.ofbiz.order.order.OrderReadHelper"].getOrderItemSubTotal(orderItem, orderAdjustments)*conversionRate isoCode=currencyUom/>
-                                  <#--@ofbizCurrency amount=Static["org.ofbiz.order.order.OrderReadHelper"].getOrderItemSubTotal(orderItem, orderAdjustments) isoCode=currencyUomId/-->
+                                <@ofbizCurrency amount=Static["org.apache.ofbiz.order.order.OrderReadHelper"].getOrderItemSubTotal(orderItem, orderAdjustments)*conversionRate isoCode=currencyUom/>
+                                  <#--@ofbizCurrency amount=Static["org.apache.ofbiz.order.order.OrderReadHelper"].getOrderItemSubTotal(orderItem, orderAdjustments) isoCode=currencyUomId/-->
                             <#else>
                                 <@ofbizCurrency amount=0.00 isoCode=currencyUom/>
                             </#if></fo:block></fo:table-cell>
@@ -72,7 +72,7 @@ under the License.
            </#list>
           <#list orderHeaderAdjustments as orderHeaderAdjustment>
             <#assign adjustmentType = orderHeaderAdjustment.getRelatedOne("OrderAdjustmentType")>
-            <#assign adjustmentAmount = Static["org.ofbiz.order.order.OrderReadHelper"].calcOrderAdjustment(orderHeaderAdjustment, orderSubTotal)>
+            <#assign adjustmentAmount = Static["org.apache.ofbiz.order.order.OrderReadHelper"].calcOrderAdjustment(orderHeaderAdjustment, orderSubTotal)>
             <#if adjustmentAmount != 0>
             <fo:table-row>
                <fo:table-cell></fo:table-cell>
@@ -134,7 +134,7 @@ under the License.
                         <fo:block>${note.noteInfo?if_exists}</fo:block>
                     </fo:table-cell>
                         <fo:table-cell number-columns-spanned="2">
-                        <#assign notePartyNameResult = dispatcher.runSync("getPartyNameForDate", Static["org.ofbiz.base.util.UtilMisc"].toMap("partyId", note.noteParty, "compareDate", note.noteDateTime, "lastNameFirst", "Y", "userLogin", userLogin))/>
+                        <#assign notePartyNameResult = dispatcher.runSync("getPartyNameForDate", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", note.noteParty, "compareDate", note.noteDateTime, "lastNameFirst", "Y", "userLogin", userLogin))/>
                         <fo:block>${uiLabelMap.CommonBy}: ${notePartyNameResult.fullName?default("${uiLabelMap.OrderPartyNameNotFound}")}</fo:block>
                     </fo:table-cell>
                         <fo:table-cell number-columns-spanned="1">

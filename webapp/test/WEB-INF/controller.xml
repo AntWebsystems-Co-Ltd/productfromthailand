@@ -24,12 +24,12 @@ under the License.
     <description>OFBiz: Cloned eCommerce Controller Configuration File</description>
     <request-map uri="main">
         <security https="false" auth="false"/>
-        <event type="java" invoke="getCodeCaptcha" path="org.ofbiz.common.Captcha"/>
+        <event type="java" invoke="getCodeCaptcha" path="org.apache.ofbiz.common.Captcha"/>
         <response name="success" type="view" value="main"/>
     </request-map>
     <request-map uri="comingSoon">
         <security https="false" auth="false"/>
-        <event type="java" invoke="getCodeCaptcha" path="org.ofbiz.common.Captcha"/>
+        <event type="java" invoke="getCodeCaptcha" path="org.apache.ofbiz.common.Captcha"/>
         <response name="success" type="view" value="comingSoon"/>
     </request-map>
     <request-map uri="signUpForContactList">

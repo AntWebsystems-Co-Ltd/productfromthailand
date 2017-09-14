@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Widget-Form" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Form http://ofbiz.apache.org/dtds/widget-form.xsd">
+    <form name="EditRequestCustomer" type="single" target="createrequest" title=""
+        header-row-style="header-row" default-table-style="basic-table">
+        <field name="statusId"><hidden value="CRQ_SUBMITTED"/></field>
+        <field name="fromPartyId"><hidden value="${userLogin.partyId}"/></field>
+        <field name="priority" title="${uiLabelMap.CommonPriority}">
+            <drop-down allow-empty="true">
+                <option key="1" description="1(Highest)"/>
+                <option key="2" description="2"/>
+                <option key="3" description="3"/>
+                <option key="4" description="4"/> 
+                <option key="5" description="5"/> 
+                <option key="6" description="6"/> 
+                <option key="7" description="7"/> 
+                <option key="8" description="8"/>
+                <option key="9" description="9(Lowest)"/>
+            </drop-down>
+        </field>
+        <field name="responseRequiredDate" title="${uiLabelMap.FormFieldTitle_responseRequiredDate}"><date-time/></field>
+        <field name="custRequestName" title="${uiLabelMap.FormFieldTitle_subject}"><text/></field>
+        <field name="description" title="${uiLabelMap.CommonContent}"><textarea cols="60" rows="15"/></field>
+        <field name="custRequestTypeId" title="${uiLabelMap.CommonType}">
+            <drop-down>
+                <list-options list-name="custRequestTypeList" key-name="custRequestTypeId" description="${description}"/>
+           </drop-down>
+        </field>
+        <field name="submitButton" title="${uiLabelMap.CommonSubmit}" widget-style="smallSubmit">
+            <submit button-type="button"/>
+        </field>
+    </form>
+</forms>

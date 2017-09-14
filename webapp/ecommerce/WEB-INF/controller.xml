@@ -19,13 +19,9 @@ under the License.
 -->
 
 <site-conf xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/site-conf.xsd">
+        xmlns="http://ofbiz.apache.org/Site-Conf" xsi:schemaLocation="http://ofbiz.apache.org/Site-Conf http://ofbiz.apache.org/dtds/site-conf.xsd">
     <include location="component://ecommerce/webapp/ecommerce/WEB-INF/controller.xml"/>
     <description>OFBiz: Cloned eCommerce Controller Configuration File</description>
-    <request-map uri="products">
-        <security https="false" auth="false"/>
-        <response name="success" type="view" value="products"/>
-    </request-map>
     <request-map uri="services">
         <security https="false" auth="false"/>
         <response name="success" type="view" value="services"/>
@@ -50,49 +46,48 @@ under the License.
         <security https="false" auth="false"/>
         <response name="success" type="view" value="help"/>
     </request-map>
-    
+
     <request-map uri="createrequest">
         <security https="true" auth="true"/>
         <event type="service" invoke="createCustRequest"/>
         <response name="success" type="view" value="services"/>
         <response name="error" type="view" value="services"/>
     </request-map>
-    
+
     <request-map uri="showhelpcontent">
         <security https="true" auth="false"/>
         <response name="success" type="view" value="showhelpcontent"/>
     </request-map>
-    
+
     <request-map uri="register">
         <security https="true" auth="false"/>
         <response name="success" type="view" value="register"/>
     </request-map>
-    
+
     <request-map uri="newsupplier">
         <security https="true" auth="false"/>
         <response name="success" type="view" value="newsupplier"/>
     </request-map>
-    
+
     <request-map uri="createsupplier">
         <security https="true" auth="false"/>
-        <event type="simple" path="component://productfromthailand/script/org/ofbiz/productfromthailand/customer/CustomerEvents.xml" invoke="createSupplier"/>
+        <event type="simple" path="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="createSupplier"/>
         <response name="success" type="view" value="main"/>
         <response name="error" type="view" value="newsupplier"/>
     </request-map>
     <!-- ================ Product Requests ================= -->
     <request-map uri="createProduct">
         <security https="true" auth="true"/>
-        <event type="simple" path="component://productfromthailand/script/org/ofbiz/productfromthailand/marketing/MarketingEvents.xml" invoke="createProductAndSupplierProduct"/>
+        <event type="simple" path="component://productfromthailand/minilang/marketing/MarketingEvents.xml" invoke="createProductAndSupplierProduct"/>
         <response name="success" type="view" value="EditProduct"/>
         <response name="error" type="view" value="EditProduct"/>
     </request-map>
     <request-map uri="updateProduct">
         <security https="true" auth="true"/>
-        <event type="simple" path="component://productfromthailand/script/org/ofbiz/productfromthailand/marketing/MarketingEvents.xml" invoke="updateProductAndSupplierProduct"/>
+        <event type="simple" path="component://productfromthailand/minilang/marketing/MarketingEvents.xml" invoke="updateProductAndSupplierProduct"/>
         <response name="success" type="view" value="EditProduct"/>
         <response name="error" type="view" value="EditProduct"/>
     </request-map>
-    
 
     <request-map uri="leftkeywordsearch">
         <security https="true" auth="true"/>
@@ -102,14 +97,14 @@ under the License.
         <security https="true" auth="true"/>
         <response name="success" type="view" value="advancedproductsearch"/>
     </request-map>
-    
+
     <request-map uri="uploadproducts">
         <security https="true" auth="true"/>
         <response name="success" type="view" value="uploadproducts"/>
     </request-map>
     <request-map uri="UploadProductFromSpreadsheet">
         <security https="true" auth="true"/>
-        <event type="java" path="org.ofbiz.productfromthailand.ImportProduct" invoke="importProductFromSpreadsheet"/>
+        <event type="java" path="org.apache.ofbiz.productfromthailand.ImportProduct" invoke="importProductFromSpreadsheet"/>
         <response name="success" type="view" value="uploadproducts"/>
         <response name="error" type="view" value="uploadproducts"/>
     </request-map>
@@ -120,20 +115,20 @@ under the License.
 
     <request-map uri="en">
         <security https="false" auth="false"/>
-        <event type="java" path="org.ofbiz.productfromthailand.PFTEvents" invoke="setProductStoreAndSessionLocale"/>
+        <event type="java" path="org.apache.ofbiz.productfromthailand.PFTEvents" invoke="setProductStoreAndSessionLocale"/>
         <response name="success" type="view-last" value="main"/>
         <response name="error" type="view" value="main"/>
     </request-map>
     <request-map uri="th">
         <security https="false" auth="false"/>
-        <event type="java" path="org.ofbiz.productfromthailand.PFTEvents" invoke="setProductStoreAndSessionLocale"/>
+        <event type="java" path="org.apache.ofbiz.productfromthailand.PFTEvents" invoke="setProductStoreAndSessionLocale"/>
         <response name="success" type="view-last" value="main"/>
         <response name="error" type="view" value="main"/>
     </request-map>
-    
+
     <request-map uri="checkouterror">
         <security https="true" auth="true"/>
-        <event type="java" path="org.ofbiz.order.shoppingcart.CheckOutEvents" invoke="setCheckOutError"/>
+        <event type="java" path="org.apache.ofbiz.order.shoppingcart.CheckOutEvents" invoke="setCheckOutError"/>
         <response name="shippingaddress" type="view" value="checkoutshippingaddress"/>
         <response name="shippingoptions" type="view" value="checkoutshippingoptions"/>
         <response name="payment" type="view" value="checkoutpayment"/>
@@ -142,18 +137,12 @@ under the License.
         <response name="error" type="view" value="quickcheckout"/>
         <response name="success" type="view" value="checkoutshippingaddress"/>
     </request-map>
-    
-    <request-map uri="productCategoryList">
-        <security https="false" auth="false"/>
-        <response name="success" type="view" value="productCategoryList" save-current-view="true"/>
-    </request-map>
-    <request-map uri="categoryAjaxFired">
-        <security https="false" auth="false"/>
-        <response name="success" type="view" value="productCategoryList" save-current-view="true"/>
-    </request-map>
-    <request-map uri="categoryAjaxFiredSecure">
+
+    <request-map uri="submitAnonContact">
         <security https="true" auth="false"/>
-        <response name="success" type="view" value="productCategoryList" save-current-view="true"/>
+        <event type="simple" invoke="createAnonContact" path="component://ecommerce/minilang/customer/CustomerEvents.xml"/>
+        <response name="success" type="view-last" value="main"/>
+        <response name="error" type="request" value="AnonContactus"/>
     </request-map>
 
     <view-map name="orderview" type="screen" page="component://productfromthailand/widget/OrderViewScreens.xml#OrderHeaderView"/>
@@ -164,8 +153,6 @@ under the License.
     <view-map name="advancedsearch" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#advancedsearch"/>
 
     <view-map name="category" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#category"/>
-    <view-map name="product" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#product"/>
-
     <view-map name="newcustomer" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newcustomer"/>
     <view-map name="newsupplier" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newsupplier"/>
     <view-map name="viewprofile" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#viewprofile"/>
@@ -173,25 +160,23 @@ under the License.
     <view-map name="partner" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#partner"/>
     <view-map name="aboutus" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#aboutus"/>
     <view-map name="sitemap" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#sitemap"/>
-    <view-map name="products" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#products"/>
     <view-map name="services" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#services"/>
     <view-map name="help" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#help"/>
-    
-    <view-map name="keywordsearch" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#keywordsearch"/>
+
     <view-map name="tellafriend" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#tellafriend"/>
     <!-- Cart Views -->
     <view-map name="showcart" type="screen" page="component://productfromthailand/widget/CartScreens.xml#showcart"/>
-    
+
     <view-map name="quickcheckout" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#checkoutoptions"/>
     <view-map name="checkoutshippingaddress" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#checkoutshippingaddress"/>
     <view-map name="checkoutshippingoptions" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#checkoutshippingoptions"/>
     <view-map name="checkoutpayment" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#checkoutpayment"/>
     <view-map name="splitship" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#splitship"/>
-    
+
     <view-map name="checkoutreview" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#checkoutreview"/>
     <view-map name="ordercomplete" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#ordercomplete"/>
     <view-map name="orderstatus" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#orderstatus"/>
-    
+
     <!-- Request Views -->
     <view-map name="ViewRequest" type="screen" page="component://productfromthailand/widget/CustRequestScreens.xml#ViewRequest"/>
     <!-- Content Views -->
@@ -209,16 +194,14 @@ under the License.
     <view-map name="leftkeywordsearch" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#keywordsearchresults"/>
     <view-map name="advancedproductsearch" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#advancedproductsearch"/>
     <view-map name="EditProductCategories" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#EditProductCategories"/>
-    
+
     <view-map name="ViewProductOrder" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#ViewProductOrder"/>
     <view-map name="EditProductCommunicationEvents" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#EditProductCommunicationEvents"/>
-    
+
     <view-map name="uploadproducts" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#uploadproducts"/>
-    
+
     <!-- PDFs  -->
     <view-map name="OrderPDF" type="screenfop" page="component://productfromthailand/widget/OrderScreens.xml#OrderPDF" content-type="application/pdf" encoding="none"/>
     <view-map name="InvoicePDF" type="screenfop" page="component://productfromthailand/widget/OrderScreens.xml#InvoicePDF" content-type="application/pdf" encoding="none"/>
-    
-    <!-- Product Category 's Ajax -->
-    <view-map name="productCategoryList" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#productCategoryList"/>
+
 </site-conf>

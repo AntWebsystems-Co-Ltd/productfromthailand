@@ -150,7 +150,7 @@ under the License.
 </div>
 
 <#if shoppingListType?exists && shoppingListType.shoppingListTypeId == "SLT_AUTO_REODR">
-  <#assign nowTimestamp = Static["org.ofbiz.base.util.UtilDateTime"].monthBegin()>
+  <#assign nowTimestamp = Static["org.apache.ofbiz.base.util.UtilDateTime"].monthBegin()>
 <div class="screenlet">
     <div class="screenlet-header">
         <div class="boxlink">
@@ -257,7 +257,7 @@ under the License.
                     <#list paymentMethodList as paymentMethod>
                       <#if paymentMethod.paymentMethodTypeId == "CREDIT_CARD">
                         <#assign creditCard = paymentMethod.getRelatedOne("CreditCard")>
-                        <option value="${paymentMethod.paymentMethodId}" <#if (shoppingList.paymentMethodId)?default("") == paymentMethod.paymentMethodId>selected</#if>>CC:&nbsp;${Static["org.ofbiz.party.contact.ContactHelper"].formatCreditCard(creditCard)}</option>
+                        <option value="${paymentMethod.paymentMethodId}" <#if (shoppingList.paymentMethodId)?default("") == paymentMethod.paymentMethodId>selected</#if>>CC:&nbsp;${Static["org.apache.ofbiz.party.contact.ContactHelper"].formatCreditCard(creditCard)}</option>
                       <#elseif paymentMethod.paymentMethodTypeId == "EFT_ACCOUNT">
                         <#assign eftAccount = paymentMethod.getRelatedOne("EftAccount")>
                         <option value="${paymentMethod.paymentMethodId}">EFT:&nbsp;${eftAccount.bankName?if_exists}: ${eftAccount.accountNumber?if_exists}</option>
@@ -284,13 +284,13 @@ under the License.
                   <td colspan="9">
                     <#assign nextTime = recInfo.next(lastSlOrderTime)?if_exists>
                     <#if nextTime?has_content>
-                      <#assign nextTimeStamp = Static["org.ofbiz.base.util.UtilDateTime"].getTimestamp(nextTime)?if_exists>
+                      <#assign nextTimeStamp = Static["org.apache.ofbiz.base.util.UtilDateTime"].getTimestamp(nextTime)?if_exists>
                       <#if nextTimeStamp?has_content>
-                        <#assign nextTimeString = Static["org.ofbiz.base.util.UtilFormatOut"].formatDate(nextTimeStamp)?if_exists>
+                        <#assign nextTimeString = Static["org.apache.ofbiz.base.util.UtilFormatOut"].formatDate(nextTimeStamp)?if_exists>
                       </#if>
                     </#if>
                     <#if lastSlOrderDate?has_content>
-                      <#assign lastOrderedString = Static["org.ofbiz.base.util.UtilFormatOut"].formatDate(lastSlOrderDate)?if_exists>
+                      <#assign lastOrderedString = Static["org.apache.ofbiz.base.util.UtilFormatOut"].formatDate(lastSlOrderDate)?if_exists>
                     </#if>
                     <div class="tabletext">
                       <table cellspacing="2" cellpadding="2" border="0">
@@ -383,7 +383,7 @@ under the License.
               <#list shoppingListItemDatas as shoppingListItemData>
                 <#assign shoppingListItem = shoppingListItemData.shoppingListItem/>
                 <#assign product = shoppingListItemData.product/>
-                <#assign productContentWrapper = Static["org.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(product, request)/>
+                <#assign productContentWrapper = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(product, request)/>
                 <#assign unitPrice = shoppingListItemData.unitPrice/>
                 <#assign totalPrice = shoppingListItemData.totalPrice/>
                 <#assign productVariantAssocs = shoppingListItemData.productVariantAssocs?if_exists/>
@@ -435,7 +435,7 @@ under the License.
                               <#list productVariantAssocs as productVariantAssoc>
                                 <#assign variantProduct = productVariantAssoc.getRelatedOneCache("AssocProduct")>
                                 <#if variantProduct?exists>
-                                <#assign variantProductContentWrapper = Static["org.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(variantProduct, request)>
+                                <#assign variantProductContentWrapper = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(variantProduct, request)>
                                   <option value="${variantProduct.productId}">${variantProductContentWrapper.get("PRODUCT_NAME")?default("No Name")} [${variantProduct.productId}]</option>
                                 </#if>
                               </#list>

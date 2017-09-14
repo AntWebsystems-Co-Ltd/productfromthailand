@@ -23,8 +23,7 @@ under the License.
     <description>PFT Component Services</description>
     <vendor>OFBiz</vendor>
     <version>1.0</version>
-
-    <service name="createSupplierPostalAddressAndPurposes" engine="simple" location="component://productfromthailand/script/org/ofbiz/productfromthailand/customer/CustomerEvents.xml" invoke="createSupplierPostalAddressAndPurposes">
+    <service name="createSupplierPostalAddressAndPurposes" engine="simple" location="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="createSupplierPostalAddressAndPurposes">
         <description>Create postal address, purposes and set them defaults</description>
         <implements service="createPartyPostalAddress"/>
         <attribute name="setGeneralPurpose" type="String" mode="IN" optional="true"/>
@@ -32,7 +31,7 @@ under the License.
         <attribute name="setPaymentPurpose" type="String" mode="IN" optional="true"/>
         <attribute name="productStoreId" type="String" mode="IN" optional="true"/>
     </service>
-    <service name="createMissingProductPrice" engine="simple" invoke="createMissingProductPrice" location="component://productfromthailand/script/org/ofbiz/productfromthailand/ProductEvents.xml">
+    <service name="createMissingProductPrice" engine="simple" invoke="createMissingProductPrice" location="component://productfromthailand/minilang/ProductEvents.xml">
         <description>To Create Missing Product Price in Other Currencies</description>
     </service>
 </services>

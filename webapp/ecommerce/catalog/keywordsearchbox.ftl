@@ -26,7 +26,7 @@ under the License.
             <input type="hidden" name="SEARCH_OPERATOR" value="OR"/>
             <input type="hidden" name="SEARCH_CATALOG_ID" value="${currentCatalogId?if_exists}"/>
             <span class="boxhead_sb">${uiLabelMap.PFTEnterKeyword}:<br/>
-                <input type="text" name="SEARCH_STRING" size="25" maxlength="50" value="${requestParameters.SEARCH_STRING?if_exists}"/>
+                <input type="text" name="SEARCH_STRING" size="14" maxlength="50" value="${requestParameters.SEARCH_STRING!}" />
                 <input type="submit" class="smallSubmit" value="${uiLabelMap.CommonFind}"/>
             </span>
             <span class="boxhead_sb">${uiLabelMap.PFTSelectByCategories}:<br/>
@@ -34,9 +34,9 @@ under the License.
                   <select name="SEARCH_CATEGORY_ID" size="1">
                     <option value="${searchCategoryId?if_exists}">${uiLabelMap.PFTInAllCategories}</option>
                     <#list allProductCategories as allProductCategory>
-                      <#assign searchProductCategory = allProductCategory.getRelatedOneCache("CurrentProductCategory")>
+                      <#assign searchProductCategory = allProductCategory.getRelatedOne("CurrentProductCategory", true)>
                       <#if searchProductCategory?exists>
-                        <option value="${searchProductCategory.productCategoryId}">${catContentWrappers[searchProductCategory.productCategoryId].get("DESCRIPTION")?default("No Description " + searchProductCategory.productCategoryId)}</option>
+                        <option value="${searchProductCategory.productCategoryId}">${searchProductCategory.description?default("No Description " + searchProductCategory.productCategoryId)}</option>
                       </#if>
                     </#list>
                   </select>

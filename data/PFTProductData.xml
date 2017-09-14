@@ -22,29 +22,34 @@ under the License.
     <!-- The Initial Product & Supplier -->
     <!-- Start with ProdCatalog -->
     <ProdCatalog prodCatalogId="PFTCatalog" catalogName="Product From Thailand Catalog" useQuickAdd="Y"/>
+    <ProductStoreCatalog productStoreId="PFTSTORE" prodCatalogId="PFTCatalog" fromDate="2009-09-25 10:38:07.561"/>
     
     <ProductCategory longDescription="Product From Thailand Catalog Browse Root Category"
         productCategoryId="PFT_ROOT" productCategoryTypeId="CATALOG_CATEGORY"/>
     <ProductCategory productCategoryId="PFTPROMOTION" productCategoryTypeId="CATALOG_CATEGORY" categoryName="Special Products" 
         detailScreen="component://ecommerce/widget/CatalogScreens.xml#categorydetailmatrix"/>
-<!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="AGRICULTURAL" productCategoryTypeId="CATALOG_CATEGORY"/>-->
+    <ProductCategory description="Agricultural &amp; Forestry" primaryParentCategoryId="PFT_ROOT" productCategoryId="AGRICULTURAL" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory description="Bag" primaryParentCategoryId="PFT_ROOT" productCategoryId="BAG" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory description="Clothing" primaryParentCategoryId="PFT_ROOT" productCategoryId="CLOTHING" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory description="Footwear" primaryParentCategoryId="PFT_ROOT" productCategoryId="FOOTWEAR" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory description="Thai Silk" primaryParentCategoryId="PFT_ROOT" productCategoryId="THAISILK" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory description="Craft &amp; Gift" primaryParentCategoryId="PFT_ROOT" productCategoryId="CRAFTANDGIFT" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory description="Furniture" primaryParentCategoryId="PFT_ROOT" productCategoryId="FURNITURE" productCategoryTypeId="CATALOG_CATEGORY"/>
 <!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="AUTOMOBILE" productCategoryTypeId="CATALOG_CATEGORY"/>-->
-    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="BAG" productCategoryTypeId="CATALOG_CATEGORY"/>
+<!--     <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="BAG" productCategoryTypeId="CATALOG_CATEGORY"/> -->
 <!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="CHEMICAL" productCategoryTypeId="CATALOG_CATEGORY"/>-->
-    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="CLOTHING" productCategoryTypeId="CATALOG_CATEGORY"/>
+<!--     <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="CLOTHING" productCategoryTypeId="CATALOG_CATEGORY"/> -->
 <!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="SOFTWARE" productCategoryTypeId="CATALOG_CATEGORY"/>-->
 <!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="CONSTRUCTION" productCategoryTypeId="CATALOG_CATEGORY"/>-->
-    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="CRAFTANDGIFT" productCategoryTypeId="CATALOG_CATEGORY"/>
+<!--     <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="CRAFTANDGIFT" productCategoryTypeId="CATALOG_CATEGORY"/> -->
 <!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="ELECTRICAL" productCategoryTypeId="CATALOG_CATEGORY"/>-->
 <!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="ENERGY" productCategoryTypeId="CATALOG_CATEGORY"/>-->
 <!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="ENV-PROTECTION" productCategoryTypeId="CATALOG_CATEGORY"/>-->
 <!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="BEVERAGE" productCategoryTypeId="CATALOG_CATEGORY"/>-->
-    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="FOOTWEAR" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="FURNITURE" productCategoryTypeId="CATALOG_CATEGORY"/>
+<!--     <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="FOOTWEAR" productCategoryTypeId="CATALOG_CATEGORY"/> -->
 <!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="HEALTH" productCategoryTypeId="CATALOG_CATEGORY"/>-->
 <!--    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="HOUSEHOLD" productCategoryTypeId="CATALOG_CATEGORY"/>-->
-    <ProductCategory primaryParentCategoryId="PFT_ROOT" productCategoryId="THAISILK" productCategoryTypeId="CATALOG_CATEGORY"/>
-    
+
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="BAG" sequenceNum="1"/>
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="CLOTHING" sequenceNum="2"/>
     <ProductCategoryRollup fromDate="2009-09-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="CRAFTANDGIFT" sequenceNum="3"/>
@@ -225,5 +230,5 @@ under the License.
     <ContentAssoc contentId="PNAME_THEX10004EN" contentIdTo="PNAME_THEX10004TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-10-15 11:29:58.861" createdDate="2009-10-15 11:29:58.861"/>
     -->
     <!-- example test suite -->
-    <SeleniumTestSuitePath testSuiteId="PFT_TESTSUITE" testSuiteName="pft_testsuite" testSuitePath="productfromthailand/testdef/seleniumxml/pft/pft_testsuite.xml" description="test suite for productfromthailand component"/>
+<!--     <SeleniumTestSuitePath testSuiteId="PFT_TESTSUITE" testSuiteName="pft_testsuite" testSuitePath="productfromthailand/testdef/seleniumxml/pft/pft_testsuite.xml" description="test suite for productfromthailand component"/> -->
 </entity-engine-xml>

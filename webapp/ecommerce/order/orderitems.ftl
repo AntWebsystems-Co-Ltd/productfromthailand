@@ -50,7 +50,7 @@ under the License.
         <td colspan="3"></td>
       </#if>
     </tr>
-    <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.ofbiz.base.util.UtilMisc"].toMap("uomId", currencyUomId, "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
+    <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("uomId", currencyUomId, "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
     <#assign conversionRate = rateResult.conversionRate>
     <#list orderItems as orderItem>
       <#-- get info from workeffort and calculate rental quantity, if it was a rental item -->
@@ -67,7 +67,7 @@ under the License.
         <#assign WorkOrderItemFulfillments = orderItem.getRelated("WorkOrderItemFulfillment")?if_exists>
         <#if WorkOrderItemFulfillments?has_content>
           <#list WorkOrderItemFulfillments as WorkOrderItemFulfillment>
-            <#assign workEffortSave = WorkOrderItemFulfillment.getRelatedOneCache("WorkEffort")?if_exists>
+            <#assign workEffortSave = WorkOrderItemFulfillment.getRelatedOne("WorkEffort", true)!>
             <#break>
            </#list>
         </#if>
@@ -79,31 +79,32 @@ under the License.
             ${orderItem.itemDescription?default("")}
           </td>
         <#else>
-          <#assign product = orderItem.getRelatedOneCache("Product")?if_exists/> <#-- should always exist because of FK constraint, but just in case -->
+          <#assign product = orderItem.getRelatedOne("Product", true)!/> <#-- should always exist because of FK constraint, but just in case -->
           <td >
             <a href="<@ofbizCatalogAltUrl fullPath="true" secure="false" productId=orderItem.productId/>" class="linktext">${orderItem.productId} - ${orderItem.itemDescription?default("")}</a>
             <#if product?has_content>
               <#if product.piecesIncluded?exists && product.piecesIncluded?long != 0>
                   [${uiLabelMap.OrderPieces}: ${product.piecesIncluded}]
               </#if>
-              <#if (product.quantityIncluded?exists && product.quantityIncluded != 0) || product.quantityUomId?has_content>
-                <#assign quantityUom = product.getRelatedOneCache("QuantityUom")?if_exists/>
-                  [${uiLabelMap.CommonQuantity}: ${product.quantityIncluded?if_exists} ${((quantityUom.abbreviation)?default(product.quantityUomId))?if_exists}]
+              <#if (product.quantityIncluded?? && product.quantityIncluded != 0) || product.quantityUomId?has_content>
+                  <#assign quantityUom = product.getRelatedOne("QuantityUom", true)!/>
+                  [${uiLabelMap.CommonQuantity}
+                  : ${product.quantityIncluded!} ${((quantityUom.abbreviation)?default(product.quantityUomId))!}]
               </#if>
-              <#if (product.weight?exists && product.weight != 0) || product.weightUomId?has_content>
-                <#assign weightUom = product.getRelatedOneCache("WeightUom")?if_exists/>
+              <#if (product.productWeight?? && product.productWeight != 0) || product.weightUomId?has_content>
+                <#assign weightUom = product.getRelatedOne("WeightUom", true)!/>
                   [${uiLabelMap.CommonWeight}: ${product.weight?if_exists} ${((weightUom.abbreviation)?default(product.weightUomId))?if_exists}]
               </#if>
-              <#if (product.productHeight?exists && product.productHeight != 0) || product.heightUomId?has_content>
-                <#assign heightUom = product.getRelatedOneCache("HeightUom")?if_exists/>
+              <#if (product.productHeight?? && product.productHeight != 0) || product.heightUomId?has_content>
+                <#assign heightUom = product.getRelatedOne("HeightUom", true)!/>
                   [${uiLabelMap.CommonHeight}: ${product.productHeight?if_exists} ${((heightUom.abbreviation)?default(product.heightUomId))?if_exists}]
               </#if>
               <#if (product.productWidth?exists && product.productWidth != 0) || product.widthUomId?has_content>
-                <#assign widthUom = product.getRelatedOneCache("WidthUom")?if_exists/>
+                <#assign widthUom = product.getRelatedOne("WidthUom", true)!/>
                   [${uiLabelMap.CommonWidth}: ${product.productWidth?if_exists} ${((widthUom.abbreviation)?default(product.widthUomId))?if_exists}]
               </#if>
-              <#if (product.productDepth?exists && product.productDepth != 0) || product.depthUomId?has_content>
-                <#assign depthUom = product.getRelatedOneCache("DepthUom")?if_exists/>
+              <#if (product.productDepth?? && product.productDepth != 0) || product.depthUomId?has_content>
+                <#assign depthUom = product.getRelatedOne("DepthUom", true)!/>
                   [${uiLabelMap.CommonDepth}: ${product.productDepth?if_exists} ${((depthUom.abbreviation)?default(product.depthUomId))?if_exists}]
               </#if>
             </#if>
@@ -201,12 +202,12 @@ under the License.
             <#if orderItemAdjustment.description?has_content>: ${orderItemAdjustment.description}</#if>
             <#if orderItemAdjustment.orderAdjustmentTypeId == "SALES_TAX">
               <#if orderItemAdjustment.primaryGeoId?has_content>
-                <#assign primaryGeo = orderItemAdjustment.getRelatedOneCache("PrimaryGeo")/>
+                <#assign primaryGeo = orderItemAdjustment.getRelatedOne("PrimaryGeo", true)/>
                 <#if primaryGeo.geoName?has_content>
                   ${uiLabelMap.OrderJurisdiction}: ${primaryGeo.geoName} [${primaryGeo.abbreviation?if_exists}]
                 </#if>
                 <#if orderItemAdjustment.secondaryGeoId?has_content>
-                  <#assign secondaryGeo = orderItemAdjustment.getRelatedOneCache("SecondaryGeo")/>
+                  <#assign secondaryGeo = orderItemAdjustment.getRelatedOne("SecondaryGeo", true)/>
                   (${uiLabelMap.CommonIn}: ${secondaryGeo.geoName} [${secondaryGeo.abbreviation?if_exists}])
                 </#if>
               </#if>

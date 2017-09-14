@@ -19,7 +19,7 @@ under the License.
 -->
 
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
     <screen name="main-decorator">
         <section>
             <actions>
@@ -36,16 +36,24 @@ under the License.
                 <set field="MainColumnStyle" value="nocolumns" global="true"/>
                 
                 <!-- The default (global) shortcut icon -->
-                <set field="layoutSettings.shortcutIcon" value="/images/ofbiz.ico" global="true"/>
+                <set field="layoutSettings.shortcutIcon" value="/pft-default/pftimages/pft-icon.ico" global="true"/>
                 
                 <!-- The default (main) java scripts -->
                 <!-- NOTE: this should be included on each screen that uses it to avoid including it in all screens: -->  
-                <set field="layoutSettings.javaScripts[]" value="/images/selectall.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/images/OfbizUtil.js" global="true"/>
+                <set field="initialLocaleComplete" type="String" value="${groovy:parameters?.userLogin?.lastLocale}" default-value="${groovy:locale.toString()}"/>
+                <set field="layoutSettings.javaScripts[+0]" value="${groovy: org.apache.ofbiz.common.JsLanguageFilesMapping.dateTime.getFilePath(initialLocaleComplete)}" global="true"/>
 
+                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/plugins/datetimepicker/jquery-ui-timepicker-addon.min-1.4.3.js" global="true"/>
+                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/ui/js/jquery-ui-1.10.3.min.js" global="true"/>
                 <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/plugins/validate/jquery.validate.min.js" global="true"/>
-                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/jquery-1.7.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/jquery-migrate-1.2.1.js" global="true"/>
+                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/jquery-1.11.0.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/images/jquery/plugins/Readmore.js-master/readmore.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/images/jquery/plugins/jquery-jgrowl/1.4.1/jquery.jgrowl.min.js" global="true"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/jquery/plugins/jquery-jgrowl/1.4.1/jquery.jgrowl.min.css" global="true" />
                 
-                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/PFTSetup.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/PFTSetup.groovy"/>
                 
                 <!-- Get the store VisualTheme -->
                 <set field="visualThemeId" from-field="productStore.visualThemeId" default-value="EC_PFT"/>
@@ -59,24 +67,24 @@ under the License.
                 <entity-and list="webAnalyticsConfigs" entity-name="WebAnalyticsConfig">
                     <field-map field-name="webSiteId"/>
                 </entity-and>
-                <set field="isDemo" value="${groovy:org.ofbiz.base.component.ComponentConfig.componentExists(&quot;ofbizdemo&quot;)}" type="Boolean"/>
+                <set field="layoutSettings.javaScripts[]" value="/images/miscAjaxFunctions.js" global="true" />
             </actions>
             <widgets>
                 <!-- render header -->
-                <platform-specific><html><html-template location="component://ecommerce/webapp/ecommerce/includes/headerHead.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/includes/headerHead.ftl"/></html></platform-specific>
                 <section>
                     <condition>
                         <if-compare field="isDemo" operator="equals" value="true" type="Boolean"/>
                     </condition>
-	                <widgets>
-    	                <include-screen name="demoAnnounceMessage" location="component://ofbizdemo/widget/CommonScreens.xml"/>
-        	        </widgets>
+                    <widgets>
+                        <include-screen name="demoAnnounceMessage" location="component://ofbizdemo/widget/CommonScreens.xml"/>
+                    </widgets>
                 </section>
                 <platform-specific><html><html-template location="${headerTemplateLocation}"/></html></platform-specific>
                 <container id="ecom-mainarea">
                     <!-- by default will render left-bar only if left/rightbarScreenName value not empty -->
                     <!-- render messages -->
-                    <platform-specific><html><html-template location="component://common/webcommon/includes/messages.ftl"/></html></platform-specific>
+                    <platform-specific><html><html-template location="component://common/template/includes/Messages.ftl"/></html></platform-specific>
                     <container id="div1" style="left"><include-screen name="${leftbarScreenName}" location="${leftbarScreenLocation}"/></container>
                     <section>
                         <condition>
@@ -106,7 +114,7 @@ under the License.
         <section>
             <widgets>
                 <container style="left">
-                    <include-screen name="sidedeepcategory" location="component://productfromthailand/widget/CatalogScreens.xml"/>
+                    <include-screen name="productCategories" location="component://ecommerce/widget/CatalogScreens.xml"/>
                 </container>
             </widgets>
         </section>
@@ -123,7 +131,7 @@ under the License.
                     <include-screen name="minilastproductsearches" location="component://ecommerce/widget/CatalogScreens.xml"/>
                     <include-screen name="recentlyviewed" location="component://ecommerce/widget/ContentScreens.xml"/>
                     <include-screen name="minipromotext" location="component://productfromthailand/widget/CartScreens.xml"/-->
-                    <include-screen name="compareproductslist"/>
+                    <include-screen name="compareproductslist" location="component://order/widget/ordermgr/OrderEntryCatalogScreens.xml"/>
                     <include-screen name="recentlyproducts" location="component://productfromthailand/widget/CatalogScreens.xml"/>
                 </container>
             </widgets>
@@ -262,27 +270,25 @@ under the License.
                 <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
-                
+
                 <set field="MainColumnStyle" value="nocolumns" global="true"/>
-                
+
                 <!-- The default (global) shortcut icon -->
-                <set field="layoutSettings.shortcutIcon" value="/images/ofbiz.ico" global="true"/>
-                
+                <set field="layoutSettings.shortcutIcon" value="/pft-default/pftimages/pft-icon.ico" global="true"/>
+
                 <!-- The default (main) java scripts -->
                 <!-- NOTE: this should be included on each screen that uses it to avoid including it in all screens: -->
-                <set field="layoutSettings.javaScripts[]" value="/images/fieldlookup.js" global="true"/>
-                <set field="layoutSettings.javaScripts[]" value="/images/selectall.js" global="true"/>
-                <set field="layoutSettings.javaScripts[]" value="/images/calendarDateSelect/calendar_date_select.js" global="true"/>
-                <set field="layoutSettings.javaScripts[]" value="/images/calendarDateSelect/locale/${parameters.userLogin.lastLocale}.js"  default-value="en.js" global="true"/>
-                <set field="layoutSettings.javaScripts[+0]" value="/images/prototypejs/effects.js" global="true"/>
-                <set field="layoutSettings.javaScripts[+0]" value="/images/prototypejs/validation.js" global="true"/>
-                <set field="layoutSettings.javaScripts[+0]" value="/images/prototypejs/prototype.js" global="true"/>
-                <set field="layoutSettings.javaScripts[]" value="/images/prototypejs/popup.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/images/OfbizUtil.js" global="true"/>
+
+                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/plugins/validate/jquery.validate.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/jquery-1.11.0.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/jquery-migrate-1.2.1.js" global="true" />
                 
-                <script location="component://ecommerce/widget/EcommerceSetup.groovy"/>
-                
+
+                <script location="component://productfromthailand/groovyScripts/PFTSetup.groovy"/>
+
                 <!-- Get the store VisualTheme -->
-                <set field="visualThemeId" default-value="EC_DEFAULT"/>
+                <set field="visualThemeId" value="EC_DEFAULT"/>
                 <service service-name="getVisualThemeResources">
                     <field-map field-name="visualThemeId"/>
                     <field-map field-name="themeResources" from-field="layoutSettings"/>
@@ -290,17 +296,17 @@ under the License.
                 <set field="layoutSettings" from-field="themeResources" default-value="${layoutSettings}" global="true"/>
             </actions>
             <widgets>
-                <platform-specific><html><html-template location="component://ecommerce/webapp/ecommerce/includes/headerHead.ftl"/></html></platform-specific>
-                <platform-specific><html><html-template location="component://common/webcommon/includes/openhtmlbody.ftl"/></html></platform-specific>
-                <platform-specific><html><html-template location="component://common/webcommon/includes/messages.ftl"/></html></platform-specific>
-                
+                <platform-specific><html><html-template location="component://ecommerce/template/includes/HeaderHead.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://common/template/includes/OpenHtmlBody.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://common/template/includes/Messages.ftl"/></html></platform-specific>
+
                 <decorator-section-include name="body"/>
-                
-                <platform-specific><html><html-template location="component://common/webcommon/includes/closehtmlbody.ftl"/></html></platform-specific>
+
+                <platform-specific><html><html-template location="component://common/template/includes/CloseHtmlBody.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
-    
+
     <!-- Column Included Screens -->
     <screen name="language">
         <section>
@@ -328,8 +334,8 @@ under the License.
                 <set field="headerItem" value="main"/>
                 <set field="randomSurveyGroup" value="testSurveyGroup"/>
 
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/Main.groovy"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/Category.groovy"/>
+                <script location="component://ecommerce/groovyScripts/Main.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -347,7 +353,7 @@ under the License.
             <actions>
                 <set field="titleProperty" value="PageTitleLogin"/>
                 <set field="headerItem" value="login"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/Login.groovy"/>
+                <script location="component://ecommerce/groovyScripts/Login.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -365,7 +371,7 @@ under the License.
             <actions>
                 <set field="titleProperty" value="PageTitleLogin"/>
                 <set field="headerItem" value="login"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/Login.groovy"/>
+                <script location="component://ecommerce/groovyScripts/Login.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -427,7 +433,7 @@ under the License.
             <widgets>
                 <container style="${MainColumnStyle}">
                     <!-- render messages -->
-                    <platform-specific><html><html-template location="component://common/webcommon/includes/messages.ftl"/></html></platform-specific>
+                    <platform-specific><html><html-template location="component://common/template/includes/Messages.ftl"/></html></platform-specific>
                     <decorator-section-include name="body"/>
                 </container>
                 <platform-specific>
@@ -471,7 +477,7 @@ under the License.
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="aboutus">
         <section>
             <actions>
@@ -510,29 +516,7 @@ under the License.
             </widgets>
         </section>
     </screen>
-    
-    <screen name="products">
-        <section>
-            <actions>
-                <set field="titleProperty" value="PFTProducts"/>
-                <set field="headerItem" value="products"/>
-                <set field="MainColumnStyle" value="leftonly"/>
-                <set field="leftbarScreenName" value="leftbar"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/Main.groovy"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/Category.groovy"/>
-            </actions>
-            <widgets>
-                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
-                    <decorator-section name="body">
-                        <platform-specific>
-                            <html><html-template location="component://productfromthailand/webapp/ecommerce/includes/products.ftl"/></html>
-                        </platform-specific>
-                    </decorator-section>
-                </decorator-screen>
-            </widgets>
-        </section>
-    </screen>
-    
+
     <screen name="services">
         <section>
             <actions>
@@ -549,9 +533,7 @@ under the License.
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <platform-specific>
-                            <html><html-template location="component://productfromthailand/webapp/ecommerce/includes/services.ftl"/></html>
-                        </platform-specific>
+                        <include-form name="EditRequestCustomer" location="component://productfromthailand/widget/ServiceForms.xml"/>
                         <include-screen name="ListRequests" location="component://productfromthailand/widget/CustRequestScreens.xml"/>
                     </decorator-section>
                 </decorator-screen>
@@ -578,7 +560,7 @@ under the License.
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="register">
         <section>
             <actions>
@@ -597,12 +579,5 @@ under the License.
             </widgets>
         </section>
     </screen>
-    
-    <screen name="compareproductslist">
-        <section>
-            <widgets>
-                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/compareproductslist.ftl"/></html></platform-specific>
-            </widgets>
-        </section>
-    </screen>
+
 </screens>

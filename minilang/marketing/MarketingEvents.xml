@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+    
+    http://www.apache.org/licenses/LICENSE-2.0
+    
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+
+<simple-methods xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/simple-methods.xsd">
+    <simple-method method-name="signUpForContactList" short-description="Sign up for Contact List" login-required="false">
+        <call-bsh><![CDATA[
+            org.apache.ofbiz.common.Captcha.getCodeCaptcha(request,response);
+            ]]></call-bsh>
+        
+        <call-object-method obj-field="parameters.captcha" method-name="toLowerCase" ret-field="parameters.captcha"/>
+        <call-object-method obj-field="parameters.captchaCode" method-name="toLowerCase" ret-field="parameters.captchaCode"/>
+        <if-not-empty field="parameters.email">
+            <if-validate-method field="parameters.email" method="isEmail">
+                <else><add-error><fail-property resource="MarketingUiLabels" property="MarketingCampaignInvalidEmailInput"/></add-error></else>
+            </if-validate-method>
+            <entity-and entity-name="PartyContactWithPurpose" list="emailAddressesPurposes">
+                <field-map field-name="partyId" value="_NA_"/>
+                <field-map field-name="contactMechPurposeTypeId" value="OTHER_EMAIL"/>
+                <field-map field-name="contactMechTypeId" value="EMAIL_ADDRESS"/>
+            </entity-and>
+            <filter-list-by-date list="emailAddressesPurposes" to-list="emailAddressesPurposes1" from-field-name="purposeFromDate" thru-field-name="purposeThruDate"/>
+            <filter-list-by-date list="emailAddressesPurposes1" to-list="emailAddresses" from-field-name="contactFromDate" thru-field-name="contactThruDate"/>
+            <!-- Ignore upper/lower case in the email address and verify if an email address exists -->
+            <call-object-method obj-field="parameters.email" method-name="toLowerCase" ret-field="email"/>
+            <iterate entry="emailAddress" list="emailAddresses">
+                <call-object-method obj-field="emailAddress.infoString" method-name="toLowerCase" ret-field="emailAddress.infoString"/>
+                <if-compare field="email" operator="equals" value="${emailAddress.infoString}">
+                    <set field="existingEmail" value="Y"/>
+                </if-compare>
+            </iterate>
+            <if-not-empty field="existingEmail">
+                <add-error><fail-message message="Your Email address is already registered"/></add-error>
+            </if-not-empty>
+            <else>
+                <add-error><fail-property resource="PartyUiLabels" property="PartyEmailAddressMissing"/></add-error>
+            </else>
+        </if-not-empty>
+        <check-errors/>
+        <if-compare field="parameters.captcha" value="${parameters.captchaCode}" operator="equals">
+            <entity-one entity-name="UserLogin" value-field="userLogin">
+                <field-map field-name="userLoginId" value="system"/>
+            </entity-one>
+            <set field="nowDate" value="${bsh:org.apache.ofbiz.base.util.UtilDateTime.nowDateString(&quot;yyyy-MM-dd HH:mm:ss.S&quot;)}" type="Timestamp"/>
+           
+            <set field="makePartyEmail.emailAddress" from-field="parameters.email"/>
+            <set field="makePartyEmail.partyId" value="_NA_"/>
+            <set field="makePartyEmail.userLogin" from-field="userLogin"/>
+            <set field="makePartyEmail.fromDate" from-field="nowDate"/>
+            <set field="makePartyEmail.contactMechPurposeTypeId" value="OTHER_EMAIL"/>
+            <call-service service-name="createPartyEmailAddress" in-map-name="makePartyEmail" include-user-login="false">
+                <result-to-field result-name="contactMechId" field="contactMechId"/>
+                <result-to-result result-name="contactMechId" service-result-name="contactMechId"/>
+            </call-service>
+            <set field="addPartyToContactList.contactListId" from-field="parameters.contactListId"/>
+            <set field="addPartyToContactList.statusId" value="CLPT_ACCEPTED"/>
+            <set field="addPartyToContactList.preferredContactMechId" from-field="contactMechId"/>
+            <set field="addPartyToContactList.partyId" value="_NA_"/>
+            <set field="addPartyToContactList.userLogin" from-field="userLogin"/>
+            <set field="addPartyToContactList.fromDate" from-field="nowDate"/>
+            <call-service service-name="createContactListParty" in-map-name="addPartyToContactList" include-user-login="false"/>
+            <else>
+                <property-to-field field="errorMessage" resource="MyPortalUiLabels" property="MyPortalCaptchaMissingError"/><field-to-list field="errorMessage" list="error_list"/>
+                <check-errors/>
+            </else>
+        </if-compare>
+    </simple-method>
+    
+    <simple-method method-name="createProductAndSupplierProduct" short-description="creat Product and also create SupplierProduct">
+        <set-service-fields service-name="createProduct" map="parameters" to-map="newEntity"/>
+        <set field="newEntity.requirementMethodEnumId" value="PRODRQM_DS"/>
+        <call-service service-name="createProduct" in-map-name="newEntity">
+            <result-to-field result-name="productId" field="productId"/>
+        </call-service>
+        
+        <set field="addSupplierProductCtx.productId" from-field="productId"/>
+        <set field="addSupplierProductCtx.supplierProductId" from-field="parameters.supplierProductId"/>
+        <set field="addSupplierProductCtx.partyId" from-field="userLogin.partyId"/>
+        <if-empty field="addSupplierProductCtx.currencyUomId">
+            <property-to-field resource="general" property="currency.uom.id.default" field="addSupplierProductCtx.currencyUomId"/>
+        </if-empty>
+        <if-empty field="parameters.lastPrice">
+            <set field="addSupplierProductCtx.lastPrice" type="BigDecimal" value="0"/>
+            <else>
+                <set field="addSupplierProductCtx.lastPrice" type="BigDecimal" from-field="parameters.lastPrice"/>
+            </else>
+        </if-empty>
+        <set field="addSupplierProductCtx.minimumOrderQuantity" type="BigDecimal" value="1"/>
+        <set field="addSupplierProductCtx.canDropShip" value="Y"/>
+        <now-timestamp field="addSupplierProductCtx.availableFromDate"/>
+        
+        <call-service service-name="createSupplierProduct" in-map-name="addSupplierProductCtx"/>
+            
+        <field-to-request field="productId"/>
+    </simple-method>
+    
+    <simple-method method-name="updateProductAndSupplierProduct" short-description="Update Product And Supplier Product">
+        <set-service-fields service-name="updateProduct" map="parameters" to-map="callUpdateProductMap"/>
+        <call-service service-name="updateProduct" in-map-name="callUpdateProductMap"/>
+        <set field="productId" from-field="parameters.productId"/>
+        
+        <entity-and entity-name="SupplierProduct" list="supplierProducts">
+            <field-map field-name="productId" from-field="productId"/>
+        </entity-and>
+        
+        <iterate entry="supplierProduct" list="supplierProducts">
+            <set-service-fields service-name="updateSupplierProduct" map="supplierProduct" to-map="updateSupplierProduct"/>
+            <set field="supplierProduct.productId" from-field="productId"/>
+            <if-compare-field field="parameters.supplierProductId" operator="not-equals" to-field="supplierProduct.supplierProductId">
+                <set field="updateSupplierProduct.supplierProductId" from-field="parameters.supplierProductId"/> 
+            </if-compare-field>
+            <if-compare-field field="parameters.lastPrice" operator="not-equals" to-field="supplierProduct.lastPrice">
+                    <set field="updateSupplierProduct.lastPrice" type="BigDecimal" from-field="parameters.lastPrice"/>
+            </if-compare-field>
+            <call-service service-name="updateSupplierProduct" in-map-name="updateSupplierProduct"/>
+        </iterate>
+        <field-to-request field="productId"/>
+    </simple-method>
+</simple-methods>

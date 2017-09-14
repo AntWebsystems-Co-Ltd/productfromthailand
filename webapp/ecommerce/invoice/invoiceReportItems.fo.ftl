@@ -93,17 +93,17 @@ under the License.
     <fo:table-body font-size="10pt">
         <#assign currentShipmentId = "">
         <#assign newShipmentId = "">
-        <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.ofbiz.base.util.UtilMisc"].toMap("uomId", invoice.currencyUomId?if_exists, "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
+        <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("uomId", invoice.currencyUomId?if_exists, "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
         <#assign conversionRate = rateResult.conversionRate>
         <#-- if the item has a description, then use its description.  Otherwise, use the description of the invoiceItemType -->
         <#list invoiceItems as invoiceItem>
             <#assign itemType = invoiceItem.getRelatedOne("InvoiceItemType")>
-            <#assign isItemAdjustment = Static["org.ofbiz.common.CommonWorkers"].hasParentType(delegator, "InvoiceItemType", "invoiceItemTypeId", itemType.getString("invoiceItemTypeId"), "parentTypeId", "INVOICE_ADJ")/>
+            <#assign isItemAdjustment = Static["org.apache.ofbiz.common.CommonWorkers"].hasParentType(delegator, "InvoiceItemType", "invoiceItemTypeId", itemType.getString("invoiceItemTypeId"), "parentTypeId", "INVOICE_ADJ")/>
 
             <#assign taxRate = invoiceItem.getRelatedOne("TaxAuthorityRateProduct")?if_exists>
             <#assign itemBillings = invoiceItem.getRelated("OrderItemBilling")?if_exists>
             <#if itemBillings?has_content>
-                <#assign itemBilling = Static["org.ofbiz.entity.util.EntityUtil"].getFirst(itemBillings)>
+                <#assign itemBilling = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFirst(itemBillings)>
                 <#if itemBilling?has_content>
                     <#assign itemIssuance = itemBilling.getRelatedOne("ItemIssuance")?if_exists>
                     <#if itemIssuance?has_content>
@@ -131,7 +131,7 @@ under the License.
                 </fo:table-row>
                 <fo:table-row height="14px">
                    <fo:table-cell number-columns-spanned="5">
-                        <fo:block font-weight="bold"> ${uiLabelMap.ProductShipmentId}: ${newShipmentId}<#if issuedDateTime?exists> ${uiLabelMap.CommonDate}: ${Static["org.ofbiz.base.util.UtilDateTime"].toDateString(issuedDateTime)}</#if></fo:block>
+                        <fo:block font-weight="bold"> ${uiLabelMap.ProductShipmentId}: ${newShipmentId}<#if issuedDateTime?exists> ${uiLabelMap.CommonDate}: ${Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(issuedDateTime)}</#if></fo:block>
                    </fo:table-cell>
                 </fo:table-row>
                 <#assign currentShipmentId = newShipmentId>
@@ -151,7 +151,7 @@ under the License.
                         <fo:block> <#if invoiceItem.quantity?exists><@ofbizCurrency amount=invoiceItem.amount?if_exists*conversionRate isoCode=currencyUom/></#if> </fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="right">
-                        <fo:block> <@ofbizCurrency amount=(Static["org.ofbiz.accounting.invoice.InvoiceWorker"].getInvoiceItemTotal(invoiceItem))*conversionRate isoCode=currencyUom/> </fo:block>
+                        <fo:block> <@ofbizCurrency amount=(Static["org.apache.ofbiz.accounting.invoice.InvoiceWorker"].getInvoiceItemTotal(invoiceItem))*conversionRate isoCode=currencyUom/> </fo:block>
                     </fo:table-cell>
                 </fo:table-row>
             <#else>
@@ -167,7 +167,7 @@ under the License.
                         <fo:block text-align="right">${description?if_exists}</fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="right" number-columns-spanned="3">
-                        <fo:block> <@ofbizCurrency amount=(Static["org.ofbiz.accounting.invoice.InvoiceWorker"].getInvoiceItemTotal(invoiceItem))*conversionRate isoCode=currencyUom/> </fo:block>
+                        <fo:block> <@ofbizCurrency amount=(Static["org.apache.ofbiz.accounting.invoice.InvoiceWorker"].getInvoiceItemTotal(invoiceItem))*conversionRate isoCode=currencyUom/> </fo:block>
                     </fo:table-cell>
                 </fo:table-row>
             </#if>
@@ -234,7 +234,7 @@ under the License.
     <fo:table-body font-size="10pt">
 
     <#list vatTaxIds as vatTaxId>
-    <#assign taxRate = delegator.findOne("TaxAuthorityRateProduct", Static["org.ofbiz.base.util.UtilMisc"].toMap("taxAuthorityRateSeqId", vatTaxId), true)/>
+    <#assign taxRate = delegator.findOne("TaxAuthorityRateProduct", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("taxAuthorityRateSeqId", vatTaxId), true)/>
     <fo:table-row>
         <fo:table-cell>
           <fo:block/>

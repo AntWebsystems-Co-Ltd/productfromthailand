@@ -19,44 +19,45 @@ under the License.
 
 <#if getUsername>
 <script type="text/javascript">
-  //<![CDATA[
-     lastFocusedName = null;
-     function setLastFocused(formElement) {
-         lastFocusedName = formElement.name;
-     }
-     function clickUsername() {
-         if ($('UNUSEEMAIL').checked) {
-             if (lastFocusedName == "UNUSEEMAIL") {
-                 $('PASSWORD').focus();
-             } else if (lastFocusedName == "PASSWORD") {
-                 $('UNUSEEMAIL').focus();
-             } else {
-                 $('PASSWORD').focus();
-             }
-         }
-     }
-     function changeEmail() {
-         if ($('UNUSEEMAIL').checked) {
-             $('USERNAME').value = $F('CUSTOMER_EMAIL');
-         }
-     }
-     function setEmailUsername() {
-         if ($('UNUSEEMAIL').checked) {
-             $('USERNAME').value = $F('CUSTOMER_EMAIL');
-             // don't disable, make the browser not submit the field: $('USERNAME').disabled=true;
-         } else {
-             $('USERNAME').value='';
-             // $('USERNAME').disabled=false;
-         }
-     }
-     function hideShowUsaStates() {
-         if ($('customerCountry').value == "USA" || $('customerCountry').value == "UMI") {
-             $('customerState').style.display = "block";
-         } else {
-             $('customerState').style.display = "none";
-         }
-     }
-   //]]>
+  lastFocusedName = null;
+  function setLastFocused(formElement) {
+    lastFocusedName = formElement.name;
+    document.write.lastFocusedName;
+  }
+  function clickUsername() {
+    if (document.getElementById('UNUSEEMAIL').checked) {
+      if (lastFocusedName == "UNUSEEMAIL") {
+        jQuery('#PASSWORD').focus();
+      } else if (lastFocusedName == "PASSWORD") {
+        jQuery('#UNUSEEMAIL').focus();
+      } else {
+        jQuery('#PASSWORD').focus();
+      }
+    }
+  }
+  function changeEmail() {
+    if (document.getElementById('UNUSEEMAIL').checked) {
+      document.getElementById('USERNAME').value = jQuery('#CUSTOMER_EMAIL').val();
+    }
+  }
+  function setEmailUsername() {
+    if (document.getElementById('UNUSEEMAIL').checked) {
+      document.getElementById('USERNAME').value = jQuery('#CUSTOMER_EMAIL').val();
+      // don't disable, make the browser not submit the field: document.getElementById('USERNAME').disabled=true;
+    } else {
+      document.getElementById('USERNAME').value = '';
+      // document.getElementById('USERNAME').disabled=false;
+    }
+  }
+  function hideShowUsaStates() {
+    var customerStateElement = document.getElementById('newuserform_stateProvinceGeoId');
+    var customerCountryElement = document.getElementById('newuserform_countryGeoId');
+    if (customerCountryElement.value == "USA" || customerCountryElement.value == "UMI") {
+      customerStateElement.style.display = "block";
+    } else {
+      customerStateElement.style.display = "none";
+    }
+  }
 </script>
 </#if>
 
@@ -74,7 +75,7 @@ will generally always be reserved for the logo at the top of the page.
 
 <#macro fieldErrors fieldName>
   <#if errorMessageList?has_content>
-    <#assign fieldMessages = Static["org.ofbiz.base.util.MessageString"].getMessagesForField(fieldName, true, errorMessageList)>
+    <#assign fieldMessages = Static["org.apache.ofbiz.base.util.MessageString"].getMessagesForField(fieldName, true, errorMessageList)>
     <ul>
       <#list fieldMessages as errorMsg>
         <li class="errorMessage">${errorMsg}</li>
@@ -84,7 +85,7 @@ will generally always be reserved for the logo at the top of the page.
 </#macro>
 <#macro fieldErrorsMulti fieldName1 fieldName2 fieldName3 fieldName4>
   <#if errorMessageList?has_content>
-    <#assign fieldMessages = Static["org.ofbiz.base.util.MessageString"].getMessagesForField(fieldName1, fieldName2, fieldName3, fieldName4, true, errorMessageList)>
+    <#assign fieldMessages = Static["org.apache.ofbiz.base.util.MessageString"].getMessagesForField(fieldName1, fieldName2, fieldName3, fieldName4, true, errorMessageList)>
     <ul>
       <#list fieldMessages as errorMsg>
         <li class="errorMessage">${errorMsg}</li>
@@ -93,7 +94,7 @@ will generally always be reserved for the logo at the top of the page.
   </#if>
 </#macro>
 
-<form method="post" action="<@ofbizUrl>createcustomer${previousParams}</@ofbizUrl>" id="newuserform">
+<form method="post" action="<@ofbizUrl>createcustomer${previousParams}</@ofbizUrl>" id="newuserform" name="newuserform">
   
   
   <#----------------------------------------------------------------------
@@ -203,26 +204,25 @@ will generally always be reserved for the logo at the top of the page.
 
     <div>
       <@fieldErrors fieldName="CUSTOMER_COUNTRY"/>
-      <label for="customerCountry">${uiLabelMap.PartyCountry}*</label>
-      <select name="CUSTOMER_COUNTRY" onclick="hideShowUsaStates();" id="customerCountry">
-        <#if requestParameters.CUSTOMER_COUNTRY?exists>
-          <option value='${requestParameters.CUSTOMER_COUNTRY}'>${selectedCountryName?default(requestParameters.CUSTOMER_COUNTRY)}</option>
-        </#if>
+      <label for="customerCountry">${uiLabelMap.CommonCountry}*</label>
+      <select name="CUSTOMER_COUNTRY" id="newuserform_countryGeoId">
         ${screens.render("component://common/widget/CommonScreens.xml#countries")}
+        <#assign defaultCountryGeoId =
+            Static["org.apache.ofbiz.entity.util.EntityUtilProperties"].getPropertyValue("general",
+            "country.geo.id.default", delegator)>
+        <option selected="selected" value="${defaultCountryGeoId}">
+          <#assign countryGeo = delegator.findOne("Geo",Static["org.apache.ofbiz.base.util.UtilMisc"]
+              .toMap("geoId",defaultCountryGeoId), false)>
+          ${countryGeo.get("geoName",locale)}
+        </option>
       </select>
     </div>
 
     <div>
       <@fieldErrors fieldName="CUSTOMER_STATE"/>
       <label for="customerState">${uiLabelMap.PartyState}*</label>
-      <select name="CUSTOMER_STATE" id="customerState">
-        <#if requestParameters.CUSTOMER_STATE?exists>
-          <option value='${requestParameters.CUSTOMER_STATE}'>${selectedStateName?default(requestParameters.CUSTOMER_STATE)}</option>
-        </#if>
-        <option value="">${uiLabelMap.PartyNoState}</option>
-        ${screens.render("component://common/widget/CommonScreens.xml#states")}
-      </select>
-    </div>
+      <select name="CUSTOMER_STATE" id="newuserform_stateProvinceGeoId"></select>
+    <div/>
   </fieldset>
 
   <fieldset>
@@ -311,7 +311,7 @@ class name of "button". No other class names should be used to style
 button actions.
 ------------------------------------------------------------------------------->
 <div class="newuserbutton">
-  <div class="floatleft"><a href="javascript:$('newuserform').submit()">${uiLabelMap.CommonSave}</a></div>
+  <div class="floatleft"><a href="javascript:$('#newuserform').submit()">${uiLabelMap.CommonSave}</a></div>
   <div class="floatright"><a href="<@ofbizUrl>checkLogin/main</@ofbizUrl>" class="reset">${uiLabelMap.CommonBack}</a></div>
 </div>
 

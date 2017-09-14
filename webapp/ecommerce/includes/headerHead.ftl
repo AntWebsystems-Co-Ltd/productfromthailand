@@ -21,6 +21,7 @@ under the License.
 <#-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> <html> -->
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
   <title><#if title?has_content>${title}<#elseif titleProperty?has_content>${uiLabelMap.get(titleProperty)}</#if>: ${(productStore.storeName)?if_exists}</title>
   <#if layoutSettings.shortcutIcon?has_content>
     <#assign shortcutIcon = layoutSettings.shortcutIcon/>
@@ -33,7 +34,7 @@ under the License.
   <#if layoutSettings.javaScripts?has_content>
     <#--layoutSettings.javaScripts is a list of java scripts. -->
     <#-- use a Set to make sure each javascript is declared only once, but iterate the list to maintain the correct order -->
-    <#assign javaScriptsSet = Static["org.ofbiz.base.util.UtilMisc"].toSet(layoutSettings.javaScripts)/>
+    <#assign javaScriptsSet = Static["org.apache.ofbiz.base.util.UtilMisc"].toSet(layoutSettings.javaScripts)/>
     <#list layoutSettings.javaScripts as javaScript>
       <#if javaScriptsSet.contains(javaScript)>
         <#assign nothing = javaScriptsSet.remove(javaScript)/>

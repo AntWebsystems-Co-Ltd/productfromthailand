@@ -16,9 +16,9 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<#assign catalogCol = Static["org.ofbiz.product.catalog.CatalogWorker"].getCatalogIdsAvailable(request)?if_exists>
-<#assign currentCatalogId = Static["org.ofbiz.product.catalog.CatalogWorker"].getCurrentCatalogId(request)?if_exists>
-<#assign currentCatalogName = Static["org.ofbiz.product.catalog.CatalogWorker"].getCatalogName(request, currentCatalogId)?if_exists>
+<#assign catalogCol = Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCatalogIdsAvailable(request)?if_exists>
+<#assign currentCatalogId = Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCurrentCatalogId(request)?if_exists>
+<#assign currentCatalogName = Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCatalogName(request, currentCatalogId)?if_exists>
 
 <#-- Only show if there is more than 1 (one) catalog, no sense selecting when there is only one option... -->
 <#if (catalogCol?size > 1)>
@@ -40,7 +40,7 @@ under the License.
                                             <option value='${currentCatalogId}'>${currentCatalogName}</option>
                                             <option value='${currentCatalogId}'></option>
                                             <#list catalogCol as catalogId>
-                                              <#assign thisCatalogName = Static["org.ofbiz.product.catalog.CatalogWorker"].getCatalogName(request, catalogId)>
+                                              <#assign thisCatalogName = Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCatalogName(request, catalogId)>
                                               <option value='${catalogId}'>${thisCatalogName}</option>
                                             </#list>
                                           </select>

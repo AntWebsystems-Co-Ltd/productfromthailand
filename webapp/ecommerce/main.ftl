@@ -23,7 +23,8 @@ under the License.
     <h3>${productStore.subtitle}</h3>
 </div>
 <#if requestAttributes.productCategoryId?has_content>
-  ${screens.render("component://productfromthailand/widget/CatalogScreens.xml#category-include")}
+  ${screens.render("component://ecommerce/widget/CatalogScreens.xml#bestSellingCategory")}
+  ${screens.render("component://ecommerce/widget/CatalogScreens.xml#category-include")}
 <#else>
   <center><h2>${uiLabelMap.EcommerceNoPROMOTIONCategory}</h2></center>
 </#if>

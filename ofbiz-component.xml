@@ -27,11 +27,11 @@
 
 	<!--security -->
     <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTSecurityPermissionSeedData.xml"/>
-    <entity-resource type="data" reader-name="ext-demo" loader="main" location="data/PFTSecurityGroupDemoData.xml"/>
+    <entity-resource type="data" reader-name="demo" loader="main" location="data/PFTSecurityGroupDemoData.xml"/>
 
-    <entity-resource type="data" reader-name="ext-demo" loader="main" location="data/AdminUserLoginDemoData.xml"/>
     <entity-resource type="data" reader-name="seed" loader="main" location="data/EcommerceTypeData.xml"/>
     <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTSeedData.xml"/>
+    <entity-resource type="data" reader-name="ext-demo" loader="main" location="data/PFTExtDemoData.xml"/>
     <entity-resource type="data" reader-name="ext-demo" loader="main" location="data/PFTDemoData.xml"/>
     <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTProductData.xml"/>
     <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTHelpData.xml"/>
@@ -50,12 +50,12 @@
         location="webapp/ecommerce"
         mount-point="/"
         app-bar-display="false">
-        <virtual-host host-name="productfromthailand.com"/>
-        <virtual-host host-name="www.productfromthailand.com"/>
-        <virtual-host host-name="productfromthailand.antwebsystems.com"/>
-        <virtual-host host-name="productfromthailand.ofbizsaas.com"/>
-        <virtual-host host-name="productfromthailand.ofbizdemo.com"/>
-        <virtual-host host-name="productfromthailand.localhost"/>
+<!--         <virtual-host host-name="productfromthailand.com"/> -->
+<!--         <virtual-host host-name="www.productfromthailand.com"/> -->
+<!--         <virtual-host host-name="productfromthailand.antwebsystems.com"/> -->
+<!--         <virtual-host host-name="productfromthailand.ofbizsaas.com"/> -->
+<!--         <virtual-host host-name="productfromthailand.ofbizdemo.com"/> -->
+<!--         <virtual-host host-name="productfromthailand.localhost"/> -->
     </webapp>
     <!--<webapp name="productfromthailand2"
         title="Product from thailand"
@@ -75,11 +75,11 @@
         app-bar-display="false"/>
         
     <!-- ROOT -->
-    <webapp name="ROOT"
-        title="ROOT Web Application"
-        menu-name="secondary"
-        server="default-server"
-        location="webapp/ROOT"
-        mount-point="/"
-        app-bar-display="false"/>
+<!--     <webapp name="ROOT" -->
+<!--         title="ROOT Web Application" -->
+<!--         menu-name="secondary" -->
+<!--         server="default-server" -->
+<!--         location="webapp/ROOT" -->
+<!--         mount-point="/" -->
+<!--         app-bar-display="false"/> -->
 </ofbiz-component>

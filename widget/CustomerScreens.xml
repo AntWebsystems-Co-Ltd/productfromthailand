@@ -19,18 +19,32 @@ under the License.
 -->
 
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
 
     <screen name="newcustomer">
         <section>
             <actions>
                 <set field="titleProperty" value="PageTitleNewCustomer"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/customer/NewCustomer.groovy"/>
+                <script location="component://ecommerce/groovyScripts/customer/NewCustomer.groovy"/>
+                <set field="dependentForm" value="newuserform"/>
+                <set field="paramKey" value="countryGeoId"/>
+                <set field="mainId" value="countryGeoId"/>
+                <set field="dependentId" value="stateProvinceGeoId"/>
+                <set field="requestName" value="getAssociatedStateList"/>
+                <set field="responseName" value="stateList"/>
+                <set field="dependentKeyName" value="geoId"/>
+                <set field="descName" value="geoName"/>
+                <set field="selectedDependentOption" default-value="_none_"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/customer/newcustomer.ftl"/></html></platform-specific>
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://common/template/includes/SetDependentDropdownValuesJs.ftl"/>
+                                <html-template location="component://productfromthailand/webapp/ecommerce/customer/newcustomer.ftl"/>
+                            </html>
+                        </platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -41,12 +55,26 @@ under the License.
         <section>
             <actions>
                 <set field="titleProperty" value="PageTitleNewSupplier"/>
-                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/NewSupplier.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/NewSupplier.groovy"/>
+                <set field="dependentForm" value="newuserform"/>
+                <set field="paramKey" value="countryGeoId"/>
+                <set field="mainId" value="countryGeoId"/>
+                <set field="dependentId" value="stateProvinceGeoId"/>
+                <set field="requestName" value="getAssociatedStateList"/>
+                <set field="responseName" value="stateList"/>
+                <set field="dependentKeyName" value="geoId"/>
+                <set field="descName" value="geoName"/>
+                <set field="selectedDependentOption" default-value="_none_"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/customer/newsupplier.ftl"/></html></platform-specific>
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://common/template/includes/SetDependentDropdownValuesJs.ftl"/>
+                                <html-template location="component://productfromthailand/webapp/ecommerce/customer/newsupplier.ftl"/>
+                            </html>
+                        </platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -79,15 +107,13 @@ under the License.
     <screen name="viewprofile">
         <section>
             <actions>
-                <set field="titleProperty" value="PageTitleViewProfile"/>
-                
                 <set field="partyId" from-field="userLogin.partyId"/>
                 <entity-one entity-name="Party" value-field="party"/>
                 <entity-one entity-name="Person" value-field="person"/>
                 <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
                 
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/customer/ViewProfile.groovy"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/order/OrderHistory.groovy"/>
+                <script location="component://ecommerce/groovyScripts/customer/ViewProfile.groovy"/>
+                <script location="component://ecommerce/groovyScripts/order/OrderHistory.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">

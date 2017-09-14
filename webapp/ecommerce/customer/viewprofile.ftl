@@ -105,8 +105,8 @@ under the License.
       <tbody>
         <#if orderHeaderList?has_content>
           <#list orderHeaderList as orderHeader>
-            <#assign status = orderHeader.getRelatedOneCache("StatusItem") />
-            <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.ofbiz.base.util.UtilMisc"].toMap("uomId", orderHeader.currencyUom, "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
+            <#assign status = orderHeader.getRelatedOne("StatusItem", true) />
+            <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("uomId", orderHeader.currencyUom, "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
             <#assign conversionRate = rateResult.conversionRate>
             <tr>
               <td>${orderHeader.orderDate.toString()}</td>
@@ -114,8 +114,8 @@ under the License.
               <td><@ofbizCurrency amount=orderHeader.grandTotal*conversionRate isoCode=currencyUom /></td>
               <td>${status.get("description",locale)}</td>
               <#-- invoices -->
-              <#assign invoices = delegator.findByAnd("OrderItemBilling", Static["org.ofbiz.base.util.UtilMisc"].toMap("orderId", "${orderHeader.orderId}"), Static["org.ofbiz.base.util.UtilMisc"].toList("invoiceId")) />
-              <#assign distinctInvoiceIds = Static["org.ofbiz.entity.util.EntityUtil"].getFieldListFromEntityList(invoices, "invoiceId", true)>
+              <#assign invoices = delegator.findByAnd("OrderItemBilling", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId", "${orderHeader.orderId}"), Static["org.apache.ofbiz.base.util.UtilMisc"].toList("invoiceId"), false) />
+              <#assign distinctInvoiceIds = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFieldListFromEntityList(invoices, "invoiceId", true)>
               <#if distinctInvoiceIds?has_content>
                 <td>
                   <#list distinctInvoiceIds as invoiceId>
@@ -174,8 +174,8 @@ under the License.
             </td>
             <td>&nbsp;</td>
             <td valign="top">
-              <#list partyContactMechValueMap.partyContactMechPurposes?if_exists as partyContactMechPurpose>
-                <#assign contactMechPurposeType = partyContactMechPurpose.getRelatedOneCache("ContactMechPurposeType") />
+              <#list partyContactMechValueMap.partyContactMechPurposes! as partyContactMechPurpose>
+                <#assign contactMechPurposeType = partyContactMechPurpose.getRelatedOne("ContactMechPurposeType", true) />
                 <div class="tabletext">
                   <#if contactMechPurposeType?exists>
                     ${contactMechPurposeType.get("description",locale)}
@@ -299,7 +299,7 @@ under the License.
                     <#if creditCard.middleNameOnCard?has_content>${creditCard.middleNameOnCard}&nbsp</#if>
                     ${creditCard.lastNameOnCard}
                     <#if creditCard.suffixOnCard?has_content>&nbsp;${creditCard.suffixOnCard}</#if>
-                    &nbsp;${Static["org.ofbiz.party.contact.ContactHelper"].formatCreditCard(creditCard)}
+                    &nbsp;${Static["org.apache.ofbiz.party.contact.ContactHelper"].formatCreditCard(creditCard)}
                     <#if paymentMethod.description?has_content>(${paymentMethod.description})</#if>
                     <#if paymentMethod.fromDate?has_content>(${uiLabelMap.CommonUpdated}:&nbsp;${paymentMethod.fromDate.toString()})</#if>
                     <#if paymentMethod.thruDate?exists>(${uiLabelMap.CommonDelete}:&nbsp;${paymentMethod.thruDate.toString()})</#if>
@@ -593,7 +593,7 @@ under the License.
           <td valign="top"><div class="tabletext">${survey.surveyName?if_exists}&nbsp;-&nbsp;${survey.description?if_exists}</div></td>
           <td>&nbsp;</td>
           <td valign="top">
-            <#assign responses = Static["org.ofbiz.product.store.ProductStoreWorker"].checkSurveyResponse(request, survey.surveyId)?default(0)>
+            <#assign responses = Static["org.apache.ofbiz.product.store.ProductStoreWorker"].checkSurveyResponse(request, survey.surveyId)?default(0)>
             <#if (responses < 1)>${uiLabelMap.EcommerceNotCompleted}<#else>${uiLabelMap.EcommerceCompleted}</#if>
           </td>
           <#if (responses == 0 || survey.allowMultiple?default("N") == "Y")>

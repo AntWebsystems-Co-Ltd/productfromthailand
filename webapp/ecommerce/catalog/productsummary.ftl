@@ -58,7 +58,7 @@ ${virtualJavaScript?if_exists}
     <#if requestAttributes.productCategoryMember?exists>
         <#assign prodCatMem = requestAttributes.productCategoryMember>
     </#if>
-    <#assign smallImageUrl = productContentWrapper.get("SMALL_IMAGE_URL")?if_exists>
+    <#assign smallImageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url")!>
     <#if !smallImageUrl?string?has_content><#assign smallImageUrl = "/images/defaultImage.jpg"></#if>
     <#-- end variable setup -->
     <#assign productInfoLinkId = "productInfoLink">
@@ -139,7 +139,7 @@ ${virtualJavaScript?if_exists}
                   <input type="hidden" name="mainSubmited" value="Y"/>
                   <a href="javascript:document.the${requestAttributes.formNamePrefix?if_exists}${requestAttributes.listIndex?if_exists}defaultform.submit()" class="buttontext">${uiLabelMap.CommonAddDefault}(${prodCatMem.quantity?string.number}) ${uiLabelMap.OrderToCart}</a>
                 </form>
-                <#assign productCategory = delegator.findByPrimaryKey("ProductCategory", Static["org.ofbiz.base.util.UtilMisc"].toMap("productCategoryId", prodCatMem.productCategoryId))/>
+                <#assign productCategory = delegator.findByPrimaryKey("ProductCategory", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("productCategoryId", prodCatMem.productCategoryId))/>
                 <#if productCategory.productCategoryTypeId != "BEST_SELL_CATEGORY">
                     <form method="post" action="<@ofbizUrl>additem</@ofbizUrl>" name="the${requestAttributes.formNamePrefix?if_exists}${requestAttributes.listIndex?if_exists}defaultform" style="margin: 0;">
                       <input type="hidden" name="add_product_id" value="${prodCatMem.productId?if_exists}"/>
@@ -154,9 +154,9 @@ ${virtualJavaScript?if_exists}
         </div>
         <div class="productinfo">
           <div>
-            <a href="${productUrl}" class="linktext">${productContentWrapper.get("PRODUCT_NAME")?if_exists}</a>
+            <a href="${productUrl}" class="linktext">${productContentWrapper.get("PRODUCT_NAME", "html")!}</a>
           </div>
-          <div>${productContentWrapper.get("DESCRIPTION")?if_exists}<#if daysToShip?exists>&nbsp;-&nbsp;${uiLabelMap.ProductUsuallyShipsIn} <b>${daysToShip}</b> ${uiLabelMap.CommonDays}!</#if></div>
+          <div>${productContentWrapper.get("DESCRIPTION", "html")!}<#if daysToShip?exists>&nbsp;-&nbsp;${uiLabelMap.ProductUsuallyShipsIn} <b>${daysToShip}</b> ${uiLabelMap.CommonDays}!</#if></div>
 
           <#-- Display category-specific product comments -->
           <#if prodCatMem?exists && prodCatMem.comments?has_content>

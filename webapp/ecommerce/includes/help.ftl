@@ -16,9 +16,9 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div id="contentbox" class="screenlet">
-     <h1>${uiLabelMap.PFTHelpAndInstruction} </h1>
-    <div class="screenlet-body">
+<div>
+    <h1>${uiLabelMap.PFTHelpAndInstruction} </h1>
+    <div>
         <div id="helptext">Have a question? We can help. <a href="<@ofbizUrl>contactus</@ofbizUrl>">${uiLabelMap.PFTContact}</a></div>
         <#--ul class="sitemaplist">
           <li class="sitemaplist">...</li>

@@ -17,11 +17,11 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<#assign nowTimestamp = Static["org.ofbiz.base.util.UtilDateTime"].nowTimestamp()>
+<#assign nowTimestamp = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp()>
 <div class="whitespace">
             <center><hr width="940px"/></center>
             <div id="contactcompany">
-                <h4>${uiLabelMap.PFTTel}: +66-53 483245, ${uiLabelMap.PFTFax} : +66-53 483246, ${uiLabelMap.PFTEmail} : info@productfromthailand.com</h4><br/>
+                <h4>${uiLabelMap.PFTTel}: +66-(0)53-355753 ${uiLabelMap.PartyContactMobilePhoneNumber} : +66-(0)81-7119487, ${uiLabelMap.PFTEmail} : info@productfromthailand.com</h4><br/>
                 <h4>${uiLabelMap.PFTCompanyAddress}</h4>
             </div>
         </div>

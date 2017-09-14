@@ -19,7 +19,7 @@ under the License.
 -->
 
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
 
     <!-- Column Included Screens -->
     <screen name="choosecatalog">
@@ -37,7 +37,7 @@ under the License.
     <screen name="keywordsearchbox">
         <section>
             <actions>
-                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/KeywordSearchOptions.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/KeywordSearchOptions.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/keywordsearchbox.ftl"/></html></platform-specific>
@@ -45,26 +45,28 @@ under the License.
         </section>
     </screen>
 
+    <!-- 
     <screen name="sidedeepcategory">
         <section>
             <actions>
                 <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
-                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/SideDeepCategory.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/SideDeepCategory.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/sidedeepcategory.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
+     -->
 
     <screen name="minireorderprods">
         <section>
             <actions>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/catalog/MiniReorderProds.groovy"/>
+                <script location="component://ecommerce/groovyScripts/catalog/MiniReorderProds.groovy"/>
                 <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
             </actions>
             <widgets>
-                <platform-specific><html><html-template location="component://ecommerce/webapp/ecommerce/catalog/minireorderprods.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/MiniReOrderProdss.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
@@ -72,7 +74,7 @@ under the License.
     <screen name="miniassocprods">
         <section>
             <widgets>
-                <platform-specific><html><html-template location="component://ecommerce/webapp/ecommerce/catalog/miniassocprods.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/MiniAssocProds.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
@@ -81,10 +83,10 @@ under the License.
         <section>
             <actions>
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/SideDeepCategory.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/SideDeepCategory.groovy"/>
             </actions>
             <widgets>
-                <platform-specific><html><html-template location="component://ecommerce/webapp/ecommerce/catalog/minilastviewedcategories.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/MiniLastViewedCategories.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
@@ -93,10 +95,10 @@ under the License.
         <section>
             <actions>
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/catalog/MiniProductSummary.groovy"/>
+                <script location="component://ecommerce/groovyScripts/catalog/MiniProductSummary.groovy"/>
             </actions>
             <widgets>
-                <platform-specific><html><html-template location="component://ecommerce/webapp/ecommerce/catalog/minilastviewedproducts.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/MiniLastViewedProducts.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
@@ -108,7 +110,7 @@ under the License.
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
             </actions>
             <widgets>
-                <platform-specific><html><html-template location="component://ecommerce/webapp/ecommerce/catalog/minilastproductsearches.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/MiniLastProductSearches.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
@@ -121,7 +123,7 @@ under the License.
                 <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/catalog/MiniProductSummary.groovy"/>
             </actions>
             <widgets>
-                <platform-specific><html><html-template location="component://ecommerce/webapp/ecommerce/catalog/miniproductsummary.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/MiniProductSummary.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
@@ -132,7 +134,7 @@ under the License.
                 <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
-                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/ProductSummary.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/ProductSummary.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/productsummary.ftl"/></html></platform-specific>
@@ -161,7 +163,7 @@ under the License.
                 <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
-                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/ProductSummary.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/ProductSummary.groovy"/>
                 <entity-and entity-name="ProductCategoryMember" list="prodCatMembers">
                     <field-map field-name="productId" from-field="product.productId"/>
                 </entity-and>
@@ -177,7 +179,7 @@ under the License.
         <section>
             <actions>
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/SideDeepCategory.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/SideDeepCategory.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/breadcrumbs.ftl"/></html></platform-specific>
@@ -188,46 +190,46 @@ under the License.
     <!-- =========== Top-Level and Stand-Alone Screens =========== -->
 
     <!-- Category Screens -->
-    <screen name="category">
-        <section>
-            <actions>
-                <set field="leftbarScreenName" value="leftbar"/>
-                <set field="MainColumnStyle" value="leftonly"/>
+<!--     <screen name="category"> -->
+<!--         <section> -->
+<!--             <actions> -->
+<!--                 <set field="leftbarScreenName" value="leftbar"/> -->
+<!--                 <set field="MainColumnStyle" value="leftonly"/> -->
 
-                <set field="titleProperty" value="PageTitleCategoryPage"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/Category.groovy"/>
-            </actions>
-            <widgets>
-                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
-                    <decorator-section name="body">
-                        <include-screen name="breadcrumbs"/>
-                        <include-screen name="category-include"/>
-                    </decorator-section>
-                </decorator-screen>
-            </widgets>
-        </section>
-    </screen>
+<!--                 <set field="titleProperty" value="PageTitleCategoryPage"/> -->
+<!--                 <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/> -->
+<!--             </actions> -->
+<!--             <widgets> -->
+<!--                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}"> -->
+<!--                     <decorator-section name="body"> -->
+<!--                         <include-screen name="breadcrumbs"/> -->
+<!--                         <include-screen name="category-include"/> -->
+<!--                     </decorator-section> -->
+<!--                 </decorator-screen> -->
+<!--             </widgets> -->
+<!--         </section> -->
+<!--     </screen> -->
 
-    <screen name="category-include">
-        <section>
-            <widgets>
-                <section>
-                    <condition>
-                        <not><if-empty field="productCategory"/></not>
-                    </condition>
-                    <actions>
-                        <set field="detailScreen" default-value="component://productfromthailand/widget/CatalogScreens.xml#categorydetailmatrix"/>
-                    </actions>
-                    <widgets>
-                        <include-screen name="${detailScreen}"/>
-                    </widgets>
-                    <fail-widgets>
-                        <label style="head2">${uiLabelMap.ProductCategoryNotFoundForCategoryID} ${productCategoryId}!</label>
-                    </fail-widgets>
-                </section>
-            </widgets>
-        </section>
-    </screen>
+<!--     <screen name="category-include"> -->
+<!--         <section> -->
+<!--             <widgets> -->
+<!--                 <section> -->
+<!--                     <condition> -->
+<!--                         <not><if-empty field="productCategory"/></not> -->
+<!--                     </condition> -->
+<!--                     <actions> -->
+<!--                         <set field="detailScreen" default-value="component://productfromthailand/widget/CatalogScreens.xml#categorydetailmatrix"/> -->
+<!--                     </actions> -->
+<!--                     <widgets> -->
+<!--                         <include-screen name="${detailScreen}"/> -->
+<!--                     </widgets> -->
+<!--                     <fail-widgets> -->
+<!--                         <label style="head2">${uiLabelMap.ProductCategoryNotFoundForCategoryID} ${productCategoryId}!</label> -->
+<!--                     </fail-widgets> -->
+<!--                 </section> -->
+<!--             </widgets> -->
+<!--         </section> -->
+<!--     </screen> -->
 
     <screen name="categorydetail">
         <section>
@@ -235,7 +237,7 @@ under the License.
                 <set field="productsummaryScreen" value="component://productfromthailand/widget/CatalogScreens.xml#productsummary"/>
                 <set field="productCategoryLinkScreen" value="component://productfromthailand/widget/CatalogScreens.xml#ProductCategoryLink"/>
 
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/CategoryDetail.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
 
                 <entity-and entity-name="ProductCategoryLink" list="productCategoryLinks" use-cache="true" filter-by-date="true">
                     <field-map field-name="productCategoryId" from-field="productCategoryId"/>
@@ -298,7 +300,7 @@ under the License.
                 <set field="layoutSettings.javaScripts[]" value="/images/prototypejs/prototype.js" global="true"/>
                 <set field="layoutSettings.javaScripts[]" value="/ecommerce/images/productAdditionalView.js" global="true"/>
                 <set field="configproductdetailScreen" value="component://ecommerce/widget/CatalogScreens.xml#configproductdetail"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/Product.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/Product.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -324,7 +326,7 @@ under the License.
         <section>
             <actions>
                 <set field="productsummaryScreen" value="component://productfromthailand/widget/CatalogScreens.xml#productsummary"/>
-                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/ProductDetail.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/ProductDetail.groovy"/>
             </actions>
             <widgets>
                 <include-screen name="breadcrumbs"/>
@@ -336,10 +338,10 @@ under the License.
     <screen name="inlineProductDetail">
         <section>
             <actions>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/InlineProductDetail.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/InlineProductDetail.groovy"/>
             </actions>
             <widgets>
-                <platform-specific><html><html-template location="component://order/webapp/ordermgr/entry/catalog/inlineProductDetail.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://order/template/entry/catalog/InlineProductDetail.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
@@ -349,12 +351,12 @@ under the License.
             <actions>
                 <set field="productsummaryScreen" value="component://productfromthailand/widget/CatalogScreens.xml#productsummary"/>
                 <set field="inlineProductDetailScreen" value="component://ecommerce/widget/CatalogScreens.xml#inlineProductDetail"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/ProductDetail.groovy"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/PrepareConfigForm.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/PrepareConfigForm.groovy"/>
             </actions>
             <widgets>
                 <include-screen name="breadcrumbs"/>
-                <platform-specific><html><html-template location="component://ecommerce/webapp/ecommerce/catalog/configproductdetail.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/ConfigProductDetail.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
@@ -371,7 +373,7 @@ under the License.
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <platform-specific><html><html-template location="component://ecommerce/webapp/ecommerce/catalog/productreview.ftl"/></html></platform-specific>
+                        <platform-specific><html><html-template location="component://ecommerce/template/catalog/ProductReview.ftl"/></html></platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -390,7 +392,7 @@ under the License.
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <platform-specific><html><html-template location="component://ecommerce/webapp/ecommerce/catalog/lastviewedproducts.ftl"/></html></platform-specific>
+                        <platform-specific><html><html-template location="component://ecommerce/template/catalog/LastViewedProducts.ftl"/></html></platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -400,7 +402,7 @@ under the License.
     <screen name="detailImage">
         <section>
             <widgets>
-               <platform-specific><html><html-template location="component://ecommerce/webapp/ecommerce/catalog/detailImage.ftl"/></html></platform-specific>
+               <platform-specific><html><html-template location="component://ecommerce/template/catalog/DetailImage.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
@@ -414,7 +416,7 @@ under the License.
             </actions>
             <widgets>
                 <platform-specific>
-                    <html><html-template location="component://common/webcommon/includes/messages.ftl"/></html>
+                    <html><html-template location="component://common/template/includes/Messages.ftl"/></html>
                 </platform-specific>
                 <platform-specific>
                     <html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/tellafriend.ftl"/></html>
@@ -433,7 +435,7 @@ under the License.
                 <set field="quickaddsummaryScreen" value="component://ecommerce/widget/CatalogScreens.xml#quickaddsummary"/>
 
                 <set field="titleProperty" value="PageTitleQuickAdd"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/QuickAdd.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/QuickAdd.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -448,7 +450,7 @@ under the License.
     <screen name="quickaddsummary">
         <section>
             <actions>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/ProductSummary.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://order/webapp/ordermgr/entry/catalog/quickaddsummary.ftl"/></html></platform-specific>
@@ -467,12 +469,12 @@ under the License.
 
                 <set field="titleProperty" value="PageTitleSearchResults"/>
                 <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="10"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/KeywordSearch.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/KeywordSearchOptions.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <platform-specific><html><html-template location="component://order/webapp/ordermgr/entry/catalog/keywordsearch.ftl"/></html></platform-specific>
+                        <platform-specific><html><html-template location="component://order/template/entry/catalog/KeywordSearch.ftl"/></html></platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -488,7 +490,7 @@ under the License.
 
                 <set field="titleProperty" value="PageTitleAdvancedSearch"/>
                 <set field="headerItem" value="Advanced Search"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -505,7 +507,7 @@ under the License.
         <section>
             <actions>
                 <property-map resource="ProductFromThailandUiLabels" map-name="uiLabelMap" global="true"/>
-                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/MyProducts.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/MyProducts.groovy"/>
             </actions>
             <widgets>
                 <platform-specific>
@@ -587,81 +589,18 @@ under the License.
         <section>
             <actions>
                 <set field="titleProperty" value="PageTitleSearchResults"/>
-                <script location="component://product/webapp/catalog/WEB-INF/actions/find/keywordsearch.groovy"/>
+                <script location="component://product/groovyScripts/catalog/find/KeywordSearch.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="CommonFindDecorator">
                     <decorator-section name="body">
                         <platform-specific>
-                            <html><html-template location="component://product/webapp/catalog/find/keywordsearch.ftl"/></html>
+                            <html><html-template location="component://product/template/find/KeywordSearch.ftl"/></html>
                         </platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
         </section>
     </screen>
-    
-    <screen name="promocategorydetail">
-        <section>
-            <actions>
-                <set field="productsummaryScreen" value="component://productfromthailand/widget/CatalogScreens.xml#productsummary"/>
-                <set field="productCategoryLinkScreen" value="component://productfromthailand/widget/CatalogScreens.xml#ProductCategoryLink"/>
-                
-                <script location="component://productfromthailand/webapp/ecommerce/WEB-INF/actions/showPromoProduct.groovy"/>
-                
-                <entity-and entity-name="ProductCategoryLink" list="productCategoryLinks" use-cache="true" filter-by-date="true">
-                    <field-map field-name="productCategoryId" from-field="productCategoryId"/>
-                    <order-by field-name="sequenceNum"/>
-                </entity-and>
-            </actions>
-            <widgets>
-                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/categorydetail.ftl"/></html></platform-specific>
-            </widgets>
-        </section>
-    </screen>
-    
-    <screen name="productCategoryList">
-        <section>
-            <condition>
-                <if-empty field="parameters.mainSubmited"/>
-            </condition>
-            <actions>
-                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
-                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/catalog/Category.groovy"/>
-                <set field="check" type="PlainString" value="${groovy: return request.getAttribute('checkValue');}"/>
-            </actions>
-            <widgets>
-                <section>
-                    <condition>
-                        <if-compare operator="equals" value="check" field="check" type="PlainString"/>
-                    </condition>
-                    <widgets>
-                        <include-screen name="category"/>
-                    </widgets>
-                    <fail-widgets>
-                        <section>
-                            <condition>
-                                <if-empty field="category_id"/>
-                            </condition>
-                            <widgets>
-                                <include-screen name="newbreadcrumbs" share-scope="true" location="component://ecommerce/widget/CatalogScreens.xml"/>
-                            </widgets>
-                            <fail-widgets>
-                                <include-screen name="breadcrumbs" share-scope="true"/>
-                            </fail-widgets>
-                        </section>
-                        <include-screen name="category-include" share-scope="true"/>
-                    </fail-widgets>
-                </section>
-            </widgets>
-            <fail-widgets>
-                <section>
-                   <widgets>
-                        <include-screen name="category"/>
-                   </widgets>
-                </section>
-            </fail-widgets>
-        </section>
-    </screen>
+
 </screens>

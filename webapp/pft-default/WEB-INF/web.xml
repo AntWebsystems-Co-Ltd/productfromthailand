@@ -1,5 +1,4 @@
 <?xml version="1.0"?>
-<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <!--
 Licensed to the Apache Software Foundation (ASF) under one
@@ -21,16 +20,30 @@ under the License.
 -->
 
 <web-app>
-  <display-name>Open For Business - PFT Default Theme</display-name>
-  <description>PFT Default Theme</description>
+    <display-name>Open For Business - PFT Default Theme</display-name>
+    <description>PFT Default Theme</description>
 
-  <session-config>
-    <session-timeout>1</session-timeout>
-  </session-config>
+    <session-config>
+        <session-timeout>1</session-timeout>
+    </session-config>
 
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>main.jsp</welcome-file>
-  </welcome-file-list>
+    <filter>
+        <display-name>ControlFilter</display-name>
+        <filter-name>ControlFilter</filter-name>
+        <filter-class>org.apache.ofbiz.webapp.control.ControlFilter
+        </filter-class>
+        <init-param>
+            <param-name>allowedPaths</param-name>
+            <param-value>/error:/control:/products:/select:/index.html:/index.jsp:/robots.txt:/default.html:/default.jsp:/images:/fonts:/pftimages/fonts</param-value>
+        </init-param>
+        <init-param>
+            <param-name>redirectPath</param-name>
+            <param-value>/control/main</param-value>
+        </init-param>
+    </filter>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>main.jsp</welcome-file>
+    </welcome-file-list>
 
 </web-app>

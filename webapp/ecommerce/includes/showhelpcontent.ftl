@@ -17,12 +17,12 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<div class="screenlet">
+<div>
 <div style="margin:10px;">
 <#-- Do this so that we don't have to find the content twice (again in renderSubContent) -->
 <#assign subContentId=requestParameters.contentId?if_exists/>
 <#assign nodeTrailCsv=requestParameters.nodeTrailCsv?if_exists/>
-<#-- <#assign dummy=Static["org.ofbiz.base.util.Debug"].logInfo("in viewcontent, nodeTrailCsv:" + nodeTrailCsv, "")/> -->
+<#-- <#assign dummy=Static["org.apache.ofbiz.base.util.Debug"].logInfo("in viewcontent, nodeTrailCsv:" + nodeTrailCsv, "")/> -->
 <#if ancestorList?has_content && (0 < ancestorList?size) >
     <#assign lastContent=ancestorList?last />
     <#assign firstContent=ancestorList[0] />
@@ -44,9 +44,9 @@ under the License.
       <#assign subContent=lastNode.value/>
     </#if>
 <#else>
-    <#assign subContent = delegator.findByPrimaryKeyCache("Content", Static["org.ofbiz.base.util.UtilMisc"].toMap("contentId", subContentId))/>
+    <#assign subContent = delegator.findByPrimaryKeyCache("Content", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contentId", subContentId))/>
 </#if>
-<#assign dummy=Static["org.ofbiz.base.util.Debug"].logInfo("in viewcontent, subContent:" + subContent, "")/>
+<#assign dummy=Static["org.apache.ofbiz.base.util.Debug"].logInfo("in viewcontent, subContent:" + subContent, "")/>
 <br/>
 <#--h1>${uiLabelMap.EcommerceContentFor} [${subContentId}] ${subContent.contentName?if_exists} - ${subContent.description?if_exists}:</h1><br/-->
 <table border="0" class="blogtext">

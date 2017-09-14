@@ -181,7 +181,7 @@ function submitForm(form, mode, value) {
                       <input type="checkbox" name="checkOutPaymentId" value="${paymentMethod.paymentMethodId}" <#if cart.isPaymentSelected(paymentMethod.paymentMethodId)>checked</#if>>
                     </td>
                     <td width="1%" nowrap>
-                      <span class="tabletext">CC:&nbsp;${Static["org.ofbiz.party.contact.ContactHelper"].formatCreditCard(creditCard)}
+                      <span class="tabletext">CC:&nbsp;${Static["org.apache.ofbiz.party.contact.ContactHelper"].formatCreditCard(creditCard)}
                         <#if paymentMethod.description?has_content>(${paymentMethod.description})</#if>
                       </span>
                       <span class="tabletext" align="right">

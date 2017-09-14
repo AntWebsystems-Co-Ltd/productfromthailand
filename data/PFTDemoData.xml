@@ -7,9 +7,9 @@
     to you under the Apache License, Version 2.0 (the
     "License"); you may not use this file except in compliance
     with the License.  You may obtain a copy of the License at
-    
+
     http://www.apache.org/licenses/LICENSE-2.0
-    
+
     Unless required by applicable law or agreed to in writing,
     software distributed under the License is distributed on an
     "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -19,7 +19,7 @@
 -->
 
 <entity-engine-xml>
-    
+
     <!-- Start of GlAccount demo data -->
     <GlAccount parentGlAccountId="" glAccountId="100000" accountCode="100000"
     glAccountClassId="ASSET" glAccountTypeId="" glResourceTypeId="MONEY"
@@ -1484,7 +1484,7 @@ but they are grouped here for convenience purposes -->
   <GlAccount parentGlAccountId="900000" glAccountId="903000" accountCode="903000"
     glAccountClassId="NON_POSTING" glAccountTypeId="" glResourceTypeId="MONEY"
     accountName="LOCAL INCOME TAX" description="" postedBalance="0.0"/>
-    
+
     <GlAccountOrganization glAccountId="111100" organizationPartyId="pft" fromDate="2001-01-01 00:00:00.0" postedBalance="51263.22"/>
     <GlAccountOrganization glAccountId="112000" organizationPartyId="pft" fromDate="2001-01-01 00:00:00.0" postedBalance="20.00"/>
     <GlAccountOrganization glAccountId="120000" organizationPartyId="pft" fromDate="2001-01-01 00:00:00.0" postedBalance="159.96"/>
@@ -1507,7 +1507,7 @@ but they are grouped here for convenience purposes -->
     <GlAccountOrganization glAccountId="516100" organizationPartyId="pft" fromDate="2001-01-01 00:00:00.0" postedBalance="24.88"/>
     <GlAccountOrganization glAccountId="649000" organizationPartyId="pft" fromDate="2001-01-01 00:00:00.0" postedBalance="360.00"/>
     <GlAccountOrganization glAccountId="675400" organizationPartyId="pft" fromDate="2001-01-01 00:00:00.0" postedBalance="2500.00"/>
-    
+
     <GlAccountTypeDefault organizationPartyId="pft" glAccountTypeId="ACCOUNTS_RECEIVABLE" glAccountId="120000"/>
     <GlAccountTypeDefault organizationPartyId="pft" glAccountTypeId="ACCREC_UNAPPLIED" glAccountId="126000"/>
     <GlAccountTypeDefault organizationPartyId="pft" glAccountTypeId="INTRSTINC_RECEIVABLE" glAccountId="121800"/>
@@ -1530,7 +1530,7 @@ but they are grouped here for convenience purposes -->
     <GlAccountTypeDefault organizationPartyId="pft" glAccountTypeId="OPERATING_EXPENSE" glAccountId="600000"/>
     <GlAccountTypeDefault organizationPartyId="pft" glAccountTypeId="PROFIT_LOSS_ACCOUNT" glAccountId="850000"/>
     <GlAccountTypeDefault organizationPartyId="pft" glAccountTypeId="TAX_ACCOUNT" glAccountId="900000"/>
-    
+
     <!-- General Ledger Setup for the Product from Thailand company
     <GlAccountOrganization glAccountId="900000" organizationPartyId="pft" fromDate="2009-09-25 00:00:00.000"/>
     <GlAccountOrganization glAccountId="810000" organizationPartyId="pft" fromDate="2009-09-25 00:00:00.000"/>
@@ -1593,7 +1593,7 @@ but they are grouped here for convenience purposes -->
     <GlAccountOrganization glAccountId="111100" organizationPartyId="pft" fromDate="2009-09-25 00:00:00.000"/>
     <GlAccountOrganization glAccountId="111000" organizationPartyId="pft" fromDate="2009-09-25 00:00:00.000"/>
     <GlAccountOrganization glAccountId="100000" organizationPartyId="pft" fromDate="2009-09-25 00:00:00.000"/>
-     
+
     <GlAccountTypeDefault glAccountTypeId="TAX_ACCOUNT" organizationPartyId="pft" glAccountId="900000"/>
     <GlAccountTypeDefault glAccountTypeId="OPERATING_EXPENSE" organizationPartyId="pft" glAccountId="600000"/>
     <GlAccountTypeDefault glAccountTypeId="INV_ADJ_VAL" organizationPartyId="pft" glAccountId="515000"/>
@@ -1628,7 +1628,7 @@ but they are grouped here for convenience purposes -->
     <PaymentGlAccountTypeMap paymentTypeId="VENDOR_PREPAY" organizationPartyId="pft" glAccountTypeId="PREPAID_EXPENSES"/>
     <PaymentGlAccountTypeMap paymentTypeId="VENDOR_PAYMENT" organizationPartyId="pft" glAccountTypeId="ACCOUNTS_PAYABLE"/>
     <PaymentGlAccountTypeMap paymentTypeId="CUSTOMER_REFUND" organizationPartyId="pft" glAccountTypeId="CUSTOMER_CREDIT"/>
-    
+
     <PaymentMethodTypeGlAccount paymentMethodTypeId="EXT_WORLDPAY" organizationPartyId="pft" glAccountId="122500"/>
     <PaymentMethodTypeGlAccount paymentMethodTypeId="EXT_PAYPAL" organizationPartyId="pft" glAccountId="122500"/>
     <PaymentMethodTypeGlAccount paymentMethodTypeId="EXT_OFFLINE" organizationPartyId="pft" glAccountId="112000"/>
@@ -1644,7 +1644,7 @@ but they are grouped here for convenience purposes -->
     <PaymentMethodTypeGlAccount paymentMethodTypeId="EFT_ACCOUNT" organizationPartyId="pft" glAccountId="111100"/>
     <PaymentMethodTypeGlAccount paymentMethodTypeId="CASH" organizationPartyId="pft" glAccountId="112000"/>
     <PaymentMethodTypeGlAccount paymentMethodTypeId="GIFT_CERTIFICATE" organizationPartyId="pft" glAccountId="120000"/>
-    
+
     <CreditCardTypeGlAccount cardType="AmericanExpress" organizationPartyId="pft" glAccountId="122100"/>
     <CreditCardTypeGlAccount cardType="CCT_AMERICANEXPRESS" organizationPartyId="pft" glAccountId="122100"/>
     <CreditCardTypeGlAccount cardType="CCT_DINERSCLUB" organizationPartyId="pft" glAccountId="122100"/>
@@ -1655,12 +1655,12 @@ but they are grouped here for convenience purposes -->
     <CreditCardTypeGlAccount cardType="Discover" organizationPartyId="pft" glAccountId="122200"/>
     <CreditCardTypeGlAccount cardType="MasterCard" organizationPartyId="pft" glAccountId="122300"/>
     <CreditCardTypeGlAccount cardType="Visa" organizationPartyId="pft" glAccountId="122300"/>
-    
+
     <FinAccountTypeGlAccount finAccountTypeId="INVESTMENT_ACCOUNT" organizationPartyId="pft" glAccountId="213500"/>
     <FinAccountTypeGlAccount finAccountTypeId="BANK_ACCOUNT" organizationPartyId="pft" glAccountId="213500"/>
     <FinAccountTypeGlAccount finAccountTypeId="DEPOSIT_ACCOUNT" organizationPartyId="pft" glAccountId="213500"/>
     <FinAccountTypeGlAccount finAccountTypeId="GIFTCERT_ACCOUNT" organizationPartyId="pft" glAccountId="213200"/>
-    
+
     <VarianceReasonGlAccount varianceReasonId="VAR_SAMPLE" organizationPartyId="pft" glAccountId="625000"/>
     <VarianceReasonGlAccount varianceReasonId="VAR_INTEGR" organizationPartyId="pft" glAccountId="514000"/>
     <VarianceReasonGlAccount varianceReasonId="VAR_DAMAGED" organizationPartyId="pft" glAccountId="514000"/>
@@ -1670,7 +1670,7 @@ but they are grouped here for convenience purposes -->
     <!-- End of General Ledger Setup for Product from Thailand company -->
 
     <!--<ProductStoreCatalog productStoreId="PFTSTORE" prodCatalogId="DemoCatalog" fromDate="2009-09-25 10:38:07.561"/>-->
-    <WebSite webSiteId="PFT" standardContentPrefix="http://productfromthailandbackend.ofbizdemo.com" secureContentPrefix="https://productfromthailandbackend.ofbizdemo.com" httpHost="productfromthailand.ofbizdemo.com" httpsHost="productfromthailand.ofbizdemo.com"/>
+     <WebSite enableHttps="Y" httpHost="localhost" httpPort="8080" httpsHost="localhost" httpsPort="8443" productStoreId="PFTSTORE" secureContentPrefix="https://localhost:8443" siteName="Product from Thailand EN website" standardContentPrefix="http://localhost:8080" visualThemeSetId="ECOMMERCE" webSiteId="PFT"/>
 
     <!--<ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_BILLACT" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
     <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_OFFLINE" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
@@ -1685,7 +1685,7 @@ but they are grouped here for convenience purposes -->
     <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_CAPTURE" paymentService="testCCCapture" paymentCustomMethodId="CC_CAPTURE_TEST"/>
     <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_RELEASE" paymentService="testCCRelease" paymentCustomMethodId="CC_RELEASE_TEST"/>
     <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_AUTH" paymentService="alwaysApproveCCProcessor" paymentCustomMethodId="CC_AUTH_ALWAYSAPPROV"/>-->
-    
+
     <ShipmentMethodType description="No Shipping" shipmentMethodTypeId="NO_SHIPPING"/>
     <ShipmentMethodType description="Local Delivery" shipmentMethodTypeId="LOCAL_DELIVERY"/>
     <ShipmentMethodType description="Ground Home Delivery" shipmentMethodTypeId="GROUND_HOME"/>
@@ -1729,7 +1729,7 @@ but they are grouped here for convenience purposes -->
     <CarrierShipmentMethod partyId="FEDEX" roleTypeId="CARRIER" shipmentMethodTypeId="EXPRESS" sequenceNumber="17" carrierServiceCode="FEDEXEXPRESSSAVER"/>
     <CarrierShipmentMethod partyId="FEDEX" roleTypeId="CARRIER" shipmentMethodTypeId="GROUND" sequenceNumber="18" carrierServiceCode="FEDEXGROUND"/>
     <CarrierShipmentMethod partyId="FEDEX" roleTypeId="CARRIER" shipmentMethodTypeId="GROUND_HOME" sequenceNumber="19" carrierServiceCode="GROUNDHOMEDELIVERY"/>
-    
+
     <!-- ProductStoreShipmentMeth for PFTSTORE -->
     <ProductStoreShipmentMeth productStoreShipMethId="9000" productStoreId="PFTSTORE" partyId="_NA_" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="NO_SHIPPING" sequenceNumber="6"/>
     <ProductStoreShipmentMeth productStoreShipMethId="9001" productStoreId="PFTSTORE" partyId="UPS" includeNoChargeItems="N" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="GROUND" sequenceNumber="3"/>
@@ -1748,7 +1748,7 @@ but they are grouped here for convenience purposes -->
     <ProductStoreShipmentMeth productStoreShipMethId="9014" productStoreId="PFTSTORE" partyId="FEDEX" includeNoChargeItems="N" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="EXPRESS" sequenceNumber="15"/>
     <ProductStoreShipmentMeth productStoreShipMethId="9015" productStoreId="PFTSTORE" partyId="FEDEX" includeNoChargeItems="N" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="GROUND" sequenceNumber="16"/>
     <ProductStoreShipmentMeth productStoreShipMethId="9016" productStoreId="PFTSTORE" partyId="FEDEX" includeNoChargeItems="N" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="GROUND_HOME" sequenceNumber="17"/>
-    
+
     <QuantityBreak fromQuantity="0.0" quantityBreakId="9000" quantityBreakTypeId="SHIP_WEIGHT" thruQuantity="0.0"/>
     <QuantityBreak fromQuantity="0.0" quantityBreakId="9001" quantityBreakTypeId="SHIP_WEIGHT" thruQuantity="0.0"/>
     <QuantityBreak fromQuantity="0.0" quantityBreakId="9002" quantityBreakTypeId="SHIP_WEIGHT" thruQuantity="0.0"/>
@@ -1759,7 +1759,7 @@ but they are grouped here for convenience purposes -->
     <QuantityBreak fromQuantity="0.0" quantityBreakId="9007" quantityBreakTypeId="SHIP_WEIGHT" thruQuantity="0.0"/>
     <QuantityBreak fromQuantity="0.0" quantityBreakId="9008" quantityBreakTypeId="SHIP_WEIGHT" thruQuantity="0.0"/>
     <QuantityBreak fromQuantity="0.0" quantityBreakId="9009" quantityBreakTypeId="SHIP_WEIGHT" thruQuantity="0.0"/>
-    
+
     <!-- ShipmentCostEstimate for PFTSTORE -->
     <ShipmentCostEstimate productStoreId="PFTSTORE" orderFlatPrice="5.0" orderItemFlatPrice="0.0" carrierPartyId="pft" carrierRoleTypeId="CARRIER" orderPricePercent="0.0" shipmentCostEstimateId="9002" shipmentMethodTypeId="LOCAL_DELIVERY"/>
     <ShipmentCostEstimate productStoreShipMethId="9002" productStoreId="PFTSTORE" orderFlatPrice="5.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="9000" shipmentMethodTypeId="AIR" carrierPartyId="UPS" carrierRoleTypeId="CARRIER" weightBreakId="9000" weightUnitPrice="0.2"/>
@@ -1778,7 +1778,7 @@ but they are grouped here for convenience purposes -->
     <ShipmentCostEstimate productStoreShipMethId="9014" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="9207" shipmentMethodTypeId="EXPRESS" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER"/>
     <ShipmentCostEstimate productStoreShipMethId="9015" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="9208" shipmentMethodTypeId="GROUND" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER"/>
     <ShipmentCostEstimate productStoreShipMethId="9016" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="9209" shipmentMethodTypeId="GROUND_HOME" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER"/>
-    
+
 <!--    <ShipmentCostEstimate productStoreId="PFTSTORE" orderFlatPrice="5.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="19000" shipmentMethodTypeId="AIR" carrierPartyId="UPS" carrierRoleTypeId="CARRIER" weightBreakId="9100" weightUnitPrice="0.2"/>-->
 <!--    <ShipmentCostEstimate productStoreId="PFTSTORE" orderFlatPrice="3.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="19001" shipmentMethodTypeId="GROUND" carrierPartyId="UPS" carrierRoleTypeId="CARRIER" weightBreakId="9101" weightUnitPrice="0.1"/>-->
 <!--    <ShipmentCostEstimate productStoreId="PFTSTORE" orderFlatPrice="5.0" orderItemFlatPrice="0.0" carrierPartyId="Company" carrierRoleTypeId="CARRIER" orderPricePercent="0.0" shipmentCostEstimateId="19002" shipmentMethodTypeId="LOCAL_DELIVERY"/>-->
@@ -1796,19 +1796,18 @@ but they are grouped here for convenience purposes -->
 <!--    <ShipmentCostEstimate productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="19207" shipmentMethodTypeId="EXPRESS" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER"/>-->
 <!--    <ShipmentCostEstimate productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="19208" shipmentMethodTypeId="GROUND" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER"/>-->
 <!--    <ShipmentCostEstimate productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="19209" shipmentMethodTypeId="GROUND_HOME" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER"/>-->
-    
-    
-    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD100" periodTypeId="FISCAL_YEAR" fromDate="2009-01-01" thruDate="2009-12-31" isClosed="N" periodNum="1" periodName="2009"/>
-    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD101" periodTypeId="FISCAL_QUARTER" fromDate="2009-01-01" thruDate="2009-04-01" isClosed="N" periodNum="1" periodName="2009/Q1" parentPeriodId="PFTPERIOD100"/>
-    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD101" periodTypeId="FISCAL_QUARTER" fromDate="2009-04-01" thruDate="2009-07-01" isClosed="N" periodNum="2" periodName="2009/Q2" parentPeriodId="PFTPERIOD100"/>
-    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD103" periodTypeId="FISCAL_QUARTER" fromDate="2009-07-01" thruDate="2009-10-01" isClosed="N" periodNum="3" periodName="2009/Q3" parentPeriodId="PFTPERIOD100"/>
-    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD104" periodTypeId="FISCAL_QUARTER" fromDate="2009-10-01" thruDate="2010-01-01" isClosed="N" periodNum="4" periodName="2009/Q4" parentPeriodId="PFTPERIOD100"/>
-    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD200" periodTypeId="FISCAL_YEAR" fromDate="2010-01-01" thruDate="2010-12-31" isClosed="N" periodNum="2" periodName="2010"/>
-    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD201" periodTypeId="FISCAL_QUARTER" fromDate="2010-01-01" thruDate="2010-04-01" isClosed="N" periodNum="1" periodName="2010/Q1" parentPeriodId="PFTPERIOD200"/>
-    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD202" periodTypeId="FISCAL_QUARTER" fromDate="2010-04-01" thruDate="2010-07-01" isClosed="N" periodNum="2" periodName="2010/Q2" parentPeriodId="PFTPERIOD200"/>
-    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD203" periodTypeId="FISCAL_QUARTER" fromDate="2010-07-01" thruDate="2010-10-01" isClosed="N" periodNum="3" periodName="2010/Q3" parentPeriodId="PFTPERIOD200"/>
-    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD204" periodTypeId="FISCAL_QUARTER" fromDate="2010-10-01" thruDate="2011-01-01" isClosed="N" periodNum="4" periodName="2010/Q4" parentPeriodId="PFTPERIOD200"/>
-    
+
+    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD100" periodTypeId="FISCAL_YEAR" fromDate="2009-01-01 00:00:00.000" thruDate="2009-12-31 23:59:59.000" isClosed="N" periodNum="1" periodName="2009"/>
+    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD101" periodTypeId="FISCAL_QUARTER" fromDate="2009-01-01 00:00:00.000" thruDate="2009-04-01 23:59:59.000" isClosed="N" periodNum="1" periodName="2009/Q1" parentPeriodId="PFTPERIOD100"/>
+    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD101" periodTypeId="FISCAL_QUARTER" fromDate="2009-04-01 00:00:00.000" thruDate="2009-07-01 23:59:59.000" isClosed="N" periodNum="2" periodName="2009/Q2" parentPeriodId="PFTPERIOD100"/>
+    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD103" periodTypeId="FISCAL_QUARTER" fromDate="2009-07-01 00:00:00.000" thruDate="2009-10-01 23:59:59.000" isClosed="N" periodNum="3" periodName="2009/Q3" parentPeriodId="PFTPERIOD100"/>
+    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD104" periodTypeId="FISCAL_QUARTER" fromDate="2009-10-01 00:00:00.000" thruDate="2010-01-01 23:59:59.000" isClosed="N" periodNum="4" periodName="2009/Q4" parentPeriodId="PFTPERIOD100"/>
+    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD200" periodTypeId="FISCAL_YEAR" fromDate="2010-01-01 00:00:00.000" thruDate="2010-12-31 23:59:59.000" isClosed="N" periodNum="2" periodName="2010"/>
+    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD201" periodTypeId="FISCAL_QUARTER" fromDate="2010-01-01 00:00:00.000" thruDate="2010-04-01 23:59:59.000" isClosed="N" periodNum="1" periodName="2010/Q1" parentPeriodId="PFTPERIOD200"/>
+    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD202" periodTypeId="FISCAL_QUARTER" fromDate="2010-04-01 00:00:00.000" thruDate="2010-07-01 23:59:59.000" isClosed="N" periodNum="2" periodName="2010/Q2" parentPeriodId="PFTPERIOD200"/>
+    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD203" periodTypeId="FISCAL_QUARTER" fromDate="2010-07-01 00:00:00.000" thruDate="2010-10-01 23:59:59.000" isClosed="N" periodNum="3" periodName="2010/Q3" parentPeriodId="PFTPERIOD200"/>
+    <CustomTimePeriod organizationPartyId="pft" customTimePeriodId="PFTPERIOD204" periodTypeId="FISCAL_QUARTER" fromDate="2010-10-01 00:00:00.000" thruDate="2011-01-01 23:59:59.000" isClosed="N" periodNum="4" periodName="2010/Q4" parentPeriodId="PFTPERIOD200"/>
+
     <Party partyId="admin" partyTypeId="PERSON"/>
     <PartyRole partyId="admin" roleTypeId="EMAIL_ADMIN"/>
     <PartyRole partyId="admin" roleTypeId="BUYER"/>
@@ -1819,40 +1818,40 @@ but they are grouped here for convenience purposes -->
     <PartyRole partyId="admin" roleTypeId="_NA_"/>
     <PartyRelationship partyIdFrom="admin" roleTypeIdFrom="EMAIL_ADMIN" partyIdTo="pft" roleTypeIdTo="_NA_" fromDate="2009-01-01 00:00:00.0"/>
     <UserLogin userLoginId="admin" partyId="admin"/>
-    
+
     <ContactMech contactMechId="admin" contactMechTypeId="EMAIL_ADDRESS" infoString="admin@productfromthailand.com"/>
     <PartyContactMech partyId="admin" contactMechId="admin" fromDate="2009-01-01 00:00:00.0" allowSolicitation="Y"/>
     <PartyContactMechPurpose contactMechPurposeTypeId="PRIMARY_EMAIL" partyId="admin" contactMechId="admin" fromDate="2009-01-01 00:00:00.0"/>
-    
+
     <Party partyId="system" partyTypeId="PERSON"/>
     <Person partyId="system" firstName="System" lastName="Account"/>
     <PartyRole partyId="system" roleTypeId="PACKER"/>
     <UserLogin userLoginId="system" partyId="system"/>
     <UserLogin userLoginId="system" enabled="N" isSystem="Y"/>
-    
+
     <!-- Create Marketing, Support party -->
     <Party partyId="MARKETING" partyTypeId="PARTY_GROUP"/>
     <Party partyId="SUPPORT" partyTypeId="PARTY_GROUP"/>
-    
+
     <PartyGroup partyId="MARKETING" groupName="Marketing department"/>
     <PartyGroup partyId="SUPPORT" groupName="Support department"/>
-    
+
     <PartyRole partyId="MARKETING" roleTypeId="INTERNAL_ORGANIZATIO"/>
     <PartyRole partyId="MARKETING" roleTypeId="_NA_"/>
     <PartyRole partyId="SUPPORT" roleTypeId="INTERNAL_ORGANIZATIO"/>
     <PartyRole partyId="SUPPORT" roleTypeId="_NA_"/>
-    
+
     <ContactMech contactMechId="MARKETING" contactMechTypeId="EMAIL_ADDRESS" infoString="sales@productfromthailand.com"/>
     <PartyContactMech partyId="MARKETING" contactMechId="MARKETING" fromDate="2003-01-01 00:00:00.0" allowSolicitation="Y"/>
     <PartyContactMechPurpose contactMechPurposeTypeId="PRIMARY_EMAIL" partyId="MARKETING" contactMechId="MARKETING" fromDate="2009-01-01 00:00:00.0"/>
-    
+
     <ContactMech contactMechId="SUPPORT" contactMechTypeId="EMAIL_ADDRESS" infoString="support@productfromthailand.com"/>
     <PartyContactMech partyId="SUPPORT" contactMechId="SUPPORT" fromDate="2003-01-01 00:00:00.0" allowSolicitation="Y"/>
     <PartyContactMechPurpose contactMechPurposeTypeId="PRIMARY_EMAIL" partyId="SUPPORT" contactMechId="SUPPORT" fromDate="2009-01-01 00:00:00.0"/>
-    
+
     <PartyRelationship partyIdFrom="pft" partyIdTo="MARKETING" partyRelationshipTypeId="GROUP_ROLLUP" roleTypeIdFrom="_NA_" roleTypeIdTo="_NA_" fromDate="2009-01-01 00:00:00.0"/>
     <PartyRelationship partyIdFrom="pft" partyIdTo="SUPPORT" partyRelationshipTypeId="GROUP_ROLLUP" roleTypeIdFrom="_NA_" roleTypeIdTo="_NA_" fromDate="2009-01-01 00:00:00.0"/>
-    
+
     <!-- Assign new party as admin then she can read Marketing EMail and Company EMail -->
     <Party partyId="tukkata" partyTypeId="PERSON"/>
     <Person partyId="tukkata" firstName="Supatthra" lastName="Techathep"/>
@@ -1861,11 +1860,11 @@ but they are grouped here for convenience purposes -->
     <PartyRelationship partyIdFrom="tukkata" roleTypeIdFrom="EMAIL_ADMIN" partyIdTo="MARKETING" roleTypeIdTo="_NA_" fromDate="2009-01-01 00:00:00.0"/>
     <!-- allow tukkata to read Company EMail -->
     <PartyRelationship partyIdFrom="tukkata" roleTypeIdFrom="EMAIL_ADMIN" partyIdTo="pft" roleTypeIdTo="_NA_" fromDate="2009-01-01 00:00:00.0"/>
-    
+
     <UserLogin userLoginId="tukkata" partyId="tukkata"/>
     <UserLogin userLoginId="tukkata" currentPassword="{SHA}47ca69ebb4bdc9ae0adec130880165d2cc05db1a" passwordHint=""/>
-    <UserLoginSecurityGroup groupId="FULLADMIN" userLoginId="tukkata" fromDate="2001-01-01 12:00:00.0"/>
-    
+    <UserLoginSecurityGroup groupId="SUPER" userLoginId="tukkata" fromDate="2001-01-01 12:00:00.0"/>
+
     <ContactList contactListId="PFT0001" contactListTypeId="ANNOUNCEMENT" contactMechTypeId="EMAIL_ADDRESS" marketingCampaignId=""
         contactListName="Product From Thailand Announcements" description="Product From Thailand Announcements Mailing List (email)" comments="" isPublic="Y" ownerPartyId="pft"
         verifyEmailFrom="" verifyEmailScreen=""
@@ -1877,24 +1876,24 @@ but they are grouped here for convenience purposes -->
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_ODR_CHANGE" bodyScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#OrderChangeNotice" subject="Product From Thailand - Order Change Notification #${orderId}" fromAddress="info@productfromthailand.com"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_ODR_PAYRETRY" bodyScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#PaymentRetryNotice" subject="Product From Thailand - Order Payment Notification #${orderId}" fromAddress="info@productfromthailand.com"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_ODR_SHIP_COMPLT" bodyScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#ShipmentCompleteNotice" subject="Product From Thailand - Shipment Complete Notification #${orderId}" fromAddress="info@productfromthailand.com"/>
-    
+
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_TELL_FRIEND" bodyScreenLocation="component://ecommerce/widget/EmailProductScreens.xml#TellFriend" subject="${sendFrom} has sent you a link!" fromAddress="info@productfromthailand.com"/>
-    
+
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_PWD_RETRIEVE" bodyScreenLocation="component://securityext/widget/EmailSecurityScreens.xml#PasswordEmail" subject="Product From Thailand - Password Reminder (${userLogin.userLoginId})" fromAddress="info@productfromthailand.com"/>
-    
+
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PARTY_REGIS_CONFIRM" bodyScreenLocation="component://party/widget/partymgr/EmailPartyScreens.xml#CreatePartyNotification" subject="New Account Created" bccAddress="info@productfromthailand.com" fromAddress="info@productfromthailand.com"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_CUST_REGISTER" bodyScreenLocation="component://party/widget/partymgr/EmailPartyScreens.xml#CreatePartyNotification" subject="New Account Created" bccAddress="info@productfromthailand.com" fromAddress="info@productfromthailand.com"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="UPD_PRSNL_INF_CNFRM" bodyScreenLocation="component://party/widget/partymgr/EmailPartyScreens.xml#ChangePersonalInfoNotification" subject="Personal Information Updated" bccAddress="info@productfromthailand.com" fromAddress="info@productfromthailand.com"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_EMAIL_VERIFY" bodyScreenLocation="component://party/widget/partymgr/EmailPartyScreens.xml#VerifyEmailAddressNotification" subject="Email Address Verification" bccAddress="info@productfromthailand.com" fromAddress="info@productfromthailand.com"/>
-    
+
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="CONT_NOTI_EMAIL" bodyScreenLocation="component://ecommerce/widget/EmailContactListScreens.xml#ContactUsEmailNotification" subject="Contact-us Information Notification" fromAddress="info@productfromthailand.com" />
-    
+
     <Enumeration description="Party Group Registration Confirmation" enumCode="PARTYGRP_REGIS" enumId="PARTYGRP_REGISTER" sequenceId="06" enumTypeId="PARTY_EMAIL"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PARTYGRP_REGISTER" bodyScreenLocation="component://productfromthailand/widget/EmailScreens.xml#CreatePartyGroupNotification" subject="New Account Created" bccAddress="info@productfromthailand.com" fromAddress="info@productfromthailand.com"/>
-    
+
     <Enumeration description="Purchase Order Confirmation" enumCode="PRCHS_ODR_CONFIRM" enumId="PRCHS_ODR_CONFIRM" sequenceId="01" enumTypeId="PARTY_EMAIL"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRCHS_ODR_CONFIRM" bodyScreenLocation="component://productfromthailand/widget/EmailScreens.xml#NewPurchaseOrderNotice" subject="You have got a new purchase order from a customer #${orderId}" bccAddress="info@productfromthailand.com" fromAddress="info@productfromthailand.com"/>
-    
+
     <!-- to convert product price -->
     <UomConversionDated uomId="USD" uomIdTo="EUR" fromDate="2011-01-01 00:00:00.0" conversionFactor="0.7" roundingMode="HalfUp" decimalScale="2"/>
     <UomConversionDated uomId="EUR" uomIdTo="USD" fromDate="2011-01-01 00:00:00.0" conversionFactor="1.428" roundingMode="HalfUp" decimalScale="2"/>
@@ -1902,10 +1901,10 @@ but they are grouped here for convenience purposes -->
     <UomConversionDated uomId="USD" uomIdTo="THB" fromDate="2011-01-01 00:00:00.0" conversionFactor="30" roundingMode="HalfUp" decimalScale="2"/>
     <UomConversionDated uomId="THB" uomIdTo="EUR" fromDate="2011-01-01 00:00:00.0" conversionFactor="0.023" roundingMode="HalfUp" decimalScale="2"/>
     <UomConversionDated uomId="THB" uomIdTo="USD" fromDate="2011-01-01 00:00:00.0" conversionFactor="0.033" roundingMode="HalfUp" decimalScale="2"/>
-    
+
     <!-- Google Base Configuration Data -->
     <WebSite webSiteId="GOOGLEBASE" standardContentPrefix="http://www.productfromthailand.com" productStoreId="PFTSTORE"/>
     <GoogleBaseConfig productStoreId="PFTSTORE" developerKey="ABQIAAAAtllOIMnA_SSaX6-q_-0NqBQ7yogk7ltS6O8c1NB_asTLHULnfxRsRVBa5bgcryXeo0AOht5OtQ78_Q" authenticationUrl="https://www.google.com/accounts/ClientLogin" accountEmail="admin@productfromthailand.com" accountPassword="pft44444" postItemsUrl="http://www.google.com/base/feeds/items/batch" webSiteId="PFT"/>
-    
-    <ProductStoreCatalog productStoreId="PFTSTORE" prodCatalogId="PFTCatalog" fromDate="2011-08-15 00:00:00.000" sequenceNum="1"/>
+
+<!--     <ProductStoreCatalog productStoreId="PFTSTORE" prodCatalogId="PFTCatalog" fromDate="2011-08-15 00:00:00.000" sequenceNum="1"/> -->
 </entity-engine-xml>

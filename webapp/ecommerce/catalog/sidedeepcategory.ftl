@@ -22,13 +22,15 @@ under the License.
 
 <#-- looping macro -->
 <#macro categoryList parentCategory category wrapInBox>
-  <#if catContentWrappers?exists && catContentWrappers[category.productCategoryId]?exists && catContentWrappers[category.productCategoryId].get("CATEGORY_NAME")?exists>
-      <#assign categoryName = catContentWrappers[category.productCategoryId].get("CATEGORY_NAME")>
+  <#if catContentWrappers?? && catContentWrappers[category.productCategoryId]?? &&
+      catContentWrappers[category.productCategoryId].get("CATEGORY_NAME", "html")??>
+      <#assign categoryName = catContentWrappers[category.productCategoryId].get("CATEGORY_NAME", "html")>
   <#else>
       <#assign categoryName = category.categoryName?if_exists>
   </#if>
-  <#if catContentWrappers?exists && catContentWrappers[category.productCategoryId]?exists && catContentWrappers[category.productCategoryId].get("DESCRIPTION")?exists>
-      <#assign categoryDescription = catContentWrappers[category.productCategoryId].get("DESCRIPTION")>
+  <#if catContentWrappers?? && catContentWrappers[category.productCategoryId]?? &&
+      catContentWrappers[category.productCategoryId].get("DESCRIPTION", "html")??>
+    <#assign categoryDescription = catContentWrappers[category.productCategoryId].get("DESCRIPTION", "html")>
   <#else>
       <#assign categoryDescription = category.description?if_exists>
   </#if>
@@ -49,10 +51,10 @@ under the License.
           <#else>
             <#assign parentCategoryId = ""/>
           </#if>
-          <a href="${Static["org.ofbiz.product.category.CatalogUrlServlet"].makeCatalogUrl(request, "", category.productCategoryId, parentCategoryId)}" class="${browseCategoryButtonClass}"><#if categoryName?has_content>${categoryName}<#else>${categoryDescription?default("")}</#if></a>
+          <a href="${Static["org.apache.ofbiz.product.category.CatalogUrlServlet"].makeCatalogUrl(request, "", category.productCategoryId, parentCategoryId)}" class="${browseCategoryButtonClass}"><#if categoryName?has_content>${categoryName}<#else>${categoryDescription?default("")}</#if></a>
 
-  <#if (Static["org.ofbiz.product.category.CategoryWorker"].checkTrailItem(request, category.getString("productCategoryId"))) || (curCategoryId?exists && curCategoryId == category.productCategoryId)>
-    <#local subCatList = Static["org.ofbiz.product.category.CategoryWorker"].getRelatedCategoriesRet(request, "subCatList", category.getString("productCategoryId"), true)>
+  <#if (Static["org.apache.ofbiz.product.category.CategoryWorker"].checkTrailItem(request, category.getString("productCategoryId"))) || (curCategoryId?exists && curCategoryId == category.productCategoryId)>
+    <#local subCatList = Static["org.apache.ofbiz.product.category.CategoryWorker"].getRelatedCategoriesRet(request, "subCatList", category.getString("productCategoryId"), true)>
     <#if subCatList?exists>
       <#list subCatList as subCat>
         <ul class="browsecategorylist">

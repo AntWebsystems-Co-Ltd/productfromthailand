@@ -26,12 +26,12 @@ under the License.
         <#local previousCategoryId = parentCategory.productCategoryId />
     </#if>
   <#--if parentCategory.productCategoryId != category.productCategoryId>
-    <#assign categoryUrl = Static["org.ofbiz.product.category.CatalogUrlServlet"].makeCatalogUrl(request, "", category.productCategoryId, parentCategory.productCategoryId) />
+    <#assign categoryUrl = Static["org.apache.ofbiz.product.category.CatalogUrlServlet"].makeCatalogUrl(request, "", category.productCategoryId, parentCategory.productCategoryId) />
   <#else>
-    <#assign categoryUrl = Static["org.ofbiz.product.category.CatalogUrlServlet"].makeCatalogUrl(request, "", category.productCategoryId, "") />
+    <#assign categoryUrl = Static["org.apache.ofbiz.product.category.CatalogUrlServlet"].makeCatalogUrl(request, "", category.productCategoryId, "") />
   </#if-->
 
-  <#if (Static["org.ofbiz.product.category.CategoryWorker"].checkTrailItem(request, category.getString("productCategoryId"))) || (curCategoryId?exists && curCategoryId == category.productCategoryId)>
+  <#if (Static["org.apache.ofbiz.product.category.CategoryWorker"].checkTrailItem(request, category.getString("productCategoryId"))) || (curCategoryId?exists && curCategoryId == category.productCategoryId)>
     <li>>></li>
     <li>
     <#if catContentWrappers?exists && catContentWrappers[category.productCategoryId]?exists>
@@ -46,7 +46,7 @@ under the License.
       </a>
     </#if>
     </li>
-    <#local subCatList = Static["org.ofbiz.product.category.CategoryWorker"].getRelatedCategoriesRet(request, "subCatList", category.getString("productCategoryId"), true)>
+    <#local subCatList = Static["org.apache.ofbiz.product.category.CategoryWorker"].getRelatedCategoriesRet(request, "subCatList", category.getString("productCategoryId"), true)>
     <#if subCatList?exists>
       <#list subCatList as subCat>
          <@categoryList parentCategory=category category=subCat/>

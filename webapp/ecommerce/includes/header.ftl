@@ -16,16 +16,6 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<script type="text/javascript">
-    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-    try {
-        var pageTracker = _gat._getTracker("UA-11027029-1");
-        pageTracker._trackPageview();
-    } catch(err) {}
-</script>
 
 <center>
 <div id="ecom-header">
@@ -67,7 +57,7 @@ under the License.
                 <a href="<@ofbizUrl>setSessionLocale?newLocale=th</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pft-default/pftimages/flags/th.png</@ofbizContentUrl>" alt="Thai"/></a>
             </#if>
             </ul>
-            <#--assign availableLocales = Static["org.ofbiz.base.util.UtilMisc"].availableLocales()/>
+            <#--assign availableLocales = Static["org.apache.ofbiz.base.util.UtilMisc"].availableLocales()/>
             <#list availableLocales as availableLocale>
                 <#if locale.toString() == availableLocale.toString()>
                     <#if locale.toString() == "en">
@@ -136,23 +126,21 @@ under the License.
       <div class="rightcorner">&nbsp;</div><div style="clear:both;"/>
       <div class="whitespace">
             <#if requestAttributes._CURRENT_VIEW_?has_content>
-                        <#if requestAttributes._CURRENT_VIEW_ == "main"><#assign headerId= "home"></#if>
-                        <#if requestAttributes._CURRENT_VIEW_ == "products"><#assign headerId= "products"></#if>
-                        <#if requestAttributes._CURRENT_VIEW_ == "services"><#assign headerId= "services"></#if>
-                        <#if requestAttributes._CURRENT_VIEW_ == "partner"><#assign headerId= "partner"></#if>
-                        <#if requestAttributes._CURRENT_VIEW_ == "aboutus"><#assign headerId= "aboutus"></#if>
-                        <#if requestAttributes._CURRENT_VIEW_ == "contactus"><#assign headerId= "contactus"></#if>
-                        <#if requestAttributes._CURRENT_VIEW_ == "showcart"><#assign headerId= "showcart"></#if>
+                <#if requestAttributes._CURRENT_VIEW_ == "main"><#assign headerId= "home"></#if>
+                <#if requestAttributes._CURRENT_VIEW_ == "services"><#assign headerId= "services"></#if>
+                <#if requestAttributes._CURRENT_VIEW_ == "partner"><#assign headerId= "partner"></#if>
+                <#if requestAttributes._CURRENT_VIEW_ == "aboutus"><#assign headerId= "aboutus"></#if>
+                <#if requestAttributes._CURRENT_VIEW_ == "contactus"><#assign headerId= "contactus"></#if>
+                <#if requestAttributes._CURRENT_VIEW_ == "showcart"><#assign headerId= "showcart"></#if>
            </#if>
       <div id="menubar">
             <ul id="right-links">
               <!-- NOTE: these are in reverse order because they are stacked right to left instead of left to right -->
               <li class="headermenu" <#if headerId?if_exists == "home">id="${headerId}"</#if> ><a href="<@ofbizUrl>main</@ofbizUrl>">${uiLabelMap.PFTHome}</a></li>
-              <li class="headermenu" <#if headerId?if_exists == "products">id="${headerId}"</#if> ><a href="<@ofbizUrl>products</@ofbizUrl>">${uiLabelMap.PFTProducts}</a></li>
               <li class="headermenu" <#if headerId?if_exists  == "services">id="${headerId}"</#if> ><a href="<@ofbizUrl>services</@ofbizUrl>">${uiLabelMap.PFTServices}</a></li>
               <li class="headermenu" <#if headerId?if_exists  == "partner">id="${headerId}"</#if> ><a href="<@ofbizUrl>partner</@ofbizUrl>">${uiLabelMap.PFTPartner}</a></li>
               <li class="headermenu" <#if headerId?if_exists == "aboutus">id="${headerId}"</#if> ><a href="<@ofbizUrl>aboutus</@ofbizUrl>">${uiLabelMap.PFTAboutUs}</a></li>
-              <li class="headermenu" <#if headerId?if_exists == "contactus">id="${headerId}"</#if> ><a href="<@ofbizUrl>contactus</@ofbizUrl>">${uiLabelMap.PFTContact}</a></li>
+              <li class="headermenu" <#if headerId?if_exists == "contactus">id="${headerId}"</#if> ><a href="<@ofbizUrl>AnonContactus</@ofbizUrl>">${uiLabelMap.PFTContact}</a></li>
               <li class="headermenu" <#if headerId?if_exists == "help">id="${headerId}"</#if> ><a href="<@ofbizUrl>help</@ofbizUrl>">${uiLabelMap.PFTHelpAndInstruction}</a></li>
             </ul>
             <ul id="left-links">
@@ -160,7 +148,7 @@ under the License.
                 <a href="<@ofbizUrl>view/showcart</@ofbizUrl>">${uiLabelMap.OrderViewCart}
                  <#if (shoppingCartSize > 0)>
                     <#-- show current currency -->
-                    <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.ofbiz.base.util.UtilMisc"].toMap("uomId", shoppingCart.getCurrency(), "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
+                    <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("uomId", shoppingCart.getCurrency(), "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
                     <#assign conversionRate = rateResult.conversionRate>
                     <#assign grandTotal = shoppingCart.getGrandTotal()*conversionRate>
                        <span style="font-size:0.7em"> (${shoppingCart.getTotalQuantity()} : 

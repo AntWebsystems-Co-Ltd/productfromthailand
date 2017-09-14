@@ -19,7 +19,7 @@
 -->
 
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+    xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
     
     <!-- fo decorator for pdf documents (invoices, sales orders, purchase orders etc...). -->
     <screen name="FoReportDecorator">
@@ -61,7 +61,7 @@
                 <set field="MainColumnStyle" value="rightonly"/>
                 
                 <set field="titleProperty" value="PageTitleCheckoutOptions"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/order/CheckoutShippingOptions.groovy"/>
+                <script location="component://ecommerce/groovyScripts/order/CheckoutShippingOptions.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -80,8 +80,8 @@
                 <set field="MainColumnStyle" value="rightonly"/>
                 
                 <set field="titleProperty" value="PageTitleCheckoutOptions"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/CheckoutPayment.groovy"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/StorePaymentOptions.groovy"/>
+                <script location="component://order/groovyScripts/entry/CheckoutPayment.groovy"/>
+                <script location="component://order/groovyScripts/entry/StorePaymentOptions.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -97,7 +97,7 @@
         <section>
             <actions>
                 <set field="titleProperty" value="PageTitleSplitItemsForShipping"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/order/SplitShip.groovy"/>
+                <script location="component://ecommerce/groovyScripts/order/SplitShip.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -114,7 +114,7 @@
             <actions>
                 <set field="titleProperty" value="PageTitleCheckoutReview"/>
                 <set field="parameters.formNameValue" value="orderreview" global="true"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/order/CheckoutReview.groovy"/>
+                <script location="component://ecommerce/groovyScripts/order/CheckoutReview.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -131,7 +131,7 @@
             <actions>
                 <set field="titleProperty" value="PageTitleOrderSummary"/>
                 <set field="MainColumnStyle" value="nocolumns"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/order/OrderStatus.groovy"/>
+                <script location="component://ecommerce/groovyScripts/order/OrderStatus.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -151,7 +151,7 @@
                 
                 <set field="maySelectItems" value="Y"/>
                 <set field="titleProperty" value="PageTitleOrderStatus"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/order/OrderStatus.groovy"/>
+                <script location="component://ecommerce/groovyScripts/order/OrderStatus.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -168,9 +168,9 @@
             <actions>
                 <set field="titleProperty" value="PageTitleCheckoutOptions"/>
                 
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/CheckoutPayment.groovy"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/CheckoutOptions.groovy"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/StorePaymentOptions.groovy"/>
+                <script location="component://order/groovyScripts/entry/CheckoutPayment.groovy"/>
+                <script location="component://order/groovyScripts/entry/CheckoutOptions.groovy"/>
+                <script location="component://order/groovyScripts/entry/StorePaymentOptions.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">

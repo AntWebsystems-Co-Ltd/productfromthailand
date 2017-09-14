@@ -19,7 +19,7 @@ under the License.
 -->
 
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
 
     <!-- Column Included Screens -->
     <screen name="microcart">
@@ -36,14 +36,14 @@ under the License.
               <set field="hidebottomlinks" value="N"/>
           </actions>
             <widgets>
-                <platform-specific><html><html-template location="component://order/webapp/ordermgr/entry/cart/minicart.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://order/template/entry/cart/minicart.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
     <screen name="minipromotext">
         <section>
             <actions>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/cart/ShowPromoText.groovy"/>
+                <script location="component://ecommerce/groovyScripts/cart/ShowPromoText.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/cart/minipromotext.ftl"/></html></platform-specific>
@@ -54,7 +54,7 @@ under the License.
     <screen name="promoUseDetailsInline">
         <section>
             <widgets>
-                <platform-specific><html><html-template location="component://order/webapp/ordermgr/entry/cart/promoUseDetailsInline.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://order/template/entry/cart/PromoUseDetailsInline.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
@@ -69,8 +69,8 @@ under the License.
 
                 <set field="titleProperty" value="PageTitleShoppingCart"/>
                 <set field="headerItem" value="Shopping Cart"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/cart/ShowCart.groovy"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/cart/ShowPromoText.groovy"/>
+                <script location="component://ecommerce/groovyScripts/cart/ShowCart.groovy"/>
+                <script location="component://ecommerce/groovyScripts/cart/ShowPromoText.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -90,13 +90,13 @@ under the License.
                 <set field="promoUseDetailsInlineScreen" value="component://ecommerce/widget/CartScreens.xml#promoUseDetailsInline"/>
 
                 <set field="titleProperty" value="PageTitleShowAllPromotions"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/cart/ShowCart.groovy"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/cart/ShowPromoText.groovy"/>
+                <script location="component://ecommerce/groovyScripts/cart/ShowCart.groovy"/>
+                <script location="component://ecommerce/groovyScripts/cart/ShowPromoText.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <platform-specific><html><html-template location="component://order/webapp/ordermgr/entry/cart/showAllPromotions.ftl"/></html></platform-specific>
+                        <platform-specific><html><html-template location="component://order/template/entry/cart/ShowAllPromotions.ftl"/></html></platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -110,7 +110,7 @@ under the License.
                 <set field="MainColumnStyle" value="center"/>
                 <set field="productsummaryScreen" value="component://ecommerce/widget/CatalogScreens.xml#productsummary"/>
                 <set field="titleProperty" value="PageTitleShowPromotionDetails"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/cart/ShowPromotionDetails.groovy"/>
+                <script location="component://order/groovyScripts/entry/cart/ShowPromotionDetails.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">

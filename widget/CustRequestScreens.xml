@@ -19,7 +19,7 @@ under the License.
 -->
 
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
 
     <screen name="CommonRequestDecorator">
         <section>
@@ -49,7 +49,7 @@ under the License.
             </actions>
             <widgets>
                 <platform-specific>
-                    <html><html-template location="component://ecommerce/webapp/ecommerce/request/RequestList.ftl"/></html>
+                    <html><html-template location="component://ecommerce/template/request/RequestList.ftl"/></html>
                 </platform-specific>
             </widgets>
         </section>
@@ -77,21 +77,21 @@ under the License.
                     <decorator-section name="body">
                         <container style="lefthalf">
                             <platform-specific>
-                                <html><html-template location="component://ecommerce/webapp/ecommerce/request/requestInfo.ftl"/></html>
+                                <html><html-template location="component://ecommerce/template/request/RequestInfo.ftl"/></html>
                             </platform-specific>
                             <platform-specific>
-                                <html><html-template location="component://order/webapp/ordermgr/request/ViewRequestItemInfo.ftl"/></html>
+                                <html><html-template location="component://order/template/request/ViewRequestItemInfo.ftl"/></html>
                             </platform-specific>
                         </container>
                         <container style="righthalf">
                             <platform-specific>
-                                <html><html-template location="component://order/webapp/ordermgr/request/requestDate.ftl"/></html>
+                                <html><html-template location="component://order/template/request/RequestDate.ftl"/></html>
                             </platform-specific>
                             <platform-specific>
-                                <html><html-template location="component://order/webapp/ordermgr/request/requestContactMech.ftl"/></html>
+                                <html><html-template location="component://order/template/request/RequestContactMech.ftl"/></html>
                             </platform-specific>
                             <platform-specific>
-                                <html><html-template location="component://ecommerce/webapp/ecommerce/request/requestRoles.ftl"/></html>
+                                <html><html-template location="component://ecommerce/template/request/RequestRoles.ftl"/></html>
                             </platform-specific>
                         </container>
                     </decorator-section>

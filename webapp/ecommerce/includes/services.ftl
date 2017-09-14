@@ -20,7 +20,7 @@ under the License.
      <h1>${uiLabelMap.PFTServices} </h1>
     <p>If you could not find the products you want please fill in the request form below.</p>
 </div>
-<form method="post" action="<@ofbizUrl>createrequest</@ofbizUrl>" name="EditRequestCustomer">
+<form method="post" action="<@ofbizUrl>createrequest</@ofbizUrl>" name="EditRequestCustomer" id="EditRequestCustomer">
     <input type="hidden" name="statusId" value="CRQ_SUBMITTED"/>
     <input type="hidden" name="fromPartyId" value="${userLogin.partyId}"/>
 
@@ -45,8 +45,8 @@ under the License.
         <tr>
             <td class="label">${uiLabelMap.FormFieldTitle_responseRequiredDate}</td>
             <td>
-                <input type="text" name="responseRequiredDate" size="25" maxlength="30"/>
-                <a href="javascript:call_cal(document.EditRequestCustomer.responseRequiredDate, '${Static["org.ofbiz.base.util.UtilDateTime"].nowTimestamp()}');">
+                <input type="text" name="responseRequiredDate" id="responseRequiredDate" size="25" maxlength="30"/>
+                <a href="javascript:call_cal(document.EditRequestCustomer.responseRequiredDate, '${Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp()}');">
                 <img src="<@ofbizContentUrl>/images/cal.gif</@ofbizContentUrl>" width="16" height="16" border="0" alt="Calendar"/></a>
             </td>
     

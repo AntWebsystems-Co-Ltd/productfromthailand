@@ -19,7 +19,7 @@
 -->
 
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-screen.xsd">
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
     
     <screen name="showhelpcontent">
         <section>
@@ -31,8 +31,8 @@
                 <set field="headerItem" value="Content"/>
                 <set field="entityName" value="ContentAssocDataResourceViewFrom"/>
                 <set field="permissionType" value="none"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/forum/NodeTrailPrep.groovy"/>
-                <script location="component://ecommerce/webapp/ecommerce/WEB-INF/actions/includes/MruAdd.groovy"/>
+                <script location="component://ecommerce/groovyScripts/forum/NodeTrailPrep.groovy"/>
+                <script location="component://ecommerce/groovyScripts/includes/MruAdd.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">

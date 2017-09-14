@@ -38,7 +38,7 @@ under the License.
                 <legend>${uiLabelMap.CompanyName}</legend>
         <input type="hidden" name="roleTypeId" value="SUPPLIER" />
         <input type="hidden" name="emailContactMechPurposeTypeId" value="PRIMARY_EMAIL" />
-        <#assign productStoreId = Static["org.ofbiz.product.store.ProductStoreWorker"].getProductStoreId(request) />
+        <#assign productStoreId = Static["org.apache.ofbiz.product.store.ProductStoreWorker"].getProductStoreId(request) />
         <input type="hidden" name="productStoreId" value="${productStoreId?if_exists}" />
           <div>
             <label for="groupName">${uiLabelMap.CompanyName}*</label>
@@ -87,24 +87,23 @@ under the License.
             <input type="text" name="shipToPostalCode" id="shipToPostalCode" class="required" value="${parameters.shipToPostalCode?if_exists}" maxlength="10" />
           </div>
           <div>
-            <label for="shipToCountryGeoId">${uiLabelMap.PartyCountry}* <span id="advice-required-shipToCountryGeoId" style="display: none" class="errorMessage">(required)</span></label>
-              <select name="shipToCountryGeoId" onclick="hideShowUsaStates();" id="customerCountry">
-                <#if requestParameters.shipToCountryGeoId?exists>
-                  <option value='${requestParameters.shipToCountryGeoId}'>${selectedCountryName?default(requestParameters.shipToCountryGeoId)}</option>
-                </#if>
-                ${screens.render("component://common/widget/CommonScreens.xml#countries")}
-              </select>
+            <label for="customerCountry">${uiLabelMap.CommonCountry}*</label>
+            <select name="shipToCountryGeoId" id="newuserform_countryGeoId">
+              ${screens.render("component://common/widget/CommonScreens.xml#countries")}
+              <#assign defaultCountryGeoId =
+                  Static["org.apache.ofbiz.entity.util.EntityUtilProperties"].getPropertyValue("general",
+                  "country.geo.id.default", delegator)>
+              <option selected="selected" value="${defaultCountryGeoId}">
+                <#assign countryGeo = delegator.findOne("Geo",Static["org.apache.ofbiz.base.util.UtilMisc"]
+                    .toMap("geoId",defaultCountryGeoId), false)>
+                ${countryGeo.get("geoName",locale)}
+              </option>
+            </select>
           </div>
-          <div id='shipToStates'>
-            <label for="shipToStateProvinceGeoId">${uiLabelMap.CommonState}*<span id="advice-required-shipToStateProvinceGeoId" style="display: none" class="errorMessage">(required)</span></label>
-              <select name="shipToStateProvinceGeoId" id="customerState">
-                <#if requestParameters.shipToStateProvinceGeoId?exists>
-                  <option value='${requestParameters.shipToStateProvinceGeoId}'>${selectedStateName?default(requestParameters.shipToStateProvinceGeoId)}</option>
-                </#if>
-                <option value="">${uiLabelMap.PartyNoState}</option>
-                ${screens.render("component://common/widget/CommonScreens.xml#states")}
-              </select>
-          </div>
+          <div>
+            <label for="customerState">${uiLabelMap.PartyState}*</label>
+            <select name="shipToStateProvinceGeoId" id="newuserform_stateProvinceGeoId"></select>
+          <div/>
       </fieldset>
       <fieldset>
         <legend>${uiLabelMap.PartyPhoneNumbers}</legend>
@@ -150,7 +149,7 @@ under the License.
           </tbody>
         </table>
       </fieldset>
-        <div style="margin-left:300px;"><a id="submitnewuserform" href="javascript:$('newuserform').submit()" class="button" style="color:black;">${uiLabelMap.CommonSubmit}</a></div>
+        <div style="margin-left:300px;"><a id="submitnewuserform" href="javascript:$('#newuserform').submit()" class="button" style="color:black;">${uiLabelMap.CommonSubmit}</a></div>
     </form>
 <script type="text/javascript">
   //<![CDATA[

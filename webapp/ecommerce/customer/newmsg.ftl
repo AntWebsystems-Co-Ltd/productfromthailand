@@ -31,7 +31,7 @@ under the License.
         <input type="hidden" name="partyIdFrom" value="${userLogin.partyId}"/>
         <input type="hidden" name="contactMechTypeId" value="WEB_ADDRESS"/>
         <input type="hidden" name="communicationEventTypeId" value="WEB_SITE_COMMUNICATI"/>
-        <input type="hidden" name="note" value="${Static["org.ofbiz.base.util.UtilHttp"].getFullRequestUrl(request).toString()}"/>
+        <input type="hidden" name="note" value="${Static["org.apache.ofbiz.base.util.UtilHttp"].getFullRequestUrl(request).toString()}"/>
         <#if message?has_content>
           <input type="hidden" name="parentCommEventId" value="${communicationEvent.communicationEventId}"/>
           <#if (communicationEvent.origCommEventId?exists && communicationEvent.origCommEventId?length > 0)>
@@ -51,7 +51,7 @@ under the License.
             <td><div class="tabletext">&nbsp;${sessionAttributes.autoName?if_exists} [${userLogin.partyId}] (${uiLabelMap.CommonNotYou}?&nbsp;<a href="<@ofbizUrl>autoLogout</@ofbizUrl>" class="buttontext">${uiLabelMap.CommonClickHere}</a>)</div></td>
           </tr>
           <#if partyIdTo?has_content>
-            <#assign partyToName = Static["org.ofbiz.party.party.PartyHelper"].getPartyName(delegator, partyIdTo, true)>
+            <#assign partyToName = Static["org.apache.ofbiz.party.party.PartyHelper"].getPartyName(delegator, partyIdTo, true)>
             <input type="hidden" name="partyIdTo" value="${partyIdTo}"/>
             <tr>
               <td colspan="3">&nbsp;</td>
