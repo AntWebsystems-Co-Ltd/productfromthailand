@@ -27,8 +27,8 @@ under the License.
                 <fail-property resource="PartyUiLabels" property="PartyUserLoginMissingError"/>
             </add-error>
         </if-empty>
-        <if-not-empty field="password">
-            <if-compare-field field="parameters.password" operator="not-equals" to-field="parameters.formInput.passwordVerify">
+        <if-not-empty field="parameters.password">
+            <if-compare-field field="parameters.password" operator="not-equals" to-field="parameters.passwordVerify">
                 <add-error>
                     <fail-property resource="PartyUiLabels" property="PartyPasswordMatchError"/>
                 </add-error>

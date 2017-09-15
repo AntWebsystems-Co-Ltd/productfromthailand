@@ -46,6 +46,10 @@ under the License.
         <security https="false" auth="false"/>
         <response name="success" type="view" value="help"/>
     </request-map>
+    <request-map uri="StoreManagement">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="StoreManagement"/>
+    </request-map>
 
     <request-map uri="createrequest">
         <security https="true" auth="true"/>
@@ -145,6 +149,13 @@ under the License.
         <response name="error" type="request" value="AnonContactus"/>
     </request-map>
 
+    <!-- Session Setting Requests -->
+    <request-map uri="setSessionLocale">
+        <security https="false" auth="false"/>
+        <event type="java" path="org.apache.ofbiz.common.CommonEvents" invoke="setSessionLocale"/>
+        <response name="success" type="view-last"/>
+        <response name="error" type="view" value="main"/>
+    </request-map>
     <request-map uri="logout">
         <security https="true" auth="true"/>
         <event type="java" path="org.apache.ofbiz.webapp.control.LoginWorker" invoke="logout"/>
@@ -211,4 +222,5 @@ under the License.
     <view-map name="OrderPDF" type="screenfop" page="component://productfromthailand/widget/OrderScreens.xml#OrderPDF" content-type="application/pdf" encoding="none"/>
     <view-map name="InvoicePDF" type="screenfop" page="component://productfromthailand/widget/OrderScreens.xml#InvoicePDF" content-type="application/pdf" encoding="none"/>
 
+    <view-map name="StoreManagement" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#StoreManagement"/>
 </site-conf>

@@ -48,6 +48,9 @@ under the License.
 
     <Party partyId="pft" partyTypeId="PARTY_GROUP" createdDate="2009-09-25 10:35:14.088"/>
     <PartyGroup partyId="pft" groupName="P.F.T. Trading Co.,Ltd." logoImageUrl="/pft-default/pftimages/pft-logo.png"/>
+    <DataResource dataCategoryId="PERSONAL" dataResourceId="PFT-LOGO" dataResourceName="pft-logo.png" dataResourceTypeId="OFBIZ_FILE" dataTemplateTypeId="NONE" mimeTypeId="image/png" objectInfo="/hot-deploy/productfromthailand/webapp/pft-default/pftimages/pft-logo.png" statusId="CTNT_PUBLISHED"  isPublic="Y"/>
+    <Content contentId="PFT-LOGO" contentName="pft-logo.png" contentTypeId="DOCUMENT" dataResourceId="PFT-LOGO" mimeTypeId="image/png" statusId="CTNT_PUBLISHED"/>
+    <PartyContent contentId="PFT-LOGO" fromDate="2015-01-03 15:29:22.173" partyContentTypeId="LGOIMGURL" partyId="pft"/>
 
     <PartyRole partyId="pft" roleTypeId="CARRIER"/>
     <PartyRole partyId="pft" roleTypeId="INTERNAL_ORGANIZATIO"/>
@@ -55,24 +58,24 @@ under the License.
 
     <ContactMech contactMechId="PFTADDR" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="PFTPHONE" contactMechTypeId="TELECOM_NUMBER"/>
-    <ContactMech contactMechId="PFTFAX" contactMechTypeId="TELECOM_NUMBER"/>
+    <ContactMech contactMechId="PFTMOB" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="PFTEMAIL" contactMechTypeId="EMAIL_ADDRESS" infoString="info@productfromthailand.com"/>
     <!--<ContactMech contactMechId="pftFacilityAddr" contactMechTypeId="POSTAL_ADDRESS"/>-->
 
-    <PostalAddress contactMechId="PFTADDR" toName="P.F.T. Trading Co.,Ltd." address1="171/28, Moo 3, Tambol Nhongkeaw, Aumphur Hang Dong" city="Chiang Mai" postalCode="50230" countryGeoId="THA"/>
+    <PostalAddress contactMechId="PFTADDR" toName="P.F.T. Trading Co.,Ltd." address1="73/1 M.8, Soi AntWebsystems Tambon Sanklang, Amphur Sanpatong" city="Chiang Mai" postalCode="50120" countryGeoId="THA"/>
     <!--<PostalAddress contactMechId="pftFacilityAddr" toName="P.F.T. Trading Co.,Ltd." address1="171/28, Moo 3, Thumbol Nhongkeaw, Aumphur Hang Dong" city="Chiangmai" postalCode="50230" countryGeoId="THA"/>-->
 
-    <TelecomNumber contactMechId="PFTPHONE" countryCode="+66" areaCode="053" contactNumber="483245"/>
-    <TelecomNumber contactMechId="PFTFAX" countryCode="+66" areaCode="053" contactNumber="483246"/>
+    <TelecomNumber contactMechId="PFTPHONE" countryCode="+66" areaCode="53" contactNumber="355753"/>
+    <TelecomNumber contactMechId="PFTMOB" countryCode="+66" areaCode="" contactNumber="81-7119487"/>
 
     <PartyContactMech partyId="pft" contactMechId="PFTEMAIL" fromDate="2009-09-25 10:35:15.962" roleTypeId="INTERNAL_ORGANIZATIO" allowSolicitation="Y"/>
     <PartyContactMech partyId="pft" contactMechId="PFTPHONE" fromDate="2009-09-25 10:35:15.909" roleTypeId="INTERNAL_ORGANIZATIO" allowSolicitation="Y"/>
-    <PartyContactMech partyId="pft" contactMechId="PFTFAX" fromDate="2009-09-25 10:35:15.909" roleTypeId="INTERNAL_ORGANIZATIO" allowSolicitation="Y"/>
+    <PartyContactMech partyId="pft" contactMechId="PFTMOB" fromDate="2009-09-25 10:35:15.909" roleTypeId="INTERNAL_ORGANIZATIO" allowSolicitation="Y"/>
     <PartyContactMech partyId="pft" contactMechId="PFTADDR" fromDate="2009-09-25 10:35:15.777" roleTypeId="INTERNAL_ORGANIZATIO" allowSolicitation="Y"/>
 
     <PartyContactMechPurpose partyId="pft" contactMechId="PFTEMAIL" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2009-09-25 00:00:00.000"/>
     <PartyContactMechPurpose partyId="pft" contactMechId="PFTPHONE" contactMechPurposeTypeId="PRIMARY_PHONE" fromDate="2009-09-25 00:00:00.000"/>
-    <PartyContactMechPurpose partyId="pft" contactMechId="PFTFAX" contactMechPurposeTypeId="FAX_NUMBER" fromDate="2009-09-25 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="pft" contactMechId="PFTMOB" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2009-09-25 00:00:00.000"/>
     <PartyContactMechPurpose partyId="pft" contactMechId="PFTADDR" contactMechPurposeTypeId="BILLING_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
     <PartyContactMechPurpose partyId="pft" contactMechId="PFTADDR" contactMechPurposeTypeId="GENERAL_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
     <PartyContactMechPurpose partyId="pft" contactMechId="PFTADDR" contactMechPurposeTypeId="PAYMENT_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
@@ -145,5 +148,6 @@ under the License.
     <!-- Default Font for PDF -->
     <SystemProperty systemResourceId="fop.properties" systemPropertyId="fop.font.family" systemPropertyValue="Loma"/>
     <SystemProperty systemResourceId="general" systemPropertyId="currency.uom.id.default" systemPropertyValue="THB"/>
+    <SystemProperty systemResourceId="general" systemPropertyId="country.geo.id.default" systemPropertyValue="THA"/>
 
 </entity-engine-xml>

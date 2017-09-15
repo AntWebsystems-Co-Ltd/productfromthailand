@@ -22,11 +22,11 @@ under the License.
     <div id="left">
         <a href="<@ofbizUrl>main</@ofbizUrl>">
           <#if sessionAttributes.overrideLogo?exists>
-            <img src="<@ofbizContentUrl>${sessionAttributes.overrideLogo}</@ofbizContentUrl>" alt="Logo"/>
+            <img src="<@ofbizContentUrl>${sessionAttributes.overrideLogo}</@ofbizContentUrl>" alt="Logo" class="logo"/>
           <#elseif catalogHeaderLogo?exists>
-            <img src="<@ofbizContentUrl>${catalogHeaderLogo}</@ofbizContentUrl>" alt="Logo"/>
+            <img src="<@ofbizContentUrl>${catalogHeaderLogo}</@ofbizContentUrl>" alt="Logo" class="logo"/>
           <#elseif layoutSettings.VT_HDR_IMAGE_URL?has_content>
-            <img src="<@ofbizContentUrl>${layoutSettings.VT_HDR_IMAGE_URL.get(0)}</@ofbizContentUrl>" alt="Logo"/>
+            <img src="<@ofbizContentUrl>${layoutSettings.VT_HDR_IMAGE_URL.get(0)}</@ofbizContentUrl>" alt="Logo" class="logo"/>
           </#if>
         </a>
     </div>
@@ -35,7 +35,7 @@ under the License.
             <ul id="right-links">
             <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
                   <#if security.hasEntityPermission("MYPORTAL", "_SUPPLIER", session)>
-                    <li id="header-bar-store"><a href="<@ofbizUrl>../../myportal</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTStoreManagement}</div></a></li>
+                    <li id="header-bar-store"><a href="<@ofbizUrl>StoreManagement</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTStoreManagement}</div></a></li>
                   <#else>
                     <li id="header-bar-account"><a href="<@ofbizUrl>viewprofile</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTYourAccount}</div></a></li>
                   </#if>

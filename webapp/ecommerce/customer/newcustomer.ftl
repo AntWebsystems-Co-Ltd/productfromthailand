@@ -231,7 +231,7 @@ will generally always be reserved for the logo at the top of the page.
       <thead>
         <tr>
           <th></th>
-          <th scope="col">${uiLabelMap.PartyCountry}</th>
+          <th scope="col">${uiLabelMap.CommonCountryCode}</th>
           <th scope="col">${uiLabelMap.PartyAreaCode}</th>
           <th scope="col">${uiLabelMap.PartyContactNumber}</th>
           <th scope="col">${uiLabelMap.PartyExtension}</th>

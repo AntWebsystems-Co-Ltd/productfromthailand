@@ -213,11 +213,17 @@ text-align: left;
 }*/
 #ecom-header {
 position: relative;
-voice-family: "\"}\"";
-voice-family: inherit;
-height: 80px;
+/* voice-family: "\"}\""; */
+/* voice-family: inherit; */
+height: 85px;
 width:955px;
 }
+
+.logo img {
+width: 250px
+height:80px;
+}
+
 #ecom-header-bar #menubar {
 background-color:#F4F4DA;
 text-align: center;
@@ -263,7 +269,6 @@ margin-top:0px;
 left:0px;
 position:absolute;
 top:0px;
-width:210px;
 }
 
 #ecom-header #right {

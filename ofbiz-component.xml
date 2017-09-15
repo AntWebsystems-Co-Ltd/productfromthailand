@@ -48,7 +48,7 @@
         menu-name="secondary"
         server="default-server"
         location="webapp/ecommerce"
-        mount-point="/"
+        mount-point="/pft"
         app-bar-display="false">
 <!--         <virtual-host host-name="productfromthailand.com"/> -->
 <!--         <virtual-host host-name="www.productfromthailand.com"/> -->

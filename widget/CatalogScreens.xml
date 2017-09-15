@@ -548,7 +548,7 @@ under the License.
     <screen name="leftkeywordsearchbox">
         <section>
             <actions>
-                <script location="component://product/webapp/catalog/WEB-INF/actions/find/keywordsearchbox.groovy"/>
+                <script location="component://product/groovyScripts/catalog/find/KeywordSearchBox.groovy"/>
             </actions>
             <widgets>
                 <screenlet id="ProductKeywordsPanel" title="${uiLabelMap.ProductSearchProducts}" collapsible="true">
@@ -571,7 +571,7 @@ under the License.
                 <entity-condition entity-name="ProdCatalog" list="prodCatalogs">
                     <order-by field-name="catalogName"/>
                 </entity-condition>
-                <script location="component://product/webapp/catalog/WEB-INF/actions/find/advancedsearchoptions.groovy"/>
+                <script location="component://product/groovyScripts/catalog/find/AdvancedSearchOptions.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="CommonFindDecorator">

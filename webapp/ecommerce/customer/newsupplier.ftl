@@ -19,14 +19,15 @@ under the License.
 <#if getUsername>
 <script type="text/javascript">
   //<![CDATA[
-     
      function hideShowUsaStates() {
-         if ($('customerCountry').value == "USA" || $('customerCountry').value == "UMI") {
-             $('customerState').style.display = "block";
-         } else {
-             $('customerState').style.display = "none";
-         }
-     }
+        var customerStateElement = document.getElementById('newuserform_stateProvinceGeoId');
+        var customerCountryElement = document.getElementById('newuserform_countryGeoId');
+        if (customerCountryElement.value == "USA" || customerCountryElement.value == "UMI" || customerCountryElement.value == "THA") {
+          customerStateElement.style.display = "block";
+        } else {
+          customerStateElement.style.display = "none";
+        }
+      }
    //]]>
 </script>
 </#if>
@@ -111,7 +112,7 @@ under the License.
           <thead>
             <tr>
               <th></th>
-              <th scope="col">${uiLabelMap.PartyCountry}</th>
+              <th scope="col">${uiLabelMap.CommonCountryCode}</th>
               <th scope="col">${uiLabelMap.PartyAreaCode}</th>
               <th scope="col">${uiLabelMap.PartyContactNumber}</th>
               <th scope="col">${uiLabelMap.PartyExtension}</th>

@@ -124,4 +124,31 @@ under the License.
             </widgets>
         </section>
     </screen>
+
+    <screen name="StoreManagement">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleViewPartyProfile"/>
+                <set field="tabButtonItem" value="viewprofile"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+                                <section>
+                                    <widgets>
+                                        <include-portal-page id="MYPORTAL_SUPPLIER2"/>
+                                        <include-portal-page id="MYPORTAL_SUPPLIER"/>
+                                        <include-portal-page id="MYPORTAL_SUPPLIER3"/>
+                                        <include-portal-page id="MYPORTAL_SUPPLIER4"/>
+                                    </widgets>
+                                </section>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
 </screens>

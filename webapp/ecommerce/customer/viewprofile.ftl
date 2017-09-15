@@ -562,8 +562,8 @@ under the License.
         <select name="contactListId" class="selectBox">
           <#list publicContactLists as publicContactList>
             <#-- <#assign publicContactListType = publicContactList.getRelatedOneCache("ContactListType")> -->
-            <#assign publicContactMechType = publicContactList.getRelatedOneCache("ContactMechType")?if_exists />
-            <option value="${publicContactList.contactListId}">${publicContactList.contactListName?if_exists} <#-- ${publicContactListType.get("description",locale)} --> <#if publicContactMechType?has_content>[${publicContactMechType.get("description",locale)}]</#if></option>
+            <#assign publicContactMechType = publicContactList.getRelatedOne("ContactMechType", true)! />
+            <option value="${publicContactList.contactListId}">${publicContactList.contactListName!} <#-- ${publicContactListType.get("description",locale)} --> <#if publicContactMechType?has_content>[${publicContactMechType.get("description",locale)}]</#if></option>
           </#list>
         </select>
         <select name="preferredContactMechId" class="selectBox">

@@ -22,9 +22,8 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 
 supplierPartyId = userLogin.partyId;
 
-supplierProducts =delegator.findByAnd("SupplierProduct", [partyId : supplierPartyId]);
-supplierProducts = EntityUtil.filterByDate(supplierProducts, UtilDateTime.nowTimestamp(), "availableFromDate", "availableThruDate", true);
-supplier = delegator.findByPrimaryKey("PartyGroup", [partyId: supplierPartyId]);
+supplierProducts = from("SupplierProduct").where("partyId", supplierPartyId).filterByDate(nowTimestamp, "availableFromDate", "availableThruDate").queryList()
+supplier = from("PartyGroup").where("partyId", supplierPartyId).queryOne()
 
 //set the page parameters
 viewIndex = Integer.valueOf(parameters.VIEW_INDEX  ?: 0);
