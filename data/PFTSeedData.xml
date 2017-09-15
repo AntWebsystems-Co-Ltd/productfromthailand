@@ -35,10 +35,10 @@ under the License.
     <SystemProperty systemResourceId="catalog" systemPropertyId="top.category.default" systemPropertyValue="PFT_ROOT"/>
     <SystemProperty systemResourceId="catalog" systemPropertyId="all.product.category" systemPropertyValue="PFT_ROOT"/>
 
-    <!-- googleBaseExport.properties adjustment -->
+    <!-- googleBaseExport.properties adjustment
     <SystemProperty systemResourceId="googleBaseExport" systemPropertyId="googleBaseExport.developerKey" systemPropertyValue="ABQIAAAAtllOIMnA_SSaX6-q_-0NqBQ7yogk7ltS6O8c1NB_asTLHULnfxRsRVBa5bgcryXeo0AOht5OtQ78_Q"/>
     <SystemProperty systemResourceId="googleBaseExport" systemPropertyId="googleBaseExport.accountEmail" systemPropertyValue="admin@productfromthailand.com"/>
-    <SystemProperty systemResourceId="googleBaseExport" systemPropertyId="googleBaseExport.accountPassword" systemPropertyValue="pft44444"/>
+    <SystemProperty systemResourceId="googleBaseExport" systemPropertyId="googleBaseExport.accountPassword" systemPropertyValue="pft44444"/> -->
 
     <SystemProperty systemResourceId="url" systemPropertyId="fop.path" systemPropertyValue="/hot-deploy/productfromthailand/config"/>
     <SystemProperty systemResourceId="url" systemPropertyId="fop.font.base.path" systemPropertyValue="/hot-deploy/productfromthailand/config/"/>

@@ -1670,7 +1670,7 @@ but they are grouped here for convenience purposes -->
     <!-- End of General Ledger Setup for Product from Thailand company -->
 
     <!--<ProductStoreCatalog productStoreId="PFTSTORE" prodCatalogId="DemoCatalog" fromDate="2009-09-25 10:38:07.561"/>-->
-     <WebSite enableHttps="Y" httpHost="localhost" httpPort="8080" httpsHost="localhost" httpsPort="8443" productStoreId="PFTSTORE" secureContentPrefix="https://localhost:8443" siteName="Product from Thailand EN website" standardContentPrefix="http://localhost:8080" visualThemeSetId="ECOMMERCE" webSiteId="PFT"/>
+     <WebSite enableHttps="Y" productStoreId="PFTSTORE" siteName="Product from Thailand EN website" visualThemeSetId="ECOMMERCE" webSiteId="PFT"/>
 
     <!--<ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_BILLACT" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
     <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_OFFLINE" paymentServiceTypeEnumId="PRDS_PAY_EXTERNAL"/>
