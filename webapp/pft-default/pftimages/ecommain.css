@@ -443,7 +443,6 @@ voice-family: inherit;
 
 /* ====== eCommerce "Screenlet" Styles ====== */
 #ecom-mainarea .screenlet {
-margin-bottom: 10px;
 height:auto !important;
 height:1%;
 border:1px solid #999;
@@ -537,6 +536,12 @@ font-size: 10pt;
 font-weight:normal;
 
 }
+
+.ecom-footer-icon{
+width: 20px;
+height: 20px;
+}
+
 /* ===== Text/Label Styles ===== */
 .tablebuttontext {
 color: #1E3C66;
@@ -1424,6 +1429,26 @@ tbody tr.odd th, tbody tr.odd td {background:#fff;}
 
 
 .tablenoborder tbody th, .tablenoborder tbody td {border:none;}
+
+.steps table {
+background:#fff;
+}
+
+.steps tbody th, .steps tbody td {vertical-align: middle;}
+
+/*tbody th, tbody td {border-top:1px solid #bbb;}*/
+tbody tr.odd th, tbody tr.odd td {background:#fff;}
+
+
+.tablenoborder tbody th, .tablenoborder tbody td {border:none;}
+
+.stepSuppile {
+font-size:1.3em;
+color:red;
+width: 200px;
+height:200px;
+overflow:auto;
+}
 
 #about-block {
 padding:20px;

@@ -21,8 +21,10 @@ under the License.
 <div class="whitespace">
             <center><hr width="940px"/></center>
             <div id="contactcompany">
-                <h4>${uiLabelMap.PFTTel}: +66-(0)53-355753 ${uiLabelMap.PartyContactMobilePhoneNumber} : +66-(0)81-7119487, ${uiLabelMap.PFTEmail} : info@productfromthailand.com</h4><br/>
-                <h4>${uiLabelMap.PFTCompanyAddress}</h4>
+                <h4><img class="ecom-footer-icon" src="<@ofbizContentUrl>/pft-default/pftimages/phone.png</@ofbizContentUrl>"/> : +66-(0)53-355753,
+                <img class="ecom-footer-icon" src="<@ofbizContentUrl>/pft-default/pftimages/mobile.png</@ofbizContentUrl>"/> : +66-(0)81-7119487,
+                <img class="ecom-footer-icon" src="<@ofbizContentUrl>/pft-default/pftimages/email.png</@ofbizContentUrl>"/> : info@productfromthailand.com</h4><br/>
+                <h4><img class="ecom-footer-icon" src="<@ofbizContentUrl>/pft-default/pftimages/home_1.png</@ofbizContentUrl>"/> ${uiLabelMap.PFTCompanyAddress}</h4>
             </div>
         </div>
     </div>

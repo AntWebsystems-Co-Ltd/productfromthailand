@@ -51,11 +51,6 @@ under the License.
             <#else/>
             ${uiLabelMap.CommonWelcome}!
             </#if>&nbsp;&nbsp;
-            <#if parameters.locale?default("en")=="th">
-                <a href="<@ofbizUrl>setSessionLocale?newLocale=en</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pft-default/pftimages/flags/en.jpg</@ofbizContentUrl>" alt="English"/></a>
-            <#else>
-                <a href="<@ofbizUrl>setSessionLocale?newLocale=th</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pft-default/pftimages/flags/th.png</@ofbizContentUrl>" alt="Thai"/></a>
-            </#if>
             </ul>
             <#--assign availableLocales = Static["org.apache.ofbiz.base.util.UtilMisc"].availableLocales()/>
             <#list availableLocales as availableLocale>
@@ -108,16 +103,10 @@ under the License.
        <#--div class="currencyprice">
             
         </div-->
-        <div class="currencyprice">
-            <#--ul id="right-links">
-                <li id="header-bar-sitemap"><a href="<@ofbizUrl>sitemap</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSitemap}</div></a></li>
-                <li id="header-bar-help"><a href="<@ofbizUrl>help</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTHelpAndInstruction}</div></a></li>
-            </ul-->
-            ${uiLabelMap.PFTSwitchCurrency} : 
-            <a href="<@ofbizUrl>setSessionCurrencyUom?currencyUom=THB</@ofbizUrl>"><img src="<@ofbizContentUrl>/pft-default/pftimages/flags/flag_th.png</@ofbizContentUrl>"/></a>
-            <a href="<@ofbizUrl>setSessionCurrencyUom?currencyUom=USD</@ofbizUrl>"><img src="<@ofbizContentUrl>/pft-default/pftimages/flags/flag_us.png</@ofbizContentUrl>"/></a>
-            <a href="<@ofbizUrl>setSessionCurrencyUom?currencyUom=EUR</@ofbizUrl>"><img src="<@ofbizContentUrl>/pft-default/pftimages/flags/flag_euro.png</@ofbizContentUrl>"/></a>
-        </div>
+        <div id="welcome-message"> ${uiLabelMap.PFTLanguage} :
+            <span><a href="<@ofbizUrl>setSessionLocale?newLocale=en</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pft-default/pftimages/flags/en.jpg</@ofbizContentUrl>" alt="English"/></a></span>
+            <span><a href="<@ofbizUrl>setSessionLocale?newLocale=th</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pft-default/pftimages/flags/th.png</@ofbizContentUrl>" alt="Thai"/></a></span>
+       </div>
     </div>
   </div>
 <div id="main">
