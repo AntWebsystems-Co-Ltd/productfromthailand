@@ -47,7 +47,7 @@ under the License.
     <SystemProperty systemResourceId="url" systemPropertyId="fop.font.base.path" systemPropertyValue="component://productfromthailand/config/"/>
 
     <Party partyId="pft" partyTypeId="PARTY_GROUP" createdDate="2009-09-25 10:35:14.088"/>
-    <PartyGroup partyId="pft" groupName="PFT" logoImageUrl="/pft-default/pftimages/pft-logo.png"/>
+    <PartyGroup partyId="pft" groupName="PFT Trading" logoImageUrl="/pft-default/pftimages/pft-logo.png"/>
     <DataResource dataCategoryId="PERSONAL" dataResourceId="PFT-LOGO" dataResourceName="pft-logo.png" dataResourceTypeId="OFBIZ_FILE" dataTemplateTypeId="NONE" mimeTypeId="image/png" objectInfo="/hot-deploy/productfromthailand/webapp/pft-default/pftimages/pft-logo.png" statusId="CTNT_PUBLISHED"  isPublic="Y"/>
     <Content contentId="PFT-LOGO" contentName="pft-logo.png" contentTypeId="DOCUMENT" dataResourceId="PFT-LOGO" mimeTypeId="image/png" statusId="CTNT_PUBLISHED"/>
     <PartyContent contentId="PFT-LOGO" fromDate="2015-01-03 15:29:22.173" partyContentTypeId="LGOIMGURL" partyId="pft"/>
@@ -62,7 +62,7 @@ under the License.
     <ContactMech contactMechId="PFTEMAIL" contactMechTypeId="EMAIL_ADDRESS" infoString="info@productfromthailand.com"/>
     <!--<ContactMech contactMechId="pftFacilityAddr" contactMechTypeId="POSTAL_ADDRESS"/>-->
 
-    <PostalAddress contactMechId="PFTADDR" toName="PFT" address1="73/1 M.8, Soi AntWebsystems Tambon Sanklang, Amphur Sanpatong" city="Chiang Mai" postalCode="50120" countryGeoId="THA"/>
+    <PostalAddress contactMechId="PFTADDR" toName="PFT Trading" address1="73/1 M.8, Soi AntWebsystems Tambon Sanklang, Amphur Sanpatong" city="Chiang Mai" postalCode="50120" countryGeoId="THA"/>
     <!--<PostalAddress contactMechId="pftFacilityAddr" toName="P.F.T. Trading Co.,Ltd." address1="171/28, Moo 3, Thumbol Nhongkeaw, Aumphur Hang Dong" city="Chiangmai" postalCode="50230" countryGeoId="THA"/>-->
 
     <TelecomNumber contactMechId="PFTPHONE" countryCode="+66" areaCode="53" contactNumber="355753"/>
