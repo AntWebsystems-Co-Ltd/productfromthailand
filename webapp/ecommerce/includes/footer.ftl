@@ -21,53 +21,37 @@ under the License.
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="footer-section">
     <div>
-        <nav class="dummy"></nav>
-        <nav class="footer-column">
-            <h3>Browse <span>Categories</span></h3>
-            <ul>
-                <li>
-                    <a href="#">Category 1</a>
-                </li>
-                <li>
-                    <a href="#">Category 2</a>
-                </li>
-                <li>
-                    <a href="#">Category 3</a>
-                </li>
-                <li>
-                    <a href="#">Category 4</a>
-                </li>
-            </ul>
-        </nav>
         <nav class="footer-column">
             <h3>HELP <span>& Support</span></h3>
             <ul>
-                <li>
-                    <a href="#">Support 1</a>
-                </li>
-                <li>
-                    <a href="#">Support 2</a>
-                </li>
-                <li>
-                    <a href="#">Support 3</a>
-                </li>
-                <li>
-                    <a href="#">Support 4</a>
-                </li>
+            <#assign contentRootId = "HELPROOT"/>
+            <#assign contentAssocTypeId = "SUB_CONTENT"/>
+            <#assign count_1=0/>
+            <#assign contentAssocs  = delegator.findByAnd("ContentAssoc",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contentId",contentRootId,"contentAssocTypeId", contentAssocTypeId), ["sequenceNum"], false)/>
+                  <#if (contentAssocs?has_content)>
+                    <#list contentAssocs as assoc>
+                        <#assign content  = delegator.findOne("Content",{"contentId":assoc.contentIdTo},true)/>
+                        <#if locale != "en">
+                            <#assign content = Static["org.apache.ofbiz.content.content.ContentWorker"].findAlternateLocaleContent(delegator, content, locale)/>
+                        </#if>
+                        <li>
+                            <a href="<@ofbizUrl>showhelpcontent?contentId=${assoc.contentIdTo}&amp;nodeTrailCsv=${assoc.contentIdTo}</@ofbizUrl>">${content.description}</a>
+                        </li>
+                        <#assign count_1=(count_1 + 1)/>
+                    </#list>
+                </#if>
             </ul>
         </nav>
-        <nav class="footer-column">
-            <div class="input-group input-group-md">
+            <div class="input-group input-group-md" id="emailSubscribe">
               <input type="text" class="form-control" placeholder="Email Address">
               <span class="input-group-addon">Subscribe</span>
             </div>
-            <ul class="social-icon">
-                <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="#" class="social"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                <a href="#" class="social"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+            <ul class="social-icon" id="socialApplication">
+                <a href="#" class="social-icon-facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="https://twitter.com/Product_Thai" class="social-icon-twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="#" class="social-icon-google"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
             </ul>
         </nav>
-        <nav class="dummy"></nav>
     </div>
 </div>
 <div class="copyright-section">

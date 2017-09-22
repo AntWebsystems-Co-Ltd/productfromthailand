@@ -16,14 +16,12 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
+<#assign subContentId = "HELP_ABOUTUS"/>
 <div id="contentbox" class="screenlet">
      <h1>${uiLabelMap.PFTAboutCompany} :</h1>
     <div class="screenlet-body">
         <div id="about-block">
-            <p>
-            Product from Thailand is The World's Online Marketplace® that enabling everyone to sell or buy products orginated in Thailand.
-            <br/>
-            </p>
+            <@renderSubContentCache subContentId=subContentId/>
         </div>
     </div>
 </div>

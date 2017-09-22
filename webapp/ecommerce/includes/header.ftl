@@ -127,7 +127,6 @@ under the License.
               <li <#if headerId?if_exists  == "partner">id="${headerId}" class='active' </#if> ><a href="<@ofbizUrl>partner</@ofbizUrl>">${uiLabelMap.PFTPartner}</a></li>
               <li <#if headerId?if_exists == "aboutus">id="${headerId}" class='active' </#if> ><a href="<@ofbizUrl>aboutus</@ofbizUrl>">${uiLabelMap.PFTAboutUs}</a></li>
               <li <#if headerId?if_exists == "contactus">id="${headerId}" class='active' </#if> ><a href="<@ofbizUrl>AnonContactus</@ofbizUrl>">${uiLabelMap.PFTContact}</a></li>
-              <li <#if headerId?if_exists == "help">id="${headerId}" class='active' </#if> ><a href="<@ofbizUrl>help</@ofbizUrl>">${uiLabelMap.PFTHelpAndInstruction}</a></li>
             </ul>
         </div>
     </div>

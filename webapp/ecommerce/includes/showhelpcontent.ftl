@@ -18,13 +18,16 @@ under the License.
 -->
 
 <div>
-<div style="margin:10px;">
+<div>
 <#-- Do this so that we don't have to find the content twice (again in renderSubContent) -->
 <#assign subContentId=requestParameters.contentId?if_exists/>
 <#assign nodeTrailCsv=requestParameters.nodeTrailCsv?if_exists/>
 <#-- <#assign dummy=Static["org.apache.ofbiz.base.util.Debug"].logInfo("in viewcontent, nodeTrailCsv:" + nodeTrailCsv, "")/> -->
 <#if ancestorList?has_content && (0 < ancestorList?size) >
     <#assign lastContent=ancestorList?last />
+        <#if locale != "en">
+          <#assign lastContent = Static["org.apache.ofbiz.content.content.ContentWorker"].findAlternateLocaleContent(delegator, lastContent, locale)/>
+        </#if>
     <#assign firstContent=ancestorList[0] />
 </#if>
 <#if firstContent?has_content>

@@ -16,7 +16,9 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
+
 <#assign contentRootId = "HELPROOT"/>
+<#assign contentAssocTypeId = "SUB_CONTENT"/>
 
 <#-- variable setup and worker calls -->
 <#assign curCategoryId = requestAttributes.curCategoryId?if_exists>
@@ -33,14 +35,21 @@ under the License.
 <div id="factoids" class="screenlet">
     <h3>${uiLabelMap.PFTBrowseHelp}</h3>
     <div class="screenlet-body">
-      <ul class="browsehelplist">
+        <ul class="browsehelplist">
         <#assign count_1=0/>
-        <@loopSubContent contentId=contentRootId viewIndex=0 viewSize=9999 orderBy="sequenceNum">
-            <li class="browsehelptext">
-              <a href="<@ofbizUrl>showhelpcontent?contentId=${subContentId}&amp;nodeTrailCsv=${subContentId}</@ofbizUrl>" class="browsecategorybutton">${content.description}</a>
-            </li>
-            <#assign count_1=(count_1 + 1)/>
-        </@loopSubContent>
-      </ul>
+        <#assign contentAssocs  = delegator.findByAnd("ContentAssoc",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contentId",contentRootId,"contentAssocTypeId", contentAssocTypeId), ["sequenceNum"], false)/>
+              <#if (contentAssocs?has_content)>
+                <#list contentAssocs as assoc>
+                    <#assign content  = delegator.findOne("Content",{"contentId":assoc.contentIdTo},true)/>
+                    <#if locale != "en">
+                        <#assign content = Static["org.apache.ofbiz.content.content.ContentWorker"].findAlternateLocaleContent(delegator, content, locale)/>
+                    </#if>
+                    <li class="browsehelptext">
+                        <a href="<@ofbizUrl>showhelpcontent?contentId=${assoc.contentIdTo}&amp;nodeTrailCsv=${assoc.contentIdTo}</@ofbizUrl>" class="browsecategorybutton">${content.description}</a>
+                    </li>
+                    <#assign count_1=(count_1 + 1)/>
+                </#list>
+            </#if>
+        </ul>
     </div>
 </div>

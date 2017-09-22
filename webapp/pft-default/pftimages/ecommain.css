@@ -2096,16 +2096,21 @@ div#storeMgr table:first-child {
 div.footer-section {
     background-color: #bbbbbb;
     width: 955px;
-    padding: 4em 0 16em 0;
+    padding: 2em 0 18em 0;
 }
 div.footer-section nav.footer-column {
     text-decoration: none;
     display: block;
     padding: 4px 0;
     font-size: 13px;
-    width: 30%;
+    width: 50%;
     float: left;
+    text-align: left;
 }
+div.footer-section nav.footer-column h3, div.footer-section nav.footer-column ul{
+    padding-left: 50px;
+}
+
 div.footer-section nav.dummy {
     text-decoration: none;
     display: block;
@@ -2123,6 +2128,25 @@ div.footer-section nav.dummy {
 .social-icon a {
     display: inline-block;
     color: #fff;
+    font-size: 25px;
+    padding: 5px;
+}
+
+a.social-icon-google:hover {
+    display: inline-block;
+    color: #ea4335;
+    font-size: 25px;
+    padding: 5px;
+}
+a.social-icon-facebook:hover {
+    display: inline-block;
+    color: #425f9c;
+    font-size: 25px;
+    padding: 5px;
+}
+a.social-icon-twitter:hover {
+    display: inline-block;
+    color: #1da1f2;
     font-size: 25px;
     padding: 5px;
 }
@@ -2160,12 +2184,19 @@ div.footer-section nav h3 span {
     text-transform: capitalize;
 }
 
-div.footer-section nav ul li a {
+div.footer-section nav ul li {
     text-decoration: none;
     display: block;
-    padding: 4px 0;
-    font-size: 12px;
-    color: #000000;
+    padding: 2px 0;
+    font-size: 11px;
+    color: #3c3b3b;
+}
+div.footer-section nav ul li a{
+    color: #3c3b3b;
+}
+div.footer-section nav ul li a:hover{
+font-weight: bold;
+color: red;
 }
 div.copyright-section {
     background-color: #000000;
@@ -2175,4 +2206,13 @@ div.copyright {
     float: left;
     padding-left: 1em;
     color: #ffffff;
+}
+
+#emailSubscribe {
+    float: right;
+    padding-right: 50px;
+}
+
+#socialApplication {
+    padding-left: 155px;
 }

@@ -7,9 +7,9 @@
     to you under the Apache License, Version 2.0 (the
     "License"); you may not use this file except in compliance
     with the License.  You may obtain a copy of the License at
-    
+
     http://www.apache.org/licenses/LICENSE-2.0
-    
+
     Unless required by applicable law or agreed to in writing,
     software distributed under the License is distributed on an
     "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -25,7 +25,7 @@
     <classpath type="jar" location="build/lib/*"/>
     <classpath type="dir" location="config"/>
 
-	<!--security -->
+    <!--security -->
     <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTSecurityPermissionSeedData.xml"/>
     <entity-resource type="data" reader-name="demo" loader="main" location="data/PFTSecurityGroupDemoData.xml"/>
 
@@ -35,14 +35,15 @@
     <entity-resource type="data" reader-name="ext-demo" loader="main" location="data/PFTDemoData.xml"/>
     <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTProductData.xml"/>
     <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTHelpData.xml"/>
+    <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTHelpData_TH.xml"/>
     <entity-resource type="data" reader-name="seed" loader="main" location="data/PFTPortletData.xml"/>
 <!--    <entity-resource type="data" reader-name="seed" loader="main" location="data/suppliersList.xml"/>-->
     <entity-resource type="data" reader-name="ext-demo" loader="main" location="data/DemoSupplier.xml"/>
 
-    <entity-resource type="data" reader-name="tenant" loader="main" location="data/TenantData.xml"/>    
+    <entity-resource type="data" reader-name="tenant" loader="main" location="data/TenantData.xml"/>
 
     <service-resource type="model" loader="main" location="servicedef/services.xml"/>
-    
+
     <webapp name="productfromthailand1"
         title="Product from thailand"
         menu-name="secondary"
@@ -64,7 +65,7 @@
         location="webapp/test"
         mount-point="/"
         app-bar-display="false"/>-->
-    
+
     <!-- Themes -->
     <webapp name="pft-default"
         title="Product From Thailand Default Theme"
@@ -73,7 +74,7 @@
         location="webapp/pft-default"
         mount-point="/pft-default"
         app-bar-display="false"/>
-        
+
     <!-- ROOT -->
 <!--     <webapp name="ROOT" -->
 <!--         title="ROOT Web Application" -->
