@@ -16,7 +16,6 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-
 <center>
 <div id="ecom-header">
     <div id="left">
@@ -66,6 +65,7 @@ under the License.
                 <a href="<@ofbizUrl>setSessionLocale</@ofbizUrl>?newLocale=th"><img  src="<@ofbizContentUrl>/pft-default/pftimages/ThaiFlag.jpg</@ofbizContentUrl>" alt="Thai" width="25"/></a>
             </#if-->
         </div>
+        <div class="menu-right">${screens.render("component://productfromthailand/widget/CartScreens.xml#microcart")}</div>
         <#-- Twitter share  -->
         <div id="google-plus-top">
             <iframe allowtransparency="true" frameborder="0" scrolling="no"
@@ -101,58 +101,35 @@ under the License.
           </#if-->
        </div>
        <#--div class="currencyprice">
-            
         </div-->
-        <div id="welcome-message"> ${uiLabelMap.PFTLanguage} :
+        <div id="languagelist"> ${uiLabelMap.PFTLanguage} :
             <span><a href="<@ofbizUrl>setSessionLocale?newLocale=en</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pft-default/pftimages/flags/en.jpg</@ofbizContentUrl>" alt="English"/></a></span>
             <span><a href="<@ofbizUrl>setSessionLocale?newLocale=th</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pft-default/pftimages/flags/th.png</@ofbizContentUrl>" alt="Thai"/></a></span>
        </div>
     </div>
   </div>
 <div id="main">
-  <div id="ecom-header-bar">
-      <div class="leftcorner">&nbsp;</div>
-      <div class="rightcorner">&nbsp;</div><div style="clear:both;"/>
-      <div class="whitespace">
-            <#if requestAttributes._CURRENT_VIEW_?has_content>
-                <#if requestAttributes._CURRENT_VIEW_ == "main"><#assign headerId= "home"></#if>
-                <#if requestAttributes._CURRENT_VIEW_ == "services"><#assign headerId= "services"></#if>
-                <#if requestAttributes._CURRENT_VIEW_ == "partner"><#assign headerId= "partner"></#if>
-                <#if requestAttributes._CURRENT_VIEW_ == "aboutus"><#assign headerId= "aboutus"></#if>
-                <#if requestAttributes._CURRENT_VIEW_ == "contactus"><#assign headerId= "contactus"></#if>
-                <#if requestAttributes._CURRENT_VIEW_ == "showcart"><#assign headerId= "showcart"></#if>
-           </#if>
-      <div id="menubar">
-            <ul id="right-links">
-              <!-- NOTE: these are in reverse order because they are stacked right to left instead of left to right -->
-              <li class="headermenu" <#if headerId?if_exists == "home">id="${headerId}"</#if> ><a href="<@ofbizUrl>main</@ofbizUrl>">${uiLabelMap.PFTHome}</a></li>
-              <li class="headermenu" <#if headerId?if_exists  == "services">id="${headerId}"</#if> ><a href="<@ofbizUrl>services</@ofbizUrl>">${uiLabelMap.PFTServices}</a></li>
-              <li class="headermenu" <#if headerId?if_exists  == "partner">id="${headerId}"</#if> ><a href="<@ofbizUrl>partner</@ofbizUrl>">${uiLabelMap.PFTPartner}</a></li>
-              <li class="headermenu" <#if headerId?if_exists == "aboutus">id="${headerId}"</#if> ><a href="<@ofbizUrl>aboutus</@ofbizUrl>">${uiLabelMap.PFTAboutUs}</a></li>
-              <li class="headermenu" <#if headerId?if_exists == "contactus">id="${headerId}"</#if> ><a href="<@ofbizUrl>AnonContactus</@ofbizUrl>">${uiLabelMap.PFTContact}</a></li>
-              <li class="headermenu" <#if headerId?if_exists == "help">id="${headerId}"</#if> ><a href="<@ofbizUrl>help</@ofbizUrl>">${uiLabelMap.PFTHelpAndInstruction}</a></li>
+    <div id="ecom-header-bar">
+        <#if requestAttributes._CURRENT_VIEW_?has_content>
+            <#if requestAttributes._CURRENT_VIEW_ == "main"><#assign headerId= "home"></#if>
+            <#if requestAttributes._CURRENT_VIEW_ == "services"><#assign headerId= "services"></#if>
+            <#if requestAttributes._CURRENT_VIEW_ == "partner"><#assign headerId= "partner"></#if>
+            <#if requestAttributes._CURRENT_VIEW_ == "aboutus"><#assign headerId= "aboutus"></#if>
+            <#if requestAttributes._CURRENT_VIEW_ == "AnonContactus"><#assign headerId= "contactus"></#if>
+            <#if requestAttributes._CURRENT_VIEW_ == "showcart"><#assign headerId= "showcart"></#if>
+            <#if requestAttributes._CURRENT_VIEW_ == "help"><#assign headerId= "help"></#if>
+        </#if>
+        <div id='cssmenu'>
+            <ul>
+                <!-- NOTE: these are in reverse order because they are stacked right to left instead of left to right -->
+              <li <#if headerId?if_exists == "home">id="${headerId}" class='active' </#if> ><a href="<@ofbizUrl>main</@ofbizUrl>">${uiLabelMap.PFTHome}</a></li>
+              <li <#if headerId?if_exists  == "services">id="${headerId}" class='active' </#if> ><a href="<@ofbizUrl>services</@ofbizUrl>">${uiLabelMap.PFTServices}</a></li>
+              <li <#if headerId?if_exists  == "partner">id="${headerId}" class='active' </#if> ><a href="<@ofbizUrl>partner</@ofbizUrl>">${uiLabelMap.PFTPartner}</a></li>
+              <li <#if headerId?if_exists == "aboutus">id="${headerId}" class='active' </#if> ><a href="<@ofbizUrl>aboutus</@ofbizUrl>">${uiLabelMap.PFTAboutUs}</a></li>
+              <li <#if headerId?if_exists == "contactus">id="${headerId}" class='active' </#if> ><a href="<@ofbizUrl>AnonContactus</@ofbizUrl>">${uiLabelMap.PFTContact}</a></li>
+              <li <#if headerId?if_exists == "help">id="${headerId}" class='active' </#if> ><a href="<@ofbizUrl>help</@ofbizUrl>">${uiLabelMap.PFTHelpAndInstruction}</a></li>
             </ul>
-            <ul id="left-links">
-                <li class="headermenu" <#if headerId?if_exists == "showcart">id="${headerId}"</#if> >
-                <a href="<@ofbizUrl>view/showcart</@ofbizUrl>">${uiLabelMap.OrderViewCart}
-                 <#if (shoppingCartSize > 0)>
-                    <#-- show current currency -->
-                    <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("uomId", shoppingCart.getCurrency(), "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
-                    <#assign conversionRate = rateResult.conversionRate>
-                    <#assign grandTotal = shoppingCart.getGrandTotal()*conversionRate>
-                       <span style="font-size:0.7em"> (${shoppingCart.getTotalQuantity()} : 
-                        <#if shoppingCart.getTotalQuantity() == 1>${uiLabelMap.OrderItem}<#else/>${uiLabelMap.OrderItems}</#if>,
-                        <#--@ofbizCurrency amount=shoppingCart.getGrandTotal() isoCode=shoppingCart.getCurrency()/-->
-                        <@ofbizCurrency amount=grandTotal isoCode=currencyUom/>
-                        )</span>
-                 </#if>
-                </a>
-                </li>
-            </ul>
-     </div>
-     <div id="searchbar">
-           ${screens.render("component://productfromthailand/widget/CatalogScreens.xml#keywordsearchbox")}
-    </div>
+        </div>
     </div>
 </div>
 <div class="whitespace">

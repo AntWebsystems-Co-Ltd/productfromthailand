@@ -18,24 +18,61 @@ under the License.
 -->
 
 <#assign nowTimestamp = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp()>
-<div class="whitespace">
-            <center><hr width="940px"/></center>
-            <div id="contactcompany">
-                <h4><img class="ecom-footer-icon" src="<@ofbizContentUrl>/pft-default/pftimages/phone.png</@ofbizContentUrl>"/> : +66-(0)53-355753,
-                <img class="ecom-footer-icon" src="<@ofbizContentUrl>/pft-default/pftimages/mobile.png</@ofbizContentUrl>"/> : +66-(0)81-7119487,
-                <img class="ecom-footer-icon" src="<@ofbizContentUrl>/pft-default/pftimages/email.png</@ofbizContentUrl>"/> : info@productfromthailand.com</h4><br/>
-                <h4><img class="ecom-footer-icon" src="<@ofbizContentUrl>/pft-default/pftimages/home_1.png</@ofbizContentUrl>"/> ${uiLabelMap.PFTCompanyAddress}</h4>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="footer-section">
+    <div>
+        <nav class="dummy"></nav>
+        <nav class="footer-column">
+            <h3>Browse <span>Categories</span></h3>
+            <ul>
+                <li>
+                    <a href="#">Category 1</a>
+                </li>
+                <li>
+                    <a href="#">Category 2</a>
+                </li>
+                <li>
+                    <a href="#">Category 3</a>
+                </li>
+                <li>
+                    <a href="#">Category 4</a>
+                </li>
+            </ul>
+        </nav>
+        <nav class="footer-column">
+            <h3>HELP <span>& Support</span></h3>
+            <ul>
+                <li>
+                    <a href="#">Support 1</a>
+                </li>
+                <li>
+                    <a href="#">Support 2</a>
+                </li>
+                <li>
+                    <a href="#">Support 3</a>
+                </li>
+                <li>
+                    <a href="#">Support 4</a>
+                </li>
+            </ul>
+        </nav>
+        <nav class="footer-column">
+            <div class="input-group input-group-md">
+              <input type="text" class="form-control" placeholder="Email Address">
+              <span class="input-group-addon">Subscribe</span>
             </div>
-        </div>
-    </div>
-    <div id="endpage">
-        <div class="leftbottomcorner">&nbsp;</div>
-        <div class="rightbottomcorner">&nbsp;</div><br class="bothclear"/>
+            <ul class="social-icon">
+                <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="#" class="social"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="#" class="social"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+            </ul>
+        </nav>
+        <nav class="dummy"></nav>
     </div>
 </div>
-<div id="ecom-footer">
-  <br/>
-  <div class="copyright">Copyright (c) ${nowTimestamp?string("yyyy")} <a href="http://www.productfromthailand.com" style="" target="_blank">productfromthailand.com</a> All Rights Reserved</div>
+<div class="copyright-section">
+    <br/>
+    <div class="copyright">Copyright © ${nowTimestamp?string("yyyy")} <a href="http://www.productfromthailand.com" style="" target="_blank">productfromthailand.com</a> All Rights Reserved</div>
     <br/><br/>
 </div>
 </center>

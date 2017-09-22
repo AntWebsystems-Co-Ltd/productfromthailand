@@ -16,48 +16,32 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<#assign shoppingCart = sessionAttributes.shoppingCart?if_exists>
+<#assign shoppingCart = sessionAttributes.shoppingCart!>
 <#if shoppingCart?has_content>
-    <#assign shoppingCartSize = shoppingCart.size()>
+  <#assign shoppingCartSize = shoppingCart.size()>
 <#else>
-    <#assign shoppingCartSize = 0>
+  <#assign shoppingCartSize = 0>
 </#if>
 <div id="microcart">
-    <div>
-        <#if (shoppingCartSize > 0)>
-            <span id="microCartNotEmpty">
-                ${uiLabelMap.EcommerceCartHas} <span id="microCartQuantity">${shoppingCart.getTotalQuantity()}</span>
-                <#if shoppingCart.getTotalQuantity() == 1>${uiLabelMap.OrderItem}<#else/>${uiLabelMap.OrderItems}</#if>,
-                <span id="microCartTotal"><@ofbizCurrency amount=shoppingCart.getGrandTotal() isoCode=shoppingCart.getCurrency()/></span>
-            </span>
-            <span id="microCartEmpty" style="display:none">${uiLabelMap.OrderShoppingCartEmpty}</span>
-        <#else>
-            ${uiLabelMap.OrderShoppingCartEmpty}
-        </#if>
-        &nbsp;&nbsp;
-    </div>
-    <div>
-        <table  align="right">
-            <tbody>
-                <tr>
-                   <td width="500" align="right">
-                        <a href="<@ofbizUrl>view/showcart</@ofbizUrl>">[${uiLabelMap.OrderViewCart}]</a>
-                          <#if (shoppingCartSize > 0)>
-                          <span id="quickCheckoutEnabled"><a href="<@ofbizUrl>quickcheckout</@ofbizUrl>">[${uiLabelMap.OrderCheckoutQuick}]</a></span>
-                          <span id="quickCheckoutDisabled" style="display:none" class="disabled">[${uiLabelMap.OrderCheckoutQuick}]</span>
-                          <span id="onePageCheckoutEnabled"><a href="<@ofbizUrl>onePageCheckout</@ofbizUrl>">[${uiLabelMap.EcommerceOnePageCheckout}]</a></span>
-                          <span id="onePageCheckoutDisabled" style="display:none" class="disabled">[${uiLabelMap.EcommerceOnePageCheckout}]</span>
-                          <#if shoppingCart?has_content && (shoppingCart.getGrandTotal() > 0)>
-                             <li id="microCartPayPalCheckout"><a href="<@ofbizUrl>setPayPalCheckout</@ofbizUrl>"><img src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" alt="[PayPal Express Checkout]" /></a></li>
-                          </#if>
-                        <#else>
-                          <span class="disabled">[${uiLabelMap.OrderCheckoutQuick}]</span>
-                          <span class="disabled">[${uiLabelMap.EcommerceOnePageCheckout}]</span>
-                        </#if>
-                        &nbsp;&nbsp;
-                   </td>
-                </tr>
-            </tbody>
-       </table>
-    </div>
+  <#if (shoppingCartSize > 0)>
+    <p id="microCartNotEmpty">
+      <a id="cart" href="<@ofbizUrl>view/showcart</@ofbizUrl>">
+      <strong id="microCartQuantity">
+        ${shoppingCart.getTotalQuantity()}
+      </strong>
+      <#if shoppingCart.getTotalQuantity() == 1>
+        ${uiLabelMap.OrderItem}
+      <#else>
+        ${uiLabelMap.OrderItems}
+      </#if>,
+      <strong id="microCartTotal">
+        <@ofbizCurrency amount=shoppingCart.getDisplayGrandTotal() isoCode=shoppingCart.getCurrency()/>
+      </strong>
+      </a>
+    </p>
+    <span id="microCartEmpty" style="display:none">${uiLabelMap.OrderShoppingCartEmpty}</span>
+  <#else>
+    <p>${uiLabelMap.OrderShoppingCartEmpty}</p>
+  </#if>
 </div>
+

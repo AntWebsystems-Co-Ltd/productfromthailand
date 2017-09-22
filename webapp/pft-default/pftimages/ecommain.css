@@ -112,7 +112,7 @@ font-size: 1.1em;
 /* ===== Basic Element Styles ===== */
 
 
-a, a:link, a:visited {text-decoration: none; color:#BCB104; font-weight:bold;}
+a, a:link, a:visited {text-decoration: none; /*color:#BCB104;*/ font-weight:bold;}
 a:hover {/*color:#111;*/ text-decoration: underline;}
 
 .disabled {
@@ -215,7 +215,7 @@ text-align: left;
 position: relative;
 /* voice-family: "\"}\""; */
 /* voice-family: inherit; */
-height: 85px;
+height: 90px;
 width:955px;
 }
 
@@ -275,7 +275,7 @@ top:0px;
 position: absolute;
 top: 0px;
 right: 0px;
-width: 500px;
+width: 70%;
 padding: 0px;
 text-align: right;
 }
@@ -304,6 +304,14 @@ color: #999966;
 color:white;
 text-decoration: underline;
 }
+
+#languagelist {
+font-size: 10pt;
+padding-left: 10px;
+font-weight: bold;
+color:#FFE4B5;
+padding-bottom: 5px;
+}
 .title{
 
 }
@@ -323,6 +331,7 @@ padding:0 0 10px 5px;
 #microcart {
 font-weight: bold;
 text-decoration: none;
+float: right;
 }
 #microcart a {
 text-decoration: none;
@@ -389,6 +398,7 @@ position: relative;
 width: 955px;
 margin-top: 5px;
 background-color: #fff;
+padding-bottom: 5em;
 }
 
 #ecom-mainarea .left {
@@ -443,6 +453,7 @@ voice-family: inherit;
 
 /* ====== eCommerce "Screenlet" Styles ====== */
 #ecom-mainarea .screenlet {
+margin-bottom: 10px;
 height:auto !important;
 height:1%;
 border:1px solid #999;
@@ -451,6 +462,9 @@ border:1px solid #999;
 background:#BCB104;
 padding:1px 4px 3px;
 height:auto !important;
+text-align:left;
+color:white;
+font-weight: bold;
 }
 #ecom-mainarea .screenlet-body {
 /*border:thin;
@@ -1249,7 +1263,7 @@ width:45%;
 }
 
 #contentbox{
-margin-top:10px;
+/* margin-top:10px; */
 margin-left: 10px;
 font-size: 12px;
 }
@@ -1336,11 +1350,11 @@ font-weight:bold;
 color:#965b0e;
 }
 .copyright a,.copyright a:visited{
-color:#965b0e;
+color:inherit;
 text-decoration:none;
 }
 .copyright a:hover{
-color:#965b0e;
+color:inherit;
 text-decoration:underline;
 }
 
@@ -1465,6 +1479,8 @@ position: relative;
 width: 955px;
 padding-top: 10px;
 background-color:white;
+margin-top: 5px;
+border-top: 1px solid;
 }
 #endpage {
 position:relative;
@@ -1486,7 +1502,8 @@ float:right;
 
 .whitespace{
 padding:5px 0px 0px 0px;
-background-color:white;
+/* background-color:white; */
+margin-top: -10px;
 }
 
 .menu-right {
@@ -2063,4 +2080,99 @@ button.button1:hover {
     margin-top: 3px;
     vertical-align: top;
     width: 22px;
+}
+
+div #microcart {
+    background: url("/pft-default/pftimages/cart.png") no-repeat scroll 0 0 transparent !important;
+}
+
+div#storeMgr table {
+    margin: 1.5em 0 0 0;
+}
+div#storeMgr table:first-child {
+    margin: 0 0 0 0;
+}
+
+div.footer-section {
+    background-color: #bbbbbb;
+    width: 955px;
+    padding: 4em 0 16em 0;
+}
+div.footer-section nav.footer-column {
+    text-decoration: none;
+    display: block;
+    padding: 4px 0;
+    font-size: 13px;
+    width: 30%;
+    float: left;
+}
+div.footer-section nav.dummy {
+    text-decoration: none;
+    display: block;
+    padding: 4px 0;
+    font-size: 13px;
+    width: 5%;
+    float: left;
+}
+
+.social-icon {
+    float: left;
+    padding-top: 5px;
+}
+
+.social-icon a {
+    display: inline-block;
+    color: #fff;
+    font-size: 25px;
+    padding: 5px;
+}
+
+.input-group-addon {
+    border-radius: 0 2px 2px 0;
+    background-color: #F7931D;
+    color: #FFF;
+    border-color: #F7931D;
+    display: table-cell;
+    padding: 6px 12px;
+}
+
+.form-control {
+    border-radius: 2px 0 0 2px;
+    color: #bbbbbb;
+    border: 1px solid #fff;
+    height: 34px;
+    padding: 1px 10px;
+    font-size: 14px;
+}
+
+.input-group-md {
+    display: table;
+}
+
+div.footer-section nav h3 {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0 0 1em 0;
+}
+div.footer-section nav h3 span {
+    font-weight: 300;
+    text-transform: capitalize;
+}
+
+div.footer-section nav ul li a {
+    text-decoration: none;
+    display: block;
+    padding: 4px 0;
+    font-size: 12px;
+    color: #000000;
+}
+div.copyright-section {
+    background-color: #000000;
+    width: 955px;
+}
+div.copyright {
+    float: left;
+    padding-left: 1em;
+    color: #ffffff;
 }

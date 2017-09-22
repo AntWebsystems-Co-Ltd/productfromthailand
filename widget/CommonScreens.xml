@@ -51,10 +51,12 @@ under the License.
                 <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/jquery-1.11.0.min.js" global="true"/>
                 <set field="layoutSettings.javaScripts[]" value="/images/jquery/plugins/Readmore.js-master/readmore.js" global="true"/>
                 <set field="layoutSettings.javaScripts[]" value="/images/jquery/plugins/jquery-jgrowl/1.4.1/jquery.jgrowl.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/pft-default/pftimages/menu-script.js" global="true"/>
                 <set field="layoutSettings.styleSheets[+0]" value="/images/jquery/plugins/jquery-jgrowl/1.4.1/jquery.jgrowl.min.css" global="true" />
-                
+                <set field="layoutSettings.styleSheets[+0]" value="/pft-default/pftimages/menu-styles.css" global="true"/>
+
                 <script location="component://productfromthailand/groovyScripts/PFTSetup.groovy"/>
-                
+
                 <!-- Get the store VisualTheme -->
                 <set field="visualThemeId" from-field="productStore.visualThemeId" default-value="EC_PFT"/>
                 <service service-name="getVisualThemeResources">
@@ -115,6 +117,7 @@ under the License.
             <widgets>
                 <container style="left">
                     <include-screen name="productCategories" location="component://ecommerce/widget/CatalogScreens.xml"/>
+                    <include-screen name="keywordsearchbox" location="component://ecommerce/widget/CatalogScreens.xml"/>
                 </container>
             </widgets>
         </section>
@@ -130,9 +133,10 @@ under the License.
                     <include-screen name="minilastviewedproducts" location="component://ecommerce/widget/CatalogScreens.xml"/>
                     <include-screen name="minilastproductsearches" location="component://ecommerce/widget/CatalogScreens.xml"/>
                     <include-screen name="recentlyviewed" location="component://ecommerce/widget/ContentScreens.xml"/>
-                    <include-screen name="minipromotext" location="component://productfromthailand/widget/CartScreens.xml"/-->
+                    <include-screen name="recentlyproducts" location="component://productfromthailand/widget/CatalogScreens.xml"/-->
                     <include-screen name="compareproductslist" location="component://order/widget/ordermgr/OrderEntryCatalogScreens.xml"/>
-                    <include-screen name="recentlyproducts" location="component://productfromthailand/widget/CatalogScreens.xml"/>
+                    <include-screen name="minipromotext" location="component://productfromthailand/widget/CartScreens.xml"/>
+                    <include-screen name="minilastviewedcategories" location="component://productfromthailand/widget/CatalogScreens.xml"/>
                 </container>
             </widgets>
         </section>

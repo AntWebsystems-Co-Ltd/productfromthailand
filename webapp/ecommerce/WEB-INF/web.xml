@@ -78,7 +78,7 @@ under the License.
         <filter-class>org.apache.ofbiz.webapp.control.ControlFilter</filter-class>
         <init-param>
             <param-name>allowedPaths</param-name>
-            <param-value>/error:/control:/products:/select:/index.html:/index.jsp:/robots.txt:/default.html:/default.jsp:/images:/fonts:/pftimages/fonts:/pft-default/pftimages</param-value>
+            <param-value>/error:/control:/products:/select:/index.html:/index.jsp:/robots.txt:/default.html:/default.jsp:/images:/fonts:/pftimages</param-value>
         </init-param>
         <init-param>
             <param-name>redirectPath</param-name>
