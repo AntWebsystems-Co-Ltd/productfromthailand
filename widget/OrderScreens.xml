@@ -198,7 +198,7 @@
                 <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
-                
+
                 <script location="component://order/groovyScripts/order/OrderView.groovy"/>
                 <script location="component://productfromthailand/groovyScripts/PFTSetup.groovy"/>
             </actions>
@@ -208,7 +208,7 @@
                     <decorator-section name="topLeft">
                         <section>
                             <widgets>
-                                <include-screen name="CompanyLogo" location="component://order/widget/ordermgr/OrderPrintScreens.xml"/>
+                                <include-screen name="CompanyLogo"/>
                             </widgets>
                         </section>
                     </decorator-section>
@@ -273,7 +273,7 @@
                     <widgets>
                         <decorator-screen name="FoReportDecorator">
                             <decorator-section name="topLeft">
-                                <include-screen name="CompanyLogo" location="component://order/widget/ordermgr/OrderPrintScreens.xml"/>
+                                <include-screen name="CompanyLogo"/>
                             </decorator-section>
                             <decorator-section name="topRight">
                                 <platform-specific>
@@ -300,6 +300,17 @@
                         </decorator-screen>
                     </fail-widgets>
                 </section>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CompanyLogo">
+        <section>
+            <actions>
+                <script location="component://productfromthailand/groovyScripts/CompanyHeader.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><xsl-fo><html-template location="component://order/template/order/CompanyHeader.fo.ftl"/></xsl-fo></platform-specific>
             </widgets>
         </section>
     </screen>

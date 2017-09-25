@@ -2081,6 +2081,9 @@ button.button1:hover {
     vertical-align: top;
     width: 22px;
 }
+#OrderHeaderViewItem div.screenlet{
+  float: left;
+}
 
 div #microcart {
     background: url("/pft-default/pftimages/cart.png") no-repeat scroll 0 0 transparent !important;
