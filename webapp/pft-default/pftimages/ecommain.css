@@ -2099,7 +2099,7 @@ div#storeMgr table:first-child {
 div.footer-section {
     background-color: #bbbbbb;
     width: 955px;
-    padding: 2em 0 18em 0;
+    padding: 2em 0 19em 0;
 }
 div.footer-section nav.footer-column {
     text-decoration: none;
@@ -2181,6 +2181,8 @@ div.footer-section nav h3 {
     font-weight: bold;
     text-transform: uppercase;
     margin: 0 0 1em 0;
+    color: #060658;
+    text-shadow: 2px 2px 2px #eff2fb;
 }
 div.footer-section nav h3 span {
     font-weight: 300;
@@ -2195,11 +2197,12 @@ div.footer-section nav ul li {
     color: #3c3b3b;
 }
 div.footer-section nav ul li a{
-    color: #3c3b3b;
+    color: royalblue;
+    text-shadow: 1px 1px 1px #ffffff;
 }
 div.footer-section nav ul li a:hover{
-font-weight: bold;
-color: red;
+    font-weight: bold;
+    color: #d34a4a;
 }
 div.copyright-section {
     background-color: #000000;
@@ -2217,5 +2220,43 @@ div.copyright {
 }
 
 #socialApplication {
-    padding-left: 155px;
+    padding-left: 145px;
 }
+
+/* ========= Style for social icons =========*/
+.fa {
+    padding: 12px;
+    font-size: 35px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+.fa:hover {
+    opacity: 0.9;
+    background: white;
+}
+/* Facebook */
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+.fa-facebook:hover {
+    color: #3B5998;
+}
+/* Twitter */
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+.fa-twitter:hover {
+    color: #55ACEE;
+}
+.fa-google-plus {
+    background: #dd4b39;
+    color: white;
+}
+.fa-google-plus:hover {
+    color: #dd4b39;
+}
+/* ========= End style for social icons =========*/

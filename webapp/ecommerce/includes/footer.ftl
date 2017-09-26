@@ -22,7 +22,7 @@ under the License.
 <div class="footer-section">
     <div>
         <nav class="footer-column">
-            <h3>HELP <span>& Support</span></h3>
+            <h3>HELP & Support</h3>
             <ul>
             <#assign contentRootId = "HELPROOT"/>
             <#assign contentAssocTypeId = "SUB_CONTENT"/>
@@ -42,13 +42,14 @@ under the License.
                 </#if>
             </ul>
         </nav>
+        <nav class="footer-column">
             <div class="input-group input-group-md" id="emailSubscribe">
               <input type="text" class="form-control" placeholder="Email Address">
               <span class="input-group-addon">Subscribe</span>
             </div>
             <ul class="social-icon" id="socialApplication">
-                <a href="#" class="social-icon-facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="https://twitter.com/Product_Thai" class="social-icon-twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="https://www.facebook.com/Careelnatural/" class="social-icon-facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="https://twitter.com/Product_Thai/" class="social-icon-twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                 <a href="#" class="social-icon-google"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
             </ul>
         </nav>
