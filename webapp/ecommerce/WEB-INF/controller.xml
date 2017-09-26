@@ -22,6 +22,22 @@ under the License.
         xmlns="http://ofbiz.apache.org/Site-Conf" xsi:schemaLocation="http://ofbiz.apache.org/Site-Conf http://ofbiz.apache.org/dtds/site-conf.xsd">
     <include location="component://ecommerce/webapp/ecommerce/WEB-INF/controller.xml"/>
     <description>OFBiz: Cloned eCommerce Controller Configuration File</description>
+    <request-map uri="googleLogin">
+        <security https="true" auth="false"/>
+        <event type="groovy" path="component://growerppassport/groovyScripts/Google/GoogleEvents.groovy" invoke="googleLogin"/>
+        <response name="success" type="request" value="main"/>
+        <response name="error" type="request" value="main"/>
+    </request-map>
+    <request-map uri="facebookLogin">
+        <security https="true" auth="false"/>
+        <event type="groovy" path="component://growerppassport/groovyScripts/Facebook/FacebookEvents.groovy" invoke="facebookLogin"/>
+        <response name="success" type="request" value="main"/>
+        <response name="error" type="request" value="main"/>
+    </request-map>
+    <request-map uri="main">
+        <security https="false" auth="false"/>
+        <response name="success" type="view" value="main"/>
+    </request-map>
     <request-map uri="services">
         <security https="false" auth="false"/>
         <response name="success" type="view" value="services"/>
@@ -162,6 +178,17 @@ under the License.
         <response name="success" type="view" value="main"/>
         <response name="error" type="view" value="main"/>
     </request-map>
+    <request-map uri="forgotYourPassword">
+        <security https="true" auth="false"/>
+        <response name="success" type="view" value="forgotYourPassword"/>
+    </request-map>
+
+    <request-map uri="createcustomer">
+        <security https="true" auth="false"/>
+        <event type="simple" path="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="createCustomer"/>
+        <response name="success" type="view" value="main"/>
+        <response name="error" type="view" value="newcustomer"/>
+    </request-map>
 
     <view-map name="orderview" type="screen" page="component://productfromthailand/widget/OrderViewScreens.xml#OrderHeaderView"/>
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
@@ -172,6 +199,7 @@ under the License.
 
     <view-map name="category" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#category"/>
     <view-map name="newcustomer" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newcustomer"/>
+    <view-map name="forgotYourPassword" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#forgotYourPassword"/>
     <view-map name="newsupplier" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newsupplier"/>
     <view-map name="viewprofile" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#viewprofile"/>
     <view-map name="contactus" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#contactus"/>

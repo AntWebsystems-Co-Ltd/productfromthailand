@@ -32,4 +32,16 @@
 
     <UserLogin userLoginId="admin" currentPassword="{SHA}47ca69ebb4bdc9ae0adec130880165d2cc05db1a" requirePasswordChange="N"/>
     <UserLoginSecurityGroup groupId="SUPER" userLoginId="admin" fromDate="2001-01-01 12:00:00.0"/>
+
+    <!-- Google identification -->
+    <SystemProperty systemResourceId="google" systemPropertyId="clientId"
+        description="Google Credentials Client Id"
+        systemPropertyValue="410132939758-oslvghga1h9lvddr57iohio1g6b8ki21.apps.googleusercontent.com"/>
+    <!-- facebook identification -->
+    <SystemProperty systemResourceId="facebook" systemPropertyId="appId"
+        description="facebook app Id"
+        systemPropertyValue="116513759015863"/>
+    <SystemProperty systemResourceId="facebook" systemPropertyId="apiVersion"
+        description="facebook api Version"
+        systemPropertyValue="v2.10"/>
 </entity-engine-xml>

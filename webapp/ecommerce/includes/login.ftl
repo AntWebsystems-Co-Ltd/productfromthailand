@@ -16,63 +16,177 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
+<#assign googleClientId = Static["org.apache.ofbiz.entity.util.EntityUtilProperties"].getPropertyValue("google", "clientId", delegator)>
+<#assign facebookAppId = Static["org.apache.ofbiz.entity.util.EntityUtilProperties"].getPropertyValue("facebook", "appId", delegator)>
+<#assign facebookApiVersion = Static["org.apache.ofbiz.entity.util.EntityUtilProperties"].getPropertyValue("facebook", "apiVersion", delegator)>
+<#-- Google Js -->
+<#if googleClientId?has_content>
+<script src="https://apis.google.com/js/api:client.js"></script>
+<meta name="google-signin-client_id" content="${googleClientId!}">
+
+<script>
+    var googleUser = {};
+    var startApp = function() {
+        gapi.load('auth2', function(){
+            // Retrieve the singleton for the GoogleAuth library and set up the client.
+            auth2 = gapi.auth2.init({
+                client_id: '${googleClientId!}',
+                cookiepolicy: 'none',
+                // Request scopes in addition to 'profile' and 'email'
+                //scope: 'additional_scope'
+            });
+            attachSignin(document.getElementById('customBtn'));
+            function attachSignin(element) {
+                auth2.attachClickHandler(element, {},
+                    function(googleUser) {
+                        onSignIn(googleUser);
+                    }
+                );
+            }
+        });
+    };
+</script>
+</#if>
+<#-- Facebook Js -->
+<#if facebookAppId?has_content>
+<script src="https://connect.facebook.net/en_GB/sdk.js"></script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '${facebookAppId!}',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : <#if facebookApiVersion?has_content>'${facebookApiVersion}'<#else>'v2.10'</#if>
+    });
+    FB.AppEvents.logPageView();
+  };
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     //js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+</#if>
 
 <h1>${uiLabelMap.CommonLogin}</h1>
-    <div class="screenlet" style="text-align:center;">
-      <h3>${uiLabelMap.CommonRegistered}</h3>
-      <form method="post" action="<@ofbizUrl>login</@ofbizUrl>" name="loginform">
-        <fieldset>
-          <div>
-            <label for="userName">${uiLabelMap.CommonUsername}&nbsp;&nbsp;
-            <input type="text" id="userName" name="USERNAME" value="<#if requestParameters.USERNAME?has_content>${requestParameters.USERNAME}<#elseif autoUserLogin?has_content>${autoUserLogin.userLoginId}</#if>"/>
-            </label>
-          </div>
-          <#if autoUserLogin?has_content>
-              <p>(${uiLabelMap.CommonNot} ${autoUserLogin.userLoginId}? <a href="<@ofbizUrl>${autoLogoutUrl}</@ofbizUrl>">${uiLabelMap.CommonClickHere}</a>)</p>
-          </#if>
-          <div>
-            <label for="password">${uiLabelMap.CommonPassword}:&nbsp;&nbsp;&nbsp;<input type="password" id="password" name="PASSWORD" value=""/></label>
-          </div>
-          <div>
-            <input type="submit" class="button" value="${uiLabelMap.CommonLogin}"/>
-          </div>
-          <div>
-            <label for="newcustomer_submit">${uiLabelMap.CommonMayCreateNewAccountHere}:
-            <a href="<@ofbizUrl>newcustomer</@ofbizUrl>">${uiLabelMap.CommonMayCreate}</a>
-          </div>
-        </fieldset>
-      </form>
-    </div>
-
-    <div class="screenlet" style="text-align:center">
-      <h3>${uiLabelMap.CommonForgotYourPassword}?</h3>
-      <form method="post" action="<@ofbizUrl>forgotpassword</@ofbizUrl>">
-        <div>
-          <label for="forgotpassword_userName">${uiLabelMap.CommonUsername}:&nbsp;&nbsp;
-          <input type="text" id="forgotpassword_userName" name="USERNAME" value="<#if requestParameters.USERNAME?has_content>${requestParameters.USERNAME}<#elseif autoUserLogin?has_content>${autoUserLogin.userLoginId}</#if>"/>
-          </label>
+<center>
+    <div>
+        <div class="screenlet-title-bar"></div>
+        <div class="screenlet-body" id="loginmanual">
+            <ul>
+                <li class="loginsection">
+                    <form method="post" action="<@ofbizUrl>login</@ofbizUrl>" name="loginform">
+                        <table class="basic-table" cellspacing="0">
+                            <tr class="label" align="center">
+                                <td>${uiLabelMap.CommonUsername}</td>
+                                <td><input type="text" name="USERNAME" id="username" value="<#if requestParameters.USERNAME?has_content>${requestParameters.USERNAME}<#elseif autoUserLogin?has_content>${autoUserLogin.userLoginId}</#if>"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <#if autoUserLogin?has_content>
+                                        <p>(${uiLabelMap.CommonNot} ${autoUserLogin.userLoginId}? <a href="<@ofbizUrl>${autoLogoutUrl}</@ofbizUrl>">${uiLabelMap.CommonClickHere}</a>)</p>
+                                    </#if>
+                                </td>
+                            </tr>
+                            <tr class="label">
+                                <td>${uiLabelMap.CommonPassword}</td>
+                                <td><input type="password" name="PASSWORD" id="password" value="" size="20"/></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><a href="<@ofbizUrl>forgotYourPassword</@ofbizUrl>">${uiLabelMap.CommonForgotYourPassword}</a></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td><input type="submit" class="button" value="${uiLabelMap.CommonLogin}" size="10"/></td>
+                            </tr>
+                        </table>
+                        <input type="hidden" name="JavaScriptEnabled" value="N"/>
+                    </form>
+                    </br><label for="newcustomer_submit">${uiLabelMap.CommonMayCreateNewAccountHere}:
+                    <a href="<@ofbizUrl>newcustomer</@ofbizUrl>">${uiLabelMap.CommonMayCreate}</a>
+                </li>
+                <div class="separatorLogin">
+                    <span class="or">${uiLabelMap.CommonOr}</span>
+                    <span class="line"></span>
+                </div>
+                <li class="loginsection">
+                    <div class="login-application">
+                        <ul>
+                            <li class="application">
+                                <#if googleClientId?has_content>
+                                <div id="gSignInWrapper">
+                                    <div id="customBtn" class="g-signin2" data-width="167" data-height="28" data-longtitle="true"></div>
+                                </div>
+                                <script>startApp();</script>
+                                </#if>
+                                <#if facebookAppId?has_content>
+                                <div class="signInWrapper">
+                                    <div class="fb-login-button" data-max-rows="1" data-size="medium" login_text="Sign in with Facebook" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" scope="public_profile,email" onlogin="checkLoginFacebook();"></div>
+                                </div>
+                                </#if>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <div class="buttons">
-          <input type="submit" class="button" name="GET_PASSWORD_HINT" value="${uiLabelMap.CommonGetPasswordHint}"/>
-          <input type="submit" class="button" name="EMAIL_PASSWORD" value="${uiLabelMap.CommonEmailPassword}"/>
-        </div>
-      </form>
     </div>
-<#--    
-    <div class="screenlet">
-      <h3>${uiLabelMap.CommonNewUser}</h3>
-      <form method="post" action="<@ofbizUrl>newcustomer</@ofbizUrl>">
-        <div>
-          <label for="newcustomer_submit">${uiLabelMap.CommonMayCreateNewAccountHere}:</p>
-          <input type="submit" class="button" id="newcustomer_submit" value="${uiLabelMap.CommonMayCreate}"/>
-        <div>
-      </form>
-    </div>
--->
-  <div class="endcolumns">&nbsp;</div>
-</div>
+</center>
+<div class="endcolumns">&nbsp;</div>
 
-<script language="JavaScript" type="text/javascript">
-  <#if autoUserLogin?has_content>document.loginform.PASSWORD.focus();</#if>
-  <#if !autoUserLogin?has_content>document.loginform.USERNAME.focus();</#if>
+<#-- Google login hidden Form -->
+<#if googleClientId?has_content>
+<form id="googleForm" name="googleForm" action="<@ofbizUrl>googleLogin</@ofbizUrl>" method="POST">
+    <input id="googleFirstName" type="hidden" name="firstName" value="">
+    <input id="googleLastName" type="hidden" name="lastName" value="">
+    <input id="email" type="hidden" name="email" value="">
+    <input id="accesToken" type="hidden" name="accesToken" value="">
+</form>
+</#if>
+<#-- Facebook login hidden Form -->
+<#if facebookAppId?has_content>
+<form id="facebookForm" name="facebookForm" action="<@ofbizUrl>facebookLogin</@ofbizUrl>" method="POST">
+    <input id="facebookFirstName" type="hidden" name="firstName" value="">
+    <input id="facebookLastName" type="hidden" name="lastName" value="">
+    <input id="facebookEmail" type="hidden" name="email" value="">
+    <input id="facebookAccesToken" type="hidden" name="accesToken" value="">
+</form>
+</#if>
+<script>
+    <#if autoUserLogin?has_content>document.loginform.PASSWORD.focus();</#if>
+    <#if !autoUserLogin?has_content>document.loginform.USERNAME.focus();</#if>
+
+    <#-- Google login Js to get data -->
+    <#if googleClientId?has_content>
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        $("#googleFirstName").val(profile.getGivenName());
+        $("#googleLastName").val(profile.getFamilyName());
+        $("#email").val(profile.getEmail());
+        var auth2 = gapi.auth2.getAuthInstance();
+        $("#accesToken").val(auth2.currentUser.get().getAuthResponse().id_token);
+        auth2.signOut();
+        document.getElementById("googleForm").submit();
+    }
+    </#if>
+    <#-- Facebook login Js to get data -->
+    <#if facebookAppId?has_content>
+    function checkLoginFacebook() {
+        FB.getLoginStatus(function(response) {
+            if(response.status === 'connected') {
+                $("#facebookAccesToken").val(response.authResponse.accessToken);
+                $("#facebookUserId").val(response.authResponse.userID);
+                FB.api('/me?fields=first_name,last_name,email', function(response) {
+                    $("#facebookFirstName").val(response.first_name);
+                    $("#facebookLastName").val(response.last_name);
+                    $("#facebookEmail").val(response.email);
+                    document.getElementById("facebookForm").submit();
+                });
+            }
+        });
+    }
+    </#if>
 </script>

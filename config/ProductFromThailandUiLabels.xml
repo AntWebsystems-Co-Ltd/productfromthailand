@@ -39,6 +39,10 @@
         <value xml:lang="en">73/1 M.8, Soi AntWebsystems Tambon Sanklang, Amphur Sanpatong, Chiang Mai, Thailand 50120</value>
         <value xml:lang="th">73/1 หมู่ 8 ซอย AntWebsystems ต.สันกลาง อ.สันป่าตอง จ.เชียงใหม่ ประเทศไทย 50120 </value>
     </property>
+    <property key="PFTEmailAlreadyUsed">
+        <value xml:lang="en">Email already used</value>
+        <value xml:lang="th">อีเมล์ถูกใช้แล้ว</value>
+    </property>
     <property key="CompanyName">
         <value xml:lang="en">Company Name</value>
         <value xml:lang="th">ชื่อ ร้านค้า/บริษัท</value>

@@ -2260,3 +2260,65 @@ div.copyright {
     color: #dd4b39;
 }
 /* ========= End style for social icons =========*/
+
+/* Login section*/
+.signInWrapper {
+    margin: 10px 2px;
+}
+.loginsection {
+    float: left;
+    width: 50%;
+}
+
+div#loginmanual-screenlet {
+    width: 50% !important;
+}
+
+#loginform {
+    margin: 10px 10px 0 10px;
+}
+
+a#forgetPassword {
+    margin-right: 20px;
+}
+div#loginmanual {
+    position: relative;
+    width: 80%;
+    display: inline-block;
+}
+.login-application {
+    position: relative;
+    top: 20px;
+}
+li.application {
+    margin: 0 0 5px 15px;
+}
+
+#username, #password {
+    width: 90%;
+}
+.separatorLogin {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    height: inherit;
+    bottom: 10px;
+    margin-left: -10px;
+}
+
+span.or {
+    background: #FAF9E5 !important;
+    color: #333;
+    position: relative;
+    top: 80px;
+    z-index: 9;
+}
+span.line {
+    background: #ccc;
+    content: "";
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 0;
+}

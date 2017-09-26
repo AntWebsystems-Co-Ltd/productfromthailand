@@ -49,21 +49,12 @@ under the License.
       // document.getElementById('USERNAME').disabled=false;
     }
   }
-  function hideShowUsaStates() {
-    var customerStateElement = document.getElementById('newuserform_stateProvinceGeoId');
-    var customerCountryElement = document.getElementById('newuserform_countryGeoId');
-    if (customerCountryElement.value == "USA" || customerCountryElement.value == "UMI") {
-      customerStateElement.style.display = "block";
-    } else {
-      customerStateElement.style.display = "none";
-    }
-  }
 </script>
 </#if>
 
 <#------------------------------------------------------------------------------
-NOTE: all page headings should start with an h2 tag, not an H1 tag, as 
-there should generally always only be one h1 tag on the page and that 
+NOTE: all page headings should start with an h2 tag, not an H1 tag, as
+there should generally always only be one h1 tag on the page and that
 will generally always be reserved for the logo at the top of the page.
 ------------------------------------------------------------------------------->
 
@@ -95,10 +86,10 @@ will generally always be reserved for the logo at the top of the page.
 </#macro>
 
 <form method="post" action="<@ofbizUrl>createcustomer${previousParams}</@ofbizUrl>" id="newuserform" name="newuserform">
-  
-  
+
+
   <#----------------------------------------------------------------------
-  If you need to include a brief explanation of the form, or certain 
+  If you need to include a brief explanation of the form, or certain
   elements in the form (such as explaining asterisks denote REQUIRED),
   then you should use a <p></p> tag with a class name of "desc"
   ----------------------------------------------------------------------->
@@ -115,7 +106,7 @@ will generally always be reserved for the logo at the top of the page.
     <legend>${uiLabelMap.PartyFullName}</legend>
     <input type="hidden" name="emailProductStoreId" value="${productStoreId}"/>
     <#----------------------------------------------------------------------
-    Each input row should be enclosed in a <div></div>. 
+    Each input row should be enclosed in a <div></div>.
     This will ensure than each input field clears the one
     above it. Alternately, if you want several inputs to float next to
     each other, you can enclose them in a table as illustrated below for
@@ -167,93 +158,6 @@ will generally always be reserved for the logo at the top of the page.
       <label for="USER_LAST_NAME">${uiLabelMap.PartyLastName}*</label>
       <input type="text" name="USER_LAST_NAME" id="USER_LAST_NAME" value="${requestParameters.USER_LAST_NAME?if_exists}" />
     </div>
-
-    <div>
-      <@fieldErrors fieldName="USER_SUFFIX"/>
-      <label for="USER_SUFFIX">${uiLabelMap.PartySuffix}</label>
-      <input type="text" class='inputBox' name="USER_SUFFIX" id="USER_SUFFIX" value="${requestParameters.USER_SUFFIX?if_exists}" />
-    </div>
-
-  </fieldset>
-
-  <fieldset class="col">
-    <legend>${uiLabelMap.PartyShippingAddress}</legend>
-    <div>
-      <@fieldErrors fieldName="CUSTOMER_ADDRESS1"/>
-      <label for="CUSTOMER_ADDRESS1">${uiLabelMap.PartyAddressLine1}*</label>
-      <input type="text" name="CUSTOMER_ADDRESS1" id="CUSTOMER_ADDRESS1" value="${requestParameters.CUSTOMER_ADDRESS1?if_exists}" />
-    </div>
-
-    <div>
-      <@fieldErrors fieldName="CUSTOMER_ADDRESS2"/>
-      <label for="CUSTOMER_ADDRESS2">${uiLabelMap.PartyAddressLine2}</label>
-      <input type="text" name="CUSTOMER_ADDRESS2" id="CUSTOMER_ADDRESS2" value="${requestParameters.CUSTOMER_ADDRESS2?if_exists}" />
-    </div>
-
-    <div>
-      <@fieldErrors fieldName="CUSTOMER_CITY"/>
-      <label for="CUSTOMER_CITY">${uiLabelMap.PartyCity}*</label>
-      <input type="text" name="CUSTOMER_CITY" id="CUSTOMER_CITY" value="${requestParameters.CUSTOMER_CITY?if_exists}" />
-    </div>
-
-    <div>
-      <@fieldErrors fieldName="CUSTOMER_POSTAL_CODE"/>
-      <label for="CUSTOMER_POSTAL_CODE">${uiLabelMap.PartyZipCode}*</label>
-      <input type="text" name="CUSTOMER_POSTAL_CODE" id="CUSTOMER_POSTAL_CODE" value="${requestParameters.CUSTOMER_POSTAL_CODE?if_exists}" />
-    </div>
-
-    <div>
-      <@fieldErrors fieldName="CUSTOMER_COUNTRY"/>
-      <label for="customerCountry">${uiLabelMap.CommonCountry}*</label>
-      <select name="CUSTOMER_COUNTRY" id="newuserform_countryGeoId">
-        ${screens.render("component://common/widget/CommonScreens.xml#countries")}
-        <#assign defaultCountryGeoId =
-            Static["org.apache.ofbiz.entity.util.EntityUtilProperties"].getPropertyValue("general",
-            "country.geo.id.default", delegator)>
-        <option selected="selected" value="${defaultCountryGeoId}">
-          <#assign countryGeo = delegator.findOne("Geo",Static["org.apache.ofbiz.base.util.UtilMisc"]
-              .toMap("geoId",defaultCountryGeoId), false)>
-          ${countryGeo.get("geoName",locale)}
-        </option>
-      </select>
-    </div>
-
-    <div>
-      <@fieldErrors fieldName="CUSTOMER_STATE"/>
-      <label for="customerState">${uiLabelMap.PartyState}*</label>
-      <select name="CUSTOMER_STATE" id="newuserform_stateProvinceGeoId"></select>
-    <div/>
-  </fieldset>
-
-  <fieldset>
-    <legend>${uiLabelMap.PartyPhoneNumbers}</legend>
-    <table summary="Tabular form for entering multiple telecom numbers for different purposes. Each row allows user to enter telecom number for a purpose">
-      <thead>
-        <tr>
-          <th></th>
-          <th scope="col">${uiLabelMap.CommonCountryCode}</th>
-          <th scope="col">${uiLabelMap.PartyAreaCode}</th>
-          <th scope="col">${uiLabelMap.PartyContactNumber}</th>
-          <th scope="col">${uiLabelMap.PartyExtension}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">${uiLabelMap.PartyHomePhone}</th>
-          <td><input type="text" name="CUSTOMER_HOME_COUNTRY" size="5" value="${requestParameters.CUSTOMER_HOME_COUNTRY?if_exists}" /></td>
-          <td><input type="text" name="CUSTOMER_HOME_AREA" size="5" value="${requestParameters.CUSTOMER_HOME_AREA?if_exists}" /></td>
-          <td><input type="text" name="CUSTOMER_HOME_CONTACT" value="${requestParameters.CUSTOMER_HOME_CONTACT?if_exists}" /></td>
-          <td><input type="text" name="CUSTOMER_HOME_EXT" size="6" value="${requestParameters.CUSTOMER_HOME_EXT?if_exists}"/></td>
-        </tr>
-        <tr>
-          <th scope="row">${uiLabelMap.PartyMobilePhone}</th>
-          <td><input type="text" name="CUSTOMER_MOBILE_COUNTRY" size="5" value="${requestParameters.CUSTOMER_MOBILE_COUNTRY?if_exists}" /></td>
-          <td><input type="text" name="CUSTOMER_MOBILE_AREA" size="5" value="${requestParameters.CUSTOMER_MOBILE_AREA?if_exists}" /></td>
-          <td><input type="text" name="CUSTOMER_MOBILE_CONTACT" value="${requestParameters.CUSTOMER_MOBILE_CONTACT?if_exists}" /></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
   </fieldset>
 
   <fieldset class="col">
@@ -305,18 +209,12 @@ will generally always be reserved for the logo at the top of the page.
 </form>
 
 <#------------------------------------------------------------------------------
-To create a consistent look and feel for all buttons, input[type=submit], 
-and a tags acting as submit buttons, all button actions should have a 
-class name of "button". No other class names should be used to style 
+To create a consistent look and feel for all buttons, input[type=submit],
+and a tags acting as submit buttons, all button actions should have a
+class name of "button". No other class names should be used to style
 button actions.
 ------------------------------------------------------------------------------->
 <div class="newuserbutton">
   <div class="floatleft"><a href="javascript:$('#newuserform').submit()">${uiLabelMap.CommonSave}</a></div>
   <div class="floatright"><a href="<@ofbizUrl>checkLogin/main</@ofbizUrl>" class="reset">${uiLabelMap.CommonBack}</a></div>
 </div>
-
-<script type="text/javascript">
-  //<![CDATA[
-      hideShowUsaStates();
-  //]]>
-</script>

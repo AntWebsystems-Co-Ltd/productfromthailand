@@ -59,7 +59,6 @@ if (prodCatalog) {
     if (catalogHeaderLogo) globalContext.catalogHeaderLogo = catalogHeaderLogo;
 }
 globalContext.productStore = productStore;
-globalContext.checkLoginUrl = LoginWorker.makeLoginUrl(request, "checkLogin");
 globalContext.catalogQuickaddUse = CatalogWorker.getCatalogQuickaddUse(request);
 globalContext.productStoreId = productStoreId;
 
