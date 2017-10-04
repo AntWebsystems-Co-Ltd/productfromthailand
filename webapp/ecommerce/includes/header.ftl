@@ -28,6 +28,7 @@ under the License.
             <img src="<@ofbizContentUrl>${layoutSettings.VT_HDR_IMAGE_URL.get(0)}</@ofbizContentUrl>" alt="Logo" class="logo"/>
           </#if>
         </a>
+        <img src="<@ofbizContentUrl>/pft-default/pftimages/LOGO_AUTHENTIC_2.png</@ofbizContentUrl>" width="80px" alt="Logo" class="logo"/>
     </div>
     <div id="right">
         <div id="welcome-message">
@@ -99,10 +100,7 @@ under the License.
        </div>
        <#--div class="currencyprice">
         </div-->
-        <div id="authen">
-          <img src="<@ofbizContentUrl>/pft-default/pftimages/LOGO_AUTHENTIC_2.png</@ofbizContentUrl>" width="70px" alt="Logo" class="logo"/>
-        </div>
-        <div id="languagelist" style="margin-top: -25px">
+        <div id="languagelist">
             <span><a href="<@ofbizUrl>setSessionLocale?newLocale=en</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pft-default/pftimages/flags/en.jpg</@ofbizContentUrl>" alt="English"/></a></span>
             <span><a href="<@ofbizUrl>setSessionLocale?newLocale=th</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pft-default/pftimages/flags/th.png</@ofbizContentUrl>" alt="Thai"/></a></span>
        </div>
