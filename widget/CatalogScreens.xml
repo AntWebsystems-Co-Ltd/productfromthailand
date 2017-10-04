@@ -86,7 +86,7 @@ under the License.
                 <script location="component://order/groovyScripts/entry/catalog/SideDeepCategory.groovy"/>
             </actions>
             <widgets>
-                <platform-specific><html><html-template location="component://ecommerce/template/catalog/MiniLastViewedCategories.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/MiniLastViewedCategories.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>

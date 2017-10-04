@@ -150,4 +150,11 @@ under the License.
     <SystemProperty systemResourceId="general" systemPropertyId="currency.uom.id.default" systemPropertyValue="THB"/>
     <SystemProperty systemResourceId="general" systemPropertyId="country.geo.id.default" systemPropertyValue="THA"/>
 
+    <!-- Supplier role type -->
+    <RoleType description="Company supplier" hasTable="N" parentTypeId="" roleTypeId="SUPP_COMPANY"/>
+    <RoleType description="Individual supplier" hasTable="N" parentTypeId="" roleTypeId="SUPP_INDIVIDUAL"/>
+
+    <PartyIdentificationType partyIdentificationTypeId="ID_NUMBER" description="ID card number or passport number"/>
+    <PartyIdentificationType partyIdentificationTypeId="ID_BIZ_REGISTER_NO" description="ID a business registration number"/>
+
 </entity-engine-xml>

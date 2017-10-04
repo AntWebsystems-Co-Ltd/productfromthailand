@@ -53,9 +53,9 @@ fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td {
 margin: 0;
 padding: 0;
-border:0; 
-margin:0; 
-outline:0; 
+border:0;
+margin:0;
+outline:0;
 padding:0;
 font-size: 100%;
 vertical-align: baseline;
@@ -459,12 +459,13 @@ height:1%;
 border:1px solid #999;
 }
 #ecom-mainarea .screenlet-title-bar {
-background:#BCB104;
-padding:1px 4px 3px;
+background:#F7931D;
+padding:10px 4px 3px;
 height:auto !important;
 text-align:left;
 color:white;
 font-weight: bold;
+line-height:0.8em;
 }
 #ecom-mainarea .screenlet-body {
 /*border:thin;
@@ -1214,19 +1215,35 @@ font-weight:700;
 #newuserform div{
 padding:5px 10px 10px 20px;
 }
-#newuserform label{
+#newuserform label {
+    float: left;
+    width: 20%;
+    margin-right: 0.5em;
+    padding-top: 0.2em;
+    text-align: right;
+    font-weight: normal;
+    padding-left: 2px;
+}
+.error{
+    float: none !important;
+    color: #CD202C;
+}
+
+#newuserform table {
 float:left;
-width:20%;
-margin-right:0.5em;
-padding-top:0.2em;
-text-align:right;
-font-weight:bold;
+}
+td.newsupplier {
+    font-weight: bold;
+    text-align: right;
+}
+td.newcustomer {
+    font-weight: bold;
+    text-align: right;
 }
 
 #newuserform fieldset{
-border:1px solid #CCC ;
-margin:10px;
-width:70%;
+    border: 1px solid #CCC;
+    margin: 10px;
 }
 
 #newuserform .errorMessage{
@@ -1507,14 +1524,15 @@ margin-top: -10px;
 }
 
 .menu-right {
-color: #827B00;
+color: #F7931D;
 font-weight:bold;
 font-size: 1em;
 display:inline;
+margin-top: 50px
 }
 
 .mainrightonly {
-float:left; 
+float:left;
 width:700px;
 }
 
@@ -1644,27 +1662,27 @@ margin: 0.8em 0 0;
 border-top: 1px #BBBBBB solid;
 border-bottom: 1px #BBBBBB solid;
 }
-button.buttonaddtocart { 
-    background:none repeat 0 50%; 
-    border:0 none; 
-    cursor:pointer;  
-    font-size:10px; 
-    height:20px !important; 
-    overflow:visible; 
-    width:auto; 
-    vertical-align: top; 
+button.buttonaddtocart {
+    background:none repeat 0 50%;
+    border:0 none;
+    cursor:pointer;
+    font-size:10px;
+    height:20px !important;
+    overflow:visible;
+    width:auto;
+    vertical-align: top;
     margin-left:5px\9;
 }
-button.buttonaddtocart span { 
-    background:url(/pft-default/pftimages/button1_1_border_left.png) no-repeat  left top !important; 
-    display:block; 
-    height:20px !important; 
+button.buttonaddtocart span {
+    background:url(/pft-default/pftimages/button1_1_border_left.png) no-repeat  left top !important;
+    display:block;
+    height:20px !important;
     margin:0;
 }
-button.buttonaddtocart span span { 
-    background:url(/pft-default/pftimages/button1_1_border_right.png) no-repeat  right top !important; 
-    display:block; 
-    height:20px !important; 
+button.buttonaddtocart span span {
+    background:url(/pft-default/pftimages/button1_1_border_right.png) no-repeat  right top !important;
+    display:block;
+    height:20px !important;
     padding:0 5px;
     /*padding-top:5px;
     padding-right:0px;
@@ -1672,16 +1690,16 @@ button.buttonaddtocart span span {
     padding-left:5px;*/
     #margin-right:-7px;
 }
-button.buttonaddtocart span span span { 
-    font-size:10px; 
-    background:url(/pft-default/pftimages/button1_1.png) repeat-x  left top !important; 
-    color:#FFFFFF; 
-    display:block; 
-    font-weight:700; 
-    line-height:normal; 
-    overflow:hidden !important; 
-    padding-top:4px; 
-    text-align:center; 
+button.buttonaddtocart span span span {
+    font-size:10px;
+    background:url(/pft-default/pftimages/button1_1.png) repeat-x  left top !important;
+    color:#FFFFFF;
+    display:block;
+    font-weight:700;
+    line-height:normal;
+    overflow:hidden !important;
+    padding-top:4px;
+    text-align:center;
     white-space:nowrap;
     width:auto;
     #width:70px;
@@ -2321,4 +2339,72 @@ span.line {
     position: absolute;
     left: 50%;
     top: 0;
+}
+
+/* Register section */
+.manualRegister {
+    float: left;
+    width: 60%;
+}
+
+.thirdPartyRegister {
+    float: left;
+    width: 20%;
+    padding-left: 70%;
+}
+
+.separatorSignup {
+    position: absolute;
+    left: 65%;
+    top: 50px;
+    height: inherit;
+    bottom: 10px;
+    margin-left: -10px;
+}
+
+.separatorSignup span.or {
+    top: 50%;
+    background: white !important;
+}
+.thirdPartyRegister .login-application {
+    position: absolute;
+    top: 50%;
+}
+
+/* Google Button */
+#googleBtn {
+    display: inline-block;
+    background: white;
+    color: #444;
+    width: 173px;
+    border-radius: 5px;
+    border: thin solid #888;
+    box-shadow: 1px 1px 1px grey;
+    white-space: nowrap;
+}
+#googleBtn:hover {
+    cursor: pointer;
+}
+span.label {
+    font-family: serif;
+    font-weight: normal;
+}
+span.googleIcon {
+    background: url('/pft-default/pftimages/g-normal.png') transparent 1px 50% no-repeat !important;
+    display: inline-block;
+    vertical-align: middle;
+    width: 32px;
+    height: 28px;
+    border-radius: 20px;
+}
+span.googleButtonText {
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 42px;
+    font-size: 13px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.manualRegister #username, .manualRegister #password {
+    width: auto;
 }

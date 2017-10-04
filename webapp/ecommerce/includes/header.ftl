@@ -33,20 +33,17 @@ under the License.
         <div id="welcome-message">
             <ul id="right-links">
             <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
-                  <#if security.hasEntityPermission("MYPORTAL", "_SUPPLIER", session)>
-                    <li id="header-bar-store"><a href="<@ofbizUrl>StoreManagement</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTStoreManagement}</div></a></li>
-                  <#else>
-                    <li id="header-bar-account"><a href="<@ofbizUrl>viewprofile</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTYourAccount}</div></a></li>
-                  </#if>
-                <li id="header-bar-logout"><a href="<@ofbizUrl>logout</@ofbizUrl>"><div class="menu-right">${uiLabelMap.CommonLogout}</div></a></li>
+                  <li id="header-bar-store"><a href="<@ofbizUrl>logout</@ofbizUrl>"><div class="menu-right">${uiLabelMap.CommonLogout}</div></a></li>
+                <#if security.hasEntityPermission("MYPORTAL", "_SUPPLIER", session)>
+                  <li id="header-bar-store"><a href="<@ofbizUrl>StoreManagement</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTStoreManagement}</div></a></li>
+                </#if>
             <#else/>
                 <li id="header-bar-login">
                 <a href="<@ofbizUrl>checkLogin</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSignIn}</div></a><div class="menu-right"> ${uiLabelMap.PFTOr}</div> <a href="<@ofbizUrl>register</@ofbizUrl>"><div class="menu-right"> ${uiLabelMap.PFTRegister}</div></a>
                 </li>
             </#if>
             <#if sessionAttributes.autoName?has_content>
-            ${uiLabelMap.CommonWelcome}&nbsp;${sessionAttributes.autoName?html}!
-            (${uiLabelMap.CommonNotYou}?&nbsp;<a href="<@ofbizUrl>autoLogout</@ofbizUrl>" class="linktext">${uiLabelMap.CommonClickHere}</a>)
+            ${uiLabelMap.CommonWelcome}!&nbsp;<a href="<@ofbizUrl>viewprofile</@ofbizUrl>">${sessionAttributes.autoName?html}</a>
             <#else/>
             ${uiLabelMap.CommonWelcome}!
             </#if>&nbsp;&nbsp;
@@ -66,8 +63,8 @@ under the License.
             </#if-->
         </div>
         <div class="menu-right">${screens.render("component://productfromthailand/widget/CartScreens.xml#microcart")}</div>
-        <#-- Twitter share  -->
-        <div id="google-plus-top">
+        <#-- Twitter share -->
+        <#-- <div id="google-plus-top">
             <iframe allowtransparency="true" frameborder="0" scrolling="no"
             src="https://platform.twitter.com/widgets/follow_button.html?screen_name=Product_Thai&link_color=BCB104"
             style="width:150px; height:20px;">Follow @Product_Thai</iframe>
@@ -86,8 +83,8 @@ under the License.
               })();
             </script>
             <br/>
-        </div>
-        <div style="height:12px;">
+        </div> -->
+        <div>
            <#assign shoppingCart = sessionAttributes.shoppingCart?if_exists>
            <#if shoppingCart?has_content>
                 <#assign shoppingCartSize = shoppingCart.size()>
@@ -102,7 +99,10 @@ under the License.
        </div>
        <#--div class="currencyprice">
         </div-->
-        <div id="languagelist"> ${uiLabelMap.PFTLanguage} :
+        <div id="authen">
+          <img src="<@ofbizContentUrl>/pft-default/pftimages/LOGO_AUTHENTIC_2.png</@ofbizContentUrl>" width="70px" alt="Logo" class="logo"/>
+        </div>
+        <div id="languagelist" style="margin-top: -25px">
             <span><a href="<@ofbizUrl>setSessionLocale?newLocale=en</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pft-default/pftimages/flags/en.jpg</@ofbizContentUrl>" alt="English"/></a></span>
             <span><a href="<@ofbizUrl>setSessionLocale?newLocale=th</@ofbizUrl>"><img class="top-menu" src="<@ofbizContentUrl>/pft-default/pftimages/flags/th.png</@ofbizContentUrl>" alt="Thai"/></a></span>
        </div>

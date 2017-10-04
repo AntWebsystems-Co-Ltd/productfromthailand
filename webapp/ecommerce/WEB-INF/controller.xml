@@ -26,13 +26,13 @@ under the License.
         <security https="true" auth="false"/>
         <event type="groovy" path="component://growerppassport/groovyScripts/Google/GoogleEvents.groovy" invoke="googleLogin"/>
         <response name="success" type="request" value="main"/>
-        <response name="error" type="request" value="main"/>
+        <response name="error" type="view-last"/>
     </request-map>
     <request-map uri="facebookLogin">
         <security https="true" auth="false"/>
         <event type="groovy" path="component://growerppassport/groovyScripts/Facebook/FacebookEvents.groovy" invoke="facebookLogin"/>
         <response name="success" type="request" value="main"/>
-        <response name="error" type="request" value="main"/>
+        <response name="error" type="view-last"/>
     </request-map>
     <request-map uri="main">
         <security https="false" auth="false"/>
@@ -92,8 +92,8 @@ under the License.
     <request-map uri="createsupplier">
         <security https="true" auth="false"/>
         <event type="simple" path="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="createSupplier"/>
-        <response name="success" type="view" value="main"/>
-        <response name="error" type="view" value="newsupplier"/>
+        <response name="success" type="request" value="main"/>
+        <response name="error" type="request" value="newsupplier"/>
     </request-map>
     <!-- ================ Product Requests ================= -->
     <request-map uri="createProduct">
@@ -107,6 +107,54 @@ under the License.
         <event type="simple" path="component://productfromthailand/minilang/marketing/MarketingEvents.xml" invoke="updateProductAndSupplierProduct"/>
         <response name="success" type="view" value="EditProduct"/>
         <response name="error" type="view" value="EditProduct"/>
+    </request-map>
+    <request-map uri="EditProduct">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="EditProduct"/>
+    </request-map>
+    <request-map uri="EditProductPrices">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="EditProductPrices"/>
+    </request-map>
+    <request-map uri="EditProductContent">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="EditProductContent"/>
+    </request-map>
+    <request-map uri="EditProductCategories">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="EditProductCategories"/>
+    </request-map>
+    <request-map uri="EditProductKeyword">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="EditProductKeyword"/>
+    </request-map>
+    <request-map uri="EditProductFeatures">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="EditProductFeatures"/>
+    </request-map>
+    <request-map uri="ViewProductOrder">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ViewProductOrder"/>
+    </request-map>
+    <request-map uri="EditProductCommunicationEvents">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="EditProductCommunicationEvents"/>
+    </request-map>
+
+    <request-map uri="CreateVirtualWithVariantsForm">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="CreateVirtualWithVariantsForm"/>
+    </request-map>
+    <request-map uri="quickCreateVirtualWithVariants">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="quickCreateVirtualWithVariants"/>
+        <response name="success" type="view" value="EditProduct"/>
+        <response name="error" type="view" value="CreateVirtualWithVariantsForm"/>
+    </request-map>
+
+    <request-map uri="ProductBarCode.pdf">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ProductBarCode.pdf"/>
     </request-map>
 
     <request-map uri="leftkeywordsearch">
@@ -190,6 +238,11 @@ under the License.
         <response name="error" type="view" value="newcustomer"/>
     </request-map>
 
+    <request-map uri="viewSupplierProfile">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewSupplierProfile"/>
+    </request-map>
+
     <view-map name="orderview" type="screen" page="component://productfromthailand/widget/OrderViewScreens.xml#OrderHeaderView"/>
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
     <view-map name="main" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#main"/>
@@ -202,6 +255,7 @@ under the License.
     <view-map name="forgotYourPassword" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#forgotYourPassword"/>
     <view-map name="newsupplier" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newsupplier"/>
     <view-map name="viewprofile" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#viewprofile"/>
+    <view-map name="viewSupplierProfile" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#viewSupplierProfile"/>
     <view-map name="contactus" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#contactus"/>
     <view-map name="partner" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#partner"/>
     <view-map name="aboutus" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#aboutus"/>
@@ -246,9 +300,12 @@ under the License.
 
     <view-map name="uploadproducts" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#uploadproducts"/>
 
+    <view-map name="CreateVirtualWithVariantsForm" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#CreateVirtualWithVariantsForm"/>
+
     <!-- PDFs  -->
     <view-map name="OrderPDF" type="screenfop" page="component://productfromthailand/widget/OrderScreens.xml#OrderPDF" content-type="application/pdf" encoding="none"/>
     <view-map name="InvoicePDF" type="screenfop" page="component://productfromthailand/widget/OrderScreens.xml#InvoicePDF" content-type="application/pdf" encoding="none"/>
+    <view-map name="ProductBarCode.pdf" type="screenfop" page="component://product/widget/catalog/ProductScreens.xml#ProductBarCode.fo" content-type="application/pdf" encoding="none"/>
 
     <view-map name="StoreManagement" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#StoreManagement"/>
 </site-conf>

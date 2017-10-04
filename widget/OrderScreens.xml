@@ -7,9 +7,9 @@
     to you under the Apache License, Version 2.0 (the
     "License"); you may not use this file except in compliance
     with the License.  You may obtain a copy of the License at
-    
+
     http://www.apache.org/licenses/LICENSE-2.0
-    
+
     Unless required by applicable law or agreed to in writing,
     software distributed under the License is distributed on an
     "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -20,7 +20,7 @@
 
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
-    
+
     <!-- fo decorator for pdf documents (invoices, sales orders, purchase orders etc...). -->
     <screen name="FoReportDecorator">
         <section>
@@ -34,15 +34,15 @@
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="checkoutshippingaddress">
         <section>
             <actions>
                 <set field="rightbarScreenName" value="rightbar"/>
                 <set field="MainColumnStyle" value="rightonly"/>
-                
+
                 <set field="titleProperty" value="PageTitleCheckoutOptions"/>
-                <script location="component://order/webapp/ordermgr/WEB-INF/actions/entry/CheckoutShippingAddress.groovy"/>
+                <script location="component://order/groovyScripts/entry/CheckoutShippingAddress.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -53,13 +53,13 @@
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="checkoutshippingoptions">
         <section>
             <actions>
                 <set field="rightbarScreenName" value="rightbar"/>
                 <set field="MainColumnStyle" value="rightonly"/>
-                
+
                 <set field="titleProperty" value="PageTitleCheckoutOptions"/>
                 <script location="component://ecommerce/groovyScripts/order/CheckoutShippingOptions.groovy"/>
             </actions>
@@ -72,13 +72,13 @@
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="checkoutpayment">
         <section>
             <actions>
                 <set field="rightbarScreenName" value="rightbar"/>
                 <set field="MainColumnStyle" value="rightonly"/>
-                
+
                 <set field="titleProperty" value="PageTitleCheckoutOptions"/>
                 <script location="component://order/groovyScripts/entry/CheckoutPayment.groovy"/>
                 <script location="component://order/groovyScripts/entry/StorePaymentOptions.groovy"/>
@@ -92,7 +92,7 @@
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="splitship">
         <section>
             <actions>
@@ -108,7 +108,7 @@
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="checkoutreview">
         <section>
             <actions>
@@ -125,7 +125,7 @@
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="ordercomplete">
         <section>
             <actions>
@@ -142,13 +142,13 @@
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="orderstatus">
         <section>
             <actions>
                 <set field="rightbarScreenName" value="rightbar"/>
                 <set field="MainColumnStyle" value="rightonly"/>
-                
+
                 <set field="maySelectItems" value="Y"/>
                 <set field="titleProperty" value="PageTitleOrderStatus"/>
                 <script location="component://ecommerce/groovyScripts/order/OrderStatus.groovy"/>
@@ -162,12 +162,12 @@
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="checkoutoptions">
         <section>
             <actions>
                 <set field="titleProperty" value="PageTitleCheckoutOptions"/>
-                
+
                 <script location="component://order/groovyScripts/entry/CheckoutPayment.groovy"/>
                 <script location="component://order/groovyScripts/entry/CheckoutOptions.groovy"/>
                 <script location="component://order/groovyScripts/entry/StorePaymentOptions.groovy"/>
@@ -181,7 +181,7 @@
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="orderitems">
         <section>
             <widgets>
@@ -189,7 +189,7 @@
             </widgets>
         </section>
     </screen>
-    
+
     <!-- generate a PDF for the order, sharing the same BSH file as the HTML page for viewing the order -->
     <screen name="OrderPDF">
         <section>
@@ -244,7 +244,7 @@
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="InvoicePDF">
         <section>
             <actions>

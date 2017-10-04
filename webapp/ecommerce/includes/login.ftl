@@ -35,7 +35,7 @@ under the License.
                 // Request scopes in addition to 'profile' and 'email'
                 //scope: 'additional_scope'
             });
-            attachSignin(document.getElementById('customBtn'));
+            attachSignin(document.getElementById('googleBtn'));
             function attachSignin(element) {
                 auth2.attachClickHandler(element, {},
                     function(googleUser) {
@@ -49,7 +49,7 @@ under the License.
 </#if>
 <#-- Facebook Js -->
 <#if facebookAppId?has_content>
-<script src="https://connect.facebook.net/en_GB/sdk.js"></script>
+<script src="https://connect.facebook.net/en_US/sdk.js"></script>
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -117,14 +117,15 @@ under the License.
                         <ul>
                             <li class="application">
                                 <#if googleClientId?has_content>
-                                <div id="gSignInWrapper">
-                                    <div id="customBtn" class="g-signin2" data-width="167" data-height="28" data-longtitle="true"></div>
+                                <div id="googleBtn" class="customGPlusSignIn">
+                                  <span class="googleIcon"></span>
+                                  <span class="googleButtonText">Sign in with Google</span>
                                 </div>
                                 <script>startApp();</script>
                                 </#if>
                                 <#if facebookAppId?has_content>
                                 <div class="signInWrapper">
-                                    <div class="fb-login-button" data-max-rows="1" data-size="medium" login_text="Sign in with Facebook" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" scope="public_profile,email" onlogin="checkLoginFacebook();"></div>
+                                    <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" login-text="Sign in with Facebook" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" scope="public_profile,email" onlogin="checkLoginFacebook();"></div>
                                 </div>
                                 </#if>
                             </li>

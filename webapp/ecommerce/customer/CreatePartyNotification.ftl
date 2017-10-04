@@ -19,7 +19,7 @@ under the License.
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <title>${title?if_exists}</title>
+  <title>${title!}</title>
   <style type="text/css">
     td {
       color: #777777;
@@ -46,11 +46,6 @@ under the License.
     .footer-address {
       padding: 25px 0 25px
     }
-
-    .blank_row
-    {
-      height: 10px !important; /* overwrites any other rules */
-    }
   </style>
 </head>
 <body bgcolor="#f7f7f7">
@@ -61,7 +56,7 @@ under the License.
       <img src="${baseURL}/pft-default/pftimages/transparent.png">
         <table cellspacing="0" cellpadding="0" width="100%" background="${baseURL}/pft-default/pftimages/bg_top.jpg">
           <tr>
-            <td width="100%" height="80" valign="top" lass="header-social">
+            <td width="100%" height="80" valign="top" class="header-social">
               <center>
                 <table cellpadding="0" cellspacing="0" width="600">
                   <tr>
@@ -84,44 +79,15 @@ under the License.
   <tr>
     <td align="center" valign="top" width="100%" bgcolor="#f7f7f7">
       <center>
-        <table cellspacing="0" cellpadding="0" width="600">
-          <tr class="blank_row">
-              <td colspan="3"></td>
-          </tr>
+        <table cellspacing="0" cellpadding="0" width="600" >
           <tr>
-            <td>
-            Dear ${parameters.groupName!},
-            </td>
-          </tr>
-          <tr class="blank_row">
-              <td colspan="3"></td>
-          </tr>
-          <tr>
-            <td>
-            Welcome to productfromthailand (PFT) !
+            <td align="center">
+              <h1>Your account has been created successfully.</h1>
             </td>
           </tr>
           <tr>
-            <td>
-            Thank you for registering with us.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Your account has been created successfully.
-            </td>
-          </tr>
-          <tr class="blank_row">
-              <td colspan="3"></td>
-          </tr>
-          <tr>
-            <td>
-            Your documents has been uploaded successfully. We will check your documents within 24 hours.
-            </td>
-          </tr>
-          <tr>
-            <td>
-            If you have any question please contact : productfromthailand@pft.com
+            <td align="center">
+              Thank you for register at ProductFromThailand.com
             </td>
           </tr>
         </table>
@@ -134,9 +100,9 @@ under the License.
         <table cellspacing="0" cellpadding="0" width="600">
           <tr>
             <td class="footer-address" align="center">
-              <strong>Product From Thailand</strong><br />
-              73/1 M.8, Soi AntWebsystems Tambon Sanklang, Amphur Sanpatong<br />
-              Chiang Mai, Thailand 50120 <br /><br />
+              <strong>Product From Thailand</strong><br/>
+              73/1 M.8, Soi AntWebsystems Tambon Sanklang, Amphur Sanpatong<br/>
+              Chiang Mai, Thailand 50120 <br/><br/>
             </td>
           </tr>
         </table>

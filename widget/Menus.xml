@@ -7,9 +7,9 @@
     to you under the Apache License, Version 2.0 (the
     "License"); you may not use this file except in compliance
     with the License.  You may obtain a copy of the License at
-    
+
     http://www.apache.org/licenses/LICENSE-2.0
-    
+
     Unless required by applicable law or agreed to in writing,
     software distributed under the License is distributed on an
     "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -17,8 +17,8 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<menus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/widget-menu.xsd">
-    <menu name="ProductTabBar" extends="CommonTabBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+<menus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ofbiz.apache.org/Widget-Menu" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Menu http://ofbiz.apache.org/dtds/widget-menu.xsd">
+    <menu name="ProductTabBar" extends="CommonTabBarMenu" extends-resource="component://common/widget/CommonMenus.xml" menu-container-style="button-bar tab-bar">
         <menu-item name="EditProduct" title="${uiLabelMap.ProductProduct}">
             <link target="EditProduct">
                 <parameter param-name="productId"/>
@@ -49,8 +49,8 @@
                 <parameter param-name="productId"/>
             </link>
         </menu-item>
-        <menu-item name="viewProductOrder" title="${uiLabelMap.OrderOrders}">
-            <link target="viewProductOrder">
+        <menu-item name="ViewProductOrder" title="${uiLabelMap.OrderOrders}">
+            <link target="ViewProductOrder">
                 <parameter param-name="productId"/>
                 <parameter param-name="viewIndex" value="1"/>
                 <parameter param-name="viewSize" value="20"/>
@@ -61,6 +61,31 @@
             <link target="EditProductCommunicationEvents">
                 <parameter param-name="productId"/>
             </link>
+        </menu-item>
+    </menu>
+    <menu name="SubProductTabBar" selected-menuitem-context-field-name="tabButtonItem" type="simple" menu-container-style="button-bar tab-bar" default-selected-style="selected">
+        <menu-item name="EditProduct" title="${uiLabelMap.ProductNewProduct}">
+            <link target="EditProduct"/>
+        </menu-item>
+        <menu-item name="CreateVirtualWithVariantsForm" title="${uiLabelMap.ProductNewVirtualProduct}">
+            <link target="CreateVirtualWithVariantsForm"/>
+        </menu-item>
+        <menu-item name="product" title="${uiLabelMap.ProductProductPage}">
+            <link target="product" url-mode="inter-app">
+                <parameter param-name="product_id" from-field="productId"/>
+            </link>
+        </menu-item>
+        <menu-item name="product" title="${uiLabelMap.ProductBarcode}">
+            <link target="ProductBarCode.pdf" target-window="_blank">
+                <parameter param-name="productId"/>
+                <parameter param-name="productName"/>
+            </link>
+        </menu-item>
+        <menu-item name="ExpandAll" title="${uiLabelMap.CommonExpandAll}">
+            <link target="javascript:expandAll(true);" url-mode="plain"/>
+        </menu-item>
+        <menu-item name="CollapseAll" title="${uiLabelMap.CommonCollapseAll}">
+            <link target="javascript:expandAll(false);" url-mode="plain"/>
         </menu-item>
     </menu>
 </menus>

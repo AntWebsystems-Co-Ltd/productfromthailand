@@ -140,7 +140,7 @@ under the License.
                                     <widgets>
                                         <container id="storeMgr">
                                             <include-portal-page id="MYPORTAL_SUPPLIER2"/>
-                                            <include-portal-page id="MYPORTAL_SUPPLIER"/>
+                                            <!-- <include-portal-page id="MYPORTAL_SUPPLIER"/> -->
                                             <include-portal-page id="MYPORTAL_SUPPLIER3"/>
                                             <include-portal-page id="MYPORTAL_SUPPLIER4"/>
                                         </container>

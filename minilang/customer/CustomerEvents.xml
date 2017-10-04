@@ -20,15 +20,25 @@ under the License.
 
 <simple-methods xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://ofbiz.apache.org/Simple-Method" xsi:schemaLocation="http://ofbiz.apache.org/Simple-Method http://ofbiz.apache.org/dtds/simple-methods.xsd">
-    
+
     <simple-method method-name="createSupplier" short-description="create a customer profile [Supplier]" login-required="false">
-        <if-empty field="parameters.username">
+        <entity-one entity-name="UserLogin" value-field="systemUserLogin">
+            <field-map field-name="userLoginId" value="system"/>
+        </entity-one>
+        <call-class-method class-name="org.apache.ofbiz.content.layout.LayoutWorker" method-name="uploadImageAndParameters" ret-field="formInput">
+            <field field="request" type="javax.servlet.http.HttpServletRequest"/>
+            <string value="imageFileName"/>
+        </call-class-method>
+        <call-class-method class-name="org.apache.ofbiz.content.layout.LayoutWorker" method-name="returnByteBuffer" ret-field="byteWrap">
+            <field field="formInput" type="java.util.Map"/>
+        </call-class-method>
+        <if-empty field="formInput.formInput.username">
             <add-error>
                 <fail-property resource="PartyUiLabels" property="PartyUserLoginMissingError"/>
             </add-error>
         </if-empty>
-        <if-not-empty field="parameters.password">
-            <if-compare-field field="parameters.password" operator="not-equals" to-field="parameters.passwordVerify">
+        <if-not-empty field="formInput.formInput.password">
+            <if-compare-field field="formInput.formInput.password" operator="not-equals" to-field="formInput.formInput.passwordVerify">
                 <add-error>
                     <fail-property resource="PartyUiLabels" property="PartyPasswordMatchError"/>
                 </add-error>
@@ -39,10 +49,21 @@ under the License.
                 </add-error>
             </else>
         </if-not-empty>
+        <entity-and list="checkEmailLists" entity-name="PartyContactDetailByPurpose">
+            <field-map field-name="contactMechPurposeTypeId" value="PRIMARY_EMAIL"/>
+            <field-map field-name="contactMechTypeId" value="EMAIL_ADDRESS"/>
+            <field-map field-name="infoString" from-field="formInput.formInput.emailAddress"/>
+        </entity-and>
+        <if-not-empty field="checkEmailLists">
+            <add-error>
+                <fail-property resource="ProductFromThailandUiLabels" property="PFTEmailAlreadyUsed"/>
+            </add-error>
+            <check-errors/>
+        </if-not-empty>
         <!-- Process all map -->
         <call-map-processor xml-resource="component://party/minilang/contact/PartyContactMechMapProcs.xml"
-        processor-name="emailAddress" in-map-name="parameters" out-map-name="emailAddressCtx"/>
-        <call-map-processor in-map-name="parameters" out-map-name="shipToAddressCtx">
+        processor-name="emailAddress" in-map-name="formInput.formInput" out-map-name="emailAddressCtx"/>
+        <call-map-processor in-map-name="formInput.formInput" out-map-name="shipToAddressCtx">
             <simple-map-processor name="shipToAddress">
                 <process field="shipToContactMechId"><copy to-field="contactMechId" set-if-null="false"/></process>
                 <process field="shipToName"><copy to-field="toName" set-if-null="false"/></process>
@@ -76,7 +97,7 @@ under the License.
             </simple-map-processor>
         </call-map-processor>
         <check-errors/>
-        <set field="createPartyGroupCtx.groupName" from-field="parameters.groupName"/>
+        <set field="createPartyGroupCtx.groupName" from-field="formInput.formInput.groupName"/>
         <!-- create person -->
         <call-service service-name="createPartyGroup" in-map-name="createPartyGroupCtx">
             <result-to-field result-name="partyId" field="partyId"/>
@@ -85,24 +106,65 @@ under the License.
         <entity-one entity-name="UserLogin" value-field="parameters.userLogin" auto-field-map="false">
             <field-map field-name="userLoginId" value="system"/>
         </entity-one>
-
+        <!-- Create Id card number or passport number -->
+        <if-not-empty field="formInput.formInput.idCardNo">
+            <entity-one value-field="partyIdentification" entity-name="PartyIdentification">
+                <field-map field-name="partyId" from-field="parameters.partyId"/>
+                <field-map field-name="partyIdentificationTypeId" value="ID_NUMBER"/>
+            </entity-one>
+            <if-empty field="partyIdentification">
+                <make-value value-field="partyIdentification" entity-name="PartyIdentification"/>
+                <set field="partyIdentification.partyId" from-field="parameters.partyId"/>
+                <set field="partyIdentification.partyIdentificationTypeId" value="ID_NUMBER"/>
+                <set field="partyIdentification.idValue" from-field="formInput.formInput.idCardNo"/>
+                <create-value value-field="partyIdentification"/>
+                <else>
+                    <set field="partyIdentification.idValue" from-field="formInput.formInput.idCardNo"/>
+                    <store-value value-field="partyIdentification"/>
+                </else>
+            </if-empty>
+        </if-not-empty>
+        <!-- Create a business registration number -->
+        <if-not-empty field="formInput.formInput.businessRegistNo">
+            <entity-one value-field="partyIdentification" entity-name="PartyIdentification">
+                <field-map field-name="partyId" from-field="parameters.partyId"/>
+                <field-map field-name="partyIdentificationTypeId" value="ID_BIZ_REGISTER_NO"/>
+            </entity-one>
+            <if-empty field="partyIdentification">
+                <make-value value-field="partyIdentification" entity-name="PartyIdentification"/>
+                <set field="partyIdentification.partyId" from-field="parameters.partyId"/>
+                <set field="partyIdentification.partyIdentificationTypeId" value="ID_BIZ_REGISTER_NO"/>
+                <set field="partyIdentification.idValue" from-field="formInput.formInput.businessRegistNo"/>
+                <create-value value-field="partyIdentification"/>
+                <else>
+                    <set field="partyIdentification.idValue" from-field="formInput.formInput.businessRegistNo"/>
+                    <store-value value-field="partyIdentification"/>
+                </else>
+            </if-empty>
+        </if-not-empty>
         <!-- Create party role-->
         <set field="partyRoleContext.partyId" from-field="parameters.partyId"/>
-        <set field="partyRoleContext.roleTypeId" from-field="parameters.roleTypeId"/>
+        <set field="partyRoleContext.roleTypeId" from-field="formInput.formInput.roleTypeId"/>
         <set field="partyRoleContext.userLogin" from-field="parameters.userLogin"/>
         <call-service service-name="createPartyRole" in-map-name="partyRoleContext"/>
-        
+
+        <!-- Create supplier type -->
+        <set field="supplierRoleContext.partyId" from-field="parameters.partyId"/>
+        <set field="supplierRoleContext.roleTypeId" from-field="formInput.formInput.supplierType"/>
+        <set field="supplierRoleContext.userLogin" from-field="parameters.userLogin"/>
+        <call-service service-name="createPartyRole" in-map-name="supplierRoleContext"/>
+
         <!-- Create email address -->
         <set field="emailAddressCtx.partyId" from-field="parameters.partyId"/>
         <set field="emailAddressCtx.userLogin" from-field="parameters.userLogin"/>
-        <set field="emailAddressCtx.contactMechPurposeTypeId" from-field="parameters.emailContactMechPurposeTypeId"/>
+        <set field="emailAddressCtx.contactMechPurposeTypeId" from-field="formInput.formInput.emailContactMechPurposeTypeId"/>
         <call-service service-name="createPartyEmailAddress" in-map-name="emailAddressCtx">
             <result-to-field result-name="contactMechId" field="emailContactMechId"/>
         </call-service>
         <log level="info" message="Email Contact Created emailContactMechId is ${emailContactMechId}"/>
         <!-- Create the Home Phone -->
-        <if-not-empty field="parameters.SUPPLIER_HOME_CONTACT">
-            <call-map-processor in-map-name="parameters" out-map-name="homePhoneContext">
+        <if-not-empty field="formInput.formInput.SUPPLIER_HOME_CONTACT">
+            <call-map-processor in-map-name="formInput.formInput" out-map-name="homePhoneContext">
                 <simple-map-processor name="newTelecomNumber">
                     <process field="roleTypeId"><copy/></process>
                     <process field="SUPPLIER_HOME_COUNTRY"><copy to-field="countryCode"/></process>
@@ -113,10 +175,10 @@ under the License.
                 </simple-map-processor>
             </call-map-processor>
         </if-not-empty>
-        
+
         <!-- Create the Work Phone -->
-        <if-not-empty field="parameters.SUPPLIER_WORK_CONTACT">
-            <call-map-processor in-map-name="parameters" out-map-name="workPhoneContext">
+        <if-not-empty field="formInput.formInput.SUPPLIER_WORK_CONTACT">
+            <call-map-processor in-map-name="formInput.formInput" out-map-name="workPhoneContext">
                 <simple-map-processor name="newTelecomNumber">
                     <process field="roleTypeId"><copy/></process>
                     <process field="SUPPLIER_WORK_COUNTRY"><copy to-field="countryCode"/></process>
@@ -127,10 +189,10 @@ under the License.
                 </simple-map-processor>
             </call-map-processor>
         </if-not-empty>
-        
+
         <!-- Create the Fax Phone -->
-        <if-not-empty field="parameters.SUPPLIER_FAX_CONTACT">
-            <call-map-processor in-map-name="parameters" out-map-name="faxPhoneContext">
+        <if-not-empty field="formInput.formInput.SUPPLIER_FAX_CONTACT">
+            <call-map-processor in-map-name="formInput.formInput" out-map-name="faxPhoneContext">
                 <simple-map-processor name="newTelecomNumber">
                     <process field="roleTypeId"><copy/></process>
                     <process field="SUPPLIER_FAX_COUNTRY"><copy to-field="countryCode"/></process>
@@ -141,10 +203,10 @@ under the License.
                 </simple-map-processor>
             </call-map-processor>
         </if-not-empty>
-        
+
         <!-- Create the Mobile Phone -->
-        <if-not-empty field="parameters.SUPPLIER_MOBILE_CONTACT">
-            <call-map-processor in-map-name="parameters" out-map-name="mobilePhoneContext">
+        <if-not-empty field="formInput.formInput.SUPPLIER_MOBILE_CONTACT">
+            <call-map-processor in-map-name="formInput.formInput" out-map-name="mobilePhoneContext">
                 <simple-map-processor name="newTelecomNumber">
                     <process field="roleTypeId"><copy/></process>
                     <process field="SUPPLIER_MOBILE_COUNTRY"><copy to-field="countryCode"/></process>
@@ -155,13 +217,13 @@ under the License.
                 </simple-map-processor>
             </call-map-processor>
         </if-not-empty>
-        
+
         <!-- Check for required Phone -->
-        <if-compare field="parameters.REQUIRE_PHONE" operator="equals" value="true">
-            <if-empty field="parameters.SUPPLIER_HOME_CONTACT">
-                <if-empty field="parameters.SUPPLIER_WORK_CONTACT">
-                    <if-empty field="parameters.SUPPLIER_MOBILE_CONTACT">
-                        <call-map-processor in-map-name="parameters" out-map-name="dummymap">
+        <if-compare field="formInput.formInput.REQUIRE_PHONE" operator="equals" value="true">
+            <if-empty field="formInput.formInput.SUPPLIER_HOME_CONTACT">
+                <if-empty field="formInput.formInput.SUPPLIER_WORK_CONTACT">
+                    <if-empty field="formInput.formInput.SUPPLIER_MOBILE_CONTACT">
+                        <call-map-processor in-map-name="formInput.formInput" out-map-name="dummymap">
                             <simple-map-processor name="checkRequiredPhone">
                                 <process field="REQUIRED_PHONE">
                                     <not-empty>
@@ -173,7 +235,7 @@ under the License.
                 </if-empty>
             </if-empty>
         </if-compare>
-        
+
         <set from-field="parameters.partyId" field="homePhoneContext.partyId"/>
         <set from-field="parameters.userLogin" field="homePhoneContext.userLogin"/>
         <set from-field="parameters.partyId" field="workPhoneContext.partyId"/>
@@ -182,9 +244,9 @@ under the License.
         <set from-field="parameters.userLogin" field="faxPhoneContext.userLogin"/>
         <set from-field="parameters.partyId" field="mobilePhoneContext.partyId"/>
         <set from-field="parameters.userLogin" field="mobilePhoneContext.userLogin"/>
-        
+
         <!-- home phone -->
-        <if-not-empty field="parameters.SUPPLIER_HOME_CONTACT">
+        <if-not-empty field="formInput.formInput.SUPPLIER_HOME_CONTACT">
             <call-service service-name="createPartyTelecomNumber" in-map-name="homePhoneContext">
                 <result-to-field result-name="contactMechId" field="homePhonePurposeContext.contactMechId"/>
             </call-service>
@@ -195,9 +257,9 @@ under the License.
             <set value="PRIMARY_PHONE" field="homePhonePurposeContext.contactMechPurposeTypeId"/>
             <call-service service-name="createPartyContactMechPurpose" in-map-name="homePhonePurposeContext"/>
         </if-not-empty>
-        
+
         <!-- work phone -->
-        <if-not-empty field="parameters.SUPPLIER_WORK_CONTACT">
+        <if-not-empty field="formInput.formInput.SUPPLIER_WORK_CONTACT">
             <call-service service-name="createPartyTelecomNumber" in-map-name="workPhoneContext">
                 <result-to-field result-name="contactMechId" field="workPhonePurposeContext.contactMechId"/>
             </call-service>
@@ -206,9 +268,9 @@ under the License.
             <set value="PHONE_WORK" field="workPhonePurposeContext.contactMechPurposeTypeId"/>
             <call-service service-name="createPartyContactMechPurpose" in-map-name="workPhonePurposeContext"/>
         </if-not-empty>
-        
+
         <!-- fax phone -->
-        <if-not-empty field="parameters.SUPPLIER_FAX_CONTACT">
+        <if-not-empty field="formInput.formInput.SUPPLIER_FAX_CONTACT">
             <call-service service-name="createPartyTelecomNumber" in-map-name="faxPhoneContext">
                 <result-to-field result-name="contactMechId" field="faxPhonePurposeContext.contactMechId"/>
             </call-service>
@@ -217,9 +279,9 @@ under the License.
             <set value="FAX_NUMBER" field="faxPhonePurposeContext.contactMechPurposeTypeId"/>
             <call-service service-name="createPartyContactMechPurpose" in-map-name="faxPhonePurposeContext"/>
         </if-not-empty>
-        
+
         <!-- mobile phone -->
-        <if-not-empty field="parameters.SUPPLIER_MOBILE_CONTACT">
+        <if-not-empty field="formInput.formInput.SUPPLIER_MOBILE_CONTACT">
             <call-service service-name="createPartyTelecomNumber" in-map-name="mobilePhoneContext">
                 <result-to-field result-name="contactMechId" field="mobilePhonePurposeContext.contactMechId"/>
             </call-service>
@@ -229,32 +291,44 @@ under the License.
             <call-service service-name="createPartyContactMechPurpose" in-map-name="mobilePhonePurposeContext"/>
         </if-not-empty>
         <!-- create userLogin -->
+        <set field="parameters.username" from-field="formInput.formInput.username"/>
+        <set field="parameters.password" from-field="formInput.formInput.password"/>
+        <set field="parameters.passwordVerify" from-field="formInput.formInput.passwordVerify"/>
         <call-simple-method method-name="createUpdateUserLogin" xml-resource="component://ecommerce/minilang/customer/CustomerEvents.xml"/>
         <!-- Create shipping address -->
         <set field="shipToAddressCtx.partyId" from-field="parameters.partyId"/>
         <set field="shipToAddressCtx.userLogin" from-field="parameters.userLogin"/>
         <set field="shipToAddressCtx.setPaymentPurpose" value="Y"/>
         <set field="shipToAddressCtx.setGeneralPurpose" value="Y"/>
-        <set field="shipToAddressCtx.productStoreId" from-field="parameters.productStoreId"/>
+        <set field="shipToAddressCtx.productStoreId" from-field="formInput.formInput.productStoreId"/>
         <set field="shipToAddressCtx.setBillingPurpose" value="Y"/>
         <call-service service-name="createSupplierPostalAddressAndPurposes" in-map-name="shipToAddressCtx">
             <result-to-field result-name="contactMechId" field="billToContactMechId"/>
         </call-service>
         <log level="info" message="Billing address created with contactMechId ${billToContactMechId}"/>
-        <!-- Add UserLogin To Security Group -->
-        <make-value value-field="addUserToSecurityGroup" entity-name="UserLoginSecurityGroup"/>
-        <set field="addUserToSecurityGroup.groupId" value="MYPORTAL_SUPPLIER"/>
-        <set field="addUserToSecurityGroup.userLogin" from-field="parameters.userLogin"/>
-        <set field="addUserToSecurityGroup.userLoginId" from-field="parameters.userLogin.userLoginId"/>
-        <if-empty field="addUserToSecurityGroup.fromDate">
-            <now-timestamp field="nowTimestamp"/>
-            <set from-field="nowTimestamp" field="addUserToSecurityGroup.fromDate"/>
-        </if-empty>
-        <create-value value-field="addUserToSecurityGroup"/>
-
+        <!-- Create new content form upload file -->
+        <set-service-fields service-name="createContentFromUploadedFile" map="formInput.formInput" to-map="inMap"/>
+        <set field="inMap._uploadedFile_fileName" from-field="formInput.imageFileName"/>
+        <set field="inMap.uploadedFile" from-field="formInput.imageData"/>
+        <set field="inMap._uploadedFile_contentType" from-field="formInput.uploadMimeType"/>
+        <set field="inMap.mimeTypeId" from-field="formInput.uploadMimeType"/>
+        <set field="inMap.userLogin" from-field="systemUserLogin"/>
+        <call-service service-name="createContentFromUploadedFile" in-map-name="inMap">
+            <result-to-field result-name="contentId" field="contentId"/>
+        </call-service>
+        <!-- Create party content -->
+        <set field="partyContent.partyId" from-field="parameters.partyId"/>
+        <set field="partyContent.contentId" from-field="contentId"/>
+        <set field="partyContent.partyContentTypeId" value="INTERNAL"/>
+        <set field="partyContent.fromDate" from-field="nowTimestamp"/>
+        <set field="partyContent.userLogin" from-field="systemUserLogin"/>
+        <call-service service-name="createPartyContent" in-map-name="partyContent"/>
+        <!-- Create email notification -->
+        <set field="parameters.emailAddress" from-field="formInput.formInput.emailAddress"/>
+        <set field="parameters.groupName" from-field="formInput.formInput.groupName"/>
         <call-simple-method method-name="sendCreatePartyGroupEmailNotification"/>
     </simple-method>
-    
+
     <simple-method method-name="createSupplierPostalAddressAndPurposes" short-description="Create postal address, purposes and set them defaults" login-required="false">
         <call-service service-name="createPartyPostalAddress" in-map-name="parameters" >
             <result-to-field result-name="contactMechId" field="parameters.contactMechId"/>
@@ -284,7 +358,7 @@ under the License.
                     </if-not-empty>
                     <set field="serviceContext.contactMechPurposeTypeId" value="GENERAL_LOCATION"/>
                     <call-service service-name="createPartyContactMechPurpose" in-map-name="serviceContext"/>
-                    
+
                     <set-service-fields service-name="setPartyProfileDefaults" map="parameters" to-map="partyProfileDefaultsCtx"/>
                     <set field="partyProfileDefaultsCtx.defaultShipAddr" from-field="parameters.contactMechId"/>
                     <set field="partyProfileDefaultsCtx.partyId" from-field="userLogin.partyId"/>
@@ -302,7 +376,7 @@ under the License.
                     </if-not-empty>
                     <set field="serviceContext.contactMechPurposeTypeId" value="BILLING_LOCATION"/>
                     <call-service service-name="createPartyContactMechPurpose" in-map-name="serviceContext"/>
-                    
+
                     <set-service-fields service-name="setPartyProfileDefaults" map="parameters" to-map="partyProfileDefaultsCtx"/>
                     <set field="partyProfileDefaultsCtx.defaultBillAddr" from-field="parameters.contactMechId"/>
                     <set field="partyProfileDefaultsCtx.partyId" from-field="userLogin.partyId"/>
@@ -320,7 +394,7 @@ under the License.
                     </if-not-empty>
                     <set field="serviceContext.contactMechPurposeTypeId" value="PAYMENT_LOCATION"/>
                     <call-service service-name="createPartyContactMechPurpose" in-map-name="serviceContext"/>
-                    
+
                     <set-service-fields service-name="setPartyProfileDefaults" map="parameters" to-map="partyProfileDefaultsCtx"/>
                     <set field="partyProfileDefaultsCtx.defaultBillAddr" from-field="parameters.contactMechId"/>
                     <set field="partyProfileDefaultsCtx.partyId" from-field="userLogin.partyId"/>
@@ -329,7 +403,7 @@ under the License.
             </then>
         </if>
     </simple-method>
-    
+
     <!-- send party group creation email notification -->
     <simple-method method-name="sendCreatePartyGroupEmailNotification" short-description="Notification email on party group creation" login-required="false">
         <map-to-map map="parameters" to-map="bodyParameters"/>
@@ -348,7 +422,6 @@ under the License.
             <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
             <set field="bodyParameters.partyGroup" from-field="partyGroup"/>
             <set field="emailParams.bodyParameters" from-field="bodyParameters"/>
-            
             <set field="emailParams.sendTo" from-field="parameters.emailAddress"/>
             <set field="emailParams.subject" from-field="storeEmail.subject"/>
             <set field="emailParams.sendFrom" from-field="storeEmail.fromAddress"/>
@@ -570,6 +643,7 @@ under the License.
             <if-not-empty field="storeEmail.bodyScreenLocation">
                 <get-related-one value-field="createdUserLogin" relation-name="Person" to-value-field="person"/>
                 <set field="bodyParameters.person" from-field="person"/>
+                <set field="bodyParameters.webSiteId" from-field="parameters.webSiteId"/>
                 <set field="emailParams.bodyParameters" from-field="bodyParameters"/>
                 <set field="emailParams.sendTo" from-field="emailContext.emailAddress"/>
                 <set field="emailParams.subject" from-field="storeEmail.subject"/>

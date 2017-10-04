@@ -38,7 +38,7 @@
   top: 0;
   left: 0;
   height: 3px;
-  background: #009ae1;
+  background: #f7931d;
   -webkit-transition: all 0.25s ease-out;
   -moz-transition: all 0.25s ease-out;
   -ms-transition: all 0.25s ease-out;
@@ -79,7 +79,7 @@
 }
 #cssmenu > ul > li:hover > a,
 #cssmenu > ul > li.active > a {
-  color: #009ae1;
+  color: #f7931d;
 }
 #cssmenu > ul > li.has-sub > a {
   padding-right: 25px;
