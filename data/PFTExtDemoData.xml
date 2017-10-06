@@ -44,4 +44,14 @@
     <SystemProperty systemResourceId="facebook" systemPropertyId="apiVersion"
         description="facebook api Version"
         systemPropertyValue="v2.10"/>
+
+    <!-- Subscription -->
+    <DataResource dataResourceId="PFT_FE_URL" dataResourceTypeId="LINK" dataTemplateTypeId="NONE" objectInfo="https://localhost:8443/pft" statusId="CTNT_PUBLISHED"/>
+    <Content contentId="PFT_FE_URL" contentTypeId="DOCUMENT" contentName="Product from Thailand URL" description="" dataResourceId="PFT_FE_URL" statusId="CTNT_PUBLISHED"/>
+    <WebSiteContent webSiteId="PFT" contentId="PFT_FE_URL" webSiteContentTypeId="FRONTEND_URL" fromDate="2016-01-01 00:00:00"/>
+
+    <ContactList contactListId="PFT" contactListTypeId="NEWSLETTER" contactMechTypeId="EMAIL_ADDRESS" contactListName="Product Tips Newsletter"
+        description="Product Tips Newsletter Mailing List (email)" isPublic="Y" ownerPartyId="pft" verifyEmailFrom="test@antwebsystems.com"
+        verifyEmailScreen="component://growerpbackend/widget/EmailContactListScreens.xml#ContactListVerifyEmail" verifyEmailSubject="Subscription Verify Contact List" verifyEmailWebSiteId="PFT"/>
+
 </entity-engine-xml>

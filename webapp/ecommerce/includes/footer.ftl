@@ -42,10 +42,14 @@ under the License.
                 </#if>
             </ul>
         </nav>
+        <div class="headerAlert headerhide">&nbsp;</div>
         <nav class="footer-column">
             <div class="input-group input-group-md" id="emailSubscribe">
-              <input type="text" class="form-control" placeholder="Email Address">
-              <span class="input-group-addon">Subscribe</span>
+              <form method="post" name="signUpForContactListForm" id="signUpForContactListForm">
+                <input type="hidden" name="contactListId" value="${webSiteId?if_exists}"/>
+                <input type="text" class="form-control" placeholder="Email Address" id="subscribeEmail">
+              </form>
+              <a href="javascript: fixedsub(this);" class="input-group-addon" id="subscribBtn" >Subscribe</a>
             </div>
             <ul class="social-icon" id="socialApplication">
                 <a href="https://www.facebook.com/Careelnatural/" class="social-icon-facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -61,5 +65,74 @@ under the License.
     <br/><br/>
 </div>
 </center>
+<script>
+    function fixedsub(button) {
+        button.disabled = true;
+        var email = $("#subscribeEmail").val();
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9])+$/;
+        if(!regex.test(email) || email == '' || email == null) {
+            headerAlertMsg("${uiLabelMap.GrowErpSubscribeNotValid}",1);
+            setTimeout(function(){
+                button.disabled = false;
+            }, 2000);
+            return false;
+        }
+        else {
+            waitSpinnerShow();
+            data = "contactListId=${webSiteId!}&email="+email
+            jQuery.ajax({
+                url: 'signUpForContactList',
+                type: 'POST',
+                data: data,
+                success: function(data) {
+                    waitSpinnerHide();
+                    if (data._ERROR_MESSAGE_ != null) {
+                        if (data._ERROR_MESSAGE_ == "Invalid email address entered.") {
+                            headerAlertMsg("${uiLabelMap.GrowErpSubscribeNotValid}",1);
+                        } else {
+                            headerAlertMsg(data._ERROR_MESSAGE_,1);
+                        }
+                        setTimeout(function(){
+                            button.disabled = false;
+                        }, 2000);
+                    } else if (data._ERROR_MESSAGE_LIST_ != null) {
+                        headerAlertMsg(data._ERROR_MESSAGE_LIST_[0],1);
+                        setTimeout(function(){
+                            button.disabled = false;
+                        }, 2000);
+                    } else if (data._EVENT_MESSAGE_LIST_ != null) {
+                        headerAlertMsg(data._EVENT_MESSAGE_LIST_[0],2);
+                        setTimeout(function(){
+                            button.disabled = false;
+                        }, 2000);
+                    }
+                }
+            });
+            return true;
+        }
+    }
+    function headerAlertMsg(headerMessage,mode){
+    /*
+        headerMessage is income message to headerAlert
+        mode will chose class to add
+            1 is error
+            2 is success
+    */
+        if(headerMessage != "") {
+            jQuery('.headerAlert').html(headerMessage);
+        }
+        jQuery('.headerAlert').removeClass("success");
+        jQuery('.headerAlert').removeClass("error");
+        jQuery('.headerAlert').removeClass("headerhide");
+        jQuery('.headerAlert').click(function() {
+            jQuery('.headerAlert').addClass("headerhide");
+        });
+        if(mode == 1) {
+            jQuery('.headerAlert').addClass("error");
+        } else if(mode == 2) {
+            jQuery('.headerAlert').addClass("success");
+        }
+    }
+</script>
 </body>
 </html>

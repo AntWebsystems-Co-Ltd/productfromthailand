@@ -243,6 +243,36 @@ under the License.
         <response name="success" type="view" value="viewSupplierProfile"/>
     </request-map>
 
+    <!-- Contact List -->
+    <request-map uri="signUpForContactList">
+        <security https="false" auth="false"/>
+        <event type="simple" invoke="signUpForsubscribeContactListPartyCheck" path="component://growerpbackend/minilang/GrowERPEvents.xml"/>
+        <response name="success" type="request" value="verifySubscription"/>
+        <response name="signUp" type="request" value="setUpEmailToContactList"/>
+    </request-map>
+    <request-map uri="setUpEmailToContactList">
+        <security https="false" auth="false"/>
+        <event type="service" invoke="signUpForContactList"/>
+        <response name="success" type="request" value="verifySubscription"/>
+        <response name="error" type="request" value="json"/>
+    </request-map>
+    <request-map uri="verifySubscription">
+        <security https="false" auth="false"/>
+        <event type="simple" invoke="verifySubscription" path="component://growerpbackend/minilang/GrowERPEvents.xml"/>
+        <response name="success" type="request" value="json"/>
+    </request-map>
+    <request-map uri="updateContactListPartyNoUserLogin">
+        <security https="false" auth="false"/>
+        <event type="simple" invoke="updateContactListPartyNoUserLogin" path="component://growerpbackend/minilang/GrowERPEvents.xml"/>
+        <response name="success" type="request" value="successVerifySubscription"/>
+        <response name="error" type="request" value="main"/>
+    </request-map>
+    <request-map uri="successVerifySubscription">
+        <security https="false" auth="false"/>
+        <event type="simple" invoke="successVerifySubscription" path="component://growerpbackend/minilang/GrowERPEvents.xml"/>
+        <response name="success" type="request" value="main"/>
+    </request-map>
+
     <view-map name="orderview" type="screen" page="component://productfromthailand/widget/OrderViewScreens.xml#OrderHeaderView"/>
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
     <view-map name="main" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#main"/>
