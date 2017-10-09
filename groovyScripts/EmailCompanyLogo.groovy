@@ -21,7 +21,7 @@ import org.apache.ofbiz.party.content.PartyContentWrapper
 import org.apache.ofbiz.entity.util.EntityUtilProperties
 
 baseURL = EntityUtilProperties.getPropertyValue("url", "force.https.host", "https://localhost:8443", delegator);
-website = from("WebSite").where("webSiteId", webSiteId).queryOne();
+website = from("WebSite").where("webSiteId", parameters.webSiteId).queryOne();
 if(website){
     productStore = from("ProductStore").where("productStoreId", website.productStoreId).queryOne();
     partyId = productStore.payToPartyId;

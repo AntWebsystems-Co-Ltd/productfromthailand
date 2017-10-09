@@ -66,4 +66,36 @@
             </widgets>
         </section>
     </screen>
+
+    <screen name="ApproveSupplierNotification">
+        <section>
+            <actions>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://productfromthailand/groovyScripts/EmailCompanyLogo.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <html>
+                        <html-template location="component://productfromthailand/template/ApproveSupplierNotification.ftl"/>
+                    </html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="RejectedSupplierNotification">
+        <section>
+            <actions>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://productfromthailand/groovyScripts/EmailCompanyLogo.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <html>
+                        <html-template location="component://productfromthailand/template/RejectSupplierNotification.ftl"/>
+                    </html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
 </screens>

@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="main-decorator">
+        <section>
+            <actions>
+                <property-map resource="ProductFromThailandUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <include-screen name="main-decorator" location="${parameters.growerpDecoratorLocation}"/>
+                <include-menu name="PartyAppBar" location="component://productfromthailand/widget/pft-backend/PFTMenus.xml"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonGrowErpDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonGrowErpDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonCustomerDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonCustomerDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonWebAnalyticsDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonWebAnalyticsDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonDashboardDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonDashboardDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonSalesOrderDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonSalesOrderDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonPurchaseOrderDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonPurchaseOrderDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonOrderEntryDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonOrderEntryDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonOrderCheckoutDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonOrderCheckoutDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonOrderReturnDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonOrderReturnDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonOrderViewDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonOrderViewDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonProductDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonProductDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonCategoryDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonCategoryDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonPartyDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonPartyDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonCommunicationEventDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonCommunicationEventDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonConfigurationDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonConfigurationDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonWebSiteDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonWebSiteDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonViewWebSiteDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonViewWebSiteDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonCMSDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonCMSDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="leftbar">
+        <section>
+            <widgets>
+                <include-screen name="leftbar" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="categorytree">
+        <section>
+            <widgets>
+                <include-screen name="categorytree" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="EditCategoryTreeAjax">
+        <section>
+            <widgets>
+                <include-screen name="EditCategoryTreeAjax" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonFixedAssetDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonFixedAssetDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonSubscriptionDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonSubscriptionDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="Webtools">
+        <section>
+            <widgets>
+                <include-screen name="Webtools" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="LogView">
+         <section>
+            <widgets>
+                <include-screen name="LogView" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+     </screen>
+
+    <screen name="printStart">
+        <section>
+            <widgets>
+                <include-screen name="printStart" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="printDone">
+        <section>
+            <widgets>
+                <include-screen name="printDone" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <!-- Global decorator for Lookup pop-up windows or layered CSS -->
+    <screen name="LookupDecorator">
+        <section>
+            <widgets>
+                <include-screen name="LookupDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="LookupHelpDecorator">
+        <section>
+            <widgets>
+                <include-screen name="LookupHelpDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="AjaxGlobalDecorator">
+        <section>
+            <widgets>
+                <include-screen name="AjaxGlobalDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonEmployeeDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonEmployeeDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonImportExportDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonImportExportDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonArtifactDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonArtifactDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="browsercerts">
+        <section>
+            <widgets>
+                <include-screen name="browsercerts" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonServiceDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonServiceDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonEntityDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonEntityDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonPartyGlDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonPartyGlDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="GlobalGLSettingsDecorator">
+        <section>
+            <widgets>
+                <include-screen name="GlobalGLSettingsDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonGlSetupDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonGlSetupDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="SimpleDecorator">
+        <section>
+            <widgets>
+                <include-screen name="SimpleDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonOrganizationAccountingReportsDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonOrganizationAccountingReportsDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <!-- fo decorator for pdf documents (invoices, sales orders, purchase orders etc...). -->
+    <screen name="FoReportDecorator">
+        <section>
+            <widgets>
+                <include-screen name="FoReportDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="FoReportLandScapeDecorator">
+        <section>
+            <widgets>
+                <include-screen name="FoReportLandScapeDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="xmldsdump">
+        <section>
+            <widgets>
+                <include-screen name="xmldsdump" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="EntityImport">
+        <section>
+            <widgets>
+                <include-screen name="EntityImport" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="EntitySQLProcessor">
+        <section>
+            <widgets>
+                <include-screen name="EntitySQLProcessor" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="Alerts">
+        <section>
+            <widgets>
+                <include-screen name="Alerts" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="MyInfo">
+        <section>
+            <widgets>
+                <include-screen name="MyInfo" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonPartyAccountingDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonPartyAccountingDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonOpportunityDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonOpportunityDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonMarketingCampaignDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonMarketingCampaignDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonEmailTemplateDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonEmailTemplateDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonSurveyDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonSurveyDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonLeadDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonLeadDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonContactDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonContactDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonAccountDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonAccountDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonTaskListDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonTaskListDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonMarketingCampaignActDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonMarketingCampaignActDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonManufacturingDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonManufacturingDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonFacilityDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonFacilityDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CommonRequirementDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonRequirementDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CommonRequirementsDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonRequirementsDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonShipmentDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonShipmentDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CommonShipmentMainDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonShipmentMainDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="PartyLeftBar">
+        <section>
+            <widgets>
+                <include-screen name="PartyLeftBar" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonInvoiceDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonInvoiceDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonPaymentDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonPaymentDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CommonOrderDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonOrderDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="OrderLeftBar">
+        <section>
+            <widgets>
+                <include-screen name="OrderLeftBar" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="PropertyMaps">
+        <section>
+            <widgets>
+                <include-screen name="PropertyMaps" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="SecurityDecorator">
+        <section>
+            <widgets>
+                <include-screen name="SecurityDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="geoChart">
+        <section>
+            <widgets>
+                <include-screen name="geoChart" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="FindScreenDecorator">
+        <section>
+            <widgets>
+                <include-screen name="FindScreenDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <!-- Project Manager -->
+    <screen name="CommonProjectMgrSumaryDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonProjectMgrSumaryDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CommonMyTaskDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonMyTaskDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CommonMyTimeDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonMyTimeDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonProjectDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonProjectDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+
+    <screen name="CommonTaskDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonTaskDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonProjectPartyDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonProjectPartyDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CommonTimesheetDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonTimesheetDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="GlobalHRSettingsDecorator">
+        <section>
+            <widgets>
+                <include-screen name="GlobalHRSettingsDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonRequestDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonRequestDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonMyRequestDecorator">
+        <section>
+            <widgets>
+                <include-screen name="CommonMyRequestDecorator" location="${parameters.growerpDecoratorLocation}"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonSupplierApprovalDecorator">
+        <section>
+            <actions>
+                <property-map resource="ProductFromThailandUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="applicationMenuName" value="PartyAppBar" global="true"/>
+                <set field="headerItem" value="SupplierRegistration"/>
+                <set field="layoutSettings.javaScripts[]" value="/backend/images/js/quickAddMenu.js" global="true"/>
+                <set field="layoutSettings.styleSheets[]" value="/backend/images/css/quickAddMenu.css" global="true"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonGrowErpDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <decorator-section-include name="body"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+</screens>

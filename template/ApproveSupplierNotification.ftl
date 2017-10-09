@@ -89,33 +89,14 @@ under the License.
               <td colspan="3"></td>
           </tr>
           <tr>
-              <#if parameters.groupName?has_content>
-                <td>
-                Dear ${parameters.groupName!},
-                </td>
-            </#if>
-            <#if parameters.firstName?has_content>
-                <td>
-                Dear ${parameters.firstName!} ${parameters.lastName!},
-                </td>
-            </#if>
+             <td>Dear ${parameters.supplierName!},</td>
           </tr>
           <tr class="blank_row">
               <td colspan="3"></td>
           </tr>
           <tr>
             <td>
-            Welcome to Product From Thailand!
-            </td>
-          </tr>
-          <tr>
-            <td>
-            Thank you for signing up on www.productfromthailand.com.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Your account has been created successfully.
+              Thank you for signing up on www.productfromthailand.com.
             </td>
           </tr>
           <tr class="blank_row">
@@ -123,12 +104,32 @@ under the License.
           </tr>
           <tr>
             <td>
-            Your documents has been uploaded successfully. We will check your documents within 24 hours.
+              Now that you are a full supplier member, you will have 100% access to your store management which you can manage your products.
+              You can access those here: <a href="${baseURL!}/pft/control/StoreManagement">Store Management</a>
             </td>
+          </tr>
+          <tr class="blank_row">
+              <td colspan="3"></td>
           </tr>
           <tr>
             <td>
             If you have any questions or concerns you can contact our support team : support@productfromthailand.com
+            </td>
+          </tr>
+          <tr class="blank_row">
+              <td colspan="3"></td>
+          </tr>
+          <tr class="blank_row">
+              <td colspan="3"></td>
+          </tr>
+          <tr>
+            <td>
+            Regards,
+            </td>
+          </tr>
+          <tr>
+            <td>
+            Product From Thailand
             </td>
           </tr>
         </table>

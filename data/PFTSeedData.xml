@@ -155,8 +155,19 @@ under the License.
 
     <UserPreference userLoginId="_NA_" userPrefGroupTypeId="GLOBAL_PREFERENCES" userPrefTypeId="ORGANIZATION_PARTY" userPrefValue="pft"/>
     <UserPreference userLoginId="_NA_" userPrefGroupTypeId="GLOBAL_PREFERENCES" userPrefTypeId="VISUAL_THEME" userPrefValue="LIGHTOFFICE"/>
+
     <!-- Download file -->
     <DataResource dataResourceId="PROD_TEMP" dataResourceTypeId="OFBIZ_FILE" statusId="CTNT_PUBLISHED" dataResourceName="TemplateProductSpreadsheet.xls" mimeTypeId="application/vnd.ms-excel" objectInfo="hot-deploy/productfromthailand/data/TemplateProductSpreadsheet.xls" isPublic="Y"/>
     <Content contentId="PROD_TEMP" contentTypeId="DOCUMENT" dataResourceId="PROD_TEMP" statusId="CTNT_PUBLISHED" contentName="TemplateProductSpreadsheet.xls" mimeTypeId="application/vnd.ms-excel"/>
 
+    <!-- Override menu -->
+    <DataResource dataResourceId="DR_GROW_PARTY" dataResourceName="CRM" dataResourceTypeId="URL_RESOURCE" objectInfo="../../pftbackend/control/CRMDashboard"/>
+
+    <!-- Email template -->
+    <EmailTemplateSetting emailTemplateSettingId="SUPPLIER_APPROVE"
+        bodyScreenLocation="component://productfromthailand/widget/EmailScreens.xml#ApproveSupplierNotification"
+        subject="Productfromthailand (PFT) verification for supplier registration"/>
+    <EmailTemplateSetting emailTemplateSettingId="SUPPLIER_REJECTED"
+        bodyScreenLocation="component://productfromthailand/widget/EmailScreens.xml#RejectedSupplierNotification"
+        subject="Productfromthailand (PFT) verification for supplier registration"/>
 </entity-engine-xml>

@@ -25,6 +25,8 @@ under the License.
     $(document).ready(function () {
         document.newuserform.supplierType.value = "${parameters.supplierType!}"
         if ($("input[name=supplierType]:checked").val() == "SUPP_INDIVIDUAL") {
+            $("#groupNameTitle").hide();
+            $("#supplier_groupName").hide();
             $("#idRegisNoTitle").hide();
             $("#idRegisNo").hide();
             $("#uploadIdRegisNoTitle").hide();
@@ -33,7 +35,19 @@ under the License.
             $("#uploadIdNoScanTitle").show();
         }
         if ($("input[name=supplierType]:checked").val() == "SUPP_COMPANY") {
+            $("#titleNameSupplier").hide();
+            $("#titleNameTitle").hide();
+            $("#supplier_titleName").hide();
+            $("#USER_TITLE").hide();
+            $("#firstNameTitle").hide();
+            $("#supplier_firstName").hide();
+            $("#lastNameSupplier").hide();
+            $("#lastNameTitle").hide();
+            $("#supplier_lastName").hide();
             $("#idNoPassportNoTitle").hide();
+            $("#titleNameSupplier").hide();
+            $("#titleNameTitle").hide();
+            $("#supplier_titleName").hide();
             $("#idNoPassportNo").hide();
             $("#uploadIdNoScanTitle").hide();
             $("#idRegisNoTitle").show();
@@ -43,20 +57,44 @@ under the License.
         $("input[name=supplierType]").change(function(){
             supplierType = $("input[name=supplierType]:checked").val()
             if (supplierType == "SUPP_INDIVIDUAL") {
+                $("#groupNameTitle").hide();
+                $("#supplier_groupName").hide();
+                $("#groupName").val("");
                 $("#idRegisNoTitle").hide();
                 $("#idRegisNo").hide();
                 $("#newsupplier_businessRegistNo").val("");
                 $("#uploadIdRegisNoTitle").hide();
 
+                $("#titleNameTitle").show();
+                $("#supplier_titleName").show();
+                $("#USER_TITLE").show();
+                $("#firstNameTitle").show();
+                $("#supplier_firstName").show();
+                $("#lastNameSupplier").show();
+                $("#lastNameTitle").show();
+                $("#supplier_lastName").show();
                 $("#idNoPassportNoTitle").show();
                 $("#idNoPassportNo").show();
                 $("#uploadIdNoScanTitle").show();
             } else {
+                $("#firstNameTitle").hide();
+                $("#supplier_firstName").hide();
+                $("#firstName").val("");
+                $("#lastNameSupplier").hide();
+                $("#lastNameTitle").hide();
+                $("#supplier_lastName").hide();
+                $("#lastName").val("");
+                $("#titleNameSupplier").hide();
+                $("#titleNameTitle").hide();
+                $("#supplier_titleName").hide();
+                $("#USER_TITLE").val("");
                 $("#idNoPassportNoTitle").hide();
                 $("#idNoPassportNo").hide();
                 $("#newsupplier_idCardNo").val("");
                 $("#uploadIdNoScanTitle").hide();
 
+                $("#groupNameTitle").show();
+                $("#supplier_groupName").show();
                 $("#idRegisNoTitle").show();
                 $("#idRegisNo").show();
                 $("#uploadIdRegisNoTitle").show();
@@ -159,10 +197,35 @@ under the License.
                     </ul>
                 </td>
             </tr>
-            <tr>
-                <td valign="middle" class="newsupplier">${uiLabelMap.PFTSupplierName}</td>
+            <tr id="titleNameSupplier">
+                <td valign="middle" class="newsupplier" id="titleNameTitle">${uiLabelMap.CommonTitle}</td>
                 <td> : </td>
-                <td><input type="text" name="groupName" id="groupName" class="required" value="${parameters.groupName?if_exists}" maxlength="30"/> *</td>
+                <td id="supplier_titleName">
+                  <select name="USER_TITLE" id="USER_TITLE">
+                    <#if parameters.USER_TITLE?has_content >
+                      <option>${parameters.USER_TITLE}</option>
+                      <option value="${parameters.USER_TITLE}"> -- </option>
+                    <#else>
+                      <option value="">${uiLabelMap.CommonSelectOne}</option>
+                    </#if>
+                    <option>${uiLabelMap.CommonTitleMr}</option>
+                    <option>${uiLabelMap.CommonTitleMrs}</option>
+                    <option>${uiLabelMap.CommonTitleMs}</option>
+                    <option>${uiLabelMap.CommonTitleDr}</option>
+                  </select>
+                </td>
+            </tr>
+            <tr>
+                <td valign="middle" class="newsupplier" id="firstNameTitle">${uiLabelMap.PartyFirstName}</td>
+                <td valign="middle" class="newsupplier" id="groupNameTitle">${uiLabelMap.PFTSupplierName}</td>
+                <td> : </td>
+                <td id="supplier_firstName"><input type="text" name="firstName" id="firstName" value="${parameters.firstName?if_exists}" /> *</td>
+                <td id="supplier_groupName"><input type="text" name="groupName" id="groupName" class="required" value="${parameters.groupName?if_exists}" maxlength="30"/> *</td>
+            </tr>
+            <tr id="lastNameSupplier">
+                <td valign="middle" class="newsupplier" id="lastNameTitle">${uiLabelMap.PartyLastName}</td>
+                <td> : </td>
+                <td id="supplier_lastName"><input type="text" name="lastName" id="lastName" value="${parameters.lastName?if_exists}" /> *</td>
             </tr>
             <tr>
                 <td valign="middle" class="newsupplier" id="idNoPassportNoTitle">${uiLabelMap.PFTTitleIdNoIdPassport}</td>

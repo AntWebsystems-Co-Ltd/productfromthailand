@@ -89,33 +89,17 @@ under the License.
               <td colspan="3"></td>
           </tr>
           <tr>
-              <#if parameters.groupName?has_content>
-                <td>
-                Dear ${parameters.groupName!},
-                </td>
-            </#if>
-            <#if parameters.firstName?has_content>
-                <td>
-                Dear ${parameters.firstName!} ${parameters.lastName!},
-                </td>
-            </#if>
+             <td>Dear ${parameters.supplierName!},</td>
+          </tr>
+          <tr class="blank_row">
+              <td colspan="3"></td>
           </tr>
           <tr class="blank_row">
               <td colspan="3"></td>
           </tr>
           <tr>
             <td>
-            Welcome to Product From Thailand!
-            </td>
-          </tr>
-          <tr>
-            <td>
-            Thank you for signing up on www.productfromthailand.com.
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Your account has been created successfully.
+              Your registration has been rejected.
             </td>
           </tr>
           <tr class="blank_row">
@@ -123,12 +107,31 @@ under the License.
           </tr>
           <tr>
             <td>
-            Your documents has been uploaded successfully. We will check your documents within 24 hours.
+              Reason for rejection : ${parameters.reason!}
             </td>
+          </tr>
+          <tr class="blank_row">
+              <td colspan="3"></td>
           </tr>
           <tr>
             <td>
             If you have any questions or concerns you can contact our support team : support@productfromthailand.com
+            </td>
+          </tr>
+          <tr class="blank_row">
+              <td colspan="3"></td>
+          </tr>
+          <tr class="blank_row">
+              <td colspan="3"></td>
+          </tr>
+          <tr>
+            <td>
+            Regards,
+            </td>
+          </tr>
+          <tr>
+            <td>
+            Product From Thailand
             </td>
           </tr>
         </table>

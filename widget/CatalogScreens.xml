@@ -501,7 +501,7 @@ under the License.
             </widgets>
         </section>
     </screen>
-    
+
     <!-- Portlet screen -->
     <screen name="MyProducts">
         <section>
@@ -557,7 +557,7 @@ under the License.
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="advancedproductsearch">
         <section>
             <actions>
@@ -584,7 +584,7 @@ under the License.
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="keywordsearchresults">
         <section>
             <actions>
@@ -599,6 +599,18 @@ under the License.
                         </platform-specific>
                     </decorator-section>
                 </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="productCategories">
+        <section>
+            <actions>
+                <set field="tabButtonItem" value="LookupProductCategories"/>
+                <script location="component://productfromthailand/groovyScripts/ProductCategories.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/ProductCategories.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>

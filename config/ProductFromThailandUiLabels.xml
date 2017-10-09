@@ -107,6 +107,9 @@
         <value xml:lang="en">Home</value>
         <value xml:lang="th">หน้าแรก</value>
     </property>
+    <property key="PFTIDNumber">
+        <value xml:lang="en">ID Number</value>
+    </property>
     <property key="PFTInAllCategories">
         <value xml:lang="en">In All Categories</value>
         <value xml:lang="th">ค้นหาทุกหมวดหมู่สินค้า</value>
@@ -173,6 +176,9 @@
         <value xml:lang="th">การสมัครสมาชิกจะมีสองแบบด้วยกัน ลูกค้าทั่วไป เลือก สมัครเป็นสมาชิก ทางด้านซ้ายมือ หากคุณเป็นร้านค้าหรือบริษัทที่ต้องการขายของในเว็บไซท์นี้
             เลือก "สมัครสมาชิกเป็นผู้ค้า" ทางด้านขวามือ</value>
     </property>
+    <property key="PFTRejectReason">
+        <value xml:lang="en">Reject Reason</value>
+    </property>
     <property key="PFTSalescond">
         <value xml:lang="en">For a company who wants to sell your products on this site. We allow you to sell your products,
             manage your catalog and you will see all existing purchase from your customer.
@@ -219,6 +225,9 @@
     <property key="PFTSupplierRegisterGuide">
         <value xml:lang="en">Supplier Registration Guide</value>
         <value xml:lang="th">ขั้นตอนง่ายๆในการเป็นผู้ขายของออนไลน์</value>
+    </property>
+    <property key="PFTSupplierRegistrationApproval">
+        <value xml:lang="en">Supplier Registration Approval</value>
     </property>
     <property key="PFTSupplierHeadStep1">
         <value xml:lang="en">Step 1: Register and Submit Documents</value>

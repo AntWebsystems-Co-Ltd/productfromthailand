@@ -37,6 +37,7 @@ under the License.
     <ProductCategory description="Thai Silk" primaryParentCategoryId="PFT_ROOT" productCategoryId="THAISILK" productCategoryTypeId="CATALOG_CATEGORY"/>
     <ProductCategory description="Health &amp; Beauty" primaryParentCategoryId="PFT_ROOT" productCategoryId="HEALTHANDBEAUTY" productCategoryTypeId="CATALOG_CATEGORY"/>
     <ProductCategory description="Body Accessories" primaryParentCategoryId="PFT_ROOT" productCategoryId="BODYACCESSORIES" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory description="Coffee From Thailand" productCategoryId="COFFEE-CAT" productCategoryTypeId="CATALOG_CATEGORY"/>
 
     <ProductCategoryRollup fromDate="2009-01-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="BAGS" sequenceNum="1"/>
     <ProductCategoryRollup fromDate="2009-02-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="CLOTHING" sequenceNum="2"/>
@@ -45,6 +46,7 @@ under the License.
     <ProductCategoryRollup fromDate="2009-05-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="THAISILK" sequenceNum="5"/>
     <ProductCategoryRollup fromDate="2009-06-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="HEALTHANDBEAUTY" sequenceNum="6"/>
     <ProductCategoryRollup fromDate="2009-07-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="BODYACCESSORIES" sequenceNum="7"/>
+    <ProductCategoryRollup fromDate="2009-07-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="COFFEE-CAT" sequenceNum="7"/>
 
     <ProdCatalogCategory prodCatalogId="PFTCatalog" productCategoryId="PFT_ROOT" fromDate="2009-09-25 00:00:00.000"
         sequenceNum="1" prodCatalogCategoryTypeId="PCCT_BROWSE_ROOT"/>
@@ -140,4 +142,31 @@ under the License.
 
     <ProductCategoryContent productCategoryId="BODYACCESSORIES" contentId="ACCESSORIESDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-07-25 00:00:00.000"/>
     <ContentAssoc contentId="ACCESSORIESDESCEN" contentIdTo="ACCESSORIESDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-07-25 00:00:00.000"/>
+
+    <!-- Careel Supplier data -->
+    <Party partyId="SUP10000" partyTypeId="PARTY_GROUP"/>
+    <PartyGroup partyId="SUP10000" groupName="Careel" />
+    <PartyRole  partyId="SUP10000" roleTypeId="SUPPLIER"/>
+    <ContactMech contactMechId="SUP10000_ADDR" contactMechTypeId="POSTAL_ADDRESS"/>
+    <ContactMech contactMechId="SUP10000_EMAIL" contactMechTypeId="EMAIL_ADDRESS" infoString="natkrita@careelnatural.com"/>
+    <PartyContactMech partyId="SUP10000" contactMechId="SUP10000_ADDR" fromDate="2017-10-09 00:00:00.000" allowSolicitation="Y"/>
+    <PartyContactMech partyId="SUP10000" contactMechId="SUP10000_EMAIL" fromDate="2017-10-09 00:00:00.000" allowSolicitation="Y"/>
+    <PostalAddress contactMechId="SUP10000_ADDR" toName="Careel" address1="171/28 M.3" city="Tambon Nongkaew, Amphur Hangdong" postalCode="50230" countryGeoId="THA" stateProvinceGeoId="TH-50"/>
+    <PartyContactMechPurpose partyId="SUP10000" contactMechId="SUP10000_ADDR" contactMechPurposeTypeId="BILLING_LOCATION" fromDate="2017-10-09 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="SUP10000" contactMechId="SUP10000_ADDR" contactMechPurposeTypeId="GENERAL_LOCATION" fromDate="2017-10-09 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="SUP10000" contactMechId="SUP10000_ADDR" contactMechPurposeTypeId="PAYMENT_LOCATION" fromDate="2017-10-09 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="SUP10000" contactMechId="SUP10000_EMAIL" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2017-10-09 00:00:00.000"/>
+
+    <!-- Careel Coffee -->
+    <Product productId="CR10000" productName="Careel Cofee" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="Careel Cofee" inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="N" isVirtual="N" orderDecimalQuantity="N" productWeight="200.000000" requirementMethodEnumId="PRODRQM_DS" weightUomId="WT_g"/>
+    <ProductCategoryMember productCategoryId="COFFEE-CAT" productId="CR10000" sequenceNum="1" fromDate="2017-10-09 00:00:00.000"/>
+    <ProductPrice productId="CR10000" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="185.00" createdDate="2017-10-09 00:00:00.000" />
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10000" lastPrice="185.00" supplierProductId="SP-COFFEE" supplierProductName="Careel Cofee" availableFromDate="2017-10-09 00:00:00.000"/>
+
+    <!-- Careel L-canatine Complex -->
+    <Product productId="CR10001" productName="Careel L-canatine Complex" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="Careel L-canatine Complex" inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="N" isVirtual="N" orderDecimalQuantity="N" requirementMethodEnumId="PRODRQM_DS"/>
+    <ProductCategoryMember productCategoryId="HEALTHANDBEAUTY" productId="CR10001" sequenceNum="1" fromDate="2017-10-09 00:00:00.000"/>
+    <ProductPrice productId="CR10001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="1600.00" createdDate="2017-10-09 00:00:00.000" />
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10001" lastPrice="1600.00" supplierProductId="SP-LCA" supplierProductName="Careel L-canatine Complex" availableFromDate="2017-10-09 00:00:00.000"/>
+
 </entity-engine-xml>

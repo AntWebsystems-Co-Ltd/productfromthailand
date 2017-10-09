@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<simple-methods xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Simple-Method" xsi:schemaLocation="http://ofbiz.apache.org/Simple-Method http://ofbiz.apache.org/dtds/simple-methods.xsd">
+
+    <simple-method method-name="approveSupplier" short-description="Approve Supplier">
+        <entity-and entity-name="UserLogin" list="getSupplierUserLogin">
+            <field-map field-name="partyId" from-field="parameters.partyId"/>
+        </entity-and>
+        <set field="supplierUserLogin" from-field="getSupplierUserLogin[0].userLoginId"/>
+        <entity-and entity-name="UserLoginAndSecurityGroup" list="checkSupplierGroups" filter-by-date="true">
+            <field-map field-name="partyId" from-field="parameters.partyId"/>
+            <field-map field-name="groupId" value="MYPORTAL_SUPPLIER"/>
+        </entity-and>
+        <if-empty field="checkSupplierGroups">
+            <clear-field field="addUserLoginToSecurityGroupCtx"/>
+            <set field="addUserLoginToSecurityGroupCtx.userLoginId" from-field="supplierUserLogin"/>
+            <set field="addUserLoginToSecurityGroupCtx.groupId" value="MYPORTAL_SUPPLIER"/>
+            <set field="addUserLoginToSecurityGroupCtx.userLogin" from-field="parameters.userLogin"/>
+            <call-service service-name="addUserLoginToSecurityGroup" in-map-name="addUserLoginToSecurityGroupCtx"/>
+
+            <clear-field field="getPartyNameForDateMap"/>
+            <set field="getPartyNameForDateMap.partyId" from-field="parameters.partyId"/>
+            <set field="getPartyNameForDateMap.userLogin" from-field="parameters.userLogin"/>
+            <call-service service-name="getPartyNameForDate" in-map-name="getPartyNameForDateMap">
+                <result-to-field result-name="groupName" field="groupName"/>
+                <result-to-field result-name="firstName" field="firstName"/>
+                <result-to-field result-name="lastName" field="lastName"/>
+            </call-service>
+            <if-not-empty field="groupName">
+                <set field="supplierName" from-field="groupName"/>
+                <else>
+                    <set field="supplierName" value="${firstName} ${lastName}"/>
+                </else>
+            </if-not-empty>
+            <!-- Set email body parameters -->
+            <set field="bodyParameters.supplierName" from-field="supplierName"/>
+            <set field="bodyParameters.webSiteId" from-field="parameters.webSiteId"/>
+
+            <!-- Send mail approve -->
+            <clear-field field="sendMailMap"/>
+            <set field="sendMailMap.webSiteId" from-field="parameters.webSiteId"/>
+            <set field="sendMailMap.partyIdTo" from-field="parameters.partyId"/>
+            <set field="sendMailMap.emailTemplateSettingId" value="SUPPLIER_APPROVE"/>
+            <set field="sendMailMap.bodyParameters" from-field="bodyParameters"/>
+            <call-service service-name="sendMailFromTemplateSetting" in-map-name="sendMailMap"/>
+        </if-empty>
+    </simple-method>
+
+    <simple-method method-name="rejectSupplier" short-description="Reject Supplier">
+        <clear-field field="createPartyNoteMap"/>
+        <set field="createPartyNoteMap.partyId" from-field="parameters.partyId"/>
+        <set field="createPartyNoteMap.noteName" value="Reject Reason"/>
+        <set field="createPartyNoteMap.note" from-field="parameters.reason"/>
+        <set field="createPartyNoteMap.userLogin" from-field="parameters.userLogin"/>
+        <call-service service-name="createPartyNote" in-map-name="createPartyNoteMap"/>
+
+        <clear-field field="getPartyNameForDateMap"/>
+        <set field="getPartyNameForDateMap.partyId" from-field="parameters.partyId"/>
+        <set field="getPartyNameForDateMap.userLogin" from-field="parameters.userLogin"/>
+        <call-service service-name="getPartyNameForDate" in-map-name="getPartyNameForDateMap">
+            <result-to-field result-name="groupName" field="groupName"/>
+            <result-to-field result-name="firstName" field="firstName"/>
+            <result-to-field result-name="lastName" field="lastName"/>
+        </call-service>
+        <if-not-empty field="groupName">
+            <set field="supplierName" from-field="groupName"/>
+            <else>
+                <set field="supplierName" value="${firstName} ${lastName}"/>
+            </else>
+        </if-not-empty>
+        <!-- Set email body parameters -->
+        <set field="bodyParameters.supplierName" from-field="supplierName"/>
+        <set field="bodyParameters.webSiteId" from-field="parameters.webSiteId"/>
+        <set field="bodyParameters.reason" from-field="parameters.reason"/>
+        <!-- Send mail reject -->
+        <clear-field field="sendMailMap"/>
+        <set field="sendMailMap.webSiteId" from-field="parameters.webSiteId"/>
+        <set field="sendMailMap.partyIdTo" from-field="parameters.partyId"/>
+        <set field="sendMailMap.emailTemplateSettingId" value="SUPPLIER_REJECTED"/>
+        <set field="sendMailMap.bodyParameters" from-field="bodyParameters"/>
+        <call-service service-name="sendMailFromTemplateSetting" in-map-name="sendMailMap"/>
+    </simple-method>
+</simple-methods>

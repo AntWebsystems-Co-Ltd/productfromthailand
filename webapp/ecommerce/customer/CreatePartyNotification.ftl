@@ -87,7 +87,7 @@ under the License.
           </tr>
           <tr>
             <td align="center">
-              Thank you for register at ProductFromThailand.com
+              Thank you for signing up on www.productfromthailand.com.
             </td>
           </tr>
         </table>

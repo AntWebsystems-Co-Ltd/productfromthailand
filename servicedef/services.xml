@@ -34,4 +34,16 @@ under the License.
     <service name="createMissingProductPrice" engine="simple" invoke="createMissingProductPrice" location="component://productfromthailand/minilang/ProductEvents.xml">
         <description>To Create Missing Product Price in Other Currencies</description>
     </service>
+
+    <service name="approveSupplier" engine="simple" invoke="approveSupplier" location="component://productfromthailand/minilang/PFTServices.xml">
+        <description>Approve Supplier</description>
+        <attribute name="partyId" type="String" mode="IN" optional="true"/>
+        <attribute name="webSiteId" type="String" mode="IN" optional="true"/>
+    </service>
+    <service name="rejectSupplier" engine="simple" invoke="rejectSupplier" location="component://productfromthailand/minilang/PFTServices.xml">
+        <description>Reject Supplier</description>
+        <attribute name="partyId" type="String" mode="IN" optional="true"/>
+        <attribute name="webSiteId" type="String" mode="IN" optional="true"/>
+        <attribute name="reason" type="String" mode="IN" optional="true"/>
+    </service>
 </services>

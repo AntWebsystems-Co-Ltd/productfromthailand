@@ -202,11 +202,11 @@ will generally always be reserved for the logo at the top of the page.
                 <td> : </td>
                 <td><input type="text" name="USER_FIRST_NAME" id="USER_FIRST_NAME" value="${requestParameters.USER_FIRST_NAME?if_exists}" /> *</td>
             </tr>
-            <tr>
+            <#-- <tr>
                 <td valign="middle" class="newcustomer">${uiLabelMap.PartyMiddleInitial}</td>
                 <td> : </td>
                 <td><input type="text" name="USER_MIDDLE_NAME" id="USER_MIDDLE_NAME" value="${requestParameters.USER_MIDDLE_NAME?if_exists}" /> *</td>
-            </tr>
+            </tr> -->
             <tr>
                 <td valign="middle" class="newcustomer">${uiLabelMap.PartyLastName}</td>
                 <td> : </td>

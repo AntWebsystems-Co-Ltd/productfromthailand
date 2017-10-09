@@ -97,15 +97,31 @@ under the License.
             </simple-map-processor>
         </call-map-processor>
         <check-errors/>
-        <set field="createPartyGroupCtx.groupName" from-field="formInput.formInput.groupName"/>
-        <!-- create person -->
-        <call-service service-name="createPartyGroup" in-map-name="createPartyGroupCtx">
-            <result-to-field result-name="partyId" field="partyId"/>
-        </call-service>
-        <set field="parameters.partyId" from-field="partyId"/>
-        <entity-one entity-name="UserLogin" value-field="parameters.userLogin" auto-field-map="false">
-            <field-map field-name="userLoginId" value="system"/>
-        </entity-one>
+
+        <if-not-empty field="formInput.formInput.groupName">
+            <set field="createPartyGroupCtx.groupName" from-field="formInput.formInput.groupName"/>
+            <!-- create person -->
+            <call-service service-name="createPartyGroup" in-map-name="createPartyGroupCtx">
+                <result-to-field result-name="partyId" field="partyId"/>
+            </call-service>
+            <set field="parameters.partyId" from-field="partyId"/>
+            <entity-one entity-name="UserLogin" value-field="parameters.userLogin" auto-field-map="false">
+                <field-map field-name="userLoginId" value="system"/>
+            </entity-one>
+        </if-not-empty>
+
+        <if-not-empty field="formInput.formInput.firstName">
+            <!-- create person -->
+            <set-service-fields service-name="createPerson" map="formInput.formInput" to-map="newParty"/>
+            <call-service service-name="createPerson" in-map-name="newParty">
+                <result-to-field result-name="partyId" field="parameters.partyId"/>
+            </call-service>
+            <set field="parameters.partyId" from-field="partyId"/>
+            <entity-one entity-name="UserLogin" value-field="parameters.userLogin" auto-field-map="false">
+                <field-map field-name="userLoginId" value="system"/>
+            </entity-one>
+        </if-not-empty>
+
         <!-- Create Id card number or passport number -->
         <if-not-empty field="formInput.formInput.idCardNo">
             <entity-one value-field="partyIdentification" entity-name="PartyIdentification">
@@ -326,6 +342,8 @@ under the License.
         <!-- Create email notification -->
         <set field="parameters.emailAddress" from-field="formInput.formInput.emailAddress"/>
         <set field="parameters.groupName" from-field="formInput.formInput.groupName"/>
+        <set field="parameters.firstName" from-field="formInput.formInput.firstName"/>
+        <set field="parameters.lastName" from-field="formInput.formInput.lastName"/>
         <call-simple-method method-name="sendCreatePartyGroupEmailNotification"/>
     </simple-method>
 

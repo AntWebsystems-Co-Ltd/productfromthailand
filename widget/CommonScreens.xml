@@ -117,7 +117,7 @@ under the License.
         <section>
             <widgets>
                 <container style="left">
-                    <include-screen name="productCategories" location="component://ecommerce/widget/CatalogScreens.xml"/>
+                    <include-screen name="productCategories" location="component://productfromthailand/widget/CatalogScreens.xml"/>
                     <include-screen name="keywordsearchbox" location="component://ecommerce/widget/CatalogScreens.xml"/>
                 </container>
             </widgets>
