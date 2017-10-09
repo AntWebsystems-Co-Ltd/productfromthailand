@@ -20,20 +20,20 @@ under the License.
 <entity-engine-xml>
     <!-- general.properties adjustment -->
     <SystemProperty systemResourceId="general" systemPropertyId="locales.available" systemPropertyValue="en,th"/>
+    <SystemProperty systemResourceId="general" systemPropertyId="ORGANIZATION_PARTY" systemPropertyValue="pft"/>
+    <!-- Setting up on the production server
     <SystemProperty systemResourceId="general" systemPropertyId="mail.notifications.enabled" systemPropertyValue="Y"/>
-    <SystemProperty systemResourceId="general" systemPropertyId="mail.smtp.relay.host" systemPropertyValue="smtp.productfromthailand.com"/>
+    <SystemProperty systemResourceId="general" systemPropertyId="mail.smtp.relay.host" systemPropertyValue="smtp.gmail.com"/>
     <SystemProperty systemResourceId="general" systemPropertyId="mail.smtp.auth.user" systemPropertyValue="info@productfromthailand.com"/>
-    <SystemProperty systemResourceId="general" systemPropertyId="mail.smtp.auth.password" systemPropertyValue="pft44"/>
+    <SystemProperty systemResourceId="general" systemPropertyId="mail.smtp.auth.password" systemPropertyValue=""/>
+     -->
 
-    <!-- mail system properties -->
+    <!-- mail system properties
     <SystemProperty systemResourceId="mail" systemPropertyId="mail.store.protocol" systemPropertyValue="imaps"/>
     <SystemProperty systemResourceId="mail" systemPropertyId="mail.host" systemPropertyValue="imap.gmail.com"/>
     <SystemProperty systemResourceId="mail" systemPropertyId="mail.user" systemPropertyValue="mailUser"/>
     <SystemProperty systemResourceId="mail" systemPropertyId="mail.pass" systemPropertyValue="mailPass"/>
-
-    <!-- catalog.properties adjustment -->
-    <SystemProperty systemResourceId="catalog" systemPropertyId="top.category.default" systemPropertyValue="PFT_ROOT"/>
-    <SystemProperty systemResourceId="catalog" systemPropertyId="all.product.category" systemPropertyValue="PFT_ROOT"/>
+     -->
 
     <!-- googleBaseExport.properties adjustment
     <SystemProperty systemResourceId="googleBaseExport" systemPropertyId="googleBaseExport.developerKey" systemPropertyValue="ABQIAAAAtllOIMnA_SSaX6-q_-0NqBQ7yogk7ltS6O8c1NB_asTLHULnfxRsRVBa5bgcryXeo0AOht5OtQ78_Q"/>
@@ -100,7 +100,7 @@ under the License.
     <PartyRole partyId="FEDEX" roleTypeId="CARRIER"/>
 
     <GlJournal glJournalId="pftGlJournal" glJournalName="Suspense transactions" organizationPartyId="pft"/>
-    <PartyAcctgPreference partyId="pft" taxFormId="US_IRS_1120" cogsMethodId="COGS_LIFO" baseCurrencyUomId="USD"
+    <PartyAcctgPreference partyId="pft" taxFormId="US_IRS_1120" cogsMethodId="COGS_LIFO" baseCurrencyUomId="THB"
         invoiceSeqCustMethId="INV_HOOK_ENF_SEQ" invoiceIdPrefix="PRCI"
         quoteIdPrefix="PFTQ"
         orderIdPrefix="PFTO"
@@ -117,7 +117,7 @@ under the License.
         isDemoStore="N" title="Welcome to Product FromThailand.com" subtitle="Thailand Located in Southeast Asia, Thailand is commonly known as the land of smiles. Thailand's major exports include textiles, fishery products and electrical applicances. Look through the categories below to find more Thai products." 
         isImmediatelyFulfilled="N" oneInventoryFacility="N" checkInventory="N" reserveInventory="N"
         reserveOrderEnumId="INVRO_FIFO_REC" requireInventory="N" balanceResOnOrderCreation="Y" orderNumberPrefix="PFTS" defaultLocaleString="en_US"
-        defaultCurrencyUomId="USD" defaultSalesChannelEnumId="WEB_SALES_CHANNEL" allowPassword="Y" explodeOrderItems="N" checkGcBalance="N" retryFailedAuths="Y"
+        defaultCurrencyUomId="THB" defaultSalesChannelEnumId="WEB_SALES_CHANNEL" allowPassword="Y" explodeOrderItems="N" checkGcBalance="N" retryFailedAuths="Y"
         headerApprovedStatus="ORDER_APPROVED" itemApprovedStatus="ITEM_APPROVED" digitalItemApprovedStatus="ITEM_APPROVED" headerDeclinedStatus="ORDER_REJECTED"
         itemDeclinedStatus="ITEM_REJECTED" headerCancelStatus="ORDER_CANCELLED" itemCancelStatus="ITEM_CANCELLED"
         authDeclinedMessage="There has been a problem with your method of payment. Please try a different method or call customer service."
@@ -129,7 +129,7 @@ under the License.
         shipIfCaptureFails="Y" reqReturnInventoryReceive="N" showOutOfStockProducts="Y" inventoryFacilityId="pftWarehouse"/>
 
     <ProductStoreFacility productStoreId="PFTSTORE" facilityId="pftWarehouse" fromDate="2009-09-25 10:38:07.561"/>
-    <WebSite webSiteId="PFT" siteName="Product from Thailand EN website" visualThemeSetId="ECOMMERCE" productStoreId="PFTSTORE"/>
+    <WebSite webSiteId="PFT" siteName="Product from Thailand website" visualThemeSetId="ECOMMERCE" productStoreId="PFTSTORE"/>
     <WebAnalyticsType webAnalyticsTypeId="GOOGLE_ANALYTICS" parentTypeId="WEB_ANALYTICS" hasTable="N" description="Google Analytics"/>
     <WebAnalyticsConfig webAnalyticsTypeId="GOOGLE_ANALYTICS" webSiteId="PFT">
             <webAnalyticsCode><![CDATA[   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -142,13 +142,9 @@ under the License.
     ]]></webAnalyticsCode>
     </WebAnalyticsConfig>
 
-    <!-- Default Catalog -->
-    <SystemProperty systemResourceId="catalog" systemPropertyId="top.category.default" systemPropertyValue="PFT_ROOT"/>
-    <SystemProperty systemResourceId="catalog" systemPropertyId="all.product.category" systemPropertyValue="PFT_ROOT"/>
-    <!-- Default Font for PDF -->
-    <SystemProperty systemResourceId="fop.properties" systemPropertyId="fop.font.family" systemPropertyValue="Loma"/>
-    <SystemProperty systemResourceId="general" systemPropertyId="currency.uom.id.default" systemPropertyValue="THB"/>
-    <SystemProperty systemResourceId="general" systemPropertyId="country.geo.id.default" systemPropertyValue="THA"/>
+    <ContactList contactListId="PFT" contactListTypeId="NEWSLETTER" contactMechTypeId="EMAIL_ADDRESS" contactListName="Product Tips Newsletter"
+        description="Product Tips Newsletter Mailing List (email)" isPublic="Y" ownerPartyId="pft" verifyEmailFrom="info@productfromthailand.com"
+        verifyEmailScreen="component://growerpbackend/widget/EmailContactListScreens.xml#ContactListVerifyEmail" verifyEmailSubject="Subscription Verify Contact List" verifyEmailWebSiteId="PFT"/>
 
     <!-- Supplier role type -->
     <RoleType description="Company supplier" hasTable="N" parentTypeId="" roleTypeId="SUPP_COMPANY"/>
@@ -157,4 +153,6 @@ under the License.
     <PartyIdentificationType partyIdentificationTypeId="ID_NUMBER" description="ID card number or passport number"/>
     <PartyIdentificationType partyIdentificationTypeId="ID_BIZ_REGISTER_NO" description="ID a business registration number"/>
 
+    <UserPreference userLoginId="_NA_" userPrefGroupTypeId="GLOBAL_PREFERENCES" userPrefTypeId="ORGANIZATION_PARTY" userPrefValue="pft"/>
+    <UserPreference userLoginId="_NA_" userPrefGroupTypeId="GLOBAL_PREFERENCES" userPrefTypeId="VISUAL_THEME" userPrefValue="LIGHTOFFICE"/>
 </entity-engine-xml>
