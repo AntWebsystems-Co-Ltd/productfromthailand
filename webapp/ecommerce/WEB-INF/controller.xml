@@ -22,6 +22,9 @@ under the License.
         xmlns="http://ofbiz.apache.org/Site-Conf" xsi:schemaLocation="http://ofbiz.apache.org/Site-Conf http://ofbiz.apache.org/dtds/site-conf.xsd">
     <include location="component://ecommerce/webapp/ecommerce/WEB-INF/controller.xml"/>
     <description>OFBiz: Cloned eCommerce Controller Configuration File</description>
+
+    <handler name="simplecontent" type="view" class="org.apache.ofbiz.content.view.SimpleContentViewHandler"/>
+
     <request-map uri="googleLogin">
         <security https="true" auth="false"/>
         <event type="groovy" path="component://growerppassport/groovyScripts/Google/GoogleEvents.groovy" invoke="googleLogin"/>
@@ -243,6 +246,14 @@ under the License.
         <response name="success" type="view" value="viewSupplierProfile"/>
     </request-map>
 
+    <!-- ================ CompDoc Requests ================= -->
+    <!-- ================ SimpleContent Requests ================= -->
+
+    <request-map uri="ViewSimpleContent">
+        <security auth="false" https="false"/>
+        <response name="success" type="view" value="ViewSimpleContent"/>
+    </request-map>
+
     <!-- Contact List -->
     <request-map uri="signUpForContactList">
         <security https="false" auth="false"/>
@@ -338,4 +349,6 @@ under the License.
     <view-map name="ProductBarCode.pdf" type="screenfop" page="component://product/widget/catalog/ProductScreens.xml#ProductBarCode.fo" content-type="application/pdf" encoding="none"/>
 
     <view-map name="StoreManagement" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#StoreManagement"/>
+
+    <view-map name="ViewSimpleContent" page="" type="simplecontent"/>
 </site-conf>

@@ -31,5 +31,8 @@ under the License.
                     <input type="submit" class="smallSubmit" value="${uiLabelMap.PFTUploadProduct}"/>
                 </td>
             </tr>
+            <tr>
+                <td><input type="submit" class="smallSubmit" onclick="this.form.action='<@ofbizUrl>StoreManagement</@ofbizUrl>'" value="${uiLabelMap.CommonBack}"/></td>
+            </tr>
         </table>
     </form>

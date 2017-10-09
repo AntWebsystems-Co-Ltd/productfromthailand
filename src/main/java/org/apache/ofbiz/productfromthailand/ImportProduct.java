@@ -95,6 +95,20 @@ public class ImportProduct {
         if (UtilValidate.isEmpty(supplierPartyId)) {
             supplierPartyId = (String) userLogin.get("partyId");
         }
+        String supplierName = null;
+        Map<String, Object> getPartyName = new HashMap<String, Object>();
+        try {
+            getPartyName = dispatcher.runSync("getPartyNameForDate", UtilMisc.toMap("partyId", supplierPartyId, "userLogin", userLogin));
+            if (getPartyName.get("groupName") != null) {
+                supplierName = getPartyName.get("groupName").toString().substring(0, 2).toUpperCase();
+            } else {
+                supplierName = getPartyName.get("firstName").toString().substring(0, 2).toUpperCase();
+            }
+        } catch (GenericServiceException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        supplierName = supplierName + "-";
 
         File localPathFile = new File(System.getProperty("ofbiz.home")+"/runtime/uploads");
         if (!localPathFile.exists()) {
@@ -171,19 +185,21 @@ public class ImportProduct {
             for (int j = 1; j <= sheetLastRowNumber; j++) {
                 HSSFRow row = sheet.getRow(j);
                 if (row != null) {
-                    String productId = null;
-                    // read action from thirteenth column
-                    HSSFCell cell12 = row.getCell(12);
+                    String productId = delegator.getNextSeqId("Product");
+                    String supplierProductId = supplierName + delegator.getNextSeqId("SupplierProduct");
+                    String actionField = "add";
+                    // read action from ninth column
+                    /*HSSFCell cell8 = row.getCell(8);
                     String actionField = null;
-                    if(UtilValidate.isNotEmpty(cell12)){
-                        actionField = toStringValue(cell12);
-                    }
+                    if(UtilValidate.isNotEmpty(cell8)){
+                        actionField = toStringValue(cell8);
+                    }*/
 
                     if (actionField != null) {
-                        actionField = actionField.toLowerCase();
+                        //actionField = actionField.toLowerCase();
                         // starts from 0"
                         // read supplierProductId from first column
-                        HSSFCell cell0 = row.getCell(0);
+                        /*HSSFCell cell0 = row.getCell(0);
                         String supplierProductId = null;
                         if(UtilValidate.isNotEmpty(cell0)){
                             supplierProductId= toStringValue(cell0);
@@ -205,82 +221,66 @@ public class ImportProduct {
                         }
                         if(productId == null){
                             productId = delegator.getNextSeqId("Product");
-                        }
+                        }*/
 
-                        // read productName from second column
-                        HSSFCell cell1 = row.getCell(1);
+                        // read productName from first column
+                        HSSFCell cell0 = row.getCell(0);
                         String productName = null;
-                        if(UtilValidate.isNotEmpty(cell1)){
-                            productName = toStringValue(cell1);
+                        if(UtilValidate.isNotEmpty(cell0)){
+                            productName = toStringValue(cell0);
                         }
 
-                        // read productName in Thai language from third column
-                        HSSFCell cell2 = row.getCell(2);
+                        // read productName in Thai language from second column
+                        HSSFCell cell1 = row.getCell(1);
                         String productNameTH = null;
+                        if(UtilValidate.isNotEmpty(cell1)){
+                            productNameTH  = toStringValue(cell1);
+                        }
+
+                        String internalName = productName;
+
+                        HSSFCell cell2 = row.getCell(2);
+                        String description = null;
                         if(UtilValidate.isNotEmpty(cell2)){
-                            productNameTH  = toStringValue(cell2);
+                            description = toStringValue(cell2);
                         }
 
                         HSSFCell cell3 = row.getCell(3);
-                        String internalName = null;
-                        if(UtilValidate.isNotEmpty(cell3)){
-                            internalName = toStringValue(cell3);
-                        }
-                        if(internalName == null){
-                            internalName = "Product_" + productId;
-                        }
-
-                        HSSFCell cell4 = row.getCell(4);
-                        String description = null;
-                        if(UtilValidate.isNotEmpty(cell4)){
-                            description = toStringValue(cell4);
-                        }
-
-                        HSSFCell cell5 = row.getCell(5);
                         String descriptionTH = null;
-                        if(UtilValidate.isNotEmpty(cell5)){
-                            descriptionTH  = toStringValue(cell5);
+                        if(UtilValidate.isNotEmpty(cell3)){
+                            descriptionTH  = toStringValue(cell3);
                         }
 
-                        // read price from eighth column
-                        HSSFCell cell6 = row.getCell(6);
+                        // read price from fifth column
+                        HSSFCell cell4 = row.getCell(4);
                         BigDecimal price = BigDecimal.ZERO;
-                        if (cell6 != null && cell6.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
-                            price = new BigDecimal(cell6.getNumericCellValue());
+                        if (cell4 != null && cell4.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
+                            price = BigDecimal.valueOf(cell4.getNumericCellValue()).setScale(2, BigDecimal.ROUND_HALF_UP);
 
-                        HSSFCell cell7 = row.getCell(7);
-                        BigDecimal supplierPrice = BigDecimal.ZERO;
-                        if (cell7 != null && cell7.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
-                            supplierPrice = new BigDecimal(cell7.getNumericCellValue());
-
-                        // read productWidth from ninth column
-                        HSSFCell cell8 = row.getCell(8);
+                        // read productWidth from sixth column
+                        HSSFCell cell5 = row.getCell(5);
                         BigDecimal productWidth = BigDecimal.ZERO;
-                        if (cell8 != null && cell8.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
-                            productWidth = new BigDecimal(cell8.getNumericCellValue());
+                        if (cell5 != null && cell5.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
+                            productWidth = BigDecimal.valueOf(cell5.getNumericCellValue()).setScale(2, BigDecimal.ROUND_HALF_UP);
 
-                        // read productDepth from tenth column
-                        HSSFCell cell9 = row.getCell(9);
+                        // read productDepth from seventh column
+                        HSSFCell cell6 = row.getCell(6);
                         BigDecimal productDepth = BigDecimal.ZERO;
-                        if (cell9 != null && cell9.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
-                            productDepth = new BigDecimal(cell9.getNumericCellValue());
+                        if (cell6 != null && cell6.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
+                            productDepth = BigDecimal.valueOf(cell6.getNumericCellValue()).setScale(2, BigDecimal.ROUND_HALF_UP);
 
-                        // read productHeight from eleventh column
-                        HSSFCell cell10 = row.getCell(10);
+                        // read productHeight from eighth column
+                        HSSFCell cell7 = row.getCell(7);
                         BigDecimal productHeight = BigDecimal.ZERO;
-                        if (cell10 != null && cell10.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
-                            productHeight = new BigDecimal(cell10.getNumericCellValue());
+                        if (cell7 != null && cell7.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
+                            productHeight = BigDecimal.valueOf(cell7.getNumericCellValue()).setScale(2, BigDecimal.ROUND_HALF_UP);
 
-                        // read imageUrl from twelveth column
-                        HSSFCell cell11 = row.getCell(11);
+                        // read imageUrl from tenth column
                         String imageUrl = null;
-                        if(UtilValidate.isNotEmpty(cell11)){
-                            imageUrl = toStringValue(cell11);
-                        }
 
                         Timestamp now = UtilDateTime.nowTimestamp();
 
-                        products.add(prepareProduct(productId, internalName, productWidth, productDepth, productHeight, imageUrl, actionField, userLogin));
+                        products.add(prepareProduct(productId, productName, internalName, productWidth, productDepth, productHeight, imageUrl, actionField, userLogin));
                         // check if SupplierProduct already exists update it, otherwise create new one
                         List<GenericValue> tmpSupplierProducts = null;
                         GenericValue supplierProductGV = null;
@@ -313,13 +313,13 @@ public class ImportProduct {
 
                         if("add".equals(actionField)){
                             if (!checkSupplierProductExists(productId, delegator)) {
-                                createSupplierProducts.add(prepareSupplierProduct(productId, supplierProductId, supplierPartyId, supplierPrice
-                                        , UtilDateTime.nowTimestamp(), actionField, BigDecimal.ZERO, "USD" , userLogin));
+                                createSupplierProducts.add(prepareSupplierProduct(productId, supplierProductId, supplierPartyId, price
+                                        , UtilDateTime.nowTimestamp(), actionField, BigDecimal.ZERO, "THB" , userLogin));
                             }else{
                                 request.setAttribute("_ERROR_MESSAGE_", "Error setting SupplierProduct: "+ supplierProductId+ " already exists.");
                                 return "error";
                             }
-                            createProductPrices.add(prepareProductPrice(productId, price, now, "USD", "_NA_", actionField, userLogin));
+                            createProductPrices.add(prepareProductPrice(productId, price, now, "THB", "_NA_", actionField, userLogin));
 
                             // create ProductContent for product name & description in Thai and Eng language
                             if(productName != null){
@@ -364,7 +364,7 @@ public class ImportProduct {
 
                         }else if("update".equals(actionField)){
                             if(supplierProductGV != null){
-                                updateSupplierProducts.add(prepareSupplierProduct(productId, supplierProductGV.getString("supplierProductId"), supplierPartyId, supplierPrice,
+                                updateSupplierProducts.add(prepareSupplierProduct(productId, supplierProductGV.getString("supplierProductId"), supplierPartyId, price,
                                         (Timestamp) supplierProductGV.get("availableFromDate"), actionField,(BigDecimal) supplierProductGV.get("minimumOrderQuantity")
                                         , supplierProductGV.getString("currencyUomId"), userLogin));
                             }else{
@@ -1129,10 +1129,11 @@ public class ImportProduct {
     }
 
     // prepare the product map
-    public static Map<String, Object> prepareProduct(String productId, String internalName, BigDecimal productWidth, BigDecimal productDepth, BigDecimal productHeight,
+    public static Map<String, Object> prepareProduct(String productId, String productName, String internalName, BigDecimal productWidth, BigDecimal productDepth, BigDecimal productHeight,
             String imageUrl, String actionField, GenericValue userLogin) {
         Map<String, Object> fields = new HashMap<String, Object>();
         fields.put("productId", productId);
+        fields.put("productName", productName);
         fields.put("internalName", internalName);
         fields.put("productTypeId", "FINISHED_GOOD");
         fields.put("requirementMethodEnumId", "PRODRQM_DS");
@@ -1150,15 +1151,15 @@ public class ImportProduct {
         }
         if(productWidth.compareTo(BigDecimal.ZERO) > 0){
             fields.put("productWidth", productWidth);
-            fields.put("widthUomId", "LEN_m");
+            fields.put("widthUomId", "LEN_cm");
         }
         if(productDepth.compareTo(BigDecimal.ZERO) > 0){
             fields.put("productDepth", productDepth);
-            fields.put("depthUomId", "LEN_m");
+            fields.put("depthUomId", "LEN_cm");
         }
         if(productHeight.compareTo(BigDecimal.ZERO) > 0){
             fields.put("productHeight", productHeight);
-            fields.put("heightUomId", "LEN_m");
+            fields.put("heightUomId", "LEN_cm");
         }
         if("delete".equals(actionField))
             fields.put("salesDiscontinuationDate",UtilDateTime.nowTimestamp());
