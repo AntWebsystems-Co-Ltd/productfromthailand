@@ -23,7 +23,7 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 supplierPartyId = userLogin.partyId;
 
 supplierProducts = from("SupplierProduct").where("partyId", supplierPartyId).filterByDate(nowTimestamp, "availableFromDate", "availableThruDate").queryList()
-supplier = from("PartyGroup").where("partyId", supplierPartyId).queryOne()
+supplier = from("PartyNameView").where("partyId", supplierPartyId).queryOne()
 
 //set the page parameters
 viewIndex = Integer.valueOf(parameters.VIEW_INDEX  ?: 0);

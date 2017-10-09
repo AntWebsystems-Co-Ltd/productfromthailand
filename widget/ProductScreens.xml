@@ -47,26 +47,8 @@ under the License.
                                 <section>
                                     <condition><not><if-empty field="product"/></not></condition>
                                     <widgets>
-                                        <include-menu name="ProductTabBar" location="component://productfromthailand/widget/Menus.xml"/>
                                         <container>
                                             <label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.CommonFor}: ${product.internalName} [${uiLabelMap.CommonId}:${productId}]  ${${extraFunctionName}}</label>
-                                            <image src="${product.smallImageUrl}" height="40" width="40" url-mode="content" alt="${product.internalName}"/>
-                                        </container>
-
-                                        <!-- add Create Product and View Product (in ecommerce) links -->
-                                        <container style="button-bar">
-                                            <link target="EditProduct" text="${uiLabelMap.ProductNewProduct}" style="buttontext"/>
-                                            <link target="CreateVirtualWithVariantsForm" text="${uiLabelMap.ProductNewVirtualProduct}" style="buttontext"/>
-                                            <link target="product" url-mode="inter-app" text="${uiLabelMap.ProductProductPage}" style="buttontext">
-                                                <parameter param-name="product_id" from-field="productId"/>
-                                            </link>
-                                            <link target="ProductBarCode.pdf" target-window="_blank" text="${uiLabelMap.ProductBarcode}" style="buttontext">
-                                                <parameter param-name="productId"/>
-                                                <parameter param-name="productName"/>
-                                            </link>
-
-                                            <link target="javascript:expandAll(true);"  text="${uiLabelMap.CommonExpandAll}" style="buttontext" url-mode="plain"/>
-                                            <link target="javascript:expandAll(false);" text="${uiLabelMap.CommonCollapseAll}" style="buttontext" url-mode="plain"/>
                                         </container>
                                     </widgets>
                                 </section>
@@ -94,31 +76,16 @@ under the License.
 
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
-                <entity-and entity-name="SupplierProduct" list="supplierProduct">
-                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
-                    <field-map field-name="productId" from-field="parameters.productId"/>
-                </entity-and>
+                <script location="component://productfromthailand/groovyScripts/EditProduct.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="CommonProductDecorator">
                     <decorator-section name="body">
-                        <screenlet title="${uiLabelMap.PageTitleEditProduct}">
-                            <include-form name="EditProduct" location="component://productfromthailand/widget/ProductForms.xml"/>
-                        </screenlet>
-
-                        <!--<section>
-                            <condition>
-                                <and>
-                                    <not><if-empty field="productId"/></not>
-                                    <not><if-empty field="product"/></not>
-                                </and>
-                            </condition>
-                            <widgets>
-                                <screenlet title="${uiLabelMap.ProductDuplicateProduct}">
-                                    <include-form name="EditProductDup" location="component://product/widget/catalog/ProductForms.xml"/>
-                                </screenlet>
-                            </widgets>
-                        </section>-->
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://productfromthailand/webapp/ecommerce/catalog/EditProduct.ftl"/>
+                            </html>
+                        </platform-specific>
                         <section>
                             <condition>
                                 <and>

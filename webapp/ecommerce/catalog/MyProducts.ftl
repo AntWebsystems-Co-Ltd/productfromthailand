@@ -21,11 +21,11 @@ under the License.
 <a href="<@ofbizUrl>uploadproducts</@ofbizUrl>" class="buttontext">${uiLabelMap.PFTUploadProductSpreadsheet}</a>
 <a href="<@ofbizUrl>ViewSimpleContent?contentId=PROD_TEMP</@ofbizUrl>" class="buttontext">${uiLabelMap.PFTDownloadProductTemplete}</a><br/><br/>
 <div class="screenlet">
-    <div class="screenlet-title-bar">
+    <div class="screenlet-title-bar" id="product-title-bar">
         <#if (listSize > 0)>
             <div class="boxhead-right">
                 <#if (0 < viewIndex)>
-                    <a href="<@ofbizUrl>showPortalPage?portalPageId=${(parameters.portalPageId)?if_exists}&parentPortalPageId=${(parameters.parentPortalPageId)?if_exists}&VIEW_SIZE=${viewSize}&VIEW_INDEX=${viewIndex-1}</@ofbizUrl>" class="submenutext">${uiLabelMap.CommonPrevious}</a> |
+                    <a href="<@ofbizUrl>StoreManagement?portalPageId=${(parameters.portalPageId)?if_exists}&parentPortalPageId=${(parameters.parentPortalPageId)?if_exists}&VIEW_SIZE=${viewSize}&VIEW_INDEX=${viewIndex-1}</@ofbizUrl>" class="submenutext">${uiLabelMap.CommonPrevious}</a> |
                 <#else>
                   <span class="submenutextdisabled">${uiLabelMap.CommonPrevious}</span>
                 </#if>
@@ -33,14 +33,14 @@ under the License.
                 <span class="submenutextinfo">${lowIndex} - ${highIndex} ${uiLabelMap.CommonOf} ${listSize}</span>
                 </#if>
                 <#if (listSize > highIndex)>
-                    | <a class="lightbuttontext" href="<@ofbizUrl>showPortalPage?portalPageId=${(parameters.portalPageId)?if_exists}&parentPortalPageId=${(parameters.parentPortalPageId)?if_exists}&VIEW_SIZE=${viewSize}&VIEW_INDEX=${viewIndex+1}</@ofbizUrl>" class="submenutextright">${uiLabelMap.CommonNext}</a>
+                    | <a class="lightbuttontext" href="<@ofbizUrl>StoreManagement?portalPageId=${(parameters.portalPageId)?if_exists}&parentPortalPageId=${(parameters.parentPortalPageId)?if_exists}&VIEW_SIZE=${viewSize}&VIEW_INDEX=${viewIndex+1}</@ofbizUrl>" class="submenutextright">${uiLabelMap.CommonNext}</a>
                 <#else>
                   <span class="submenutextrightdisabled">${uiLabelMap.CommonNext}</span>
                 </#if>
                 &nbsp;
             </div>
             <div class="boxhead-left">
-                &nbsp;${uiLabelMap.PFTProductsOf} ${supplier.groupName}
+                &nbsp;${uiLabelMap.PFTProductsOf?if_exists} : ${supplier.groupName?if_exists} ${supplier.firstName?if_exists} ${supplier.lastName?if_exists}
             </div>
         </#if>
     </div>

@@ -101,13 +101,13 @@ under the License.
     <!-- ================ Product Requests ================= -->
     <request-map uri="createProduct">
         <security https="true" auth="true"/>
-        <event type="simple" path="component://productfromthailand/minilang/marketing/MarketingEvents.xml" invoke="createProductAndSupplierProduct"/>
+        <event type="java" path="org.apache.ofbiz.productfromthailand.PFTProductServices" invoke="createProductAndUploadMultiImage"/>
         <response name="success" type="view" value="EditProduct"/>
         <response name="error" type="view" value="EditProduct"/>
     </request-map>
     <request-map uri="updateProduct">
         <security https="true" auth="true"/>
-        <event type="simple" path="component://productfromthailand/minilang/marketing/MarketingEvents.xml" invoke="updateProductAndSupplierProduct"/>
+        <event type="java" path="org.apache.ofbiz.productfromthailand.PFTProductServices" invoke="createProductAndUploadMultiImage"/>
         <response name="success" type="view" value="EditProduct"/>
         <response name="error" type="view" value="EditProduct"/>
     </request-map>
@@ -252,6 +252,12 @@ under the License.
         <security https="true" auth="true"/>
         <response name="success" type="view" value="viewSupplierProfile"/>
     </request-map>
+    <request-map uri="removeProductImage">
+        <security https="false" auth="true"/>
+        <event type="service" path="" invoke="removeGrowerpProductContentAndImageFile"/>
+        <response name="success" type="view" value="EditProduct"/>
+        <response name="error" type="view" value="EditProduct"/>
+    </request-map>
 
     <!-- ================ CompDoc Requests ================= -->
     <!-- ================ SimpleContent Requests ================= -->
@@ -298,7 +304,7 @@ under the License.
     <view-map name="editShoppingList" type="screen" page="component://productfromthailand/widget/ShoppingListScreens.xml#editShoppingList"/>
     <view-map name="advancedsearch" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#advancedsearch"/>
 
-    <view-map name="category" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#category"/>
+    <!-- <view-map name="category" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#category"/> -->
     <view-map name="newcustomer" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newcustomer"/>
     <view-map name="forgotYourPassword" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#forgotYourPassword"/>
     <view-map name="newsupplier" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newsupplier"/>
