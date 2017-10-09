@@ -117,7 +117,7 @@ will generally always be reserved for the logo at the top of the page.
 
 <h2>${uiLabelMap.PartyRequestNewAccount}
   <span>
-    ${uiLabelMap.PartyAlreadyHaveAccount}, <a href='<@ofbizUrl>checkLogin/main</@ofbizUrl>'>${uiLabelMap.CommonLoginHere}</a>
+    ${uiLabelMap.PartyAlreadyHaveAccount}, <a href='<@ofbizUrl>checkLogin</@ofbizUrl>'>${uiLabelMap.CommonLoginHere}</a>
   </span>
 </h2>
 
@@ -275,7 +275,7 @@ will generally always be reserved for the logo at the top of the page.
     ------------------------------------------------------------------------------->
     <div class="newuserbutton">
       <div class="floatleft"><a href="javascript:$('#newuserform').submit()">${uiLabelMap.CommonSave}</a></div>
-      <div class="floatright"><a href="<@ofbizUrl>checkLogin/main</@ofbizUrl>" class="reset">${uiLabelMap.CommonBack}</a></div>
+      <div class="floatright"><a href="<@ofbizUrl>checkLogin</@ofbizUrl>" class="reset">${uiLabelMap.CommonBack}</a></div>
     </div>
 </div>
 <div class="separatorSignup">

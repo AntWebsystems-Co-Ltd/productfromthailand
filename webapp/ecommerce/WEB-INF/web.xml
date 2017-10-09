@@ -46,10 +46,33 @@ under the License.
     </context-param>
 
     <filter>
+        <display-name>ControlFilter</display-name>
+        <filter-name>ControlFilter</filter-name>
+        <filter-class>org.apache.ofbiz.webapp.control.ControlFilter</filter-class>
+        <init-param>
+            <param-name>allowedPaths</param-name>
+            <param-value>/error:/control:/select:/index.html:/index.jsp:/default.html:/default.jsp:/images:/fonts:/products:/robots.txt:/pftimages</param-value>
+        </init-param>
+        <init-param>
+            <param-name>redirectPath</param-name>
+            <param-value>/control/main</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>ControlFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
         <display-name>ContextFilter</display-name>
         <filter-name>ContextFilter</filter-name>
         <filter-class>org.apache.ofbiz.webapp.control.ContextFilter</filter-class>
     </filter>
+    <filter-mapping>
+        <filter-name>ContextFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <filter>
         <display-name>CatalogUrlFilter</display-name>
         <filter-name>CatalogUrlFilter</filter-name>
@@ -59,6 +82,11 @@ under the License.
             <param-value>en_US</param-value>
         </init-param>
     </filter>
+    <filter-mapping>
+        <filter-name>CatalogUrlFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <filter>
         <display-name>ContentUrlFilter</display-name>
         <filter-name>ContentUrlFilter</filter-name>
@@ -72,35 +100,11 @@ under the License.
             <param-value>ViewBlogArticle</param-value>
         </init-param>
     </filter>
-    <filter>
-        <display-name>ControlFilter</display-name>
-        <filter-name>ControlFilter</filter-name>
-        <filter-class>org.apache.ofbiz.webapp.control.ControlFilter</filter-class>
-        <init-param>
-            <param-name>allowedPaths</param-name>
-            <param-value>/error:/control:/products:/select:/index.html:/index.jsp:/robots.txt:/default.html:/default.jsp:/images:/fonts:/pftimages</param-value>
-        </init-param>
-        <init-param>
-            <param-name>redirectPath</param-name>
-            <param-value>/control/main</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>ContextFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>CatalogUrlFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
     <filter-mapping>
         <filter-name>ContentUrlFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    <filter-mapping>
-        <filter-name>ControlFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+
     <listener><listener-class>org.apache.ofbiz.webapp.control.ControlEventListener</listener-class></listener>
     <!-- NOTE: not all app servers support mounting implementations of the HttpSessionActivationListener interface -->
     <!-- <listener><listener-class>org.apache.ofbiz.webapp.control.ControlActivationEventListener</listener-class></listener> -->
@@ -110,6 +114,7 @@ under the License.
     <!-- this listener will clean up info -->
     <listener><listener-class>org.apache.ofbiz.webapp.control.LoginEventListener</listener-class></listener>
 
+
     <servlet>
         <display-name>ControlServlet</display-name>
         <servlet-name>ControlServlet</servlet-name>
@@ -117,15 +122,11 @@ under the License.
         <servlet-class>org.apache.ofbiz.webapp.control.ControlServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-    <!-- un-comment for Worldpay
-    <servlet>
-        <description>WorldPay Select Handler Service</description>
-        <display-name>SelectHandler</display-name>
-        <servlet-name>select</servlet-name>
-        <servlet-class>com.worldpay.select.merchant.SelectHandler</servlet-class>
-        <load-on-startup>5</load-on-startup>
-    </servlet>
-    -->
+    <servlet-mapping>
+        <servlet-name>ControlServlet</servlet-name>
+        <url-pattern>/control/*</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <description>Catalog (Category/Product) URL Servlet</description>
         <display-name>CatalogUrlServlet</display-name>
@@ -133,6 +134,11 @@ under the License.
         <servlet-class>org.apache.ofbiz.product.category.CatalogUrlServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>CatalogUrlServlet</servlet-name>
+        <url-pattern>/products/*</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>LocaleUrlServlet</servlet-name>
         <display-name>LocaleUrlServlet</display-name>
@@ -141,20 +147,20 @@ under the License.
         <load-on-startup>1</load-on-startup>
     </servlet>
 
-    <servlet-mapping>
-        <servlet-name>ControlServlet</servlet-name>
-        <url-pattern>/control/*</url-pattern>
-    </servlet-mapping>
-    <!-- un-comment for Worldpay
-    <servlet-mapping>
+<!-- un-comment for Worldpay -->
+<!--
+    <servlet>
+        <description>WorldPay Select Handler Service</description>
+        <display-name>SelectHandler</display-name>
+        <servlet-name>select</servlet-name>
+        <servlet-class>com.worldpay.select.merchant.SelectHandler</servlet-class>
+        <load-on-startup>5</load-on-startup>
+    </servlet>
+        <servlet-mapping>
         <servlet-name>select</servlet-name>
         <url-pattern>/select/*</url-pattern>
     </servlet-mapping>
-    -->
-    <servlet-mapping>
-        <servlet-name>CatalogUrlServlet</servlet-name>
-        <url-pattern>/products/*</url-pattern>
-    </servlet-mapping>
+-->
 
     <session-config>
         <session-timeout>60</session-timeout>
@@ -175,4 +181,5 @@ under the License.
         <error-code>404</error-code>
         <location>/error/404.jsp</location>
     </error-page>
+
 </web-app>

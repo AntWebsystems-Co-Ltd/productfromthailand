@@ -391,7 +391,7 @@ function setAlternateGwp(field) {
               &nbsp;&nbsp;
               <a href="javascript:addToList();" class="button">${uiLabelMap.EcommerceAddSelectedtoList}</a>&nbsp;&nbsp;
               <#else>
-               ${uiLabelMap.OrderYouMust} <a href="<@ofbizUrl>checkLogin/showcart</@ofbizUrl>" class="button">${uiLabelMap.CommonBeLogged}</a>
+               ${uiLabelMap.OrderYouMust} <a href="<@ofbizUrl>checkLogin</@ofbizUrl>" class="button">${uiLabelMap.CommonBeLogged}</a>
                 ${uiLabelMap.OrderToAddSelectedItemsToShoppingList}.&nbsp;
               </#if>
           </td>
@@ -404,7 +404,7 @@ function setAlternateGwp(field) {
               &nbsp;&nbsp;
               <a href="<@ofbizUrl>createQuoteFromCart</@ofbizUrl>" class="button">${uiLabelMap.OrderCreateQuoteFromCart}</a>&nbsp;&nbsp;
               <#else>
-               ${uiLabelMap.OrderYouMust} <a href="<@ofbizUrl>checkLogin/showcart</@ofbizUrl>" class="button">${uiLabelMap.CommonBeLogged}</a>
+               ${uiLabelMap.OrderYouMust} <a href="<@ofbizUrl>checkLogin</@ofbizUrl>" class="button">${uiLabelMap.CommonBeLogged}</a>
                 ${uiLabelMap.EcommerceToOrderCreateCustRequestFromCart}.&nbsp;
               </#if>
           </td>
