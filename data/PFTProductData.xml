@@ -37,7 +37,7 @@ under the License.
     <ProductCategory description="Thai Silk" primaryParentCategoryId="PFT_ROOT" productCategoryId="THAISILK" productCategoryTypeId="CATALOG_CATEGORY"/>
     <ProductCategory description="Health &amp; Beauty" primaryParentCategoryId="PFT_ROOT" productCategoryId="HEALTHANDBEAUTY" productCategoryTypeId="CATALOG_CATEGORY"/>
     <ProductCategory description="Body Accessories" primaryParentCategoryId="PFT_ROOT" productCategoryId="BODYACCESSORIES" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Coffee From Thailand" productCategoryId="COFFEE-CAT" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory description="Coffee" categoryName="Coffee" productCategoryId="COFFEE-CAT" productCategoryTypeId="CATALOG_CATEGORY"/>
 
     <ProductCategoryRollup fromDate="2009-01-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="BAGS" sequenceNum="1"/>
     <ProductCategoryRollup fromDate="2009-02-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="CLOTHING" sequenceNum="2"/>
@@ -142,6 +142,19 @@ under the License.
 
     <ProductCategoryContent productCategoryId="BODYACCESSORIES" contentId="ACCESSORIESDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-07-25 00:00:00.000"/>
     <ContentAssoc contentId="ACCESSORIESDESCEN" contentIdTo="ACCESSORIESDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-07-25 00:00:00.000"/>
+
+    <!-- Coffee category -->
+    <DataResource dataResourceId="COFFEEDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="COFFEEDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+
+    <ElectronicText dataResourceId="COFFEEDESCTH" textData="กาแฟ"/>
+    <ElectronicText dataResourceId="COFFEEDESCEN" textData="Coffee"/>
+
+    <Content contentId="COFFEEDESCTH" contentTypeId="DOCUMENT" dataResourceId="COFFEEDESCTH" description="DESCRIPTION TH Coffee" localeString="th"/>
+    <Content contentId="COFFEEDESCEN" contentTypeId="DOCUMENT" dataResourceId="COFFEEDESCEN" description="DESCRIPTION EN Coffee" localeString="en"/>
+
+    <ProductCategoryContent productCategoryId="COFFEE-CAT" contentId="COFFEEDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="COFFEEDESCEN" contentIdTo="COFFEEDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
     <!-- Careel Supplier data -->
     <Party partyId="SUP10000" partyTypeId="PARTY_GROUP"/>
