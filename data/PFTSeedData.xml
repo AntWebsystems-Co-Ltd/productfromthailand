@@ -170,4 +170,10 @@ under the License.
     <EmailTemplateSetting emailTemplateSettingId="SUPPLIER_REJECTED"
         bodyScreenLocation="component://productfromthailand/widget/EmailScreens.xml#RejectedSupplierNotification"
         subject="Productfromthailand (PFT) verification for supplier registration"/>
+
+    <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_CUST_REGISTER" bodyScreenLocation="component://productfromthailand/widget/EmailScreens.xml#CreatePartyNotification" subject="New Customer Account Created" fromAddress="info@productfromthailand.com"/>
+
+    <Enumeration description="Party Group Registration Confirmation" enumCode="PARTYGRP_REGIS" enumId="PARTYGRP_REGISTER" sequenceId="06" enumTypeId="PARTY_EMAIL"/>
+    <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PARTYGRP_REGISTER" bodyScreenLocation="component://productfromthailand/widget/EmailScreens.xml#CreatePartyGroupNotification" subject="New Supplier Account Created" fromAddress="info@productfromthailand.com"/>
+
 </entity-engine-xml>

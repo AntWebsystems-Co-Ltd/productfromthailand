@@ -47,8 +47,7 @@ under the License.
       padding: 25px 0 25px
     }
 
-    .blank_row
-    {
+    .blank_row {
       height: 10px !important; /* overwrites any other rules */
     }
   </style>

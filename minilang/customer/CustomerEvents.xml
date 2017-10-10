@@ -444,7 +444,6 @@ under the License.
             <set field="emailParams.subject" from-field="storeEmail.subject"/>
             <set field="emailParams.sendFrom" from-field="storeEmail.fromAddress"/>
             <set field="emailParams.sendCc" from-field="storeEmail.ccAddress"/>
-            <set field="emailParams.sendBcc" from-field="storeEmail.bccAddress"/>
             <set field="emailParams.contentType" from-field="storeEmail.contentType"/>
             <set field="emailParams.bodyScreenUri" from-field="storeEmail.bodyScreenLocation"/>
             <set field="emailParams.webSiteId" from-field="webSite.webSiteId"/>
@@ -653,6 +652,19 @@ under the License.
         <set field="createProductStoreRoleMap.productStoreId" from-field="parameters.emailProductStoreId"/>
         <call-service service-name="createProductStoreRole" in-map-name="createProductStoreRoleMap"/>
 
+        <clear-field field="getPartyNameForDateMap"/>
+        <set field="getPartyNameForDateMap.partyId" from-field="tempMap.partyId"/>
+        <set field="getPartyNameForDateMap.userLogin" from-field="userLogin"/>
+        <call-service service-name="getPartyNameForDate" in-map-name="getPartyNameForDateMap">
+            <result-to-field result-name="firstName" field="firstName"/>
+            <result-to-field result-name="lastName" field="lastName"/>
+        </call-service>
+        <if-not-empty field="firstName">
+            <set field="customerName" value="${firstName} ${lastName}"/>
+        </if-not-empty>
+        <!-- Set email body parameters -->
+        <set field="bodyParameters.customerName" from-field="customerName"/>
+
         <!-- send off the registration email -->
         <if-not-empty field="emailContext.emailAddress">
             <set from-field="parameters.emailProductStoreId" field="storeEmailLookup.productStoreId"/>
@@ -667,7 +679,6 @@ under the License.
                 <set field="emailParams.subject" from-field="storeEmail.subject"/>
                 <set field="emailParams.sendFrom" from-field="storeEmail.fromAddress"/>
                 <set field="emailParams.sendCc" from-field="storeEmail.ccAddress"/>
-                <set field="emailParams.sendBcc" from-field="storeEmail.bccAddress"/>
                 <set field="emailParams.contentType" from-field="storeEmail.contentType"/>
                 <set field="emailParams.bodyScreenUri" from-field="storeEmail.bodyScreenLocation"/>
                 <set field="emailParams.emailType" from-field="storeEmailLookup.emailType"/>

@@ -46,6 +46,10 @@ under the License.
     .footer-address {
       padding: 25px 0 25px
     }
+
+    .blank_row {
+      height: 10px !important; /* overwrites any other rules */
+    }
   </style>
 </head>
 <body bgcolor="#f7f7f7">
@@ -80,14 +84,56 @@ under the License.
     <td align="center" valign="top" width="100%" bgcolor="#f7f7f7">
       <center>
         <table cellspacing="0" cellpadding="0" width="600" >
+          <tr class="blank_row">
+              <td colspan="3"></td>
+          </tr>
           <tr>
-            <td align="center">
-              <h1>Your account has been created successfully.</h1>
+            <#if parameters.customerName?has_content>
+                <td>
+                Dear ${parameters.customerName!},
+                </td>
+            </#if>
+          </tr>
+          <tr class="blank_row">
+              <td colspan="3"></td>
+          </tr>
+          <tr>
+            <td>
+            Welcome to Product From Thailand!
             </td>
           </tr>
           <tr>
-            <td align="center">
-              Thank you for signing up on www.productfromthailand.com.
+            <td>
+            Thank you for signing up on www.productfromthailand.com.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Your customer account has been created successfully.
+            </td>
+          </tr>
+          <tr class="blank_row">
+              <td colspan="3"></td>
+          </tr>
+          <tr>
+            <td>
+            If you have any questions or concerns you can contact our support team : support@productfromthailand.com
+            </td>
+          </tr>
+          <tr class="blank_row">
+              <td colspan="3"></td>
+          </tr>
+          <tr class="blank_row">
+              <td colspan="3"></td>
+          </tr>
+          <tr>
+            <td>
+            Regards,
+            </td>
+          </tr>
+          <tr>
+            <td>
+            Product From Thailand
             </td>
           </tr>
         </table>

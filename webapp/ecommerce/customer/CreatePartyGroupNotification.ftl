@@ -47,8 +47,7 @@ under the License.
       padding: 25px 0 25px
     }
 
-    .blank_row
-    {
+    .blank_row {
       height: 10px !important; /* overwrites any other rules */
     }
   </style>
@@ -115,7 +114,7 @@ under the License.
           </tr>
           <tr>
             <td>
-              Your account has been created successfully.
+              Your supplier account has been created successfully.
             </td>
           </tr>
           <tr class="blank_row">
@@ -129,6 +128,22 @@ under the License.
           <tr>
             <td>
             If you have any questions or concerns you can contact our support team : support@productfromthailand.com
+            </td>
+          </tr>
+          <tr class="blank_row">
+              <td colspan="3"></td>
+          </tr>
+          <tr class="blank_row">
+              <td colspan="3"></td>
+          </tr>
+          <tr>
+            <td>
+            Regards,
+            </td>
+          </tr>
+          <tr>
+            <td>
+            Product From Thailand
             </td>
           </tr>
         </table>
