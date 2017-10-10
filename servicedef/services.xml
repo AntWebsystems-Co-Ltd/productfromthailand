@@ -46,4 +46,8 @@ under the License.
         <attribute name="webSiteId" type="String" mode="IN" optional="true"/>
         <attribute name="reason" type="String" mode="IN" optional="true"/>
     </service>
+    <service name="sendCustomerConfirmationEmail" engine="simple" location="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="sendCustomerConfirmationEmail">
+        <description>Send ContactListParty Verify Email</description>
+        <attribute name="emailAddress" type="String" mode="IN" optional="false"/>
+    </service>
 </services>

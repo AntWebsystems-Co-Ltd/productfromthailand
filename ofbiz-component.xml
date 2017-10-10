@@ -45,6 +45,7 @@
     <entity-resource type="data" reader-name="tenant" loader="main" location="data/TenantData.xml"/>
 
     <service-resource type="model" loader="main" location="servicedef/services.xml"/>
+    <service-resource type="eca" loader="main" location="servicedef/secas.xml"/>
 
     <webapp name="productfromthailand1"
         title="Product from thailand"

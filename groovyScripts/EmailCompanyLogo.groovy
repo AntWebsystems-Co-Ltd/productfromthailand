@@ -19,9 +19,11 @@
 
 import org.apache.ofbiz.party.content.PartyContentWrapper
 import org.apache.ofbiz.entity.util.EntityUtilProperties
+import org.apache.ofbiz.common.email.NotificationServices
 
-baseURL = EntityUtilProperties.getPropertyValue("url", "force.https.host", "https://localhost:8443", delegator);
+
 website = from("WebSite").where("webSiteId", parameters.webSiteId).queryOne();
+NotificationServices.setBaseUrl(delegator, website.webSiteId, context);
 if(website){
     productStore = from("ProductStore").where("productStoreId", website.productStoreId).queryOne();
     partyId = productStore.payToPartyId;
@@ -43,7 +45,7 @@ if(website){
 }
 
 if (logoImageUrl) {
-    logoImageUrl = baseURL+logoImageUrl;
+    logoImageUrl = baseUrl+logoImageUrl;
 }
-context.baseURL = baseURL;
+context.baseURL = baseUrl;
 context.logoImageUrl = logoImageUrl;

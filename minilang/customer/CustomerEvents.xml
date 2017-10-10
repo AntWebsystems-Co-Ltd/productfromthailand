@@ -170,13 +170,6 @@ under the License.
         <set field="supplierRoleContext.userLogin" from-field="parameters.userLogin"/>
         <call-service service-name="createPartyRole" in-map-name="supplierRoleContext"/>
 
-        <!-- Create email address -->
-        <set field="emailAddressCtx.partyId" from-field="parameters.partyId"/>
-        <set field="emailAddressCtx.userLogin" from-field="parameters.userLogin"/>
-        <set field="emailAddressCtx.contactMechPurposeTypeId" from-field="formInput.formInput.emailContactMechPurposeTypeId"/>
-        <call-service service-name="createPartyEmailAddress" in-map-name="emailAddressCtx">
-            <result-to-field result-name="contactMechId" field="emailContactMechId"/>
-        </call-service>
         <log level="info" message="Email Contact Created emailContactMechId is ${emailContactMechId}"/>
         <!-- Create the Home Phone -->
         <if-not-empty field="formInput.formInput.SUPPLIER_HOME_CONTACT">
@@ -339,12 +332,14 @@ under the License.
         <set field="partyContent.fromDate" from-field="nowTimestamp"/>
         <set field="partyContent.userLogin" from-field="systemUserLogin"/>
         <call-service service-name="createPartyContent" in-map-name="partyContent"/>
-        <!-- Create email notification -->
-        <set field="parameters.emailAddress" from-field="formInput.formInput.emailAddress"/>
-        <set field="parameters.groupName" from-field="formInput.formInput.groupName"/>
-        <set field="parameters.firstName" from-field="formInput.formInput.firstName"/>
-        <set field="parameters.lastName" from-field="formInput.formInput.lastName"/>
-        <call-simple-method method-name="sendCreatePartyGroupEmailNotification"/>
+
+        <!-- Create email address -->
+        <set field="emailAddressCtx.partyId" from-field="parameters.partyId"/>
+        <set field="emailAddressCtx.userLogin" from-field="parameters.userLogin"/>
+        <set field="emailAddressCtx.contactMechPurposeTypeId" from-field="formInput.formInput.emailContactMechPurposeTypeId"/>
+        <call-service service-name="createPartyEmailAddress" in-map-name="emailAddressCtx">
+            <result-to-field result-name="contactMechId" field="emailContactMechId"/>
+        </call-service>
     </simple-method>
 
     <simple-method method-name="createSupplierPostalAddressAndPurposes" short-description="Create postal address, purposes and set them defaults" login-required="false">
@@ -652,40 +647,6 @@ under the License.
         <set field="createProductStoreRoleMap.productStoreId" from-field="parameters.emailProductStoreId"/>
         <call-service service-name="createProductStoreRole" in-map-name="createProductStoreRoleMap"/>
 
-        <clear-field field="getPartyNameForDateMap"/>
-        <set field="getPartyNameForDateMap.partyId" from-field="tempMap.partyId"/>
-        <set field="getPartyNameForDateMap.userLogin" from-field="userLogin"/>
-        <call-service service-name="getPartyNameForDate" in-map-name="getPartyNameForDateMap">
-            <result-to-field result-name="firstName" field="firstName"/>
-            <result-to-field result-name="lastName" field="lastName"/>
-        </call-service>
-        <if-not-empty field="firstName">
-            <set field="customerName" value="${firstName} ${lastName}"/>
-        </if-not-empty>
-        <!-- Set email body parameters -->
-        <set field="bodyParameters.customerName" from-field="customerName"/>
-
-        <!-- send off the registration email -->
-        <if-not-empty field="emailContext.emailAddress">
-            <set from-field="parameters.emailProductStoreId" field="storeEmailLookup.productStoreId"/>
-            <set value="PRDS_CUST_REGISTER" field="storeEmailLookup.emailType"/>
-            <find-by-primary-key map="storeEmailLookup" entity-name="ProductStoreEmailSetting"  value-field="storeEmail"/>
-            <if-not-empty field="storeEmail.bodyScreenLocation">
-                <get-related-one value-field="createdUserLogin" relation-name="Person" to-value-field="person"/>
-                <set field="bodyParameters.person" from-field="person"/>
-                <set field="bodyParameters.webSiteId" from-field="parameters.webSiteId"/>
-                <set field="emailParams.bodyParameters" from-field="bodyParameters"/>
-                <set field="emailParams.sendTo" from-field="emailContext.emailAddress"/>
-                <set field="emailParams.subject" from-field="storeEmail.subject"/>
-                <set field="emailParams.sendFrom" from-field="storeEmail.fromAddress"/>
-                <set field="emailParams.sendCc" from-field="storeEmail.ccAddress"/>
-                <set field="emailParams.contentType" from-field="storeEmail.contentType"/>
-                <set field="emailParams.bodyScreenUri" from-field="storeEmail.bodyScreenLocation"/>
-                <set field="emailParams.emailType" from-field="storeEmailLookup.emailType"/>
-                <call-service-asynch service-name="sendMailFromScreen" in-map-name="emailParams" include-user-login="true"/>
-            </if-not-empty>
-        </if-not-empty>
-
         <!-- security for manage profile  -->
         <set field="securityParams.userLoginId" from-field="createdUserLogin.userLoginId"/>
         <set field="securityParams.groupId" value="ECOMMERCE_CUSTOMER"/>
@@ -695,5 +656,84 @@ under the License.
         <!-- tell the control servlet that we just logged in the user... -->
         <set value="TRUE" field="_LOGIN_PASSED_"/>
         <field-to-request field="_LOGIN_PASSED_"/>
+    </simple-method>
+
+    <simple-method method-name="sendCustomerConfirmationEmail" short-description="create a customer profile [Supplier]" login-required="false">
+        <if-not-empty field="parameters.emailAddress">
+            <set from-field="parameters.emailProductStoreId" field="storeEmailLookup.productStoreId"/>
+            <set field="storeEmailLookup.emailType" value="PRDS_CUST_REGISTER" />
+            <entity-and entity-name="ProductStoreEmailSetting" list="productStoreEmail">
+                <field-map field-name="emailType" from-field="storeEmailLookup.emailType"/>
+            </entity-and>
+            <entity-and entity-name="WebSite" list="webSiteList">
+                <field-map field-name="productStoreId" from-field="productStoreEmail[0].productStoreId"/>
+            </entity-and>
+            <entity-and entity-name="ContactMech" list="contactMech">
+                <field-map field-name="contactMechTypeId" value="EMAIL_ADDRESS"/>
+                <field-map field-name="infoString" from-field="parameters.emailAddress"/>
+                <order-by field-name="-createdStamp"/>
+            </entity-and>
+            <entity-and entity-name="PartyContactMech" list="partyContactMech">
+                <field-map field-name="contactMechId" from-field="contactMech[0].contactMechId"/>
+            </entity-and>
+            <if-not-empty field="partyContactMech">
+                <set field="partyId" from-field="partyContactMech[0].partyId"/>
+                <entity-one entity-name="UserLogin" value-field="person">
+                    <field-map field-name="partyId" from-field="partyId"/>
+                </entity-one>
+                <entity-one entity-name="PartyRole" value-field="customerRole">
+                    <field-map field-name="partyId" from-field="partyId"/>
+                    <field-map field-name="roleTypeId" value="CUSTOMER"/>
+                </entity-one>
+                <entity-one entity-name="PartyNameView" value-field="nameView">
+                    <field-map field-name="partyId" from-field="partyId"/>
+                </entity-one>
+                <entity-and entity-name="UserLogin" list="userLoginList">
+                    <field-map field-name="partyId" from-field="partyId"/>
+                </entity-and>
+                <set-calendar field="userLoginDate" from-field="userLoginList[0].createdStamp" seconds="+10"/>
+                <if-compare-field field="userLoginDate" operator="greater-equals" to-field="contactMech[0].createdStamp" type="Timestamp">
+                    <if-not-empty field="customerRole">
+                        <if-not-empty field="nameView.firstName">
+                            <set field="bodyParameters.customerName" value="${nameView.firstName} ${nameView.lastName}"/>
+                        </if-not-empty>
+                            <find-by-primary-key map="storeEmailLookup" entity-name="ProductStoreEmailSetting"  value-field="storeEmail"/>
+                            <if-not-empty field="storeEmail.bodyScreenLocation">
+                                <set field="bodyParameters.person" from-field="person"/>
+                                <set field="bodyParameters.webSiteId" from-field="webSiteList[0].webSiteId"/>
+                                <set field="emailParams.bodyParameters" from-field="bodyParameters"/>
+                                <set field="emailParams.sendTo" from-field="parameters.emailAddress"/>
+                                <set field="emailParams.subject" from-field="storeEmail.subject"/>
+                                <set field="emailParams.sendFrom" from-field="storeEmail.fromAddress"/>
+                                <set field="emailParams.sendCc" from-field="storeEmail.ccAddress"/>
+                                <set field="emailParams.contentType" from-field="storeEmail.contentType"/>
+                                <set field="emailParams.bodyScreenUri" from-field="storeEmail.bodyScreenLocation"/>
+                                <set field="emailParams.emailType" from-field="storeEmailLookup.emailType"/>
+                                <call-service-asynch service-name="sendMailFromScreen" in-map-name="emailParams" include-user-login="true"/>
+                            </if-not-empty>
+                        <else>
+                            <entity-one entity-name="PartyRole" value-field="supplierRole">
+                                <field-map field-name="partyId" from-field="partyId"/>
+                                <field-map field-name="roleTypeId" value="SUPPLIER"/>
+                            </entity-one>
+                            <entity-and entity-name="PartyContent" list="partyContentList">
+                                <field-map field-name="partyId" from-field="partyId"/>
+                            </entity-and>
+                            <if-not-empty field="supplierRole">
+                                <!-- Create email notification -->
+                                <set field="parameters.contentId" from-field="partyContentList[0].contentId"/>
+                                <set field="parameters.emailAddress" from-field="parameters.emailAddress"/>
+                                <set field="parameters.groupName" from-field="nameView.groupName"/>
+                                <set field="parameters.firstName" from-field="nameView.firstName"/>
+                                <set field="parameters.lastName" from-field="nameView.lastName"/>
+                                <set field="parameters.partyId" from-field="partyId"/>
+                                <set field="parameters.webSiteId" from-field="webSiteList[0].webSiteId"/>
+                                <call-simple-method method-name="sendCreatePartyGroupEmailNotification"/>
+                            </if-not-empty>
+                        </else>
+                    </if-not-empty>
+                </if-compare-field>
+            </if-not-empty>
+        </if-not-empty>
     </simple-method>
 </simple-methods>

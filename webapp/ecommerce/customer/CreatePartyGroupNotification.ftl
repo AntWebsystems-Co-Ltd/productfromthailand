@@ -120,11 +120,13 @@ under the License.
           <tr class="blank_row">
               <td colspan="3"></td>
           </tr>
-          <tr>
-            <td>
-            Your documents has been uploaded successfully. We will check your documents within 24 hours.
-            </td>
-          </tr>
+          <#if parameters.contentId?has_content>
+            <tr>
+              <td>
+              Your documents has been uploaded successfully. We will check your documents within 24 hours.
+              </td>
+            </tr>
+          </#if>
           <tr>
             <td>
             If you have any questions or concerns you can contact our support team : support@productfromthailand.com
