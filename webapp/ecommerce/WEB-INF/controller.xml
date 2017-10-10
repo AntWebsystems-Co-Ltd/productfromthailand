@@ -217,12 +217,6 @@ under the License.
     </request-map>
 
     <!-- Session Setting Requests -->
-    <request-map uri="setSessionLocale">
-        <security https="false" auth="false"/>
-        <event type="java" path="org.apache.ofbiz.common.CommonEvents" invoke="setSessionLocale"/>
-        <response name="success" type="view-last"/>
-        <response name="error" type="view" value="main"/>
-    </request-map>
     <request-map uri="login">
         <security https="true" auth="false"/>
         <event type="java" path="org.apache.ofbiz.webapp.control.LoginWorker" invoke="login"/>
@@ -246,6 +240,10 @@ under the License.
         <event type="simple" path="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="createCustomer"/>
         <response name="success" type="view" value="main"/>
         <response name="error" type="view" value="newcustomer"/>
+    </request-map>
+    <request-map uri="editcontactmech">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editcontactmech"/>
     </request-map>
 
     <request-map uri="viewSupplierProfile">
@@ -306,6 +304,7 @@ under the License.
 
     <!-- <view-map name="category" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#category"/> -->
     <view-map name="newcustomer" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newcustomer"/>
+    <view-map name="editcontactmech" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#editcontactmech"/>
     <view-map name="forgotYourPassword" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#forgotYourPassword"/>
     <view-map name="newsupplier" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newsupplier"/>
     <view-map name="viewprofile" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#viewprofile"/>

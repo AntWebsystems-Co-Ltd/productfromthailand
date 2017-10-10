@@ -154,6 +154,36 @@ under the License.
         </section>
     </screen>
 
+    <screen name="editcontactmech">
+        <section>
+            <actions>
+                <script location="component://ecommerce/groovyScripts/customer/EditContactMech.groovy"/>
+                <set field="reqName" from-field="requestName" />
+                <set field="dependentForm" value="editcontactmechform"/>
+                <set field="paramKey" value="countryGeoId"/>
+                <set field="mainId" value="countryGeoId"/>
+                <set field="dependentId" value="stateProvinceGeoId"/>
+                <set field="requestName" value="getAssociatedStateList"/>
+                <set field="responseName" value="stateList"/>
+                <set field="dependentKeyName" value="geoId"/>
+                <set field="descName" value="geoName"/>
+                <set field="selectedDependentOption" from-field="selectedStateName" default-value="_none_"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://common/template/includes/SetDependentDropdownValuesJs.ftl"/>
+                                <html-template location="component://productfromthailand/template/customer/EditContactMech.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
     <screen name="forgotYourPassword">
         <section>
             <widgets>
