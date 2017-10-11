@@ -105,5 +105,6 @@ under the License.
     </#list>
     </script>
   </#if>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>

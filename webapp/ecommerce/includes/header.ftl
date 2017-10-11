@@ -68,26 +68,13 @@ under the License.
         </div>
         <div class="menu-right">${screens.render("component://productfromthailand/widget/CartScreens.xml#microcart")}</div>
         <#-- Twitter share -->
-        <#-- <div id="google-plus-top">
-            <iframe allowtransparency="true" frameborder="0" scrolling="no"
-            src="https://platform.twitter.com/widgets/follow_button.html?screen_name=Product_Thai&link_color=BCB104"
-            style="width:150px; height:20px;">Follow @Product_Thai</iframe>
+        <div id="google-plus-top">
             <span class="twitter-share">
                 <script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>
                 <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="Product_Thai">Tweet</a>
             </span>
-            <span class="google-one-ck">
-                <g:plusone size="medium" count="false"></g:plusone>
-            </span>
-            <script type="text/javascript">
-              (function() {
-                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                po.src = 'https://apis.google.com/js/plusone.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-              })();
-            </script>
-            <br/>
-        </div> -->
+            <div class="g-plus" data-action="share" data-href="https://www.productfromthailand.com/pft/control/main"></div>
+        </div>
         <div>
            <#assign shoppingCart = sessionAttributes.shoppingCart?if_exists>
            <#if shoppingCart?has_content>
