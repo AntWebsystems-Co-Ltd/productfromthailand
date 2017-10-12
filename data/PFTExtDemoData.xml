@@ -54,4 +54,14 @@
         description="Product Tips Newsletter Mailing List (email)" isPublic="Y" ownerPartyId="pft" verifyEmailFrom="test@antwebsystems.com"
         verifyEmailScreen="component://growerpbackend/widget/EmailContactListScreens.xml#ContactListVerifyEmail" verifyEmailSubject="Subscription Verify Contact List" verifyEmailWebSiteId="PFT"/>
 
+    <SystemProperty systemPropertyId="mail.notifications.enabled" systemPropertyValue="Y" systemResourceId="general"/>
+    <SystemProperty systemPropertyId="defaultFromEmailAddress" systemPropertyValue="ofbiztest05@gmail.com" systemResourceId="general"/>
+    <SystemProperty systemPropertyId="mail.smtp.auth.user" systemPropertyValue="ofbiztest05@gmail.com" systemResourceId="general"/>
+    <SystemProperty systemPropertyId="mail.smtp.auth.password" systemPropertyValue="awstesttest" systemResourceId="general"/>
+    <SystemProperty systemPropertyId="mail.smtp.relay.host" systemPropertyValue="smtp.gmail.com" systemResourceId="general"/>
+    <SystemProperty systemPropertyId="mail.smtp.port" systemPropertyValue="465" systemResourceId="general"/>
+    <SystemProperty systemPropertyId="mail.smtp.starttls.enable" systemPropertyValue="true" systemResourceId="general"/>
+    <SystemProperty systemPropertyId="mail.smtp.socketFactory.port" systemPropertyValue="465" systemResourceId="general"/>
+    <SystemProperty systemPropertyId="mail.smtp.socketFactory.class" systemPropertyValue="javax.net.ssl.SSLSocketFactory" systemResourceId="general"/>
+    <SystemProperty systemPropertyId="mail.smtp.socketFactory.fallbac" systemPropertyValue="false" systemResourceId="general"/>
 </entity-engine-xml>
