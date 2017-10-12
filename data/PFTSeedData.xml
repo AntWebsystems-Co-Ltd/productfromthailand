@@ -176,4 +176,7 @@ under the License.
     <Enumeration description="Party Group Registration Confirmation" enumCode="PARTYGRP_REGIS" enumId="PARTYGRP_REGISTER" sequenceId="06" enumTypeId="PARTY_EMAIL"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PARTYGRP_REGISTER" bodyScreenLocation="component://productfromthailand/widget/EmailScreens.xml#CreatePartyGroupNotification" subject="New Supplier Account Created" fromAddress="info@productfromthailand.com"/>
 
+    <SystemProperty systemResourceId="general" systemPropertyId="useVerify" systemPropertyValue="Y"/>
+    <SystemProperty systemResourceId="general" systemPropertyId="verifyServices" systemPropertyValue="getVerifyTemplate"/>
+
 </entity-engine-xml>

@@ -50,4 +50,10 @@ under the License.
         <description>Send ContactListParty Verify Email</description>
         <attribute name="emailAddress" type="String" mode="IN" optional="false"/>
     </service>
+
+    <service name="getVerifyTemplate" engine="simple" invoke="getVerifyTemplate" location="component://productfromthailand/minilang/PFTServices.xml">
+        <description>Get verify template</description>
+        <attribute name="partyId" type="String" mode="INOUT" optional="false"/>
+        <attribute name="redirectLink" type="String" mode="OUT" optional="false"/>
+    </service>
 </services>

@@ -29,12 +29,18 @@ under the License.
         <security https="true" auth="false"/>
         <event type="groovy" path="component://growerppassport/groovyScripts/Google/GoogleEvents.groovy" invoke="googleLogin"/>
         <response name="success" type="request" value="main"/>
+        <response name="verify" type="request-redirect" value="VerifySupplier">
+            <redirect-parameter name="partyId"/>
+        </response>
         <response name="error" type="view-last"/>
     </request-map>
     <request-map uri="facebookLogin">
         <security https="true" auth="false"/>
         <event type="groovy" path="component://growerppassport/groovyScripts/Facebook/FacebookEvents.groovy" invoke="facebookLogin"/>
         <response name="success" type="request" value="main"/>
+        <response name="verify" type="request-redirect" value="VerifySupplier">
+            <redirect-parameter name="partyId"/>
+        </response>
         <response name="error" type="view-last"/>
     </request-map>
     <request-map uri="main">
@@ -97,6 +103,12 @@ under the License.
         <event type="simple" path="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="createSupplier"/>
         <response name="success" type="request" value="main"/>
         <response name="error" type="request" value="newsupplier"/>
+    </request-map>
+    <request-map uri="updatesupplier">
+        <security https="true" auth="false"/>
+        <event type="simple" path="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="updateSupplier"/>
+        <response name="success" type="request" value="main"/>
+        <response name="error" type="view-last"/>
     </request-map>
     <!-- ================ Product Requests ================= -->
     <request-map uri="createProduct">
@@ -295,6 +307,11 @@ under the License.
         <response name="success" type="request" value="main"/>
     </request-map>
 
+    <request-map uri="VerifySupplier">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="VerifySupplier"/>
+    </request-map>
+
     <view-map name="orderview" type="screen" page="component://productfromthailand/widget/OrderViewScreens.xml#OrderHeaderView"/>
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
     <view-map name="main" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#main"/>
@@ -363,4 +380,6 @@ under the License.
     <view-map name="StoreManagement" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#StoreManagement"/>
 
     <view-map name="ViewSimpleContent" page="" type="simplecontent"/>
+
+    <view-map name="VerifySupplier" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#VerifySupplier"/>
 </site-conf>

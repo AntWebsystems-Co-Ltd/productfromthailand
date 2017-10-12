@@ -318,7 +318,7 @@ under the License.
       </fieldset>
       <fieldset>
         <legend>${uiLabelMap.PartyPhoneNumbers}</legend>
-        <table summary="Tabular form for entering multiple telecom numbers for different purposes. Each row allows user to enter telecom number for a purpose">
+        <table class="basic-table" cellspacing="0" width="100%" summary="Tabular form for entering multiple telecom numbers for different purposes. Each row allows user to enter telecom number for a purpose">
           <thead>
             <tr>
               <th></th>

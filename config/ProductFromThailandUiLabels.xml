@@ -305,6 +305,14 @@
         <value xml:lang="en">Upload Products from Spreadsheet</value>
         <value xml:lang="th">อัพโหลดข้อมูลสินค้าจากไฟล์ตารางจัดการ</value>
     </property>
+    <property key="PFTVerifySupplier">
+        <value xml:lang="en">Verify Supplier</value>
+        <value xml:lang="th">ยืนยันตัวตนผู้จัดจำหน่าย</value>
+    </property>
+    <property key="PFTPWaitingForApproval">
+        <value xml:lang="en">Waiting for approval</value>
+        <value xml:lang="th">รอการยืนยัน</value>
+    </property>
     <property key="PFTYourAccount">
         <value xml:lang="en">Your Account</value>
         <value xml:lang="th">บัญชีชองคุณ</value>

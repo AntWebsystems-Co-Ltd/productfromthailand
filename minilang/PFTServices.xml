@@ -66,12 +66,7 @@ under the License.
     </simple-method>
 
     <simple-method method-name="rejectSupplier" short-description="Reject Supplier">
-        <clear-field field="createPartyNoteMap"/>
-        <set field="createPartyNoteMap.partyId" from-field="parameters.partyId"/>
-        <set field="createPartyNoteMap.noteName" value="Reject Reason"/>
-        <set field="createPartyNoteMap.note" from-field="parameters.reason"/>
-        <set field="createPartyNoteMap.userLogin" from-field="parameters.userLogin"/>
-        <call-service service-name="createPartyNote" in-map-name="createPartyNoteMap"/>
+        <now-timestamp field="nowTimestamp"/>
 
         <clear-field field="getPartyNameForDateMap"/>
         <set field="getPartyNameForDateMap.partyId" from-field="parameters.partyId"/>
@@ -98,5 +93,66 @@ under the License.
         <set field="sendMailMap.emailTemplateSettingId" value="SUPPLIER_REJECTED"/>
         <set field="sendMailMap.bodyParameters" from-field="bodyParameters"/>
         <call-service service-name="sendMailFromTemplateSetting" in-map-name="sendMailMap"/>
+
+        <!-- Disable party -->
+        <clear-field field="setPartyStatusMap"/>
+        <set field="setPartyStatusMap.partyId" from-field="parameters.partyId"/>
+        <set field="setPartyStatusMap.statusId" value="PARTY_DISABLED"/>
+        <call-service service-name="setPartyStatus" in-map-name="setPartyStatusMap"/>
+
+        <!-- Expire email -->
+        <entity-and entity-name="PartyContactMech" list="partyContactMechList" filter-by-date="true">
+            <field-map field-name="partyId" from-field="parameters.partyId"/>
+        </entity-and>
+        <if-not-empty field="partyContactMechList">
+            <iterate list="partyContactMechList" entry="partyContactMech">
+                <set field="partyContactMech.thruDate" from-field="nowTimestamp"/>
+            </iterate>
+            <store-list list="partyContactMechList"/>
+        </if-not-empty>
+        <entity-and entity-name="PartyContactMechPurpose" list="partyContactMechPurposeList" filter-by-date="true">
+            <field-map field-name="partyId" from-field="parameters.partyId"/>
+        </entity-and>
+        <if-not-empty field="partyContactMechPurposeList">
+            <iterate list="partyContactMechPurposeList" entry="partyContactMechPurpose">
+                <set field="partyContactMechPurpose.thruDate" from-field="nowTimestamp"/>
+            </iterate>
+            <store-list list="partyContactMechPurposeList"/>
+        </if-not-empty>
+
+        <!-- Expire user login -->
+        <entity-and entity-name="UserLogin" list="userLoginList">
+            <field-map field-name="partyId" from-field="parameters.partyId"/>
+        </entity-and>
+        <if-not-empty field="userLoginList">
+            <iterate list="userLoginList" entry="userLogin">
+                <set field="userLogin.enabled" value="N"/>
+            </iterate>
+            <store-list list="userLoginList"/>
+        </if-not-empty>
+
+        <clear-field field="createPartyNoteMap"/>
+        <set field="createPartyNoteMap.partyId" from-field="parameters.partyId"/>
+        <set field="createPartyNoteMap.noteName" value="Reject Reason"/>
+        <set field="createPartyNoteMap.note" from-field="parameters.reason"/>
+        <set field="createPartyNoteMap.userLogin" from-field="parameters.userLogin"/>
+        <call-service service-name="createPartyNote" in-map-name="createPartyNoteMap"/>
+
+        <entity-and entity-name="PartyContent" list="idNumberList" filter-by-date="true">
+            <field-map field-name="partyId" from-field="parameters.partyId"/>
+            <field-map field-name="partyContentTypeId" value="INTERNAL"/>
+        </entity-and>
+        <if-not-empty field="idNumberList">
+            <iterate entry="idNumber" list="idNumberList">
+                <set field="idNumber.thruDate" from-field="nowTimestamp"/>
+            </iterate>
+            <store-list list="idNumberList"/>
+        </if-not-empty>
+    </simple-method>
+
+    <simple-method method-name="getVerifyTemplate" short-description="Get verify template">
+        <set field="redirectLink" value="verify"/>
+        <field-to-result field="parameters.partyId" result-name="partyId"/>
+        <field-to-result field="redirectLink" result-name="redirectLink"/>
     </simple-method>
 </simple-methods>

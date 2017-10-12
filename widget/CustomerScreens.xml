@@ -130,26 +130,73 @@ under the License.
             <actions>
                 <set field="titleProperty" value="PageTitleViewPartyProfile"/>
                 <set field="tabButtonItem" value="viewprofile"/>
+
+                <entity-and entity-name="PartyContent" list="checkImportIdImgs" filter-by-date="true">
+                    <field-map field-name="partyId" from-field="parameters.partyId"/>
+                    <field-map field-name="partyContentTypeId" value="INTERNAL"/>
+                </entity-and>
             </actions>
             <widgets>
-                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
-                    <decorator-section name="body">
-                        <section>
-                            <widgets>
+                <section>
+                    <condition>
+                        <if-has-permission permission="MYPORTAL" action="_SUPPLIER"/>
+                    </condition>
+                    <widgets>
+                        <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                            <decorator-section name="body">
                                 <section>
                                     <widgets>
-                                        <container id="storeMgr">
-                                            <include-portal-page id="MYPORTAL_SUPPLIER2"/>
-                                            <!-- <include-portal-page id="MYPORTAL_SUPPLIER"/> -->
-                                            <include-portal-page id="MYPORTAL_SUPPLIER3"/>
-                                            <include-portal-page id="MYPORTAL_SUPPLIER4"/>
-                                        </container>
+                                        <section>
+                                            <widgets>
+                                                <container id="storeMgr">
+                                                    <include-portal-page id="MYPORTAL_SUPPLIER2"/>
+                                                    <!-- <include-portal-page id="MYPORTAL_SUPPLIER"/> -->
+                                                    <include-portal-page id="MYPORTAL_SUPPLIER3"/>
+                                                    <include-portal-page id="MYPORTAL_SUPPLIER4"/>
+                                                </container>
+                                            </widgets>
+                                        </section>
                                     </widgets>
                                 </section>
+                            </decorator-section>
+                        </decorator-screen>
+                    </widgets>
+                    <fail-widgets>
+                        <section>
+                            <condition>
+                                <if-empty field="checkImportIdImgs"/>
+                            </condition>
+                            <widgets>
+                                <section>
+                                    <condition>
+                                        <if-compare-field field="parameters.partyId" operator="equals" to-field="userLogin.partyId"/>
+                                    </condition>
+                                    <widgets>
+                                        <include-screen name="VerifySupplier"/>
+                                    </widgets>
+                                    <fail-widgets>
+                                        <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                                            <decorator-section name="body">
+                                                <screenlet title="${uiLabelMap.CommonNotification} ${uiLabelMap.CommonMessage}">
+                                                    <label style="h2" text="${uiLabelMap.PartyInformationNotBelongToYou}"/>
+                                                </screenlet>
+                                            </decorator-section>
+                                        </decorator-screen>
+                                    </fail-widgets>
+                                </section>
                             </widgets>
+                            <fail-widgets>
+                                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                                    <decorator-section name="body">
+                                        <screenlet title="${uiLabelMap.CommonNotification} ${uiLabelMap.CommonMessage}">
+                                            <label style="h2" text="${uiLabelMap.PFTPWaitingForApproval}"/>
+                                        </screenlet>
+                                    </decorator-section>
+                                </decorator-screen>
+                            </fail-widgets>
                         </section>
-                    </decorator-section>
-                </decorator-screen>
+                    </fail-widgets>
+                </section>
             </widgets>
         </section>
     </screen>
@@ -197,6 +244,48 @@ under the License.
                     </decorator-section>
                 </decorator-screen>
             </widgets>
+        </section>
+    </screen>
+
+    <screen name="VerifySupplier">
+        <section>
+            <condition>
+                <if-compare-field field="parameters.partyId" operator="equals" to-field="userLogin.partyId"/>
+            </condition>
+            <actions>
+                <set field="titleProperty" value="PFTVerifySupplier"/>
+                <script location="component://productfromthailand/groovyScripts/NewSupplier.groovy"/>
+                <set field="dependentForm" value="newuserform"/>
+                <set field="paramKey" value="countryGeoId"/>
+                <set field="mainId" value="countryGeoId"/>
+                <set field="dependentId" value="stateProvinceGeoId"/>
+                <set field="requestName" value="getAssociatedStateList"/>
+                <set field="responseName" value="stateList"/>
+                <set field="dependentKeyName" value="geoId"/>
+                <set field="descName" value="geoName"/>
+                <set field="selectedDependentOption" default-value="_none_"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://common/template/includes/SetDependentDropdownValuesJs.ftl"/>
+                                <html-template location="component://productfromthailand/webapp/ecommerce/customer/verifySupplier.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+            <fail-widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.CommonNotification} ${uiLabelMap.CommonMessage}">
+                            <label style="h2" text="${uiLabelMap.PartyInformationNotBelongToYou}"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </fail-widgets>
         </section>
     </screen>
 </screens>

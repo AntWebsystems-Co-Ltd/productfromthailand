@@ -38,9 +38,10 @@ under the License.
             <ul id="right-links">
             <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
                   <li id="header-bar-store"><a href="<@ofbizUrl>logout</@ofbizUrl>"><div class="menu-right">${uiLabelMap.CommonLogout}</div></a></li>
-                <#if security.hasEntityPermission("MYPORTAL", "_SUPPLIER", session)>
-                  <li id="header-bar-store"><a href="<@ofbizUrl>StoreManagement</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTStoreManagement}</div></a></li>
-                </#if>
+                  <#assign supplierRole = EntityQuery.use(delegator).from("PartyRole").where("partyId", userLogin.partyId, "roleTypeId", "SUPPLIER").queryOne()!>
+                  <#if supplierRole?has_content>
+                  <li id="header-bar-store"><a href="<@ofbizUrl>StoreManagement?partyId=${userLogin.partyId!}</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTStoreManagement}</div></a></li>
+                  </#if>
             <#else/>
                 <li id="header-bar-login">
                 <a href="<@ofbizUrl>checkLogin</@ofbizUrl>"><div class="menu-right">${uiLabelMap.PFTSignIn}</div></a><div class="menu-right"> ${uiLabelMap.PFTOr}</div> <a href="<@ofbizUrl>register</@ofbizUrl>"><div class="menu-right"> ${uiLabelMap.PFTRegister}</div></a>

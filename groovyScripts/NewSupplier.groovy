@@ -49,3 +49,104 @@ if (previousParams) {
     previousParams = "";
 }
 context.previousParams = previousParams;
+
+// Get party detail
+if (parameters.partyId) {
+    // Get party name
+    getPartyNameForDate = dispatcher.runSync("getPartyNameForDate", [partyId: parameters.partyId, userLogin: userLogin]);
+    if (getPartyNameForDate) {
+        if (getPartyNameForDate.personalTitle) {
+            context.personalTitle = getPartyNameForDate.personalTitle;
+        }
+        if (getPartyNameForDate.firstName) {
+            context.firstName = getPartyNameForDate.firstName;
+        }
+        if (getPartyNameForDate.lastName) {
+            context.lastName = getPartyNameForDate.lastName;
+        }
+    }
+    // Get party email
+    getPartyEmail = dispatcher.runSync("getPartyEmail", [partyId: parameters.partyId, userLogin: userLogin]);
+    if (getPartyEmail && getPartyEmail.emailAddress) {
+        context.emailAddress = getPartyEmail.emailAddress;
+    }
+    // Get party id number
+    getIdNo = from("PartyIdentification").where("partyId", parameters.partyId, "partyIdentificationTypeId", "ID_NUMBER").queryOne();
+    if (getIdNo) {
+        context.idCardNo = getIdNo.idValue;
+    }
+    // Get party address
+    getPartyPostalAddress = dispatcher.runSync("getPartyPostalAddress", [partyId: parameters.partyId, userLogin: userLogin]);
+    if (getPartyPostalAddress) {
+        if (getPartyPostalAddress.address1) {
+            context.shipToAddress1 = getPartyPostalAddress.address1;
+        }
+        if (getPartyPostalAddress.address2) {
+            context.shipToAddress2 = getPartyPostalAddress.address2;
+        }
+        if (getPartyPostalAddress.city) {
+            context.shipToCity = getPartyPostalAddress.city;
+        }
+        if (getPartyPostalAddress.postalCode) {
+            context.shipToPostalCode = getPartyPostalAddress.postalCode;
+        }
+    }
+    // Get home phone
+    getHomeTelephone = dispatcher.runSync("getPartyTelephone", [partyId: parameters.partyId, contactMechPurposeTypeId: "PHONE_HOME", userLogin: userLogin]);
+    if (getHomeTelephone) {
+        if (getHomeTelephone.countryCode) {
+            context.homeCountryCode = getHomeTelephone.countryCode;
+        }
+        if (getHomeTelephone.areaCode) {
+            context.homeAreaCode = getHomeTelephone.areaCode;
+        }
+        if (getHomeTelephone.contactNumber) {
+            context.homeContactNumber = getHomeTelephone.contactNumber;
+        }
+        if (getHomeTelephone.extension) {
+            context.homeExtension = getHomeTelephone.extension;
+        }
+    }
+    // Get work phone
+    getWorkTelephone = dispatcher.runSync("getPartyTelephone", [partyId: parameters.partyId, contactMechPurposeTypeId: "PHONE_WORK", userLogin: userLogin]);
+    if (getWorkTelephone) {
+        if (getWorkTelephone.countryCode) {
+            context.workCountryCode = getWorkTelephone.countryCode;
+        }
+        if (getWorkTelephone.areaCode) {
+            context.workAreaCode = getWorkTelephone.areaCode;
+        }
+        if (getWorkTelephone.contactNumber) {
+            context.workContactNumber = getWorkTelephone.contactNumber;
+        }
+        if (getWorkTelephone.extension) {
+            context.workExtension = getWorkTelephone.extension;
+        }
+    }
+    // Get fax number
+    getFaxTelephone = dispatcher.runSync("getPartyTelephone", [partyId: parameters.partyId, contactMechPurposeTypeId: "FAX_NUMBER", userLogin: userLogin]);
+    if (getFaxTelephone) {
+        if (getFaxTelephone.countryCode) {
+            context.faxCountryCode = getFaxTelephone.countryCode;
+        }
+        if (getFaxTelephone.areaCode) {
+            context.faxAreaCode = getFaxTelephone.areaCode;
+        }
+        if (getFaxTelephone.contactNumber) {
+            context.faxContactNumber = getFaxTelephone.contactNumber;
+        }
+    }
+    // Get mobile phone
+    getMobileTelephone = dispatcher.runSync("getPartyTelephone", [partyId: parameters.partyId, contactMechPurposeTypeId: "PHONE_MOBILE", userLogin: userLogin]);
+    if (getMobileTelephone) {
+        if (getMobileTelephone.countryCode) {
+            context.mobileCountryCode = getMobileTelephone.countryCode;
+        }
+        if (getMobileTelephone.areaCode) {
+            context.mobileAreaCode = getMobileTelephone.areaCode;
+        }
+        if (getMobileTelephone.contactNumber) {
+            context.mobileContactNumber = getMobileTelephone.contactNumber;
+        }
+    }
+}

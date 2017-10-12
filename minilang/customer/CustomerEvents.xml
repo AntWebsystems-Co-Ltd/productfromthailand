@@ -342,6 +342,298 @@ under the License.
         </call-service>
     </simple-method>
 
+    <simple-method method-name="updateSupplier" short-description="update a customer profile [Supplier]" login-required="false">
+        <entity-one entity-name="UserLogin" value-field="systemUserLogin">
+            <field-map field-name="userLoginId" value="system"/>
+        </entity-one>
+        <call-class-method class-name="org.apache.ofbiz.content.layout.LayoutWorker" method-name="uploadImageAndParameters" ret-field="formInput">
+            <field field="request" type="javax.servlet.http.HttpServletRequest"/>
+            <string value="imageFileName"/>
+        </call-class-method>
+        <call-class-method class-name="org.apache.ofbiz.content.layout.LayoutWorker" method-name="returnByteBuffer" ret-field="byteWrap">
+            <field field="formInput" type="java.util.Map"/>
+        </call-class-method>
+        <!-- Process all map -->
+        <call-map-processor in-map-name="formInput.formInput" out-map-name="shipToAddressCtx">
+            <simple-map-processor name="shipToAddress">
+                <process field="shipToContactMechId"><copy to-field="contactMechId" set-if-null="false"/></process>
+                <process field="shipToName"><copy to-field="toName" set-if-null="false"/></process>
+                <process field="shipToAttnName"><copy to-field="attnName" set-if-null="false"/></process>
+                <process field="shipToAddress1">
+                    <copy to-field="address1"/>
+                    <not-empty>
+                        <fail-property resource="PartyUiLabels" property="PartyAddressLine1MissingError"/>
+                    </not-empty>
+                </process>
+                <process field="shipToAddress2"><copy to-field="address2"/></process>
+                <process field="shipToCity">
+                    <copy to-field="city"/>
+                    <not-empty>
+                        <fail-property resource="PartyUiLabels" property="PartyCityMissing"/>
+                    </not-empty>
+                </process>
+                <process field="shipToStateProvinceGeoId"><copy to-field="stateProvinceGeoId"/></process>
+                <process field="shipToPostalCode">
+                    <copy to-field="postalCode"/>
+                    <not-empty>
+                        <fail-property resource="PartyUiLabels" property="PartyPostalInformationNotFound"/>
+                    </not-empty>
+                </process>
+                <process field="shipToCountryGeoId">
+                    <copy to-field="countryGeoId"/>
+                    <not-empty>
+                        <fail-property resource="PartyUiLabels" property="PartyCountryMissing"/>
+                    </not-empty>
+                </process>
+            </simple-map-processor>
+        </call-map-processor>
+        <check-errors/>
+
+        <entity-one value-field="person" entity-name="Person">
+            <field-map field-name="partyId" from-field="formInput.formInput.partyId"/>
+        </entity-one>
+        <if-empty field="person">
+            <set-service-fields service-name="createPerson" map="formInput.formInput" to-map="newParty"/>
+            <call-service service-name="createPerson" in-map-name="newParty">
+                <result-to-field result-name="partyId"/>
+            </call-service>
+            <else>
+                <set-service-fields service-name="updatePerson" map="formInput.formInput" to-map="updateParty"/>
+                <call-service service-name="updatePerson" in-map-name="updateParty"/>
+            </else>
+        </if-empty>
+
+        <!-- Create Id card number or passport number -->
+        <if-not-empty field="formInput.formInput.idCardNo">
+            <entity-one value-field="partyIdentification" entity-name="PartyIdentification">
+                <field-map field-name="partyId" from-field="formInput.formInput.partyId"/>
+                <field-map field-name="partyIdentificationTypeId" value="ID_NUMBER"/>
+            </entity-one>
+            <if-empty field="partyIdentification">
+                <make-value value-field="partyIdentification" entity-name="PartyIdentification"/>
+                <set field="partyIdentification.partyId" from-field="formInput.formInput.partyId"/>
+                <set field="partyIdentification.partyIdentificationTypeId" value="ID_NUMBER"/>
+                <set field="partyIdentification.idValue" from-field="formInput.formInput.idCardNo"/>
+                <create-value value-field="partyIdentification"/>
+                <else>
+                    <set field="partyIdentification.idValue" from-field="formInput.formInput.idCardNo"/>
+                    <store-value value-field="partyIdentification"/>
+                </else>
+            </if-empty>
+        </if-not-empty>
+
+        <!-- Create supplier type -->
+        <entity-one value-field="partyRoleSuppIndiv" entity-name="PartyRole">
+            <field-map field-name="partyId" from-field="formInput.formInput.partyId"/>
+            <field-map field-name="roleTypeId" from-field="formInput.formInput.supplierType"/>
+        </entity-one>
+        <if-empty field="partyRoleSuppIndiv">
+            <set field="supplierRoleContext.partyId" from-field="formInput.formInput.partyId"/>
+            <set field="supplierRoleContext.roleTypeId" from-field="formInput.formInput.supplierType"/>
+            <set field="supplierRoleContext.userLogin" from-field="parameters.userLogin"/>
+            <call-service service-name="createPartyRole" in-map-name="supplierRoleContext"/>
+        </if-empty>
+
+        <!-- Create the Home Phone -->
+        <if-not-empty field="formInput.formInput.SUPPLIER_HOME_CONTACT">
+            <call-map-processor in-map-name="formInput.formInput" out-map-name="homePhoneContext">
+                <simple-map-processor name="newTelecomNumber">
+                    <process field="roleTypeId"><copy/></process>
+                    <process field="SUPPLIER_HOME_COUNTRY"><copy to-field="countryCode"/></process>
+                    <process field="SUPPLIER_HOME_AREA"><copy to-field="areaCode"/></process>
+                    <process field="SUPPLIER_HOME_CONTACT"><copy to-field="contactNumber"/></process>
+                    <process field="SUPPLIER_HOME_EXT"><copy to-field="extension"/></process>
+                    <process field="SUPPLIER_HOME_ALLOW_SOL"><copy to-field="allowSolicitation"/></process>
+                </simple-map-processor>
+            </call-map-processor>
+        </if-not-empty>
+
+        <!-- Create the Work Phone -->
+        <if-not-empty field="formInput.formInput.SUPPLIER_WORK_CONTACT">
+            <call-map-processor in-map-name="formInput.formInput" out-map-name="workPhoneContext">
+                <simple-map-processor name="newTelecomNumber">
+                    <process field="roleTypeId"><copy/></process>
+                    <process field="SUPPLIER_WORK_COUNTRY"><copy to-field="countryCode"/></process>
+                    <process field="SUPPLIER_WORK_AREA"><copy to-field="areaCode"/></process>
+                    <process field="SUPPLIER_WORK_CONTACT"><copy to-field="contactNumber"/></process>
+                    <process field="SUPPLIER_WORK_EXT"><copy to-field="extension"/></process>
+                    <process field="SUPPLIER_WORK_ALLOW_SOL"><copy to-field="allowSolicitation"/></process>
+                </simple-map-processor>
+            </call-map-processor>
+        </if-not-empty>
+
+        <!-- Create the Fax Phone -->
+        <if-not-empty field="formInput.formInput.SUPPLIER_FAX_CONTACT">
+            <call-map-processor in-map-name="formInput.formInput" out-map-name="faxPhoneContext">
+                <simple-map-processor name="newTelecomNumber">
+                    <process field="roleTypeId"><copy/></process>
+                    <process field="SUPPLIER_FAX_COUNTRY"><copy to-field="countryCode"/></process>
+                    <process field="SUPPLIER_FAX_AREA"><copy to-field="areaCode"/></process>
+                    <process field="SUPPLIER_FAX_CONTACT"><copy to-field="contactNumber"/></process>
+                    <process field="SUPPLIER_FAX_EXT"><copy to-field="extension"/></process>
+                    <process field="SUPPLIER_FAX_ALLOW_SOL"><copy to-field="allowSolicitation"/></process>
+                </simple-map-processor>
+            </call-map-processor>
+        </if-not-empty>
+
+        <!-- Create the Mobile Phone -->
+        <if-not-empty field="formInput.formInput.SUPPLIER_MOBILE_CONTACT">
+            <call-map-processor in-map-name="formInput.formInput" out-map-name="mobilePhoneContext">
+                <simple-map-processor name="newTelecomNumber">
+                    <process field="roleTypeId"><copy/></process>
+                    <process field="SUPPLIER_MOBILE_COUNTRY"><copy to-field="countryCode"/></process>
+                    <process field="SUPPLIER_MOBILE_AREA"><copy to-field="areaCode"/></process>
+                    <process field="SUPPLIER_MOBILE_CONTACT"><copy to-field="contactNumber"/></process>
+                    <process field="SUPPLIER_MOBILE_EXT"><copy to-field="extension"/></process>
+                    <process field="SUPPLIER_MOBILE_ALLOW_SOL"><copy to-field="allowSolicitation"/></process>
+                </simple-map-processor>
+            </call-map-processor>
+        </if-not-empty>
+
+        <!-- Check for required Phone -->
+        <if-compare field="formInput.formInput.REQUIRE_PHONE" operator="equals" value="true">
+            <if-empty field="formInput.formInput.SUPPLIER_HOME_CONTACT">
+                <if-empty field="formInput.formInput.SUPPLIER_WORK_CONTACT">
+                    <if-empty field="formInput.formInput.SUPPLIER_MOBILE_CONTACT">
+                        <call-map-processor in-map-name="formInput.formInput" out-map-name="dummymap">
+                            <simple-map-processor name="checkRequiredPhone">
+                                <process field="REQUIRED_PHONE">
+                                    <not-empty>
+                                        <fail-property resource="PartyUiLabels" property="PartyContactTelephoneMissingError"/></not-empty>
+                                </process>
+                            </simple-map-processor>
+                        </call-map-processor>
+                    </if-empty>
+                </if-empty>
+            </if-empty>
+        </if-compare>
+
+        <set from-field="formInput.formInput.partyId" field="homePhoneContext.partyId"/>
+        <set from-field="systemUserLogin" field="homePhoneContext.userLogin"/>
+        <set from-field="formInput.formInput.partyId" field="workPhoneContext.partyId"/>
+        <set from-field="systemUserLogin" field="workPhoneContext.userLogin"/>
+        <set from-field="formInput.formInput.partyId" field="faxPhoneContext.partyId"/>
+        <set from-field="systemUserLogin" field="faxPhoneContext.userLogin"/>
+        <set from-field="formInput.formInput.partyId" field="mobilePhoneContext.partyId"/>
+        <set from-field="systemUserLogin" field="mobilePhoneContext.userLogin"/>
+
+        <!-- home phone -->
+        <if-not-empty field="formInput.formInput.SUPPLIER_HOME_CONTACT">
+            <entity-and entity-name="PartyContactMechPurpose" list="homePhones" filter-by-date="true">
+                <field-map field-name="partyId" from-field="formInput.formInput.partyId"/>
+                <field-map field-name="contactMechPurposeTypeId" value="PHONE_HOME"/>
+            </entity-and>
+            <if-empty field="homePhones">
+                <call-service service-name="createPartyTelecomNumber" in-map-name="homePhoneContext">
+                    <result-to-field result-name="contactMechId" field="homePhonePurposeContext.contactMechId"/>
+                </call-service>
+                <set from-field="formInput.formInput.partyId" field="homePhonePurposeContext.partyId"/>
+                <set from-field="systemUserLogin" field="homePhonePurposeContext.userLogin"/>
+                <set value="PHONE_HOME" field="homePhonePurposeContext.contactMechPurposeTypeId"/>
+                <call-service service-name="createPartyContactMechPurpose" in-map-name="homePhonePurposeContext"/>
+                <set value="PRIMARY_PHONE" field="homePhonePurposeContext.contactMechPurposeTypeId"/>
+                <call-service service-name="createPartyContactMechPurpose" in-map-name="homePhonePurposeContext"/>
+                <else>
+                    <set field="homePhoneContext.contactMechId" from-field="homePhones[0].contactMechId"/>
+                    <call-service service-name="updatePartyTelecomNumber" in-map-name="homePhoneContext"/>
+                </else>
+            </if-empty>
+        </if-not-empty>
+
+        <!-- work phone -->
+        <if-not-empty field="formInput.formInput.SUPPLIER_WORK_CONTACT">
+            <entity-and entity-name="PartyContactMechPurpose" list="workPhones" filter-by-date="true">
+                <field-map field-name="partyId" from-field="formInput.formInput.partyId"/>
+                <field-map field-name="contactMechPurposeTypeId" value="PHONE_WORK"/>
+            </entity-and>
+            <if-empty field="workPhones">
+                <call-service service-name="createPartyTelecomNumber" in-map-name="workPhoneContext">
+                    <result-to-field result-name="contactMechId" field="workPhonePurposeContext.contactMechId"/>
+                </call-service>
+                <set from-field="formInput.formInput.partyId" field="workPhonePurposeContext.partyId"/>
+                <set from-field="systemUserLogin" field="workPhonePurposeContext.userLogin"/>
+                <set value="PHONE_WORK" field="workPhonePurposeContext.contactMechPurposeTypeId"/>
+                <call-service service-name="createPartyContactMechPurpose" in-map-name="workPhonePurposeContext"/>
+                <else>
+                    <set field="workPhoneContext.contactMechId" from-field="workPhones[0].contactMechId"/>
+                    <call-service service-name="updatePartyTelecomNumber" in-map-name="workPhoneContext"/>
+                </else>
+            </if-empty>
+        </if-not-empty>
+
+        <!-- fax phone -->
+        <if-not-empty field="formInput.formInput.SUPPLIER_FAX_CONTACT">
+            <entity-and entity-name="PartyContactMechPurpose" list="faxNumbers" filter-by-date="true">
+                <field-map field-name="partyId" from-field="formInput.formInput.partyId"/>
+                <field-map field-name="contactMechPurposeTypeId" value="FAX_NUMBER"/>
+            </entity-and>
+            <if-empty field="faxNumbers">
+                <call-service service-name="createPartyTelecomNumber" in-map-name="faxPhoneContext">
+                    <result-to-field result-name="contactMechId" field="faxPhonePurposeContext.contactMechId"/>
+                </call-service>
+                <set from-field="formInput.formInput.partyId" field="faxPhonePurposeContext.partyId"/>
+                <set from-field="systemUserLogin" field="faxPhonePurposeContext.userLogin"/>
+                <set value="FAX_NUMBER" field="faxPhonePurposeContext.contactMechPurposeTypeId"/>
+                <call-service service-name="createPartyContactMechPurpose" in-map-name="faxPhonePurposeContext"/>
+                <else>
+                    <set field="faxPhoneContext.contactMechId" from-field="faxNumbers[0].contactMechId"/>
+                    <call-service service-name="updatePartyTelecomNumber" in-map-name="faxPhoneContext"/>
+                </else>
+            </if-empty>
+        </if-not-empty>
+
+        <!-- mobile phone -->
+        <if-not-empty field="formInput.formInput.SUPPLIER_MOBILE_CONTACT">
+            <entity-and entity-name="PartyContactMechPurpose" list="mobilePhones" filter-by-date="true">
+                <field-map field-name="partyId" from-field="formInput.formInput.partyId"/>
+                <field-map field-name="contactMechPurposeTypeId" value="PHONE_MOBILE"/>
+            </entity-and>
+            <if-empty field="mobilePhones">
+                <call-service service-name="createPartyTelecomNumber" in-map-name="mobilePhoneContext">
+                    <result-to-field result-name="contactMechId" field="mobilePhonePurposeContext.contactMechId"/>
+                </call-service>
+                <set from-field="formInput.formInput.partyId" field="mobilePhonePurposeContext.partyId"/>
+                <set from-field="systemUserLogin" field="mobilePhonePurposeContext.userLogin"/>
+                <set value="PHONE_MOBILE" field="mobilePhonePurposeContext.contactMechPurposeTypeId"/>
+                <call-service service-name="createPartyContactMechPurpose" in-map-name="mobilePhonePurposeContext"/>
+                <else>
+                    <set field="mobilePhoneContext.contactMechId" from-field="mobilePhones[0].contactMechId"/>
+                    <call-service service-name="updatePartyTelecomNumber" in-map-name="mobilePhoneContext"/>
+                </else>
+            </if-empty>
+        </if-not-empty>
+
+        <!-- Create shipping address -->
+        <set field="shipToAddressCtx.partyId" from-field="formInput.formInput.partyId"/>
+        <set field="shipToAddressCtx.userLogin" from-field="userLogin"/>
+        <set field="shipToAddressCtx.setPaymentPurpose" value="Y"/>
+        <set field="shipToAddressCtx.setGeneralPurpose" value="Y"/>
+        <set field="shipToAddressCtx.productStoreId" from-field="formInput.formInput.productStoreId"/>
+        <set field="shipToAddressCtx.setBillingPurpose" value="Y"/>
+        <call-service service-name="createSupplierPostalAddressAndPurposes" in-map-name="shipToAddressCtx">
+           <result-to-field result-name="contactMechId" field="billToContactMechId"/>
+        </call-service>
+        <log level="info" message="Billing address created with contactMechId ${billToContactMechId}"/>
+
+        <!-- Create new content form upload file -->
+        <set-service-fields service-name="createContentFromUploadedFile" map="formInput.formInput" to-map="inMap"/>
+        <set field="inMap._uploadedFile_fileName" from-field="formInput.imageFileName"/>
+        <set field="inMap.uploadedFile" from-field="formInput.imageData"/>
+        <set field="inMap._uploadedFile_contentType" from-field="formInput.uploadMimeType"/>
+        <set field="inMap.mimeTypeId" from-field="formInput.uploadMimeType"/>
+        <set field="inMap.userLogin" from-field="systemUserLogin"/>
+        <call-service service-name="createContentFromUploadedFile" in-map-name="inMap">
+            <result-to-field result-name="contentId" field="contentId"/>
+        </call-service>
+        <!-- Create party content -->
+        <set field="partyContent.partyId" from-field="formInput.formInput.partyId"/>
+        <set field="partyContent.contentId" from-field="contentId"/>
+        <set field="partyContent.partyContentTypeId" value="INTERNAL"/>
+        <set field="partyContent.fromDate" from-field="nowTimestamp"/>
+        <set field="partyContent.userLogin" from-field="systemUserLogin"/>
+        <call-service service-name="createPartyContent" in-map-name="partyContent"/>
+    </simple-method>
+
     <simple-method method-name="createSupplierPostalAddressAndPurposes" short-description="Create postal address, purposes and set them defaults" login-required="false">
         <call-service service-name="createPartyPostalAddress" in-map-name="parameters" >
             <result-to-field result-name="contactMechId" field="parameters.contactMechId"/>

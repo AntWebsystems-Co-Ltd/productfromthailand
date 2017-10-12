@@ -2348,6 +2348,12 @@ span.line {
     width: 60%;
 }
 
+.manualUpdateRegister {
+    float: left;
+    padding-left: 20px;
+    width: 95%;
+}
+
 .thirdPartyRegister {
     float: left;
     width: 20%;
