@@ -18,11 +18,7 @@
  */
 
 import org.apache.ofbiz.party.content.PartyContentWrapper
-import org.apache.ofbiz.webapp.OfbizUrlBuilder
-import org.apache.ofbiz.webapp.WebAppUtil
 import org.apache.ofbiz.entity.util.EntityUtilProperties
-import org.apache.ofbiz.base.component.ComponentConfig.WebappInfo
-import org.apache.ofbiz.common.email.NotificationServices
 
 website = from("WebSite").where("webSiteId", parameters.webSiteId).queryOne();
 if(website){
@@ -45,14 +41,14 @@ if(website){
     }
 
     /* BaseUrl */
-    WebappInfo webAppInfo = WebAppUtil.getWebappInfoFromWebsiteId(website.webSiteId);
-    OfbizUrlBuilder builder = OfbizUrlBuilder.from(webAppInfo, delegator);
-    StringBuilder newURL = new StringBuilder();
-    builder.buildHostPart(newURL, "", false);
-    baseUrl = newURL.toString();
-    newURL = new StringBuilder();
-    builder.buildHostPart(newURL, "", true);
-    baseSecureUrl = newURL.toString();
+    if (website.httpHost) {
+        if ("localhost".equals(website.httpsHost)) {
+            baseUrl = "https://" + website.httpsHost + ":" +website.httpsPort;
+        } else {
+            baseUrl = "https://" + website.httpsHost;
+        }
+    }
+    println"===========baseUrl================ ; " +baseUrl;
 
     if (logoImageUrl) {
         logoImageUrl = baseUrl + logoImageUrl;
