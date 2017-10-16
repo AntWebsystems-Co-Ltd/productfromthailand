@@ -350,6 +350,7 @@ under the License.
     <!-- Request Views -->
     <view-map name="ViewRequest" type="screen" page="component://productfromthailand/widget/CustRequestScreens.xml#ViewRequest"/>
     <!-- Content Views -->
+    <view-map name="product" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#product"/>
     <view-map name="showhelpcontent" type="screen" page="component://productfromthailand/widget/ContentScreens.xml#showhelpcontent"/>
     <view-map name="Showforum" type="screen" page="component://productfromthailand/widget/ContentScreens.xml#Showforum"/>
     <view-map name="MainBlog" type="screen" page="component://productfromthailand/widget/ContentScreens.xml#MainBlog"/>

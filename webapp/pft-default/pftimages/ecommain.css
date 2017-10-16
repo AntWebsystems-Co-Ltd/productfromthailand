@@ -1663,6 +1663,10 @@ margin: 0.8em 0 0;
 border-top: 1px #BBBBBB solid;
 border-bottom: 1px #BBBBBB solid;
 }
+#detailImage {
+    max-width: 100%;
+    max-height: 400px;
+}
 button.buttonaddtocart {
     background:none repeat 0 50%;
     border:0 none;
