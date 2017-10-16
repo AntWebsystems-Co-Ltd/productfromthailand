@@ -19,6 +19,7 @@
 
 import org.apache.ofbiz.party.content.PartyContentWrapper
 import org.apache.ofbiz.entity.util.EntityUtilProperties
+import org.apache.ofbiz.common.email.NotificationServices
 
 website = from("WebSite").where("webSiteId", parameters.webSiteId).queryOne();
 if(website){
@@ -41,14 +42,15 @@ if(website){
     }
 
     /* BaseUrl */
-    if (website.httpHost) {
+    if (website.httpsHost) {
         if ("localhost".equals(website.httpsHost)) {
             baseUrl = "https://" + website.httpsHost + ":" +website.httpsPort;
         } else {
             baseUrl = "https://" + website.httpsHost;
         }
+    } else {
+        NotificationServices.setBaseUrl(delegator, website.webSiteId, context)
     }
-    println"===========baseUrl================ ; " +baseUrl;
 
     if (logoImageUrl) {
         logoImageUrl = baseUrl + logoImageUrl;
