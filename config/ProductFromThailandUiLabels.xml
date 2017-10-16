@@ -79,8 +79,8 @@
         <value xml:lang="en">E-mail</value>
         <value xml:lang="th">อีเมล์</value>
     </property>
-    <property key="PFTDownloadProductTemplete">
-        <value xml:lang="en">Download Product Templete</value>
+    <property key="PFTDownloadProductTemplate">
+        <value xml:lang="en">Download Product Template</value>
         <value xml:lang="th">ดาวน์โหลดรูปแบบการอัปโหลดสินค้า</value>
     </property>
     <property key="PFTEmailAlreadyUsed">

@@ -151,7 +151,16 @@ under the License.
     </simple-method>
 
     <simple-method method-name="getVerifyTemplate" short-description="Get verify template">
-        <set field="redirectLink" value="verify"/>
+        <set field="redirectLink" value="success"/>
+        <!-- Check supplier redirect link -->
+        <entity-one entity-name="PartyRole" value-field="partyRoleSupplier">
+            <field-map field-name="partyId" from-field="parameters.partyId"/>
+            <field-map field-name="roleTypeId" value="SUPPLIER"/>
+        </entity-one>
+        <if-not-empty field="partyRoleSupplier">
+            <set field="redirectLink" value="verify"/>
+        </if-not-empty>
+
         <field-to-result field="parameters.partyId" result-name="partyId"/>
         <field-to-result field="redirectLink" result-name="redirectLink"/>
     </simple-method>

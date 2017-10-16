@@ -19,7 +19,7 @@ under the License.
 
 <a href="<@ofbizUrl>EditProduct</@ofbizUrl>" class="buttontext">${uiLabelMap.ProductNewProduct}</a>&nbsp;&nbsp;
 <a href="<@ofbizUrl>uploadproducts</@ofbizUrl>" class="buttontext">${uiLabelMap.PFTUploadProductSpreadsheet}</a>
-<a href="<@ofbizUrl>ViewSimpleContent?contentId=PROD_TEMP</@ofbizUrl>" class="buttontext">${uiLabelMap.PFTDownloadProductTemplete}</a><br/><br/>
+<a href="<@ofbizUrl>ViewSimpleContent?contentId=PROD_TEMP</@ofbizUrl>" class="buttontext">${uiLabelMap.PFTDownloadProductTemplate}</a><br/><br/>
 <div class="screenlet">
     <div class="screenlet-title-bar" id="product-title-bar">
         <#if (listSize > 0)>
