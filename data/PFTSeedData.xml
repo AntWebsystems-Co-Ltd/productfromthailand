@@ -179,4 +179,15 @@ under the License.
     <SystemProperty systemResourceId="general" systemPropertyId="useVerify" systemPropertyValue="Y"/>
     <SystemProperty systemResourceId="general" systemPropertyId="verifyServices" systemPropertyValue="getVerifyTemplate"/>
 
+    <!-- Feature Data -->
+    <ProductFeatureCategory productFeatureCategoryId="CF10000" description="Coffee Features"/>
+    <ProductFeature productFeatureId="CF10000" productFeatureCategoryId="CF10000" productFeatureTypeId="TYPE" description="Roast Beans"/>
+    <ProductFeature productFeatureId="CF10001" productFeatureCategoryId="CF10000" productFeatureTypeId="TYPE" description="Roast Ground"/>
+
+    <!-- THAI TaxAuthority -->
+    <Party partyId="THA_RD" partyTypeId="PARTY_GROUP"  statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="THA_RD" groupName="Thailand - Internal Revenue Service"/>
+    <PartyRole partyId="THA_RD" roleTypeId="TAX_AUTHORITY"/>
+    <TaxAuthority taxAuthGeoId="THA" taxAuthPartyId="THA_RD" includeTaxInPrice="Y"/>
+
 </entity-engine-xml>

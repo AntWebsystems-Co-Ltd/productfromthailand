@@ -92,9 +92,10 @@ under the License.
                   : ${product.quantityIncluded!} ${((quantityUom.abbreviation)?default(product.quantityUomId))!}]
               </#if>
               <#if (product.productWeight?? && product.productWeight != 0) || product.weightUomId?has_content>
-                <#assign weightUom = product.getRelatedOne("WeightUom", true)!/>
-                  [${uiLabelMap.CommonWeight}: ${product.weight?if_exists} ${((weightUom.abbreviation)?default(product.weightUomId))?if_exists}]
-              </#if>
+                  <#assign weightUom = product.getRelatedOne("WeightUom", true)!/>
+                  [${uiLabelMap.CommonWeight}
+                  : ${product.productWeight!} ${((weightUom.abbreviation)?default(product.weightUomId))!}]
+                </#if>
               <#if (product.productHeight?? && product.productHeight != 0) || product.heightUomId?has_content>
                 <#assign heightUom = product.getRelatedOne("HeightUom", true)!/>
                   [${uiLabelMap.CommonHeight}: ${product.productHeight?if_exists} ${((heightUom.abbreviation)?default(product.heightUomId))?if_exists}]
