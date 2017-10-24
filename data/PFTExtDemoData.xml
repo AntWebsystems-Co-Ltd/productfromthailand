@@ -109,4 +109,37 @@
     <ProductPromoAction amount="10.000000" orderAdjustmentTypeId="PROMOTION_ADJUSTMENT" productPromoActionEnumId="PROMO_ORDER_PERCENT" productPromoActionSeqId="10000" productPromoId="PFT10000" productPromoRuleId="00001" useCartQuantity="N"/>
     <ProductPromoCode productPromoCodeId="PFT10ORD" productPromoId="PFT10000" requireEmailOrParty="N" useLimitPerCode="1" useLimitPerCustomer="1" userEntered="Y"/> 
 
+    <!-- PayPal -->
+    <PaymentGatewayPayPal paymentGatewayConfigId="PAYPAL_CONFIG" businessEmail="ofbiztest01-facilitator@gmail.com" apiUserName="ofbiztest01-facilitator_api1.gmail.com" apiPassword="P6C7J3UA4PW2J43F" apiSignature="AFcWxV21C7fd0v3bYYYRCpSSRl31Ah.6-74sd2vyc5lrifsajw5WPBBa"
+        apiEnvironment="test" notifyUrl="https://localhost:8443/pft/control/payPalNotify" returnUrl="https://localhost:8443/pft/control/payPalCallBack/main" cancelReturnUrl="https://localhost:8443/pft/control/payPalCancel/main" imageUrl="https://localhost:8443/pft-default/pftimages/pft-logo.png"
+        confirmTemplate="/order/emailconfirmation.ftl" redirectUrl="https://www.sandbox.paypal.com/webscr" confirmUrl="https://www.sandbox.paypal.com/us/cgi-bin/webscr" requireConfirmedShipping="N"/>
+
+    <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_AUTH" paymentService="alwaysApproveCCProcessor" paymentCustomMethodId="CC_AUTH_ALWAYSAPPROV"/>
+    <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_RELEASE" paymentService="testCCRelease" paymentCustomMethodId="CC_RELEASE_TEST"/>
+    <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_CAPTURE" paymentService="testCCCapture" paymentCustomMethodId="CC_CAPTURE_TEST"/>
+    <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_REAUTH" paymentService="alwaysApproveCCProcessor" paymentCustomMethodId="CC_AUTH_ALWAYSAPPROV"/>
+    <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_REFUND" paymentService="testCCRefund" paymentCustomMethodId="CC_REFUND_TEST"/>
+    <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_AUTH" paymentService="" paymentCustomMethodId="PAYPAL_AUTH" paymentGatewayConfigId="PAYPAL_CONFIG"/>
+    <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_REAUTH" paymentService="" paymentCustomMethodId="PAYPAL_AUTH" paymentGatewayConfigId="PAYPAL_CONFIG"/>
+    <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_CAPTURE" paymentService="" paymentCustomMethodId="PAYPAL_CAPTURE" paymentGatewayConfigId="PAYPAL_CONFIG"/>
+    <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_REFUND" paymentService="" paymentCustomMethodId="PAYPAL_REFUND" paymentGatewayConfigId="PAYPAL_CONFIG"/>
+    <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="EXT_PAYPAL" paymentServiceTypeEnumId="PRDS_PAY_RELEASE" paymentService="" paymentCustomMethodId="PAYPAL_CAPTURE" paymentGatewayConfigId="PAYPAL_CONFIG"/>
+
+    <!-- Paypal Call back data
+        # Dev url: https://developer.paypal.com/developer
+        - user: ofbiztest01@gmail.com
+        - password: ofbiztest!
+        # Sandbox URL: www.sandbox.paypal.com
+        - business: ofbiztest01-seller1@gmail.com , password: ofbiztest!
+        - buyer: ofbiztest06@gmail.com, password: ofbiztest!
+        *** Please set auto return for seller account at
+            https://www.sandbox.paypal.com/cgi-bin/customerprofileweb?cmd=%5fprofile%2dwebsite%2dpayments
+    -->
+    <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.clientId" systemPropertyValue="AeL5vwu9lFArgloz_DB6qJibApis3153lWkT-Lhki8_f_2o4uqu8dWS5nouPq5yMIXQPDjFHmzQhMoav"/>
+    <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.clientSecret" systemPropertyValue="ELiuO8dScOToIUALBcYautKsuLTO5CDhfs7qGqnISDR4DYsCpl1MpWQZeqzgSX2rVVuIsTV25XSQucu9"/>
+    <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.apiUrl.sandbox" systemPropertyValue="https://api.sandbox.paypal.com/"/>
+    <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.apiUrl.live" systemPropertyValue="https://api.paypal.com/"/>
+
+    <!-- Received Paypal Payment -->
+    <GlAccountOrganization glAccountId="122500" organizationPartyId="pft" fromDate="2017-10-24 00:00:00.000"/>
 </entity-engine-xml>
