@@ -73,7 +73,7 @@ under the License.
                 <set field="titleProperty" value="PageTitleEditProduct"/>
                 <set field="tabButtonItem" value="EditProduct"/>
                 <set field="labelTitleProperty" value="ProductProduct"/>
-
+                <set field="layoutSettings.javaScripts[]" value="/ecommerce/images/productAdditionalView.js" global="true"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
                 <script location="component://productfromthailand/groovyScripts/EditProduct.groovy"/>

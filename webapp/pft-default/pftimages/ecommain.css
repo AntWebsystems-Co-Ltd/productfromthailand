@@ -199,6 +199,7 @@ visibility: hidden;
 font-weight: bold;
 padding-right: 11px;
 text-align: right;
+vertical-align: middle;
 white-space: nowrap;
 width: 1%;
 }
@@ -960,7 +961,10 @@ margin: 0px 5px 5px 0px;
 border: #CCC solid 1px;
 height: 50px;
 }
-
+img.cssImgSmall {
+max-width: 50px;
+max-height: 37px;
+}
 .productsummary-container {
 /*position:relative;*/
 margin-top: 10px;
@@ -1009,7 +1013,9 @@ div.popup {
   position: absolute;
   z-index: 1;
 }
-
+img.popupImage {
+max-width: 230px;
+}
 .matrix .productsummary .smallimage {
 float: none;
 text-align: center;
@@ -1623,12 +1629,14 @@ width:650px;
 display: inline-block;
 }
 div.additionalImage {
-display: inline;
+display: block;
+height: 100px;
+width: 100px;
 }
 
 #productadditionalimage {
-width: 200px;
-height:200px;
+max-width: 100px;
+max-height: 100px;
 overflow:auto;
 }
 
@@ -2466,6 +2474,7 @@ a#subscribBtn:hover {
     max-height:100%;
 }
 .uploading li, .uploadingLogo li {
+    display: inline-block;
     margin-right: 5px;
     text-align: center;
 }

@@ -108,13 +108,17 @@ under the License.
     <request-map uri="createProduct">
         <security https="true" auth="true"/>
         <event type="java" path="org.apache.ofbiz.productfromthailand.PFTProductServices" invoke="createProductAndUploadMultiImage"/>
-        <response name="success" type="view" value="EditProduct"/>
+        <response name="success" type="request-redirect" value="EditProduct">
+            <redirect-parameter name="productId"/>
+        </response>
         <response name="error" type="view" value="EditProduct"/>
     </request-map>
     <request-map uri="updateProduct">
         <security https="true" auth="true"/>
         <event type="java" path="org.apache.ofbiz.productfromthailand.PFTProductServices" invoke="createProductAndUploadMultiImage"/>
-        <response name="success" type="view" value="EditProduct"/>
+        <response name="success" type="request-redirect" value="EditProduct">
+            <redirect-parameter name="productId"/>
+        </response>
         <response name="error" type="view" value="EditProduct"/>
     </request-map>
     <request-map uri="EditProduct">
@@ -148,6 +152,23 @@ under the License.
     <request-map uri="EditProductCommunicationEvents">
         <security https="true" auth="true"/>
         <response name="success" type="view" value="EditProductCommunicationEvents"/>
+    </request-map>
+
+    <request-map uri="productCategoryList">
+        <security https="false" auth="false"/>
+        <response name="success" type="view" value="productCategoryList" save-current-view="true"/>
+    </request-map>
+        <request-map uri="productCategoryListSecure">
+        <security https="true" auth="false"/>
+        <response name="success" type="view" value="productCategoryList" save-current-view="true"/>
+    </request-map>
+    <request-map uri="categoryAjaxFired">
+        <security https="false" auth="false"/>
+        <response name="success" type="view" value="productCategoryList" save-current-view="true"/>
+    </request-map>
+    <request-map uri="categoryAjaxFiredSecure">
+        <security https="true" auth="false"/>
+        <response name="success" type="view" value="productCategoryList" save-current-view="true"/>
     </request-map>
 
     <request-map uri="CreateVirtualWithVariantsForm">
@@ -264,6 +285,12 @@ under the License.
         <response name="success" type="view" value="EditProduct"/>
         <response name="error" type="view" value="EditProduct"/>
     </request-map>
+    <request-map uri="addAdditionalImagesForProduct">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="uploadProductAdditionalViewImages"/>
+        <response name="success" type="view" value="EditProduct"/>
+        <response name="error" type="view" value="EditProduct"/>
+    </request-map>
 
     <!-- ================ CompDoc Requests ================= -->
     <!-- ================ SimpleContent Requests ================= -->
@@ -325,7 +352,7 @@ under the License.
     <view-map name="editShoppingList" type="screen" page="component://productfromthailand/widget/ShoppingListScreens.xml#editShoppingList"/>
     <view-map name="advancedsearch" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#advancedsearch"/>
 
-    <!-- <view-map name="category" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#category"/> -->
+    <view-map name="category" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#category"/>
     <view-map name="newcustomer" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newcustomer"/>
     <view-map name="editcontactmech" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#editcontactmech"/>
     <view-map name="forgotYourPassword" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#forgotYourPassword"/>
@@ -339,6 +366,7 @@ under the License.
     <view-map name="services" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#services"/>
     <view-map name="help" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#help"/>
 
+    <view-map name="productCategoryList" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#productCategoryList"/>
     <view-map name="tellafriend" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#tellafriend"/>
     <!-- Cart Views -->
     <view-map name="showcart" type="screen" page="component://productfromthailand/widget/CartScreens.xml#showcart"/>

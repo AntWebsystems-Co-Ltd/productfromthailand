@@ -45,7 +45,7 @@ under the License.
         </section>
     </screen>
 
-    <!-- 
+    <!--
     <screen name="sidedeepcategory">
         <section>
             <actions>
@@ -174,7 +174,69 @@ under the License.
             </widgets>
         </section>
     </screen>
-
+    <screen name="productCategoryList">
+        <section>
+            <condition>
+                <if-empty field="parameters.mainSubmitted"/>
+            </condition>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+                <set field="fromSetSessionLocale" value="${groovy: return request.getAttribute('fromSetSessionLocale');}"/>
+                <set field="visualThemeId" from-field="productStore.visualThemeId" default-value="EC_DEFAULT"/>
+                <service service-name="getVisualThemeResources">
+                    <field-map field-name="visualThemeId"/>
+                    <field-map field-name="themeResources" from-field="layoutSettings"/>
+                </service>
+                <set field="layoutSettings" from-field="themeResources" default-value="${layoutSettings}" global="true"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-compare operator="equals" value="true" field="fromSetSessionLocale"/>
+                    </condition>
+                    <widgets>
+                        <include-screen name="category"/>
+                    </widgets>
+                    <fail-widgets>
+                        <section>
+                            <condition>
+                                <if-empty field="category_id"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="newbreadcrumbs" share-scope="true"/>
+                            </widgets>
+                            <fail-widgets>
+                                <include-screen name="breadcrumbs" share-scope="true"/>
+                            </fail-widgets>
+                        </section>
+                        <include-screen name="category-include" share-scope="true"/>
+                    </fail-widgets>
+                </section>
+            </widgets>
+            <fail-widgets>
+                <section>
+                   <widgets>
+                        <include-screen name="category"/>
+                   </widgets>
+                </section>
+            </fail-widgets>
+        </section>
+    </screen>
+    <screen name="newbreadcrumbs">
+       <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://ecommerce/groovyScripts/catalog/AjaxBreadcrumbs.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <html><html-template location="component://ecommerce/template/catalog/AjaxBreadCrumbs.ftl"/></html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
     <screen name="breadcrumbs">
         <section>
             <actions>
@@ -190,46 +252,49 @@ under the License.
     <!-- =========== Top-Level and Stand-Alone Screens =========== -->
 
     <!-- Category Screens -->
-<!--     <screen name="category"> -->
-<!--         <section> -->
-<!--             <actions> -->
-<!--                 <set field="leftbarScreenName" value="leftbar"/> -->
-<!--                 <set field="MainColumnStyle" value="leftonly"/> -->
+    <screen name="category">
+        <section>
+            <actions>
+                <set field="leftbarScreenName" value="leftbar"/>
+                <set field="rightbarScreenName" value="rightbar"/>
+                <set field="MainColumnStyle" value="center"/>
 
-<!--                 <set field="titleProperty" value="PageTitleCategoryPage"/> -->
-<!--                 <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/> -->
-<!--             </actions> -->
-<!--             <widgets> -->
-<!--                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}"> -->
-<!--                     <decorator-section name="body"> -->
-<!--                         <include-screen name="breadcrumbs"/> -->
-<!--                         <include-screen name="category-include"/> -->
-<!--                     </decorator-section> -->
-<!--                 </decorator-screen> -->
-<!--             </widgets> -->
-<!--         </section> -->
-<!--     </screen> -->
+                <set field="titleProperty" value="PageTitleCategoryPage"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+                <!-- Open this commented section for the demo of Layered Navigation, navigate through Gizmo and Widgets categories to see it in action.
+                <script location="component://ecommerce/groovyScripts/catalog/LayeredNavigation.groovy"/>
+                <set field="detailScreen" value="LayeredCategoryDetail"/>
+                 -->
+                <set field="tabButtonItem" value="LookupProductCategories"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <include-screen name="breadcrumbs"/>
+                        <include-screen name="category-include"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
 
-<!--     <screen name="category-include"> -->
-<!--         <section> -->
-<!--             <widgets> -->
-<!--                 <section> -->
-<!--                     <condition> -->
-<!--                         <not><if-empty field="productCategory"/></not> -->
-<!--                     </condition> -->
-<!--                     <actions> -->
-<!--                         <set field="detailScreen" default-value="component://productfromthailand/widget/CatalogScreens.xml#categorydetailmatrix"/> -->
-<!--                     </actions> -->
-<!--                     <widgets> -->
-<!--                         <include-screen name="${detailScreen}"/> -->
-<!--                     </widgets> -->
-<!--                     <fail-widgets> -->
-<!--                         <label style="head2">${uiLabelMap.ProductCategoryNotFoundForCategoryID} ${productCategoryId}!</label> -->
-<!--                     </fail-widgets> -->
-<!--                 </section> -->
-<!--             </widgets> -->
-<!--         </section> -->
-<!--     </screen> -->
+    <screen name="category-include">
+        <section>
+            <widgets>
+                <section>
+                    <condition>
+                        <not><if-empty field="productCategory"/></not>
+                    </condition>
+                    <widgets>
+                        <include-screen name="${detailScreen}"/>
+                    </widgets>
+                    <fail-widgets>
+                        <label style="head2">${uiLabelMap.ProductCategoryNotFoundForCategoryID} ${productCategoryId}!</label>
+                    </fail-widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
 
     <screen name="categorydetail">
         <section>
@@ -243,6 +308,7 @@ under the License.
                     <field-map field-name="productCategoryId" from-field="productCategoryId"/>
                     <order-by field-name="sequenceNum"/>
                 </entity-and>
+                <set field="paginateEcommerceStyle" value="Y"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/categorydetail.ftl"/></html></platform-specific>
@@ -252,25 +318,19 @@ under the License.
 
     <screen name="categorydetailmatrix">
         <section>
-            <condition>
-            <and>
-                <not><if-empty field="productCategoryId"/></not>
-                <if-compare field="productCategoryId" operator="equals" value="PFTPROMOTION" />
-            </and>
-            </condition>
             <actions>
                 <set field="numCol" value="3"/>
                 <set field="searchInCategory" value="N"/>
             </actions>
             <widgets>
-                <include-screen name="promocategorydetail"/>
+                <include-screen name="categorydetail"/>
             </widgets>
             <fail-widgets>
                 <section>
                     <actions>
                         <set field="numCol" value="4"/>
                         <set field="searchInCategory" value="N"/>
-                        <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="20"/>
+                        <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="9"/>
                     </actions>
                     <widgets>
                         <include-screen name="categorydetail"/>
@@ -457,6 +517,30 @@ under the License.
         </section>
     </screen>
 
+    <screen name="bestSellingCategory">
+        <section>
+            <widgets>
+                <section>
+                    <widgets>
+                        <!--<label style="h1" text="Popular Categories"/>-->
+                        <include-screen name="showBestSellingCategory"/>
+                    </widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="showBestSellingCategory">
+        <section>
+            <actions>
+                <script location="component://ecommerce/groovyScripts/catalog/BestSellingCategory.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/ShowBestSellingCategory.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
     <screen name="keywordsearch">
         <section>
             <actions>
@@ -515,7 +599,7 @@ under the License.
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="CommonFindDecorator">
         <section>
             <actions>
@@ -562,7 +646,7 @@ under the License.
             <actions>
                 <set field="titleProperty" value="PageTitleAdvancedSearch"/>
                 <set field="headerItem" value="Advanced Search"/>
-                
+
                 <entity-condition entity-name="ProductCategory" list="productCategories">
                     <condition-expr field-name="showInSelect" operator="not-equals" value="N"/>
                     <order-by field-name="description"/>

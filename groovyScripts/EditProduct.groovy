@@ -58,30 +58,66 @@ if (product) {
         context.price = supplierProduct.lastPrice;
     }
     //Get Images
-    imConditionList = [];
-    imOrConditionList = [];
-    imOrConditionList.add(EntityCondition.makeCondition("productContentTypeId", EntityOperator.EQUALS, "IMAGE"));
-    imOrConditionList.add(EntityCondition.makeCondition("productContentTypeId", EntityOperator.EQUALS, "DEFAULT_IMAGE"));
-    imConditionList.add(EntityCondition.makeCondition(imOrConditionList, EntityOperator.OR));
-    imConditionList.add(EntityCondition.makeCondition("productId", EntityOperator.EQUALS, product.productId));
-    imConditionList.add(EntityCondition.makeCondition("drIsPublic", EntityOperator.EQUALS, "Y"));
-    productImageAndContentLists = EntityQuery.use(delegator)
-            .from("ProductContentAndInfo")
-            .where(imConditionList)
-            .orderBy("productContentTypeId")
-            .queryList();
-    if (productImageAndContentLists) {
-        productImageAndContentLists.each { productImageAndContentLists ->
-            productImageMap = [:];
-            contentAssocThumb = EntityUtil.getFirst(delegator.findByAnd("ContentAssocDataResourceViewTo", [contentIdStart : productImageAndContentLists.contentId, caContentAssocTypeId : "IMAGE_THUMBNAIL"], null, false));
-            if (contentAssocThumb) {
-                productImageMap.productImage = productImageAndContentLists.drObjectInfo;
-                productImageMap.productImageThumb = contentAssocThumb.drObjectInfo;
-                productImageMap.contentId = productImageAndContentLists.contentId;
-                productImageMap.fromDate = productImageAndContentLists.fromDate;
-                productImageMap.productContentTypeId = productImageAndContentLists.productContentTypeId;
+    smallImageConditionList = [];
+    smallImageConditionList.add(EntityCondition.makeCondition("productId", EntityOperator.EQUALS, product.productId));
+    smallImageConditionList.add(EntityCondition.makeCondition("productContentTypeId", EntityOperator.EQUALS, "SMALL_IMAGE_ALT"));
+    productSmallImageContent = from("ProductContentAndInfo").where(smallImageConditionList).filterByDate().queryFirst();
+    if(productSmallImageContent) {
+        imageMap = [:];
+        imageMap.productImage = productSmallImageContent.drObjectInfo;
+        imageMap.contentId = productSmallImageContent.contentId;
+        imageMap.fromDate = productSmallImageContent.fromDate;
+        imageMap.productContentTypeId = productSmallImageContent.productContentTypeId;
+        context.smallImage = imageMap;
+    }
+
+    mediumImageConditionList = [];
+    mediumImageConditionList.add(EntityCondition.makeCondition("productId", EntityOperator.EQUALS, product.productId));
+    mediumImageConditionList.add(EntityCondition.makeCondition("productContentTypeId", EntityOperator.EQUALS, "MEDIUM_IMAGE_ALT"));
+    productMediumImageContent = from("ProductContentAndInfo").where(mediumImageConditionList).filterByDate().queryFirst();
+    if(productMediumImageContent) {
+        imageMap = [:];
+        imageMap.productImage = productMediumImageContent.drObjectInfo;
+        imageMap.contentId = productMediumImageContent.contentId;
+        imageMap.fromDate = productMediumImageContent.fromDate;
+        imageMap.productContentTypeId = productMediumImageContent.productContentTypeId;
+        context.mediumImage = imageMap;
+    }
+
+    largeImageConditionList = [];
+    largeImageConditionList.add(EntityCondition.makeCondition("productId", EntityOperator.EQUALS, product.productId));
+    largeImageConditionList.add(EntityCondition.makeCondition("productContentTypeId", EntityOperator.EQUALS, "LARGE_IMAGE_ALT"));
+    productLargeImageContent = from("ProductContentAndInfo").where(largeImageConditionList).filterByDate().queryFirst();
+    if(productLargeImageContent) {
+        imageMap = [:];
+        imageMap.productImage = productLargeImageContent.drObjectInfo;
+        imageMap.contentId = productLargeImageContent.contentId;
+        imageMap.fromDate = productLargeImageContent.fromDate;
+        imageMap.productContentTypeId = productLargeImageContent.productContentTypeId;
+        context.largeImage = imageMap;
+    }
+
+    addImageConditionList = [];
+    addImageConditionList.add(EntityCondition.makeCondition("productId", EntityOperator.EQUALS, product.productId));
+    addImageConditionList.add(EntityCondition.makeCondition("productContentTypeId", EntityOperator.LIKE, "ADDITIONAL_IMAGE_%"));
+    productAddImageContents = from("ProductContentAndInfo").where(addImageConditionList).orderBy("productContentTypeId").filterByDate().queryList();
+    if(productAddImageContents) {
+        addImage = []
+        productAddImageContents.each { productAddImageContent ->
+            imageMap = [:];
+            imageMap.productImage = productAddImageContent.drObjectInfo;
+            imageMap.contentId = productAddImageContent.contentId;
+            imageMap.fromDate = productAddImageContent.fromDate;
+            imageMap.productContentTypeId = productAddImageContent.productContentTypeId;
+            if("ADDITIONAL_IMAGE_1".equals(productAddImageContent.productContentTypeId)) {
+                context.additionalImage1 = imageMap;
+            } else if("ADDITIONAL_IMAGE_2".equals(productAddImageContent.productContentTypeId)) {
+                context.additionalImage2 = imageMap;
+            } else if("ADDITIONAL_IMAGE_3".equals(productAddImageContent.productContentTypeId)) {
+                context.additionalImage3 = imageMap;
+            } else if("ADDITIONAL_IMAGE_4".equals(productAddImageContent.productContentTypeId)) {
+                context.additionalImage4 = imageMap;
             }
-            productImageList.add(productImageMap);
         }
     }
     context.productImageList = productImageList;

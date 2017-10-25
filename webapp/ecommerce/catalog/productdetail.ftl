@@ -385,7 +385,7 @@ $(function(){
             <div class="additionalImage">
               <a href="javascript:void(0);"
                   swapDetail="<@ofbizContentUrl>${productImage.productImage}</@ofbizContentUrl>">
-                <img src="<@ofbizContentUrl>${productImage.productImageThumb}</@ofbizContentUrl>"
+                <img id="productadditionalimage" src="<@ofbizContentUrl>${productImage.productImageThumb}</@ofbizContentUrl>"
                     vspace="5" hspace="5" alt=""/>
               </a>
             </div>
@@ -417,7 +417,7 @@ $(function(){
           <div class="additionalImage">
             <a href="javascript:void(0);"
                 swapDetail="<@ofbizContentUrl>${productAdditionalImage1}</@ofbizContentUrl>">
-              <img src="<@ofbizContentUrl>${productAdditionalImage1}</@ofbizContentUrl>" vspace="5" hspace="5"
+              <img id="productadditionalimage" src="<@ofbizContentUrl>${productAdditionalImage1}</@ofbizContentUrl>" vspace="5" hspace="5"
                 class="cssImgXLarge" alt=""/>
             </a>
           </div>
@@ -426,7 +426,7 @@ $(function(){
           <div class="additionalImage">
             <a href="javascript:void(0);"
                 swapDetail="<@ofbizContentUrl>${productAdditionalImage2}</@ofbizContentUrl>">
-              <img src="<@ofbizContentUrl>${productAdditionalImage2}</@ofbizContentUrl>" vspace="5" hspace="5"
+              <img id="productadditionalimage" src="<@ofbizContentUrl>${productAdditionalImage2}</@ofbizContentUrl>" vspace="5" hspace="5"
                   class="cssImgXLarge" alt=""/>
             </a>
           </div>
@@ -435,7 +435,7 @@ $(function(){
           <div class="additionalImage">
             <a href="javascript:void(0);"
                 swapDetail="<@ofbizContentUrl>${productAdditionalImage3}</@ofbizContentUrl>">
-              <img src="<@ofbizContentUrl>${productAdditionalImage3}</@ofbizContentUrl>" vspace="5" hspace="5"
+              <img id="productadditionalimage" src="<@ofbizContentUrl>${productAdditionalImage3}</@ofbizContentUrl>" vspace="5" hspace="5"
                   class="cssImgXLarge" alt=""/>
             </a>
           </div>
@@ -444,7 +444,7 @@ $(function(){
           <div class="additionalImage">
             <a href="javascript:void(0);"
                 swapDetail="<@ofbizContentUrl>${productAdditionalImage4}</@ofbizContentUrl>">
-              <img src="<@ofbizContentUrl>${productAdditionalImage4}</@ofbizContentUrl>" vspace="5" hspace="5"
+              <img id="productadditionalimage" src="<@ofbizContentUrl>${productAdditionalImage4}</@ofbizContentUrl>" vspace="5" hspace="5"
                   class="cssImgXLarge" alt=""/>
             </a>
           </div>

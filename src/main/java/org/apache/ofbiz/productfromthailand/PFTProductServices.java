@@ -189,98 +189,111 @@ public class PFTProductServices {
                 fi2 = lst.get(i);
                 String fieldName = fi2.getFieldName();
                 if (fieldName.startsWith("uploadedFile")) {
-                    //Check for existing images for this product, if not, current image is the default one
-                    String productContentTypeId = "IMAGE";
-                    List<EntityCondition> conditionList = new ArrayList<EntityCondition>();
-                    List<EntityCondition> orConditionList = new ArrayList<EntityCondition>();
-                    orConditionList.add(EntityCondition.makeCondition("productContentTypeId", EntityOperator.EQUALS, "IMAGE"));
-                    orConditionList.add(EntityCondition.makeCondition("productContentTypeId", EntityOperator.EQUALS, "DEFAULT_IMAGE"));
-                    conditionList.add(EntityCondition.makeCondition(orConditionList, EntityOperator.OR));
-                    conditionList.add(EntityCondition.makeCondition("productId", EntityOperator.EQUALS, productId));
-
-                    List<GenericValue> productContent = EntityQuery.use(delegator)
-                            .from("ProductContent")
-                            .where(conditionList)
-                            .cache(false)
-                            .queryList();
-                    if (UtilValidate.isEmpty(productContent)) {
-                        productContentTypeId = "DEFAULT_IMAGE";
-                    }
-
-                    Map<String, Object> passedParams = new HashMap<String, Object>();
-                    Map<String, Object> contentLength = new HashMap<String, Object>();
-                    if(josonMap == null){
-                         josonMap = new LinkedList<Map<String,Object>>();
-                    }
-                    imageFi = fi2;
                     String fileName = fi2.getName();
-                    fileName = fileName.replaceAll(" ", "_");
-                    String contentType = fi2.getContentType();
-                    imageBytes = imageFi.get();
-                    ByteBuffer byteWrap = ByteBuffer.wrap(imageBytes);
-                    if (imageFi.getSize() > 0) {
-                        passedParams.put("userLogin", userLogin);
-                        passedParams.put("productId", productId);
-                        passedParams.put("productContentTypeId", productContentTypeId);
-                        passedParams.put("_uploadedFile_contentType", contentType);
-                        passedParams.put("uploadedFile", byteWrap);
-                        passedParams.put("_uploadedFile_fileName", fileName);
-                        contentLength.put("imageSize", imageFi.getSize());
-                        josonMap.add(contentLength);
-                        if (passedParams.get("productId") != null) {
-                            try {
-                                dispatcher.runSync("addMultipleuploadForProduct", passedParams);
-                            } catch (GenericServiceException e) {
-                                return e.getMessage();
-                            }
+                    if(UtilValidate.isNotEmpty(fileName)) {
+                        Map<String, Object> uploadResult = new HashMap<String, Object>();
+                        fieldName = fieldName.substring(13);
+                        String productContentTypeId = null;
+                        String fileSize = null;
+                        String imageUrl = null;
+                        if("small".equals(fieldName)) {
+                            productContentTypeId = "SMALL_IMAGE_ALT";
+                            fileSize = "small";
+                            imageUrl = "smallImageUrl";
+                        } else if ("medium".equals(fieldName)) {
+                            productContentTypeId = "MEDIUM_IMAGE_ALT";
+                            fileSize = "medium";
+                            imageUrl = "mediumImageUrl";
+                        } else if ("large".equals(fieldName)) {
+                            productContentTypeId = "LARGE_IMAGE_ALT";
+                            fileSize = "large";
+                            imageUrl = "largeImageUrl";
+                        } else if ("additionalImage1".equals(fieldName)) {
+                            productContentTypeId = "ADDITIONAL_IMAGE_1";
+                        } else if ("additionalImage2".equals(fieldName)) {
+                            productContentTypeId = "ADDITIONAL_IMAGE_2";
+                        } else if ("additionalImage3".equals(fieldName)) {
+                            productContentTypeId = "ADDITIONAL_IMAGE_3";
+                        } else if ("additionalImage4".equals(fieldName)) {
+                            productContentTypeId = "ADDITIONAL_IMAGE_4";
                         }
-                        if (productContentTypeId.equals("DEFAULT_IMAGE")) {
-                            //Loop thru all image sizes
-                            for (String sizeType : sizeTypeList) {
-                                String fileNameToUse = new StringBuilder(fileName).insert(fileName.lastIndexOf("."), "-" + sizeType).toString();
 
-                                String targetDirectory = imageServerPath + "/" + productId;
-                                File targetDir = new File(targetDirectory);
-                                if (!targetDir.exists()) {
-                                    boolean created = targetDir.mkdirs();
-                                    if (!created) {
-                                        String errMsg = "Cannot create the target directory";
-                                        Debug.logFatal(errMsg, module);
-                                        return errMsg;
+                        fileName = fileName.replaceAll(" ", "_");
+                        fileName = new StringBuilder(fileName).insert(fileName.lastIndexOf("."), "-" + fileSize).toString();
+                        String contentType = fi2.getContentType();
+                        imageBytes = fi2.get();
+                        ByteBuffer byteWrap = ByteBuffer.wrap(imageBytes);
+                        Map<String, Object> passedParams = new HashMap<String, Object>();
+                        Map<String, Object> contentLength = new HashMap<String, Object>();
+                        if (josonMap == null){
+                            josonMap = new LinkedList<Map<String,Object>>();
+                        }
+                        if (fi2.getSize() > 0) {
+                            if(!productContentTypeId.startsWith("ADDITIONAL")) {
+                                List<EntityCondition> conditionList = new ArrayList<EntityCondition>();
+                                conditionList.add(EntityCondition.makeCondition("productId", EntityOperator.EQUALS, productId));
+                                conditionList.add(EntityCondition.makeCondition("productContentTypeId", EntityOperator.EQUALS, productContentTypeId));
+                                GenericValue productContent = EntityQuery.use(delegator)
+                                        .from("ProductContent")
+                                        .where(conditionList)
+                                        .cache(false)
+                                        .queryFirst();
+                                if (UtilValidate.isNotEmpty(productContent)) {
+                                    Map<String, Object> removeParams = new HashMap<String, Object>();
+                                    removeParams.put("userLogin", userLogin);
+                                    removeParams.put("productId", productId);
+                                    removeParams.put("contentId", productContent.get("contentId"));
+                                    removeParams.put("fromDate", productContent.get("fromDate"));
+                                    try {
+                                        dispatcher.runSync("removeGrowerpProductContentAndImageFile", removeParams);
+                                    } catch (GenericServiceException e) {
+                                        return e.getMessage();
                                     }
                                 }
-                                File file = new File(imageServerPath + "/" + productId + "/" + fileNameToUse);
-                                file = ImageManagementServices.checkExistsImage(file);
-                                try {
-                                    RandomAccessFile out = new RandomAccessFile(file, "rw");
-                                    out.write(byteWrap.array());
-                                    out.close();
-                                } catch (FileNotFoundException e) {
-                                    Debug.logError(e, module);
-                                    return e.getMessage();
-                                } catch (IOException e) {
-                                    Debug.logError(e, module);
-                                    return e.getMessage();
+
+                                passedParams.put("userLogin", userLogin);
+                                passedParams.put("productId", productId);
+                                passedParams.put("productContentTypeId", productContentTypeId);
+                                passedParams.put("imageResize", fileSize);
+                                passedParams.put("_uploadedFile_contentType", contentType);
+                                passedParams.put("uploadedFile", byteWrap);
+                                passedParams.put("_uploadedFile_fileName", fileName);
+                                contentLength.put("imageSize", fi2.getSize());
+                                josonMap.add(contentLength);
+                                if (passedParams.get("productId") != null) {
+                                    try {
+                                        uploadResult = dispatcher.runSync("addMultipleuploadForProduct", passedParams);
+                                    } catch (GenericServiceException e) {
+                                        return e.getMessage();
+                                    }
                                 }
-                                //Set the image url in the Product entity
-                                String imageUrl = null;
-                                switch (sizeType) {
-                                case "small":
-                                    imageUrl = "smallImageUrl";
-                                    break;
-                                case "medium":
-                                    imageUrl = "mediumImageUrl";
-                                    break;
-                                case "large":
-                                    imageUrl = "largeImageUrl";
-                                    break;
+                                GenericValue productUploadedContent = EntityQuery.use(delegator)
+                                        .from("ProductContentAndInfo")
+                                        .where("contentId", uploadResult.get("contentId"), "productContentTypeId", productContentTypeId)
+                                        .cache(false)
+                                        .queryFirst();
+                                if(UtilValidate.isNotEmpty(productUploadedContent)) {
+                                    GenericValue product = EntityQuery.use(delegator)
+                                            .from("Product")
+                                            .where("productId", productId)
+                                            .queryOne();
+                                    product.set(imageUrl, productUploadedContent.get("drObjectInfo"));
+                                    product.store();
                                 }
-                                GenericValue product = EntityQuery.use(delegator)
-                                        .from("Product")
-                                        .where("productId", productId)
-                                        .queryOne();
-                                product.set(imageUrl, imageServerUrl + "/" + productId + "/" + fileNameToUse);
-                                product.store();
+                            } else {
+                                passedParams.put("userLogin", userLogin);
+                                passedParams.put("productId", productId);
+                                passedParams.put("uploadedFile", byteWrap);
+                                passedParams.put("productContentTypeId", productContentTypeId);
+                                passedParams.put("_uploadedFile_fileName", fileName);
+                                passedParams.put("_uploadedFile_contentType", contentType);
+                                if (passedParams.get("productId") != null) {
+                                    try {
+                                        uploadResult = dispatcher.runSync("addAdditionalViewForProduct", passedParams);
+                                    } catch (GenericServiceException e) {
+                                        return e.getMessage();
+                                    }
+                                }
                             }
                         }
                     }

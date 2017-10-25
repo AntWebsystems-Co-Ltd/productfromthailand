@@ -21,6 +21,8 @@ under the License.
     <!-- general.properties adjustment -->
     <SystemProperty systemResourceId="general" systemPropertyId="locales.available" systemPropertyValue="en,th"/>
     <SystemProperty systemResourceId="general" systemPropertyId="ORGANIZATION_PARTY" systemPropertyValue="pft"/>
+    <SystemProperty systemResourceId="general" systemPropertyId="useVerify" systemPropertyValue="Y"/>
+    <SystemProperty systemResourceId="general" systemPropertyId="verifyServices" systemPropertyValue="getVerifyTemplate"/>
     <!-- Setting up on the production server
     <SystemProperty systemResourceId="general" systemPropertyId="mail.notifications.enabled" systemPropertyValue="Y"/>
     <SystemProperty systemResourceId="general" systemPropertyId="mail.smtp.relay.host" systemPropertyValue="smtp.gmail.com"/>
@@ -45,6 +47,8 @@ under the License.
 
     <SystemProperty systemResourceId="url" systemPropertyId="fop.path" systemPropertyValue="component://productfromthailand/config"/>
     <SystemProperty systemResourceId="url" systemPropertyId="fop.font.base.path" systemPropertyValue="component://productfromthailand/config/"/>
+
+    <SystemProperty systemResourceId="catalog" systemPropertyId="image.property.path" systemPropertyValue="/hot-deploy/productfromthailand/config/ImageProperties.xml"/>
 
     <Party partyId="pft" partyTypeId="PARTY_GROUP" createdDate="2009-09-25 10:35:14.088"/>
     <PartyGroup partyId="pft" groupName="PFT Trading" logoImageUrl="/pft-default/pftimages/pft-logo.png"/>
@@ -175,9 +179,6 @@ under the License.
 
     <Enumeration description="Party Group Registration Confirmation" enumCode="PARTYGRP_REGIS" enumId="PARTYGRP_REGISTER" sequenceId="06" enumTypeId="PARTY_EMAIL"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PARTYGRP_REGISTER" bodyScreenLocation="component://productfromthailand/widget/EmailScreens.xml#CreatePartyGroupNotification" subject="New Supplier Account Created" fromAddress="info@productfromthailand.com"/>
-
-    <SystemProperty systemResourceId="general" systemPropertyId="useVerify" systemPropertyValue="Y"/>
-    <SystemProperty systemResourceId="general" systemPropertyId="verifyServices" systemPropertyValue="getVerifyTemplate"/>
 
     <!-- Feature Data -->
     <ProductFeatureCategory productFeatureCategoryId="CF10000" description="Coffee Features"/>
