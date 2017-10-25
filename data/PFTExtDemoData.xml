@@ -103,11 +103,12 @@
     <ProductPriceAction amount="185.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10002"/>
 
     <!-- Sales 10% for order that greater than ฿1000 (PFT10ORD)-->
-    <ProductPromo productPromoId="PFT10000" promoName="Sales 10% for order that greater than ฿1000" promoText="Sales 10% for order that greater than ฿1000" requireCode="Y" showToCustomer="Y" useLimitPerCustomer="1" useLimitPerOrder="1" useLimitPerPromotion="1" userEntered="Y"/>
+    <ProductPromo productPromoId="PFT10000" promoName="Sales 10% for order that greater than ฿1000" promoText="Sales 10% for order that greater than ฿1000" requireCode="Y" showToCustomer="Y" useLimitPerCustomer="1" useLimitPerOrder="1" useLimitPerPromotion="1" userEntered="Y" createdDate="2017-10-01 00:00:00.0"/>
     <ProductPromoRule productPromoId="PFT10000" productPromoRuleId="00001" ruleName="Sales 10%"/>
     <ProductPromoCond condValue="1000" inputParamEnumId="PPIP_ORDER_TOTAL" operatorEnumId="PPC_GTE" productPromoCondSeqId="01" productPromoId="PFT10000" productPromoRuleId="00001"/>
     <ProductPromoAction amount="10.000000" orderAdjustmentTypeId="PROMOTION_ADJUSTMENT" productPromoActionEnumId="PROMO_ORDER_PERCENT" productPromoActionSeqId="10000" productPromoId="PFT10000" productPromoRuleId="00001" useCartQuantity="N"/>
     <ProductPromoCode productPromoCodeId="PFT10ORD" productPromoId="PFT10000" requireEmailOrParty="N" useLimitPerCode="1" useLimitPerCustomer="1" userEntered="Y"/> 
+    <ProductStorePromoAppl productStoreId="PFTSTORE" productPromoId="PFT10000" fromDate="2017-10-01 00:00:00.0"/>
 
     <!-- PayPal -->
     <PaymentGatewayPayPal paymentGatewayConfigId="PAYPAL_CONFIG" businessEmail="ofbiztest01-facilitator@gmail.com" apiUserName="ofbiztest01-facilitator_api1.gmail.com" apiPassword="P6C7J3UA4PW2J43F" apiSignature="AFcWxV21C7fd0v3bYYYRCpSSRl31Ah.6-74sd2vyc5lrifsajw5WPBBa"
