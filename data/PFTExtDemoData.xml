@@ -141,6 +141,4 @@
     <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.apiUrl.sandbox" systemPropertyValue="https://api.sandbox.paypal.com/"/>
     <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.apiUrl.live" systemPropertyValue="https://api.paypal.com/"/>
 
-    <!-- Received Paypal Payment -->
-    <GlAccountOrganization glAccountId="122500" organizationPartyId="pft" fromDate="2017-10-24 00:00:00.000"/>
 </entity-engine-xml>

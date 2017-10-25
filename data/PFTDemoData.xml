@@ -1489,6 +1489,7 @@ but they are grouped here for convenience purposes -->
     <GlAccountOrganization glAccountId="112000" organizationPartyId="pft" fromDate="2001-01-01 00:00:00.0"/>
     <GlAccountOrganization glAccountId="120000" organizationPartyId="pft" fromDate="2001-01-01 00:00:00.0"/>
     <GlAccountOrganization glAccountId="122300" organizationPartyId="pft" fromDate="2001-01-01 00:00:00.0"/>
+    <GlAccountOrganization glAccountId="122500" organizationPartyId="pft" fromDate="2017-10-24 00:00:00.000"/>
     <GlAccountOrganization glAccountId="140000" organizationPartyId="pft" fromDate="2001-01-01 00:00:00.0"/>
     <GlAccountOrganization glAccountId="141000" organizationPartyId="pft" fromDate="2001-01-01 00:00:00.0"/>
     <GlAccountOrganization glAccountId="171000" organizationPartyId="pft" fromDate="2001-01-01 00:00:00.0"/>
