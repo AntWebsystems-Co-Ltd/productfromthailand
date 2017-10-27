@@ -190,6 +190,25 @@
         </section>
     </screen>
 
+    <screen name="OrderConfirmNotice">
+        <section>
+            <actions>
+                <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="title" value="${uiLabelMap.PageTitleOrderConfirmationNotice}"/>
+                <set field="baseEcommerceSecureUrl" value="${baseSecureUrl}/pft/control"/>
+                <set field="allowAnonymousView" value="Y"/>  <!-- this field will instruction OrderStatus.groovy to allow an anonymous order to be viewed by anybody, so the email confirmation screen will work -->
+                <script location="component://ecommerce/groovyScripts/order/OrderStatus.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/template/email/OrderNoticeEmail.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
     <!-- generate a PDF for the order, sharing the same BSH file as the HTML page for viewing the order -->
     <screen name="OrderPDF">
         <section>
@@ -200,7 +219,6 @@
                 <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
 
                 <script location="component://order/groovyScripts/order/OrderView.groovy"/>
-                <script location="component://productfromthailand/groovyScripts/PFTSetup.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="FoReportDecorator">
