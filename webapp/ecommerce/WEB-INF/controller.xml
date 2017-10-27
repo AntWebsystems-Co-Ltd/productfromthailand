@@ -153,6 +153,10 @@ under the License.
         <security https="true" auth="true"/>
         <response name="success" type="view" value="EditProductCommunicationEvents"/>
     </request-map>
+    <request-map uri="ProductUomDropDownOnly">
+        <security auth="false" https="true"/>
+        <response name="success" type="view" value="ProductUomDropDownOnly" save-last-view="false"/>
+    </request-map>
 
     <request-map uri="productCategoryList">
         <security https="false" auth="false"/>
@@ -180,6 +184,16 @@ under the License.
         <event type="service" path="" invoke="quickCreateVirtualWithVariants"/>
         <response name="success" type="view" value="EditProduct"/>
         <response name="error" type="view" value="CreateVirtualWithVariantsForm"/>
+    </request-map>
+
+    <request-map uri="additem">
+        <security https="false" auth="false"/>
+        <event type="java" path="org.apache.ofbiz.order.shoppingcart.ShoppingCartEvents" invoke="addToCart"/>
+        <response name="success" type="view-last" value="showcart" save-last-view="false"/>
+        <response name="survey" type="view" value="survey"/>
+        <response name="product" type="view" value="product"/>
+        <response name="viewcart" type="request-redirect" value="showcart"/>
+        <response name="error" type="view" value="showcart"/>
     </request-map>
 
     <request-map uri="ProductBarCode.pdf">

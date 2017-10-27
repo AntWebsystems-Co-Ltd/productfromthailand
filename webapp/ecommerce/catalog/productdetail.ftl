@@ -145,9 +145,11 @@ ${virtualVariantJavaScript!}
 
         if (currentFeatureIndex == 0) {
             // set the images for the first selection
-            if (IMG[index] != null) {
+            if (IMG[index] != null && IMG[index]!="") {
                 if (document.images['mainImage'] != null) {
-                    document.images['mainImage'].src = IMG[index];
+                    var imgString = IMG[index];
+                    imgString = imgString.replace(/%2F/g, "/");
+                    document.images['mainImage'].src = imgString;
                     detailImageUrl = DET[index];
                 }
             }
@@ -397,9 +399,11 @@ $(function(){
       <div id="detailImageBox">
         <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url")! />
         <#-- remove the next two lines to always display the virtual image first (virtual images must exist) -->
+        <#--
         <#if firstLargeImage?has_content>
           <#assign productLargeImageUrl = firstLargeImage />
         </#if>
+        -->
         <#if productLargeImageUrl?string?has_content>
           <a href="javascript:popupDetail('<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>');">
             <img id="detailImage" src="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>"
