@@ -16,17 +16,21 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="mainrightonly">
-<#if orderHeader?has_content>
-  <form name="addCommonToCartForm" action="<@ofbizUrl>addordertocart/orderstatus?orderId=${orderHeader.orderId}</@ofbizUrl>" method="GET">
-    <input type="hidden" name="add_all" value="false">
-    <input type="hidden" name="orderId" value="${orderHeader.orderId}">
-    ${screens.render("component://ecommerce/widget/OrderScreens.xml#orderheader")}
-    <br/>
-    ${screens.render("component://productfromthailand/widget/OrderScreens.xml#orderitems")}
-  </form>
 
-<#else>
-  <h3>${uiLabelMap.OrderSpecifiedNotFound}.</h3>
-</#if>
+<div id="main-container" class="container">
+    <div class="panel-smart">
+        <div class="mainrightonly order-status">
+        <#if orderHeader?has_content>
+          <form name="addCommonToCartForm" action="<@ofbizUrl>addordertocart/orderstatus?orderId=${orderHeader.orderId}</@ofbizUrl>" method="GET">
+            <input type="hidden" name="add_all" value="false">
+            <input type="hidden" name="orderId" value="${orderHeader.orderId}">
+            ${screens.render("component://productfromthailand/widget/OrderScreens.xml#orderheader")}
+            <br/>
+            ${screens.render("component://productfromthailand/widget/OrderScreens.xml#orderitems")}
+          </form>
+        <#else>
+          <h3>${uiLabelMap.OrderSpecifiedNotFound}.</h3>
+        </#if>
+        </div>
+    </div>
 </div>

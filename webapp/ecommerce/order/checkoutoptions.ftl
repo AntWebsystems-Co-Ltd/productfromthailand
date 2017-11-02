@@ -69,440 +69,275 @@ function submitForm(form, mode, value) {
         form.submit();
     }
 }
-
 </script>
 
-<#assign shipping = !shoppingCart.containAllWorkEffortCartItems()> <#-- contains items which need shipping? -->
-<form method="post" name="checkoutInfoForm" style="margin:0;">
-  <input type="hidden" name="checkoutpage" value="quick"/>
-  <input type="hidden" name="BACK_PAGE" value="quickcheckout"/>
-
-  <table width="100%" border="0" cellpadding="0" cellspacing="0">
-    <tr valign="top">
-      <td height="100%">
-        <div class="screenlet" style="height: 100%;">
-            <div class="screenlet-title-bar">
-                <#if shipping == true>
-                    <div class="h3">1)&nbsp;${uiLabelMap.OrderWhereShallWeShipIt}?</div>
-                <#else>
-                    <div class="h3">1)&nbsp;${uiLabelMap.OrderInformationAboutYou}</div>
-                </#if>
-            </div>
-            <div class="screenlet-body" style="height: 100%;">
-                <table width="100%" border="0" cellpadding="1" cellspacing="0">
-                  <tr>
-                    <td colspan="2">
-                      <span>${uiLabelMap.OrderShipToParty}:</span>
-                      <select name="shipToCustomerPartyId" onChange="javascript:submitForm(document.checkoutInfoForm, 'SC', null);">
-                          <#list cartParties as cartParty>
-                          <option value="${cartParty}">${cartParty}</option>
-                          </#list>
-                      </select>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <span>${uiLabelMap.CommonAdd}:</span>
-                      <a href="javascript:submitForm(document.checkoutInfoForm, 'NA', '');" class="buttontext">${uiLabelMap.PartyAddNewAddress}</a>
-                    </td>
-                  </tr>
-                  <#if (shoppingCart.getTotalQuantity() > 1) && !shoppingCart.containAllWorkEffortCartItems()> <#-- no splitting when only rental items -->
-                    <tr><td colspan="2"><hr/></td></tr>
-                    <tr>
-                      <td colspan="2" align="center">
-                        <a href="<@ofbizUrl>splitship</@ofbizUrl>" class="buttontext">${uiLabelMap.OrderSplitIntoMultipleShipments}</a>
-                        <#if (shoppingCart.getShipGroupSize() > 1)>
-                          <div style="color: red;">${uiLabelMap.OrderNOTEMultipleShipmentsExist}.</div>
-                        </#if>
-                      </td>
-                    </tr>
-                  </#if>
-                   <#if shippingContactMechList?has_content>
-                     <tr><td colspan="2"><hr/></td></tr>
-                     <#list shippingContactMechList as shippingContactMech>
-                       <#assign shippingAddress = shippingContactMech.getRelatedOne("PostalAddress")>
-                       <tr>
-                         <td valign="top" width="1%">
-                           <input type="radio" name="shipping_contact_mech_id" value="${shippingAddress.contactMechId}" onclick="javascript:submitForm(document.checkoutInfoForm, 'SA', null);"<#if shoppingCart.getShippingContactMechId()?default("") == shippingAddress.contactMechId> checked="checked"</#if>/>
-                         </td>
-                         <td valign="top" width="99%">
-                           <div>
-                             <#if shippingAddress.toName?has_content><b>${uiLabelMap.CommonTo}:</b>&nbsp;${shippingAddress.toName}<br/></#if>
-                             <#if shippingAddress.attnName?has_content><b>${uiLabelMap.PartyAddrAttnName}:</b>&nbsp;${shippingAddress.attnName}<br/></#if>
-                             <#if shippingAddress.address1?has_content>${shippingAddress.address1}<br/></#if>
-                             <#if shippingAddress.address2?has_content>${shippingAddress.address2}<br/></#if>
-                             <#if shippingAddress.city?has_content>${shippingAddress.city}</#if>
-                             <#if shippingAddress.stateProvinceGeoId?has_content><br/>${shippingAddress.stateProvinceGeoId}</#if>
-                             <#if shippingAddress.postalCode?has_content><br/>${shippingAddress.postalCode}</#if>
-                             <#if shippingAddress.countryGeoId?has_content><br/>${shippingAddress.countryGeoId}</#if>
-                             <a href="javascript:submitForm(document.checkoutInfoForm, 'EA', '${shippingAddress.contactMechId}');" class="buttontext">${uiLabelMap.CommonUpdate}</a>
-                           </div>
-                         </td>
-                       </tr>
-                       <#if shippingContactMech_has_next>
-                         <tr><td colspan="2"><hr/></td></tr>
-                       </#if>
-                     </#list>
-                   </#if>
-                 </table>
-
-                <#-- Party Tax Info -->
-                <#-- commented out by default because the TaxAuthority drop-down is just too wide...
-                <hr/>
-                <div>&nbsp;${uiLabelMap.PartyTaxIdentification}</div>
-                ${screens.render("component://order/widget/ordermgr/OrderEntryOrderScreens.xml#customertaxinfo")}
-                -->
-            </div>
-        </div>
-      </td>
-      <td bgcolor="white" width="1">&nbsp;&nbsp;</td>
-      <td height="100%">
-        <div class="screenlet" style="height: 100%;">
-            <#--div class="screenlet-title-bar">
-                <#if shipping == true>
-                    <div class="h3">2)&nbsp;${uiLabelMap.OrderHowShallWeShipIt}?</div>
-                <#else>
-                    <div class="h3">2)&nbsp;${uiLabelMap.OrderOptions}?</div>
-                </#if>
-            </div-->
-            <div class="screenlet-body" style="height: 100%;">
-                <table width="100%" cellpadding="1" border="0" cellpadding="0" cellspacing="0">
-                 <#if shipping == true>
-                  <#--list carrierShipmentMethodList as carrierShipmentMethod>
-                    <#assign shippingMethod = carrierShipmentMethod.shipmentMethodTypeId + "@" + carrierShipmentMethod.partyId>
-                    <tr>
-                      <td width="1%" valign="top">
-                        <input type="radio" name="shipping_method" value="${shippingMethod}" <#if shippingMethod == chosenShippingMethod?default("N@A")>checked="checked"</#if>/>
-                      </td>
-                      <td valign="top">
-                        <div>
-                          <#if shoppingCart.getShippingContactMechId()?exists>
-                            <#assign shippingEst = shippingEstWpr.getShippingEstimate(carrierShipmentMethod)?default(-1)>
-                          </#if>
-                          <#if carrierShipmentMethod.partyId != "_NA_">${carrierShipmentMethod.partyId?if_exists}&nbsp;</#if>${carrierShipmentMethod.description?if_exists}
-                          <#if shippingEst?has_content> - <#if (shippingEst > -1)><@ofbizCurrency amount=shippingEst isoCode=shoppingCart.getCurrency()/><#else>${uiLabelMap.OrderCalculatedOffline}</#if></#if>
+<!-- Main Container Starts -->
+<form method="post" name="checkoutInfoForm" id="checkoutInfoForm" action="checkShippingAddress">
+    <input type="hidden" name="checkoutpage" value="quick"/>
+    <input type="hidden" name="BACK_PAGE" value="quickcheckout"/>
+    <input type="hidden" name="may_split" value="false"/>
+    <input type="hidden" name="is_gift" value="false"/>
+    <input type="hidden" name="partyId" value="${partyId!}"/>
+    <input type="hidden" id="shipping_contact_mech_id" name="shipping_contact_mech_id" value="${shipToContactMechId!}"/>
+    <div id="main-container" class="container text-center-xs">
+        <div class="panel-smart">
+        <!-- Nested Row Starts -->
+            <div class="row">
+            <!-- Mainarea Starts -->
+                <div class="col-sm-8 col-xs-12 fs-1">
+                <!-- Nested Row Starts -->
+                    <div class="row">
+                    <!-- Shipping Address Starts -->
+                        <div class="col-md-6 col-xs-12">
+                        <!-- Heading Starts -->
+                            <h3 class="hs-1 text-center-xs text-color-6 text-uppercase text-bold">${uiLabelMap.OrderShippingAddress}</h3>
+                        <!-- Heading Ends -->
+                        <!-- Delivery Method Starts -->
+                            <div class="form-group">
+                                <label class="text-uppercase" for="shipping-deliver">${uiLabelMap.OrderSelectShippingMethod} <span class="text-color-5 font2">*</span></label>
+                                <select id="shipping_method" name="shipping_method" class="form-control flat animation required">
+                                    <#list carrierShipmentMethodList as carrierShipmentMethod>
+                                        <#assign shippingMethod = carrierShipmentMethod.shipmentMethodTypeId + "@" + carrierShipmentMethod.partyId>
+                                        <option value="${shippingMethod!}" <#if !parameters.shipping_method?exists && shippingMethod == "NO_SHIPPING@_NA_">selected="selected"</#if>>
+                                            <#if shoppingCart.getShippingContactMechId()??>
+                                                <#assign shippingEst = shippingEstWpr.getShippingEstimate(carrierShipmentMethod)?default(-1)>
+                                            </#if>
+                                            <#if carrierShipmentMethod.partyId != "_NA_">${carrierShipmentMethod.partyId!}&nbsp;</#if>${carrierShipmentMethod.description!}
+                                            <#if shippingEst?has_content> - <#if (shippingEst > -1)><@ofbizCurrency amount=shippingEst isoCode=shoppingCart.getCurrency()/><#else>${uiLabelMap.OrderCalculatedOffline}</#if></#if>
+                                        </option>
+                                    </#list>
+                                </select>
+                            </div>
+                        <!-- Delivery Method Ends -->
+                        <!-- Destination Name Starts -->
+                            <div class="form-group">
+                                <label class="text-uppercase" for="shipping-lname">${uiLabelMap.OrderDestination} ${uiLabelMap.PartyName} <span class="text-color-5 font2">*</span></label>
+                                <input type="text" class="form-control flat animation required" id="toName" name="toName" value="${firstName!} ${lastName!} ${groupName!}">
+                            </div>
+                        <!-- Destination Name Ends -->
+                        <!-- Address1 Starts -->
+                            <div class="form-group">
+                                <label class="text-uppercase" for="shipping-address">${uiLabelMap.PartyAddressLine1} <span class="text-color-5 font2">*</span></label>
+                                <textarea name="address1" id="shipToAddress1" rows="5" class="form-control flat animation required" maxlength="255">${shipToAddress1!}</textarea>
+                            </div>
+                        <!-- Address1 Ends -->
+                        <!-- Address2 Starts -->
+                            <#-- <div class="form-group">
+                                <label class="text-uppercase" for="shipping-address">${uiLabelMap.PartyAddressLine2}</label>
+                                <input type="text" class="form-control flat animation" id="shipToAddress2" name="shipToAddress1" value="${shipToAddress2!}" maxlength="255">
+                            </div> -->
+                        <!-- Address2 Ends -->
+                        <!-- City Starts -->
+                            <div class="form-group">
+                                <label class="text-uppercase" for="shipping-city">${uiLabelMap.CommonCity} <span class="text-color-5 font2">*</span></label>
+                                <input type="text" class="form-control flat animation required" id="shipToCity" name="city" value="${shipToCity!}">
+                            </div>
+                        <!-- City Ends -->
+                        <!-- Zip Code Starts -->
+                            <div class="form-group">
+                                <label class="text-uppercase" for="shipping-zipcode">${uiLabelMap.PartyZipCode} <span class="text-color-5 font2">*</span></label>
+                                <input type="text" class="form-control flat animation required" id="shipToPostalCode" name="postalCode" value="${shipToPostalCode!}">
+                            </div>
+                        <!-- Zip Code Ends -->
+                        <!-- Country Starts -->
+                            <div class="form-group">
+                                <label class="text-uppercase" for="shipping-country">${uiLabelMap.CommonCountry} <span class="text-color-5 font2">*</span></label>
+                                <select name="countryGeoId" id="checkoutInfoForm_countryGeoId" class="form-control flat animation required">
+                                    ${screens.render("component://common/widget/CommonScreens.xml#countries")}
+                                    <#assign defaultCountryGeoId = Static["org.apache.ofbiz.entity.util.EntityUtilProperties"].getPropertyValue("general", "country.geo.id.default", delegator)>
+                                    <option selected="selected" value="${defaultCountryGeoId}">
+                                    <#assign countryGeo = delegator.findOne("Geo",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("geoId",defaultCountryGeoId), false)>
+                                    ${countryGeo.get("geoName",locale)}
+                                    </option>
+                                </select>
+                            </div>
+                        <!-- Country Ends -->
+                        <!-- State Starts -->
+                            <div class="form-group">
+                                <label class="text-uppercase" for="shipping-state">${uiLabelMap.CommonState} <span class="text-color-5 font2">*</span></label>
+                                <select class="form-control required" name="stateProvinceGeoId" id="checkoutInfoForm_stateProvinceGeoId"></select>
+                            </div>
+                        <!-- State Ends -->
                         </div>
-                      </td>
-                    </tr>
-                  </#list>
-                  <#if !carrierShipmentMethodList?exists || carrierShipmentMethodList?size == 0>
-                    <tr>
-                      <td width="1%" valign="top">
-                        <input type="radio" name="shipping_method" value="Default" checked="checked"/>
-                      </td>
-                      <td valign="top">
-                        <div>${uiLabelMap.OrderUseDefault}.</div>
-                      </td>
-                    </tr>
-                  </#if>
-                  <tr><td colspan="2"><hr/></td></tr-->
-                  <input name="shipping_method" type="hidden" value="Default"/>
-                  <tr>
-                    <td colspan="2">
-                      <h2>${uiLabelMap.OrderShipAllAtOnce}?</h2>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td valign="top">
-                      <input type="radio" <#if shoppingCart.getMaySplit()?default("N") == "N">checked="checked"</#if> name="may_split" value="false"/>
-                    </td>
-                    <td valign="top">
-                      <div>${uiLabelMap.OrderPleaseWaitUntilBeforeShipping}.</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td valign="top">
-                      <input <#if shoppingCart.getMaySplit()?default("N") == "Y">checked="checked"</#if> type="radio" name="may_split" value="true"/>
-                    </td>
-                    <td valign="top">
-                      <div>${uiLabelMap.OrderPleaseShipItemsBecomeAvailable}.</div>
-                    </td>
-                  </tr>
-                  <tr><td colspan="2"><hr/></td></tr>
-                 <#else/>
-                    <input type="hidden" name="shipping_method" value="NO_SHIPPING@_NA_"/>
-                    <input type="hidden" name="may_split" value="false"/>
-                 </#if>
-                  <tr>
-                    <td colspan="2">
-                      <h2>${uiLabelMap.OrderSpecialInstructions}</h2>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <textarea cols="30" rows="3" wrap="hard" name="shipping_instructions">${shoppingCart.getShippingInstructions()?if_exists}</textarea>
-                    </td>
-                  </tr>
-                  <input type="hidden" name="is_gift" value="false"/>
-                  <tr><td colspan="2"><hr/></td></tr>
-                  <tr>
-                    <td colspan="2">
-                      <h2>${uiLabelMap.PartyEmailAddresses}</h2>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2">
-                      <div>${uiLabelMap.OrderEmailSentToFollowingAddresses}:</div>
-                      <div>
-                      <b>
-                      <#list emailList as email>
-                        ${email.infoString?if_exists}<#if email_has_next>,</#if>
-                      </#list>
-                      </b>
-                      </div>
-                      <div>${uiLabelMap.OrderUpdateEmailAddress} <a href="<#if customerDetailLink?exists>${customerDetailLink}${shoppingCart.getPartyId()}" target="partymgr"
-                        <#else><@ofbizUrl>viewprofile?DONE_PAGE=quickcheckout</@ofbizUrl>"</#if> class="buttontext">${uiLabelMap.PartyProfile}</a>.</div>
-                      <br/>
-                      <div>${uiLabelMap.OrderCommaSeperatedEmailAddresses}:</div>
-                      <input type="text" size="30" name="order_additional_emails" value="${shoppingCart.getOrderAdditionalEmails()?if_exists}"/>
-                    </td>
-                  </tr>
-                </table>
+                    <!-- Shipping Address Ends -->
+                        <div class="col-md-6 col-xs-12">
+                        <!-- Heading Starts -->
+                            <h3 class="hs-1 text-center-xs text-color-6 text-uppercase text-bold">${uiLabelMap.AccountingPaymentMethod}</h3>
+                        <!-- Heading Ends -->
+                            <#if productStorePaymentMethodTypeIdMap.EXT_OFFLINE?exists>
+                                <div class="form-group">
+                                    <input type="radio" name="checkOutPaymentId" value="EXT_OFFLINE" <#if "EXT_OFFLINE" == checkOutPaymentId>checked="checked"</#if>/>${uiLabelMap.OrderMoneyOrder}
+                                </div>
+                            </#if>
+                            <#if productStorePaymentMethodTypeIdMap.EXT_PAYPAL?exists>
+                                <div class="form-group">
+                                    <input type="radio" name="checkOutPaymentId" value="EXT_PAYPAL" checked="checked"/>${uiLabelMap.AccountingPayWithPayPal}
+                                </div>
+                            </#if>
+                            <#if productStorePaymentMethodTypeIdMap.EXT_COD?exists>
+                                <div class="form-group">
+                                    <input type="radio" name="checkOutPaymentId" value="EXT_COD" <#if "EXT_COD" == checkOutPaymentId>checked="checked"</#if>/>${uiLabelMap.OrderCOD}
+                                </div>
+                            </#if>
+                            <#if productStorePaymentMethodTypeIdMap.EXT_WORLDPAY?exists>
+                                <div class="form-group">
+                                    <input type="radio" name="checkOutPaymentId" value="EXT_WORLDPAY" <#if "EXT_WORLDPAY" == checkOutPaymentId>checked="checked"</#if>/>${uiLabelMap.AccountingPayWithWorldPay}
+                                </div>
+                            </#if>
+                            <#-- financial accounts -->
+                            <#if finAccounts?has_content>
+                                <#list finAccounts as finAccount>
+                                <div class="form-group">
+                                    <input type="radio" name="checkOutPaymentId" value="FIN_ACCOUNT|${finAccount.finAccountId}" <#if "FIN_ACCOUNT" == checkOutPaymentId>checked="checked"</#if>/>${uiLabelMap.AccountingFinAccount} #${finAccount.finAccountId}
+                                </div>
+                                </#list>
+                            </#if>
+                            <#--
+                            <#if paymentMethodList?has_content>
+                                <#list paymentMethodList as paymentMethod>
+                                    <#if paymentMethod.paymentMethodTypeId == "CREDIT_CARD">
+                                        <#if productStorePaymentMethodTypeIdMap.CREDIT_CARD?exists>
+                                            <#assign creditCard = paymentMethod.getRelatedOne("CreditCard")>
+                                            <div class="form-group">
+                                                <input type="radio" name="checkOutPaymentId" value="${paymentMethod.paymentMethodId}" <#if shoppingCart.isPaymentSelected(paymentMethod.paymentMethodId)>checked="checked"</#if>/>
+                                            </div>
+                                        </#if>
+                                    </#if>
+                                </#list>
+                            </#if>
+                            <#if productStorePaymentMethodTypeIdMap.EXT_BILLACT?exists>
+                                <#if billingAccountList?has_content>
+                                    <select id="billingAccountId" name="billingAccountId" class="form-control flat animation" required>
+                                        <option value=""></option>
+                                        <#list billingAccountList as billingAccount>
+                                            <#assign availableAmount = billingAccount.accountBalance?double>
+                                            <#assign accountLimit = billingAccount.accountLimit?double>
+                                            <option value="${billingAccount.billingAccountId}" <#if billingAccount.billingAccountId == selectedBillingAccountId?default("")>selected</#if>>${billingAccount.description?default("")} [${billingAccount.billingAccountId}] Available: <@ofbizCurrency amount=availableAmount isoCode=billingAccount.accountCurrencyUomId/> Limit: <@ofbizCurrency amount=accountLimit isoCode=billingAccount.accountCurrencyUomId/></option>
+                                        </#list>
+                                    </select>
+                                </#if>
+                            </#if>
+                            -->
+                        </div>
+                    </div>
+                <!-- Nested Row Ends -->
+                </div>
+            <!-- Mainarea Ends -->
+            <!-- Spacer Starts -->
+                <div class="col-xs-12 hidden visible-xs">
+                    <div class="spacer-big"></div>
+                </div>
+            <!-- Spacer Ends -->
+            <!-- Sidearea Starts -->
+                <div class="col-sm-4 col-xs-12 fs-1">
+                <!-- Starts -->
+                    <div class="sbox-1">
+                    <!-- Your Order Details Starts -->
+                        <h5 class="hs-1 text-color-5 text-bold text-uppercase text-center-xs">${uiLabelMap.PFTYourOrderDetails}</h5>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>${uiLabelMap.CommonProduct}</th>
+                                        <th class="text-center">${uiLabelMap.CommonQty}</th>
+                                        <th class="text-right">${uiLabelMap.CommonTotal}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <#list shoppingCart.items() as cartLine>
+                                        <tr>
+                                            <td>${cartLine.getName()?if_exists}</td>
+                                            <td class="text-center">x${cartLine.getQuantity()?string.number?default(0)}</td>
+                                            <td class="text-right"><@ofbizCurrency amount=cartLine.getDisplayItemSubTotal() isoCode=shoppingCart.getCurrency()/></td>
+                                        </tr>
+                                    </#list>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <#assign orderAdjustmentsTotal = 0 />
+                                        <#list shoppingCart.getAdjustments() as cartAdjustment>
+                                          <#assign orderAdjustmentsTotal = orderAdjustmentsTotal +
+                                              Static["org.apache.ofbiz.order.order.OrderReadHelper"]
+                                              .calcOrderAdjustment(cartAdjustment, shoppingCart.getSubTotal()) />
+                                        </#list>
+                                        <th colspan="2">${uiLabelMap.EcommerceAdjustment}</th>
+                                        <td class="text-right"><@ofbizCurrency amount=orderAdjustmentsTotal isoCode=shoppingCart.getCurrency() /></td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="2">${uiLabelMap.CommonSubtotal}</th>
+                                        <td class="text-right"><@ofbizCurrency amount=shoppingCart.getDisplayGrandTotal() isoCode=shoppingCart.getCurrency()/></td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="2">${uiLabelMap.OrderShippingAndHandling}</th>
+                                        <td class="text-right"><@ofbizCurrency amount=shoppingCart.getTotalShipping() isoCode=shoppingCart.getCurrency() /></td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="2">${uiLabelMap.OrderSalesTax}</th>
+                                        <td class="text-right"><@ofbizCurrency amount=shoppingCart.getTotalSalesTax() isoCode=shoppingCart.getCurrency() /></td>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="2">${uiLabelMap.OrderGrandTotal}</th>
+                                        <td class="text-right"><@ofbizCurrency amount=shoppingCart.getDisplayGrandTotal() isoCode=shoppingCart.getCurrency() /></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    <!-- Your Order Details Ends -->
+                    <!-- Spacer Starts -->
+                        <div class="spacer"></div>
+                    <!-- Spacer Ends -->
+                        <div class="checkbox">
+                            <label class="checkbox-style-1">
+                                <input type="checkbox"> ${uiLabelMap.PFTIHaveReadAndAcceptThe} <a href="<@ofbizUrl>showhelpcontent</@ofbizUrl>?contentId=HELP_TERMSANDCON&nodeTrailCsv=HELP_TERMSANDCON">${uiLabelMap.PFTTermsAndCons}</a>
+                            </label>
+                        </div>
+                        <button type="submit" id="finalOrderBtn" class="btn btn-secondary btn-block btn-style-1 animation flat text-uppercase"
+                            onclick="javascript:$(document.checkoutInfoForm).submit();" disabled>
+                            ${uiLabelMap.OrderContinueToFinalOrderReview}
+                        </button>
+                    </div>
+                <!-- Ends -->
+                </div>
+            <!-- Sidearea Ends -->
             </div>
         </div>
-
-      </td>
-      <td bgcolor="white" width="1">&nbsp;&nbsp;</td>
-      <td height="100%">
-          <#-- Payment Method Selection -->
-
-        <div class="screenlet" style="height: 100%;">
-            <div class="screenlet-title-bar">
-                <div class="h3">2)${uiLabelMap.OrderHowShallYouPay}?</div>
-            </div>
-            <div class="screenlet-body" style="height: 100%;">
-                <table width="100%" cellpadding="1" cellspacing="0" border="0">
-                  <tr>
-                    <td colspan="2">
-                      <span>${uiLabelMap.CommonAdd}:</span>
-                      <#if productStorePaymentMethodTypeIdMap.CREDIT_CARD?exists>
-                        <a href="javascript:submitForm(document.checkoutInfoForm, 'NC', '');" class="buttontext">${uiLabelMap.AccountingCreditCard}</a>
-                      </#if>
-                      <#if productStorePaymentMethodTypeIdMap.EFT_ACCOUNT?exists>
-                        <a href="javascript:submitForm(document.checkoutInfoForm, 'NE', '');" class="buttontext">${uiLabelMap.AccountingEFTAccount}</a>
-                      </#if>
-                    </td>
-                  </tr>
-                  <tr><td colspan="2"><hr/></td></tr>
-                  <tr>
-                    <td colspan="2" align="center">
-                      <a href="javascript:submitForm(document.checkoutInfoForm, 'SP', '');" class="buttontext">${uiLabelMap.AccountingSplitPayment}</a>
-                    </td>
-                  </tr>
-                  <tr><td colspan="2"><hr/></td></tr>
-                  <#if productStorePaymentMethodTypeIdMap.EXT_OFFLINE?exists>
-                  <tr>
-                    <td width="1%">
-                      <input type="radio" name="checkOutPaymentId" value="EXT_OFFLINE" <#if "EXT_OFFLINE" == checkOutPaymentId>checked="checked"</#if>/>
-                    </td>
-                    <td width="50%">
-                      <span>${uiLabelMap.OrderMoneyOrder}</span>
-                    </td>
-                  </tr>
-                  </#if>
-                  <#if productStorePaymentMethodTypeIdMap.EXT_COD?exists>
-                  <tr>
-                    <td width="1%">
-                      <input type="radio" name="checkOutPaymentId" value="EXT_COD" <#if "EXT_COD" == checkOutPaymentId>checked="checked"</#if>/>
-                    </td>
-                    <td width="50%">
-                      <span>${uiLabelMap.OrderCOD}</span>
-                    </td>
-                  </tr>
-                  </#if>
-                  <#if productStorePaymentMethodTypeIdMap.EXT_WORLDPAY?exists>
-                  <tr>
-                    <td width="1%">
-                      <input type="radio" name="checkOutPaymentId" value="EXT_WORLDPAY" <#if "EXT_WORLDPAY" == checkOutPaymentId>checked="checked"</#if>/>
-                    </td>
-                    <td width="50%">
-                      <span>${uiLabelMap.AccountingPayWithWorldPay}</span>
-                    </td>
-                  </tr>
-                  </#if>
-                  <#if productStorePaymentMethodTypeIdMap.EXT_PAYPAL?exists>
-                  <tr>
-                    <td width="1%">
-                      <input type="radio" name="checkOutPaymentId" value="EXT_PAYPAL" <#if "EXT_PAYPAL" == checkOutPaymentId>checked="checked"</#if>/>
-                    </td>
-                    <td width="50%">
-                      <span>${uiLabelMap.AccountingPayWithPayPal}</span>
-                    </td>
-                  </tr>
-                  </#if>
-                  <tr><td colspan="2"><hr/></td></tr>
-
-                  <#-- financial accounts -->
-                  <#list finAccounts as finAccount>
-                      <tr>
-                        <td width="1%">
-                          <input type="radio" name="checkOutPaymentId" value="FIN_ACCOUNT|${finAccount.finAccountId}" <#if "FIN_ACCOUNT" == checkOutPaymentId>checked="checked"</#if>/>
-                        </td>
-                        <td width="50%">
-                          <span>${uiLabelMap.AccountingFinAccount} #${finAccount.finAccountId}</span>
-                        </td>
-                      </tr>
-                  </#list>
-
-                  <#if !paymentMethodList?has_content>
-                    <#if (!finAccounts?has_content)>
-                      <tr>
-                        <td colspan="2">
-                          <div><b>${uiLabelMap.AccountingNoPaymentMethods}</b></div>
-                        </td>
-                      </tr>
-                    </#if>
-                  <#else>
-                  <#list paymentMethodList as paymentMethod>
-                    <#if paymentMethod.paymentMethodTypeId == "CREDIT_CARD">
-                     <#if productStorePaymentMethodTypeIdMap.CREDIT_CARD?exists>
-                      <#assign creditCard = paymentMethod.getRelatedOne("CreditCard")>
-                      <tr>
-                        <td width="1%">
-                          <input type="radio" name="checkOutPaymentId" value="${paymentMethod.paymentMethodId}" <#if shoppingCart.isPaymentSelected(paymentMethod.paymentMethodId)>checked="checked"</#if>/>
-                        </td>
-                        <td width="50%">
-                          <span>CC:&nbsp;${Static["org.apache.ofbiz.party.contact.ContactHelper"].formatCreditCard(creditCard)}</span>
-                          <a href="javascript:submitForm(document.checkoutInfoForm, 'EC', '${paymentMethod.paymentMethodId}');" class="buttontext">${uiLabelMap.CommonUpdate}</a>
-                          <#if paymentMethod.description?has_content><br/><span>(${paymentMethod.description})</span></#if>
-                          &nbsp;${uiLabelMap.OrderCardSecurityCode}&nbsp;<input type="text" size="5" maxlength="10" name="securityCode_${paymentMethod.paymentMethodId}" value=""/>
-                        </td>
-                      </tr>
-                     </#if>
-                    <#elseif paymentMethod.paymentMethodTypeId == "EFT_ACCOUNT">
-                     <#if productStorePaymentMethodTypeIdMap.EFT_ACCOUNT?exists>
-                      <#assign eftAccount = paymentMethod.getRelatedOne("EftAccount")>
-                      <tr>
-                        <td width="1%">
-                          <input type="radio" name="checkOutPaymentId" value="${paymentMethod.paymentMethodId}" <#if shoppingCart.isPaymentSelected(paymentMethod.paymentMethodId)>checked="checked"</#if>/>
-                        </td>
-                        <td width="50%">
-                          <span>${uiLabelMap.AccountingEFTAccount}:&nbsp;${eftAccount.bankName?if_exists}: ${eftAccount.accountNumber?if_exists}</span>
-                          <a href="javascript:submitForm(document.checkoutInfoForm, 'EE', '${paymentMethod.paymentMethodId}');" class="buttontext">${uiLabelMap.CommonUpdate}</a>
-                          <#if paymentMethod.description?has_content><br/><span>(${paymentMethod.description})</span></#if>
-                        </td>
-                      </tr>
-                     </#if>
-                    <#elseif paymentMethod.paymentMethodTypeId == "GIFT_CARD">
-                     <#if productStorePaymentMethodTypeIdMap.GIFT_CARD?exists>
-                      <#assign giftCard = paymentMethod.getRelatedOne("GiftCard")>
-
-                      <#if giftCard?has_content && giftCard.cardNumber?has_content>
-                        <#assign giftCardNumber = "">
-                        <#assign pcardNumber = giftCard.cardNumber>
-                        <#if pcardNumber?has_content>
-                          <#assign psize = pcardNumber?length - 4>
-                          <#if 0 < psize>
-                            <#list 0 .. psize-1 as foo>
-                              <#assign giftCardNumber = giftCardNumber + "*">
-                            </#list>
-                            <#assign giftCardNumber = giftCardNumber + pcardNumber[psize .. psize + 3]>
-                          <#else>
-                            <#assign giftCardNumber = pcardNumber>
-                          </#if>
-                        </#if>
-                      </#if>
-
-                      <tr>
-                        <td width="1%">
-                          <input type="radio" name="checkOutPaymentId" value="${paymentMethod.paymentMethodId}" <#if shoppingCart.isPaymentSelected(paymentMethod.paymentMethodId)>checked="checked"</#if>/>
-                        </td>
-                        <td width="50%">
-                          <span>${uiLabelMap.AccountingGift}:&nbsp;${giftCardNumber}</span>
-                          <a href="javascript:submitForm(document.checkoutInfoForm, 'EG', '${paymentMethod.paymentMethodId}');" class="buttontext">[${uiLabelMap.CommonUpdate}]</a>
-                          <#if paymentMethod.description?has_content><br/><span>(${paymentMethod.description})</span></#if>
-                        </td>
-                      </tr>
-                     </#if>
-                    </#if>
-                  </#list>
-                  </#if>
-
-                <#-- special billing account functionality to allow use w/ a payment method -->
-                <#if productStorePaymentMethodTypeIdMap.EXT_BILLACT?exists>
-                  <#if billingAccountList?has_content>
-                    <tr><td colspan="2"><hr/></td></tr>
-                    <tr>
-                      <td width="1%">
-                        <select name="billingAccountId">
-                          <option value=""></option>
-                            <#list billingAccountList as billingAccount>
-                              <#assign availableAmount = billingAccount.accountBalance?double>
-                              <#assign accountLimit = billingAccount.accountLimit?double>
-                              <option value="${billingAccount.billingAccountId}" <#if billingAccount.billingAccountId == selectedBillingAccountId?default("")>selected</#if>>${billingAccount.description?default("")} [${billingAccount.billingAccountId}] Available: <@ofbizCurrency amount=availableAmount isoCode=billingAccount.accountCurrencyUomId/> Limit: <@ofbizCurrency amount=accountLimit isoCode=billingAccount.accountCurrencyUomId/></option>
-                            </#list>
-                        </select>
-                      </td>
-                      <td width="50%">
-                        <span>${uiLabelMap.FormFieldTitle_billingAccountId}</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td width="1%" align="right">
-                        <input type="text" size="5" name="billingAccountAmount" value=""/>
-                      </td>
-                      <td width="50%">
-                        ${uiLabelMap.OrderBillUpTo}
-                      </td>
-                    </tr>
-                  </#if>
-                </#if>
-                <tr><td colspan="2"><hr/></td></tr>
-                <#-- end of special billing account functionality -->
-
-                <#--if productStorePaymentMethodTypeIdMap.GIFT_CARD?exists>
-                  <tr><td colspan="2"><hr/></td></tr>
-                  <tr>
-                    <td width="1%">
-                      <input type="checkbox" name="addGiftCard" value="Y"/>
-                    </td>
-                    <td width="50%">
-                      <span>${uiLabelMap.AccountingUseGiftCardNotOnFile}</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td width="1%">
-                      <div>${uiLabelMap.AccountingNumber}</div>
-                    </td>
-                    <td width="50%">
-                      <input type="text" size="15" name="giftCardNumber" value="${(requestParameters.giftCardNumber)?if_exists}" onFocus="document.checkoutInfoForm.addGiftCard.checked=true;"/>
-                    </td>
-                  </tr>
-                  <#if shoppingCart.isPinRequiredForGC(delegator)>
-                  <tr>
-                    <td width="1%">
-                      <div>${uiLabelMap.AccountingPIN}</div>
-                    </td>
-                    <td width="50%">
-                      <input type="text" size="10" name="giftCardPin" value="${(requestParameters.giftCardPin)?if_exists}" onFocus="document.checkoutInfoForm.addGiftCard.checked=true;"/>
-                    </td>
-                  </tr>
-                  </#if>
-                  <tr>
-                    <td width="1%">
-                      <div>${uiLabelMap.AccountingAmount}</div>
-                    </td>
-                    <td width="50%">
-                      <input type="text" size="6" name="giftCardAmount" value="${(requestParameters.giftCardAmount)?if_exists}" onFocus="document.checkoutInfoForm.addGiftCard.checked=true;"/>
-                    </td>
-                  </tr>
-                </#if-->
-                </table>
-            </div>
-        </div>
-        <#-- End Payment Method Selection -->
-      </td>
-    </tr>
-  </table>
+    <!-- Nested Row Ends -->
+    </div>
+<!-- Main Container Ends -->
 </form>
 
-<table width="100%">
-  <tr valign="top">
-    <td>
-      &nbsp;<a href="javascript:submitForm(document.checkoutInfoForm, 'CS', '');" class="buttontextbig">${uiLabelMap.OrderBacktoShoppingCart}</a>
-    </td>
-    <td align="right">
-      <a href="javascript:submitForm(document.checkoutInfoForm, 'DN', '');" class="buttontextbig">${uiLabelMap.OrderContinueToFinalOrderReview}</a>
-    </td>
-  </tr>
-</table>
+<script>
+jQuery(document).ready( function() {
+    jQuery("#checkoutInfoForm").validate({
+        submitHandler: function(form) {
+            checkShippingAddress();
+        }
+    });
+
+    $("#acceptcondition").change(function() {
+    console.log($("#acceptcondition").is(":checked"))
+        if ($("#acceptcondition").is(":checked")) {
+            $("#finalOrderBtn").prop("disabled", false);
+        } else {
+            $("#finalOrderBtn").prop("disabled", true);
+        }
+    })
+});
+
+function checkShippingAddress() {
+    waitSpinnerShow();
+    $.ajax({
+        url: 'checkShippingAddress',
+        type: 'POST',
+        data: $('#checkoutInfoForm').serialize(),
+        async: false,
+        success: function(data) {
+            waitSpinnerHide();
+            if (data.shipping_contact_mech_id) {
+                $("#shipping_contact_mech_id").val(data.shipping_contact_mech_id);
+                submitForm(document.checkoutInfoForm, 'DN', '');
+            }
+        }
+    });
+}
+</script>

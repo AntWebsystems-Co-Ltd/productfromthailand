@@ -33,163 +33,150 @@ under the License.
 </script>
 </#if>
 
-<h2>${uiLabelMap.PFTVerifySupplier}</h2>
-<div class="manualUpdateRegister">
-    <form id="newuserform" name="newuserform" method="post" action="updatesupplier" enctype="multipart/form-data">
-      <fieldset class="col">
-        <legend>${uiLabelMap.PartyPersonalInformation}</legend>
+<div id="main-container" class="container">
+  <div class="panal panel-smart">
+    <div class="panel-heading">
+      <h2>${uiLabelMap.PFTVerifySupplier}</h2>
+    </div>
+    <div class="panel-body">
+
+    <form id="newuserform" name="newuserform" method="post" action="updatesupplier" enctype="multipart/form-data" class="form-horizontal">
         <input type="hidden" name="partyId" value="${parameters.partyId!}"/>
         <input type="hidden" name="partyContentTypeId" value="INTERNAL"/>
         <input type="hidden" name="supplierType" value="SUPP_INDIVIDUAL"/>
         <#assign productStoreId = Static["org.apache.ofbiz.product.store.ProductStoreWorker"].getProductStoreId(request) />
-        <input type="hidden" name="productStoreId" value="${productStoreId?if_exists}" />
-        <table class="basic-table" cellspacing="0" width="90%">
-            <tr id="titleNameSupplier">
-                <td valign="middle" class="newsupplier" id="titleNameTitle" width="30%">${uiLabelMap.CommonTitle}</td>
-                <td width="1%"> : </td>
-                <td id="supplier_titleName" width="60%">
-                  <select name="USER_TITLE" id="USER_TITLE">
-                    <#if personalTitle?has_content >
-                      <option>${personalTitle!}</option>
-                      <option value="${personalTitle!}"> -- </option>
-                    <#else>
-                      <option value="">${uiLabelMap.CommonSelectOne}</option>
-                    </#if>
-                    <option>${uiLabelMap.CommonTitleMr}</option>
-                    <option>${uiLabelMap.CommonTitleMrs}</option>
-                    <option>${uiLabelMap.CommonTitleMs}</option>
-                    <option>${uiLabelMap.CommonTitleDr}</option>
-                  </select>
-                </td>
-            </tr>
-            <tr>
-                <td valign="middle" class="newsupplier" id="firstNameTitle">${uiLabelMap.PartyFirstName}</td>
-                <td> : </td>
-                <td id="supplier_firstName"><input type="text" name="firstName" id="firstName" value="${firstName!}"/> *</td>
-            </tr>
-            <tr>
-                <td valign="middle" class="newsupplier" id="lastNameTitle">${uiLabelMap.PartyLastName}</td>
-                <td> : </td>
-                <td id="supplier_lastName"><input type="text" name="lastName" id="lastName" value="${lastName!}"/> *</td>
-            </tr>
-            <tr>
-                <td valign="middle" class="newsupplier" id="idNoPassportNoTitle">${uiLabelMap.PFTTitleIdNoIdPassport}</td>
-                <td> : </td>
-                <td id="idNoPassportNo"><input type="text" name="idCardNo" id="newsupplier_idCardNo" class="required" value="${idCardNo!}" maxlength="30"/> *</td>
-            </tr>
-            <tr>
-                <td valign="middle" class="newsupplier" id="uploadIdNoScanTitle">${uiLabelMap.PFTTitleUploadIdScan}</td>
-                <td> : </td>
-                <td width="20%" align="right" valign="top">
-                    <input type="file" size="50" name="imageFileName" class="required"/> *
-                </td>
-            </tr>
-        </table>
-      </fieldset>
-      <fieldset class="col">
-          <legend>${uiLabelMap.PartyContactInformation}</legend>
-          <table class="basic-table" cellspacing="0" width="90%">
-              <tr>
-                <td valign="middle" class="newsupplier" width="30%">${uiLabelMap.CommonEmail}<span id="advice-validate-email-emailAddress" class="errorMessage" style="display:none">${uiLabelMap.PartyEmailAddressNotFormattedCorrectly}</span></td>
-                <td width="1%"> : </td>
-                <td width="60%">${emailAddress!}</td>
-              </tr>
-              <tr>
-                <td valign="middle" class="newsupplier">${uiLabelMap.PartyAddressLine1}<span id="advice-required-shipToAddress1" style="display: none" class="errorMessage">(required)</span></td>
-                <td> : </td>
-                <td><input type="text" name="shipToAddress1" id="shipToAddress1" class="required" value="${shipToAddress1!}"/> *</td>
-              </tr>
-              <tr>
-                <td valign="middle" class="newsupplier">${uiLabelMap.PartyAddressLine2}</td>
-                <td> : </td>
-                <td><input type="text" name="shipToAddress2" id="shipToAddress2" value="${shipToAddress2!}"/></td>
-              </tr>
-              <tr>
-                <td valign="middle" class="newsupplier">${uiLabelMap.CommonCity}<span id="advice-required-shipToCity" style="display: none" class="errorMessage">(required)</span></td>
-                <td> : </td>
-                <td><input type="text" name="shipToCity" id="shipToCity" class="required" value="${shipToCity!}"/> *</td>
-              </tr>
-              <tr>
-                <td valign="middle" class="newsupplier">${uiLabelMap.PartyZipCode}<span id="advice-required-shipToPostalCode" style="display: none" class="errorMessage">(required)</span></td>
-                <td> : </td>
-                <td><input type="text" name="shipToPostalCode" id="shipToPostalCode" class="required" value="${shipToPostalCode!}" maxlength="10"/> *</td>
-              </tr>
-              <tr>
-                <td valign="middle" class="newsupplier">${uiLabelMap.CommonCountry}</td>
-                <td width="1%"> : </td>
-                <td><select name="shipToCountryGeoId" id="newuserform_countryGeoId">
-                  ${screens.render("component://common/widget/CommonScreens.xml#countries")}
-                  <#assign defaultCountryGeoId =
-                      Static["org.apache.ofbiz.entity.util.EntityUtilProperties"].getPropertyValue("general",
-                      "country.geo.id.default", delegator)>
-                  <option selected="selected" value="${defaultCountryGeoId}">
-                    <#assign countryGeo = delegator.findOne("Geo",Static["org.apache.ofbiz.base.util.UtilMisc"]
-                        .toMap("geoId",defaultCountryGeoId), false)>
-                    ${countryGeo.get("geoName",locale)}
-                  </option>
-                </select></td>
-              </tr>
-              <tr>
-                <td valign="middle" class="newsupplier">${uiLabelMap.PartyState}</td>
-                <td width="1%"> : </td>
-                <td><select name="shipToStateProvinceGeoId" id="newuserform_stateProvinceGeoId"></select></td>
-              </tr>
-          </table>
-      </fieldset>
-      <fieldset>
-        <legend>${uiLabelMap.PartyPhoneNumbers}</legend>
-        <table class="basic-table" cellspacing="0" width="80%" summary="Tabular form for entering multiple telecom numbers for different purposes. Each row allows user to enter telecom number for a purpose">
+        <input type="hidden" name="productStoreId" value="${productStoreId?if_exists}"/>
+        <div class="form-group individual">
+          <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonTitle}</label>
+          <div class="col-sm-6">
+              <select name="personalTitle" name="USER_TITLE" id="USER_TITLE" class="form-control">
+              <option value="">${uiLabelMap.CommonSelectOne}</option>
+              <option value="Mr."<#if parameters.personalTitle! == "Mr."> selected="selected"</#if>>${uiLabelMap.CommonTitleMr}</option>
+              <option value="Mrs."<#if parameters.personalTitle! == "Mrs."> selected="selected"</#if>>${uiLabelMap.CommonTitleMrs}</option>
+              <option value="Ms."<#if parameters.personalTitle! == "Ms."> selected="selected"</#if>>${uiLabelMap.CommonTitleMs}</option>
+              <option value="Dr."<#if parameters.personalTitle! == "Dr."> selected="selected"</#if>>${uiLabelMap.CommonTitleDr}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group individual">
+          <label for="inputFname" class="col-sm-3 control-label required">${uiLabelMap.PartyFirstName} *</label>
+          <div class="col-sm-6">
+              <input type="text" class="form-control required" name="firstName" id="firstName" value="${firstName?if_exists}"/>
+          </div>
+        </div>
+        <div class="form-group individual">
+          <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PartyLastName} *</label>
+          <div class="col-sm-6">
+              <input type="text" class="form-control required" name="lastName" id="lastName" value="${lastName?if_exists}"/>
+          </div>
+        </div>
+        <div class="form-group individual">
+          <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTTitleIdNoIdPassport} *</label>
+          <div class="col-sm-6">
+              <input type="text" class="form-control required" name="idCardNo" id="newsupplier_idCardNo" value="${idCardNo?if_exists}" maxlength="30"/>
+          </div>
+        </div>
+        <div class="form-group individual">
+          <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTTitleUploadIdScan} *</label>
+          <div class="col-sm-6">
+              <input type="file" class="form-control required" name="imageFileName" id="imageFileName"/>
+          </div>
+        </div>
+        <div class="form-group individual">
+          <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonEmail}</label>
+          <div class="col-sm-6">
+              <input type="text" class="form-control" name="idCardNo" id="emailAddress" value="${emailAddress?if_exists}" disabled/>
+          </div>
+        </div>
+        <div class="form-group individual">
+          <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PartyAddressLine1} *</label>
+          <div class="col-sm-6">
+              <input type="text" class="form-control required" name="shipToAddress1" id="shipToAddress1" value="${shipToAddress1?if_exists}"/>
+          </div>
+        </div>
+        <div class="form-group individual">
+          <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PartyAddressLine2}</label>
+          <div class="col-sm-6">
+              <input type="text" class="form-control required" name="shipToAddress2" id="shipToAddress2" value="${shipToAddress2?if_exists}"/>
+          </div>
+        </div>
+        <div class="form-group individual">
+          <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonCity} *</label>
+          <div class="col-sm-6">
+              <input type="text" class="form-control required" name="shipToCity" id="shipToCity" value="${shipToCity?if_exists}"/>
+          </div>
+        </div>
+        <div class="form-group individual">
+          <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PartyZipCode} *</label>
+          <div class="col-sm-6">
+              <input type="text" class="form-control required" name="shipToPostalCode" id="shipToPostalCode" value="${shipToPostalCode?if_exists}" maxlength="10"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonCountry}</label>
+          <div class="col-sm-6">
+            <select name="shipToCountryGeoId" id="newuserform_countryGeoId" class="form-control">
+                ${screens.render("component://common/widget/CommonScreens.xml#countries")}
+                <#assign defaultCountryGeoId = Static["org.apache.ofbiz.entity.util.EntityUtilProperties"].getPropertyValue("general", "country.geo.id.default", delegator)>
+                <option selected="selected" value="${defaultCountryGeoId}">
+                <#assign countryGeo = delegator.findOne("Geo",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("geoId",defaultCountryGeoId), false)>
+                ${countryGeo.get("geoName",locale)}
+                </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PartyState}</label>
+          <div class="col-sm-6">
+            <select class="form-control" name="shipToStateProvinceGeoId" id="newuserform_stateProvinceGeoId"></select>
+          </div>
+        </div>
+        <table class="table" cellspacing="0" width="100%" summary="Tabular form for entering multiple telecom numbers for different purposes. Each row allows user to enter telecom number for a purpose">
           <thead>
             <tr>
               <th></th>
               <th scope="col">${uiLabelMap.CommonCountryCode}</th>
               <th scope="col">${uiLabelMap.PartyAreaCode}</th>
               <th scope="col">${uiLabelMap.PartyContactNumber}</th>
-              <th scope="col">${uiLabelMap.PartyExtension}</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th scope="row">${uiLabelMap.PartyHomePhone}</th>
-              <td><input type="text" name="SUPPLIER_HOME_COUNTRY" size="5" value="${homeCountryCode!}"/></td>
-              <td><input type="text" name="SUPPLIER_HOME_AREA" size="5" value="${homeAreaCode!}"/></td>
-              <td><input type="text" name="SUPPLIER_HOME_CONTACT" value="${homeContactNumber!}"/></td>
-              <td><input type="text" name="SUPPLIER_HOME_EXT" size="6" value="${homeExtension!}"/></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_HOME_COUNTRY" size="5" value="${requestParameters.SUPPLIER_HOME_COUNTRY?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_HOME_AREA" size="5" value="${requestParameters.SUPPLIER_HOME_AREA?if_exists}" /></td>
+              <td><input type="text" class="form-control" ame="SUPPLIER_HOME_CONTACT" value="${requestParameters.SUPPLIER_HOME_CONTACT?if_exists}" /></td>
             </tr>
             <tr>
               <th scope="row">${uiLabelMap.PartyBusinessPhone}</th>
-              <td><input type="text" name="SUPPLIER_WORK_COUNTRY" size="5" value="${workCountryCode!}"/></td>
-              <td><input type="text" name="SUPPLIER_WORK_AREA" size="5" value="${workAreaCode!}"/></td>
-              <td><input type="text" name="SUPPLIER_WORK_CONTACT" value="${workContactNumber!}"/></td>
-              <td><input type="text" name="SUPPLIER_WORK_EXT" size="6" value="${workExtension!}"/></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_WORK_COUNTRY" size="5" value="${requestParameters.SUPPLIER_WORK_COUNTRY?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_WORK_AREA" size="5" value="${requestParameters.SUPPLIER_WORK_AREA?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_WORK_CONTACT" value="${requestParameters.SUPPLIER_WORK_CONTACT?if_exists}" /></td>
             </tr>
             <tr>
               <th scope="row">${uiLabelMap.PartyFaxNumber}</th>
-              <td><input type="text" name="SUPPLIER_FAX_COUNTRY" size="5" value="${faxCountryCode!}"/></td>
-              <td><input type="text" name="SUPPLIER_FAX_AREA" size="5" value="${faxAreaCode!}"/></td>
-              <td><input type="text" name="SUPPLIER_FAX_CONTACT" value="${faxContactNumber!}"/></td>
-              <td></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_FAX_COUNTRY" size="5" value="${requestParameters.SUPPLIER_FAX_COUNTRY?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_FAX_AREA" size="5" value="${requestParameters.SUPPLIER_FAX_AREA?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_FAX_CONTACT" value="${requestParameters.SUPPLIER_FAX_CONTACT?if_exists}" /></td>
             </tr>
             <tr>
               <th scope="row">${uiLabelMap.PartyMobilePhone}</th>
-              <td><input type="text" name="SUPPLIER_MOBILE_COUNTRY" size="5" value="${mobileCountryCode!}"/></td>
-              <td><input type="text" name="SUPPLIER_MOBILE_AREA" size="5" value="${mobileAreaCode!}"/></td>
-              <td><input type="text" name="SUPPLIER_MOBILE_CONTACT" value="${mobileContactNumber!}"/></td>
-              <td></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_MOBILE_COUNTRY" size="5" value="${requestParameters.SUPPLIER_MOBILE_COUNTRY?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_MOBILE_AREA" size="5" value="${requestParameters.SUPPLIER_MOBILE_AREA?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_MOBILE_CONTACT" value="${requestParameters.SUPPLIER_MOBILE_CONTACT?if_exists}" /></td>
             </tr>
           </tbody>
         </table>
-      </fieldset>
-        <div style="margin-left:300px;"><a id="submitnewuserform" href="javascript:$('#newuserform').submit()" class="button" style="color:black;">${uiLabelMap.CommonSubmit}</a></div>
+        <a id="submitnewuserform" href="javascript:$('#newuserform').submit()" class="btn btn-main" style="color:black;">${uiLabelMap.CommonSubmit}</a>
     </form>
-    <script type="text/javascript">
-      //<![CDATA[
-          hideShowUsaStates();
-      //]]>
-    </script>
+    </div>
+  </div>
 </div>
 <script type="text/javascript">
+  //<![CDATA[
+    hideShowUsaStates();
     jQuery(document).ready( function() {
         jQuery("#newuserform").validate();
     });
+  //]]>
 </script>

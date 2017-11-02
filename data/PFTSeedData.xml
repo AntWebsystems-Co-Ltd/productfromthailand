@@ -184,6 +184,17 @@ under the License.
     <ProductFeatureCategory productFeatureCategoryId="CF10000" description="Coffee Features"/>
     <ProductFeature productFeatureId="CF10000" productFeatureCategoryId="CF10000" productFeatureTypeId="TYPE" description="Roast Beans"/>
     <ProductFeature productFeatureId="CF10001" productFeatureCategoryId="CF10000" productFeatureTypeId="TYPE" description="Roast Ground"/>
+    <!-- Feature Color -->
+    <ProductFeatureCategory productFeatureCategoryId="CF20000" description="Lip Features"/>
+    <ProductFeature productFeatureId="CF20000" productFeatureCategoryId="CF20000" productFeatureTypeId="COLOR" description="#01 : Pink Lady"/>
+    <ProductFeature productFeatureId="CF20001" productFeatureCategoryId="CF20000" productFeatureTypeId="COLOR" description="#02 : Violet"/>
+    <ProductFeature productFeatureId="CF20002" productFeatureCategoryId="CF20000" productFeatureTypeId="COLOR" description="#03 : Burry Nude"/>
+    <ProductFeature productFeatureId="CF20003" productFeatureCategoryId="CF20000" productFeatureTypeId="COLOR" description="#04 : Hot Baech"/>
+    <ProductFeature productFeatureId="CF20004" productFeatureCategoryId="CF20000" productFeatureTypeId="COLOR" description="#05 : Blueburry"/>
+    <ProductFeature productFeatureId="CF20005" productFeatureCategoryId="CF20000" productFeatureTypeId="COLOR" description="#06 : Rose"/>
+    <ProductFeature productFeatureId="CF20006" productFeatureCategoryId="CF20000" productFeatureTypeId="COLOR" description="#07 : Kissme"/>
+    <ProductFeature productFeatureId="CF20007" productFeatureCategoryId="CF20000" productFeatureTypeId="COLOR" description="#08 : Charming"/>
+    <ProductFeature productFeatureId="CF20008" productFeatureCategoryId="CF20000" productFeatureTypeId="COLOR" description="#09 : Grayberry"/>
 
     <!-- THAI TaxAuthority -->
     <Party partyId="THA_RD" partyTypeId="PARTY_GROUP"  statusId="PARTY_ENABLED"/>

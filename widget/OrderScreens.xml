@@ -168,6 +168,16 @@
             <actions>
                 <set field="titleProperty" value="PageTitleCheckoutOptions"/>
 
+                <script location="component://ecommerce/groovyScripts/customer/EditShippingAddress.groovy"/>
+                <set field="dependentForm" value="checkoutInfoForm"/>
+                <set field="paramKey" value="countryGeoId"/>
+                <set field="mainId" value="countryGeoId"/>
+                <set field="dependentId" value="stateProvinceGeoId"/>
+                <set field="requestName" value="getAssociatedStateList"/>
+                <set field="responseName" value="stateList"/>
+                <set field="dependentKeyName" value="geoId"/>
+                <set field="descName" value="geoName"/>
+                <set field="selectedDependentOption" default-value="_none_"/>
                 <script location="component://order/groovyScripts/entry/CheckoutPayment.groovy"/>
                 <script location="component://order/groovyScripts/entry/CheckoutOptions.groovy"/>
                 <script location="component://order/groovyScripts/entry/StorePaymentOptions.groovy"/>
@@ -175,7 +185,12 @@
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/order/checkoutoptions.ftl"/></html></platform-specific>
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://common/template/includes/SetDependentDropdownValuesJs.ftl"/>
+                                <html-template location="component://productfromthailand/webapp/ecommerce/order/checkoutoptions.ftl"/>
+                            </html>
+                        </platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -329,6 +344,14 @@
             </actions>
             <widgets>
                 <platform-specific><xsl-fo><html-template location="component://order/template/order/CompanyHeader.fo.ftl"/></xsl-fo></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="orderheader">
+        <section>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/OrderHeader.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>

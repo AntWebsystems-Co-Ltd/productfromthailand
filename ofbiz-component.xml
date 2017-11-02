@@ -87,6 +87,15 @@
         mount-point="/pft-default"
         app-bar-display="false"/>
 
+    <!-- Themes -->
+    <webapp name="theme"
+        title="Product From Thailand New Theme"
+        menu-name="secondary"
+        server="default-server"
+        location="webapp/theme"
+        mount-point="/theme"
+        app-bar-display="false"/>
+
     <!-- ROOT -->
 <!--     <webapp name="ROOT" -->
 <!--         title="ROOT Web Application" -->

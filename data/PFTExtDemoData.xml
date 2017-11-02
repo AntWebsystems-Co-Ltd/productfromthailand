@@ -90,15 +90,15 @@
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10000-RG" lastPrice="200.00" supplierProductId="SP-CR10000-RG" supplierProductName="CAREEL Coffee" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
 
     <!-- Sales from 200 to 185 -->
-    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10000" ruleName="Careel Coffee Sales 185" thruDate="2017-10-31 23:59:59.0"/>
+    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10000" ruleName="Careel Coffee Sales 185" thruDate="2017-12-30 23:59:59.0"/>
     <ProductPriceCond condValue="CR10000" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10000"/>
     <ProductPriceAction amount="185.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10000"/>
 
-    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10001" ruleName="Careel Coffee Roast Bean Sales 185" thruDate="2017-10-31 23:59:59.0"/>
+    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10001" ruleName="Careel Coffee Roast Bean Sales 185" thruDate="2017-12-30 23:59:59.0"/>
     <ProductPriceCond condValue="CR10000-RB" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10001"/>
     <ProductPriceAction amount="185.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10001"/>
 
-    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10002" ruleName="Careel Coffee Roast Ground Sales 185" thruDate="2017-10-31 23:59:59.0"/>
+    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10002" ruleName="Careel Coffee Roast Ground Sales 185" thruDate="2017-12-30 23:59:59.0"/>
     <ProductPriceCond condValue="CR10000-RG" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10002"/>
     <ProductPriceAction amount="185.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10002"/>
 
@@ -140,5 +140,78 @@
     <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.clientSecret" systemPropertyValue="ELiuO8dScOToIUALBcYautKsuLTO5CDhfs7qGqnISDR4DYsCpl1MpWQZeqzgSX2rVVuIsTV25XSQucu9"/>
     <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.apiUrl.sandbox" systemPropertyValue="https://api.sandbox.paypal.com/"/>
     <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.apiUrl.live" systemPropertyValue="https://api.paypal.com/"/>
+
+    <Product productId="CR10010" productName="Baybee Soft Matte Lip Cream" productTypeId="FINISHED_GOOD" brandName="Baybee" createdDate="2017-10-09 00:00:00.000" internalName="Baybee Soft Matte Lip Cream" inventoryItemTypeId="NON_SERIAL_INV_ITEM" orderDecimalQuantity="N" requirementMethodEnumId="PRODRQM_DS" isVirtual="Y" isVariant="N"/>
+    <Product productId="CR10010-01" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #01 (Pink Lady)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #01 (Pink Lady)" description="Baybee Soft Matte Lip Cream #02 (Violet)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010-02" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #02 (Violet)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #02 (Violet)" description="Baybee Soft Matte Lip Cream #02 (Violet)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010-03" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #03 (Burry Nude)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #03 (Burry Nude)" description="Baybee Soft Matte Lip Cream #03 (Burry Nude)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010-04" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #04 (Hot Baech)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #04 (Hot Baech)" description="Baybee Soft Matte Lip Cream #04 (Hot Baech)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010-05" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #05 (Blueburry)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #05 (Blueburry)" description="Baybee Soft Matte Lip Cream #05 (Blueburry)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010-06" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #06 (Rose)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #06 (Rose)" description="Baybee Soft Matte Lip Cream #06 (Rose)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010-07" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #07 (Kissme)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #07 (Kissme)" description="Baybee Soft Matte Lip Cream #07 (Kissme)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010-08" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #08 (Charming)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #08 (Charming)" description="Baybee Soft Matte Lip Cream #08 (Charming)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010-09" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #09 (Grayberry)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #09 (Grayberry)" description="Baybee Soft Matte Lip Cream #09 (Grayberry)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+
+    <ProductFeatureAppl productId="CR10010" productFeatureId="CF20000"
+        productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
+    <ProductFeatureAppl productId="CR10010" productFeatureId="CF20001"
+        productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="2"/>
+    <ProductFeatureAppl productId="CR10010" productFeatureId="CF20002"
+        productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="3"/>
+    <ProductFeatureAppl productId="CR10010" productFeatureId="CF20003"
+        productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="4"/>
+    <ProductFeatureAppl productId="CR10010" productFeatureId="CF20004"
+        productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="5"/>
+    <ProductFeatureAppl productId="CR10010" productFeatureId="CF20005"
+        productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="6"/>
+    <ProductFeatureAppl productId="CR10010" productFeatureId="CF20006"
+        productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="7"/>
+    <ProductFeatureAppl productId="CR10010" productFeatureId="CF20007"
+        productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="8"/>
+    <ProductFeatureAppl productId="CR10010" productFeatureId="CF20008"
+        productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="9"/>
+
+    <ProductFeatureAppl productId="CR10010-01" productFeatureId="CF20000"
+        productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
+    <ProductFeatureAppl productId="CR10010-02" productFeatureId="CF20001"
+        productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
+    <ProductFeatureAppl productId="CR10010-03" productFeatureId="CF20002"
+        productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
+    <ProductFeatureAppl productId="CR10010-04" productFeatureId="CF20003"
+        productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
+    <ProductFeatureAppl productId="CR10010-05" productFeatureId="CF20004"
+        productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
+    <ProductFeatureAppl productId="CR10010-06" productFeatureId="CF20005"
+        productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
+    <ProductFeatureAppl productId="CR10010-07" productFeatureId="CF20006"
+        productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
+    <ProductFeatureAppl productId="CR10010-08" productFeatureId="CF20007"
+        productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
+    <ProductFeatureAppl productId="CR10010-09" productFeatureId="CF20008"
+        productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
+
+    <ProductAssoc fromDate="2017-10-09 00:00:00.000" productAssocTypeId="PRODUCT_VARIANT" productId="CR10010"
+        productIdTo="CR10010-01" quantity="1.0" reason=""/>
+    <ProductAssoc fromDate="2017-10-09 00:00:00.000" productAssocTypeId="PRODUCT_VARIANT" productId="CR10010"
+        productIdTo="CR10010-02" quantity="1.0" reason=""/>
+    <ProductAssoc fromDate="2017-10-09 00:00:00.000" productAssocTypeId="PRODUCT_VARIANT" productId="CR10010"
+        productIdTo="CR10010-03" quantity="1.0" reason=""/>
+    <ProductAssoc fromDate="2017-10-09 00:00:00.000" productAssocTypeId="PRODUCT_VARIANT" productId="CR10010"
+        productIdTo="CR10010-04" quantity="1.0" reason=""/>
+    <ProductAssoc fromDate="2017-10-09 00:00:00.000" productAssocTypeId="PRODUCT_VARIANT" productId="CR10010"
+        productIdTo="CR10010-05" quantity="1.0" reason=""/>
+    <ProductAssoc fromDate="2017-10-09 00:00:00.000" productAssocTypeId="PRODUCT_VARIANT" productId="CR10010"
+        productIdTo="CR10010-07" quantity="1.0" reason=""/>
+
+    <ProductCategoryMember productCategoryId="HEALTHANDBEAUTY" productId="CR10010" sequenceNum="1" fromDate="2017-10-09 00:00:00.000"/>
+    <ProductPrice productId="CR10010" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="285.00" createdDate="2017-10-09 00:00:00.000" />
+    <ProductPrice productId="CR10010" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="8.90" createdDate="2017-10-09 00:00:00.000" />
+    <ProductPrice productId="CR10010" productPricePurposeId="PURCHASE" productPriceTypeId="LIST_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="285.00" createdDate="2017-10-09 00:00:00.000" />
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-01" lastPrice="285.00" supplierProductId="SP-CR10010-01" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-02" lastPrice="285.00" supplierProductId="SP-CR10010-02" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-03" lastPrice="285.00" supplierProductId="SP-CR10010-03" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-04" lastPrice="285.00" supplierProductId="SP-CR10010-04" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-05" lastPrice="285.00" supplierProductId="SP-CR10010-05" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-07" lastPrice="285.00" supplierProductId="SP-CR10010-07" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
 
 </entity-engine-xml>

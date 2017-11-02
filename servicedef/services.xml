@@ -56,4 +56,16 @@ under the License.
         <attribute name="partyId" type="String" mode="INOUT" optional="false"/>
         <attribute name="redirectLink" type="String" mode="OUT" optional="false"/>
     </service>
+
+    <service name="checkShippingAddress" engine="simple" invoke="checkShippingAddress" location="component://productfromthailand/minilang/PFTServices.xml">
+        <description>Check Shipping Address</description>
+        <attribute name="partyId" type="String" mode="INOUT" optional="false"/>
+        <attribute name="shipping_contact_mech_id" type="String" mode="INOUT" optional="true"/>
+        <attribute name="toName" type="String" mode="IN" optional="false"/>
+        <attribute name="address1" type="String" mode="IN" optional="false"/>
+        <attribute name="city" type="String" mode="IN" optional="false"/>
+        <attribute name="postalCode" type="String" mode="IN" optional="false"/>
+        <attribute name="countryGeoId" type="String" mode="IN" optional="false"/>
+        <attribute name="stateProvinceGeoId" type="String" mode="IN" optional="false"/>
+    </service>
 </services>

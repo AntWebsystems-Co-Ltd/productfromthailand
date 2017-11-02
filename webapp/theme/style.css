@@ -1,0 +1,231 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+.stepSuppile {
+    font-size:1.3em;
+    color:red;
+    width: 200px;
+    height:200px;
+    overflow:auto;
+}
+.social-icon-facebook {
+    padding: 8px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+.social-icon-twitter {
+    padding: 8px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+.social-icon-google {
+    padding: 8px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+.googleIcon {
+    background: url('/pft-default/pftimages/g-normal.png') transparent 1px 50% no-repeat !important;
+    display: inline-block;
+    vertical-align: middle;
+    width: 32px;
+    height: 28px;
+    border-radius: 20px;
+}
+#googleBtn {
+    display: inline-block;
+    background: white;
+    color: #444;
+    width: 170px;
+    border-radius: 5px;
+    border: thin solid #888;
+    box-shadow: 1px 1px 1px grey;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.submenutext, a.submenutext, a.submenutext:visited {
+font-weight: bold;
+color: #999966;
+padding-left: 6px;
+padding-right: 5px;
+border-right: 1px solid #999966
+}
+
+a.submenutext:hover {
+color: #663300;
+}
+
+.submenutextdisabled, a.submenutextdisabled {
+font-weight: bold;
+color: #CCCCCC;
+padding-left: 6px;
+padding-right: 5px;
+border-right: 1px solid #FFFFFF
+}
+
+a.submenutextdisabled:hover {
+font-weight: bold;
+color: #663300;
+}
+.submenutextinforight {
+font-weight: bold;
+color: white;
+padding-left: 6px;
+}
+
+.submenutextright, a.submenutextright {
+font-weight: bold;
+color: #999966;
+padding-left: 6px;
+}
+
+a.submenutextright:hover {
+color: #663300;
+text-decoration: underline;
+}
+
+.submenutextrightdisabled, a.submenutextrightdisabled {
+font-weight: bold;
+color: #CCCCCC;
+padding-left: 6px;
+}
+
+a.submenutextrightdisabled:hover {
+color: #663300;
+}
+
+.checkOutOrderitem {
+    border-bottom: 1px solid;
+}
+
+.panel-smart .order-status a{
+    color: #337ab7;
+}
+.panel-smart .order-status a:hover{
+    color: #23527c;
+}
+.error {
+    color: red;
+    font-size: 80%;
+}
+
+/*set Jgrowl css here to avoid side effect with other class*/
+.errorMessageJGrowl {
+    background-color: #ff434a !important;
+    border: 3px solid #f0f0f0;
+    color: #ffffff;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 10px 10px 10px 50px;
+    line-height: 1.3em;
+    min-width: 350px;
+    word-wrap: break-word;
+    box-shadow: -0px -0px 20px 5px #888888;
+    text-overflow: ellipsis;
+}
+
+.eventMessageJGrowl {
+    background-color: #3b8e3c !important
+    border: 3px solid #f0f0f0;
+    color: #ffffff;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 10px 10px 10px 50px;
+    line-height: 1.3em;
+    min-width: 350px;
+    word-wrap: break-word;
+    box-shadow: -0px -0px 20px 5px #888888;
+}
+
+.closeAllJGrowl {
+    min-width: 350px;
+    padding: 5px 5px 5px 50px;
+    border: 1px solid #f0f0f0;
+}
+
+.content-messages p {
+    display: none;
+}
+.form-horizontal .line-detail{
+    text-align: left;
+}
+.additionalImageList {
+    display: inline-block;
+
+}
+.imageBlock {
+    display: inline-block;
+
+}
+.uploaded-image {
+    width: 82px;
+    height: 82px;
+
+}
+.uploaded-image img{
+    max-width:100%;
+    max-height:100%;
+    background-color: white;
+}
+
+#addItemForm #quantity {
+    display: inline-block;
+    width: 20%;
+}
+
+.product-tags #productTags {
+    display: inline-block;
+    width: 40%;
+}
+
+#variantTreeOption .form-control{
+    width: auto;
+}
+
+#wait-spinner {
+    z-index: 90000;
+    position: fixed;
+    background-color: #EEEEEE;
+    width: 100%;
+    height: 100%;
+    top: 0px !important;
+    opacity: 0.8;
+}
+
+#wait-spinner-image {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    height: 45px;
+    width: 45px;
+    background-repeat: no-repeat;
+    background-image: url(/images/spinner.gif);
+}
+
+.image #gridimage, .image #prodsumimg {
+    display: inline-block;
+}

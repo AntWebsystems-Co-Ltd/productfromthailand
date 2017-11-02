@@ -22,13 +22,24 @@ under the License.
         xmlns="http://ofbiz.apache.org/Simple-Method" xsi:schemaLocation="http://ofbiz.apache.org/Simple-Method http://ofbiz.apache.org/dtds/simple-methods.xsd">
 
     <simple-method method-name="createSupplier" short-description="create a customer profile [Supplier]" login-required="false">
-        <entity-one entity-name="UserLogin" value-field="systemUserLogin">
-            <field-map field-name="userLoginId" value="system"/>
-        </entity-one>
         <call-class-method class-name="org.apache.ofbiz.content.layout.LayoutWorker" method-name="uploadImageAndParameters" ret-field="formInput">
             <field field="request" type="javax.servlet.http.HttpServletRequest"/>
             <string value="imageFileName"/>
         </call-class-method>
+        <!-- check error before process -->
+        <entity-one entity-name="UserLogin" value-field="checkUserLogin">
+            <field-map field-name="userLoginId" from-field="formInput.formInput.username"/>
+        </entity-one>
+        <if-not-empty field="checkUserLogin">
+            <add-error>
+                <fail-property  resource="PartyUiLabels" property="PartyUserNameInUse"/>
+            </add-error>
+        </if-not-empty>
+        <check-errors/>
+
+        <entity-one entity-name="UserLogin" value-field="systemUserLogin">
+            <field-map field-name="userLoginId" value="system"/>
+        </entity-one>
         <call-class-method class-name="org.apache.ofbiz.content.layout.LayoutWorker" method-name="returnByteBuffer" ret-field="byteWrap">
             <field field="formInput" type="java.util.Map"/>
         </call-class-method>
@@ -316,6 +327,8 @@ under the License.
         </call-service>
         <log level="info" message="Billing address created with contactMechId ${billToContactMechId}"/>
         <!-- Create new content form upload file -->
+        <log level="always" message="formInput: ${formInput}"/>
+        <log level="always" message="formInput.formInput: ${formInput.formInput}"/>
         <set-service-fields service-name="createContentFromUploadedFile" map="formInput.formInput" to-map="inMap"/>
         <set field="inMap._uploadedFile_fileName" from-field="formInput.imageFileName"/>
         <set field="inMap.uploadedFile" from-field="formInput.imageData"/>
@@ -984,11 +997,18 @@ under the License.
                     <field-map field-name="partyId" from-field="partyId"/>
                 </entity-and>
                 <set-calendar field="userLoginDate" from-field="userLoginList[0].createdStamp" seconds="+10"/>
-                <if-compare-field field="userLoginDate" operator="greater-equals" to-field="contactMech[0].createdStamp" type="Timestamp">
-                    <if-not-empty field="customerRole">
-                        <if-not-empty field="nameView.firstName">
-                            <set field="bodyParameters.customerName" value="${nameView.firstName} ${nameView.lastName}"/>
-                        </if-not-empty>
+                <if>
+                    <condition>
+                        <and>
+                            <not><if-empty field="userLoginDate"/></not>
+                            <if-compare-field field="userLoginDate" operator="greater-equals" to-field="contactMech[0].createdStamp" type="Timestamp"/>
+                        </and>
+                    </condition>
+                    <then>
+                        <if-not-empty field="customerRole">
+                            <if-not-empty field="nameView.firstName">
+                                <set field="bodyParameters.customerName" value="${nameView.firstName} ${nameView.lastName}"/>
+                            </if-not-empty>
                             <find-by-primary-key map="storeEmailLookup" entity-name="ProductStoreEmailSetting"  value-field="storeEmail"/>
                             <if-not-empty field="storeEmail.bodyScreenLocation">
                                 <set field="bodyParameters.person" from-field="person"/>
@@ -1003,29 +1023,132 @@ under the License.
                                 <set field="emailParams.emailType" from-field="storeEmailLookup.emailType"/>
                                 <call-service-asynch service-name="sendMailFromScreen" in-map-name="emailParams" include-user-login="true"/>
                             </if-not-empty>
-                        <else>
-                            <entity-one entity-name="PartyRole" value-field="supplierRole">
-                                <field-map field-name="partyId" from-field="partyId"/>
-                                <field-map field-name="roleTypeId" value="SUPPLIER"/>
-                            </entity-one>
-                            <entity-and entity-name="PartyContent" list="partyContentList">
-                                <field-map field-name="partyId" from-field="partyId"/>
-                            </entity-and>
-                            <if-not-empty field="supplierRole">
-                                <!-- Create email notification -->
-                                <set field="parameters.contentId" from-field="partyContentList[0].contentId"/>
-                                <set field="parameters.emailAddress" from-field="parameters.emailAddress"/>
-                                <set field="parameters.groupName" from-field="nameView.groupName"/>
-                                <set field="parameters.firstName" from-field="nameView.firstName"/>
-                                <set field="parameters.lastName" from-field="nameView.lastName"/>
-                                <set field="parameters.partyId" from-field="partyId"/>
-                                <set field="parameters.webSiteId" from-field="webSiteList[0].webSiteId"/>
-                                <call-simple-method method-name="sendCreatePartyGroupEmailNotification"/>
-                            </if-not-empty>
-                        </else>
-                    </if-not-empty>
-                </if-compare-field>
+                            <else>
+                                <entity-one entity-name="PartyRole" value-field="supplierRole">
+                                    <field-map field-name="partyId" from-field="partyId"/>
+                                    <field-map field-name="roleTypeId" value="SUPPLIER"/>
+                                </entity-one>
+                                <entity-and entity-name="PartyContent" list="partyContentList">
+                                    <field-map field-name="partyId" from-field="partyId"/>
+                                </entity-and>
+                                <if-not-empty field="supplierRole">
+                                    <!-- Create email notification -->
+                                    <set field="parameters.contentId" from-field="partyContentList[0].contentId"/>
+                                    <set field="parameters.emailAddress" from-field="parameters.emailAddress"/>
+                                    <set field="parameters.groupName" from-field="nameView.groupName"/>
+                                    <set field="parameters.firstName" from-field="nameView.firstName"/>
+                                    <set field="parameters.lastName" from-field="nameView.lastName"/>
+                                    <set field="parameters.partyId" from-field="partyId"/>
+                                    <set field="parameters.webSiteId" from-field="webSiteList[0].webSiteId"/>
+                                    <call-simple-method method-name="sendCreatePartyGroupEmailNotification"/>
+                                </if-not-empty>
+                            </else>
+                        </if-not-empty>
+                    </then>
+                </if>
             </if-not-empty>
         </if-not-empty>
+    </simple-method>
+    <simple-method method-name="createAnonContact" short-description="Create a non Contact" login-required="false">
+        <entity-one entity-name="UserLogin" value-field="systemUserLogin">
+            <field-map field-name="userLoginId" value="system"/>
+        </entity-one>
+        <set field="parameters.userLogin" from-field="systemUserLogin"/>
+        <set field="isExistingEmail" type="Boolean" value="false"/>
+        <if-empty field="parameters.subject">
+            <add-error><fail-property resource="EcommerceUiLabels" property="EcommerceSubjectMissing"/></add-error>
+        </if-empty>
+        <if-empty field="parameters.content">
+            <add-error><fail-property resource="CommonUiLabels" property="CommonMessageMissing"/></add-error>
+        </if-empty>
+        <if-empty field="parameters.emailAddress">
+            <add-error><fail-property resource="PartyUiLabels" property="PartyEmailAddressMissingError"/></add-error>
+            <else>
+                <if-validate-method field="parameters.emailAddress" method="isEmail" class="org.apache.ofbiz.base.util.UtilValidate">
+                    <else>
+                        <add-error><fail-property resource="PartyUiLabels" property="PartyEmailAddressNotFormattedCorrectly"/></add-error>
+                    </else>
+                </if-validate-method>
+            </else>
+        </if-empty>
+        <call-object-method obj-field="parameters.captcha" method-name="toLowerCase" ret-field="submittedCaptcha"/>
+        <script>groovy: context.actualCaptcha = request.getSession().getAttribute("_CAPTCHA_CODE_")?.get("captchaImage")?.toLowerCase()</script>
+        <if-compare-field field="submittedCaptcha" operator="not-equals" to-field="actualCaptcha">
+            <add-error><fail-property resource="ProductFromThailandUiLabels" property="PFTCaptchaMissingError"/></add-error>
+        </if-compare-field>
+        <check-errors/>
+        <if-empty field="parameters.partyId">
+            <set-service-fields service-name="createPerson" map="parameters" to-map="newPerson"/>
+            <call-service service-name="createPerson" in-map-name="newPerson">
+                <result-to-field result-name="partyId" field="parameters.partyId"/>
+            </call-service>
+            <set-service-fields service-name="createPartyContactMech" map="parameters" to-map="newContact"/>
+            <set field="newContact.infoString" from-field="parameters.emailAddress"/>
+            <set field="newContact.contactMechTypeId" value="EMAIL_ADDRESS"/>
+            <set field="newContact.contactMechPurposeTypeId" value="PRIMARY_EMAIL"/>
+            <call-service service-name="createPartyContactMech" in-map-name="newContact">
+                <result-to-field result-name="contactMechId" field="parameters.contactMechIdFrom"/>
+            </call-service>
+            <else>
+                <set field="parameters.contactMechIdFrom" from-field="contact.contactMechId"/>
+            </else>
+        </if-empty>
+        <set-service-fields service-name="sendContactUsEmailToCompany" map="parameters" to-map="newComm"/>
+        <set field="newComm.emailType" value="CONT_NOTI_EMAIL"/>
+        <call-service service-name="sendContactUsEmailToCompany" in-map-name="newComm">
+            <default-message property="ThankYouForContactingUs" resource="EcommerceUiLabels"></default-message>
+        </call-service>
+    </simple-method>
+    <simple-method method-name="addProductToWishList" short-description="Add product to wish lsit" login-required="true">
+        <set field="shoppingListTypeId" value="SLT_WISH_LIST"/>
+        <!-- Check existing Wish List -->
+        <entity-and entity-name="ShoppingList" list="wishLists">
+            <field-map field-name="partyId" from-field="userLogin.partyId"/>
+            <field-map field-name="shoppingListTypeId" from-field="shoppingListTypeId"/>
+        </entity-and>
+        <if-empty field="wishLists">
+            <set field="createShoppingListMap.shoppingListTypeId" from-field="shoppingListTypeId"/>
+            <set field="createShoppingListMap.partyId" from-field="userLogin.partyId"/>
+            <call-service service-name="createShoppingList" in-map-name="createShoppingListMap">
+                <result-to-field result-name="shoppingListId"/>
+            </call-service>
+            <else>
+                <first-from-list entry="wishList" list="wishLists"/>
+                <set field="shoppingListId" from-field="wishList.shoppingListId"/>
+            </else>
+        </if-empty>
+
+        <!-- Check existing Wish List Item -->
+        <entity-condition entity-name="ShoppingListItem" list="wishListItems">
+            <condition-list>
+                <condition-expr field-name="shoppingListId" from-field="shoppingListId"/>
+                <condition-expr field-name="productId" from-field="parameters.productId"/>
+            </condition-list>
+        </entity-condition>
+        <if-empty field="wishListItems">
+            <set field="createShoppingListItemMap.shoppingListId" from-field="shoppingListId"/>
+            <set field="createShoppingListItemMap.productId" from-field="parameters.productId"/>
+            <call-service service-name="createShoppingListItem" in-map-name="createShoppingListItemMap">
+            </call-service>
+            <property-to-field field="eventMsg" resource="ProductFromThailandUiLabels" property="PFTThisProductAddedToWishListSuccessful"/>
+            <else>
+                <property-to-field field="eventMsg" resource="ProductFromThailandUiLabels" property="PFTThisProductAlreadyAddedToWishList"/>
+            </else>
+        </if-empty>
+        <field-to-request field="eventMsg" request-name="_EVENT_MESSAGE_"/>
+    </simple-method>
+    <simple-method method-name="removeProductFromWishList" short-description="Remove product from wish lsit" login-required="true">
+        <entity-condition entity-name="ShoppingListItem" list="wishListItems">
+            <condition-list>
+                <condition-expr field-name="shoppingListId" from-field="shoppingListId"/>
+                <condition-expr field-name="productId" from-field="parameters.productId"/>
+            </condition-list>
+        </entity-condition>
+        <entity-one entity-name="ShoppingListItem" value-field="wishListItem"/>
+        <if-not-empty field="wishListItem">
+            <remove-value value-field="wishListItem"/>
+            <property-to-field field="eventMsg" resource="ProductFromThailandUiLabels" property="PFTRemoveProductFromWishListSuccessful"/>
+        </if-not-empty>
+        <field-to-request field="eventMsg" request-name="_EVENT_MESSAGE_"/>
     </simple-method>
 </simple-methods>

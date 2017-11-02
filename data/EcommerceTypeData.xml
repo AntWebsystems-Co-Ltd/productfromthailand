@@ -22,7 +22,7 @@ under the License.
     <!-- Ecommerce Default Visual Theme -->
     <VisualTheme visualThemeId="EC_PFT" visualThemeSetId="ECOMMERCE" description="Product From Thailand Ecommerce Floating Layout"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_STYLESHEET" resourceValue="/ecommerce/images/blog.css" sequenceId="01"/>
-    <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_STYLESHEET" resourceValue="/pft-default/pftimages/ecommain.css" sequenceId="02"/>
+    <!-- <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_STYLESHEET" resourceValue="/pft-default/pftimages/ecommain.css" sequenceId="02"/>  -->
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_STYLESHEET" resourceValue="/content/contentForum.css" sequenceId="03"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_SHORTCUT_ICON" resourceValue="/pft-default/pftimages/pft-icon.ico" sequenceId="04"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_HDR_IMAGE_URL" resourceValue="/pft-default/pftimages/pft-logo.png" sequenceId="05"/>

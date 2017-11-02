@@ -34,29 +34,43 @@ under the License.
 // -->
 </script>
 
-<h1>${uiLabelMap.OrderFinalCheckoutReview}</h1>
-<#if !isDemoStore?exists && isDemoStore><p>${uiLabelMap.OrderDemoFrontNote}.</p></#if>
-
-<#if cart?exists && 0 < cart.size()>
-  ${screens.render("component://ecommerce/widget/OrderScreens.xml#orderheader")}
-  <br/>
-  ${screens.render("component://productfromthailand/widget/OrderScreens.xml#orderitems")}
-  <table border="0" cellpadding="1" width="100%">
-   <tr>
-      <td colspan="4">
-        &nbsp;
-      </td>
-      <td align="right">
-        <form type="POST" action="<@ofbizUrl>processorder</@ofbizUrl>" name="${parameters.formNameValue}">
-          <#if (requestParameters.checkoutpage)?has_content>
-            <input type="hidden" name="checkoutpage" value="${requestParameters.checkoutpage}">
-          </#if>
-          <input type="button" name="processButton" value="${uiLabelMap.OrderSubmitOrder}" onClick="processOrder();" class="mediumSubmit">
-        </form>
-        <#-- doesn't work with Safari, seems to work with IE, Mozilla <a href="#" onclick="processOrder();" class="buttontextbig">[${uiLabelMap.OrderSubmitOrder}]&nbsp;</a> -->
-      </td>
-    </tr>
-  </table>
-<#else>
-  <h3>${uiLabelMap.OrderErrorShoppingCartEmpty}.</h3>
-</#if>
+<div id="main-container" class="container">
+    <h1>${uiLabelMap.OrderFinalCheckoutReview}</h1>
+    <#if !isDemoStore?exists && isDemoStore><p>${uiLabelMap.OrderDemoFrontNote}.</p></#if>
+    <div class="panel-smart">
+    <#if cart?exists && 0 < cart.size()>
+      <div class="col-xs-12">
+      ${screens.render("component://productfromthailand/widget/OrderScreens.xml#orderheader")}
+      ${screens.render("component://productfromthailand/widget/OrderScreens.xml#orderitems")}
+      </div>
+      <table border="0" cellpadding="1" width="100%">
+       <tr>
+          <td colspan="4">
+            &nbsp;
+          </td>
+          <td>
+            &nbsp;
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4">
+            &nbsp;
+          </td>
+          <td align="right">
+            <form type="POST" action="<@ofbizUrl>processorder</@ofbizUrl>" name="${parameters.formNameValue}">
+              <#if (requestParameters.checkoutpage)?has_content>
+                <input type="hidden" name="checkoutpage" value="${requestParameters.checkoutpage}"/>
+              </#if>
+              <#if (requestAttributes.issuerId)?has_content>
+                <input type="hidden" name="issuerId" value="${requestAttributes.issuerId}"/>
+              </#if>
+              <button type="button" name="processButton" class="btn btn-main" onclick="processOrder();">${uiLabelMap.OrderSubmitOrder}</button>
+            </form>
+          </td>
+        </tr>
+      </table>
+    <#else>
+      <h3>${uiLabelMap.OrderErrorShoppingCartEmpty}.</h3>
+    </#if>
+    </div>
+</div>

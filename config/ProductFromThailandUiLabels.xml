@@ -22,10 +22,6 @@
         <value xml:lang="en">Company Name</value>
         <value xml:lang="th">ชื่อ ร้านค้า/บริษัท</value>
     </property>
-    <property key="PageTitleNewSupplier">
-        <value xml:lang="en">Create New Supplier</value>
-        <value xml:lang="th">สร้างร้านค้า/บริษัทใหม่</value>
-    </property>
     <property key="PartyFullName">
         <value xml:lang="en">Full Name</value>
         <value xml:lang="th">ชื่อ - นามสกุล</value>
@@ -46,9 +42,25 @@
         <value xml:lang="en">Account Information</value>
         <value xml:lang="th">ข้อมูลเกี่ยวกับบัญชีผู้ใช้งาน</value>
     </property>
+    <property key="PFTAvailableOptions">
+        <value xml:lang="en">Available Options</value>
+        <value xml:lang="th">ตัวเลือกที่ใช้ได้</value>
+    </property>
+    <property key="PFTBrand">
+        <value xml:lang="en">Brand</value>
+        <value xml:lang="th">แบรนด์</value>
+    </property>
     <property key="PFTBrowseHelp">
         <value xml:lang="en">Browse Help</value>
         <value xml:lang="th">ดูตามหัวข้อ</value>
+    </property>
+    <property key="PFTCaptchaMissingError">
+        <value xml:lang="en">Missing or wrong captcha.</value>
+        <value xml:lang="th">กรุณาใส่แคปต์ชา หรือ ใส่แคปต์ชาอีกครั้ง</value>
+    </property>
+    <property key="PFTCart">
+        <value xml:lang="en">Cart</value>
+        <value xml:lang="th">ตระกร้าสินค้า</value>
     </property>
     <property key="PFTClickToRegister">
         <value xml:lang="en">Click here to Register</value>
@@ -68,7 +80,7 @@
         <value xml:lang="th">ยืนยันรหัสผ่าน</value>
     </property>
     <property key="PFTContact">
-        <value xml:lang="en">Contact</value>
+        <value xml:lang="en">Contact Us</value>
         <value xml:lang="th">ติดต่อเรา</value>
     </property>
     <property key="PFTCustomerOrders">
@@ -95,6 +107,10 @@
         <value xml:lang="en">Fax</value>
         <value xml:lang="th">โทรสาร</value>
     </property>
+    <property key="PFTFollowUs">
+        <value xml:lang="en">Follow us</value>
+        <value xml:lang="th">ติดตามเรา</value>
+    </property>
     <property key="PFTFollowUsOnTwitter">
         <value xml:lang="en">Follow us on Twitter</value>
         <value xml:lang="th">ติดตามเราทาง Twitter</value>
@@ -110,13 +126,39 @@
     <property key="PFTIDNumber">
         <value xml:lang="en">ID Number</value>
     </property>
+    <property key="PFTIHaveReadAndAcceptThe">
+        <value xml:lang="en">I have read and accept the</value>
+        <value xml:lang="th">ฉันได้อ่านและยอมรับ</value>
+    </property>
     <property key="PFTInAllCategories">
         <value xml:lang="en">In All Categories</value>
         <value xml:lang="th">ค้นหาทุกหมวดหมู่สินค้า</value>
     </property>
+    <property key="PFTInformation">
+        <value xml:lang="en">Information</value>
+        <value xml:lang="th">ข้อมูล</value>
+    </property>
+    <property key="PFTInvoiceTypeId">
+        <value xml:lang="en">Invoice Type ID</value>
+        <value xml:lang="th">รหัสใบกำกับสินค้า</value>
+    </property>
     <property key="PFTLanguage">
         <value xml:lang="en">Language</value>
         <value xml:lang="th">ภาษา</value>
+    </property>
+    <property key="PFTMyAccount">
+        <value xml:lang="da">Min konto</value>
+        <value xml:lang="de">Mein Konto</value>
+        <value xml:lang="en">My Account</value>
+        <value xml:lang="fr">Mon compte</value>
+        <value xml:lang="it">Il mio account</value>
+        <value xml:lang="ja">私のアカウント</value>
+        <value xml:lang="nl">Mijn account</value>
+        <value xml:lang="pt-BR">Minha conta</value>
+        <value xml:lang="vi">Tài khoản của tôi</value>
+        <value xml:lang="zh">我的账户</value>
+        <value xml:lang="zh-TW">我的帳戶</value>
+        <value xml:lang="th">ข้อมูลของฉัน</value>
     </property>
     <property key="PFTMyProducts">
         <value xml:lang="en">My Products</value>
@@ -125,6 +167,10 @@
     <property key="PFTOr">
         <value xml:lang="en">Or</value>
         <value xml:lang="th">หรือ</value>
+    </property>
+    <property key="PFTPages">
+        <value xml:lang="en">Pages</value>
+        <value xml:lang="th">หน้าอื่นๆ</value>
     </property>
     <property key="PFTPartner">
         <value xml:lang="en">Partner</value>
@@ -170,6 +216,18 @@
         <value xml:lang="zh">注册</value>
         <value xml:lang="th">สมัครสมาชิก</value>
     </property>
+    <property key="PFTRegisterAsCustomer">
+        <value xml:lang="en">Register as Customer</value>
+        <value xml:lang="th">สร้างบัญชีลูกค้าใหม่</value>
+    </property>
+    <property key="PFTRegisterAsSupplier">
+        <value xml:lang="en">Register as Supplier</value>
+        <value xml:lang="th">สร้างบัญชีร้านค้าใหม่</value>
+    </property>
+    <property key="PFTRegisterWithSocial">
+        <value xml:lang="en">Register with Social Media</value>
+        <value xml:lang="th">สมัครสมาชิกด้วย Social Media</value>
+    </property>
     <property key="PFTRegisterIntro">
         <value xml:lang="en">There are two kinds of registration. If you are a customer who want to buy product(s) on this site,choose "Register as Customer" on the left
             but if you are a supplier want to sell your products choose "Register as supplier" on the right. </value>
@@ -178,6 +236,10 @@
     </property>
     <property key="PFTRejectReason">
         <value xml:lang="en">Reject Reason</value>
+    </property>
+    <property key="PFTRemoveProductFromWishListSuccessful">
+        <value xml:lang="en">Remove product from wish list successful.</value>
+        <value xml:lang="th">ลบสินค้าออกจากรายการโปรดเรียบร้อยแล้ว</value>
     </property>
     <property key="PFTSalescond">
         <value xml:lang="en">For a company who wants to sell your products on this site. We allow you to sell your products,
@@ -210,9 +272,17 @@
         <value xml:lang="en">Sign in</value>
         <value xml:lang="th">เข้าสู่ระบบ</value>
     </property>
+    <property key="PFTSignInWithSocial">
+        <value xml:lang="en">Sign in with Social Media</value>
+        <value xml:lang="th">เข้าสู่ระบบด้วย Social Media</value>
+    </property>
     <property key="PFTSitemap">
         <value xml:lang="en">Sitemap</value>
         <value xml:lang="th">แผนผังเว็บไซต์</value>
+    </property>
+    <property key="PFTStatus">
+        <value xml:lang="de">Status</value>
+        <value xml:lang="th">สถานะ</value>
     </property>
     <property key="PFTStoreManagement">
         <value xml:lang="en">Store Management</value>
@@ -273,6 +343,18 @@
         <value xml:lang="en">Tel</value>
         <value xml:lang="th">โทรศัพท์</value>
     </property>
+    <property key="PFTTermsAndCons">
+        <value xml:lang="en">Terms and Conditions</value>
+        <value xml:lang="th">เงื่อนไขในการใช้บริการ</value>
+    </property>
+    <property key="PFTThisProductAddedToWishListSuccessful">
+        <value xml:lang="en">This product added to wish list successful.</value>
+        <value xml:lang="th">เพิ่มสินค้าในรายการโปรดแล้ว</value>
+    </property>
+    <property key="PFTThisProductAlreadyAddedToWishList">
+        <value xml:lang="en">This product already added to wish list.</value>
+        <value xml:lang="th">สินค้านี้มีอยู่ในรายการโปรดแล้ว</value>
+    </property>
     <property key="PFTTitleIdBizRegisterNo">
         <value xml:lang="en">A business registration number</value>
         <value xml:lang="th">เลขจดทะเบียนหนังสือรับรองบริษัท</value>
@@ -313,6 +395,14 @@
         <value xml:lang="en">Waiting for approval</value>
         <value xml:lang="th">รอการยืนยัน</value>
     </property>
+    <property key="PFTWishList">
+        <value xml:lang="en">Wish List</value>
+        <value xml:lang="th">รายการโปรด</value>
+    </property>
+    <property key="PFTWishListNotFound">
+        <value xml:lang="en">Wish List not found.</value>
+        <value xml:lang="th">ไม่มีรายการโปรด</value>
+    </property>
     <property key="PFTYourAccount">
         <value xml:lang="en">Your Account</value>
         <value xml:lang="th">บัญชีชองคุณ</value>
@@ -320,6 +410,10 @@
     <property key="PFTYourEmail">
         <value xml:lang="en">Your E-mail</value>
         <value xml:lang="th">อีเมล์ ของคุณ</value>
+    </property>
+    <property key="PFTYourOrderDetails">
+        <value xml:lang="en">Your Order Details</value>
+        <value xml:lang="th">รายละเอียดการสั่งซื้อของคุณ</value>
     </property>
     <property key="PurchaseOrderConfirmNotice">
         <value xml:lang="en">Purchase Order Confirm Notice</value>

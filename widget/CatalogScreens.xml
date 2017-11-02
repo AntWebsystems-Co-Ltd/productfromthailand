@@ -137,7 +137,7 @@ under the License.
                 <script location="component://productfromthailand/groovyScripts/ProductSummary.groovy"/>
             </actions>
             <widgets>
-                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/productsummary.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/ProductSummary.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
@@ -358,7 +358,7 @@ under the License.
                 <set field="MainColumnStyle" value="leftonly"/>
                 <set field="titleProperty" value="PageTitleProductPage"/>
                 <set field="layoutSettings.javaScripts[]" value="/ecommerce/images/productAdditionalView.js" global="true"/>
-                <set field="configproductdetailScreen" value="component://ecommerce/widget/CatalogScreens.xml#configproductdetail"/>
+                <set field="configproductdetailScreen" value="component://productfromthailand/widget/CatalogScreens.xml#configproductdetail"/>
                 <script location="component://order/groovyScripts/entry/catalog/Product.groovy"/>
             </actions>
             <widgets>
@@ -385,10 +385,10 @@ under the License.
         <section>
             <actions>
                 <set field="productsummaryScreen" value="component://productfromthailand/widget/CatalogScreens.xml#productsummary"/>
+                <set field="breadcrumbs" value="component://productfromthailand/widget/CatalogScreens.xml#breadcrumbs"/>
                 <script location="component://productfromthailand/groovyScripts/ProductDetail.groovy"/>
             </actions>
             <widgets>
-                <include-screen name="breadcrumbs"/>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/productdetail.ftl"/></html></platform-specific>
             </widgets>
         </section>
@@ -409,13 +409,13 @@ under the License.
         <section>
             <actions>
                 <set field="productsummaryScreen" value="component://productfromthailand/widget/CatalogScreens.xml#productsummary"/>
+                <set field="breadcrumbs" value="component://productfromthailand/widget/CatalogScreens.xml#breadcrumbs"/>
                 <set field="inlineProductDetailScreen" value="component://ecommerce/widget/CatalogScreens.xml#inlineProductDetail"/>
                 <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
                 <script location="component://order/groovyScripts/entry/catalog/PrepareConfigForm.groovy"/>
             </actions>
             <widgets>
-                <include-screen name="breadcrumbs"/>
-                <platform-specific><html><html-template location="component://ecommerce/template/catalog/ConfigProductDetail.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/ConfigProductDetail.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
@@ -549,15 +549,17 @@ under the License.
                 <set field="MainColumnStyle" value="center"/>
 
                 <set field="productsummaryScreen" value="component://productfromthailand/widget/CatalogScreens.xml#productsummary"/>
+                <set field="productcategorylist" value="component://productfromthailand/widget/ProductScreens.xml#productcategorylist"/>
 
                 <set field="titleProperty" value="PageTitleSearchResults"/>
                 <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="10"/>
-                <script location="component://order/groovyScripts/entry/catalog/KeywordSearchOptions.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/KeywordSearch.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/ProductCategories.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <platform-specific><html><html-template location="component://order/template/entry/catalog/KeywordSearch.ftl"/></html></platform-specific>
+                        <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/KeywordSearch.ftl"/></html></platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -634,7 +636,7 @@ under the License.
                 <script location="component://product/groovyScripts/catalog/find/KeywordSearchBox.groovy"/>
             </actions>
             <widgets>
-                <screenlet id="ProductKeywordsPanel" title="${uiLabelMap.ProductSearchProducts}" collapsible="true">
+                <screenlet id="ProductKeywordsPanel">
                     <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/leftkeywordsearchbox.ftl"/></html></platform-specific>
                 </screenlet>
             </widgets>
@@ -694,6 +696,132 @@ under the License.
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://ecommerce/template/catalog/ProductCategories.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="StoreManagement">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleViewPartyProfile"/>
+                <set field="tabButtonItem" value="viewprofile"/>
+                <script location="component://productfromthailand/groovyScripts/MyProducts.groovy"/>
+
+                <entity-and entity-name="PartyContent" list="checkImportIdImgs" filter-by-date="true">
+                    <field-map field-name="partyId" from-field="parameters.partyId"/>
+                    <field-map field-name="partyContentTypeId" value="INTERNAL"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-has-permission permission="MYPORTAL" action="_SUPPLIER"/>
+                    </condition>
+                    <widgets>
+                        <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                            <decorator-section name="body">
+                                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/customer/StoreManagement.ftl"/></html></platform-specific>
+                            </decorator-section>
+                        </decorator-screen>
+                    </widgets>
+                    <fail-widgets>
+                        <section>
+                            <condition>
+                                <if-empty field="checkImportIdImgs"/>
+                            </condition>
+                            <widgets>
+                                <section>
+                                    <condition>
+                                        <if-compare-field field="parameters.partyId" operator="equals" to-field="userLogin.partyId"/>
+                                    </condition>
+                                    <widgets>
+                                        <include-screen name="VerifySupplier" location="component://productfromthailand/widget/CustomerScreens.xml"/>
+                                    </widgets>
+                                    <fail-widgets>
+                                        <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                                            <decorator-section name="body">
+                                                <container style="container">
+                                                    <container style="panel panel-smart">
+                                                        <label style="h2" text="${uiLabelMap.CommonNotification} ${uiLabelMap.CommonMessage}"/>
+                                                        <label style="h4 text" text="${uiLabelMap.PartyInformationNotBelongToYou}"/>
+                                                    </container>
+                                                </container>
+                                            </decorator-section>
+                                        </decorator-screen>
+                                    </fail-widgets>
+                                </section>
+                            </widgets>
+                            <fail-widgets>
+                                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                                    <decorator-section name="body">
+                                        <container style="container">
+                                            <container style="panel panel-smart">
+                                                <label style="h2" text="${uiLabelMap.CommonNotification} ${uiLabelMap.CommonMessage}"/>
+                                                <label style="h4 text" text="${uiLabelMap.PFTPWaitingForApproval}"/>
+                                            </container>
+                                        </container>
+                                    </decorator-section>
+                                </decorator-screen>
+                            </fail-widgets>
+                        </section>
+                    </fail-widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="SupplierInvoiceList">
+        <section>
+            <actions>
+                <set field="myCompanyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="Invoice" list="invoiceslistexternal">
+                    <condition-list combine="and">
+                        <condition-expr field-name="partyIdFrom" operator="equals" from-field="myCompanyId"/>
+                        <condition-expr field-name="invoiceTypeId" operator="equals" value="PURCHASE_INVOICE"/>
+                        <condition-list combine="or">
+                            <condition-expr field-name="statusId" operator="equals" value="INVOICE_APPROVED"/>
+                            <condition-expr field-name="statusId" operator="equals" value="INVOICE_SENT"/>
+                            <condition-expr field-name="statusId" operator="equals" value="INVOICE_READY"/>
+                            <condition-expr field-name="statusId" operator="equals" value="INVOICE_PAID"/>
+                        </condition-list>
+                    </condition-list>
+                    <order-by field-name="invoiceDate DESC"/>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                <decorator-section name="body">
+                    <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/customer/SupplierInvoiceList.ftl"/></html></platform-specific>
+                </decorator-section>
+            </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="PurchaseOrderList">
+        <section>
+            <actions>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <set field="roleTypeId" value="SUPPLIER_AGENT"/>
+                <entity-and entity-name="OrderHeaderAndRoles" list="orderLists">
+                    <field-map field-name="partyId" from-field="partyId"/>
+                    <field-map field-name="roleTypeId" from-field="roleTypeId"/>
+                    <order-by field-name="orderDate DESC"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-has-permission permission="MYPORTAL" action="_SUPPLIER"/>
+                    </condition>
+                    <widgets>
+                        <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                            <decorator-section name="body">
+                                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/customer/PurchaseOrderList.ftl"/></html></platform-specific>
+                            </decorator-section>
+                        </decorator-screen>
+                    </widgets>
+                </section>
             </widgets>
         </section>
     </screen>

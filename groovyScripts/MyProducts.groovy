@@ -38,11 +38,14 @@ if (listSize < highIndex)
     highIndex = listSize;
 if ( highIndex < 1 )
     highIndex = 0;
+BigDecimal totalPage = supplierProducts.size()/viewSize;
+totalPage = totalPage.setScale(0,BigDecimal.ROUND_UP);
 context.viewIndex = viewIndex;
 context.listSize = listSize;
 context.highIndex = highIndex;
 context.lowIndex = lowIndex;
 context.viewSize = viewSize;
+context.totalPage = totalPage;
 
 context.supplierPartyId = supplierPartyId;
 context.supplierProducts = supplierProducts;

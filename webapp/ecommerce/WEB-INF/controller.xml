@@ -75,6 +75,15 @@ under the License.
         <security https="true" auth="true"/>
         <response name="success" type="view" value="StoreManagement"/>
     </request-map>
+    <request-map uri="SupplierInvoiceList">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="SupplierInvoiceList"/>
+    </request-map>
+    <request-map uri="PurchaseOrderList">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="PurchaseOrderList"/>
+    </request-map>
+
 
     <request-map uri="createrequest">
         <security https="true" auth="true"/>
@@ -103,6 +112,12 @@ under the License.
         <event type="simple" path="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="createSupplier"/>
         <response name="success" type="request" value="main"/>
         <response name="error" type="request" value="newsupplier"/>
+    </request-map>
+    <request-map uri="updatesupplier">
+        <security https="true" auth="false"/>
+        <event type="simple" path="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="updateSupplier"/>
+        <response name="success" type="request" value="main"/>
+        <response name="error" type="view-last"/>
     </request-map>
     <!-- ================ Product Requests ================= -->
     <request-map uri="createProduct">
@@ -257,7 +272,7 @@ under the License.
 
     <request-map uri="submitAnonContact">
         <security https="true" auth="false"/>
-        <event type="simple" invoke="createAnonContact" path="component://ecommerce/minilang/customer/CustomerEvents.xml"/>
+        <event type="simple" invoke="createAnonContact" path="component://productfromthailand/minilang/customer/CustomerEvents.xml"/>
         <response name="success" type="view-last" value="main"/>
         <response name="error" type="request" value="AnonContactus"/>
     </request-map>
@@ -292,6 +307,10 @@ under the License.
         <event type="simple" path="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="createCustomer"/>
         <response name="success" type="view" value="main"/>
         <response name="error" type="view" value="newcustomer"/>
+    </request-map>
+    <request-map uri="editcontactmech">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editcontactmech"/>
     </request-map>
 
     <request-map uri="viewSupplierProfile">
@@ -364,14 +383,63 @@ under the License.
         <response name="error" type="view" value="main"/>
     </request-map>
 
+    <request-map uri="categorylist">
+        <security https="false" auth="false"/>
+        <response name="success" type="view" value="categorylist"/>
+    </request-map>
+    <request-map uri="categorygrid">
+        <security https="false" auth="false"/>
+        <response name="success" type="view" value="categorygrid"/>
+    </request-map>
+    <request-map uri="editpartygroup">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="editpartygroup"/>
+    </request-map>
+    <request-map uri="updatePartyGroup">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="updatePartyGroup"/>
+        <response name="success" type="view-last"/>
+        <response name="error" type="view" value="editpartygroup"/>
+    </request-map>
+
+    <request-map uri="checkShippingAddress">
+        <security https="false" auth="false"/>
+        <event type="service" invoke="checkShippingAddress"/>
+        <response name="success" type="request" value="json"/>
+        <response name="error" type="request" value="json"/>
+    </request-map>
+
+     <request-map uri="removecart">
+        <security https="false" auth="false"/>
+        <event type="java" path="org.apache.ofbiz.order.shoppingcart.ShoppingCartEvents" invoke="modifyCart"/>
+        <response name="success" type="view-last-noparam"/>
+        <response name="error" type="view-last-noparam"/>
+    </request-map>
+
+    <!-- Wish List -->
+    <request-map uri="addProductToWishList">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="addProductToWishList"/>
+        <response name="success" save-last-view="true" type="view-last" value="WishList" />
+    </request-map>
+    <request-map uri="removeProductFromWishList">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="removeProductFromWishList"/>
+        <response name="success" type="view" value="WishList"/>
+    </request-map>
+    <request-map uri="WishList">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="WishList"/>
+    </request-map>
+
     <view-map name="orderview" type="screen" page="component://productfromthailand/widget/OrderViewScreens.xml#OrderHeaderView"/>
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
-    <view-map name="main" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#main"/>
+    <view-map name="main" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#main"/>
     <view-map name="register" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#register"/>
     <view-map name="editShoppingList" type="screen" page="component://productfromthailand/widget/ShoppingListScreens.xml#editShoppingList"/>
     <view-map name="advancedsearch" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#advancedsearch"/>
 
-    <view-map name="category" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#category"/>
+    <view-map name="category" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#categorylist"/>
     <view-map name="newcustomer" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#newcustomer"/>
     <view-map name="editcontactmech" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#editcontactmech"/>
     <view-map name="forgotYourPassword" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#forgotYourPassword"/>
@@ -384,9 +452,11 @@ under the License.
     <view-map name="sitemap" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#sitemap"/>
     <view-map name="services" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#services"/>
     <view-map name="help" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#help"/>
+    <view-map name="WishList" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#WishList"/>
 
     <view-map name="productCategoryList" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#productCategoryList"/>
     <view-map name="tellafriend" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#tellafriend"/>
+    <view-map name="keywordsearch" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#keywordsearch"/>
     <!-- Cart Views -->
     <view-map name="showcart" type="screen" page="component://productfromthailand/widget/CartScreens.xml#showcart"/>
 
@@ -432,8 +502,24 @@ under the License.
     <view-map name="ProductBarCode.pdf" type="screenfop" page="component://product/widget/catalog/ProductScreens.xml#ProductBarCode.fo" content-type="application/pdf" encoding="none"/>
 
     <view-map name="StoreManagement" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#StoreManagement"/>
+    <view-map name="StoreManagement" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#StoreManagement"/>
+    <view-map name="SupplierInvoiceList" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#SupplierInvoiceList"/>
+    <view-map name="PurchaseOrderList" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#PurchaseOrderList"/>
+
 
     <view-map name="ViewSimpleContent" page="" type="simplecontent"/>
 
     <view-map name="VerifySupplier" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#VerifySupplier"/>
+    <view-map name="AnonContactus" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#anonContactus"/>
+    <view-map name="categorylist" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#categorylist"/>
+    <view-map name="categorygrid" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#categorygrid"/>
+    <view-map name="editperson" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#editperson"/>
+    <view-map name="editpartygroup" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#editpartygroup"/>
+    <view-map name="editcreditcard" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#editcreditcard"/>
+    <view-map name="editeftaccount" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#editeftaccount"/>
+    <view-map name="editgiftcard" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#editgiftcard"/>
+    <view-map name="changepassword" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#changepassword"/>
+    <view-map name="messagelist" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#messagelist"/>
+    <view-map name="messagedetail" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#messagedetail"/>
+
 </site-conf>

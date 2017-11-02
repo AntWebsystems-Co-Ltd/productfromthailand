@@ -318,7 +318,14 @@ $(function(){
         }
     });
 })
- </script>
+$(function(){
+  // TABS
+  $('.nav-tabs a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+  });
+})
+</script>
 
 <#macro showUnavailableVarients>
   <#if unavailableVariants??>
@@ -336,11 +343,18 @@ $(function(){
   </#if>
 </#macro>
 
-<div id="productdetail">
-  <#assign productAdditionalImage1 = productContentWrapper.get("ADDITIONAL_IMAGE_1", "url")! />
-  <#assign productAdditionalImage2 = productContentWrapper.get("ADDITIONAL_IMAGE_2", "url")! />
-  <#assign productAdditionalImage3 = productContentWrapper.get("ADDITIONAL_IMAGE_3", "url")! />
-  <#assign productAdditionalImage4 = productContentWrapper.get("ADDITIONAL_IMAGE_4", "url")! />
+<div id="main-container" class="container">
+  <ol class="breadcrumb">
+    ${screens.render(breadcrumbs)}
+  </ol>
+  <#assign productAdditionalImage1 = productContentWrapper.get("XTRA_IMG_1_SMALL", "url")! />
+  <#assign productAdditionalImage2 = productContentWrapper.get("XTRA_IMG_2_SMALL", "url")! />
+  <#assign productAdditionalImage3 = productContentWrapper.get("XTRA_IMG_3_SMALL", "url")! />
+  <#assign productAdditionalImage4 = productContentWrapper.get("XTRA_IMG_4_SMALL", "url")! />
+  <#assign productAdditionalImageLarge1 = productContentWrapper.get("ADDITIONAL_IMAGE_1", "url")! />
+  <#assign productAdditionalImageLarge2 = productContentWrapper.get("ADDITIONAL_IMAGE_2", "url")! />
+  <#assign productAdditionalImageLarge3 = productContentWrapper.get("ADDITIONAL_IMAGE_3", "url")! />
+  <#assign productAdditionalImageLarge4 = productContentWrapper.get("ADDITIONAL_IMAGE_4", "url")! />
 
   <#-- Category next/previous -->
   <#if category??>
@@ -358,123 +372,107 @@ $(function(){
     </div>
   </#if>
 
-  <hr/>
-  <div id="productImageBox">
-    <#if productImageList?has_content>
-      <#-- Product image/name/price -->
-      <div id="detailImageBox">
+  <div class="row product-info full">
+    <div class="col-sm-4 images-block">
         <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url")! />
-        <#-- remove the next two lines to always display the virtual image first (virtual images must exist) -->
         <#if firstLargeImage?has_content>
-          <#assign productLargeImageUrl = firstLargeImage />
+            <#assign productLargeImageUrl = firstLargeImage />
         </#if>
         <#if productLargeImageUrl?string?has_content>
-          <a href="javascript:popupDetail('<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>');">
-            <img id="detailImage" src="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>"
-                name="mainImage" vspace="5" hspace="5" class="cssImgXLarge" alt=""/>
-          </a>
-          <input type="hidden" id="originalImage" name="originalImage"
-              value="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>"/>
+            <a href="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>">
+                <img src="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail" />
+            </a>
         </#if>
         <#if !productLargeImageUrl?string?has_content>
-          <img id="detailImage" src="/images/defaultImage.jpg" name="mainImage" alt=""/>
+            <img src="/images/defaultImage.jpg" alt="Image" class="img-responsive thumbnail" />
         </#if>
+        <ul class="list-unstyled list-inline">
+            <#if productAdditionalImage1?string?has_content>
+            <li>
+                <a href="<@ofbizContentUrl>${productAdditionalImageLarge1}</@ofbizContentUrl>">
+                    <img src="<@ofbizContentUrl>${productAdditionalImage1}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail" />
+                </a>
+            </li>
+            </#if>
+            <#if productAdditionalImage2?string?has_content>
+            <li>
+                <a href="<@ofbizContentUrl>${productAdditionalImageLarge2}</@ofbizContentUrl>">
+                    <img src="<@ofbizContentUrl>${productAdditionalImage2}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail" />
+                </a>
+            </li>
+            </#if>
+            <#if productAdditionalImage3?string?has_content>
+            <li>
+                <a href="<@ofbizContentUrl>${productAdditionalImageLarge3}</@ofbizContentUrl>">
+                    <img src="<@ofbizContentUrl>${productAdditionalImage3}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail" />
+                </a>
+            </li>
+            </#if>
+            <#if productAdditionalImage4?string?has_content>
+            <li>
+                <a href="<@ofbizContentUrl>${productAdditionalImageLarge4}</@ofbizContentUrl>">
+                    <img src="<@ofbizContentUrl>${productAdditionalImage4}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail" />
+                </a>
+            </li>
+            </#if>
+        </ul>
       </div>
-      <#-- Show Image Approved -->
-      <div id="additionalImageBox">
-        <#if productImageList?has_content>
-          <#list productImageList as productImage>
-            <div class="additionalImage">
-              <a href="javascript:void(0);"
-                  swapDetail="<@ofbizContentUrl>${productImage.productImage}</@ofbizContentUrl>">
-                <img id="productadditionalimage" src="<@ofbizContentUrl>${productImage.productImageThumb}</@ofbizContentUrl>"
-                    vspace="5" hspace="5" alt=""/>
-              </a>
-            </div>
-          </#list>
-        </#if>
-      </div>
-    <#else>
-      <#-- Product image/name/price -->
-      <div id="detailImageBox">
-        <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url")! />
-        <#-- remove the next two lines to always display the virtual image first (virtual images must exist) -->
-        <#--
-        <#if firstLargeImage?has_content>
-          <#assign productLargeImageUrl = firstLargeImage />
-        </#if>
-        -->
-        <#if productLargeImageUrl?string?has_content>
-          <a href="javascript:popupDetail('<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>');">
-            <img id="detailImage" src="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>"
-                name="mainImage" vspace="5" hspace="5" class="cssImgXLarge" alt=""/>
-          </a>
-          <input type="hidden" id="originalImage" name="originalImage"
-              value="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>"/>
-        </#if>
-        <#if !productLargeImageUrl?string?has_content>
-          <img id="detailImage" src="/images/defaultImage.jpg" name="mainImage" alt=""/>
-        </#if>
-      </div>
-      <div id="additionalImageBox">
-        <#if productAdditionalImage1?string?has_content>
-          <div class="additionalImage">
-            <a href="javascript:void(0);"
-                swapDetail="<@ofbizContentUrl>${productAdditionalImage1}</@ofbizContentUrl>">
-              <img id="productadditionalimage" src="<@ofbizContentUrl>${productAdditionalImage1}</@ofbizContentUrl>" vspace="5" hspace="5"
-                class="cssImgXLarge" alt=""/>
-            </a>
-          </div>
-        </#if>
-        <#if productAdditionalImage2?string?has_content>
-          <div class="additionalImage">
-            <a href="javascript:void(0);"
-                swapDetail="<@ofbizContentUrl>${productAdditionalImage2}</@ofbizContentUrl>">
-              <img id="productadditionalimage" src="<@ofbizContentUrl>${productAdditionalImage2}</@ofbizContentUrl>" vspace="5" hspace="5"
-                  class="cssImgXLarge" alt=""/>
-            </a>
-          </div>
-        </#if>
-        <#if productAdditionalImage3?string?has_content>
-          <div class="additionalImage">
-            <a href="javascript:void(0);"
-                swapDetail="<@ofbizContentUrl>${productAdditionalImage3}</@ofbizContentUrl>">
-              <img id="productadditionalimage" src="<@ofbizContentUrl>${productAdditionalImage3}</@ofbizContentUrl>" vspace="5" hspace="5"
-                  class="cssImgXLarge" alt=""/>
-            </a>
-          </div>
-        </#if>
-        <#if productAdditionalImage4?string?has_content>
-          <div class="additionalImage">
-            <a href="javascript:void(0);"
-                swapDetail="<@ofbizContentUrl>${productAdditionalImage4}</@ofbizContentUrl>">
-              <img id="productadditionalimage" src="<@ofbizContentUrl>${productAdditionalImage4}</@ofbizContentUrl>" vspace="5" hspace="5"
-                  class="cssImgXLarge" alt=""/>
-            </a>
-          </div>
-        </#if>
-      </div>
-    </#if>
 
+    <div class="col-sm-8 product-details">
+    <div class="panel-smart">
     <div id="productDetailBox">
       <h2>${productContentWrapper.get("PRODUCT_NAME", "html")!}</h2>
-      <div>${productContentWrapper.get("DESCRIPTION", "html")!}</div>
-      <div>${product.productId!}</div>
+      <hr/>
+      <ul class="list-unstyled manufacturer">
+        <li>
+            <span>${uiLabelMap.PFTBrand}:</span> ${product.brandName!}
+        </li>
+        <#if product.virtualVariantMethodEnum! != "VV_FEATURETREE">
+            <#if productStore??>
+                <#if productStore.requireInventory?? && productStore.requireInventory == "N">
+                <#else>
+                    <li>
+                        <span>${uiLabelMap.ProductAvailable}:</span> <strong class="label label-danger">${uiLabelMap.ProductItemOutOfStock}</strong>
+                    </li>
+                </#if>
+            </#if>
+        </#if>
+      </ul>
+      <hr/>
+      <div class="price">
+        <span class="price-head">${uiLabelMap.CommonPrice} :</span>
+        <#if price.isSale?? && price.isSale>
+            <span class="price-new"><@ofbizCurrency amount=price.price isoCode=price.currencyUsed /></span>
+            <span class="price-old"><@ofbizCurrency amount=price.listPrice isoCode=price.currencyUsed /></span>
+        <#else>
+            <span class="price-new"><@ofbizCurrency amount=price.price isoCode=price.currencyUsed /></span>
+        </#if>
+      </div>
+      <hr/>
+
+      <#-- <ul>
+        <li>
+            ${productContentWrapper.get("DESCRIPTION", "html")!}
+        </li>
+        <li>
+            ${product.productId!}
+        </li> -->
       <#-- example of showing a certain type of feature with the product -->
-      <#if sizeProductFeatureAndAppls?has_content>
-        <div>
+      <#-- <#if sizeProductFeatureAndAppls?has_content>
+        <li>
           <#if (sizeProductFeatureAndAppls?size == 1)>
-          ${uiLabelMap.OrderSizeAvailableSingle}:
+          <span>${uiLabelMap.OrderSizeAvailableSingle}:</span>
           <#else>
-          ${uiLabelMap.OrderSizeAvailableMultiple}:
+          <span>${uiLabelMap.OrderSizeAvailableMultiple}:</span>
           </#if>
           <#list sizeProductFeatureAndAppls as sizeProductFeatureAndAppl>
             ${sizeProductFeatureAndAppl.description?default(
                 sizeProductFeatureAndAppl.abbrev?default(sizeProductFeatureAndAppl.productFeatureId))}
             <#if sizeProductFeatureAndAppl_has_next>,</#if>
           </#list>
-        </div>
+        </li>
       </#if>
+      </ul> -->
 
       <#-- for prices:
               - if price < competitivePrice, show competitive or "Compare At" price
@@ -482,37 +480,37 @@ $(function(){
               - if price < defaultPrice and defaultPrice < listPrice, show default
               - if isSale show price with salePrice style and print "On Sale!"
       -->
-      <#if price.competitivePrice?? && price.price?? && price.price &lt; price.competitivePrice>
-        <div>${uiLabelMap.ProductCompareAtPrice}:
+      <#-- <#if price.competitivePrice?? && price.price?? && price.price &lt; price.competitivePrice>
+        <li><span>${uiLabelMap.ProductCompareAtPrice}:</span>
           <span class="basePrice">
             <@ofbizCurrency amount=price.competitivePrice isoCode=price.currencyUsed />
           </span>
-        </div>
+        </li>
       </#if>
       <#if price.listPrice?? && price.price?? && price.price &lt; price.listPrice>
-        <div>${uiLabelMap.ProductListPrice}:
+        <li><span>${uiLabelMap.ProductListPrice}:</span>
           <span class="basePrice">
             <@ofbizCurrency amount=price.listPrice isoCode=price.currencyUsed />
           </span>
-        </div>
+        </li>
       </#if>
       <#if price.listPrice?? && price.defaultPrice?? && price.price?? &&
           price.price &lt; price.defaultPrice && price.defaultPrice &lt; price.listPrice>
-        <div>
-          ${uiLabelMap.ProductRegularPrice}:
+        <li>
+          <span>${uiLabelMap.ProductRegularPrice}:</span>
           <span class="basePrice">
             <@ofbizCurrency amount=price.defaultPrice isoCode=price.currencyUsed />
           </span>
-        </div>
+        </li>
       </#if>
       <#if price.specialPromoPrice??>
-        <div>${uiLabelMap.ProductSpecialPromoPrice}:
+        <li><span>${uiLabelMap.ProductSpecialPromoPrice}:</span>
           <span class="basePrice">
             <@ofbizCurrency amount=price.specialPromoPrice isoCode=price.currencyUsed />
           </span>
-        </div>
+        </li>
       </#if>
-      <div>
+      <li>
         <strong>
           <#if price.isSale?? && price.isSale>
             <span class="salePrice">${uiLabelMap.OrderOnSale}!</span>
@@ -520,7 +518,7 @@ $(function(){
           <#else>
             <#assign priceStyle = "regularPrice" />
           </#if>
-          ${uiLabelMap.OrderYourPrice}:
+          <span>${uiLabelMap.OrderYourPrice}:</span>
           <#if "Y" = product.isVirtual!>
             ${uiLabelMap.CommonFrom}
           </#if>
@@ -555,77 +553,77 @@ $(function(){
             </#if>
           </#if>
         </strong>
-      </div>
+      </li>
       <#if price.listPrice?? && price.price?? && price.price &lt; price.listPrice>
         <#assign priceSaved = price.listPrice - price.price />
         <#assign percentSaved = (priceSaved / price.listPrice) * 100 />
-        <div>
-          ${uiLabelMap.OrderSave}:
+        <li>
+          <span>${uiLabelMap.OrderSave}:</span>
           <span class="basePrice">
             <@ofbizCurrency amount=priceSaved isoCode=price.currencyUsed />
             (${percentSaved?int}%)
           </span>
-        </div>
-      </#if>
+        </li>
+      </#if> -->
       <#-- show price details ("showPriceDetails" field can be set in the screen definition) -->
-      <#if (showPriceDetails?? && showPriceDetails?default("N") == "Y")>
+      <#-- <#if (showPriceDetails?? && showPriceDetails?default("N") == "Y")>
         <#if price.orderItemPriceInfos??>
           <#list price.orderItemPriceInfos as orderItemPriceInfo>
-            <div>${orderItemPriceInfo.description!}</div>
+            <li>${orderItemPriceInfo.description!}</li>
           </#list>
         </#if>
-      </#if>
+      </#if> -->
 
       <#-- Included quantities/pieces -->
-      <#if product.piecesIncluded?? && product.piecesIncluded?long != 0>
-        <div>
-          ${uiLabelMap.OrderPieces}: ${product.piecesIncluded}
-        </div>
+      <#-- <#if product.piecesIncluded?? && product.piecesIncluded?long != 0>
+        <li>
+          <span>${uiLabelMap.OrderPieces}:</span> ${product.piecesIncluded}
+        </li>
       </#if>
       <#if (product.quantityIncluded?? && product.quantityIncluded != 0) || product.quantityUomId?has_content>
         <#assign quantityUom = product.getRelatedOne("QuantityUom", true)! />
-        <div>
-          ${uiLabelMap.CommonQuantity} :
+        <li>
+          <span>${uiLabelMap.CommonQuantity} :</span>
           ${product.quantityIncluded!} ${((quantityUom.abbreviation)?default(product.quantityUomId))!}
-        </div>
+        </li>
       </#if>
 
       <#if (product.productWeight?? && product.productWeight != 0) || product.weightUomId?has_content>
         <#assign weightUom = product.getRelatedOne("WeightUom", true)! />
-        <div>
-          ${uiLabelMap.CommonWeight}:
+        <li>
+          <span>${uiLabelMap.CommonWeight}:</span>
           ${product.productWeight!} ${((weightUom.abbreviation)?default(product.weightUomId))!}
-        </div>
+        </li>
       </#if>
       <#if (product.productHeight?? && product.productHeight != 0) || product.heightUomId?has_content>
         <#assign heightUom = product.getRelatedOne("HeightUom", true)! />
-        <div>
-          ${uiLabelMap.CommonHeight}:
+        <li>
+          <span>${uiLabelMap.CommonHeight}:</span>
           ${product.productHeight!} ${((heightUom.abbreviation)?default(product.heightUomId))!}
-        </div>
+        </li>
       </#if>
       <#if (product.productWidth?? && product.productWidth != 0) || product.widthUomId?has_content>
         <#assign widthUom = product.getRelatedOne("WidthUom", true)! />
-        <div>
-          ${uiLabelMap.CommonWidth}:
+        <li>
+          <span>${uiLabelMap.CommonWidth}:</span>
           ${product.productWidth!} ${((widthUom.abbreviation)?default(product.widthUomId))!}
-        </div>
+        </li>
       </#if>
       <#if (product.productDepth?? && product.productDepth != 0) || product.depthUomId?has_content>
         <#assign depthUom = product.getRelatedOne("DepthUom", true)! />
-        <div>
-          ${uiLabelMap.CommonDepth}:
+        <li>
+          <span>${uiLabelMap.CommonDepth}:</span>
           ${product.productDepth!} ${((depthUom.abbreviation)?default(product.depthUomId))!}
-        </div>
+        </li>
       </#if>
 
       <#if daysToShip??>
-        <div>
+        <li>
           <strong>
             ${uiLabelMap.ProductUsuallyShipsIn} ${daysToShip} ${uiLabelMap.CommonDays}!
           </strong>
-        </div>
-      </#if>
+        </li>
+      </#if> -->
 
       <#-- show tell a friend details only in ecommerce application -->
       <#--
@@ -636,24 +634,24 @@ $(function(){
       </div>
       -->
 
-      <#if disFeatureList?? && 0 &lt; disFeatureList.size()>
+      <#-- <#if disFeatureList?? && 0 &lt; disFeatureList.size()>
         <p>&nbsp;</p>
         <#list disFeatureList as currentFeature>
           <#assign disFeatureType = currentFeature.getRelatedOne("ProductFeatureType", true) />
-          <div>
+          <li>
             <#if disFeatureType.description??>
               ${disFeatureType.get("description", locale)}
             <#else>
               ${currentFeature.productFeatureTypeId}
             </#if>:&nbsp;
             ${currentFeature.description}
-          </div>
+          </li>
         </#list>
-        <div>&nbsp;</div>
-      </#if>
+        <li>&nbsp;</li>
+      </#if> -->
     </div>
 
-    <div id="addItemForm">
+    <div id="addItemForm" class="options">
       <form method="post" action="<@ofbizUrl>additem</@ofbizUrl>" name="addform" style="margin: 0;">
         <fieldset>
         <#assign inStock = true />
@@ -694,7 +692,7 @@ $(function(){
             <input type="hidden" name="add_product_id" value="${product.productId}"/>
             <div id="addCart1" style="display:none;">
             <span style="white-space: nowrap;"><strong>${uiLabelMap.CommonQuantity}:</strong></span>&nbsp;
-              <input type="text" size="5" name="quantity" value="1"/>
+              <input type="text" size="5" name="quantity" value="1" id="quantity" class="form-control"/>
               <a href="javascript:javascript:addItem();" class="buttontext"><span
                   style="white-space: nowrap;">${uiLabelMap.OrderAddToCart}</span></a>
               &nbsp;
@@ -709,21 +707,24 @@ $(function(){
           </#if>
           <#if !product.virtualVariantMethodEnum?? || product.virtualVariantMethodEnum == "VV_VARIANTTREE">
             <#if variantTree?? && (variantTree.size() &gt; 0)>
-              <#list featureSet as currentType>
-                <div>
-                  <select name="FT${currentType}" onchange="javascript:getList(this.name, (this.selectedIndex-1), 1);">
+              <div class="form-group">
+                <label for="select" class="control-label text-uppercase">${uiLabelMap.CommonSelect}:</label>
+                <#list featureSet as currentType>
+                <div id="variantTreeOption">
+                  <select name="FT${currentType}" onchange="javascript:getList(this.name, (this.selectedIndex-1), 1);" class="form-control">
                     <option>${featureTypes.get(currentType)}</option>
                   </select>
                 </div>
-              </#list>
-              <span id="product_uom"></span>
-              <input type="hidden" name="product_id" value="${product.productId}"/>
-              <input type="hidden" name="add_product_id" value="NULL"/>
-              <div>
-                <strong><span id="product_id_display"> </span></strong>
-                <strong>
-                  <div id="variant_price_display"></div>
-                </strong>
+                </#list>
+                <span id="product_uom"></span>
+                <input type="hidden" name="product_id" value="${product.productId}"/>
+                <input type="hidden" name="add_product_id" value="NULL"/>
+                <div>
+                  <strong><span id="product_id_display"> </span></strong>
+                  <strong>
+                    <div id="variant_price_display"></div>
+                  </strong>
+                </div>
               </div>
             <#else>
               <input type="hidden" name="add_product_id" value="NULL"/>
@@ -788,30 +789,36 @@ $(function(){
                   <tr><td>&nbsp;</td><td align="right" nowrap="nowrap">&nbsp;</td-->
                 Number of days<input type="text" size="4" name="reservLength" value=""/>
                 Number of persons<input type="text" size="4" name="reservPersons" value="2"/>
-                Number of rooms<input type="text" size="5" name="quantity" value="1"/>
+                Number of rooms<input type="text" size="5" name="quantity" value="1" class="form-control"/>
               </div>
               <a href="javascript:addItem()" class="buttontext"><span
                   style="white-space: nowrap;">${uiLabelMap.OrderAddToCart}</span></a>
             <#else>
-              <span><input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text"
-                           <#if product.isVirtual!?upper_case == "Y">disabled="disabled"</#if>/></span><a
-                href="javascript:addItem()" id="addToCart" name="addToCart"
-                class="buttontext">${uiLabelMap.OrderAddToCart}</a>
+              <span><input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" class="form-control"
+                           <#if product.isVirtual!?upper_case == "Y">disabled="disabled"</#if>/></span>
+              <button type="button" class="btn btn-cart" onclick="javascript:addItem();">
+                  ${uiLabelMap.OrderAddToCart}
+                  <i class="fa fa-shopping-cart"></i>
+              </button>
               <@showUnavailableVarients/>
             </#if>
           <#else>
             <#if productStore??>
               <#if productStore.requireInventory?? && productStore.requireInventory == "N">
-                <span><input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" style="margin: 0 5px 0 0;"
-                             <#if product.isVirtual!?upper_case == "Y">disabled="disabled"</#if>/></span><a
-                  href="javascript:addItem()" id="addToCart" name="addToCart"
-                  class="buttontext">${uiLabelMap.OrderAddToCart}</a>
+                <input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" class="form-control"
+                             <#if product.isVirtual!?upper_case == "Y">disabled="disabled"</#if>/>
+                <button type="button" class="btn btn-cart" id="addToCart" name="addToCart" onclick="javascript:addItem()">
+                    ${uiLabelMap.OrderAddToCart}
+                    <i class="fa fa-shopping-cart"></i>
+                </button>
                 <@showUnavailableVarients/>
               <#else>
-                <span><input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text"
-                             disabled="disabled"/></span><a href="javascript:void(0);" disabled="disabled"
-                                                            class="buttontext">${uiLabelMap.OrderAddToCart}</a><br/>
-                <span>${uiLabelMap.ProductItemOutOfStock}<#if product.inventoryMessage??>&mdash; ${product.inventoryMessage}</#if></span>
+                <span><input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" class="form-control" disabled="disabled"/></span>
+                <button type="button" class="btn btn-cart" onclick="javascript:javascript:void(0);" disabled>
+                    ${uiLabelMap.OrderAddToCart}
+                    <i class="fa fa-shopping-cart"></i>
+                </button>
+                <#-- <span>${uiLabelMap.ProductItemOutOfStock}<#if product.inventoryMessage??>&mdash; ${product.inventoryMessage}</#if></span> -->
               </#if>
             </#if>
           </#if>
@@ -863,7 +870,7 @@ $(function(){
                   compositeType="" formName=""/>&nbsp;Number of&nbsp;days&nbsp;&nbsp;
               <input type="text" size="4" name="reservLength"/>&nbsp;<br/>Number of&nbsp;persons&nbsp;&nbsp;
               <input type="text" size="4" name="reservPersons" value="1"/>&nbsp;&nbsp;Qty&nbsp;&nbsp;
-              <input type="text" size="5" name="quantity" value="1"/>
+              <input type="text" size="5" name="quantity" value="1" class="form-control"/>
             <#elseif product.productTypeId! == "ASSET_USAGE_OUT_IN">&nbsp;
               ${uiLabelMap.CommonStartDate}(yyyy-mm-dd)&nbsp;&nbsp;&nbsp;
               <@htmlTemplate.renderDateTimeField name="reservStartStr" event="" action="" value="${startDate}"
@@ -874,9 +881,9 @@ $(function(){
                   compositeType="" formName=""/>&nbsp;&nbsp;Number of&nbsp;days&nbsp;&nbsp;
               <input type="text" size="4" name="reservLength"/>
               <input type="hidden" size="4" name="reservPersons" value="1"/><br/>Qty&nbsp;
-              <input type="text" size="5" name="quantity" value="1"/>
+              <input type="text" size="5" name="quantity" value="1" class="form-control"/>
             <#else>
-              <input type="text" size="5" name="quantity" value="1"/>
+              <input type="text" size="5" name="quantity" value="1" class="form-control"/>
               <input type="hidden" name="reservStartStr" value=""/>
             </#if>
             <a href="javascript:addShoplistSubmit();" class="buttontext">${uiLabelMap.OrderAddToShoppingList}</a>
@@ -910,10 +917,10 @@ $(function(){
           <#if !imageUrl?string?has_content>
             <#assign imageUrl = "/images/defaultImage.jpg" />
           </#if>
-          <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1);" class="linktext">${key}</a>
           <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1);"><img
               src="<@ofbizContentUrl>${contentPathPrefix!}${imageUrl}</@ofbizContentUrl>" class="cssImgSmall" alt=""/></a>
-          <br/>
+          <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1);" class="linktext">${key}</a>
+          <br/><br/>
         </#if>
         <#assign indexer = indexer + 1 />
       </#list>
@@ -941,126 +948,6 @@ $(function(){
 
     <#-- Any attributes/etc may go here -->
 
-    <#-- Product Reviews -->
-  <div id="reviews">
-    <div>${uiLabelMap.OrderCustomerReviews}:</div>
-    <#if averageRating?? && (averageRating &gt; 0) && numRatings?? && (numRatings &gt; 1)>
-      <div>${uiLabelMap.OrderAverageRating}: ${averageRating} <#if numRatings??>
-        (${uiLabelMap.CommonFrom} ${numRatings} ${uiLabelMap.OrderRatings})</#if></div>
-    </#if>
-    <hr/>
-    <#if productReviews?has_content>
-      <#list productReviews as productReview>
-        <#assign postedUserLogin = productReview.getRelatedOne("UserLogin", false) />
-        <#assign postedPerson = postedUserLogin.getRelatedOne("Person", false)! />
-        <div>
-          <strong>${uiLabelMap.CommonBy} : </strong>
-          <#if productReview.postedAnonymous?default("N") == "Y">
-            ${uiLabelMap.OrderAnonymous}
-          <#else>
-            ${postedPerson.firstName} ${postedPerson.lastName}&nbsp;
-          </#if>
-        </div>
-        <div><strong>${uiLabelMap.CommonAt}: </strong>${productReview.postedDateTime!}&nbsp;</div>
-        <div><strong>${uiLabelMap.OrderRanking}: </strong>${productReview.productRating!?string}</div>
-        <div>&nbsp;</div>
-        <div>${productReview.productReview!}</div>
-        <hr/>
-      </#list>
-      <div>
-        <a href="<@ofbizUrl>reviewProduct?category_id=${categoryId!}&amp;product_id=${product.productId}</@ofbizUrl>"
-           class="linktext">${uiLabelMap.ProductReviewThisProduct}!</a>
-      </div>
-    <#else>
-      <div>${uiLabelMap.ProductProductNotReviewedYet}.</div>
-      <div>
-        <a href="<@ofbizUrl>reviewProduct?category_id=${categoryId!}&amp;product_id=${product.productId}</@ofbizUrl>"
-           class="linktext">${uiLabelMap.ProductBeTheFirstToReviewThisProduct}</a>
-      </div>
-    </div>
-    </#if>
-    <#-- Upgrades/Up-Sell/Cross-Sell -->
-    <#macro associated assocProducts beforeName showName afterName formNamePrefix targetRequestName>
-      <#assign pageProduct = product />
-      <#assign targetRequest = "product" />
-      <#if targetRequestName?has_content>
-        <#assign targetRequest = targetRequestName />
-      </#if>
-      <#if assocProducts?has_content>
-        <h2>
-          ${beforeName!}
-          <#if showName == "Y">${productContentWrapper.get("PRODUCT_NAME", "html")!}</#if>${afterName!}
-        </h2>
-
-        <div class="productsummary-container">
-          <#list assocProducts as productAssoc>
-            <#if productAssoc.productId == product.productId>
-              <#assign assocProductId = productAssoc.productIdTo />
-            <#else>
-              <#assign assocProductId = productAssoc.productId />
-            </#if>
-            <div>
-              <a href="<@ofbizUrl>${targetRequest}/<#if categoryId??>~category_id=${categoryId}/</#if>~product_id=${assocProductId}</@ofbizUrl>"
-                 class="buttontext">
-              ${assocProductId}
-              </a>
-              <#if productAssoc.reason?has_content>
-                - <strong>${productAssoc.reason}</strong>
-              </#if>
-            </div>
-          ${setRequestAttribute("optProductId", assocProductId)}
-          ${setRequestAttribute("listIndex", listIndex)}
-          ${setRequestAttribute("formNamePrefix", formNamePrefix)}
-            <#if targetRequestName?has_content>
-            ${setRequestAttribute("targetRequestName", targetRequestName)}
-            </#if>
-          ${screens.render(productsummaryScreen)}
-            <#assign product = pageProduct />
-            <#local listIndex = listIndex + 1 />
-          </#list>
-        </div>
-
-      ${setRequestAttribute("optProductId", "")}
-      ${setRequestAttribute("formNamePrefix", "")}
-      ${setRequestAttribute("targetRequestName", "")}
-      </#if>
-    </#macro>
-
-    <#assign productValue = product />
-    <#assign listIndex = 1 />
-    ${setRequestAttribute("productValue", productValue)}
-    <div id="associated-products">
-    <#-- also bought -->
-      <@associated assocProducts=alsoBoughtProducts beforeName="" showName="N"
-          afterName="${uiLabelMap.ProductAlsoBought}" formNamePrefix="albt" targetRequestName="" />
-      <#-- obsolete -->
-      <@associated assocProducts=obsoleteProducts beforeName="" showName="Y" afterName=" ${uiLabelMap.ProductObsolete}"
-          formNamePrefix="obs" targetRequestName="" />
-      <#-- cross sell -->
-      <@associated assocProducts=crossSellProducts beforeName="" showName="N" afterName="${uiLabelMap.ProductCrossSell}"
-          formNamePrefix="cssl" targetRequestName="crosssell" />
-      <#-- up sell -->
-      <@associated assocProducts=upSellProducts beforeName="${uiLabelMap.ProductUpSell} " showName="Y" afterName=":"
-          formNamePrefix="upsl" targetRequestName="upsell" />
-      <#-- obsolescence -->
-      <@associated assocProducts=obsolenscenseProducts beforeName="" showName="Y"
-          afterName=" ${uiLabelMap.ProductObsolescense}" formNamePrefix="obce" targetRequestName="" />
-    </div>
-
-  <#-- special cross/up-sell area using commonFeatureResultIds (from common feature product search) -->
-  <#if commonFeatureResultIds?has_content>
-    <h2>${uiLabelMap.ProductSimilarProducts}</h2>
-
-    <div class="productsummary-container">
-      <#list commonFeatureResultIds as commonFeatureResultId>
-        ${setRequestAttribute("optProductId", commonFeatureResultId)}
-        ${setRequestAttribute("listIndex", commonFeatureResultId_index)}
-        ${setRequestAttribute("formNamePrefix", "cfeatcssl")}
-        <#-- ${setRequestAttribute("targetRequestName", targetRequestName)} -->
-        ${screens.render(productsummaryScreen)}
-      </#list>
-    </div>
-  </#if>
     <div class="product-tags">
       <p class="titleProductTags">
       <h3>${uiLabelMap.EcommerceProductTags}</h3></p>
@@ -1089,8 +976,11 @@ $(function(){
       <p>
       <form method="post" action="<@ofbizUrl>addProductTags</@ofbizUrl>" name="addProductTags">
         <input type="hidden" name="productId" value="${product.productId!}"/>
-        <input class="inputProductTags" type="text" value="" name="productTags" id="productTags" size="40"/>
-        <input class="buttonProductTags" type="submit" value="${uiLabelMap.EcommerceAddTags}" name="addTag"/>
+        <input class="form-control" type="text" value="" name="productTags" id="productTags" size="40"/>
+        <button type="button" class="btn btn-main" id="addTag" name="addTag" onclick="javascript:document.addProductTags.submit();">
+            ${uiLabelMap.EcommerceAddTags}
+            <i class="fa fa-tags"></i>
+        </button>
       </form>
       <span>${uiLabelMap.EcommerceAddTagsDetail}</span>
       </p>
@@ -1105,4 +995,197 @@ $(function(){
       <input type="hidden" name="SEARCH_STRING" id="productTagStr"/>
     </form>
   </div>
+  </div>
+  </div>
+
+    <!-- Tabs Starts -->
+        <div class="tabs-panel panel-smart">
+        <!-- Nav Tabs Starts -->
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#tab-description">${uiLabelMap.CommonDescription}</a>
+                </li>
+                <li><a href="#tab-review">${uiLabelMap.PageTitleProductReview}</a></li>
+            </ul>
+        <!-- Nav Tabs Ends -->
+        <!-- Tab Content Starts -->
+            <div class="tab-content clearfix">
+            <!-- Description Starts -->
+                <div class="tab-pane active" id="tab-description">
+                    <div>${productContentWrapper.get("DESCRIPTION", "html")!}</div>
+                    <div>${productContentWrapper.get("LONG_DESCRIPTION", "html")!}</div>
+                </div>
+            <!-- Description Ends -->
+            <!-- Review Starts -->
+                <div class="tab-pane" id="tab-review">
+                    <#-- Product Reviews -->
+                    <#if productReviews?has_content>
+                      <div id="reviews">
+                        <div><h3>${uiLabelMap.OrderCustomerReviews}</h3></div>
+                        <#if averageRating?? && (averageRating &gt; 0) && numRatings?? && (numRatings &gt; 1)>
+                          <div>${uiLabelMap.OrderAverageRating}: ${averageRating} <#if numRatings??>
+                            (${uiLabelMap.CommonFrom} ${numRatings} ${uiLabelMap.OrderRatings})</#if></div>
+                        </#if>
+                        <hr/>
+                        <#list productReviews as productReview>
+                          <#assign postedUserLogin = productReview.getRelatedOne("UserLogin", false) />
+                          <#assign postedPerson = postedUserLogin.getRelatedOne("Person", false)! />
+                          <div>
+                            <strong>${uiLabelMap.CommonBy} : </strong>
+                            <#if productReview.postedAnonymous?default("N") == "Y">
+                              ${uiLabelMap.OrderAnonymous}
+                            <#else>
+                              ${postedPerson.firstName} ${postedPerson.lastName}&nbsp;
+                            </#if>
+                          </div>
+                          <div><strong>${uiLabelMap.CommonAt}: </strong>${productReview.postedDateTime!}&nbsp;</div>
+                          <div><strong>${uiLabelMap.OrderRanking}: </strong>${productReview.productRating!?string}</div>
+                          <div>&nbsp;</div>
+                          <div>${productReview.productReview!}</div>
+                          <hr/>
+                        </#list>
+                      </div>
+                    </#if>
+                    <div class="clearfix"></div>
+                    <#if product.productId??>
+                    <#assign productCategoryMember = EntityQuery.use(delegator).from("ProductCategoryMember").where("productId", product.productId).filterByDate().queryFirst()!>
+                    <form class="form-horizontal" id="reviewProduct" method="post" action="<@ofbizUrl>createProductReview</@ofbizUrl>">
+                        <input type="hidden" name="productStoreId" value="${productStore.productStoreId}" />
+                        <input type="hidden" name="productId" value="${product.productId}" />
+                        <input type="hidden" name="product_id" value="${product.productId}" />
+                        <input type="hidden" name="category_id" value="${productCategoryMember.productCategoryId!}" />
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label ratings">${uiLabelMap.EcommerceRating}</label>
+                            <div class="col-sm-10">
+                                1&nbsp;
+                                <input type="radio" name="productRating" value="1" />
+                                2&nbsp;
+                                <input type="radio" name="productRating" value="2" />
+                                3&nbsp;
+                                <input type="radio" name="productRating" value="3" />
+                                4&nbsp;
+                                <input type="radio" name="productRating" value="4" />
+                                5&nbsp;
+                                <input type="radio" name="productRating" value="5" />
+                                &nbsp;
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label ratings">${uiLabelMap.EcommercePostAnonymous}</label>
+                            <div class="col-sm-10">
+                                ${uiLabelMap.CommonYes}&nbsp;
+                                <input type="radio" id="yes" name="postedAnonymous" value="Y" />
+                                ${uiLabelMap.CommonNo}&nbsp;
+                                <input type="radio" id="no" name="postedAnonymous" value="N" checked="checked" />
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="input-review">${uiLabelMap.CommonReview}</label>
+                            <div class="col-sm-10">
+                                <textarea rows="5" name="productReview" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <a href="javascript:document.getElementById('reviewProduct').submit();" class="btn btn-main">
+                                    ${uiLabelMap.CommonSave}
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                    <#else>
+                      <h2>${uiLabelMap.ProductCannotReviewUnKnownProduct}.</h2>
+                    </#if>
+                </div>
+            <!-- Review Ends -->
+            </div>
+        <!-- Tab Content Ends -->
+        </div>
+    <!-- Tabs Ends -->
+  <#-- Upgrades/Up-Sell/Cross-Sell -->
+  <#macro associated assocProducts beforeName showName afterName formNamePrefix targetRequestName>
+      <#assign pageProduct = product />
+      <#assign targetRequest = "product" />
+      <#if targetRequestName?has_content>
+        <#assign targetRequest = targetRequestName />
+      </#if>
+      <#if assocProducts?has_content>
+        <h4 class="heading">
+            ${beforeName!} <#if showName == "Y">${productContentWrapper.get("PRODUCT_NAME", "html")!}</#if>${afterName!}
+        </h4>
+        <div class="row">
+
+          <#list assocProducts as productAssoc>
+            <#if productAssoc.productId == product.productId>
+              <#assign assocProductId = productAssoc.productIdTo />
+            <#else>
+              <#assign assocProductId = productAssoc.productId />
+            </#if>
+            <#-- <div>
+              <a href="<@ofbizUrl>${targetRequest}/<#if categoryId??>~category_id=${categoryId}/</#if>~product_id=${assocProductId}</@ofbizUrl>"
+                 class="buttontext">
+              ${assocProductId}
+              </a>
+              <#if productAssoc.reason?has_content>
+                - <strong>${productAssoc.reason}</strong>
+              </#if>
+            </div> -->
+            ${setRequestAttribute("optProductId", assocProductId)}
+            ${setRequestAttribute("listIndex", listIndex)}
+            ${setRequestAttribute("formNamePrefix", formNamePrefix)}
+            <#if targetRequestName?has_content>
+                ${setRequestAttribute("targetRequestName", targetRequestName)}
+            </#if>
+            ${screens.render(productsummaryScreen)}
+            <#assign product = pageProduct />
+            <#local listIndex = listIndex + 1 />
+          </#list>
+
+          ${setRequestAttribute("optProductId", "")}
+          ${setRequestAttribute("formNamePrefix", "")}
+          ${setRequestAttribute("targetRequestName", "")}
+        </div>
+      </#if>
+  </#macro>
+  <div class="product-info-box">
+    <#assign productValue = product />
+    <#assign listIndex = 1 />
+    ${setRequestAttribute("productValue", productValue)}
+    <div id="associated-products">
+    <#-- also bought -->
+      <@associated assocProducts=alsoBoughtProducts beforeName="" showName="N"
+          afterName="${uiLabelMap.ProductAlsoBought}" formNamePrefix="albt" targetRequestName="" />
+      <#-- obsolete -->
+      <@associated assocProducts=obsoleteProducts beforeName="" showName="Y" afterName=" ${uiLabelMap.ProductObsolete}"
+          formNamePrefix="obs" targetRequestName="" />
+      <#-- cross sell -->
+      <@associated assocProducts=crossSellProducts beforeName="" showName="N" afterName="${uiLabelMap.ProductCrossSell}"
+          formNamePrefix="cssl" targetRequestName="crosssell" />
+      <#-- up sell -->
+      <@associated assocProducts=upSellProducts beforeName="${uiLabelMap.ProductUpSell} " showName="Y" afterName=":"
+          formNamePrefix="upsl" targetRequestName="upsell" />
+      <#-- obsolescence -->
+      <@associated assocProducts=obsolenscenseProducts beforeName="" showName="Y"
+          afterName=" ${uiLabelMap.ProductObsolescense}" formNamePrefix="obce" targetRequestName="" />
+    </div>
+  </div>
+
+    <#-- special cross/up-sell area using commonFeatureResultIds (from common feature product search) -->
+    <#if commonFeatureResultIds?has_content>
+    <div class="product-info-box">
+        <div class="row">
+        <h4 class="heading">${uiLabelMap.ProductSimilarProducts}</h4>
+
+            <div class="productsummary-container">
+              <#list commonFeatureResultIds as commonFeatureResultId>
+                ${setRequestAttribute("optProductId", commonFeatureResultId)}
+                ${setRequestAttribute("listIndex", commonFeatureResultId_index)}
+                ${setRequestAttribute("formNamePrefix", "cfeatcssl")}
+                <#-- ${setRequestAttribute("targetRequestName", targetRequestName)} -->
+                ${screens.render(productsummaryScreen)}
+              </#list>
+            </div>
+        </div>
+    </div>
+    </#if>
 </div>

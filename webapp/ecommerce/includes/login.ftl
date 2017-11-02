@@ -69,74 +69,65 @@ under the License.
    }(document, 'script', 'facebook-jssdk'));
 </script>
 </#if>
-
-<h1>${uiLabelMap.CommonLogin}</h1>
-<center>
-    <div>
-        <div class="screenlet-title-bar"></div>
-        <div class="screenlet-body" id="loginmanual">
-            <ul>
-                <li class="loginsection">
-                    <form method="post" action="<@ofbizUrl>login</@ofbizUrl>" name="loginform">
+<div id="main-container" class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-smart">
+                <div class="panel-heading">
+                    <h4>${uiLabelMap.PFTSignIn}</h4>
+                </div>
+                <div class="panel-body">
+                    <form method="post" action="<@ofbizUrl>login</@ofbizUrl>" class="form-horizontal" name="loginform">
                         <table class="basic-table" cellspacing="0">
-                            <tr class="label" align="center">
-                                <td>${uiLabelMap.CommonUsername}</td>
-                                <td><input type="text" name="USERNAME" id="username" value="<#if requestParameters.USERNAME?has_content>${requestParameters.USERNAME}<#elseif autoUserLogin?has_content>${autoUserLogin.userLoginId}</#if>"/></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <#if autoUserLogin?has_content>
-                                        <p>(${uiLabelMap.CommonNot} ${autoUserLogin.userLoginId}? <a href="<@ofbizUrl>${autoLogoutUrl}</@ofbizUrl>">${uiLabelMap.CommonClickHere}</a>)</p>
-                                    </#if>
-                                </td>
-                            </tr>
-                            <tr class="label">
-                                <td>${uiLabelMap.CommonPassword}</td>
-                                <td><input type="password" name="PASSWORD" id="password" value="" size="20"/></td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td><a href="<@ofbizUrl>forgotYourPassword</@ofbizUrl>">${uiLabelMap.CommonForgotYourPassword}</a></td>
-                            </tr>
-                            <tr>
-                                <td>&nbsp;</td>
-                                <td><input type="submit" class="button" value="${uiLabelMap.CommonLogin}" size="10"/></td>
-                            </tr>
+                            <div class="form-group">
+                                <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonUsername}</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" name="USERNAME" id="username" value="<#if requestParameters.USERNAME?has_content>${requestParameters.USERNAME}<#elseif autoUserLogin?has_content>${autoUserLogin.userLoginId}</#if>"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonPassword}</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" name="PASSWORD" id="password" size="20"/>
+                                </div>
+                            </div>
+                            <div class="form-group" align="center">
+                                <button type="submit" class="btn btn-main">Login</button>
+                                <a href="<@ofbizUrl>forgotYourPassword</@ofbizUrl>" class="btn btn-main text-uppercase">${uiLabelMap.CommonForgotYourPassword}</a>
+                            </div>
                         </table>
                         <input type="hidden" name="JavaScriptEnabled" value="N"/>
                     </form>
-                    </br><label for="newcustomer_submit">${uiLabelMap.CommonMayCreateNewAccountHere}:
-                    <a href="<@ofbizUrl>newcustomer</@ofbizUrl>">${uiLabelMap.CommonMayCreate}</a>
-                </li>
-                <div class="separatorLogin">
-                    <span class="or">${uiLabelMap.CommonOr}</span>
-                    <span class="line"></span>
                 </div>
-                <li class="loginsection">
-                    <div class="login-application">
-                        <ul>
-                            <li class="application">
-                                <#if googleClientId?has_content>
-                                <div id="googleBtn" class="customGPlusSignIn">
-                                  <span class="googleIcon"></span>
-                                  <span class="googleButtonText">Sign in with Google</span>
-                                </div>
-                                <script>startApp();</script>
-                                </#if>
-                                <#if facebookAppId?has_content>
-                                <div class="signInWrapper">
-                                    <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" login-text="Sign in with Facebook" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" scope="public_profile,email" onlogin="checkLoginFacebook();"></div>
-                                </div>
-                                </#if>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-smart">
+                <div class="panel-heading">
+                    <h4>${uiLabelMap.PFTSignInWithSocial}</h4>
+                </div>
+                <div class="panel-body">
+                    <#if googleClientId?has_content>
+                        <div class="form-group">
+                            <div id="googleBtn" class="customGPlusSignIn">
+                              <span class="googleIcon"></span>
+                              <span class="googleButtonText">Sign in with Google</span>
+                            </div>
+                            <script>startApp();</script>
+                        </div>
+                    </#if>
+                    <#if facebookAppId?has_content>
+                        <div class="form-group">
+                            <div class="signInWrapper">
+                                <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" login-text="Sign in with Facebook" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" scope="public_profile,email" onlogin="checkLoginFacebook();"></div>
+                            </div>
+                        </div>
+                    </#if>
+                </div>
+            </div>
         </div>
     </div>
-</center>
-<div class="endcolumns">&nbsp;</div>
+</div>
 
 <#-- Google login hidden Form -->
 <#if googleClientId?has_content>

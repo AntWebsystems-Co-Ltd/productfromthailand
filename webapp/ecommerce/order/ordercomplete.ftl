@@ -16,13 +16,16 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<h2>${uiLabelMap.EcommerceOrderConfirmation}</h2>
-<#if !isDemoStore?exists || isDemoStore><p>${uiLabelMap.OrderDemoFrontNote}.</p></#if>
-<#if orderHeader?has_content>
-  ${screens.render("component://ecommerce/widget/OrderScreens.xml#orderheader")}
-  ${screens.render("component://productfromthailand/widget/OrderScreens.xml#orderitems")}
-  <a href="<@ofbizUrl>main</@ofbizUrl>" class="buttontextbig">${uiLabelMap.EcommerceContinueShopping}</a>
-  <a href="<@ofbizUrl>main</@ofbizUrl>" class="buttontextbig">${uiLabelMap.EcommerceContinueShopping}</a>
-<#else>
-  <h3>${uiLabelMap.OrderSpecifiedNotFound}.</h3>
-</#if>
+<div id="main-container" class="container">
+    <h1>${uiLabelMap.EcommerceOrderConfirmation}</h1>
+    <div class="panel-smart">
+        <#if !isDemoStore?exists || isDemoStore><p>${uiLabelMap.OrderDemoFrontNote}.</p></#if>
+        <#if orderHeader?has_content>
+          ${screens.render("component://productfromthailand/widget/OrderScreens.xml#orderheader")}
+          ${screens.render("component://productfromthailand/widget/OrderScreens.xml#orderitems")}
+          <a href="<@ofbizUrl>main</@ofbizUrl>" class="btn btn-main">${uiLabelMap.EcommerceContinueShopping}</a>
+        <#else>
+          <h3>${uiLabelMap.OrderSpecifiedNotFound}.</h3>
+        </#if>
+    </div>
+</div>

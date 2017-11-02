@@ -114,76 +114,42 @@ NOTE: all page headings should start with an h2 tag, not an H1 tag, as
 there should generally always only be one h1 tag on the page and that
 will generally always be reserved for the logo at the top of the page.
 ------------------------------------------------------------------------------->
-
-<h2>${uiLabelMap.PartyRequestNewAccount}
-  <span>
-    ${uiLabelMap.PartyAlreadyHaveAccount}, <a href='<@ofbizUrl>checkLogin</@ofbizUrl>'>${uiLabelMap.CommonLoginHere}</a>
-  </span>
-</h2>
-
-<#macro fieldErrors fieldName>
-  <#if errorMessageList?has_content>
-    <#assign fieldMessages = Static["org.apache.ofbiz.base.util.MessageString"].getMessagesForField(fieldName, true, errorMessageList)>
-    <ul>
-      <#list fieldMessages as errorMsg>
-        <li class="errorMessage">${errorMsg}</li>
-      </#list>
-    </ul>
-  </#if>
-</#macro>
-<#macro fieldErrorsMulti fieldName1 fieldName2 fieldName3 fieldName4>
-  <#if errorMessageList?has_content>
-    <#assign fieldMessages = Static["org.apache.ofbiz.base.util.MessageString"].getMessagesForField(fieldName1, fieldName2, fieldName3, fieldName4, true, errorMessageList)>
-    <ul>
-      <#list fieldMessages as errorMsg>
-        <li class="errorMessage">${errorMsg}</li>
-      </#list>
-    </ul>
-  </#if>
-</#macro>
-
-<div class="manualRegister">
-    <form method="post" action="<@ofbizUrl>createcustomer${previousParams}</@ofbizUrl>" id="newuserform" name="newuserform">
-      <#----------------------------------------------------------------------
-      If you need to include a brief explanation of the form, or certain
-      elements in the form (such as explaining asterisks denote REQUIRED),
-      then you should use a <p></p> tag with a class name of "desc"
-      ----------------------------------------------------------------------->
-      <h1>${uiLabelMap.CommonFieldsMarkedAreRequired}</h1>
-      <#----------------------------------------------------------------------
-      There are two types of fieldsets, regular (full width) fielsets, and
-      column (half width) fieldsets. If you want to group two sets of inputs
-      side by side in two columns, give each fieldset a class name of "col"
-      ----------------------------------------------------------------------->
-      <fieldset class="col">
-        <legend>${uiLabelMap.PartyFullName}</legend>
-        <input type="hidden" name="emailProductStoreId" value="${productStoreId}"/>
-        <#----------------------------------------------------------------------
-        Each input row should be enclosed in a <div></div>.
-        This will ensure than each input field clears the one
-        above it. Alternately, if you want several inputs to float next to
-        each other, you can enclose them in a table as illustrated below for
-        the phone numbers, or you can enclose each label/input pair in a span
-
-        Example:
-        <div>
-          <span>
-            <input type="text" name="expMonth" value=""/>
-            <label for="expMonth">Exp. Month</label>
-          </span>
-          <span>
-            <input type="text" name="expYear" value=""/>
-            <label for="expYear">Exp. Year</label>
-          </span>
+<div id="main-container" class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="panel-smart">
+        <div class="panel-heading">
+          <h2>${uiLabelMap.PFTRegisterAsCustomer}</h2>
         </div>
-        ----------------------------------------------------------------------->
-        <table class="basic-table" cellspacing="0" width="90%">
-            <tr>
-                <td valign="middle" class="newcustomer" width="30%">${uiLabelMap.CommonTitle}</td>
-                <td width="1%"> : </td>
-                <td width="60%">
+        <#macro fieldErrors fieldName>
+          <#if errorMessageList?has_content>
+            <#assign fieldMessages = Static["org.apache.ofbiz.base.util.MessageString"].getMessagesForField(fieldName, true, errorMessageList)>
+            <ul>
+              <#list fieldMessages as errorMsg>
+                <li class="errorMessage">${errorMsg}</li>
+              </#list>
+            </ul>
+          </#if>
+        </#macro>
+        <#macro fieldErrorsMulti fieldName1 fieldName2 fieldName3 fieldName4>
+          <#if errorMessageList?has_content>
+            <#assign fieldMessages = Static["org.apache.ofbiz.base.util.MessageString"].getMessagesForField(fieldName1, fieldName2, fieldName3, fieldName4, true, errorMessageList)>
+            <ul>
+              <#list fieldMessages as errorMsg>
+                <li class="errorMessage">${errorMsg}</li>
+              </#list>
+            </ul>
+          </#if>
+        </#macro>
+        <div class="panel-body">
+          <div class="manualRegister">
+            <form method="post" action="<@ofbizUrl>createcustomer${previousParams}</@ofbizUrl>" class="form-horizontal" id="newuserform" name="newuserform">
+              <input type="hidden" name="emailProductStoreId" value="${productStoreId}"/>
+              <div class="form-group">
+                <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonTitle}</label>
+                <div class="col-sm-6">
                   <@fieldErrors fieldName="USER_TITLE"/>
-                  <select name="USER_TITLE" id="USER_TITLE">
+                  <select name="USER_TITLE" id="USER_TITLE" class="form-control">
                     <#if requestParameters.USER_TITLE?has_content >
                       <option>${requestParameters.USER_TITLE}</option>
                       <option value="${requestParameters.USER_TITLE}"> -- </option>
@@ -195,112 +161,91 @@ will generally always be reserved for the logo at the top of the page.
                     <option>${uiLabelMap.CommonTitleMs}</option>
                     <option>${uiLabelMap.CommonTitleDr}</option>
                   </select>
-                </td>
-            </tr>
-            <tr>
-                <td valign="middle" class="newcustomer">${uiLabelMap.PartyFirstName}</td>
-                <td> : </td>
-                <td><input type="text" name="USER_FIRST_NAME" id="USER_FIRST_NAME" value="${requestParameters.USER_FIRST_NAME?if_exists}" /> *</td>
-            </tr>
-            <#-- <tr>
-                <td valign="middle" class="newcustomer">${uiLabelMap.PartyMiddleInitial}</td>
-                <td> : </td>
-                <td><input type="text" name="USER_MIDDLE_NAME" id="USER_MIDDLE_NAME" value="${requestParameters.USER_MIDDLE_NAME?if_exists}" /> *</td>
-            </tr> -->
-            <tr>
-                <td valign="middle" class="newcustomer">${uiLabelMap.PartyLastName}</td>
-                <td> : </td>
-                <td><input type="text" name="USER_LAST_NAME" id="USER_LAST_NAME" value="${requestParameters.USER_LAST_NAME?if_exists}" /> *</td>
-            </tr>
-        </table>
-      </fieldset>
-      <fieldset class="col">
-        <legend>${uiLabelMap.PartyEmailAddress}</legend>
-        <table class="basic-table" cellspacing="0" width="90%">
-            <tr>
-                <td valign="middle" class="newcustomer" width="30%">${uiLabelMap.CommonEmail}</td>
-                <td width="1%"> : </td>
-                <td width="60%"><input type="text" name="CUSTOMER_EMAIL" id="CUSTOMER_EMAIL" value="${requestParameters.CUSTOMER_EMAIL?if_exists}" onchange="changeEmail()" onkeyup="changeEmail()" /> *</td>
-            </tr>
-        </table>
-      </fieldset>
-      <fieldset class="col">
-        <legend><#if getUsername>${uiLabelMap.CommonUsername}</#if></legend>
-        <#if getUsername>
-        <table class="basic-table" cellspacing="0" width="90%">
-            <tr>
-                <td valign="middle" class="newcustomer" width="30%"></td>
-                <td width="1%"></td>
-                <td width="60%"><input type="checkbox" class="checkbox" name="UNUSEEMAIL" id="UNUSEEMAIL" value="on" onclick="setEmailUsername();" onfocus="setLastFocused(this);"/> ${uiLabelMap.EcommerceUseEmailAddress}</td>
-            </tr>
-            <tr>
-                <td valign="middle" class="newcustomer">${uiLabelMap.CommonUsername}</td>
-                <td> : </td>
-                <td><input type="text" name="USERNAME" id="USERNAME" value="${requestParameters.USERNAME?if_exists}" onfocus="clickUsername();" onchange="changeEmail();"/> *</td>
-            </tr>
-        </table>
-        </#if>
-      </fieldset>
-      <fieldset class="col">
-        <legend>${uiLabelMap.CommonPassword}</legend>
-        <#if createAllowPassword>
-          <table class="basic-table" cellspacing="0" width="90%">
-            <tr>
-                <td valign="middle" class="newcustomer" width="30%">${uiLabelMap.CommonPassword}</td>
-                <td width="1%"></td>
-                <td width="60%"><input type="password" name="PASSWORD" id="PASSWORD" onfocus="setLastFocused(this);"/> *</td>
-            </tr>
-            <tr>
-                <td valign="middle" class="newcustomer">${uiLabelMap.PFTConfirmPassword}</td>
-                <td> : </td>
-                <td><input type="password" class='inputBox' name="CONFIRM_PASSWORD" id="CONFIRM_PASSWORD" value="" maxlength="50"/> *</td>
-            </tr>
-        </table>
-        <#else/>
-          <table class="basic-table" cellspacing="0" width="90%">
-            <tr>
-                <td valign="middle" class="newcustomer" width="30%">${uiLabelMap.PartyReceivePasswordByEmail}.</td>
-                <td width="1%"></td>
-                <td width="60%"></td>
-            </tr>
-        </table>
-        </#if>
-      </fieldset>
-    </form>
-    <#------------------------------------------------------------------------------
-    To create a consistent look and feel for all buttons, input[type=submit],
-    and a tags acting as submit buttons, all button actions should have a
-    class name of "button". No other class names should be used to style
-    button actions.
-    ------------------------------------------------------------------------------->
-    <div class="newuserbutton">
-      <div class="floatleft"><a href="javascript:$('#newuserform').submit()">${uiLabelMap.CommonSave}</a></div>
-      <div class="floatright"><a href="<@ofbizUrl>checkLogin</@ofbizUrl>" class="reset">${uiLabelMap.CommonBack}</a></div>
-    </div>
-</div>
-<div class="separatorSignup">
-    <span class="or">${uiLabelMap.CommonOr}</span>
-    <span class="line"></span>
-</div>
-<div class="thirdPartyRegister">
-    <div class="login-application">
-        <ul>
-            <li class="application">
-                <#if googleClientId?has_content>
-                <div id="googleBtn" class="customGPlusSignIn">
-                  <span class="googleIcon"></span>
-                  <span class="googleButtonText">Sign up with Google</span>
                 </div>
-                <script>startApp();</script>
-                </#if>
-                <#if facebookAppId?has_content>
-                <div class="signInWrapper">
-                    <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" login-text="Sign up with Facebook" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" scope="public_profile,email" onlogin="checkLoginFacebook();"></div>
+              </div>
+              <div class="form-group">
+                <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PartyFirstName} *</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control required" name="USER_FIRST_NAME" id="USER_FIRST_NAME" value="${requestParameters.USER_FIRST_NAME?if_exists}"/>
                 </div>
-                </#if>
-            </li>
-        </ul>
+              </div>
+              <div class="form-group">
+                <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PartyLastName} *</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control required" name="USER_LAST_NAME" id="USER_LAST_NAME" value="${requestParameters.USER_LAST_NAME?if_exists}"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PartyEmailAddress} *</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control required" name="CUSTOMER_EMAIL" id="CUSTOMER_EMAIL" value="${requestParameters.CUSTOMER_EMAIL?if_exists}" onchange="changeEmail()" onkeyup="changeEmail()"/>
+                </div>
+              </div>
+              <#if getUsername>
+                <div class="form-group">
+                  <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonUsername} *</label>
+                  <div class="col-sm-6">
+                    <input type="checkbox" name="UNUSEEMAIL" id="UNUSEEMAIL" value="on" onclick="setEmailUsername();" onfocus="setLastFocused(this);"> ${uiLabelMap.EcommerceUseEmailAddress}
+                    <br/>
+                    <input type="text" class="form-control required" name="USERNAME" id="USERNAME" value="${requestParameters.USERNAME?if_exists}" onfocus="clickUsername();" onchange="changeEmail();"/>
+                  </div>
+                </div>
+              </#if>
+              <#if createAllowPassword>
+                <div class="form-group">
+                  <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonPassword} *</label>
+                  <div class="col-sm-6">
+                    <input type="password" class="form-control required" name="PASSWORD" id="PASSWORD" onfocus="setLastFocused(this);"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTConfirmPassword} *</label>
+                  <div class="col-sm-6">
+                    <input type="password" class="form-control required" name="CONFIRM_PASSWORD" id="CONFIRM_PASSWORD" value="" maxlength="50"/>
+                  </div>
+                </div>
+              </#if>
+            </form>
+            <#------------------------------------------------------------------------------
+            To create a consistent look and feel for all buttons, input[type=submit],
+            and a tags acting as submit buttons, all button actions should have a
+            class name of "button". No other class names should be used to style
+            button actions.
+            ------------------------------------------------------------------------------->
+            <div class="newuserbutton">
+              <a href="javascript:$('#newuserform').submit()" class="btn btn-main">${uiLabelMap.CommonSave}</a>
+              <a href="<@ofbizUrl>checkLogin</@ofbizUrl>" class="reset btn btn-main">${uiLabelMap.CommonBack}</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="col-sm-4">
+      <div class="panel-smart">
+        <div class="panel-heading">
+          <h2>${uiLabelMap.PFTRegisterWithSocial}</h2>
+        </div>
+        <div class="panel-body">
+          <#if googleClientId?has_content>
+            <div class="form-group">
+              <div id="googleBtn" class="customGPlusSignIn">
+                <span class="googleIcon"></span>
+                <span class="googleButtonText">Sign up with Google</span>
+              </div>
+              <script>startApp();</script>
+            </div>
+          </#if>
+          <#if facebookAppId?has_content>
+            <div class="form-group">
+              <div class="signInWrapper">
+                  <div class="fb-login-button" data-max-rows="1" data-size="medium" data-button-type="login_with" login-text="Sign up with Facebook" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false" scope="public_profile,email" onlogin="checkLoginFacebook();"></div>
+              </div>
+            </div>
+          </#if>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <#-- Google login hidden Form -->
 <#if googleClientId?has_content>
@@ -325,6 +270,9 @@ will generally always be reserved for the logo at the top of the page.
 </form>
 </#if>
 <script>
+    jQuery(document).ready( function() {
+      jQuery("#newuserform").validate();
+    });
     <#-- Google login Js to get data -->
     <#if googleClientId?has_content>
     function onSignIn(googleUser) {

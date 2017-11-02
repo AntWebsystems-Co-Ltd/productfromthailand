@@ -24,7 +24,7 @@ under the License.
     <screen name="newcustomer">
         <section>
             <actions>
-                <set field="titleProperty" value="PageTitleNewCustomer"/>
+                <set field="titleProperty" value="PFTRegisterAsCustomer"/>
                 <script location="component://ecommerce/groovyScripts/customer/NewCustomer.groovy"/>
                 <set field="dependentForm" value="newuserform"/>
                 <set field="paramKey" value="countryGeoId"/>
@@ -54,7 +54,7 @@ under the License.
     <screen name="newsupplier">
         <section>
             <actions>
-                <set field="titleProperty" value="PageTitleNewSupplier"/>
+                <set field="titleProperty" value="PFTRegisterAsSupplier"/>
                 <script location="component://productfromthailand/groovyScripts/NewSupplier.groovy"/>
                 <set field="dependentForm" value="newuserform"/>
                 <set field="paramKey" value="countryGeoId"/>
@@ -121,82 +121,6 @@ under the License.
                         <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/customer/viewprofile.ftl"/></html></platform-specific>
                     </decorator-section>
                 </decorator-screen>
-            </widgets>
-        </section>
-    </screen>
-
-    <screen name="StoreManagement">
-        <section>
-            <actions>
-                <set field="titleProperty" value="PageTitleViewPartyProfile"/>
-                <set field="tabButtonItem" value="viewprofile"/>
-
-                <entity-and entity-name="PartyContent" list="checkImportIdImgs" filter-by-date="true">
-                    <field-map field-name="partyId" from-field="parameters.partyId"/>
-                    <field-map field-name="partyContentTypeId" value="INTERNAL"/>
-                </entity-and>
-            </actions>
-            <widgets>
-                <section>
-                    <condition>
-                        <if-has-permission permission="MYPORTAL" action="_SUPPLIER"/>
-                    </condition>
-                    <widgets>
-                        <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
-                            <decorator-section name="body">
-                                <section>
-                                    <widgets>
-                                        <section>
-                                            <widgets>
-                                                <container id="storeMgr">
-                                                    <include-portal-page id="MYPORTAL_SUPPLIER2"/>
-                                                    <!-- <include-portal-page id="MYPORTAL_SUPPLIER"/> -->
-                                                    <include-portal-page id="MYPORTAL_SUPPLIER3"/>
-                                                    <include-portal-page id="MYPORTAL_SUPPLIER4"/>
-                                                </container>
-                                            </widgets>
-                                        </section>
-                                    </widgets>
-                                </section>
-                            </decorator-section>
-                        </decorator-screen>
-                    </widgets>
-                    <fail-widgets>
-                        <section>
-                            <condition>
-                                <if-empty field="checkImportIdImgs"/>
-                            </condition>
-                            <widgets>
-                                <section>
-                                    <condition>
-                                        <if-compare-field field="parameters.partyId" operator="equals" to-field="userLogin.partyId"/>
-                                    </condition>
-                                    <widgets>
-                                        <include-screen name="VerifySupplier"/>
-                                    </widgets>
-                                    <fail-widgets>
-                                        <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
-                                            <decorator-section name="body">
-                                                <screenlet title="${uiLabelMap.CommonNotification} ${uiLabelMap.CommonMessage}">
-                                                    <label style="h2" text="${uiLabelMap.PartyInformationNotBelongToYou}"/>
-                                                </screenlet>
-                                            </decorator-section>
-                                        </decorator-screen>
-                                    </fail-widgets>
-                                </section>
-                            </widgets>
-                            <fail-widgets>
-                                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
-                                    <decorator-section name="body">
-                                        <screenlet title="${uiLabelMap.CommonNotification} ${uiLabelMap.CommonMessage}">
-                                            <label style="h2" text="${uiLabelMap.PFTPWaitingForApproval}"/>
-                                        </screenlet>
-                                    </decorator-section>
-                                </decorator-screen>
-                            </fail-widgets>
-                        </section>
-                    </fail-widgets>
-                </section>
             </widgets>
         </section>
     </screen>
@@ -280,12 +204,189 @@ under the License.
             <fail-widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <screenlet title="${uiLabelMap.CommonNotification} ${uiLabelMap.CommonMessage}">
-                            <label style="h2" text="${uiLabelMap.PartyInformationNotBelongToYou}"/>
-                        </screenlet>
+                        <container style="container">
+                            <container style="panel panel-smart">
+                                <label style="h2" text="${uiLabelMap.CommonNotification} ${uiLabelMap.CommonMessage}"/>
+                                <label style="h4 text" text="${uiLabelMap.PartyInformationNotBelongToYou}"/>
+                            </container>
+                        </container>
                     </decorator-section>
                 </decorator-screen>
             </fail-widgets>
+        </section>
+    </screen>
+
+    <screen name="editperson">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditPerson"/>
+                <get-related-one value-field="userLogin" relation-name="Person" to-value-field="person"/>
+                <set field="donePage" from-field="parameters.DONE_PAGE" default-value="viewprofile"/>
+                <script location="component://ecommerce/groovyScripts/customer/EditPerson.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://productfromthailand/template/customer/EditPerson.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="editpartygroup">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditGroupInformation"/>
+                <set field="tabButtonItem" value="viewprofile"/>
+                <set field="headerItem" value="find"/>
+                <set field="labelTitleProperty" value="PageTitleEditGroupInformation"/>
+
+                <set field="donePage" from-field="parameters.DONE_PAGE" default-value="viewprofile"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://productfromthailand/template/customer/EditPartyGroup.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="editcreditcard">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditCreditCard"/>
+                <set field="cardNumberMinDisplay" value="min"/>
+                <script location="component://ecommerce/groovyScripts/customer/EditPaymentMethod.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://productfromthailand/template/customer/EditCreditCard.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="editeftaccount">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditEFTAccount"/>
+                <script location="component://ecommerce/groovyScripts/customer/EditPaymentMethod.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://productfromthailand/template/customer/EditEftAccount.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="editgiftcard">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditGiftCard"/>
+                <script location="component://ecommerce/groovyScripts/customer/EditPaymentMethod.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://productfromthailand/template/customer/EditGiftCard.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="WishList">
+        <section>
+            <actions>
+                <script location="component://productfromthailand/groovyScripts/WishList.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/customer/WishList.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="changepassword">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleChangePassword"/>
+                <script location="component://ecommerce/groovyScripts/customer/ChangePassword.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://productfromthailand/template/customer/ChangePassword.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="messagelist">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleMessageList"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <include-screen name="messagelist-include"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="messagelist-include">
+        <section>
+            <actions>
+                <entity-condition entity-name="CommunicationEvent" list="receivedCommunicationEvents">
+                    <condition-expr field-name="partyIdTo" operator="equals" from-field="userLogin.partyId"/>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <section>
+                    <condition><if-compare field="parameters.showSent" operator="equals" value="true"/></condition>
+                    <actions>
+                        <entity-condition entity-name="CommunicationEvent" list="sentCommunicationEvents">
+                            <condition-expr field-name="partyIdFrom" operator="equals" from-field="userLogin.partyId"/>
+                            <order-by field-name="-entryDate"/>
+                        </entity-condition>
+                    </actions>
+                    <widgets></widgets>
+                </section>
+                <platform-specific><html><html-template location="component://productfromthailand/template/customer/MessageList.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="messagedetail">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleMessageDetail"/>
+                <entity-one entity-name="CommunicationEvent" value-field="communicationEvent" auto-field-map="true"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://productfromthailand/template/customer/MessageDetail.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
         </section>
     </screen>
 </screens>

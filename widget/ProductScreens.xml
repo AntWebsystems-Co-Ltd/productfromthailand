@@ -44,14 +44,6 @@ under the License.
                                 <if-has-permission permission="CATALOG" action="_VIEW"/>
                             </condition>
                             <widgets>
-                                <section>
-                                    <condition><not><if-empty field="product"/></not></condition>
-                                    <widgets>
-                                        <container>
-                                            <label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.CommonFor}: ${product.internalName} [${uiLabelMap.CommonId}:${productId}]  ${${extraFunctionName}}</label>
-                                        </container>
-                                    </widgets>
-                                </section>
 
                                 <container style="no-clear">
                                     <decorator-section-include name="body"/>
@@ -73,7 +65,6 @@ under the License.
                 <set field="titleProperty" value="PageTitleEditProduct"/>
                 <set field="tabButtonItem" value="EditProduct"/>
                 <set field="labelTitleProperty" value="ProductProduct"/>
-                <set field="layoutSettings.javaScripts[]" value="/ecommerce/images/productAdditionalView.js" global="true"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
                 <script location="component://productfromthailand/groovyScripts/EditProduct.groovy"/>
@@ -1157,11 +1148,204 @@ under the License.
             <widgets>
                 <decorator-screen name="CommonProductDecorator">
                     <decorator-section name="body">
-                        <screenlet title="${uiLabelMap.PFTUploadProductSpreadsheet}">
+                        <screenlet>
                             <platform-specific>
                                 <html><html-template location="component://productfromthailand/webapp/ecommerce/catalog/UploadProductsFromSpreadsheet.ftl"/></html>
                             </platform-specific>
                         </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="main">
+        <section>
+            <actions>
+                <script location="component://ecommerce/groovyScripts/Main.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://productfromthailand/webapp/theme/mainscreen.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="category-include">
+        <section>
+            <widgets>
+                <section>
+                    <condition>
+                        <not><if-empty field="productCategory"/></not>
+                    </condition>
+                    <widgets>
+                        <include-screen name="${detailScreen}"/>
+                    </widgets>
+                    <fail-widgets>
+                        <label style="head2">${uiLabelMap.ProductCategoryNotFoundForCategoryID} ${productCategoryId}!</label>
+                    </fail-widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="categorydetail">
+        <section>
+            <actions>
+                <set field="productsummaryScreen" value="component://productfromthailand/widget/ProductScreens.xml#productsummary"/>
+                <set field="productCategoryLinkScreen" value="component://ecommerce/widget/CatalogScreens.xml#ProductCategoryLink"/>
+
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+
+                <entity-and entity-name="ProductCategoryLink" list="productCategoryLinks" use-cache="true" filter-by-date="true">
+                    <field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                    <order-by field-name="sequenceNum"/>
+                </entity-and>
+                <set field="paginateEcommerceStyle" value="Y"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/CategoryDetail.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="categorydetailmatrix">
+        <section>
+            <actions>
+                <set field="numCol" value="3"/>
+                <set field="searchInCategory" value="N"/>
+                <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="9"/>
+            </actions>
+            <widgets>
+                <include-screen name="categorydetail"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="productsummary">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/ProductSummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="categorylist">
+        <section>
+            <actions>
+                <set field="parameters.category_id" from-field="parameters.productCategoryId"/>
+                <set field="parameters.VIEW_SIZE" value="5"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/SideDeepCategory.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/ProductCategories.groovy"/>
+                <set field="breadcrumbs" value="component://productfromthailand/widget/CatalogScreens.xml#breadcrumbs"/>
+                <set field="categorycontent" value="component://productfromthailand/widget/ProductScreens.xml#categorycontent"/>
+                <set field="productcategorylist" value="component://productfromthailand/widget/ProductScreens.xml#productcategorylist"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://productfromthailand/webapp/theme/categorylist.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="categorygrid">
+        <section>
+            <actions>
+                <set field="parameters.category_id" from-field="parameters.productCategoryId"/>
+                 <set field="parameters.VIEW_SIZE" value="6"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/SideDeepCategory.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/ProductCategories.groovy"/>
+                <set field="breadcrumbs" value="component://productfromthailand/widget/CatalogScreens.xml#breadcrumbs"/>
+                <set field="categorycontent" value="component://productfromthailand/widget/ProductScreens.xml#categorycontent"/>
+                <set field="productcategorygrid" value="component://productfromthailand/widget/ProductScreens.xml#productcategorygrid"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://productfromthailand/webapp/theme/categorygrid.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="categorycontent">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/categorycontent.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="productcategorylist">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/productcategorylist.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="productcategorygrid">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/productcategorygrid.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="anonContactus">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleLogin"/>
+                <set field="pageHeader" value="${uiLabelMap.CommonContactUs}"/>
+                <set field="headerItem" value="contactus"/>
+                <set field="submitRequest" value="contactsubmit"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/includes/anonContactus.ftl"/></html></platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>

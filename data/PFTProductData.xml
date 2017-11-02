@@ -27,7 +27,7 @@ under the License.
     <ProductCategory longDescription="Product From Thailand Catalog Browse Root Category"
         productCategoryId="PFT_ROOT" productCategoryTypeId="CATALOG_CATEGORY"/>
     <ProductCategory productCategoryId="PFTPROMOTION" productCategoryTypeId="CATALOG_CATEGORY" categoryName="Special Products"
-        detailScreen="component://productfromthailand/widget/CatalogScreens.xml#categorydetailmatrix"/>
+        detailScreen="component://productfromthailand/widget/ProductScreens.xml#categorydetailmatrix"/>
     <ProductCategory description="Agricultural &amp; Forestry" primaryParentCategoryId="PFT_ROOT" productCategoryId="AGRICULTURAL" productCategoryTypeId="CATALOG_CATEGORY"/>
 
     <ProductCategory description="Bags" primaryParentCategoryId="PFT_ROOT" productCategoryId="BAGS" productCategoryTypeId="CATALOG_CATEGORY"/>

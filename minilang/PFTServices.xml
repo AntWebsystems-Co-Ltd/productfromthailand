@@ -164,4 +164,22 @@ under the License.
         <field-to-result field="parameters.partyId" result-name="partyId"/>
         <field-to-result field="redirectLink" result-name="redirectLink"/>
     </simple-method>
+
+    <simple-method method-name="checkShippingAddress" short-description="Check Shipping Address">
+        <if-empty field="parameters.shipping_contact_mech_id">
+            <set-service-fields service-name="createPostalAddressAndPurposes" map="parameters" to-map="shipAddressMap"/>
+            <set field="shipAddressMap.contactMechPurposeTypeId" value="SHIPPING_LOCATION"/>
+            <call-service service-name="createPostalAddressAndPurposes" in-map-name="shipAddressMap">
+                <result-to-field result-name="contactMechId" field="parameters.shipping_contact_mech_id"/>
+            </call-service>
+            <else>
+                <set-service-fields service-name="updatePostalAddressAndPurposes" map="parameters" to-map="updateShipAddressMap"/>
+                <set field="updateShipAddressMap.contactMechId" from-field="parameters.shipping_contact_mech_id"/>
+                <call-service service-name="updatePostalAddressAndPurposes" in-map-name="updateShipAddressMap"/>
+            </else>
+        </if-empty>
+
+        <field-to-result field="parameters.partyId" result-name="partyId"/>
+        <field-to-result field="parameters.shipping_contact_mech_id" result-name="shipping_contact_mech_id"/>
+    </simple-method>
 </simple-methods>

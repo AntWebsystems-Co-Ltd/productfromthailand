@@ -16,23 +16,46 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
+<div id="main-container" class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <h3 class="side-heading">Store Menu</h3>
+            <div class="list-group">
+                <a href="<@ofbizUrl>StoreManagement</@ofbizUrl>" class="list-group-item">
+                    <i class="fa fa-chevron-right"></i>
+                    ${uiLabelMap.PFTMyProducts}
+                </a>
+                <a href="<@ofbizUrl>SupplierInvoiceList</@ofbizUrl>" class="list-group-item">
+                    <i class="fa fa-chevron-right"></i>
+                    ${uiLabelMap.AccountingListInvoices}
+                </a>
+                <a href="<@ofbizUrl>PurchaseOrderList</@ofbizUrl>" class="list-group-item">
+                    <i class="fa fa-chevron-right"></i>
+                    ${uiLabelMap.AccountingFixedAssetMaintOrders}
+                </a>
+          </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="panel panel-smart">
+                <div class="panel-heading">
+                    <h3>${uiLabelMap.PFTUploadProductSpreadsheet}</h3>
+                </div>
+                <div class="panel-body">
+                    <form method="post" enctype="multipart/form-data" action="<@ofbizUrl>UploadProductFromSpreadsheet</@ofbizUrl>" class="form-horizontal name="productsUploadForm">
+                        <input type="hidden" name="supplierPartyId" value="${partyId?if_exists}"/>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <input type="file" class="form-control" size="50" name="fname"/>
+                            </div>
 
-    <h3>${uiLabelMap.PFTUploadProduct}</h3>
-    <form method="post" enctype="multipart/form-data" action="<@ofbizUrl>UploadProductFromSpreadsheet</@ofbizUrl>" name="productsUploadForm">
-        <input type="hidden" name="supplierPartyId" value="${partyId?if_exists}"/>
-        <input type="hidden" name="bbbb" value="1111111"/>
-        <table cellspacing="0" class="basic-table">
-            <tr>
-                <td width="20%" align="right" valign="top">
-                    <input type="file" size="50" name="fname"/>
-                </td>
-                <td>&nbsp;</td>
-                <td width="80%" colspan="4" valign="top">
-                    <input type="submit" class="smallSubmit" value="${uiLabelMap.PFTUploadProduct}"/>
-                </td>
-            </tr>
-            <tr>
-                <td><input type="submit" class="smallSubmit" onclick="this.form.action='<@ofbizUrl>StoreManagement</@ofbizUrl>'" value="${uiLabelMap.CommonBack}"/></td>
-            </tr>
-        </table>
-    </form>
+                            <div class="col-sm-3">
+                                <input type="submit" class="btn btn-main" value="${uiLabelMap.PFTUploadProduct}"/>
+                            </div>
+                        </div>
+                    </form>
+                    <a href="<@ofbizUrl>StoreManagement</@ofbizUrl>" class="btn btn-main">${uiLabelMap.CommonBack}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

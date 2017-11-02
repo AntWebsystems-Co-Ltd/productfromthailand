@@ -16,78 +16,62 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
+<div id="main-container" class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel-smart">
+      <#-- Do this so that we don't have to find the content twice (again in renderSubContent) -->
+      <#assign subContentId=requestParameters.contentId?if_exists/>
+      <#assign nodeTrailCsv=requestParameters.nodeTrailCsv?if_exists/>
+      <#-- <#assign dummy=Static["org.apache.ofbiz.base.util.Debug"].logInfo("in viewcontent, nodeTrailCsv:" + nodeTrailCsv, "")/> -->
+      <#if ancestorList?has_content && (0 < ancestorList?size) >
+          <#assign lastContent=ancestorList?last />
+              <#if locale != "en">
+                <#assign lastContent = Static["org.apache.ofbiz.content.content.ContentWorker"].findAlternateLocaleContent(delegator, lastContent, locale)/>
+              </#if>
+          <#assign firstContent=ancestorList[0] />
+      </#if>
+      <#if firstContent?has_content>
+          <#assign siteId = firstContent.contentId/>
+      </#if>
+      <#if siteId?has_content>
+          <@renderAncestryPath trail=ancestorList?default([]) endIndexOffset=1 siteId=siteId/>
+      </#if>
 
-<div>
-<div>
-<#-- Do this so that we don't have to find the content twice (again in renderSubContent) -->
-<#assign subContentId=requestParameters.contentId?if_exists/>
-<#assign nodeTrailCsv=requestParameters.nodeTrailCsv?if_exists/>
-<#-- <#assign dummy=Static["org.apache.ofbiz.base.util.Debug"].logInfo("in viewcontent, nodeTrailCsv:" + nodeTrailCsv, "")/> -->
-<#if ancestorList?has_content && (0 < ancestorList?size) >
-    <#assign lastContent=ancestorList?last />
-        <#if locale != "en">
-          <#assign lastContent = Static["org.apache.ofbiz.content.content.ContentWorker"].findAlternateLocaleContent(delegator, lastContent, locale)/>
-        </#if>
-    <#assign firstContent=ancestorList[0] />
-</#if>
-<#if firstContent?has_content>
-    <#assign siteId = firstContent.contentId/>
-</#if>
-<#if siteId?has_content>
-    <@renderAncestryPath trail=ancestorList?default([]) endIndexOffset=1 siteId=siteId/>
-</#if>
+      <#if lastContent?has_content>
+        <div class="panel-heading">
+          <h1>${lastContent.description}</h1>
+        </div>
+      </#if>
 
-<#if lastContent?has_content>
-    <h1>${lastContent.description}</h1>
-</#if>
-
-<#if globalNodeTrail?has_content && (0 < globalNodeTrail?size) >
-    <#assign lastNode = globalNodeTrail?last/>
-    <#if lastNode?has_content>
-      <#assign subContent=lastNode.value/>
-    </#if>
-<#else>
-    <#assign subContent = delegator.findByPrimaryKeyCache("Content", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contentId", subContentId))/>
-</#if>
-<#assign dummy=Static["org.apache.ofbiz.base.util.Debug"].logInfo("in viewcontent, subContent:" + subContent, "")/>
-<br/>
-<#--h1>${uiLabelMap.EcommerceContentFor} [${subContentId}] ${subContent.contentName?if_exists} - ${subContent.description?if_exists}:</h1><br/-->
-<table border="0" class="blogtext">
-    <tr>
-    <td width="40">&nbsp;</td>
-    <td>
+      <#if globalNodeTrail?has_content && (0 < globalNodeTrail?size) >
+          <#assign lastNode = globalNodeTrail?last/>
+          <#if lastNode?has_content>
+            <#assign subContent=lastNode.value/>
+          </#if>
+      <#else>
+          <#assign subContent = delegator.findByPrimaryKeyCache("Content", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contentId", subContentId))/>
+      </#if>
+      <#assign dummy=Static["org.apache.ofbiz.base.util.Debug"].logInfo("in viewcontent, subContent:" + subContent, "")/>
+      <br/>
+      <#--h1>${uiLabelMap.EcommerceContentFor} [${subContentId}] ${subContent.contentName?if_exists} - ${subContent.description?if_exists}:</h1><br/-->
+      <div class="panel-body" style="color: #838383;">
         <@renderSubContentCache subContentId=subContentId />
-    </td>
-    <td width="40" valign="bottom">
-<#--
-<@wrapSubContentCache subContentId=subContentId wrapTemplateId="WRAP_VIEW" >
-</@wrapSubContentCache >
-<@checkPermission mode="equals" entityOperation="_CREATE" targetOperation="HAS_USER_ROLE" >
-    <a class="tabButton" href="<@ofbizUrl>createforumresponse?contentIdTo=${requestParameters.contentId}&amp;nodeTrailCsv=${nodeTrailCsv?if_exists}</@ofbizUrl>" >Respond</a>
-</@checkPermission>
--->
-<br/>
+        <#assign thisContentId = subContentId/>
+        <@loopSubContent contentId=thisContentId viewIndex=0 viewSize=9999 contentAssocTypeId="RELATED_CONTENT">
+          <#assign thisNodeTrailCsv = nodeTrailCsv />
+              <a class="tabButton" href="<@ofbizUrl>viewcontent?contentId=${subContentId}&amp;nodeTrailCsv=${thisNodeTrailCsv?if_exists}</@ofbizUrl>" >${content.contentName?if_exists}</a>
+        </@loopSubContent>
+    </div>
+      <#--
+      <@checkPermission mode="not-equals" subContentId=subContentId targetOperation="CONTENT_CREATE|CONTENT_RESPOND" contentPurposeList="RESPONSE" >
+                  ${permissionErrorMsg?if_exists}
+      </@checkPermission>
+      -->
 
-    </td>
-    </tr>
-    <#assign thisContentId = subContentId/>
-    <@loopSubContent contentId=thisContentId viewIndex=0 viewSize=9999 contentAssocTypeId="RELATED_CONTENT">
-      <#assign thisNodeTrailCsv = nodeTrailCsv />
-      <tr>
-        <td colspan="3" align="right">
-          <a class="tabButton" href="<@ofbizUrl>viewcontent?contentId=${subContentId}&amp;nodeTrailCsv=${thisNodeTrailCsv?if_exists}</@ofbizUrl>" >${content.contentName?if_exists}</a>
-        </td>
-      </tr>
-    </@loopSubContent>
-</table>
-<hr/>
-<#--
-<@checkPermission mode="not-equals" subContentId=subContentId targetOperation="CONTENT_CREATE|CONTENT_RESPOND" contentPurposeList="RESPONSE" >
-            ${permissionErrorMsg?if_exists}
-</@checkPermission>
--->
-
-</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <#macro renderAncestryPath trail siteId startIndex=0 endIndexOffset=0 buttonTitle="Back to" searchOn="" >

@@ -20,7 +20,7 @@ under the License.
 
 <screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
-    <screen name="main-decorator">
+    <screen name="main-decorator-ofbiz">
         <section>
             <actions>
                 <!-- base/top/specific map first, then more common map added for shared labels -->
@@ -43,18 +43,18 @@ under the License.
                 <!-- NOTE: this should be included on each screen that uses it to avoid including it in all screens: -->
                 <set field="layoutSettings.javaScripts[]" value="/images/OfbizUtil.js" global="true"/>
                 <set field="initialLocaleComplete" type="String" value="${groovy:parameters?.userLogin?.lastLocale}" default-value="${groovy:locale.toString()}"/>
-                <set field="layoutSettings.javaScripts[+0]" value="${groovy: org.apache.ofbiz.common.JsLanguageFilesMapping.dateTime.getFilePath(initialLocaleComplete)}" global="true"/>
+                <set field="layoutSettings.javaScripts[0]" value="${groovy: org.apache.ofbiz.common.JsLanguageFilesMapping.dateTime.getFilePath(initialLocaleComplete)}" global="true"/>
 
-                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/plugins/datetimepicker/jquery-ui-timepicker-addon.min-1.4.3.js" global="true"/>
-                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/ui/js/jquery-ui-1.10.3.min.js" global="true"/>
-                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/plugins/validate/jquery.validate.min.js" global="true"/>
-                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/jquery-migrate-1.2.1.js" global="true"/>
-                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/jquery-1.11.0.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[0]" value="/images/jquery/plugins/datetimepicker/jquery-ui-timepicker-addon.min-1.4.3.js" global="true"/>
+                <set field="layoutSettings.javaScripts[0]" value="/images/jquery/ui/js/jquery-ui-1.10.3.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[0]" value="/images/jquery/plugins/validate/jquery.validate.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[0]" value="/images/jquery/jquery-migrate-1.2.1.js" global="true"/>
+                <set field="layoutSettings.javaScripts[0]" value="/images/jquery/jquery-1.11.0.min.js" global="true"/>
                 <set field="layoutSettings.javaScripts[]" value="/images/jquery/plugins/Readmore.js-master/readmore.js" global="true"/>
                 <set field="layoutSettings.javaScripts[]" value="/images/jquery/plugins/jquery-jgrowl/1.4.1/jquery.jgrowl.min.js" global="true"/>
                 <set field="layoutSettings.javaScripts[]" value="/pft-default/pftimages/menu-script.js" global="true"/>
-                <set field="layoutSettings.styleSheets[+0]" value="/images/jquery/plugins/jquery-jgrowl/1.4.1/jquery.jgrowl.min.css" global="true" />
-                <set field="layoutSettings.styleSheets[+0]" value="/pft-default/pftimages/menu-styles.css" global="true"/>
+                <set field="layoutSettings.styleSheets[0]" value="/images/jquery/plugins/jquery-jgrowl/1.4.1/jquery.jgrowl.min.css" global="true" />
+                <set field="layoutSettings.styleSheets[0]" value="/pft-default/pftimages/menu-styles.css" global="true"/>
 
                 <script location="component://productfromthailand/groovyScripts/PFTSetup.groovy"/>
 
@@ -285,9 +285,9 @@ under the License.
                 <!-- NOTE: this should be included on each screen that uses it to avoid including it in all screens: -->
                 <set field="layoutSettings.javaScripts[]" value="/images/OfbizUtil.js" global="true"/>
 
-                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/plugins/validate/jquery.validate.min.js" global="true"/>
-                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/jquery-1.11.0.min.js" global="true"/>
-                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/jquery-migrate-1.2.1.js" global="true" />
+                <set field="layoutSettings.javaScripts[0]" value="/images/jquery/plugins/validate/jquery.validate.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[0]" value="/images/jquery/jquery-1.11.0.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[0]" value="/images/jquery/jquery-migrate-1.2.1.js" global="true" />
 
                 <script location="component://productfromthailand/groovyScripts/PFTSetup.groovy"/>
 
@@ -584,4 +584,102 @@ under the License.
         </section>
     </screen>
 
+    <screen name="main-decorator">
+        <section>
+            <actions>
+                <property-map resource="ProductFromThailandUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="GrowErpUiLabels" map-name="uiLabelMap" global="true"/>
+
+                <script location="component://productfromthailand/groovyScripts/PFTSetup.groovy"/>
+
+                <!-- Get the store VisualTheme -->
+                <set field="visualThemeId" from-field="productStore.visualThemeId" default-value="EC_PFT"/>
+                <service service-name="getVisualThemeResources">
+                    <field-map field-name="visualThemeId"/>
+                    <field-map field-name="themeResources" from-field="layoutSettings"/>
+                </service>
+                <set field="layoutSettings" from-field="themeResources" default-value="${layoutSettings}" global="true"/>
+
+                <!-- The default (global) shortcut icon -->
+                <set field="layoutSettings.shortcutIcon" value="/pft-default/pftimages/pft-icon.ico" global="true"/>
+
+                <!-- Bootstrap Core CSS -->
+                <set field="layoutSettings.styleSheets[]" value="/theme/css/bootstrap.min.css" global="true"/>
+
+                <!-- Google Web Fonts -->
+                <set field="layoutSettings.styleSheets[]" value="https://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700" global="true"/>
+                <set field="layoutSettings.styleSheets[]" value="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" global="true"/>
+
+                <!-- CSS Files -->
+                <set field="layoutSettings.styleSheets[]" value="/theme/font-awesome/css/font-awesome.min.css" global="true"/>
+                <set field="layoutSettings.styleSheets[]" value="/theme/css/magnific-popup.css" global="true"/>
+                <set field="layoutSettings.styleSheets[]" value="/theme/css/owl.carousel.css" global="true"/>
+                <set field="layoutSettings.styleSheets[]" value="/theme/css/style.css" global="true"/>
+                <set field="layoutSettings.styleSheets[]" value="/theme/css/responsive.css" global="true"/>
+                <set field="layoutSettings.styleSheets[]" value="/theme/style.css" global="true"/>
+                <set field="layoutSettings.styleSheets[]" value="/images/jquery/plugins/jquery-jgrowl/1.4.1/jquery.jgrowl.min.css   " global="true"/>
+
+                <!-- JavaScript Files -->
+                <set field="layoutSettings.javaScripts[]" value="/theme/js/jquery-1.11.1.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/theme/js/jquery-migrate-1.2.1.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/images/jquery/plugins/validate/jquery.validate.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/theme/js/bootstrap.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/theme/js/bootstrap-hover-dropdown.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/theme/js/jquery.magnific-popup.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/theme/js/owl.carousel.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/theme/js/custom.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/images/miscAjaxFunctions.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/images/jquery/plugins/validate/jquery.validate.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/images/jquery/plugins/jquery-jgrowl/1.4.1/jquery.jgrowl.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/images/jquery/plugins/Readmore.js-master/readmore.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/images/OfbizUtil.js" global="true"/>
+
+                <set field="defaultOrganizationPartyId" from-field="userPreferences.ORGANIZATION_PARTY" global="true"/>
+
+                <script location="component://productfromthailand/groovyScripts/ProductCategories.groovy"/>
+                <script location="component://ecommerce/groovyScripts/cart/ShowCart.groovy"/>
+
+                <entity-one entity-name="UserLogin" value-field="systemUser">
+                    <field-map field-name="userLoginId" value="system"/>
+                </entity-one>
+                <service service-name="getPartyPostalAddress" result-map="address">
+                    <field-map field-name="partyId" from-field="defaultOrganizationPartyId"/>
+                    <field-map field-name="userLogin" from-field="systemUser"/>
+                </service>
+                <service service-name="getPartyTelephone" result-map="telephone">
+                    <field-map field-name="partyId" from-field="defaultOrganizationPartyId"/>
+                    <field-map field-name="userLogin" from-field="systemUser"/>
+                </service>
+                <service service-name="getPartyEmail" result-map="orgEmail">
+                    <field-map field-name="partyId" from-field="defaultOrganizationPartyId"/>
+                    <field-map field-name="userLogin" from-field="systemUser"/>
+                </service>
+                <set field="address" from-field="address" global="true"/>
+                <set field="telephone" from-field="telephone" global="true"/>
+                <set field="orgEmail" from-field="orgEmail" global="true"/>
+                <entity-one entity-name="PartyRole" value-field="supplierRole">
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="SUPPLIER"/>
+                </entity-one>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <html><html-template location="component://productfromthailand/webapp/theme/header.ftl"/></html>
+                </platform-specific>
+                <platform-specific>
+                    <html><html-template location="component:///common/template/includes/Messages.ftl"/></html>
+                </platform-specific>
+                <decorator-section-include name="body"/>
+                <platform-specific>
+                    <html><html-template location="component://productfromthailand/webapp/theme/footer.ftl"/></html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
 </screens>

@@ -17,11 +17,15 @@ specific language governing permissions and limitations
 under the License.
 -->
 <#assign subContentId = "HELP_ABOUTUS"/>
-<div id="contentbox" class="screenlet">
-     <h1>${uiLabelMap.PFTAboutCompany} :</h1>
-    <div class="screenlet-body">
-        <div id="about-block">
-            <@renderSubContentCache subContentId=subContentId/>
+<div id="main-container" class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-smart">
+                <div class="panel-heading">
+                    <h1>${uiLabelMap.PFTAboutCompany}</h1>
+                </div>
+                <@renderSubContentCache subContentId=subContentId/>
+            </div>
         </div>
     </div>
 </div>
