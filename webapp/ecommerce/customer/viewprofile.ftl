@@ -208,6 +208,7 @@ under the License.
               <th colspan="2" class="text-center">${uiLabelMap.PartySolicitingOk}?</th>
               <th colspan="2"></th>
             </tr>
+            <#assign listcount=0>
             <#list partyContactMechValueMaps as partyContactMechValueMap>
               <#assign contactMech = partyContactMechValueMap.contactMech?if_exists />
               <#assign contactMechType = partyContactMechValueMap.contactMechType?if_exists />
@@ -298,9 +299,13 @@ under the License.
                   <a href="<@ofbizUrl>editcontactmech</@ofbizUrl>?contactMechId=${contactMech.contactMechId}" style="float: right;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                 </td>
                 <td align="right" valign="top">
-                  <a href="<@ofbizUrl>deleteContactMech</@ofbizUrl>?contactMechId=${contactMech.contactMechId}" style="float: right;"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    <form name="deleteContactMech_${listcount}" method="post" action="<@ofbizUrl>deleteContactMech</@ofbizUrl>">
+                        <input type="hidden" name="contactMechId" value="${contactMech.contactMechId}"/>
+                    </form>
+                  <a href="javascript:document.deleteContactMech_${listcount}.submit()" style="float: right;"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 </td>
               </tr>
+              <#assign listcount=listcount+1>
             </#list>
           </thead>
           </table>
@@ -432,7 +437,7 @@ under the License.
     </#if>
 
     <#-- ============================================================= -->
-    <div class="panel panel-smart">
+    <#-- <div class="panel panel-smart">
       <div class="panel-heading navbar">
         <h3>${uiLabelMap.PartyTaxIdentification}</h3>
       </div>
@@ -445,7 +450,7 @@ under the License.
           </div>
         </form>
       </div>
-    </div>
+    </div>  -->
 
     <#-- ============================================================= -->
     <div class="panel panel-smart">
@@ -499,7 +504,7 @@ under the License.
       </form>
 
       <#-- ============================================================= -->
-      <div class="panel panel-smart">
+      <#-- <div class="panel panel-smart">
         <div class="panel-heading navbar">
           <h3>${uiLabelMap.EcommerceFileManager}</h3>
         </div>
@@ -562,7 +567,7 @@ under the License.
             </form>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <#-- ============================================================= -->
       <div class="panel panel-smart">
@@ -687,19 +692,19 @@ under the License.
 
       <#-- ============================================================= -->
       <#-- only 5 messages will show; edit the ViewProfile.groovy to change this number -->
-      <div class="panel panel-smart">
+      <#-- <div class="panel panel-smart">
         <div class="panel-body">
           ${screens.render("component://productfromthailand/widget/CustomerScreens.xml#messagelist-include")}
 
-          ${screens.render("component://ecommerce/widget/CustomerScreens.xml#FinAccountList-include")}
+          ${screens.render("component://ecommerce/widget/CustomerScreens.xml#FinAccountList-include")} -->
 
           <#-- Serialized Inventory Summary -->
-          ${screens.render('component://ecommerce/widget/CustomerScreens.xml#SerializedInventorySummary')}
+          <#-- ${screens.render('component://ecommerce/widget/CustomerScreens.xml#SerializedInventorySummary')} -->
 
           <#-- Subscription Summary -->
-          ${screens.render('component://ecommerce/widget/CustomerScreens.xml#SubscriptionSummary')}
+          <#-- ${screens.render('component://ecommerce/widget/CustomerScreens.xml#SubscriptionSummary')}
         </div>
-      </div>
+      </div> -->
     </#if>
     <#else>
         <h3>${uiLabelMap.PartyNoPartyForCurrentUserName}: ${userLogin.userLoginId}</h3>

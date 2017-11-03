@@ -72,7 +72,7 @@ function submitForm(form, mode, value) {
 </script>
 
 <!-- Main Container Starts -->
-<form method="post" name="checkoutInfoForm" id="checkoutInfoForm" action="checkShippingAddress">
+<form method="post" name="checkoutInfoForm" id="checkoutInfoForm">
     <input type="hidden" name="checkoutpage" value="quick"/>
     <input type="hidden" name="BACK_PAGE" value="quickcheckout"/>
     <input type="hidden" name="may_split" value="false"/>
@@ -288,11 +288,11 @@ function submitForm(form, mode, value) {
                     <!-- Spacer Ends -->
                         <div class="checkbox">
                             <label class="checkbox-style-1">
-                                <input type="checkbox"> ${uiLabelMap.PFTIHaveReadAndAcceptThe} <a href="<@ofbizUrl>showhelpcontent</@ofbizUrl>?contentId=HELP_TERMSANDCON&nodeTrailCsv=HELP_TERMSANDCON">${uiLabelMap.PFTTermsAndCons}</a>
+                                <input type="checkbox" id="acceptcondition"> ${uiLabelMap.PFTIHaveReadAndAcceptThe} <a href="<@ofbizUrl>showhelpcontent</@ofbizUrl>?contentId=HELP_TERMSANDCON&nodeTrailCsv=HELP_TERMSANDCON">${uiLabelMap.PFTTermsAndCons}</a>
                             </label>
                         </div>
                         <button type="submit" id="finalOrderBtn" class="btn btn-secondary btn-block btn-style-1 animation flat text-uppercase"
-                            onclick="javascript:$(document.checkoutInfoForm).submit();" disabled>
+                            onclick="javascript:checkShippingAddress()" disabled>
                             ${uiLabelMap.OrderContinueToFinalOrderReview}
                         </button>
                     </div>
@@ -308,14 +308,7 @@ function submitForm(form, mode, value) {
 
 <script>
 jQuery(document).ready( function() {
-    jQuery("#checkoutInfoForm").validate({
-        submitHandler: function(form) {
-            checkShippingAddress();
-        }
-    });
-
     $("#acceptcondition").change(function() {
-    console.log($("#acceptcondition").is(":checked"))
         if ($("#acceptcondition").is(":checked")) {
             $("#finalOrderBtn").prop("disabled", false);
         } else {
@@ -325,18 +318,22 @@ jQuery(document).ready( function() {
 });
 
 function checkShippingAddress() {
-    waitSpinnerShow();
-    $.ajax({
-        url: 'checkShippingAddress',
-        type: 'POST',
-        data: $('#checkoutInfoForm').serialize(),
-        async: false,
-        success: function(data) {
-            waitSpinnerHide();
-            if (data.shipping_contact_mech_id) {
-                $("#shipping_contact_mech_id").val(data.shipping_contact_mech_id);
-                submitForm(document.checkoutInfoForm, 'DN', '');
-            }
+    jQuery("#checkoutInfoForm").validate({
+        submitHandler: function() {
+            waitSpinnerShow();
+            $.ajax({
+                url: 'checkShippingAddress',
+                type: 'POST',
+                data: $('#checkoutInfoForm').serialize(),
+                async: false,
+                success: function(data) {
+                    waitSpinnerHide();
+                    if (data.shipping_contact_mech_id) {
+                        $("#shipping_contact_mech_id").val(data.shipping_contact_mech_id);
+                        submitForm(document.checkoutInfoForm, 'DN', '');
+                    }
+                }
+            });
         }
     });
 }

@@ -42,6 +42,10 @@
         <value xml:lang="en">Account Information</value>
         <value xml:lang="th">ข้อมูลเกี่ยวกับบัญชีผู้ใช้งาน</value>
     </property>
+    <property key="PFTAddProductToWishList">
+        <value xml:lang="en">Add products to wish list so you will find easily</value>
+        <value xml:lang="th">เพิ่มสินค้าโปรดของคุณได้ง่ายๆ</value>
+    </property>
     <property key="PFTAvailableOptions">
         <value xml:lang="en">Available Options</value>
         <value xml:lang="th">ตัวเลือกที่ใช้ได้</value>
@@ -138,6 +142,14 @@
         <value xml:lang="en">Information</value>
         <value xml:lang="th">ข้อมูล</value>
     </property>
+    <property key="PFTInternetDomainNameisMissing">
+        <value xml:lang="en">Internet Domain Name is missing</value>
+        <value xml:lang="th">กรุณาใส่ชื่อโดเมน</value>
+    </property>
+    <property key="PFTInternalPartyNoteisMissing">
+        <value xml:lang="en">Internal Party Note is missing</value>
+        <value xml:lang="th">กรุณาใส่ข้อความสมาชิกภายใน</value>
+    </property>
     <property key="PFTInvoiceTypeId">
         <value xml:lang="en">Invoice Type ID</value>
         <value xml:lang="th">รหัสใบกำกับสินค้า</value>
@@ -145,6 +157,10 @@
     <property key="PFTLanguage">
         <value xml:lang="en">Language</value>
         <value xml:lang="th">ภาษา</value>
+    </property>
+    <property key="PFTMaintainYourProductWithAnyCost">
+        <value xml:lang="en">Maintain your own products at our website without any further costs.</value>
+        <value xml:lang="th">จัดการสินค้าของคุณโดยไม่เสียค่าใช้จ่าย</value>
     </property>
     <property key="PFTMyAccount">
         <value xml:lang="da">Min konto</value>
@@ -188,6 +204,10 @@
         <value xml:lang="en">Preview</value>
         <value xml:lang="th">เข้าชมเว็บไซท์</value>
     </property>
+    <property key="PFTProductbrandName">
+        <value xml:lang="en">Brand Name</value>
+        <value xml:lang="th">ชื่อแบรนด์สินค้า</value>
+    </property>
     <property key="PFTProductCategories">
         <value xml:lang="en">Product Categories</value>
         <value xml:lang="th">หมวดหมู่สินค้า</value>
@@ -203,6 +223,10 @@
     <property key="PFTProductsOf">
         <value xml:lang="en">Products of</value>
         <value xml:lang="th">สินค้าของ</value>
+    </property>
+    <property key="PFTRateAndCommentProduct">
+        <value xml:lang="en">Rate and Comment Products</value>
+        <value xml:lang="th">ให้คะแนนและแสดงความคิดเห็นเกี่ยวกับสินค้า</value>
     </property>
     <property key="PFTRecentlyAddedItems">
         <value xml:lang="en">Recently Added Items</value>
@@ -224,13 +248,17 @@
         <value xml:lang="en">Register as Supplier</value>
         <value xml:lang="th">สร้างบัญชีร้านค้าใหม่</value>
     </property>
+    <property key="PFTRegisterAsSupplierSuccessful">
+        <value xml:lang="en">Register as Supplier successful.</value>
+        <value xml:lang="th">สร้างบัญชีร้านค้าใหม่เรียบร้อยแล้ว</value>
+    </property>
     <property key="PFTRegisterWithSocial">
         <value xml:lang="en">Register with Social Media</value>
         <value xml:lang="th">สมัครสมาชิกด้วย Social Media</value>
     </property>
     <property key="PFTRegisterIntro">
         <value xml:lang="en">There are two kinds of registration. If you are a customer who want to buy product(s) on this site,choose "Register as Customer" on the left
-            but if you are a supplier want to sell your products choose "Register as supplier" on the right. </value>
+            but if you are a supplier want to sell your products choose "Register as Supplier" on the right. </value>
         <value xml:lang="th">การสมัครสมาชิกจะมีสองแบบด้วยกัน ลูกค้าทั่วไป เลือก สมัครเป็นสมาชิก ทางด้านซ้ายมือ หากคุณเป็นร้านค้าหรือบริษัทที่ต้องการขายของในเว็บไซท์นี้
             เลือก "สมัครสมาชิกเป็นผู้ค้า" ทางด้านขวามือ</value>
     </property>
@@ -255,6 +283,10 @@
     <property key="PFTSearchYourProducts">
         <value xml:lang="en">Search our product catalog</value>
         <value xml:lang="th">ค้นหาตามหมวดหมู่สินค้า</value>
+    </property>
+    <property key="PFTSeeOrderHistory">
+        <value xml:lang="en">See All order History</value>
+        <value xml:lang="th">สามารถดูประวัติการสั่งซื้อได้ทั้งหมด</value>
     </property>
     <property key="PFTSelectByCategories">
         <value xml:lang="en">Select by Categories</value>
@@ -302,6 +334,14 @@
     <property key="PFTSupplierHeadStep1">
         <value xml:lang="en">Step 1: Register and Submit Documents</value>
         <value xml:lang="th">ขั้นตอนที่ 1: สมัครและยื่นเอกสาร</value>
+    </property>
+    <property key="PFTSupplierProvideInfomation">
+        <value xml:lang="en">The supplier will provide product information with at least one picture, title, longer description and price.</value>
+        <value xml:lang="th">ร้านค้าเพียงเพิ่มรูปสินค้าอย่างน้อย 1 รูป, ชื่อสินค้า, คำอธิบายสินค้า และราคา ก็สามารถขายสินค้าได้ทันที</value>
+    </property>
+    <property key="PFTSupplierSaleCameNotification">
+        <value xml:lang="en">The supplier will be notified by email when a sale cames in.</value>
+        <value xml:lang="th">ร้านค้าจะได้รับอีเมล์แจ้งเตือนทุกครั้งที่มีการสั่งซื้อ</value>
     </property>
     <property key="PFTSupplierStep1">
         <value xml:lang="en">Fill the Registration Form
@@ -363,6 +403,10 @@
         <value xml:lang="en">ID Card/Passport No.</value>
         <value xml:lang="th">เลขบัตรประชาชนหรือเลขพาสปอร์ด</value>
     </property>
+    <property key="PFTTitleIdNoIdPassportIsMissing">
+        <value xml:lang="en">ID Card/Passport No is missing</value>
+        <value xml:lang="th">โปรดระบุเลขบัตรประชาชนหรือเลขพาสปอร์ด</value>
+    </property>
     <property key="PFTTitleSupplierType">
         <value xml:lang="en">Supplier Type</value>
         <value xml:lang="th">ประเภทของผู้จัดจำหน่าย</value>
@@ -378,6 +422,10 @@
     <property key="PFTUnderConstruction">
         <value xml:lang="en">This page is under construction</value>
         <value xml:lang="th">หน้านี้อยู่ระหว่างการปรับปรุงแก้ไข</value>
+    </property>
+    <property key="PFTUpdateProfile">
+        <value xml:lang="en">Update Profile</value>
+        <value xml:lang="th">แก้ไขข้อมูลส่วนตัว</value>
     </property>
     <property key="PFTUploadProduct">
         <value xml:lang="en">Upload Product</value>

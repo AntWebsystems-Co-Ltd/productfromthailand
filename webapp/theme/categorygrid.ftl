@@ -101,6 +101,7 @@ under the License.
                 </#if>
             <#-- Product Filter Ends -->
             <#-- Pagination & Results Starts -->
+            <#if (viewIndexMax > 0)>
                 <div class="row">
                 <#if productCategoryMembers?has_content>
                 <#-- Pagination Starts -->
@@ -125,6 +126,7 @@ under the License.
                 <#-- Results Ends -->
                 </#if>
                 </div>
+            </#if>
             <#-- Pagination & Results Ends -->
             <#-- Product List Display Starts -->
                 <div class="row">
@@ -136,11 +138,14 @@ under the License.
                             ${screens.render(productcategorygrid)}
                         </#list>
                         <#else>
-                            <h2>&nbsp;${uiLabelMap.ProductNoResultsFound}.</h2>
+                        <div class="panel-smart">
+                            <label class="h3">${uiLabelMap.ProductNoProductsInThisCategory}.</label>
+                        </div>
                     </#if>
                 </div>
             <#-- Product List Display Ends -->
             <#-- Pagination & Results Starts -->
+            <#if (viewIndexMax > 0)>
                 <div class="row">
                 <#if productCategoryMembers?has_content>
                 <#-- Pagination Starts -->
@@ -165,6 +170,7 @@ under the License.
                 <#-- Results Ends -->
                 </#if>
                 </div>
+            </#if>
             <#-- Pagination & Results Ends -->
             </div>
         <#-- Primary Content Ends -->

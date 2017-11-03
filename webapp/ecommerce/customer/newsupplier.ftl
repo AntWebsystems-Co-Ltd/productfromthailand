@@ -186,8 +186,8 @@ under the License.
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputFname" class="col-sm-3 control-label company">${uiLabelMap.PFTTitleUploadIdScan} *</label>
-                            <label for="inputFname" class="col-sm-3 control-label individual">${uiLabelMap.PFTTitleUploadBizRegisterNo} *</label>
+                            <label for="inputFname" class="col-sm-3 control-label individual">${uiLabelMap.PFTTitleUploadIdScan} *</label>
+                            <label for="inputFname" class="col-sm-3 control-label company">${uiLabelMap.PFTTitleUploadBizRegisterNo} *</label>
                             <div class="col-sm-6" >
                                 <input type="file" class="form-control required" size="50" name="imageFileName"/>
                             </div>

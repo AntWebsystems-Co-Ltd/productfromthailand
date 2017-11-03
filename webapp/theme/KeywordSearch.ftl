@@ -59,24 +59,26 @@ under the License.
             <#-- End Search Header -->
             <#-- Start Paginate -->
             <#if productIds?has_content>
-            <div class="row">
-                <div class="col-sm-6 pagination-block">
-                    <ul class="pagination">
-                        <#if lowHasNext>
-                            <li><a href="<@ofbizUrl>keywordsearch/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${lowNext}/~clearSearch=N</@ofbizUrl>">&laquo;</a></li>
-                        </#if>
-                        <#list lowViewList..highViewList as curViewNum>
-                            <li <#if (curViewNum?int == viewIndex?int)>class="active"</#if>><a href="<@ofbizUrl>keywordsearch/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${curViewNum?int}/~clearSearch=N</@ofbizUrl>">${curViewNum?int+1}</a></li>
-                        </#list>
-                        <#if highHasNext>
-                            <li><a href="<@ofbizUrl>keywordsearch/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${highNext}/~clearSearch=N</@ofbizUrl>">&raquo;</a></li>
-                        </#if>
-                    </ul>
-                </div>
-                <div class="col-sm-6 results">
-                    Showing ${lowIndex+1} to ${highIndex} of ${listSize} (${viewIndexMax?int + 1} Pages)
-                </div>
-            </div>
+                <#if (viewIndexMax > 0)>
+                    <div class="row">
+                        <div class="col-sm-6 pagination-block">
+                            <ul class="pagination">
+                                <#if lowHasNext>
+                                    <li><a href="<@ofbizUrl>keywordsearch/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${lowNext}/~clearSearch=N</@ofbizUrl>">&laquo;</a></li>
+                                </#if>
+                                <#list lowViewList..highViewList as curViewNum>
+                                    <li <#if (curViewNum?int == viewIndex?int)>class="active"</#if>><a href="<@ofbizUrl>keywordsearch/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${curViewNum?int}/~clearSearch=N</@ofbizUrl>">${curViewNum?int+1}</a></li>
+                                </#list>
+                                <#if highHasNext>
+                                    <li><a href="<@ofbizUrl>keywordsearch/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${highNext}/~clearSearch=N</@ofbizUrl>">&raquo;</a></li>
+                                </#if>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 results">
+                            Showing ${lowIndex+1} to ${highIndex} of ${listSize} (${viewIndexMax?int + 1} Pages)
+                        </div>
+                    </div>
+                </#if>
             </#if>
             <#-- End Paginate -->
             <#-- Start Product -->
@@ -96,24 +98,26 @@ under the License.
             <#-- End Product -->
             <#-- Start Paginate -->
             <#if productIds?has_content>
-            <div class="row">
-                <div class="col-sm-6 pagination-block">
-                    <ul class="pagination">
-                        <#if lowHasNext>
-                            <li><a href="<@ofbizUrl>keywordsearch/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${lowNext}/~clearSearch=N</@ofbizUrl>">&laquo;</a></li>
-                        </#if>
-                        <#list lowViewList..highViewList as curViewNum>
-                            <li <#if (curViewNum?int == viewIndex?int)>class="active"</#if>><a href="<@ofbizUrl>keywordsearch/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${curViewNum?int}/~clearSearch=N</@ofbizUrl>">${curViewNum?int+1}</a></li>
-                        </#list>
-                        <#if highHasNext>
-                            <li><a href="<@ofbizUrl>keywordsearch/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${highNext}/~clearSearch=N</@ofbizUrl>">&raquo;</a></li>
-                        </#if>
-                    </ul>
-                </div>
-                <div class="col-sm-6 results">
-                    Showing ${lowIndex+1} to ${highIndex} of ${listSize} (${viewIndexMax?int + 1} Pages)
-                </div>
-            </div>
+                 <#if (viewIndexMax > 0)>
+                    <div class="row">
+                        <div class="col-sm-6 pagination-block">
+                            <ul class="pagination">
+                                <#if lowHasNext>
+                                    <li><a href="<@ofbizUrl>keywordsearch/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${lowNext}/~clearSearch=N</@ofbizUrl>">&laquo;</a></li>
+                                </#if>
+                                <#list lowViewList..highViewList as curViewNum>
+                                    <li <#if (curViewNum?int == viewIndex?int)>class="active"</#if>><a href="<@ofbizUrl>keywordsearch/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${curViewNum?int}/~clearSearch=N</@ofbizUrl>">${curViewNum?int+1}</a></li>
+                                </#list>
+                                <#if highHasNext>
+                                    <li><a href="<@ofbizUrl>keywordsearch/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${highNext}/~clearSearch=N</@ofbizUrl>">&raquo;</a></li>
+                                </#if>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6 results">
+                            Showing ${lowIndex+1} to ${highIndex} of ${listSize} (${viewIndexMax?int + 1} Pages)
+                        </div>
+                    </div>
+                </#if>
             </#if>
             <#-- End Paginate -->
         </div>

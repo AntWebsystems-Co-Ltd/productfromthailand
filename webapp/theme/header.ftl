@@ -127,6 +127,19 @@ under the License.
             <link rel="stylesheet" href="<@ofbizContentUrl>${StringUtil.wrapString(styleSheet)}</@ofbizContentUrl>" media="screen,projection" type="text/css" charset="UTF-8"/>
         </#list>
     </#if>
+    <script>
+        function removeFromCart(form) {
+            $.ajax({
+                url: form.action,
+                type: 'POST',
+                data: $(form).serialize(),
+                async: false,
+                success: function(data) {
+                    location.reload()
+                }
+            });
+        }
+    </script>
 </head>
 <body>
 <div id="wait-spinner" style="display: none; left: 0px; top: 1057px;">
@@ -292,48 +305,48 @@ under the License.
                             <ul class="dropdown-menu pull-right">
                                 <#if (shoppingCartSize > 0)>
                                 <li>
-                                    <table class="table hcart">
-                                        <#list shoppingCart.items() as cartLine>
-                                            <#assign cartLineIndex = shoppingCart.getItemIndex(cartLine) />
-                                            <#assign lineOptionalFeatures = cartLine.getOptionalProductFeatures() />
-                                            <tr>
-                                                <td class="text-center">
-                                                    <#if cartLine.getProductId()?exists>
-                                                        <#-- product item -->
-                                                        <#-- start code to display a small image of the product -->
-                                                        <#if cartLine.getParentProductId()?exists>
-                                                          <#assign parentProductId = cartLine.getParentProductId() />
+                                        <table class="table hcart">
+                                            <#list shoppingCart.items() as cartLine>
+                                                <#assign cartLineIndex = shoppingCart.getItemIndex(cartLine) />
+                                                <#assign lineOptionalFeatures = cartLine.getOptionalProductFeatures() />
+                                                <tr id="cartItemDisplayRow_${cartLineIndex}">
+                                                    <td class="text-center">
+                                                        <#if cartLine.getProductId()?exists>
+                                                            <#-- product item -->
+                                                            <#-- start code to display a small image of the product -->
+                                                            <#if cartLine.getParentProductId()?exists>
+                                                              <#assign parentProductId = cartLine.getParentProductId() />
+                                                            <#else>
+                                                              <#assign parentProductId = cartLine.getProductId() />
+                                                            </#if>
+                                                            <#assign smallImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(cartLine.getProduct(), "SMALL_IMAGE_URL", locale, dispatcher, "url")?if_exists />
+                                                            <#if !smallImageUrl?string?has_content><#assign smallImageUrl = "/images/defaultImage.jpg" /></#if>
+                                                            <#if smallImageUrl?string?has_content>
+                                                            <a href="<@ofbizUrl>product?product_id=${parentProductId}</@ofbizUrl>">
+                                                                <img src="<@ofbizContentUrl>${requestAttributes.contentPathPrefix?if_exists}${smallImageUrl}</@ofbizContentUrl>" alt="image" title="image" class="img-thumbnail img-responsive" />
+                                                            </a>
+                                                            </#if>
                                                         <#else>
-                                                          <#assign parentProductId = cartLine.getProductId() />
+                                                             ${cartLine.getItemTypeDescription()?if_exists}: ${cartLine.getName()?if_exists}
                                                         </#if>
-                                                        <#assign smallImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(cartLine.getProduct(), "SMALL_IMAGE_URL", locale, dispatcher, "url")?if_exists />
-                                                        <#if !smallImageUrl?string?has_content><#assign smallImageUrl = "/images/defaultImage.jpg" /></#if>
-                                                        <#if smallImageUrl?string?has_content>
-                                                        <a href="<@ofbizUrl>product?product_id=${parentProductId}</@ofbizUrl>">
-                                                            <img src="<@ofbizContentUrl>${requestAttributes.contentPathPrefix?if_exists}${smallImageUrl}</@ofbizContentUrl>" alt="image" title="image" class="img-thumbnail img-responsive" />
+                                                    </td>
+                                                    <td class="text-left">
+                                                        <a href="<@ofbizCatalogAltUrl productId=parentProductId/>" class="linktext">${cartLine.getName()?if_exists}</a>
+                                                    </td>
+                                                    <td class="text-right">x ${cartLine.getQuantity()?string.number?default(0)}</td>
+                                                    <td class="text-right"><@ofbizCurrency amount=cartLine.getDisplayItemSubTotal() isoCode=shoppingCart.getCurrency()/></td>
+                                                    <td class="text-center">
+                                                        <a href="javascript:removeFromCart(removecartformheader_${cartLineIndex!});">
+                                                            <i class="fa fa-times"></i>
                                                         </a>
-                                                        </#if>
-                                                    <#else>
-                                                         ${cartLine.getItemTypeDescription()?if_exists}: ${cartLine.getName()?if_exists}
-                                                    </#if>
-                                                </td>
-                                                <td class="text-left">
-                                                    <a href="<@ofbizCatalogAltUrl productId=parentProductId/>" class="linktext">${cartLine.getName()?if_exists}</a>
-                                                </td>
-                                                <td class="text-right">x ${cartLine.getQuantity()?string.number?default(0)}</td>
-                                                <td class="text-right"><@ofbizCurrency amount=cartLine.getDisplayItemSubTotal() isoCode=shoppingCart.getCurrency()/></td>
-                                                <td class="text-center">
-                                                    <a href="javascript:document.removecartform_${cartLineIndex!}.submit();">
-                                                        <i class="fa fa-times"></i>
-                                                    </a>
-                                                </td>
-                                                <form method="post" action="<@ofbizUrl>removecart</@ofbizUrl>" name="removecartform_${cartLineIndex!}">
-                                                    <input type="hidden" name="removeSelected" value="false"/>
-                                                    <input type="hidden" name="delete_${cartLineIndex!}" value="${cartLine.getQuantity()?string.number}"/>
-                                                </form>
-                                            </tr>
-                                        </#list>
-                                    </table>
+                                                        <form method="post" action="<@ofbizUrl>removecart</@ofbizUrl>" name="removecartformheader_${cartLineIndex!}" id="removecartformheader_${cartLineIndex!}">
+                                                            <input type="hidden" name="removeSelected" value="true"/>
+                                                            <input type="hidden" name="selectedItem" value="${cartLineIndex!}"/>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            </#list>
+                                        </table>
                                 </li>
                                 <li>
                                     <table class="table table-bordered total">
@@ -393,7 +406,11 @@ under the License.
                         <#if (completedTree?has_content)>
                             <#list completedTree?sort_by("productCategoryId") as root>
                                 <#if !root.child?has_content>
-                                    <li>
+                                   <#if parameters.category_id?has_content>
+                                          <li <#if root.productCategoryId == parameters.category_id> class="selected"</#if> >
+                                       <#else>
+                                       <li>
+                                    </#if>
                                         <a href="<@ofbizUrl>categorylist?productCategoryId=${root.productCategoryId!}</@ofbizUrl>"><#if root.categoryName??>${root.categoryName?js_string}<#elseif root.categoryDescription??>${root.categoryDescription?js_string}<#else>${root.productCategoryId?js_string}</#if></a>
                                     </li>
                                 <#else>

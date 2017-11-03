@@ -47,7 +47,7 @@ under the License.
                     </div>
                 <#-- Information Links Ends -->
                 <#-- Follow Us Links Starts -->
-                    <div class="col-md-2 col-sm-6">
+                    <div class="col-md-3 col-sm-6" align="center">
                         <h5>${uiLabelMap.PFTFollowUs}</h5>
                         <ul>
                             <li><a href="https://www.facebook.com/Careelnatural/" class="social-icon-facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -59,10 +59,8 @@ under the License.
                         </ul>
                     </div>
                 <#-- Follow Us Links Ends -->
-                    <div class="col-md-2 col-sm-6">
-                    </div>
                 <#-- Last Colum Start -->
-                    <div class="col-md-4 col-sm-12 last">
+                    <div class="col-md-5 col-sm-12 last">
                         <h5>${uiLabelMap.EcommerceSubscribe}</h5>
                             <div class="headerAlert"></div>
                             <div class="input-group input-group-md" id="emailSubscribe">

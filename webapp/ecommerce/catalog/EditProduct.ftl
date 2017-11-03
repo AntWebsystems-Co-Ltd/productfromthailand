@@ -164,6 +164,12 @@ under the License.
                     </div>
                 </div>
                 <div class="form-group">
+                    <label for="brandName" class="col-sm-3 control-label">${uiLabelMap.PFTProductbrandName}</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="brandName" size="30" maxlength="250" value="${(product.brandName)?default(brandName!)}"/>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.ProductProductCategoryId} *</label>
                     <div class="col-sm-6">
                         <select name="productCategoryId" class="required form-control">

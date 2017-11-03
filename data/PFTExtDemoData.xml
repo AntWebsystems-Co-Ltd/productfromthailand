@@ -33,6 +33,9 @@
     <UserLogin userLoginId="admin" currentPassword="{SHA}47ca69ebb4bdc9ae0adec130880165d2cc05db1a" requirePasswordChange="N"/>
     <UserLoginSecurityGroup groupId="SUPER" userLoginId="admin" fromDate="2001-01-01 12:00:00.0"/>
 
+    <UserLogin userLoginId="careeladmin" currentPassword="{SHA}47ca69ebb4bdc9ae0adec130880165d2cc05db1a" requirePasswordChange="N" partyId="SUP10000"/>
+    <UserLoginSecurityGroup groupId="MYPORTAL_SUPPLIER" userLoginId="careeladmin" fromDate="2001-01-01 12:00:00.0"/>
+
     <!-- Google identification -->
     <SystemProperty systemResourceId="google" systemPropertyId="clientId"
         description="Google Credentials Client Id"
@@ -207,11 +210,31 @@
     <ProductPrice productId="CR10010" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="285.00" createdDate="2017-10-09 00:00:00.000" />
     <ProductPrice productId="CR10010" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="8.90" createdDate="2017-10-09 00:00:00.000" />
     <ProductPrice productId="CR10010" productPricePurposeId="PURCHASE" productPriceTypeId="LIST_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="285.00" createdDate="2017-10-09 00:00:00.000" />
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010" lastPrice="285.00" supplierProductId="SP-CR10010-01" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-01" lastPrice="285.00" supplierProductId="SP-CR10010-01" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-02" lastPrice="285.00" supplierProductId="SP-CR10010-02" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-03" lastPrice="285.00" supplierProductId="SP-CR10010-03" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-04" lastPrice="285.00" supplierProductId="SP-CR10010-04" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-05" lastPrice="285.00" supplierProductId="SP-CR10010-05" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-07" lastPrice="285.00" supplierProductId="SP-CR10010-07" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+
+    <PartyRole partyId="_NA_" roleTypeId="CARRIER"/>
+    <ShipmentMethodType description="Free Shipping" shipmentMethodTypeId="FREE_SHIPPING"/>
+    <CarrierShipmentMethod partyId="_NA_" roleTypeId="CARRIER" shipmentMethodTypeId="FREE_SHIPPING" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="PFTSTORE" productStoreId="PFTSTORE" partyId="_NA_" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="FREE_SHIPPING" sequenceNumber="1"/>
+
+    <!-- Thai Post shipping method -->
+    <Party partyId="THAIPOST" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" />
+    <PartyGroup partyId="THAIPOST" groupName="Thailand Post" />
+    <PartyRole partyId="THAIPOST" roleTypeId="CARRIER" />
+    <PartyStatus partyId="THAIPOST" statusId="PARTY_ENABLED" statusDate="2001-01-01 12:00:00.0" />
+    <ShipmentMethodType description="ThaiPost : Domestic EMS" shipmentMethodTypeId="DOMESTIC_EMS"/>
+    <ShipmentMethodType description="ThaiPost : Domestic Registered" shipmentMethodTypeId="DOMESTIC_REG"/>
+    <CarrierShipmentMethod partyId="THAIPOST" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_EMS" sequenceNumber="1"/>
+    <CarrierShipmentMethod partyId="THAIPOST" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_REG" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="PFT10000" productStoreId="PFTSTORE" partyId="THAIPOST" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_REG" sequenceNumber="1"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="PFT10001" productStoreId="PFTSTORE" partyId="THAIPOST" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_EMS" sequenceNumber="1"/>
+    <ShipmentCostEstimate productStoreShipMethId="PFT10000" productStoreId="PFTSTORE" orderFlatPrice="30.0" orderItemFlatPrice="0.0" orderPricePercent="5.0" shipmentMethodTypeId="DOMESTIC_REG" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"/>
+    <ShipmentCostEstimate productStoreShipMethId="PFT10000" productStoreId="PFTSTORE" orderFlatPrice="50.0" orderItemFlatPrice="0.0" orderPricePercent="10.0" shipmentMethodTypeId="DOMESTIC_EMS" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"/>
 
 </entity-engine-xml>

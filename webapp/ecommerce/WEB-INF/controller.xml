@@ -110,14 +110,21 @@ under the License.
     <request-map uri="createsupplier">
         <security https="true" auth="false"/>
         <event type="simple" path="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="createSupplier"/>
-        <response name="success" type="request" value="main"/>
-        <response name="error" type="request" value="newsupplier"/>
+        <response name="success" type="request-redirect" value="main"/>
+        <response name="error" type="view" value="newsupplier"/>
     </request-map>
     <request-map uri="updatesupplier">
         <security https="true" auth="false"/>
         <event type="simple" path="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="updateSupplier"/>
         <response name="success" type="request" value="main"/>
         <response name="error" type="view-last"/>
+    </request-map>
+
+    <request-map uri="updatePerson">
+        <security https="true" auth="true"/>
+        <event type="simple" path="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="createUpdateCustomer"/>
+        <response name="success" type="view-last"/>
+        <response name="error" type="view" value="editperson"/>
     </request-map>
     <!-- ================ Product Requests ================= -->
     <request-map uri="createProduct">
@@ -273,7 +280,7 @@ under the License.
     <request-map uri="submitAnonContact">
         <security https="true" auth="false"/>
         <event type="simple" invoke="createAnonContact" path="component://productfromthailand/minilang/customer/CustomerEvents.xml"/>
-        <response name="success" type="view-last" value="main"/>
+        <response name="success" type="request-redirect" value="AnonContactus"/>
         <response name="error" type="request" value="AnonContactus"/>
     </request-map>
 
@@ -429,7 +436,7 @@ under the License.
     </request-map>
     <request-map uri="WishList">
         <security https="true" auth="true"/>
-        <response name="success" type="view" value="WishList"/>
+        <response name="success" type="view" value="WishList" save-current-view="true"/>
     </request-map>
 
     <view-map name="orderview" type="screen" page="component://productfromthailand/widget/OrderViewScreens.xml#OrderHeaderView"/>

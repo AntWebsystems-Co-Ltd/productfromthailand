@@ -45,6 +45,7 @@ under the License.
         <div class="screenlet">
           <div class="row">
             <!-- Pagination Starts -->
+            <#if (totalPage > 1)>
               <div class="col-sm-6 pagination-block">
                 <ul class="pagination">
                   <li><a href="<@ofbizUrl>StoreManagement?portalPageId=${(parameters.portalPageId)?if_exists}&parentPortalPageId=${(parameters.parentPortalPageId)?if_exists}&VIEW_SIZE=${viewSize}&VIEW_INDEX=0</@ofbizUrl>">«</a></li>
@@ -74,12 +75,11 @@ under the License.
                   <li><a href="<@ofbizUrl>StoreManagement?portalPageId=${(parameters.portalPageId)?if_exists}&parentPortalPageId=${(parameters.parentPortalPageId)?if_exists}&VIEW_SIZE=${viewSize}&VIEW_INDEX=${totalPage-1}</@ofbizUrl>">»</a></li>
                 </ul>
               </div>
-            <!-- Pagination Ends -->
-            <!-- Results Starts -->
               <div class="col-sm-6 results">
                 Showing ${lowIndex} to ${highIndex} ${uiLabelMap.CommonOf} ${listSize} ( ${totalPage} pages)
               </div>
-            <!-- Results Ends -->
+            </#if>
+            <!-- Pagination Ends -->
           </div>
           <div class="screenlet-body table-responsive shopping-cart-table">
             <table class="table table-bordered">

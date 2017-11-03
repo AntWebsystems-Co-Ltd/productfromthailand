@@ -177,6 +177,7 @@
                 <set field="responseName" value="stateList"/>
                 <set field="dependentKeyName" value="geoId"/>
                 <set field="descName" value="geoName"/>
+                <set field="orderBy" value="geoName"/>
                 <set field="selectedDependentOption" default-value="_none_"/>
                 <script location="component://order/groovyScripts/entry/CheckoutPayment.groovy"/>
                 <script location="component://order/groovyScripts/entry/CheckoutOptions.groovy"/>

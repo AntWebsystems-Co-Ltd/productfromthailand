@@ -82,13 +82,13 @@ under the License.
                       ${orderList.orderId}
                     </td>
                     <td class="text-center">
-                      ${orderList.grandTotal}
+                      <@ofbizCurrency amount=orderList.grandTotal! isoCode=orderList.currencyUom/>
                     </td>
                     <td class="text-center">
                       ${orderStatus.description}
                     </td>
                     <td class="text-center">
-                      ${orderList.orderDate}
+                      ${orderList.orderDate?string.medium}
                     </td>
                     <td class="text-center">
                       ${orderList.partyId}

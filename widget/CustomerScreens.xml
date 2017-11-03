@@ -64,6 +64,7 @@ under the License.
                 <set field="responseName" value="stateList"/>
                 <set field="dependentKeyName" value="geoId"/>
                 <set field="descName" value="geoName"/>
+                <set field="orderBy" value="geoName"/>
                 <set field="selectedDependentOption" default-value="_none_"/>
             </actions>
             <widgets>
@@ -138,6 +139,7 @@ under the License.
                 <set field="responseName" value="stateList"/>
                 <set field="dependentKeyName" value="geoId"/>
                 <set field="descName" value="geoName"/>
+                <set field="orderBy" value="geoName"/>
                 <set field="selectedDependentOption" from-field="selectedStateName" default-value="_none_"/>
             </actions>
             <widgets>
@@ -222,7 +224,7 @@ under the License.
                 <set field="titleProperty" value="PageTitleEditPerson"/>
                 <get-related-one value-field="userLogin" relation-name="Person" to-value-field="person"/>
                 <set field="donePage" from-field="parameters.DONE_PAGE" default-value="viewprofile"/>
-                <script location="component://ecommerce/groovyScripts/customer/EditPerson.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/EditPerson.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">

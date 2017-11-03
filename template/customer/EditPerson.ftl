@@ -16,6 +16,12 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
+<#include "component://widget/templates/HtmlFormMacroLibrary.ftl">
+<script>
+    jQuery(document).ready( function() {
+      jQuery("#editpersonform").validate();
+    });
+</script>
 <div id="main-container" class="container">
   <div class="row">
     <div class="col-sm-12">
@@ -24,16 +30,16 @@ under the License.
           <div class="panel-heading navbar">
             <h2>${uiLabelMap.PartyEditPersonalInformation}</h2>
           </div>
-          <form id="editpersonform1" method="post" action="<@ofbizUrl>updatePerson</@ofbizUrl>" class="form-horizontal" name="editpersonform">
+          <form id="editpersonform" method="post" action="<@ofbizUrl>updatePerson</@ofbizUrl>" class="form-horizontal" name="editpersonform">
         <#else>
           <div class="panel-heading navbar">
             <h2>${uiLabelMap.PartyAddNewPersonalInformation}</h2>
           </div>
-          <form id="editpersonform2" method="post" action="<@ofbizUrl>createPerson/${donePage}</@ofbizUrl>" class="form-horizontal" name="editpersonform">
+          <form id="editpersonform" method="post" action="<@ofbizUrl>createPerson/${donePage}</@ofbizUrl>" class="form-horizontal" name="editpersonform">
         </#if>
             <div class="panel-body">
               &nbsp;<a href='<@ofbizUrl>${donePage}</@ofbizUrl>' class="btn btn-main">${uiLabelMap.CommonGoBack}</a>
-              &nbsp;<a href="javascript:document.editpersonform.submit()" class="btn btn-main">${uiLabelMap.CommonSave}</a>
+              &nbsp;<a href="javascript:javascript:$('#editpersonform').submit()" class="btn btn-main">${uiLabelMap.CommonSave}</a>
               <p/>
               <input type="hidden" name="partyId" value="${person.partyId!}"/>
               <table class="basic-table" cellspacing="0">
@@ -43,7 +49,7 @@ under the License.
                     <select name="personalTitle" class="form-control">
                       <#if personData.personalTitle?has_content >
                       <option>${personData.personalTitle}</option>
-                      <option value="${personData.personalTitle}"> --</option>
+                      <option value=""> --</option>
                     <#else>
                       <option value="">${uiLabelMap.CommonSelectOne}</option>
                     </#if>
@@ -55,35 +61,33 @@ under the License.
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="firstName" class="col-sm-3 control-label">${uiLabelMap.PartyFirstName}</label>
+                  <label for="firstName" class="col-sm-3 control-label">${uiLabelMap.PartyFirstName} *</label>
                   <div class="col-sm-6">
-                    <input type="text" class='form-control required' size="30" maxlength="30" name="firstName" value="${personData.firstName!}"/>*
+                    <input type="text" class='form-control required' size="30" maxlength="30" name="firstName" value="${personData.firstName!}"/>
                   </div>
                 </div>
+                <#if partyRoleType != 'SUPPLIER'>
+                     <div class="form-group">
+                       <label for="middleName" class="col-sm-3 control-label">${uiLabelMap.PartyMiddleInitial}</label>
+                       <div class="col-sm-6">
+                         <input type="text" class="form-control" size="4" maxlength="4" name="middleName" value="${personData.middleName!}"/>
+                       </div>
+                     </div>
+                </#if>
                 <div class="form-group">
-                  <label for="middleName" class="col-sm-3 control-label">${uiLabelMap.PartyMiddleInitial}</label>
+                  <label for="lastName" class="col-sm-3 control-label">${uiLabelMap.PartyLastName} *</label>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control" size="4" maxlength="4" name="middleName" value="${personData.middleName!}"/>
+                    <input type="text" class="form-control required" size="30" maxlength="30" name="lastName" value="${personData.lastName!}"/>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="lastName" class="col-sm-3 control-label">${uiLabelMap.PartyLastName}</label>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" size="30" maxlength="30" name="lastName" value="${personData.lastName!}"/>*
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="suffix" class="col-sm-3 control-label">${uiLabelMap.PartySuffix}</label>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" size="10" maxlength="30" name="suffix" value="${personData.suffix!}"/>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="nickname" class="col-sm-3 control-label">${uiLabelMap.PartyNickName}</label>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" size="30" maxlength="60" name="nickname" value="${personData.nickname!}"/>
-                  </div>
-                </div>
+                <#if partyRoleType == 'SUPPLIER'>
+                     <div class="form-group">
+                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTTitleIdNoIdPassport} *</label>
+                        <div class="col-sm-6" >
+                            <input type="text" class="form-control required" name="idCardNo" value="${partyIdentification?if_exists}" maxlength="30"/>
+                        </div>
+                    </div>
+                </#if>
                 <div class="form-group">
                   <label for="gender" class="col-sm-3 control-label">${uiLabelMap.PartyGender}</label>
                   <div class="col-sm-6">
@@ -93,7 +97,7 @@ under the License.
                         <#if personData.gender == "M" >${uiLabelMap.CommonMale}</#if>
                           <#if personData.gender == "F" >${uiLabelMap.CommonFemale}</#if>
                       </option>
-                      <option value="${personData.gender}"> --</option>
+                      <option value=""> --</option>
                     <#else>
                       <option value="">${uiLabelMap.CommonSelectOne}</option>
                     </#if>
@@ -103,86 +107,29 @@ under the License.
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="birthDate" class="col-sm-3 control-label">${uiLabelMap.PartyBirthDate}</label>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" size="11" maxlength="20" name="birthDate" value="${(personData.birthDate.toString())!}"/>
-                    <div>${uiLabelMap.CommonFormatDate}</div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="height" class="col-sm-3 control-label">${uiLabelMap.PartyHeight}</label>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" size="30" maxlength="60" name="height" value="${personData.height!}"/>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="weight" class="col-sm-3 control-label">${uiLabelMap.PartyWeight}</label>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" size="30" maxlength="60" name="weight" value="${personData.weight!}"/>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="mothersMaidenName" class="col-sm-3 control-label">${uiLabelMap.PartyMaidenName}</label>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" size="30" maxlength="60" name="mothersMaidenName" value="${personData.mothersMaidenName!}"/>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="maritalStatus" class="col-sm-3 control-label">${uiLabelMap.PartyMaritalStatus}</label>
-                  <div class="col-sm-6">
-                    <select name="maritalStatus" class="form-control">
-                    <#if personData.maritalStatus?has_content>
-                      <option value="${personData.maritalStatus}">
-                        <#if personData.maritalStatus == "S">${uiLabelMap.PartySingle}</#if>
-                         <#if personData.maritalStatus == "M">${uiLabelMap.PartyMarried}</#if>
-                         <#if personData.maritalStatus == "D">${uiLabelMap.PartyDivorced}</#if>
-                      </option>
-                      <option value="${personData.maritalStatus}"> --</option>
-                    <#else>
-                      <option></option>
-                    </#if>
-                      <option value="S">${uiLabelMap.PartySingle}</option>
-                      <option value="M">${uiLabelMap.PartyMarried}</option>
-                      <option value="D">${uiLabelMap.PartyDivorced}</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="socialSecurityNumber" class="col-sm-3 control-label">${uiLabelMap.PartySocialSecurityNumber}</label>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" size="30" maxlength="60" name="socialSecurityNumber" value="${personData.socialSecurityNumber!}"/>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="passportNumber" class="col-sm-3 control-label">${uiLabelMap.PartyPassportNumber}</label>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" size="30" maxlength="60" name="passportNumber" value="${personData.passportNumber!}"/>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="name" class="col-sm-3 control-label">${uiLabelMap.PartyPassportExpireDate}</label>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" size="30" maxlength="60" name="passportExpireDate" value="${personData.passportExpireDate!}"/>
-                    <div>${uiLabelMap.CommonFormatDate}</div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="totalYearsWorkExperience" class="col-sm-3 control-label">${uiLabelMap.PartyTotalYearsWorkExperience}</label>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" size="30" maxlength="60" name="totalYearsWorkExperience" value="${personData.totalYearsWorkExperience!}"/>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="comments" class="col-sm-3 control-label">${uiLabelMap.CommonComment}</label>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control" size="30" maxlength="60" name="comments" value="${personData.comments!}"/>
-                  </div>
+                    <label for="birthDate" class="col-sm-3 control-label">${uiLabelMap.PartyBirthDate}</label>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker_birthDate'>
+                                <input type='text' class="form-control" name="birthDate" <#if personData.birthDate?has_content > value="${personData.birthDate?string("yyyy-MM-dd")!}" </#if>/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#datetimepicker_birthDate').datetimepicker({format: 'YYYY-MM-DD'});
+                        });
+                    </script>
                 </div>
               </table>
             </div>
           </form>
         <a href='<@ofbizUrl>${donePage}</@ofbizUrl>' class="btn btn-main">${uiLabelMap.CommonGoBack}</a>&nbsp;
-        <a id="editpersonform3" href="javascript:document.editpersonform.submit()" class="btn btn-main">${uiLabelMap.CommonSave}</a>
+        <a id="editpersonform" href="javascript:$('#editpersonform').submit()" class="btn btn-main">${uiLabelMap.CommonSave}</a>
       </div>
     </div>
   </div>

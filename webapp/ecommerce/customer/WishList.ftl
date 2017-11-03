@@ -32,22 +32,37 @@ under the License.
             </thead>
             <tbody>
               <#if wishLists?has_content>
+                <#assign wishIndex = 0>
                 <#list wishLists as wishList>
+                <#assign wishIndex = wishIndex?int+1>
                     <tr>
                         <td>${wishList.date}</td>
                         <td><a href="/pft/products/p_${wishList.productId}"> ${wishList.productName}</a></td>
                         <td>
-                            <#assign timeId = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp().getTime()/>
-                            <form name="removeProductFromWishList_${timeId}" action="removeProductFromWishList" method="post">
+                            <div class="product-col" style="padding: 0; margin: 0;">
+                                <form method="post" action="<@ofbizUrl>additem</@ofbizUrl>" name="addToCart${wishIndex!}form">
+                                    <input type="hidden" name="add_product_id" value="${wishList.productId}"/>
+                                    <input type="hidden" name="quantity" value="1"/>
+                                    <input type="hidden" name="clearSearch" value="N"/>
+                                    <input type="hidden" name="mainSubmitted" value="Y"/>
+                                </form>
+                                <button type="button" class="btn btn-cart" onclick="javascript:document.addToCart${wishIndex!}form.submit()">
+                                    ${uiLabelMap.OrderAddToCart}
+                                    <i class="fa fa-shopping-cart"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <form name="removeProductFromWishList_${wishList.shoppingListId}_${wishList.shoppingListItemSeqId}" action="removeProductFromWishList" method="post">
                                 <input name="shoppingListId" type="hidden" value="${wishList.shoppingListId}"/>
                                 <input name="shoppingListItemSeqId" type="hidden" value="${wishList.shoppingListItemSeqId}"/>
                             </form>
-                            <a href="javascript: $(document.removeProductFromWishList_${timeId}).submit();"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                            <a href="javascript: $(document.removeProductFromWishList_${wishList.shoppingListId}_${wishList.shoppingListItemSeqId}).submit();"><i class="fa fa-trash" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                 </#list>
               <#else>
-                <tr><td colspan="3" class="center">${uiLabelMap.PFTWishListNotFound}</td></tr>
+                <tr><td colspan="4" class="center">${uiLabelMap.PFTWishListNotFound}</td></tr>
               </#if>
             </tbody>
           </table>

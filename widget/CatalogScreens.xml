@@ -357,7 +357,7 @@ under the License.
                 <set field="leftbarScreenName" value="leftbar"/>
                 <set field="MainColumnStyle" value="leftonly"/>
                 <set field="titleProperty" value="PageTitleProductPage"/>
-                <set field="layoutSettings.javaScripts[]" value="/ecommerce/images/productAdditionalView.js" global="true"/>
+                <!-- <set field="layoutSettings.javaScripts[]" value="/ecommerce/images/productAdditionalView.js" global="true"/> -->
                 <set field="configproductdetailScreen" value="component://productfromthailand/widget/CatalogScreens.xml#configproductdetail"/>
                 <script location="component://order/groovyScripts/entry/catalog/Product.groovy"/>
             </actions>
@@ -372,7 +372,11 @@ under the License.
                                 <include-screen name="${detailScreen}"/>
                             </widgets>
                             <fail-widgets>
-                                <label style="head2">${uiLabelMap.ProductProductNotFound} ${productId}!</label>
+                                <container style="container">
+                                    <container style="panel panel-smart">
+                                        <label style="head2">${uiLabelMap.ProductProductNotFound} ${productId}!</label>
+                                </container>
+                            </container>
                             </fail-widgets>
                         </section>
                     </decorator-section>

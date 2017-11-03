@@ -77,7 +77,7 @@ under the License.
                                 <html-template location="component://productfromthailand/webapp/ecommerce/catalog/EditProduct.ftl"/>
                             </html>
                         </platform-specific>
-                        <section>
+                        <!-- <section>
                             <condition>
                                 <and>
                                     <not><if-empty field="productId"/></not>
@@ -96,7 +96,7 @@ under the License.
                                     </widgets>
                                 </section>
                             </widgets>
-                        </section>
+                        </section> -->
                     </decorator-section>
                 </decorator-screen>
             </widgets>

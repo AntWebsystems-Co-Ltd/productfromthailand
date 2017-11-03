@@ -142,21 +142,23 @@ color: #663300;
     font-weight: bold;
     padding: 10px 10px 10px 50px;
     line-height: 1.3em;
-    min-width: 350px;
+    min-width: 100%;
+    max-width: 100%;
     word-wrap: break-word;
     box-shadow: -0px -0px 20px 5px #888888;
     text-overflow: ellipsis;
 }
 
 .eventMessageJGrowl {
-    background-color: #3b8e3c !important
+    background-color: #3b8e3c !important;
     border: 3px solid #f0f0f0;
     color: #ffffff;
     font-size: 1.3em;
     font-weight: bold;
     padding: 10px 10px 10px 50px;
     line-height: 1.3em;
-    min-width: 350px;
+    min-width: 100%;
+    max-width: 100%;
     word-wrap: break-word;
     box-shadow: -0px -0px 20px 5px #888888;
 }
@@ -228,4 +230,10 @@ color: #663300;
 
 .image #gridimage, .image #prodsumimg {
     display: inline-block;
+}
+
+img.img-responsive {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }

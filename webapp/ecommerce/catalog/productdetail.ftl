@@ -32,6 +32,7 @@ ${virtualVariantJavaScript!}
         if (document.addform.quantity == null) return;
         if (name == '' || name == 'NULL' || isVirtual(name) == true) {
             document.addform.quantity.disabled = true;
+            document.addform.addCartBtn.disabled = true;
             var elem = document.getElementById('product_id_display');
             var txt = document.createTextNode('');
             if(elem.hasChildNodes()) {
@@ -41,6 +42,7 @@ ${virtualVariantJavaScript!}
             }
         } else {
             document.addform.quantity.disabled = false;
+            document.addform.addCartBtn.disabled = false;
             var elem = document.getElementById('product_id_display');
             var txt = document.createTextNode(name);
             if(elem.hasChildNodes()) {
@@ -140,7 +142,7 @@ ${virtualVariantJavaScript!}
         return -1;
     }
 
-    function getList(name, index, src) {
+    function getList(name, index, src, img) {
         currentFeatureIndex = findIndex(name);
 
         if (currentFeatureIndex == 0) {
@@ -191,6 +193,10 @@ ${virtualVariantJavaScript!}
 
             // check for amount box
             toggleAmt(checkAmtReq(sku));
+        }
+
+        if (img != "") {
+            changeToVariantImg(img);
         }
     }
 
@@ -306,6 +312,11 @@ ${virtualVariantJavaScript!}
             priceElem.appendChild(priceTxt);
         }
     }
+
+    function changeToVariantImg(img) {
+        $("#mainImageLink").attr("href", img)
+        $("#mainImage").attr("src", img)
+    }
 //]]>
 $(function(){
     $('a[id^=productTag_]').click(function(){
@@ -379,8 +390,8 @@ $(function(){
             <#assign productLargeImageUrl = firstLargeImage />
         </#if>
         <#if productLargeImageUrl?string?has_content>
-            <a href="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>">
-                <img src="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail" />
+            <a href="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>" id="mainImageLink">
+                <img src="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail" id="mainImage"/>
             </a>
         </#if>
         <#if !productLargeImageUrl?string?has_content>
@@ -711,7 +722,7 @@ $(function(){
                 <label for="select" class="control-label text-uppercase">${uiLabelMap.CommonSelect}:</label>
                 <#list featureSet as currentType>
                 <div id="variantTreeOption">
-                  <select name="FT${currentType}" onchange="javascript:getList(this.name, (this.selectedIndex-1), 1);" class="form-control">
+                  <select name="FT${currentType}" onchange="javascript:getList(this.name, (this.selectedIndex-1), 1, '');" class="form-control">
                     <option>${featureTypes.get(currentType)}</option>
                   </select>
                 </div>
@@ -796,7 +807,7 @@ $(function(){
             <#else>
               <span><input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" class="form-control"
                            <#if product.isVirtual!?upper_case == "Y">disabled="disabled"</#if>/></span>
-              <button type="button" class="btn btn-cart" onclick="javascript:addItem();">
+              <button type="button" name="addCartBtn" class="btn btn-cart" onclick="javascript:addItem();" <#if product.isVirtual!?upper_case == "Y">disabled="disabled"</#if>>
                   ${uiLabelMap.OrderAddToCart}
                   <i class="fa fa-shopping-cart"></i>
               </button>
@@ -823,6 +834,12 @@ $(function(){
             </#if>
           </#if>
         </#if>
+        <#if userLogin?has_content>
+          <#assign timeId = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp().getTime()/>
+          <button type="button" onclick="$(document.addProductToWishList_${timeId}).submit()" title="Wishlist" class="btn btn-wishlist">
+              <i class="fa fa-heart"></i>
+          </button>
+        </#if>
         <#if variantPriceList??>
           <#list variantPriceList as vpricing>
             <#assign variantName = vpricing.get("variantName")!>
@@ -838,63 +855,14 @@ $(function(){
         </#if>
         </fieldset>
       </form>
+    <#if userLogin?has_content>
+      <#assign timeId = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp().getTime()/>
+      <form name="addProductToWishList_${timeId}" method="post" action="<@ofbizUrl>addProductToWishList</@ofbizUrl>">
+          <input name="productId" type="hidden" value="${product.productId}"/>
+      </form>
+    </#if>
     </div>
-    <div>
-      <#if sessionAttributes.userLogin?has_content && sessionAttributes.userLogin.userLoginId != "anonymous">
-        <hr/>
-        <form name="addToShoppingList" method="post"
-              action="<@ofbizUrl>addItemToShoppingList<#if requestAttributes._CURRENT_VIEW_??>/${requestAttributes._CURRENT_VIEW_}</#if></@ofbizUrl>">
-          <fieldset>
-            <input type="hidden" name="productId" value="${product.productId}"/>
-            <input type="hidden" name="product_id" value="${product.productId}"/>
-            <input type="hidden" name="productStoreId" value="${productStoreId}"/>
-            <input type="hidden" name="reservStart" value=""/>
-            <select name="shoppingListId">
-              <#if shoppingLists?has_content>
-                <#list shoppingLists as shoppingList>
-                  <option value="${shoppingList.shoppingListId}">${shoppingList.listName}</option>
-                </#list>
-              </#if>
-              <option value="">---</option>
-              <option value="">${uiLabelMap.OrderNewShoppingList}</option>
-            </select>
-            &nbsp;&nbsp;
-          <#--assign nowDate = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowDateString("yyyy-MM-dd")-->
-            <#if product.productTypeId! == "ASSET_USAGE">&nbsp;
-              ${uiLabelMap.CommonStartDate}(yyyy-mm-dd)
-              <@htmlTemplate.renderDateTimeField name="reservStartStr" event="" action="" value="${startDate}"
-                  className="" alert="" title="Format: yyyy-MM-dd HH:mm:ss.SSS" size="15" maxlength="30"
-                  id="reservStartStr" dateType="date" shortDateInput=false timeDropdownParamName=""
-                  defaultDateTimeString="" localizedIconTitle="" timeDropdown="" timeHourName="" classString="" hour1=""
-                  hour2="" timeMinutesName="" minutes="" isTwelveHour="" ampmName="" amSelected="" pmSelected=""
-                  compositeType="" formName=""/>&nbsp;Number of&nbsp;days&nbsp;&nbsp;
-              <input type="text" size="4" name="reservLength"/>&nbsp;<br/>Number of&nbsp;persons&nbsp;&nbsp;
-              <input type="text" size="4" name="reservPersons" value="1"/>&nbsp;&nbsp;Qty&nbsp;&nbsp;
-              <input type="text" size="5" name="quantity" value="1" class="form-control"/>
-            <#elseif product.productTypeId! == "ASSET_USAGE_OUT_IN">&nbsp;
-              ${uiLabelMap.CommonStartDate}(yyyy-mm-dd)&nbsp;&nbsp;&nbsp;
-              <@htmlTemplate.renderDateTimeField name="reservStartStr" event="" action="" value="${startDate}"
-                  className="" alert="" title="Format: yyyy-MM-dd HH:mm:ss.SSS" size="15" maxlength="30"
-                  id="reservStartStr" dateType="date" shortDateInput=false timeDropdownParamName=""
-                  defaultDateTimeString="" localizedIconTitle="" timeDropdown="" timeHourName="" classString="" hour1=""
-                  hour2="" timeMinutesName="" minutes="" isTwelveHour="" ampmName="" amSelected="" pmSelected=""
-                  compositeType="" formName=""/>&nbsp;&nbsp;Number of&nbsp;days&nbsp;&nbsp;
-              <input type="text" size="4" name="reservLength"/>
-              <input type="hidden" size="4" name="reservPersons" value="1"/><br/>Qty&nbsp;
-              <input type="text" size="5" name="quantity" value="1" class="form-control"/>
-            <#else>
-              <input type="text" size="5" name="quantity" value="1" class="form-control"/>
-              <input type="hidden" name="reservStartStr" value=""/>
-            </#if>
-            <a href="javascript:addShoplistSubmit();" class="buttontext">${uiLabelMap.OrderAddToShoppingList}</a>
-          </fieldset>
-        </form>
-      <#else> <br/>
-        ${uiLabelMap.OrderYouMust}
-        <a href="<@ofbizUrl>checkLogin/showcart</@ofbizUrl>" class="buttontext">${uiLabelMap.CommonBeLogged}</a>
-        ${uiLabelMap.OrderToAddSelectedItemsToShoppingList}.&nbsp;
-      </#if>
-    </div>
+    <hr/>
     <#-- Prefill first select box (virtual products only) -->
     <#if variantTree?? && 0 &lt; variantTree.size()>
       <script type="text/javascript">eval("list" + "${featureOrderFirst}" + "()");</script>
@@ -911,15 +879,17 @@ $(function(){
         <#assign swatchProduct = imageMap.get(key) />
         <#if swatchProduct?has_content && indexer &lt; maxIndex>
           <#assign imageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(swatchProduct, "SMALL_IMAGE_URL", request, "url")! />
+          <#assign variantLargeImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(swatchProduct, "LARGE_IMAGE_URL", request, "url")! />
           <#if !imageUrl?string?has_content>
             <#assign imageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url")! />
           </#if>
           <#if !imageUrl?string?has_content>
             <#assign imageUrl = "/images/defaultImage.jpg" />
           </#if>
-          <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1);"><img
-              src="<@ofbizContentUrl>${contentPathPrefix!}${imageUrl}</@ofbizContentUrl>" class="cssImgSmall" alt=""/></a>
-          <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1);" class="linktext">${key}</a>
+          <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1,'${variantLargeImageUrl!}');">
+            <img src="<@ofbizContentUrl>${contentPathPrefix!}${imageUrl}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail" id="variantProduct"/>
+          </a>
+          <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1,'');" class="linktext">${key}</a>
           <br/><br/>
         </#if>
         <#assign indexer = indexer + 1 />

@@ -104,7 +104,7 @@ public class PFTProductServices {
             String priceStr = (String) formInput.get("price");
             BigDecimal priceb = new BigDecimal(priceStr);
             Map<String, Object> fieldMap = UtilMisc.toMap("productId", formInput.get("productId"), "description", formInput.get("description"), "productTypeId", formInput.get("productCategoryId"),"internalName"
-                , formInput.get("internalName"), "productTypeId", formInput.get("productTypeId"), "productName", formInput.get("internalName"), "requirementMethodEnumId", "PRODRQM_DS", "userLogin", userLogin);
+                , formInput.get("internalName"), "productTypeId", formInput.get("productTypeId"), "productName", formInput.get("internalName"), "brandName", formInput.get("brandName"), "requirementMethodEnumId", "PRODRQM_DS", "userLogin", userLogin);
             if (formInput.get("isCreate").equals("Y")) {
                 if (formInput.get("productId") != null) {
                     GenericValue product = delegator.findOne("Product", UtilMisc.toMap("productId", formInput.get("productId")), true);
@@ -151,9 +151,15 @@ public class PFTProductServices {
                                     "productPricePurposeId", "PURCHASE",
                                     "currencyUomId", formInput.get("currencyUomId"))
                             .orderBy("-fromDate").filterByDate().queryFirst();
-                Map<String, Object> productPriceMap = UtilMisc.toMap("productId", productId, "price", priceb, "productPriceTypeId", "DEFAULT_PRICE", "fromDate", productPrice.getTimestamp("fromDate")
-                    , "productPricePurposeId", "PURCHASE", "currencyUomId", formInput.get("currencyUomId"), "productStoreGroupId", "_NA_", "userLogin", userLogin);
-                createPriceResult = dispatcher.runSync("updateProductPrice", productPriceMap);
+                if(UtilValidate.isEmpty(productPrice)) {
+                    Map<String, Object> productPriceMap = UtilMisc.toMap("productId", productId, "price", priceb, "productPriceTypeId", "DEFAULT_PRICE"
+                            , "productPricePurposeId", "PURCHASE", "currencyUomId", formInput.get("currencyUomId"), "productStoreGroupId", "_NA_", "userLogin", userLogin);
+                        createPriceResult = dispatcher.runSync("createProductPrice", productPriceMap);
+                } else {
+                    Map<String, Object> productPriceMap = UtilMisc.toMap("productId", productId, "price", priceb, "productPriceTypeId", "DEFAULT_PRICE", "fromDate", productPrice.getTimestamp("fromDate")
+                            , "productPricePurposeId", "PURCHASE", "currencyUomId", formInput.get("currencyUomId"), "productStoreGroupId", "_NA_", "userLogin", userLogin);
+                        createPriceResult = dispatcher.runSync("updateProductPrice", productPriceMap);
+                }
 
                 /*Update Supplier Product*/
                 GenericValue supplierPrice = EntityQuery.use(delegator).from("SupplierProduct")
@@ -161,9 +167,15 @@ public class PFTProductServices {
                                     "partyId", userLogin.getString("partyId"),
                                     "currencyUomId", formInput.get("currencyUomId"))
                             .orderBy("-availableFromDate").queryFirst();
-                Map<String, Object> supplierProductMap = UtilMisc.toMap("productId", productId, "lastPrice", priceb, "partyId", userLogin.getString("partyId")
-                    , "supplierProductId", userLogin.getString("partyId"), "currencyUomId", formInput.get("currencyUomId"), "minimumOrderQuantity", new BigDecimal("0"),"availableFromDate", supplierPrice.getTimestamp("availableFromDate"), "canDropShip", "Y", "userLogin", userLogin);
-                supplierProductResult = dispatcher.runSync("updateSupplierProduct", supplierProductMap);
+                if(UtilValidate.isEmpty(supplierPrice)) {
+                    Map<String, Object> supplierProductMap = UtilMisc.toMap("productId", productId, "lastPrice", priceb, "partyId", userLogin.getString("partyId")
+                            , "supplierProductId", userLogin.getString("partyId"), "currencyUomId", formInput.get("currencyUomId"), "minimumOrderQuantity", new BigDecimal("0"),"availableFromDate", UtilDateTime.nowTimestamp(), "canDropShip", "Y", "userLogin", userLogin);
+                        supplierProductResult = dispatcher.runSync("createSupplierProduct", supplierProductMap);
+                } else {
+                    Map<String, Object> supplierProductMap = UtilMisc.toMap("productId", productId, "lastPrice", priceb, "partyId", userLogin.getString("partyId")
+                            , "supplierProductId", userLogin.getString("partyId"), "currencyUomId", formInput.get("currencyUomId"), "minimumOrderQuantity", new BigDecimal("0"),"availableFromDate", supplierPrice.getTimestamp("availableFromDate"), "canDropShip", "Y", "userLogin", userLogin);
+                        supplierProductResult = dispatcher.runSync("updateSupplierProduct", supplierProductMap);
+                }
 
                 /*Product Category Member*/
                 GenericValue categoryMember = EntityQuery.use(delegator).from("ProductCategoryMember")

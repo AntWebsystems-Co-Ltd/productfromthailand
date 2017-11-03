@@ -42,7 +42,9 @@ ${virtualJavaScript!}
         <div class="col-md-3 col-sm-6">
             <div class="product-col">
                 <div class="image">
-                    <img src="<@ofbizContentUrl>${contentPathPrefix!}${smallImageUrl}</@ofbizContentUrl>" alt="product" class="img-responsive" id="gridimage"/>
+                    <a href="${productUrl}">
+                        <img src="<@ofbizContentUrl>${contentPathPrefix!}${smallImageUrl}</@ofbizContentUrl>" alt="product" class="img-responsive" id="gridimage"/>
+                    </a>
                 </div>
                 <div class="caption">
                     <h4><a href="${productUrl}">${productContentWrapper.get("PRODUCT_NAME", "html")!}</a></h4>
@@ -58,28 +60,71 @@ ${virtualJavaScript!}
                         </#if>
                     </div>
                     <div class="cart-button button-group">
-                        <form method="post" action="<@ofbizUrl>additem</@ofbizUrl>" name="the${requestAttributes.formNamePrefix!}${requestAttributes.listIndex!}form">
-                            <input type="hidden" name="add_product_id" value="${product.productId}"/>
-                            <input type="hidden" name="quantity" value="1"/>
-                            <input type="hidden" name="clearSearch" value="N"/>
-                            <input type="hidden" name="mainSubmitted" value="Y"/>
-                        </form>
                         <#assign timeId = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp().getTime()/>
                         <form name="addProductToWishList_${timeId}" method="post" action="<@ofbizUrl>addProductToWishList</@ofbizUrl>">
                             <input name="productId" type="hidden" value="${product.productId}"/>
                         </form>
-                        <button type="button" class="btn btn-cart" onclick="javascript:document.the${requestAttributes.formNamePrefix!}${requestAttributes.listIndex!}form.submit()">
-                            <i class="fa fa-shopping-cart"></i>
-                            ${uiLabelMap.OrderAddToCart}
-                        </button>
+                        <#if product.introductionDate?? && nowTimestamp.before(product.introductionDate)>
+                            <div style="color: red;">${uiLabelMap.ProductNotYetAvailable}</div>
+                            <button type="button" class="btn btn-cart">
+                                <i class="fa fa-shopping-cart"></i>
+                                ${uiLabelMap.ProductNotYetAvailable}
+                            </button>
+                        <#-- check to see if salesDiscontinuationDate has passed -->
+                        <#elseif product.salesDiscontinuationDate?? && nowTimestamp.after(product.salesDiscontinuationDate)>
+                            <button type="button" class="btn btn-cart">
+                                <i class="fa fa-shopping-cart"></i>
+                                ${uiLabelMap.ProductNoLongerAvailable}
+                            </button>
+                        <#-- check to see if it is a rental item; will enter parameters on the detail screen-->
+                        <#elseif product.productTypeId! == "ASSET_USAGE">
+                            <button type="button" class="btn btn-cart" onclick="window.location.href='${productUrl}'">
+                                <i class="fa fa-shopping-cart"></i>
+                                ${uiLabelMap.OrderMakeBooking}
+                            </button>
+                        <#-- check to see if it is an aggregated or configurable product; will enter parameters on the detail screen-->
+                        <#elseif product.productTypeId! == "AGGREGATED" || product.productTypeId! == "AGGREGATED_SERVICE">
+                            <button type="button" class="btn btn-cart" onclick="window.location.href='${productUrl}'">
+                                <i class="fa fa-shopping-cart"></i>
+                                ${uiLabelMap.OrderConfigure}
+                            </button>
+                        <#-- check to see if the product is a virtual product -->
+                        <#elseif product.isVirtual?? && product.isVirtual == "Y">
+                            <button type="button" class="btn btn-cart" onclick="window.location.href='${productUrl}'">
+                                <i class="fa fa-shopping-cart"></i>
+                                ${uiLabelMap.OrderChooseVariations}
+                            </button>
+                        <#-- check to see if the product requires an amount -->
+                        <#elseif product.requireAmount?? && product.requireAmount == "Y">
+                            <button type="button" class="btn btn-cart" onclick="window.location.href='${productUrl}'">
+                                <i class="fa fa-shopping-cart"></i>
+                                ${uiLabelMap.OrderChooseAmount}
+                            </button>
+                        <#elseif product.productTypeId! == "ASSET_USAGE_OUT_IN">
+                            <button type="button" class="btn btn-cart" onclick="${productUrl}">
+                                <i class="fa fa-shopping-cart"></i>
+                                ${uiLabelMap.OrderRent}
+                            </button>
+                        <#else>
+                            <form method="post" action="<@ofbizUrl>additem</@ofbizUrl>" name="the${requestAttributes.formNamePrefix!}${requestAttributes.listIndex!}form" class="hidden">
+                                <input type="hidden" name="add_product_id" value="${product.productId}"/>
+                                <input type="hidden" name="quantity" value="1"/>
+                                <input type="hidden" name="clearSearch" value="N"/>
+                                <input type="hidden" name="mainSubmitted" value="Y"/>
+                            </form>
+                            <button type="button" class="btn btn-cart" onclick="addToCart(the${requestAttributes.formNamePrefix!}${requestAttributes.listIndex!}form)">
+                                <i class="fa fa-shopping-cart"></i>
+                                ${uiLabelMap.OrderAddToCart}
+                            </button>
+                        </#if>
                         <#if userLogin?has_content>
                         <button type="button" onclick="$(document.addProductToWishList_${timeId}).submit()" title="Wishlist" class="btn btn-wishlist">
                             <i class="fa fa-heart"></i>
                         </button>
                         </#if>
-                        <button type="button" title="Compare" class="btn btn-compare">
+                        <#-- <button type="button" title="Compare" class="btn btn-compare" >
                             <i class="fa fa-bar-chart-o"></i>
-                        </button>
+                        </button> -->
                     </div>
                 </div>
             </div>
@@ -111,4 +156,16 @@ ${virtualJavaScript!}
             }
         });
     })
+
+    function addToCart(form) {
+        $.ajax({
+            url: form.action,
+            type: 'POST',
+            data: $(form).serialize(),
+            async: false,
+            success: function(data) {
+                location.reload()
+            }
+        });
+    }
 </script>

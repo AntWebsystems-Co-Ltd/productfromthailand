@@ -32,10 +32,10 @@ under the License.
                     <h4>${uiLabelMap.PFTRegisterAsCustomer}</h4>
                 </div>
                 <ul>
-                    <li>Update Profile</li>
-                    <li>See All order History</li>
-                    <li>Tell your friend about the products</li>
-                    <li>Rate and Comment Products</li>
+                    <li>${uiLabelMap.PFTUpdateProfile}</li>
+                    <li>${uiLabelMap.PFTAddProductToWishList}</li>
+                    <li>${uiLabelMap.PFTSeeOrderHistory}</li>
+                    <li>${uiLabelMap.PFTRateAndCommentProduct}</li>
                 </ul>
                 <a href="<@ofbizUrl>newcustomer</@ofbizUrl>" class="btn btn-main text-uppercase">${uiLabelMap.PFTRegister}</a>
             </div>
@@ -46,9 +46,9 @@ under the License.
                     <h4>${uiLabelMap.PFTRegisterAsSupplier}</h4>
                 </div>
                 <ul>
-                    <li>Maintain your own products at our website without any further costs.</li>
-                    <li>The supplier will be notified by email when a sale cames in.</li>
-                    <li> The supplier will provide product information with at least one picture, title, longer description and price.</li>
+                    <li>${uiLabelMap.PFTMaintainYourProductWithAnyCost}</li>
+                    <li>${uiLabelMap.PFTSupplierSaleCameNotification}</li>
+                    <li>${uiLabelMap.PFTSupplierProvideInfomation}</li>
                 </ul>
                 <a href="<@ofbizUrl>newsupplier</@ofbizUrl>" class="btn btn-main text-uppercase">${uiLabelMap.PFTRegister}</a>
             </div>

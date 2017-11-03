@@ -623,7 +623,8 @@ under the License.
                 <set field="layoutSettings.styleSheets[]" value="/theme/css/style.css" global="true"/>
                 <set field="layoutSettings.styleSheets[]" value="/theme/css/responsive.css" global="true"/>
                 <set field="layoutSettings.styleSheets[]" value="/theme/style.css" global="true"/>
-                <set field="layoutSettings.styleSheets[]" value="/images/jquery/plugins/jquery-jgrowl/1.4.1/jquery.jgrowl.min.css   " global="true"/>
+                <set field="layoutSettings.styleSheets[]" value="/theme/css/bootstrap-datetimepicker.css" global="true"/>
+                <set field="layoutSettings.styleSheets[]" value="/images/jquery/plugins/jquery-jgrowl/1.4.1/jquery.jgrowl.min.css" global="true"/>
 
                 <!-- JavaScript Files -->
                 <set field="layoutSettings.javaScripts[]" value="/theme/js/jquery-1.11.1.min.js" global="true"/>
@@ -632,6 +633,8 @@ under the License.
                 <set field="layoutSettings.javaScripts[]" value="/theme/js/bootstrap.min.js" global="true"/>
                 <set field="layoutSettings.javaScripts[]" value="/theme/js/bootstrap-hover-dropdown.min.js" global="true"/>
                 <set field="layoutSettings.javaScripts[]" value="/theme/js/jquery.magnific-popup.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/theme/js/moment.min.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/theme/js/bootstrap-datetimepicker.min.js" global="true"/>
                 <set field="layoutSettings.javaScripts[]" value="/theme/js/owl.carousel.min.js" global="true"/>
                 <set field="layoutSettings.javaScripts[]" value="/theme/js/custom.js" global="true"/>
                 <set field="layoutSettings.javaScripts[]" value="/images/miscAjaxFunctions.js" global="true"/>
@@ -673,7 +676,7 @@ under the License.
                     <html><html-template location="component://productfromthailand/webapp/theme/header.ftl"/></html>
                 </platform-specific>
                 <platform-specific>
-                    <html><html-template location="component:///common/template/includes/Messages.ftl"/></html>
+                    <html><html-template location="component://common/template/includes/Messages.ftl"/></html>
                 </platform-specific>
                 <decorator-section-include name="body"/>
                 <platform-specific>

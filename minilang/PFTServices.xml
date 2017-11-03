@@ -173,9 +173,11 @@ under the License.
                 <result-to-field result-name="contactMechId" field="parameters.shipping_contact_mech_id"/>
             </call-service>
             <else>
-                <set-service-fields service-name="updatePostalAddressAndPurposes" map="parameters" to-map="updateShipAddressMap"/>
+                <set-service-fields service-name="updatePartyPostalAddress" map="parameters" to-map="updateShipAddressMap"/>
                 <set field="updateShipAddressMap.contactMechId" from-field="parameters.shipping_contact_mech_id"/>
-                <call-service service-name="updatePostalAddressAndPurposes" in-map-name="updateShipAddressMap"/>
+                <call-service service-name="updatePartyPostalAddress" in-map-name="updateShipAddressMap">
+                    <result-to-field result-name="contactMechId" field="parameters.shipping_contact_mech_id"/>
+                </call-service>
             </else>
         </if-empty>
 

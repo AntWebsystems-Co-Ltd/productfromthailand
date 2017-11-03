@@ -353,6 +353,9 @@ under the License.
         <call-service service-name="createPartyEmailAddress" in-map-name="emailAddressCtx">
             <result-to-field result-name="contactMechId" field="emailContactMechId"/>
         </call-service>
+        <property-to-field field="eventMessage" resource="ProductFromThailandUiLabels" property="PFTRegisterAsSupplierSuccessful"/>
+        <field-to-list field="eventMessage" list="eventMessageList"/>
+        <field-to-request field="eventMessageList"/>
     </simple-method>
 
     <simple-method method-name="updateSupplier" short-description="update a customer profile [Supplier]" login-required="false">
@@ -1151,4 +1154,67 @@ under the License.
         </if-not-empty>
         <field-to-request field="eventMsg" request-name="_EVENT_MESSAGE_"/>
     </simple-method>
+
+    <simple-method method-name="createUpdateCustomer" short-description="Create and update a Customer" login-required="false">
+        <entity-one entity-name="PartyRole" value-field="partyRoleSupplier">
+            <field-map field-name="partyId" from-field="parameters.partyId"/>
+            <field-map field-name="roleTypeId" value="SUPPLIER"/>
+        </entity-one>
+        <if-empty field="parameters.firstName">
+            <add-error>
+                <fail-property resource="PartyUiLabels" property="PartyFirstNameMissing"/>
+            </add-error>
+        </if-empty>
+        <if-empty field="parameters.lastName">
+            <add-error>
+                <fail-property resource="PartyUiLabels" property="PartyLastNameMissingError"/>
+            </add-error>
+        </if-empty>
+        <if-not-empty field="partyRoleSupplier">
+            <if-empty field="parameters.idCardNo">
+                <add-error>
+                    <fail-property resource="ProductFromThailandUiLabels" property="PFTTitleIdNoIdPassportIsMissing"/>
+                </add-error>
+            </if-empty>
+        </if-not-empty>
+        <check-errors/>
+        <set field="partyId" from-field="parameters.partyId"/>
+        <entity-one entity-name="Party" value-field="party"/>
+        <set field="personContext.partyId" from-field="partyId"/>
+        <set-service-fields service-name="createPerson" map="parameters" to-map="personContext"/>
+        <if-empty field="party">
+            <call-service service-name="createPerson" in-map-name="personContext">
+                <result-to-field result-name="partyId" field="partyId"/>
+            </call-service>
+            <else><!-- If party object already exist, update the person record. -->
+                <if-empty field="parameters.birthDate">
+                    <if-not-empty field="party.birthDate">
+                        <set field="personContext.birthDate" from-field="nullField"/>
+                    </if-not-empty>
+                </if-empty>
+                <set field="personContext.userLogin" from-field="parameters.userLogin"/>
+                <call-service service-name="updatePerson" in-map-name="personContext"/>
+                <!-- Create Id card number or passport number -->
+                <if-not-empty field="parameters.idCardNo">
+                    <entity-one value-field="partyIdentification" entity-name="PartyIdentification">
+                        <field-map field-name="partyId" from-field="parameters.partyId"/>
+                        <field-map field-name="partyIdentificationTypeId" value="ID_NUMBER"/>
+                    </entity-one>
+                    <if-empty field="partyIdentification">
+                        <make-value value-field="partyIdentification" entity-name="PartyIdentification"/>
+                        <set field="partyIdentification.partyId" from-field="parameters.partyId"/>
+                        <set field="partyIdentification.partyIdentificationTypeId" value="ID_NUMBER"/>
+                        <set field="partyIdentification.idValue" from-field="parameters.idCardNo"/>
+                        <create-value value-field="partyIdentification"/>
+                        <else>
+                            <set field="partyIdentification.idValue" from-field="parameters.idCardNo"/>
+                            <store-value value-field="partyIdentification"/>
+                        </else>
+                    </if-empty>
+                </if-not-empty>
+            </else>
+        </if-empty>
+        <field-to-result field="partyId"/>
+    </simple-method>
+
 </simple-methods>
