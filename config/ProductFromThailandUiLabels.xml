@@ -78,6 +78,10 @@
         <value xml:lang="en">Antwebsystems Co.,Ltd.</value>
         <value xml:lang="th">บริษัท แอนท์ เว็บซิสเต็มส์ จำกัด</value>
     </property>
+    <property key="PFTCompanyUpdateSuccessful">
+        <value xml:lang="en">Company Update Successful</value>
+        <value xml:lang="th">อัพเดทข้อมูลบริษัทเรียบร้อย</value>
+    </property>
     <property key="PFTConfirmPassword">
         <value xml:lang="en">Confirm password</value>
         <value xml:lang="fr">Confirmer le mot de passe</value>
@@ -300,6 +304,10 @@
         <value xml:lang="en">Services</value>
         <value xml:lang="th">บริการ</value>
     </property>
+    <property key="PFTShowing">
+        <value xml:lang="en">Showing</value>
+        <value xml:lang="th">กำลังแสดง</value>
+    </property>
     <property key="PFTSignIn">
         <value xml:lang="en">Sign in</value>
         <value xml:lang="th">เข้าสู่ระบบ</value>
@@ -319,6 +327,10 @@
     <property key="PFTStoreManagement">
         <value xml:lang="en">Store Management</value>
         <value xml:lang="th">จัดการร้านค้า</value>
+    </property>
+    <property key="PFTStoreMenu">
+        <value xml:lang="en">Store Menu</value>
+        <value xml:lang="th">เมนูร้านค้า</value>
     </property>
     <property key="PFTSupplierName">
         <value xml:lang="en">Supplier Name</value>

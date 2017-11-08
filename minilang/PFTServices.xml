@@ -173,15 +173,74 @@ under the License.
                 <result-to-field result-name="contactMechId" field="parameters.shipping_contact_mech_id"/>
             </call-service>
             <else>
-                <set-service-fields service-name="updatePartyPostalAddress" map="parameters" to-map="updateShipAddressMap"/>
-                <set field="updateShipAddressMap.contactMechId" from-field="parameters.shipping_contact_mech_id"/>
-                <call-service service-name="updatePartyPostalAddress" in-map-name="updateShipAddressMap">
-                    <result-to-field result-name="contactMechId" field="parameters.shipping_contact_mech_id"/>
+                <!-- Get general address -->
+                <clear-field field="generalMap"/>
+                <set field="generalMap.partyId" from-field="parameters.partyId"/>
+                <set field="generalMap.contactMechPurposeTypeId" value="GENERAL_LOCATION"/>
+                <call-service service-name="getPartyPostalAddress" in-map-name="generalMap">
+                    <result-to-field result-name="contactMechId" field="generalContactMechId"/>
                 </call-service>
+
+                <entity-and entity-name="PartyContactMechPurpose" list="pcmpList" filter-by-date="true">
+                    <field-map field-name="contactMechId" from-field="parameters.shipping_contact_mech_id"/>
+                    <field-map field-name="contactMechPurposeTypeId" value="SHIPPING_LOCATION"/>
+                </entity-and>
+                <if-not-empty field="pcmpList">
+                    <entity-and entity-name="PartyAndPostalAddress" list="shipAddrList" filter-by-date="true">
+                        <field-map field-name="contactMechId" from-field="parameters.shipping_contact_mech_id"/>
+                        <field-map field-name="partyId" from-field="parameters.partyId"/>
+                        <field-map field-name="contactMechTypeId" value="POSTAL_ADDRESS"/>
+                    </entity-and>
+                    <first-from-list entry="shipAddr" list="shipAddrList"/>
+                    <first-from-list entry="pcmp" list="pcmpList"/>
+                    <if>
+                        <condition>
+                            <or>
+                                <if-compare-field field="parameters.toName" operator="not-equals" to-field="shipAddr.toName"/>
+                                <if-compare-field field="parameters.address1" operator="not-equals" to-field="shipAddr.address1"/>
+                                <if-compare-field field="parameters.city" operator="not-equals" to-field="shipAddr.city"/>
+                                <if-compare-field field="parameters.postalCode" operator="not-equals" to-field="shipAddr.postalCode"/>
+                                <if-compare-field field="parameters.countryGeoId" operator="not-equals" to-field="shipAddr.countryGeoId"/>
+                                <if-compare-field field="parameters.stateProvinceGeoId" operator="not-equals" to-field="shipAddr.stateProvinceGeoId"/>
+                            </or>
+                        </condition>
+                        <then>
+                            <if-compare-field field="pcmp.contactMechId" operator="equals" to-field="generalContactMechId">
+                                <!-- Expire old shipping address -->
+                                <clear-field field="serviceInMap"/>
+                                <set-service-fields service-name="deletePartyContactMechPurposeIfExists" map="pcmp" to-map="serviceInMap"/>
+                                <call-service service-name="deletePartyContactMechPurposeIfExists" in-map-name="serviceInMap"/>
+                                <!-- Create new shipping address -->
+                                <set-service-fields service-name="createPartyPostalAddress" map="parameters" to-map="createPartyPostalAddressMap"/>
+                                <call-service service-name="createPartyPostalAddress" in-map-name="createPartyPostalAddressMap" >
+                                    <result-to-field result-name="contactMechId" field="parameters.shipping_contact_mech_id"/>
+                                </call-service>
+                                <set-service-fields service-name="createPartyContactMechPurpose" map="parameters" to-map="serviceContext"/>
+                                <set field="serviceContext.contactMechId" from-field="parameters.shipping_contact_mech_id"/>
+                                <set field="serviceContext.contactMechPurposeTypeId" value="SHIPPING_LOCATION"/>
+                                <call-service service-name="createPartyContactMechPurpose" in-map-name="serviceContext"/>
+                                <else>
+                                    <!-- Update shipping address -->
+                                    <set-service-fields service-name="updatePartyPostalAddress" map="parameters" to-map="updatePartyPostalAddressMap"/>
+                                    <set field="updatePartyPostalAddressMap.contactMechId" from-field="parameters.shipping_contact_mech_id"/>
+                                    <call-service service-name="updatePartyPostalAddress" in-map-name="updatePartyPostalAddressMap"/>
+                                </else>
+                            </if-compare-field>
+                        </then>
+                    </if>
+                </if-not-empty>
             </else>
         </if-empty>
 
         <field-to-result field="parameters.partyId" result-name="partyId"/>
         <field-to-result field="parameters.shipping_contact_mech_id" result-name="shipping_contact_mech_id"/>
+    </simple-method>
+
+    <simple-method method-name="updateSupplierInfo" short-description="Update Supplier Information">
+        <set-service-fields service-name="updatePartyGroup" map="parameters" to-map="updatePartyGroupMap"/>
+        <call-service service-name="updatePartyGroup" in-map-name="updatePartyGroupMap"/>
+
+        <property-to-field resource="ProductFromThailandUiLabels" property="PFTCompanyUpdateSuccessful" field="successMessage"/>
+        <field-to-result field="parameters.partyId" result-name="partyId"/>
     </simple-method>
 </simple-methods>

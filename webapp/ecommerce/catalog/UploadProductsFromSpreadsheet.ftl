@@ -21,7 +21,7 @@ under the License.
         <div class="col-sm-3">
             <h3 class="side-heading">Store Menu</h3>
             <div class="list-group">
-                <a href="<@ofbizUrl>StoreManagement</@ofbizUrl>" class="list-group-item">
+                <a href="<@ofbizUrl>StoreManagement</@ofbizUrl>" class="list-group-item selected">
                     <i class="fa fa-chevron-right"></i>
                     ${uiLabelMap.PFTMyProducts}
                 </a>
@@ -35,7 +35,7 @@ under the License.
                 </a>
           </div>
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
             <div class="panel panel-smart">
                 <div class="panel-heading">
                     <h3>${uiLabelMap.PFTUploadProductSpreadsheet}</h3>

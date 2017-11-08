@@ -29,6 +29,8 @@ under the License.
         <attribute name="setGeneralPurpose" type="String" mode="IN" optional="true"/>
         <attribute name="setBillingPurpose" type="String" mode="IN" optional="true"/>
         <attribute name="setPaymentPurpose" type="String" mode="IN" optional="true"/>
+        <attribute name="setShippingPurpose" type="String" mode="IN" optional="true"/>
+        <attribute name="toName" type="String" mode="IN" optional="true"/>
         <attribute name="productStoreId" type="String" mode="IN" optional="true"/>
     </service>
     <service name="createMissingProductPrice" engine="simple" invoke="createMissingProductPrice" location="component://productfromthailand/minilang/ProductEvents.xml">
@@ -67,5 +69,14 @@ under the License.
         <attribute name="postalCode" type="String" mode="IN" optional="false"/>
         <attribute name="countryGeoId" type="String" mode="IN" optional="false"/>
         <attribute name="stateProvinceGeoId" type="String" mode="IN" optional="false"/>
+    </service>
+
+    <service name="updateSupplierInfo" engine="simple" invoke="updateSupplierInfo" location="component://productfromthailand/minilang/PFTServices.xml">
+        <description>Update Supplier Information</description>
+        <attribute name="partyId" type="String" mode="INOUT" optional="false"/>
+        <attribute name="groupName" type="String" mode="IN" optional="false"/>
+        <attribute name="groupNameLocal" type="String" mode="IN" optional="true"/>
+        <attribute name="officeSiteName" type="String" mode="IN" optional="true"/>
+        <attribute name="comments" type="String" mode="IN" optional="true"/>
     </service>
 </services>

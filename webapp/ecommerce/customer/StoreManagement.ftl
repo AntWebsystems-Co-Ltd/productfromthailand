@@ -16,13 +16,14 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
+
 <div id="main-container" class="container">
   <div class="row">
     <!-- Store Management Menu Start -->
     <div class="col-sm-3">
       <h3 class="side-heading">Store Menu</h3>
       <div class="list-group">
-          <a href="<@ofbizUrl>StoreManagement</@ofbizUrl>" class="list-group-item">
+          <a href="<@ofbizUrl>StoreManagement</@ofbizUrl>" class="list-group-item selected">
               <i class="fa fa-chevron-right"></i>
               ${uiLabelMap.PFTMyProducts}
           </a>
@@ -34,53 +35,69 @@ under the License.
               <i class="fa fa-chevron-right"></i>
               ${uiLabelMap.AccountingFixedAssetMaintOrders}
           </a>
+      </div>
     </div>
-  </div>
     <!-- Store Management Menu Ends -->
     <div class="col-sm-9">
-      <div class="panel panel-smart">
+      <div class="panel-smart">
         <a href="<@ofbizUrl>EditProduct</@ofbizUrl>" class="btn btn-main">${uiLabelMap.ProductNewProduct}</a>
         <a href="<@ofbizUrl>uploadproducts</@ofbizUrl>" class="btn btn-main">${uiLabelMap.PFTUploadProductSpreadsheet}</a>
         <a href="<@ofbizUrl>ViewSimpleContent?contentId=PROD_TEMP</@ofbizUrl>" class="btn btn-main">${uiLabelMap.PFTDownloadProductTemplate}</a><br/><br/>
         <div class="screenlet">
+          <!-- Pagination Starts -->
+          <#if (totalPage > 1)>
           <div class="row">
-            <!-- Pagination Starts -->
-            <#if (totalPage > 1)>
               <div class="col-sm-6 pagination-block">
                 <ul class="pagination">
-                  <li><a href="<@ofbizUrl>StoreManagement?portalPageId=${(parameters.portalPageId)?if_exists}&parentPortalPageId=${(parameters.parentPortalPageId)?if_exists}&VIEW_SIZE=${viewSize}&VIEW_INDEX=0</@ofbizUrl>">«</a></li>
-                  <#if (totalPage > 0)>
-                    <#assign i = viewIndex +1/>
-                    <#assign max = i +2/>
-                    <#assign min = i -2/>
-                    <#if (max >= totalPage)>
-                      <#assign max = totalPage/>
-                      <#assign min = max - 4/>
+                    <#-- Start Paginate Logic -->
+                    <#assign viewIndexMax = Static["java.lang.Math"].ceil(((listSize)?int / viewSize?int)-1)>
+                    <#assign lowViewList = viewIndex?int-2>
+                    <#assign highViewList = viewIndex?int+2>
+                    <#assign lowHasNext = true>
+                    <#assign highHasNext = true>
+                    <#if (lowViewList?int <= 0)>
+                        <#assign highViewList = highViewList?int-lowViewList?int>
+                        <#assign lowViewList = 0>
+                        <#assign lowHasNext = false>
                     </#if>
-                    <#if (min <= 0)>
-                      <#assign min = 1/>
-                      <#assign max = min + 4/>
-                      <#if (max >= totalPage)>
-                        <#assign max = totalPage/>
-                      </#if>
+                    <#if (highViewList?int >= viewIndexMax?int)>
+                        <#if (lowViewList?int != 0)>
+                            <#assign highViewList = highViewList?int-viewIndexMax?int>
+                            <#assign lowViewList = lowViewList?int-highViewList?int>
+                        </#if>
+                        <#assign highViewList = viewIndexMax?int>
+                        <#assign highHasNext = false>
                     </#if>
-                    <#list min..max as i>
-                      <#if (viewIndex = i-1)>
-                        <li class="active"><a href="<@ofbizUrl>StoreManagement?portalPageId=${(parameters.portalPageId)?if_exists}&parentPortalPageId=${(parameters.parentPortalPageId)?if_exists}&VIEW_SIZE=${viewSize}&VIEW_INDEX=${i-1}</@ofbizUrl>">${i}</a></li>
-                      <#else>
-                        <li><a href="<@ofbizUrl>StoreManagement?portalPageId=${(parameters.portalPageId)?if_exists}&parentPortalPageId=${(parameters.parentPortalPageId)?if_exists}&VIEW_SIZE=${viewSize}&VIEW_INDEX=${i-1}</@ofbizUrl>">${i}</a></li>
-                      </#if>
+                    <#if lowHasNext>
+                        <#assign lowNext = viewIndex?int-5>
+                        <#if (lowNext?int < 0)>
+                            <#assign lowNext = 0>
+                        </#if>
+                    </#if>
+                    <#if highHasNext>
+                        <#assign highNext = viewIndex?int+5>
+                        <#if (highNext?int >= viewIndexMax?int)>
+                            <#assign highNext = viewIndexMax?int>
+                        </#if>
+                    </#if>
+                    <#-- End Paginate Logic -->
+                    <#if lowHasNext>
+                    <li><a href="<@ofbizUrl>StoreManagement?portalPageId=${(parameters.portalPageId)?if_exists}&parentPortalPageId=${(parameters.parentPortalPageId)?if_exists}&VIEW_SIZE=${viewSize}&VIEW_INDEX=0</@ofbizUrl>">&laquo;</a></li>
+                    </#if>
+                    <#list lowViewList..highViewList as curViewNum>
+                        <li <#if (curViewNum?int == viewIndex?int)>class="active"</#if>><a href="<@ofbizUrl>StoreManagement?portalPageId=${(parameters.portalPageId)?if_exists}&parentPortalPageId=${(parameters.parentPortalPageId)?if_exists}&VIEW_SIZE=${viewSize}&VIEW_INDEX=${curViewNum?int}</@ofbizUrl>">${curViewNum?int+1}</a></li>
                     </#list>
-                  </#if>
-                  <li><a href="<@ofbizUrl>StoreManagement?portalPageId=${(parameters.portalPageId)?if_exists}&parentPortalPageId=${(parameters.parentPortalPageId)?if_exists}&VIEW_SIZE=${viewSize}&VIEW_INDEX=${totalPage-1}</@ofbizUrl>">»</a></li>
+                    <#if highHasNext>
+                    <li><a href="<@ofbizUrl>StoreManagement?portalPageId=${(parameters.portalPageId)?if_exists}&parentPortalPageId=${(parameters.parentPortalPageId)?if_exists}&VIEW_SIZE=${viewSize}&VIEW_INDEX=${totalPage-1}</@ofbizUrl>">&raquo;</a></li>
+                    </#if>
                 </ul>
               </div>
               <div class="col-sm-6 results">
-                Showing ${lowIndex} to ${highIndex} ${uiLabelMap.CommonOf} ${listSize} ( ${totalPage} pages)
+                ${uiLabelMap.PFTShowing} ${lowIndex+1} ${uiLabelMap.CommonTo} ${highIndex} ${uiLabelMap.CommonOf} ${listSize} (${viewIndexMax?int + 1} ${uiLabelMap.PFTPages})
               </div>
-            </#if>
-            <!-- Pagination Ends -->
           </div>
+          </#if>
+          <!-- Pagination Ends -->
           <div class="screenlet-body table-responsive shopping-cart-table">
             <table class="table table-bordered">
               <thead>

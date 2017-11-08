@@ -62,7 +62,6 @@ under the License.
                 <#-- Last Colum Start -->
                     <div class="col-md-5 col-sm-12 last">
                         <h5>${uiLabelMap.EcommerceSubscribe}</h5>
-                            <div class="headerAlert"></div>
                             <div class="input-group input-group-md" id="emailSubscribe">
                               <form method="post" name="signUpForContactListForm" id="signUpForContactListForm">
                                 <input type="hidden" name="contactListId" value="${webSiteId?if_exists}"/>
@@ -133,11 +132,13 @@ under the License.
         button.disabled = true;
         var email = $("#subscribeEmail").val();
         var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9])+$/;
+        var alertmsg = "";
         if(!regex.test(email) || email == '' || email == null) {
-            headerAlertMsg("${uiLabelMap.GrowErpSubscribeNotValid}",1);
+            alertmsg = "${uiLabelMap.GrowErpSubscribeNotValid}";
             setTimeout(function(){
                 button.disabled = false;
             }, 2000);
+            alert(alertmsg);
             return false;
         }
         else {
@@ -151,49 +152,22 @@ under the License.
                     waitSpinnerHide();
                     if (data._ERROR_MESSAGE_ != null) {
                         if (data._ERROR_MESSAGE_ == "Invalid email address entered.") {
-                            headerAlertMsg("${uiLabelMap.GrowErpSubscribeNotValid}",1);
+                            alertmsg = "${uiLabelMap.GrowErpSubscribeNotValid}";
                         } else {
-                            headerAlertMsg(data._ERROR_MESSAGE_,1);
+                            alertmsg = data._ERROR_MESSAGE_;
                         }
-                        setTimeout(function(){
-                            button.disabled = false;
-                        }, 2000);
                     } else if (data._ERROR_MESSAGE_LIST_ != null) {
-                        headerAlertMsg(data._ERROR_MESSAGE_LIST_[0],1);
-                        setTimeout(function(){
-                            button.disabled = false;
-                        }, 2000);
+                        alertmsg = data._ERROR_MESSAGE_LIST_[0];
                     } else if (data._EVENT_MESSAGE_LIST_ != null) {
-                        headerAlertMsg(data._EVENT_MESSAGE_LIST_[0],2);
-                        setTimeout(function(){
-                            button.disabled = false;
-                        }, 2000);
+                        alertmsg = data._EVENT_MESSAGE_LIST_[0];
                     }
+                    setTimeout(function(){
+                        button.disabled = false;
+                    }, 2000);
+                    alert(alertmsg);
                 }
             });
             return true;
-        }
-    }
-    function headerAlertMsg(headerMessage,mode){
-    /*
-        headerMessage is income message to headerAlert
-        mode will chose class to add
-            1 is error
-            2 is success
-    */
-        if(headerMessage != "") {
-            jQuery('.headerAlert').html(headerMessage);
-        }
-        jQuery('.headerAlert').removeClass("success");
-        jQuery('.headerAlert').removeClass("error");
-        jQuery('.headerAlert').removeClass("headerhide");
-        jQuery('.headerAlert').click(function() {
-            jQuery('.headerAlert').addClass("headerhide");
-        });
-        if(mode == 1) {
-            jQuery('.headerAlert').addClass("error");
-        } else if(mode == 2) {
-            jQuery('.headerAlert').addClass("success");
         }
     }
 </script>

@@ -123,7 +123,7 @@ under the License.
     <request-map uri="updatePerson">
         <security https="true" auth="true"/>
         <event type="simple" path="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="createUpdateCustomer"/>
-        <response name="success" type="view-last"/>
+        <response name="success" type="view" value="editperson"/>
         <response name="error" type="view" value="editperson"/>
     </request-map>
     <!-- ================ Product Requests ================= -->
@@ -404,8 +404,8 @@ under the License.
     </request-map>
     <request-map uri="updatePartyGroup">
         <security https="true" auth="true"/>
-        <event type="service" path="" invoke="updatePartyGroup"/>
-        <response name="success" type="view-last"/>
+        <event type="service" invoke="updateSupplierInfo"/>
+        <response name="success" type="view" value="editpartygroup"/>
         <response name="error" type="view" value="editpartygroup"/>
     </request-map>
 
@@ -416,7 +416,12 @@ under the License.
         <response name="error" type="request" value="json"/>
     </request-map>
 
-     <request-map uri="removecart">
+    <request-map uri="cartontop">
+        <security https="false" auth="false"/>
+        <response name="success" type="view" value="cartontop"/>
+        <response name="error" type="view" value="cartontop"/>
+    </request-map>
+    <request-map uri="removecart">
         <security https="false" auth="false"/>
         <event type="java" path="org.apache.ofbiz.order.shoppingcart.ShoppingCartEvents" invoke="modifyCart"/>
         <response name="success" type="view-last-noparam"/>
@@ -466,6 +471,7 @@ under the License.
     <view-map name="keywordsearch" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#keywordsearch"/>
     <!-- Cart Views -->
     <view-map name="showcart" type="screen" page="component://productfromthailand/widget/CartScreens.xml#showcart"/>
+    <view-map name="cartontop" type="screen" page="component://productfromthailand/widget/CartScreens.xml#cartontop"/>
 
     <view-map name="quickcheckout" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#checkoutoptions"/>
     <view-map name="checkoutshippingaddress" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#checkoutshippingaddress"/>

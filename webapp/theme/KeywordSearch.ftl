@@ -75,7 +75,7 @@ under the License.
                             </ul>
                         </div>
                         <div class="col-sm-6 results">
-                            Showing ${lowIndex+1} to ${highIndex} of ${listSize} (${viewIndexMax?int + 1} Pages)
+                            ${uiLabelMap.PFTShowing} ${lowIndex+1} ${uiLabelMap.CommonTo} ${highIndex} ${uiLabelMap.CommonOf} ${listSize} (${viewIndexMax?int + 1} ${uiLabelMap.PFTPages})
                         </div>
                     </div>
                 </#if>
@@ -114,7 +114,7 @@ under the License.
                             </ul>
                         </div>
                         <div class="col-sm-6 results">
-                            Showing ${lowIndex+1} to ${highIndex} of ${listSize} (${viewIndexMax?int + 1} Pages)
+                            ${uiLabelMap.PFTShowing} ${lowIndex+1} ${uiLabelMap.CommonTo} ${highIndex} ${uiLabelMap.CommonOf} ${listSize} (${viewIndexMax?int + 1} ${uiLabelMap.PFTPages})
                         </div>
                     </div>
                 </#if>

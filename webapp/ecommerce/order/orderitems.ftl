@@ -77,12 +77,12 @@ under the License.
           <tr>
             <#if !orderItem.productId?exists || orderItem.productId == "_?_">
               <td >
-                ${orderItem.itemDescription?default("")}
+                ${StringUtil.wrapString(orderItem.itemDescription?default(""))}
               </td>
             <#else>
               <#assign product = orderItem.getRelatedOne("Product", true)!/> <#-- should always exist because of FK constraint, but just in case -->
               <td >
-                <a href="<@ofbizCatalogAltUrl fullPath="true" secure="false" productId=orderItem.productId/>" class="linktext">${orderItem.productId} - ${orderItem.itemDescription?default("")}</a>
+                <a href="<@ofbizCatalogAltUrl fullPath="true" secure="false" productId=orderItem.productId/>" class="linktext">${orderItem.productId} - ${StringUtil.wrapString(orderItem.itemDescription?default(""))}</a>
                 <#if product?has_content>
                   <#if product.piecesIncluded?exists && product.piecesIncluded?long != 0>
                       [${uiLabelMap.OrderPieces}: ${product.piecesIncluded}]
@@ -165,7 +165,7 @@ under the License.
             </#if>
           </tr>
           <#-- now cancel reason and comment field -->
-          <#if maySelectItems?default("N") == "Y" && (orderHeader.statusId != "ORDER_SENT" && orderItem.statusId != "ITEM_COMPLETED" && orderItem.statusId != "ITEM_CANCELLED" && pickedQty == 0)>
+          <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER" && (orderHeader.statusId != "ORDER_SENT" && orderItem.statusId != "ITEM_COMPLETED" && orderItem.statusId != "ITEM_CANCELLED" && pickedQty == 0)>
             <tr>
               <td colspan="7">${uiLabelMap.OrderReturnReason}
                 <select name="irm_${orderItem.orderItemSeqId}" class="selectBox">
@@ -177,7 +177,7 @@ under the License.
                 ${uiLabelMap.CommonComments}
                 <input class="inputBox" type="text" name="icm_${orderItem.orderItemSeqId}" value="" size="30" maxlength="60"/>
               </td>
-              <td colspan="4"><a href="javascript:document.addCommonToCartForm.action='<@ofbizUrl>cancelOrderItem</@ofbizUrl>';document.addCommonToCartForm.submit()" class="buttontext">${uiLabelMap.CommonCancel}</a>
+              <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>><a href="javascript:document.addCommonToCartForm.action='<@ofbizUrl>cancelOrderItem</@ofbizUrl>';document.addCommonToCartForm.submit()" class="buttontext">${uiLabelMap.CommonCancel}</a>
                 <input type="hidden" name="orderItemSeqId" value="${orderItem.orderItemSeqId}"/>
               </td>
             </tr>
@@ -225,32 +225,27 @@ under the License.
         </#if>
         <tr>
           <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>>${uiLabelMap.CommonSubtotal}</td>
-          <td><@ofbizCurrency amount=orderSubTotal*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=orderSubTotal isoCode=currencyUomId/--></td>
-          <#if maySelectItems?default("N") == "Y"><td colspan="3"></td></#if>
+          <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>><@ofbizCurrency amount=orderSubTotal*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=orderSubTotal isoCode=currencyUomId/--></td>
         </tr>
         <#list headerAdjustmentsToShow as orderHeaderAdjustment>
           <tr>
             <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>>${localOrderReadHelper.getAdjustmentType(orderHeaderAdjustment)}</td>
-            <td><@ofbizCurrency amount=localOrderReadHelper.getOrderAdjustmentTotal(orderHeaderAdjustment)*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=localOrderReadHelper.getOrderAdjustmentTotal(orderHeaderAdjustment) isoCode=currencyUomId/--></td>
-            <#if maySelectItems?default("N") == "Y"><td colspan="3"></td></#if>
+            <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>><@ofbizCurrency amount=localOrderReadHelper.getOrderAdjustmentTotal(orderHeaderAdjustment)*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=localOrderReadHelper.getOrderAdjustmentTotal(orderHeaderAdjustment) isoCode=currencyUomId/--></td>
           </tr>
         </#list>
         <tr>
           <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>>${uiLabelMap.OrderShippingAndHandling}</td>
-          <td><@ofbizCurrency amount=orderShippingTotal*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=orderShippingTotal isoCode=currencyUomId/--></td>
-          <#if maySelectItems?default("N") == "Y"><td colspan="3"></td></#if>
+          <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>><@ofbizCurrency amount=orderShippingTotal*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=orderShippingTotal isoCode=currencyUomId/--></td>
         </tr>
         <tr>
           <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>>${uiLabelMap.OrderSalesTax}</td>
-          <td><@ofbizCurrency amount=orderTaxTotal*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=orderTaxTotal isoCode=currencyUomId/--></td>
-          <#if maySelectItems?default("N") == "Y"><td colspan="3"></td></#if>
+          <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>><@ofbizCurrency amount=orderTaxTotal*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=orderTaxTotal isoCode=currencyUomId/--></td>
         </tr>
         <tr>
           <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>>${uiLabelMap.OrderGrandTotal}</td>
-          <td>
+          <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>>
             <@ofbizCurrency amount=orderGrandTotal*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=orderGrandTotal isoCode=currencyUomId/-->
           </td>
-          <#if maySelectItems?default("N") == "Y"><td colspan="3"></td></#if>
         </tr>
       <tbody>
     </table>

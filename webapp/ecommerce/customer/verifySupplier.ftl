@@ -97,7 +97,7 @@ under the License.
         <div class="form-group individual">
           <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PartyAddressLine2}</label>
           <div class="col-sm-6">
-              <input type="text" class="form-control required" name="shipToAddress2" id="shipToAddress2" value="${shipToAddress2?if_exists}"/>
+              <input type="text" class="form-control" name="shipToAddress2" id="shipToAddress2" value="${shipToAddress2?if_exists}"/>
           </div>
         </div>
         <div class="form-group individual">

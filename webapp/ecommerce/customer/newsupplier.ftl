@@ -144,7 +144,7 @@ under the License.
                             </div>
                         </div>
                         <div class="form-group individual">
-                            <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonTitle} *</label>
+                            <label class="col-sm-3 control-label">${uiLabelMap.CommonTitle} *</label>
                             <div class="col-sm-6">
                                 <select name="personalTitle" id="USER_TITLE" class="form-control required">
                                 <option value="">${uiLabelMap.CommonSelectOne}</option>
@@ -156,94 +156,94 @@ under the License.
                             </div>
                         </div>
                         <div class="form-group individual">
-                            <label for="inputFname" class="col-sm-3 control-label required">${uiLabelMap.PartyFirstName} *</label>
-                            <div class="col-sm-6" ">
+                            <label class="col-sm-3 control-label required">${uiLabelMap.PartyFirstName} *</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control required" name="firstName" id="firstName" value="${parameters.firstName?if_exists}"/>
                             </div>
                         </div>
                         <div class="form-group company">
-                            <label for="inputFname" class="col-sm-3 control-label ">${uiLabelMap.PFTSupplierName} *</label>
+                            <label class="col-sm-3 control-label ">${uiLabelMap.PFTSupplierName} *</label>
                             <div class="col-sm-6" >
                                 <input type="text" class="form-control required" name="groupName" id="groupName" class="required" value="${parameters.groupName?if_exists}" maxlength="30"/>
                             </div>
                         </div>
                         <div class="form-group individual">
-                            <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PartyLastName} *</label>
+                            <label class="col-sm-3 control-label">${uiLabelMap.PartyLastName} *</label>
                             <div class="col-sm-6" >
                                 <input type="text" class="form-control required" name="lastName" id="lastName" value="${parameters.lastName?if_exists}"/>
                             </div>
                         </div>
                         <div class="form-group individual">
-                            <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTTitleIdNoIdPassport} *</label>
+                            <label class="col-sm-3 control-label">${uiLabelMap.PFTTitleIdNoIdPassport} *</label>
                             <div class="col-sm-6" >
                                 <input type="text" class="form-control required" name="idCardNo" id="newsupplier_idCardNo" value="${parameters.idCardNo?if_exists}" maxlength="30"/>
                             </div>
                         </div>
                         <div class="form-group company">
-                            <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTTitleIdBizRegisterNo} *</label>
+                            <label class="col-sm-3 control-label">${uiLabelMap.PFTTitleIdBizRegisterNo} *</label>
                             <div class="col-sm-6" >
                                 <input type="text" class="form-control required" name="businessRegistNo" id="newsupplier_businessRegistNo" class="required" value="${parameters.businessRegistNo?if_exists}" maxlength="30"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputFname" class="col-sm-3 control-label individual">${uiLabelMap.PFTTitleUploadIdScan} *</label>
-                            <label for="inputFname" class="col-sm-3 control-label company">${uiLabelMap.PFTTitleUploadBizRegisterNo} *</label>
+                            <label class="col-sm-3 control-label individual">${uiLabelMap.PFTTitleUploadIdScan} *</label>
+                            <label class="col-sm-3 control-label company">${uiLabelMap.PFTTitleUploadBizRegisterNo} *</label>
                             <div class="col-sm-6" >
                                 <input type="file" class="form-control required" size="50" name="imageFileName"/>
                             </div>
                         </div>
                         <div class="form-group">
-                          <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonUsername} *<span id="advice-required-username" style="display: none" class="errorMessage">(required)</label>
+                          <label class="col-sm-3 control-label">${uiLabelMap.CommonUsername} *<span id="advice-required-username" style="display: none" class="errorMessage">(required)</label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control required" name="username" id="username" value="${parameters.username?if_exists}" maxlength="255" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonPassword} *<span id="advice-required-username" style="display: none" class="errorMessage">(required)</span></label>
+                            <label class="col-sm-3 control-label">${uiLabelMap.CommonPassword} *<span id="advice-required-username" style="display: none" class="errorMessage">(required)</span></label>
                             <div class="col-sm-6">
                                 <input type="password" name="password" id="password" class="form-control required validate-password" value="" maxlength="16" />
                                 <span id="advice-validate-password-password" class="errorMessage" style="display:none">${uiLabelMap["loginservices.password_may_not_equal_username"]}</span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTConfirmPassword} *<span id="advice-required-username" style="display: none" class="errorMessage">(required)</span></label>
+                            <label class="col-sm-3 control-label">${uiLabelMap.PFTConfirmPassword} *<span id="advice-required-username" style="display: none" class="errorMessage">(required)</span></label>
                             <div class="col-sm-6">
                                 <input type="password" name="passwordVerify" id="passwordVerify" class="form-control required validate-passwordVerify" value="" maxlength="16"/>
                                 <span id="advice-validate-passwordVerify-passwordVerify" class="errorMessage" style="display:none">${uiLabelMap["loginservices.password_did_not_match_verify_password"]}</span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonEmail} *<span id="advice-validate-email-emailAddress" class="errorMessage" style="display:none">${uiLabelMap.PartyEmailAddressNotFormattedCorrectly}</span></label>
+                            <label class="col-sm-3 control-label">${uiLabelMap.CommonEmail} *<span id="advice-validate-email-emailAddress" class="errorMessage" style="display:none">${uiLabelMap.PartyEmailAddressNotFormattedCorrectly}</span></label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control required validate-email" name="emailAddress" id="emailAddress" value="${parameters.emailAddress?if_exists}" maxlength="255"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PartyAddressLine1} *<span id="advice-required-shipToAddress1" style="display: none" class="errorMessage">(required)</span></label>
+                            <label class="col-sm-3 control-label">${uiLabelMap.PartyAddressLine1} *<span id="advice-required-shipToAddress1" style="display: none" class="errorMessage">(required)</span></label>
                             <div class="col-sm-6">
                                 <input type="text" name="shipToAddress1" id="shipToAddress1" class="form-control required" value="${parameters.shipToAddress1?if_exists}"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PartyAddressLine2}</label>
+                            <label class="col-sm-3 control-label">${uiLabelMap.PartyAddressLine2}</label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="shipToAddress2" id="shipToAddress2" value="${parameters.shipToAddress2?if_exists}"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonCity} *<span id="advice-required-shipToCity" style="display: none" class="errorMessage">(required)</span></label>
+                            <label class="col-sm-3 control-label">${uiLabelMap.CommonCity} *<span id="advice-required-shipToCity" style="display: none" class="errorMessage">(required)</span></label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control required" name="shipToCity" id="shipToCity" value="${parameters.shipToCity?if_exists}" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PartyZipCode} *<span id="advice-required-shipToPostalCode" style="display: none" class="errorMessage">(required)</span></label>
+                            <label class="col-sm-3 control-label">${uiLabelMap.PartyZipCode} *<span id="advice-required-shipToPostalCode" style="display: none" class="errorMessage">(required)</span></label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control required" name="shipToPostalCode" id="shipToPostalCode" value="${parameters.shipToPostalCode?if_exists}" maxlength="10" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonCountry}</label>
+                            <label class="col-sm-3 control-label">${uiLabelMap.CommonCountry}</label>
                             <div class="col-sm-6">
                                 <select name="shipToCountryGeoId" id="newuserform_countryGeoId" class="form-control">
                                     ${screens.render("component://common/widget/CommonScreens.xml#countries")}
@@ -256,7 +256,7 @@ under the License.
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PartyState}</label>
+                            <label class="col-sm-3 control-label">${uiLabelMap.PartyState}</label>
                             <div class="col-sm-6">
                                 <select class="form-control" name="shipToStateProvinceGeoId" id="newuserform_stateProvinceGeoId"></select>
                             </div>

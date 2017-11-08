@@ -117,11 +117,9 @@ ${virtualJavaScript!}
                                 ${uiLabelMap.OrderAddToCart}
                             </button>
                         </#if>
-                        <#if userLogin?has_content>
-                        <button type="button" onclick="$(document.addProductToWishList_${timeId}).submit()" title="Wishlist" class="btn btn-wishlist">
+                        <button type="button" onclick="addToWishlist(addProductToWishList_${timeId},'${productContentWrapper.get("PRODUCT_NAME", "html")!}')" title="Wishlist" class="btn btn-wishlist">
                             <i class="fa fa-heart"></i>
                         </button>
-                        </#if>
                         <#-- <button type="button" title="Compare" class="btn btn-compare" >
                             <i class="fa fa-bar-chart-o"></i>
                         </button> -->
@@ -153,6 +151,16 @@ ${virtualJavaScript!}
         $("div.product-col div.image").each(function() {
             if ($(this).outerHeight() < maximg){
                 $(this).outerHeight(maximg);
+            }
+        });
+
+        var maxprodname = 0;
+        $("div.product-col div.caption h4").each(function() {
+            maxprodname = Math.max(maxprodname, $(this).outerHeight())
+        });
+        $("div.product-col div.caption h4").each(function() {
+            if ($(this).outerHeight() < maxprodname){
+                $(this).outerHeight(maxprodname);
             }
         });
     })

@@ -84,7 +84,7 @@ under the License.
                      <div class="form-group">
                         <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTTitleIdNoIdPassport} *</label>
                         <div class="col-sm-6" >
-                            <input type="text" class="form-control required" name="idCardNo" value="${partyIdentification?if_exists}" maxlength="30"/>
+                            <input type="text" class="form-control required" name="idCardNo" value="${partyIdentification?if_exists}" maxlength="30" disabled/>
                         </div>
                     </div>
                 </#if>

@@ -112,7 +112,7 @@ function submitForm(form, mode, value) {
                         <!-- Destination Name Starts -->
                             <div class="form-group">
                                 <label class="text-uppercase" for="shipping-lname">${uiLabelMap.OrderDestination} ${uiLabelMap.PartyName} <span class="text-color-5 font2">*</span></label>
-                                <input type="text" class="form-control flat animation required" id="toName" name="toName" value="${firstName!} ${lastName!} ${groupName!}">
+                                <input type="text" class="form-control flat animation required" id="toName" name="toName" value="<#if shipToName??>${shipToName!}<#else>${firstName!} <#if lastName??>${lastName!}</#if></#if>">
                             </div>
                         <!-- Destination Name Ends -->
                         <!-- Address1 Starts -->
@@ -144,9 +144,14 @@ function submitForm(form, mode, value) {
                                 <label class="text-uppercase" for="shipping-country">${uiLabelMap.CommonCountry} <span class="text-color-5 font2">*</span></label>
                                 <select name="countryGeoId" id="checkoutInfoForm_countryGeoId" class="form-control flat animation required">
                                     ${screens.render("component://common/widget/CommonScreens.xml#countries")}
-                                    <#assign defaultCountryGeoId = Static["org.apache.ofbiz.entity.util.EntityUtilProperties"].getPropertyValue("general", "country.geo.id.default", delegator)>
+                                    <#if (shipToCountryGeoId??)>
+                                        <#assign defaultCountryGeoId = shipToCountryGeoId>
+                                    <#else>
+                                        <#assign defaultCountryGeoId = Static["org.apache.ofbiz.entity.util.EntityUtilProperties"].getPropertyValue("general", "country.geo.id.default", delegator)>
+                                    </#if>
                                     <option selected="selected" value="${defaultCountryGeoId}">
-                                    <#assign countryGeo = delegator.findOne("Geo",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("geoId",defaultCountryGeoId), false)>
+                                    <#assign countryGeo = delegator.findOne("Geo",Static["org.apache.ofbiz.base.util.UtilMisc"]
+                                        .toMap("geoId",defaultCountryGeoId), false)>
                                     ${countryGeo.get("geoName",locale)}
                                     </option>
                                 </select>
@@ -246,7 +251,7 @@ function submitForm(form, mode, value) {
                                 <tbody>
                                     <#list shoppingCart.items() as cartLine>
                                         <tr>
-                                            <td>${cartLine.getName()?if_exists}</td>
+                                            <td>${StringUtil.wrapString(cartLine.getName()?if_exists)}</td>
                                             <td class="text-center">x${cartLine.getQuantity()?string.number?default(0)}</td>
                                             <td class="text-right"><@ofbizCurrency amount=cartLine.getDisplayItemSubTotal() isoCode=shoppingCart.getCurrency()/></td>
                                         </tr>

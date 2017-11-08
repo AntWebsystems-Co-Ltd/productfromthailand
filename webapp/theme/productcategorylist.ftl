@@ -60,20 +60,10 @@ ${virtualJavaScript!}
                         </#if>
                     </div>
                     <div class="cart-button button-group">
-                        <#if userLogin?has_content>
                         <#assign timeId = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp().getTime()/>
                         <form name="addProductToWishList_${timeId}" method="post" action="<@ofbizUrl>addProductToWishList</@ofbizUrl>">
                             <input name="productId" type="hidden" value="${product.productId}"/>
                         </form>
-                        <button type="button" onclick="$(document.addProductToWishList_${timeId}).submit()" title="Wishlist" class="btn btn-wishlist">
-                            <i class="fa fa-heart"></i>
-                        </button>
-                        </#if>
-                        <#--
-                        <button type="button" title="Compare" class="btn btn-compare">
-                            <i class="fa fa-bar-chart-o"></i>
-                        </button>
-                        -->
                         <#if product.introductionDate?? && nowTimestamp.before(product.introductionDate)>
                             <div style="color: red;">${uiLabelMap.ProductNotYetAvailable}</div>
                             <button type="button" class="btn btn-cart">
@@ -127,6 +117,14 @@ ${virtualJavaScript!}
                                 <i class="fa fa-shopping-cart"></i>
                             </button>
                         </#if>
+                        <button type="button" onclick="addToWishlist(addProductToWishList_${timeId},'${productContentWrapper.get("PRODUCT_NAME", "html")!}')" title="Wishlist" class="btn btn-wishlist">
+                            <i class="fa fa-heart"></i>
+                        </button>
+                        <#--
+                        <button type="button" title="Compare" class="btn btn-compare">
+                            <i class="fa fa-bar-chart-o"></i>
+                        </button>
+                        -->
                     </div>
                 </div>
             </div>

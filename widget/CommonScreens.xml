@@ -646,7 +646,6 @@ under the License.
                 <set field="defaultOrganizationPartyId" from-field="userPreferences.ORGANIZATION_PARTY" global="true"/>
 
                 <script location="component://productfromthailand/groovyScripts/ProductCategories.groovy"/>
-                <script location="component://ecommerce/groovyScripts/cart/ShowCart.groovy"/>
 
                 <entity-one entity-name="UserLogin" value-field="systemUser">
                     <field-map field-name="userLoginId" value="system"/>

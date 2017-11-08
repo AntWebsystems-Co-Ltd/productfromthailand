@@ -26,7 +26,7 @@ under the License.
               <i class="fa fa-chevron-right"></i>
               ${uiLabelMap.PFTMyProducts}
           </a>
-          <a href="<@ofbizUrl>SupplierInvoiceList</@ofbizUrl>" class="list-group-item">
+          <a href="<@ofbizUrl>SupplierInvoiceList</@ofbizUrl>" class="list-group-item selected">
               <i class="fa fa-chevron-right"></i>
               ${uiLabelMap.AccountingListInvoices}
           </a>

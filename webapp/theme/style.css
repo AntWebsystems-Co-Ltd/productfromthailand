@@ -237,3 +237,7 @@ img.img-responsive {
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
+
+.list-group a.selected {
+    background-color: #ff434a;
+}

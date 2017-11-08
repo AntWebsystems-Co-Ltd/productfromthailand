@@ -54,9 +54,17 @@ under the License.
             ${person.lastName?if_exists}
             ${person.suffix?if_exists}
           </dd>
+          <#if idNo?exists>
+            <dt>${uiLabelMap.PFTTitleIdNoIdPassport} :</dt>
+            <dd>${idNo.idValue?if_exists}</dd>
+          </#if>
         <#elseif partyGroup?exists>
           <dt>${uiLabelMap.PartyName} :</dt>
           <dd>${partyGroup.groupName?if_exists}</dd>
+          <#if regisNo?exists>
+            <dt>${uiLabelMap.PFTTitleIdBizRegisterNo} :</dt>
+            <dd>${regisNo.idValue?if_exists}</dd>
+          </#if>
         </#if>
         <#if partyGroup?exists>
           <#if partyGroup.groupNameLocal?exists>

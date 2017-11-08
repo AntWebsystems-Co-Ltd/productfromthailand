@@ -30,7 +30,7 @@ under the License.
                 <i class="fa fa-chevron-right"></i>
                 ${uiLabelMap.AccountingListInvoices}
             </a>
-            <a href="<@ofbizUrl>PurchaseOrderList</@ofbizUrl>" class="list-group-item">
+            <a href="<@ofbizUrl>PurchaseOrderList</@ofbizUrl>" class="list-group-item selected">
                 <i class="fa fa-chevron-right"></i>
                 ${uiLabelMap.AccountingFixedAssetMaintOrders}
             </a>
@@ -64,7 +64,7 @@ under the License.
                     ${uiLabelMap.partyId}
                 </td>
                 <td class="text-center">
-                    ${uiLabelMap.roleTypeId}
+                    ${uiLabelMap.CommonEmptyHeader}
                 </td>
               </tr>
             </thead>
@@ -94,7 +94,7 @@ under the License.
                       ${orderList.partyId}
                     </td>
                     <td class="text-center">
-                      ${roleType.description}
+                      <input type="button" class="btn btn-main" value="${uiLabelMap.CommonView}" onclick="javascript: location.href = '<@ofbizUrl>orderstatus?orderId=${orderList.orderId}</@ofbizUrl>';"/>
                     </td>
                   </tr>
                 </#list>

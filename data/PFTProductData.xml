@@ -320,7 +320,7 @@ under the License.
     <DataResource dataResourceId="CR10005TH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
     <DataResource dataResourceId="CR10005EN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
     <ElectronicText dataResourceId="CR10005TH" textData="คารีล เนเจอรัล"/>
-    <ElectronicText dataResourceId="CR10005EN" textData="CAREEL Natual"/>
+    <ElectronicText dataResourceId="CR10005EN" textData="CAREEL Natural"/>
     <Content contentId="CR10005TH" contentTypeId="DOCUMENT" dataResourceId="CR10005TH" description="PRODUCT NAME TH CAREEL NATURAL" localeString="th"/>
     <Content contentId="CR10005EN" contentTypeId="DOCUMENT" dataResourceId="CR10005EN" description="PRODUCT NAME TH CAREEL NATURAL" localeString="en"/>
     <ProductContent productId="CR10005" contentId="CR10005EN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>

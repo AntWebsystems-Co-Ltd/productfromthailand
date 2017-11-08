@@ -51,10 +51,12 @@ under the License.
           <#if displayParty?has_content>
             <#assign displayPartyNameResult = dispatcher.runSync("getPartyNameForDate", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", displayParty.partyId, "compareDate", orderHeader.orderDate, "userLogin", userLogin))/>
           </#if>
+          <#if displayPartyNameResult?exists && displayPartyNameResult.fullName?exists>
           <p>
             ${uiLabelMap.PartyName}
             ${(displayPartyNameResult.fullName)?default("[Name Not Found]")}
           </p>
+          </#if>
         </#if>
         <#-- order status information -->
         <p>

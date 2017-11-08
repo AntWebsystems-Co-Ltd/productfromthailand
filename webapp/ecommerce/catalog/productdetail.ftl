@@ -834,12 +834,10 @@ $(function(){
             </#if>
           </#if>
         </#if>
-        <#if userLogin?has_content>
-          <#assign timeId = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp().getTime()/>
-          <button type="button" onclick="$(document.addProductToWishList_${timeId}).submit()" title="Wishlist" class="btn btn-wishlist">
-              <i class="fa fa-heart"></i>
-          </button>
-        </#if>
+        <#assign timeId = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp().getTime()/>
+        <button type="button" onclick="addToWishlist(addProductToWishList_${timeId},'${productContentWrapper.get("PRODUCT_NAME", "html")!}')" title="Wishlist" class="btn btn-wishlist">
+            <i class="fa fa-heart"></i>
+        </button>
         <#if variantPriceList??>
           <#list variantPriceList as vpricing>
             <#assign variantName = vpricing.get("variantName")!>
@@ -855,12 +853,10 @@ $(function(){
         </#if>
         </fieldset>
       </form>
-    <#if userLogin?has_content>
       <#assign timeId = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp().getTime()/>
       <form name="addProductToWishList_${timeId}" method="post" action="<@ofbizUrl>addProductToWishList</@ofbizUrl>">
           <input name="productId" type="hidden" value="${product.productId}"/>
       </form>
-    </#if>
     </div>
     <hr/>
     <#-- Prefill first select box (virtual products only) -->

@@ -322,6 +322,11 @@ under the License.
         <set field="shipToAddressCtx.setGeneralPurpose" value="Y"/>
         <set field="shipToAddressCtx.productStoreId" from-field="formInput.formInput.productStoreId"/>
         <set field="shipToAddressCtx.setBillingPurpose" value="Y"/>
+        <set field="shipToAddressCtx.setShippingPurpose" value="Y"/>
+        <set field="shipToAddressCtx.toName" value="${formInput.formInput.firstName} ${formInput.formInput.lastName}"/>
+        <if-not-empty field="formInput.formInput.groupName">
+            <set field="shipToAddressCtx.toName" value="${formInput.formInput.groupName}"/>
+        </if-not-empty>
         <call-service service-name="createSupplierPostalAddressAndPurposes" in-map-name="shipToAddressCtx">
             <result-to-field result-name="contactMechId" field="billToContactMechId"/>
         </call-service>
@@ -626,6 +631,11 @@ under the License.
         <set field="shipToAddressCtx.setGeneralPurpose" value="Y"/>
         <set field="shipToAddressCtx.productStoreId" from-field="formInput.formInput.productStoreId"/>
         <set field="shipToAddressCtx.setBillingPurpose" value="Y"/>
+        <set field="shipToAddressCtx.setShippingPurpose" value="Y"/>
+        <set field="shipToAddressCtx.toName" value="${formInput.formInput.firstName} ${formInput.formInput.lastName}"/>
+        <if-not-empty field="formInput.formInput.groupName">
+            <set field="shipToAddressCtx.toName" value="${formInput.formInput.groupName}"/>
+        </if-not-empty>
         <call-service service-name="createSupplierPostalAddressAndPurposes" in-map-name="shipToAddressCtx">
            <result-to-field result-name="contactMechId" field="billToContactMechId"/>
         </call-service>
@@ -661,6 +671,7 @@ under the License.
                     <not><if-empty field="parameters.setGeneralPurpose"/></not>
                     <not><if-empty field="parameters.setBillingPurpose"/></not>
                     <not><if-empty field="parameters.setPaymentPurpose"/></not>
+                    <not><if-empty field="parameters.setShippingPurpose"/></not>
                 </or>
             </condition>
             <then>
@@ -714,6 +725,25 @@ under the License.
                         <call-service service-name="deletePartyContactMechPurposeIfExists" in-map-name="serviceInMap"/>
                     </if-not-empty>
                     <set field="serviceContext.contactMechPurposeTypeId" value="PAYMENT_LOCATION"/>
+                    <call-service service-name="createPartyContactMechPurpose" in-map-name="serviceContext"/>
+
+                    <set-service-fields service-name="setPartyProfileDefaults" map="parameters" to-map="partyProfileDefaultsCtx"/>
+                    <set field="partyProfileDefaultsCtx.defaultBillAddr" from-field="parameters.contactMechId"/>
+                    <set field="partyProfileDefaultsCtx.partyId" from-field="userLogin.partyId"/>
+                    <call-service service-name="setPartyProfileDefaults" in-map-name="partyProfileDefaultsCtx"/>
+                </if-compare>
+                <if-compare field="parameters.setShippingPurpose" operator="equals" value="Y">
+                    <entity-and entity-name="PartyContactMechPurpose" list="pcmpList" filter-by-date="true">
+                        <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                        <field-map field-name="contactMechPurposeTypeId" value="SHIPPING_LOCATION"/>
+                    </entity-and>
+                    <if-not-empty field="pcmpList">
+                        <clear-field field="serviceInMap"/>
+                        <first-from-list entry="pcmp" list="pcmpList"/>
+                        <set-service-fields service-name="deletePartyContactMechPurposeIfExists" map="pcmp" to-map="serviceInMap"/>
+                        <call-service service-name="deletePartyContactMechPurposeIfExists" in-map-name="serviceInMap"/>
+                    </if-not-empty>
+                    <set field="serviceContext.contactMechPurposeTypeId" value="SHIPPING_LOCATION"/>
                     <call-service service-name="createPartyContactMechPurpose" in-map-name="serviceContext"/>
 
                     <set-service-fields service-name="setPartyProfileDefaults" map="parameters" to-map="partyProfileDefaultsCtx"/>
@@ -967,6 +997,7 @@ under the License.
     </simple-method>
 
     <simple-method method-name="sendCustomerConfirmationEmail" short-description="create a customer profile [Supplier]" login-required="false">
+        <now-timestamp field="nowTimestamp"/>
         <if-not-empty field="parameters.emailAddress">
             <set from-field="parameters.emailProductStoreId" field="storeEmailLookup.productStoreId"/>
             <set field="storeEmailLookup.emailType" value="PRDS_CUST_REGISTER" />
@@ -1004,7 +1035,7 @@ under the License.
                     <condition>
                         <and>
                             <not><if-empty field="userLoginDate"/></not>
-                            <if-compare-field field="userLoginDate" operator="greater-equals" to-field="contactMech[0].createdStamp" type="Timestamp"/>
+                            <if-compare-field field="userLoginDate" operator="greater-equals" to-field="nowTimestamp" type="Timestamp"/>
                         </and>
                     </condition>
                     <then>
@@ -1171,10 +1202,16 @@ under the License.
             </add-error>
         </if-empty>
         <if-not-empty field="partyRoleSupplier">
-            <if-empty field="parameters.idCardNo">
-                <add-error>
-                    <fail-property resource="ProductFromThailandUiLabels" property="PFTTitleIdNoIdPassportIsMissing"/>
-                </add-error>
+            <entity-one value-field="checkPartyIdentification" entity-name="PartyIdentification">
+                <field-map field-name="partyId" from-field="parameters.partyId"/>
+                <field-map field-name="partyIdentificationTypeId" value="ID_NUMBER"/>
+            </entity-one>
+            <if-empty field="checkPartyIdentification">
+                <if-empty field="parameters.idCardNo">
+                    <add-error>
+                        <fail-property resource="ProductFromThailandUiLabels" property="PFTTitleIdNoIdPassportIsMissing"/>
+                    </add-error>
+                </if-empty>
             </if-empty>
         </if-not-empty>
         <check-errors/>
@@ -1206,10 +1243,6 @@ under the License.
                         <set field="partyIdentification.partyIdentificationTypeId" value="ID_NUMBER"/>
                         <set field="partyIdentification.idValue" from-field="parameters.idCardNo"/>
                         <create-value value-field="partyIdentification"/>
-                        <else>
-                            <set field="partyIdentification.idValue" from-field="parameters.idCardNo"/>
-                            <store-value value-field="partyIdentification"/>
-                        </else>
                     </if-empty>
                 </if-not-empty>
             </else>

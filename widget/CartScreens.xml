@@ -121,4 +121,17 @@ under the License.
             </widgets>
         </section>
     </screen>
+
+    <screen name="cartontop">
+        <section>
+            <actions>
+                <property-map resource="ProductFromThailandUiLabels" map-name="uiLabelMap"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap"/>
+                <script location="component://ecommerce/groovyScripts/cart/ShowCart.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/CartOnTop.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
 </screens>

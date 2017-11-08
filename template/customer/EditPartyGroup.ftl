@@ -29,34 +29,40 @@ under the License.
           <form method="post" action="<@ofbizUrl>updatePartyGroup</@ofbizUrl>" class="form-horizontal" id="EditPartyGroup" name="EditPartyGroup">
             <input type="hidden" name="partyId" value="${partyGroup.partyId!}"/>
             <div class="form-group">
-              <label for="name" class="col-sm-3 control-label">${uiLabelMap.PartyPartyId}</label>
+              <label class="col-sm-3 control-label">${uiLabelMap.PartyPartyId}</label>
               <div class="col-sm-6">
                 <input type="text" class='form-control' size="30" maxlength="30" name="partyId" value="${partyGroup.partyId!}" disabled/>
               </div>
             </div>
             <div class="form-group">
-              <label for="name" class="col-sm-3 control-label">${uiLabelMap.FormFieldTitle_groupName}</label>
+              <label class="col-sm-3 control-label">${uiLabelMap.FormFieldTitle_groupName}</label>
               <div class="col-sm-6">
-                <input type="text" class='form-control' size="30" maxlength="30" name="groupName" value="${partyGroup.groupName!}"/>
+                <input type="text" class='form-control required' size="30" maxlength="30" name="groupName" value="${partyGroup.groupName!}"/>
               </div>
             </div>
             <div class="form-group">
-              <label for="name" class="col-sm-3 control-label">${uiLabelMap.FormFieldTitle_groupNameLocal}</label>
+              <label class="col-sm-3 control-label">${uiLabelMap.FormFieldTitle_groupNameLocal}</label>
               <div class="col-sm-6">
                 <input type="text" class='form-control' size="30" maxlength="30" name="groupNameLocal" value="${partyGroup.groupNameLocal!}"/>
               </div>
             </div>
             <div class="form-group">
-              <label for="name" class="col-sm-3 control-label">${uiLabelMap.FormFieldTitle_officeSiteName}</label>
+              <label class="col-sm-3 control-label">${uiLabelMap.FormFieldTitle_officeSiteName}</label>
               <div class="col-sm-6">
                 <input type="text" class='form-control' size="30" maxlength="30" name="officeSiteName" value="${partyGroup.officeSiteName!}"/>
               </div>
             </div>
             <div class="form-group">
-              <label for="name" class="col-sm-3 control-label">${uiLabelMap.PartyComments}</label>
+              <label class="col-sm-3 control-label">${uiLabelMap.PartyComments}</label>
               <div class="col-sm-6">
                 <input type="text" class='form-control' size="30" maxlength="30" name="comments" value="${partyGroup.comments!}"/>
               </div>
+            </div>
+            <div class="form-group company">
+                <label class="col-sm-3 control-label">${uiLabelMap.PFTTitleIdBizRegisterNo} *</label>
+                <div class="col-sm-6" >
+                    <input type="text" class="form-control required" name="businessRegistNo" value="<#if regisNo?has_content>${regisNo.idValue!}</#if>" maxlength="30" disabled/>
+                </div>
             </div>
           </form>
         </div>

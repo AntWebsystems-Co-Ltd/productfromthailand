@@ -50,7 +50,7 @@ under the License.
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="newsupplier">
         <section>
             <actions>
@@ -81,7 +81,7 @@ under the License.
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="contactus">
         <section>
             <actions>
@@ -89,7 +89,7 @@ under the License.
                 <!--<set field="rightbarScreenName" value="rightbar"/>-->
                 <set field="MainColumnStyle" value="rightonly"/>
                 <set field="rightbarScreenName" value="rightbar"/>
-                
+
                 <set field="titleProperty" value="PageTitleLogin"/>
                 <set field="pageHeader" value="${uiLabelMap.CommonContactUs}"/>
                 <set field="headerItem" value="contactus"/>
@@ -104,7 +104,7 @@ under the License.
             </widgets>
         </section>
     </screen>
-    
+
     <screen name="viewprofile">
         <section>
             <actions>
@@ -112,7 +112,14 @@ under the License.
                 <entity-one entity-name="Party" value-field="party"/>
                 <entity-one entity-name="Person" value-field="person"/>
                 <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
-                
+                <entity-one entity-name="PartyIdentification" value-field="regisNo">
+                    <field-map field-name="partyId" from-field="partyId"/>
+                    <field-map field-name="partyIdentificationTypeId" value="ID_BIZ_REGISTER_NO"/>
+                </entity-one>
+                <entity-one entity-name="PartyIdentification" value-field="idNo">
+                    <field-map field-name="partyId" from-field="partyId"/>
+                    <field-map field-name="partyIdentificationTypeId" value="ID_NUMBER"/>
+                </entity-one>
                 <script location="component://ecommerce/groovyScripts/customer/ViewProfile.groovy"/>
                 <script location="component://ecommerce/groovyScripts/order/OrderHistory.groovy"/>
             </actions>
@@ -189,6 +196,7 @@ under the License.
                 <set field="responseName" value="stateList"/>
                 <set field="dependentKeyName" value="geoId"/>
                 <set field="descName" value="geoName"/>
+                <set field="orderBy" value="geoName"/>
                 <set field="selectedDependentOption" default-value="_none_"/>
             </actions>
             <widgets>
@@ -247,6 +255,10 @@ under the License.
                 <set field="donePage" from-field="parameters.DONE_PAGE" default-value="viewprofile"/>
                 <set field="partyId" from-field="userLogin.partyId"/>
                 <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
+                <entity-one entity-name="PartyIdentification" value-field="regisNo">
+                    <field-map field-name="partyId" from-field="partyId"/>
+                    <field-map field-name="partyIdentificationTypeId" value="ID_BIZ_REGISTER_NO"/>
+                </entity-one>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
