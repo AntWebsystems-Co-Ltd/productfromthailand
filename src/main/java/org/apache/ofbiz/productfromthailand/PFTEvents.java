@@ -98,7 +98,7 @@ public class PFTEvents {
         Debug.logInfo("Paypal environment is " + apiEnvironment, module);
         // get API URL
         String apiUrl = null;
-        if (apiEnvironment == "live") {
+        if (Constants.LIVE.equals(apiEnvironment)) {
             apiUrl = EntityUtilProperties.getPropertyValue("paypal", "paypal.apiUrl.live", delegator);
         } else {
             apiUrl = EntityUtilProperties.getPropertyValue("paypal", "paypal.apiUrl.sandbox", delegator);
@@ -116,11 +116,11 @@ public class PFTEvents {
         // Check Order Status
         String clientId = EntityUtilProperties.getPropertyValue("paypal", "paypal.clientId", delegator);
         String clientSecret = EntityUtilProperties.getPropertyValue("paypal", "paypal.clientSecret", delegator);
-        Map<String, String> config = new HashMap<String, String>();
-        if (apiEnvironment == "live") {
-            config.put("mode", Constants.LIVE);
+        Map<String, String> config = new HashMap<>();
+        if (Constants.LIVE.equals(apiEnvironment)) {
+            config.put(Constants.MODE, Constants.LIVE);
         } else {
-            config.put("mode", Constants.SANDBOX);
+            config.put(Constants.MODE, Constants.SANDBOX);
         }
         OAuthTokenCredential oAuthTokenCredential = new OAuthTokenCredential(clientId, clientSecret, config);
         String orderId = null;
