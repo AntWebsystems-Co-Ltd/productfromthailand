@@ -1220,7 +1220,7 @@ under the License.
             <actions>
                 <set field="numCol" value="3"/>
                 <set field="searchInCategory" value="N"/>
-                <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="9"/>
+                <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="12"/>
             </actions>
             <widgets>
                 <include-screen name="categorydetail"/>
