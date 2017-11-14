@@ -24,6 +24,7 @@ import org.apache.ofbiz.base.util.FileUtil;
 import org.apache.ofbiz.base.util.UtilDateTime;
 import org.apache.ofbiz.base.util.UtilHttp;
 import org.apache.ofbiz.base.util.UtilMisc;
+import org.apache.ofbiz.base.util.UtilProperties;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.Delegator;
 import org.apache.ofbiz.entity.GenericEntityException;
@@ -55,6 +56,7 @@ public class ImportProduct {
 
         ServletFileUpload dfu = new ServletFileUpload(new DiskFileItemFactory(10470, FileUtil.getFile("runtime/tmp")));
         java.util.List lst = null;
+        List<Object> errMsgList = new LinkedList<Object>();
 
         try {
             lst = dfu.parseRequest(request);
@@ -275,12 +277,18 @@ public class ImportProduct {
                         if (cell7 != null && cell7.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
                             productHeight = BigDecimal.valueOf(cell7.getNumericCellValue()).setScale(2, BigDecimal.ROUND_HALF_UP);
 
+                        // read productWeight from ninth column
+                        HSSFCell cell8 = row.getCell(8);
+                        BigDecimal productWeight = BigDecimal.ZERO;
+                        if (cell8 != null && cell8.getCellType() == HSSFCell.CELL_TYPE_NUMERIC)
+                            productWeight = BigDecimal.valueOf(cell8.getNumericCellValue()).setScale(2, BigDecimal.ROUND_HALF_UP);
+
                         // read imageUrl from tenth column
                         String imageUrl = null;
 
                         Timestamp now = UtilDateTime.nowTimestamp();
 
-                        products.add(prepareProduct(productId, productName, internalName, productWidth, productDepth, productHeight, imageUrl, actionField, userLogin));
+                        products.add(prepareProduct(productId, productName, internalName, description, productWidth, productDepth, productHeight, productWeight, imageUrl, actionField, userLogin));
                         // check if SupplierProduct already exists update it, otherwise create new one
                         List<GenericValue> tmpSupplierProducts = null;
                         GenericValue supplierProductGV = null;
@@ -337,6 +345,9 @@ public class ImportProduct {
                                     pNameThContents.add(prepareContent(pNameThContentId, pNameThDataResourceId, "th", userLogin));
                                     if(pNameEnContentId != null)
                                         createNameContentAssocs.add(prepareContentAssoc(pNameEnContentId, pNameThContentId, now, userLogin));
+                                } else {
+                                    request.setAttribute("_ERROR_MESSAGE_", "Error Product name (Thai) is missing.");
+                                    return "error";
                                 }
                                 createNameProductContents.add(prepareProductContent(productId, pNameEnDataResourceId, now, "PRODUCT_NAME", actionField, userLogin));
 
@@ -596,17 +607,17 @@ public class ImportProduct {
             Map<String, Object> tmpProduct = products.get(j);
             String tmpProductId = (String) tmpProduct.get("productId");
             if (!checkProductExists(tmpProductId, delegator)) {
-                 try {
-                     Map<String, Object> createProductResult = dispatcher.runSync("createProduct", products.get(j));
-                     if (ServiceUtil.isError(createProductResult)) {
-                         request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(createProductResult));
-                         return "error";
-                     }
-                 } catch (GenericServiceException e) {
-                     String errMsg = "Error update product : " + e.toString();
-                     request.setAttribute("_ERROR_MESSAGE_", errMsg);
-                     return "error";
-                 }
+                try {
+                    Map<String, Object> createProductResult = dispatcher.runSync("createProduct", products.get(j));
+                    if (ServiceUtil.isError(createProductResult)) {
+                        request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(createProductResult));
+                        return "error";
+                    }
+                } catch (GenericServiceException e) {
+                    String errMsg = "Error create product : " + e.toString();
+                    request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                    return "error";
+                }
             }else{
                 try {
                     Map<String, Object> updateProductResult = dispatcher.runSync("updateProduct", products.get(j));
@@ -1129,12 +1140,13 @@ public class ImportProduct {
     }
 
     // prepare the product map
-    public static Map<String, Object> prepareProduct(String productId, String productName, String internalName, BigDecimal productWidth, BigDecimal productDepth, BigDecimal productHeight,
-            String imageUrl, String actionField, GenericValue userLogin) {
+    public static Map<String, Object> prepareProduct(String productId, String productName, String internalName, String description, BigDecimal productWidth, BigDecimal productDepth, BigDecimal productHeight,
+            BigDecimal productWeight, String imageUrl, String actionField, GenericValue userLogin) {
         Map<String, Object> fields = new HashMap<String, Object>();
         fields.put("productId", productId);
         fields.put("productName", productName);
         fields.put("internalName", internalName);
+        fields.put("description", description);
         fields.put("productTypeId", "FINISHED_GOOD");
         fields.put("requirementMethodEnumId", "PRODRQM_DS");
         fields.put("isVirtual", "N");
@@ -1161,9 +1173,13 @@ public class ImportProduct {
             fields.put("productHeight", productHeight);
             fields.put("heightUomId", "LEN_cm");
         }
+        if(productWeight.compareTo(BigDecimal.ZERO) > 0){
+            fields.put("productWeight", productWeight);
+            fields.put("weightUomId", "WT_kg");
+        }
         if("delete".equals(actionField))
             fields.put("salesDiscontinuationDate",UtilDateTime.nowTimestamp());
-        fields.put("userLogin", userLogin);
+            fields.put("userLogin", userLogin);
         return fields;
     }
 

@@ -334,7 +334,7 @@ under the License.
         <!-- Create new content form upload file -->
         <log level="always" message="formInput: ${formInput}"/>
         <log level="always" message="formInput.formInput: ${formInput.formInput}"/>
-        <set-service-fields service-name="createContentFromUploadedFile" map="formInput.formInput" to-map="inMap"/>
+        <set field="inMap.partyId" from-field="parameters.partyId"/>
         <set field="inMap._uploadedFile_fileName" from-field="formInput.imageFileName"/>
         <set field="inMap.uploadedFile" from-field="formInput.imageData"/>
         <set field="inMap._uploadedFile_contentType" from-field="formInput.uploadMimeType"/>

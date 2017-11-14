@@ -216,6 +216,18 @@
         <value xml:lang="en">Product Categories</value>
         <value xml:lang="th">หมวดหมู่สินค้า</value>
     </property>
+    <property key="PFTProductDescriptionMissing">
+        <value xml:lang="en">Product description is missing.</value>
+        <value xml:lang="th">ไม่พบรายละเอียดผลิตภัณฑ์</value>
+    </property>
+    <property key="PFTProductNameMissing">
+        <value xml:lang="en">Product name is missing.</value>
+        <value xml:lang="th">ไม่พบชื่อผลิตภัณฑ์</value>
+    </property>
+    <property key="PFTProducttWeightMissing">
+        <value xml:lang="en">Product weight is missing.</value>
+        <value xml:lang="th">ไม่พบน้ำหนักผลิตภัณฑ์</value>
+    </property>
     <property key="PFTProductList">
         <value xml:lang="en">Product List</value>
         <value xml:lang="th">รายการสินค้า</value>
@@ -434,6 +446,10 @@
     <property key="PFTUnderConstruction">
         <value xml:lang="en">This page is under construction</value>
         <value xml:lang="th">หน้านี้อยู่ระหว่างการปรับปรุงแก้ไข</value>
+    </property>
+    <property key="PFTUnitOfWeight">
+        <value xml:lang="en">Unit of Weight</value>
+        <value xml:lang="th">หน่วยน้ำหนัก</value>
     </property>
     <property key="PFTUpdateProfile">
         <value xml:lang="en">Update Profile</value>

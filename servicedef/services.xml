@@ -79,4 +79,14 @@ under the License.
         <attribute name="officeSiteName" type="String" mode="IN" optional="true"/>
         <attribute name="comments" type="String" mode="IN" optional="true"/>
     </service>
+
+    <service name="createProduct" default-entity-name="Product" engine="simple"
+            location="component://product/minilang/product/product/ProductServices.xml" invoke="createProduct" auth="true">
+        <description>Create a Product</description>
+        <implements service="interfaceProduct"/>
+        <auto-attributes include="pk" mode="INOUT" optional="true"/>
+        <override name="productTypeId" optional="false"/>
+        <override name="internalName" optional="false"/>
+        <override name="productWeight" optional="false"/>
+    </service>
 </services>

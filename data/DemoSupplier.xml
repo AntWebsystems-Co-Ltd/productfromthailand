@@ -4,8 +4,9 @@
     <!-- Supplier data -->
     <Party partyId="DEMOSUP_01" partyTypeId="PARTY_GROUP"/>
     <PartyGroup partyId="DEMOSUP_01" groupName="Demo Supplier 01" />
-    <PartyRole  partyId="DEMOSUP_01" roleTypeId="SUPPLIER"/>
+    <PartyRole partyId="DEMOSUP_01" roleTypeId="SUPPLIER"/>
     <PartyRole partyId="DEMOSUP_01" roleTypeId="ACCOUNT"/>
+    <PartyRole partyId="DEMOSUP_01" roleTypeId="OWNER"/>
     <ContactMech contactMechId="DEMOSUP_01_ADDR" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="DEMOSUP_01_TELE" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="DEMOSUP_01_FAX" contactMechTypeId="TELECOM_NUMBER"/>
@@ -29,8 +30,9 @@
 
     <Party partyId="DEMOSUP_02" partyTypeId="PARTY_GROUP"/>
     <PartyGroup partyId="DEMOSUP_02" groupName="Demo Supplier 01" />
-    <PartyRole  partyId="DEMOSUP_02" roleTypeId="SUPPLIER"/>
+    <PartyRole partyId="DEMOSUP_02" roleTypeId="SUPPLIER"/>
     <PartyRole partyId="DEMOSUP_02" roleTypeId="ACCOUNT"/>
+    <PartyRole partyId="DEMOSUP_02" roleTypeId="OWNER"/>
     <ContactMech contactMechId="DEMOSUP_02_ADDR" contactMechTypeId="POSTAL_ADDRESS"/>
     <ContactMech contactMechId="DEMOSUP_02_TELE" contactMechTypeId="TELECOM_NUMBER"/>
     <ContactMech contactMechId="DEMOSUP_02_FAX" contactMechTypeId="TELECOM_NUMBER"/>

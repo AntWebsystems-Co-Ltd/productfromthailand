@@ -103,8 +103,12 @@ public class PFTProductServices {
         try {
             String priceStr = (String) formInput.get("price");
             BigDecimal priceb = new BigDecimal(priceStr);
+            String productWeightStr = (String) formInput.get("productWeight");
+            BigDecimal productWeight = new BigDecimal(productWeightStr);
             Map<String, Object> fieldMap = UtilMisc.toMap("productId", formInput.get("productId"), "description", formInput.get("description"), "productTypeId", formInput.get("productCategoryId"),"internalName"
-                , formInput.get("internalName"), "productTypeId", formInput.get("productTypeId"), "productName", formInput.get("internalName"), "brandName", formInput.get("brandName"), "requirementMethodEnumId", "PRODRQM_DS", "userLogin", userLogin);
+                , formInput.get("internalName"), "productTypeId", formInput.get("productTypeId"), "productName", formInput.get("internalName"), "brandName", formInput.get("brandName"), "productWeight"
+                , productWeight, "weightUomId", formInput.get("weightUomId"), "requirementMethodEnumId", "PRODRQM_DS", "userLogin", userLogin);
+
             if (formInput.get("isCreate").equals("Y")) {
                 if (formInput.get("productId") != null) {
                     GenericValue product = delegator.findOne("Product", UtilMisc.toMap("productId", formInput.get("productId")), true);

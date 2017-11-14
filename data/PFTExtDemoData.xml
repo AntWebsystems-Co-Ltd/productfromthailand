@@ -232,9 +232,9 @@
     <ShipmentMethodType description="ThaiPost : Domestic Registered" shipmentMethodTypeId="DOMESTIC_REG"/>
     <CarrierShipmentMethod partyId="THAIPOST" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_EMS" sequenceNumber="1"/>
     <CarrierShipmentMethod partyId="THAIPOST" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_REG" sequenceNumber="1"/>
-    <ProductStoreShipmentMeth productStoreShipMethId="PFT10000" productStoreId="PFTSTORE" partyId="THAIPOST" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_REG" sequenceNumber="1"/>
+    <!--ProductStoreShipmentMeth productStoreShipMethId="PFT10000" productStoreId="PFTSTORE" partyId="THAIPOST" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_REG" sequenceNumber="1"/-->
     <ProductStoreShipmentMeth productStoreShipMethId="PFT10001" productStoreId="PFTSTORE" partyId="THAIPOST" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_EMS" sequenceNumber="1"/>
-    <ShipmentCostEstimate productStoreShipMethId="PFT10000" productStoreId="PFTSTORE" orderFlatPrice="30.0" orderItemFlatPrice="0.0" orderPricePercent="5.0" shipmentMethodTypeId="DOMESTIC_REG" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"/>
-    <ShipmentCostEstimate productStoreShipMethId="PFT10000" productStoreId="PFTSTORE" orderFlatPrice="50.0" orderItemFlatPrice="0.0" orderPricePercent="10.0" shipmentMethodTypeId="DOMESTIC_EMS" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"/>
+    <ShipmentCostEstimate productStoreShipMethId="PFT10000" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="5.0" shipmentMethodTypeId="DOMESTIC_REG" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"/>
+    <ShipmentCostEstimate productStoreShipMethId="PFT10000" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="10.0" shipmentMethodTypeId="DOMESTIC_EMS" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"/>
 
 </entity-engine-xml>

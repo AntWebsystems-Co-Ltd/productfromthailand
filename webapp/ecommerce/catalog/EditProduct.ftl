@@ -189,8 +189,33 @@ under the License.
                     <div class="form-group">
                         <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.ProductPrice} *</label>
                         <div class="col-sm-6">
-                            <input type="number" class="form-control required" step='any' placeholder='0.00' min="1" nkeyup="allowOnly2Numeric2Decimal(this)" name="price" id="price" size="8" value="${price?default('')}" class="required"/><span class="tooltip">${uiLabelMap.CommonRequired}</span>
+                            <input type="number" class="form-control required" step='any' placeholder='0.00' min="1" onkeyup="allowOnly2Numeric2Decimal(this)" name="price" id="price" size="8" value="${price?default('')}" class="required"/><span class="tooltip">${uiLabelMap.CommonRequired}</span>
                             <span id="advice-validate-number-defaultPrice" style="display:none;" class="errorMessage"> (${uiLabelMap.CommonPleaseEnterValidNumberInThisField})</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.ProductProductWeight} *</label>
+                        <div class="col-sm-6">
+                            <input type="number" class="form-control required" step='any' placeholder='0.00' min="1" onkeyup="allowOnly2Numeric2Decimal(this)" name="productWeight" size="8" value="${(product.productWeight)?default(productWeight!)}" class="required form-control"/><span class="tooltip">${uiLabelMap.CommonRequired}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTUnitOfWeight} *</label>
+                        <div class="col-sm-6">
+                            <select name="weightUomId" class="required form-control">
+                                <#if product?exists && product.weightUomId?exists>
+                                    <#assign weightUom = EntityQuery.use(delegator).from("Uom").where("uomId", product.weightUomId).queryOne()!>
+                                    <option value="${product.weightUomId!}">${weightUom.get("description",locale)!}</option>
+                                    <option value="${product.weightUomId!}">---</option>
+                                <#else>
+                                    <option value=""></option>
+                                    <option value="">---</option>
+                                </#if>
+                                <#assign weightUomList = EntityQuery.use(delegator).from("Uom").where("uomTypeId", "WEIGHT_MEASURE").orderBy("description").queryList()!>
+                                <#list weightUomList as weightUom>
+                                    <option value="${weightUom.uomId!}">${weightUom.get("description",locale)!}</option>
+                                </#list>
+                            </select><span class="tooltip">${uiLabelMap.CommonRequired}</span>
                         </div>
                     </div>
                     <#-- small image -->
