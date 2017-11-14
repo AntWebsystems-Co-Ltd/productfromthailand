@@ -241,3 +241,13 @@ img.img-responsive {
 .list-group a.selected {
     background-color: #ff434a;
 }
+
+#productsdetail .image, #productsdetail .caption {
+    height: 250px;
+}
+#productsdetail .caption h4 {
+    height: 40px;
+}
+#productsdetail .caption .description{
+    height: 80px;
+}

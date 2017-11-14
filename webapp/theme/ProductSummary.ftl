@@ -31,15 +31,15 @@ ${virtualJavaScript!}
     </#if>
     <#assign smallImageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url")!>
     <#assign largeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url")!>
-    <#if !smallImageUrl?string?has_content><#assign smallImageUrl = "/images/defaultImage.jpg"></#if>
-    <#if !largeImageUrl?string?has_content><#assign largeImageUrl = "/images/defaultImage.jpg"></#if>
+    <#if !smallImageUrl?string?has_content><#assign smallImageUrl = "/pft-default/images/defaultImage.jpg"></#if>
+    <#if !largeImageUrl?string?has_content><#assign largeImageUrl = "/pft-default/images/defaultImage.jpg"></#if>
     <#-- end variable setup -->
     <#assign productInfoLinkId = "productInfoLink">
     <#assign productInfoLinkId = productInfoLinkId + product.productId/>
     <#assign productDetailId = "productDetailId"/>
     <#assign productDetailId = productDetailId + product.productId/>
     <#-- Product Starts -->
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-3 col-sm-6" id="productsdetail">
             <div class="product-col">
                 <div class="image">
                     <a href="${productUrl}">
@@ -49,7 +49,8 @@ ${virtualJavaScript!}
                 <div class="caption">
                     <h4><a href="${productUrl}">${productContentWrapper.get("PRODUCT_NAME", "html")!}</a></h4>
                     <div class="description">
-                        ${productContentWrapper.get("DESCRIPTION", "html")!}
+                        <#assign prodDesc = productContentWrapper.get("DESCRIPTION", "html")!>
+                        <#if prodDesc?? && prodDesc?length &gt; 100>${prodDesc?substring(0,100)!}...<#else>${prodDesc!}</#if>
                     </div>
                     <div class="price">
                         <#if price.isSale?? && price.isSale>
@@ -133,38 +134,6 @@ ${virtualJavaScript!}
 </#if>
 
 <script>
-    $(document).ready(function () {
-        var maxdesc = 0;
-        $("div.product-col div.description").each(function() {
-            maxdesc = Math.max(maxdesc, $(this).outerHeight())
-        });
-        $("div.product-col div.description").each(function() {
-            if ($(this).outerHeight() < maxdesc){
-                $(this).outerHeight(maxdesc);
-            }
-        });
-
-        var maximg = 0;
-        $("div.product-col div.image").each(function() {
-            maximg = Math.max(maximg, $(this).outerHeight())
-        });
-        $("div.product-col div.image").each(function() {
-            if ($(this).outerHeight() < maximg){
-                $(this).outerHeight(maximg);
-            }
-        });
-
-        var maxprodname = 0;
-        $("div.product-col div.caption h4").each(function() {
-            maxprodname = Math.max(maxprodname, $(this).outerHeight())
-        });
-        $("div.product-col div.caption h4").each(function() {
-            if ($(this).outerHeight() < maxprodname){
-                $(this).outerHeight(maxprodname);
-            }
-        });
-    })
-
     function addToCart(form) {
         $.ajax({
             url: form.action,

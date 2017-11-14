@@ -395,7 +395,7 @@ $(function(){
             </a>
         </#if>
         <#if !productLargeImageUrl?string?has_content>
-            <img src="/images/defaultImage.jpg" alt="Image" class="img-responsive thumbnail" />
+            <img src="/pft-default/images/defaultImage.jpg" alt="Image" class="img-responsive thumbnail" />
         </#if>
         <ul class="list-unstyled list-inline">
             <#if productAdditionalImage1?string?has_content>
@@ -880,7 +880,7 @@ $(function(){
             <#assign imageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url")! />
           </#if>
           <#if !imageUrl?string?has_content>
-            <#assign imageUrl = "/images/defaultImage.jpg" />
+            <#assign imageUrl = "/pft-default/images/defaultImage.jpg" />
           </#if>
           <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1,'${variantLargeImageUrl!}');">
             <img src="<@ofbizContentUrl>${contentPathPrefix!}${imageUrl}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail" id="variantProduct"/>

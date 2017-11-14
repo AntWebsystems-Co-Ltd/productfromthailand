@@ -31,8 +31,8 @@ ${virtualJavaScript!}
     </#if>
     <#assign smallImageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url")!>
     <#assign largeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url")!>
-    <#if !smallImageUrl?string?has_content><#assign smallImageUrl = "/images/defaultImage.jpg"></#if>
-    <#if !largeImageUrl?string?has_content><#assign largeImageUrl = "/images/defaultImage.jpg"></#if>
+    <#if !smallImageUrl?string?has_content><#assign smallImageUrl = "/pft-default/images/defaultImage.jpg"></#if>
+    <#if !largeImageUrl?string?has_content><#assign largeImageUrl = "/pft-default/images/defaultImage.jpg"></#if>
     <#-- end variable setup -->
     <#assign productInfoLinkId = "productInfoLink">
     <#assign productInfoLinkId = productInfoLinkId + product.productId/>

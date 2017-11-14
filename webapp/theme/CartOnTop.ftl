@@ -59,7 +59,7 @@ under the License.
                                   <#assign parentProductId = cartLine.getProductId() />
                                 </#if>
                                 <#assign smallImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(cartLine.getProduct(), "SMALL_IMAGE_URL", locale, dispatcher, "url")?if_exists />
-                                <#if !smallImageUrl?string?has_content><#assign smallImageUrl = "/images/defaultImage.jpg" /></#if>
+                                <#if !smallImageUrl?string?has_content><#assign smallImageUrl = "/pft-default/images/defaultImage.jpg" /></#if>
                                 <#if smallImageUrl?string?has_content>
                                 <a href="<@ofbizUrl>product?product_id=${parentProductId}</@ofbizUrl>">
                                     <img src="<@ofbizContentUrl>${requestAttributes.contentPathPrefix?if_exists}${smallImageUrl}</@ofbizContentUrl>" alt="image" title="image" class="img-thumbnail img-responsive" />

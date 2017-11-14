@@ -22,7 +22,7 @@ under the License.
         <#if product.smallImageUrl?exists>
         <a href="<@ofbizCatalogAltUrl productCategoryId=categoryId productId=product.productId!""/>"><img src="<@ofbizContentUrl>${product.smallImageUrl}</@ofbizContentUrl>"/></a>
         <#else>
-        <a href="<@ofbizCatalogAltUrl productCategoryId=categoryId productId=product.productId!""/>"><img src="<@ofbizContentUrl>/images/defaultImage.jpg</@ofbizContentUrl>"/></a>
+        <a href="<@ofbizCatalogAltUrl productCategoryId=categoryId productId=product.productId!""/>"><img src="<@ofbizContentUrl>/pft-default/images/defaultImage.jpg</@ofbizContentUrl>"/></a>
         </#if>
     </div>
     <div id="recentproductdetail">
