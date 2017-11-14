@@ -105,6 +105,8 @@ public class PFTProductServices {
             BigDecimal priceb = new BigDecimal(priceStr);
             String productWeightStr = (String) formInput.get("productWeight");
             BigDecimal productWeight = new BigDecimal(productWeightStr);
+            String salePriceStr = (String) formInput.get("salePrice");
+            BigDecimal salePriceb = new BigDecimal(salePriceStr);
             Map<String, Object> fieldMap = UtilMisc.toMap("productId", formInput.get("productId"), "description", formInput.get("description"), "productTypeId", formInput.get("productCategoryId"),"internalName"
                 , formInput.get("internalName"), "productTypeId", formInput.get("productTypeId"), "productName", formInput.get("internalName"), "brandName", formInput.get("brandName"), "productWeight"
                 , productWeight, "weightUomId", formInput.get("weightUomId"), "requirementMethodEnumId", "PRODRQM_DS", "userLogin", userLogin);
@@ -132,7 +134,7 @@ public class PFTProductServices {
                 }
                 if (productId != null) {
                     /*Create Default Price*/
-                    Map<String, Object> productPriceMap = UtilMisc.toMap("productId", productId, "price", priceb, "productPriceTypeId", "DEFAULT_PRICE"
+                    Map<String, Object> productPriceMap = UtilMisc.toMap("productId", productId, "price", salePriceb, "productPriceTypeId", "DEFAULT_PRICE"
                         , "productPricePurposeId", "PURCHASE", "currencyUomId", formInput.get("currencyUomId"), "productStoreGroupId", "_NA_", "userLogin", userLogin);
                     createPriceResult = dispatcher.runSync("createProductPrice", productPriceMap);
 
@@ -156,11 +158,11 @@ public class PFTProductServices {
                                     "currencyUomId", formInput.get("currencyUomId"))
                             .orderBy("-fromDate").filterByDate().queryFirst();
                 if(UtilValidate.isEmpty(productPrice)) {
-                    Map<String, Object> productPriceMap = UtilMisc.toMap("productId", productId, "price", priceb, "productPriceTypeId", "DEFAULT_PRICE"
+                    Map<String, Object> productPriceMap = UtilMisc.toMap("productId", productId, "price", salePriceb, "productPriceTypeId", "DEFAULT_PRICE"
                             , "productPricePurposeId", "PURCHASE", "currencyUomId", formInput.get("currencyUomId"), "productStoreGroupId", "_NA_", "userLogin", userLogin);
                         createPriceResult = dispatcher.runSync("createProductPrice", productPriceMap);
                 } else {
-                    Map<String, Object> productPriceMap = UtilMisc.toMap("productId", productId, "price", priceb, "productPriceTypeId", "DEFAULT_PRICE", "fromDate", productPrice.getTimestamp("fromDate")
+                    Map<String, Object> productPriceMap = UtilMisc.toMap("productId", productId, "price", salePriceb, "productPriceTypeId", "DEFAULT_PRICE", "fromDate", productPrice.getTimestamp("fromDate")
                             , "productPricePurposeId", "PURCHASE", "currencyUomId", formInput.get("currencyUomId"), "productStoreGroupId", "_NA_", "userLogin", userLogin);
                         createPriceResult = dispatcher.runSync("updateProductPrice", productPriceMap);
                 }

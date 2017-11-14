@@ -102,6 +102,23 @@ under the License.
         }
         jQuery('#productName').focus();
         jQuery("#EditProductForm").validate();
+
+        $('#price').on('input', function () {
+            if($('#price').val() != ""){
+                $.ajax({
+                    url : "<@ofbizUrl>calculateSalePrice</@ofbizUrl>",
+                    type : "POST",
+                    data : "purchasePrice="+$('#price').val(),
+                    success : function(data) {
+                        $('#salePrice').val(data.salePrice);
+                        $('#salePriceDisplay').val(data.salePrice);
+                    }
+                });
+            } else {
+                $('#salePrice').val(null);
+                $('#salePriceDisplay').val(null);
+            }
+        });
     });
 </script>
 
@@ -187,10 +204,17 @@ under the License.
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.ProductPrice} *</label>
+                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTPurchasePrice} *</label>
                         <div class="col-sm-6">
                             <input type="number" class="form-control required" step='any' placeholder='0.00' min="1" onkeyup="allowOnly2Numeric2Decimal(this)" name="price" id="price" size="8" value="${price?default('')}" class="required"/><span class="tooltip">${uiLabelMap.CommonRequired}</span>
                             <span id="advice-validate-number-defaultPrice" style="display:none;" class="errorMessage"> (${uiLabelMap.CommonPleaseEnterValidNumberInThisField})</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTSalePrice}</label>
+                        <div class="col-sm-6">
+                            <input type="hidden" id="salePrice" name="salePrice" value="${salePrice?default('')}"/>
+                            <input type="number" class="form-control required" id="salePriceDisplay" name="salePriceDisplay" placeholder='0.00' value="${salePrice?default('')}" class="required" readonly="readonly"/><span class="tooltip">${uiLabelMap.CommonRequired}</span>
                         </div>
                     </div>
                     <div class="form-group">

@@ -89,4 +89,10 @@ under the License.
         <override name="internalName" optional="false"/>
         <override name="productWeight" optional="false"/>
     </service>
+
+    <service name="calculateSalePrice" engine="groovy" location="component://productfromthailand/groovyScripts/PFTServices.groovy" invoke="calculateSalePrice">
+        <description>Calculate sale price</description>
+        <attribute name="purchasePrice" type="BigDecimal" mode="IN" optional="false"/>
+        <attribute name="salePrice" type="BigDecimal" mode="OUT" optional="false"/>
+    </service>
 </services>

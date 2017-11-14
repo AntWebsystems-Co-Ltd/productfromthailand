@@ -444,6 +444,14 @@ under the License.
         <response name="success" type="view" value="WishList" save-current-view="true"/>
     </request-map>
 
+    <!-- Calculate Sale Price -->
+    <request-map uri="calculateSalePrice">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="calculateSalePrice"/>
+        <response name="success" type="request" value="json"/>
+        <response name="error" type="request" value="json"/>
+    </request-map>
+
     <view-map name="orderview" type="screen" page="component://productfromthailand/widget/OrderViewScreens.xml#OrderHeaderView"/>
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
     <view-map name="main" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#main"/>

@@ -240,6 +240,10 @@
         <value xml:lang="en">Products of</value>
         <value xml:lang="th">สินค้าของ</value>
     </property>
+    <property key="PFTPurchasePrice">
+        <value xml:lang="en">Purchase Price</value>
+        <value xml:lang="th">ราคาซื้อ</value>
+    </property>
     <property key="PFTRateAndCommentProduct">
         <value xml:lang="en">Rate and Comment Products</value>
         <value xml:lang="th">ให้คะแนนและแสดงความคิดเห็นเกี่ยวกับสินค้า</value>
@@ -284,6 +288,10 @@
     <property key="PFTRemoveProductFromWishListSuccessful">
         <value xml:lang="en">Remove product from wish list successful.</value>
         <value xml:lang="th">ลบสินค้าออกจากรายการโปรดเรียบร้อยแล้ว</value>
+    </property>
+    <property key="PFTSalePrice">
+        <value xml:lang="en">Sale Price</value>
+        <value xml:lang="th">ราคาขาย</value>
     </property>
     <property key="PFTSalescond">
         <value xml:lang="en">For a company who wants to sell your products on this site. We allow you to sell your products,

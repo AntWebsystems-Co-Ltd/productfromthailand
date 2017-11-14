@@ -288,6 +288,20 @@ public class ImportProduct {
 
                         Timestamp now = UtilDateTime.nowTimestamp();
 
+                        BigDecimal salePrice = BigDecimal.ZERO;
+                        try {
+                            Map<String, Object> calculateSalePriceResult = dispatcher.runSync("calculateSalePrice", UtilMisc.<String, Object>toMap("purchasePrice", price, "userLogin", userLogin));
+                            if (ServiceUtil.isError(calculateSalePriceResult)) {
+                                request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(calculateSalePriceResult));
+                                return "error";
+                            }
+                            salePrice = (BigDecimal) calculateSalePriceResult.get("salePrice");
+                        } catch (GenericServiceException e) {
+                            String errMsg = "Error Calculate Sale Price : " + e.toString();
+                            request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                            return "error";
+                        }
+
                         products.add(prepareProduct(productId, productName, internalName, description, productWidth, productDepth, productHeight, productWeight, imageUrl, actionField, userLogin));
                         // check if SupplierProduct already exists update it, otherwise create new one
                         List<GenericValue> tmpSupplierProducts = null;
@@ -327,7 +341,7 @@ public class ImportProduct {
                                 request.setAttribute("_ERROR_MESSAGE_", "Error setting SupplierProduct: "+ supplierProductId+ " already exists.");
                                 return "error";
                             }
-                            createProductPrices.add(prepareProductPrice(productId, price, now, "THB", "_NA_", actionField, userLogin));
+                            createProductPrices.add(prepareProductPrice(productId, salePrice, now, "THB", "_NA_", actionField, userLogin));
 
                             // create ProductContent for product name & description in Thai and Eng language
                             if(productName != null){
@@ -383,7 +397,7 @@ public class ImportProduct {
                                 return "error";
                             }
                             if(productPriceGV != null){
-                                updateProductPrices.add(prepareProductPrice(productId, price, productPriceGV.getTimestamp("fromDate"), productPriceGV.getString("currencyUomId")
+                                updateProductPrices.add(prepareProductPrice(productId, salePrice, productPriceGV.getTimestamp("fromDate"), productPriceGV.getString("currencyUomId")
                                         , productPriceGV.getString("productStoreGroupId"), actionField, userLogin));
                             }else{
                                 request.setAttribute("_ERROR_MESSAGE_", "Error updating ProductPrice: ");
@@ -492,7 +506,7 @@ public class ImportProduct {
                             }
                             /*
                             if(productPriceGV != null){
-                                removeProductPrices.add(prepareProductPrice(productId, price, productPriceGV.getTimestamp("fromDate"), productPriceGV.getString("currencyUomId")
+                                removeProductPrices.add(prepareProductPrice(productId, salePrice, productPriceGV.getTimestamp("fromDate"), productPriceGV.getString("currencyUomId")
                                         , productPriceGV.getString("productStoreGroupId"), actionField, userLogin));
 
                             }else{
@@ -1254,7 +1268,7 @@ public class ImportProduct {
     }
 
     // prepare the ProductContent map
-    public static Map<String, Object> prepareProductPrice(String productId, BigDecimal price, Timestamp fromDate, String currencyUomId, String productStoreGroupId
+    public static Map<String, Object> prepareProductPrice(String productId, BigDecimal salePrice, Timestamp fromDate, String currencyUomId, String productStoreGroupId
             , String actionField, GenericValue userLogin) {
         Map<String, Object> fields = new HashMap<String, Object>();
         fields.put("productId", productId);
@@ -1265,7 +1279,7 @@ public class ImportProduct {
         fields.put("productPricePurposeId", "PURCHASE");
         fields.put("userLogin", userLogin);
         if(!"delete".equals(actionField))
-            fields.put("price", price);
+            fields.put("price", salePrice);
         return fields;
     }
 

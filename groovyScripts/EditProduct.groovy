@@ -57,6 +57,12 @@ if (product) {
     if (supplierProduct) {
         context.price = supplierProduct.lastPrice;
     }
+
+    productPrice = from("ProductPrice").where("productId", parameters.productId, "productPriceTypeId", "DEFAULT_PRICE", "productPricePurposeId", "PURCHASE").filterByDate().queryFirst()
+    if (productPrice) {
+        context.salePrice = productPrice.price;
+    }
+
     //Get Images
     smallImageConditionList = [];
     smallImageConditionList.add(EntityCondition.makeCondition("productId", EntityOperator.EQUALS, product.productId));

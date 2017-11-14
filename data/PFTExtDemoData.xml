@@ -235,4 +235,8 @@
     <!-- ShipmentCostEstimate productStoreShipMethId="PFT10000" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="5.0" shipmentMethodTypeId="DOMESTIC_REG" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"/-->
     <ShipmentCostEstimate productStoreShipMethId="PFT10001" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="10.0" shipmentMethodTypeId="DOMESTIC_EMS" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"/>
 
+    <!-- Calculate Sale Price -->
+    <SystemProperty systemResourceId="pft" systemPropertyId="paypal.fee" description="PayPal Fee Percent" systemPropertyValue="5"/>
+    <SystemProperty systemResourceId="pft" systemPropertyId="pft.fee" description="Product From Thailand Fee Percent" systemPropertyValue="5"/>
+    <SystemProperty systemResourceId="pft" systemPropertyId="pft.vat" description="Product From Thailand Vat Percent" systemPropertyValue="7"/>
 </entity-engine-xml>
