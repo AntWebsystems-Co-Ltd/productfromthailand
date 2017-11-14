@@ -119,7 +119,7 @@ under the License.
         </li>
         <#else>
         <li>
-            <p class="text-center">${uiLabelMap.OrderShoppingCartEmpty}</p>
+            <p class="text-center">${uiLabelMap.PFTYourShoppingCartEmpty}</p>
         </li>
         </#if>
     </ul>

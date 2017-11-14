@@ -207,7 +207,7 @@ under the License.
     <!-- Shipping Section Ends -->
         <#else>
         <div class="panel-smart">
-            <label class="h3">${uiLabelMap.EcommerceYourShoppingCartEmpty}.</label>
+            <label class="h3">${uiLabelMap.PFTYourShoppingCartEmpty}.</label>
         </div>
         </#if>
     </div>

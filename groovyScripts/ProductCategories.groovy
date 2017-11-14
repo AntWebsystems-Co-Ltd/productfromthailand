@@ -48,27 +48,32 @@ List fillTree(rootCat ,CatLvl, parentCategoryId) {
                     childList = fillTree(catChilds,CatLvl+1, parentCategoryId+'/'+root.productCategoryId)
             }
 
-            def rootMap = [:]
-            category = from("ProductCategory").where("productCategoryId", root.productCategoryId).queryOne()
-            categoryContentWrapper = new CategoryContentWrapper(category, request)
-            context.title = categoryContentWrapper.get("CATEGORY_NAME", "html")
-            categoryDescription = categoryContentWrapper.get("DESCRIPTION", "html")
+            productsInCat  = from("ProductCategoryAndMember").where("productCategoryId", root.productCategoryId).queryList()
 
-            if(categoryContentWrapper.get("CATEGORY_NAME", "html").toString())
-                rootMap["categoryName"] = categoryContentWrapper.get("CATEGORY_NAME", "html")
-            else
-                rootMap["categoryName"] = root.categoryName
+            // Display the category if this category containing products or contain the category that's containing products
+            if(productsInCat || childList) {
+                def rootMap = [:]
+                category = from("ProductCategory").where("productCategoryId", root.productCategoryId).queryOne()
+                categoryContentWrapper = new CategoryContentWrapper(category, request)
+                context.title = categoryContentWrapper.get("CATEGORY_NAME", "html")
+                categoryDescription = categoryContentWrapper.get("DESCRIPTION", "html")
 
-            if(categoryContentWrapper.get("DESCRIPTION", "html").toString())
-                rootMap["categoryDescription"] = categoryContentWrapper.get("DESCRIPTION", "html")
-            else
-                rootMap["categoryDescription"] = root.description
+                if(categoryContentWrapper.get("CATEGORY_NAME", "html").toString())
+                    rootMap["categoryName"] = categoryContentWrapper.get("CATEGORY_NAME", "html")
+                else
+                    rootMap["categoryName"] = root.categoryName
 
-            rootMap["productCategoryId"] = root.productCategoryId
-            rootMap["parentCategoryId"] = parentCategoryId
-            rootMap["child"] = childList
+                if(categoryContentWrapper.get("DESCRIPTION", "html").toString())
+                    rootMap["categoryDescription"] = categoryContentWrapper.get("DESCRIPTION", "html")
+                else
+                    rootMap["categoryDescription"] = root.description
 
-            listTree.add(rootMap)
+                rootMap["productCategoryId"] = root.productCategoryId
+                rootMap["parentCategoryId"] = parentCategoryId
+                rootMap["child"] = childList
+
+                listTree.add(rootMap)
+            }
         }
         return listTree
     }

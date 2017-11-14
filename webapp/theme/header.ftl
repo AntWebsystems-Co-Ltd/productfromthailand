@@ -184,7 +184,13 @@ under the License.
                                     <a href="<@ofbizUrl>viewprofile</@ofbizUrl>">
                                         <i class="fa fa-user-circle" title="${uiLabelMap.PFTMyAccount}"></i>
                                         <span class="hidden-sm hidden-xs">
-                                            ${uiLabelMap.PFTMyAccount}
+                                            <#if loginName.groupName?has_content>
+                                                ${loginName.groupName} ${uiLabelMap.PartyAccount}
+                                            <#elseif loginName.firstName?has_content>
+                                                ${loginName.firstName}  ${loginName.lastName} ${uiLabelMap.PartyAccount}
+                                            <#else>
+                                                ${uiLabelMap.PFTMyAccount}
+                                            </#if>
                                         </span>
                                     </a>
                                 </li>
@@ -261,8 +267,28 @@ under the License.
         <#-- Main Header Starts -->
             <div class="main-header">
                 <div class="row">
+                <#-- Logo Starts -->
+                    <div class="col-md-4">
+                        <div id="logo">
+                            <a href="<@ofbizUrl>main</@ofbizUrl>">
+                                <img src="<@ofbizContentUrl>${layoutSettings.VT_HDR_IMAGE_URL.get(0)}</@ofbizContentUrl>" title="Product From Thailand" alt="Logo" class="img-responsive"/>
+                            </a>
+                        </div>
+                    </div>
+                <#-- Logo Starts -->
+                <#-- Shopping Cart Starts -->
+                    <#assign shoppingCart = sessionAttributes.shoppingCart!>
+                    <#if shoppingCart?has_content>
+                      <#assign shoppingCartSize = shoppingCart.size()>
+                    <#else>
+                      <#assign shoppingCartSize = 0>
+                    </#if>
+                    <div class="col-md-4">
+                        ${screens.render("component://productfromthailand/widget/CartScreens.xml#cartontop")}
+                    </div>
+                <#-- Shopping Cart Ends -->
                 <#-- Search Starts -->
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div id="search">
                             <div class="input-group">
                                 <form name="keywordsearchform" id="keywordsearchform" method="post" action="<@ofbizUrl>keywordsearch</@ofbizUrl>" style="margin: 0;">
@@ -280,26 +306,6 @@ under the License.
                         </div>
                     </div>
                 <#-- Search Ends -->
-                <#-- Logo Starts -->
-                    <div class="col-md-6">
-                        <div id="logo">
-                            <a href="<@ofbizUrl>main</@ofbizUrl>">
-                                <img src="<@ofbizContentUrl>${layoutSettings.VT_HDR_IMAGE_URL.get(0)}</@ofbizContentUrl>" title="Product From Thailand" alt="Logo" class="img-responsive"/>
-                            </a>
-                        </div>
-                    </div>
-                <#-- Logo Starts -->
-                <#-- Shopping Cart Starts -->
-                    <#assign shoppingCart = sessionAttributes.shoppingCart!>
-                    <#if shoppingCart?has_content>
-                      <#assign shoppingCartSize = shoppingCart.size()>
-                    <#else>
-                      <#assign shoppingCartSize = 0>
-                    </#if>
-                    <div class="col-md-3">
-                        ${screens.render("component://productfromthailand/widget/CartScreens.xml#cartontop")}
-                    </div>
-                <#-- Shopping Cart Ends -->
                 </div>
             </div>
         <#-- Main Header Ends -->

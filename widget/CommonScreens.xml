@@ -669,6 +669,9 @@ under the License.
                     <field-map field-name="partyId" from-field="userLogin.partyId"/>
                     <field-map field-name="roleTypeId" value="SUPPLIER"/>
                 </entity-one>
+                <entity-one entity-name="PartyNameView" value-field="loginName">
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                </entity-one>
             </actions>
             <widgets>
                 <platform-specific>

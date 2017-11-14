@@ -499,6 +499,10 @@
         <value xml:lang="en">Your Order Details</value>
         <value xml:lang="th">รายละเอียดการสั่งซื้อของคุณ</value>
     </property>
+    <property key="PFTYourShoppingCartEmpty">
+        <value xml:lang="en">Your shopping cart is empty</value>
+        <value xml:lang="th">ไม่มีการซื้อสินค้าลงตะกร้าของคุณ</value>
+    </property>
     <property key="PurchaseOrderConfirmNotice">
         <value xml:lang="en">Purchase Order Confirm Notice</value>
         <value xml:lang="th">แจ้งรายการสั่งซื้อ</value>
