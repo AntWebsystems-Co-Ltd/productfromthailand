@@ -235,10 +235,6 @@
     <!-- ShipmentCostEstimate productStoreShipMethId="PFT10000" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="5.0" shipmentMethodTypeId="DOMESTIC_REG" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"/-->
     <ShipmentCostEstimate productStoreShipMethId="PFT10001" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="10.0" shipmentMethodTypeId="DOMESTIC_EMS" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"/>
 
-    <!-- Calculate Sale Price -->
-    <SystemProperty systemResourceId="pft" systemPropertyId="paypal.fee" description="PayPal Fee Percent" systemPropertyValue="5"/>
-    <SystemProperty systemResourceId="pft" systemPropertyId="pft.fee" description="Product From Thailand Fee Percent" systemPropertyValue="5"/>
-    <SystemProperty systemResourceId="pft" systemPropertyId="pft.vat" description="Product From Thailand Vat Percent" systemPropertyValue="7"/>
     <!-- Currency Convert -->
     <UomConversionDated conversionFactor="0.03" createdStamp="2017-11-15 09:49:32.0" createdTxStamp="2017-11-15 09:49:32.0" decimalScale="2" fromDate="2017-11-01 00:00:00.0" roundingMode="HalfUp" uomId="THB" uomIdTo="USD"/>
     <UomConversionDated conversionFactor="0.026" createdStamp="2017-11-15 09:54:33.706" createdTxStamp="2017-11-15 09:54:33.705" decimalScale="2" fromDate="2017-11-01 00:00:00.0" roundingMode="HalfUp" uomId="THB" uomIdTo="EUR"/>

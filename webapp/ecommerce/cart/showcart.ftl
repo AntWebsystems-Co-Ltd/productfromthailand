@@ -98,10 +98,16 @@ under the License.
                                 <button type="button" title="${uiLabelMap.CommonRemove}" class="btn btn-default tool-tip" onclick="javascript:document.removecartform_${cartLineIndex!}.submit();">
                                     <i class="fa fa-times-circle"></i>
                                 </button>
+                                <#if (shoppingCartSize == 1)>
+                                <form method="post" action="<@ofbizUrl>clearcart</@ofbizUrl>" name="removecartform_${cartLineIndex!}">
+                                    <input type="hidden" name="clear" value="true"/>
+                                </form>
+                                <#else>
                                 <form method="post" action="<@ofbizUrl>modifycart</@ofbizUrl>" name="removecartform_${cartLineIndex!}">
                                     <input type="hidden" name="removeSelected" value="false"/>
                                     <input type="hidden" name="delete_${cartLineIndex!}" value="${cartLine.getQuantity()?string.number}"/>
                                 </form>
+                                </#if>
                             </td>
                         <#else>
                             <#-- this is a non-product item -->

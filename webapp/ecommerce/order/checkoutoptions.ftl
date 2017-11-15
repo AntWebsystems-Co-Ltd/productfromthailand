@@ -240,7 +240,7 @@ function submitForm(form, mode, value) {
                     <!-- Your Order Details Starts -->
                         <h5 class="hs-1 text-color-5 text-bold text-uppercase text-center-xs">${uiLabelMap.PFTYourOrderDetails}</h5>
                         <div class="table-responsive">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" id="checkoutreview-table">
                                 <thead>
                                     <tr>
                                         <th>${uiLabelMap.CommonProduct}</th>
@@ -250,7 +250,7 @@ function submitForm(form, mode, value) {
                                 </thead>
                                 <tbody>
                                     <#list shoppingCart.items() as cartLine>
-                                        <tr>
+                                        <tr id="checkoutreview-detail">
                                             <td>${StringUtil.wrapString(cartLine.getName()?if_exists)}</td>
                                             <td class="text-center">x${cartLine.getQuantity()?string.number?default(0)}</td>
                                             <td class="text-right"><@ofbizCurrency amount=cartLine.getDisplayItemSubTotal() isoCode=shoppingCart.getCurrency()/></td>
@@ -258,31 +258,31 @@ function submitForm(form, mode, value) {
                                     </#list>
                                 </tbody>
                                 <tfoot>
-                                    <tr>
+                                    <tr id="checkouttotal">
                                         <#assign orderAdjustmentsTotal = 0 />
                                         <#list shoppingCart.getAdjustments() as cartAdjustment>
                                           <#assign orderAdjustmentsTotal = orderAdjustmentsTotal +
                                               Static["org.apache.ofbiz.order.order.OrderReadHelper"]
                                               .calcOrderAdjustment(cartAdjustment, shoppingCart.getSubTotal()) />
                                         </#list>
-                                        <th colspan="2">${uiLabelMap.EcommerceAdjustment}</th>
-                                        <td class="text-right"><@ofbizCurrency amount=orderAdjustmentsTotal isoCode=shoppingCart.getCurrency() /></td>
+                                        <td colspan="2"><b>${uiLabelMap.EcommerceAdjustment}</b></td>
+                                        <td class="text-right"><b><@ofbizCurrency amount=orderAdjustmentsTotal isoCode=shoppingCart.getCurrency() /></b></td>
                                     </tr>
-                                    <tr>
-                                        <th colspan="2">${uiLabelMap.CommonSubtotal}</th>
-                                        <td class="text-right"><@ofbizCurrency amount=shoppingCart.getDisplayGrandTotal() isoCode=shoppingCart.getCurrency()/></td>
+                                    <tr id="checkouttotal">
+                                        <td colspan="2"><b>${uiLabelMap.CommonSubtotal}</b></td>
+                                        <td class="text-right"><b><@ofbizCurrency amount=shoppingCart.getDisplayGrandTotal() isoCode=shoppingCart.getCurrency()/></b></td>
                                     </tr>
-                                    <tr>
-                                        <th colspan="2">${uiLabelMap.OrderShippingAndHandling}</th>
-                                        <td class="text-right"><@ofbizCurrency amount=shoppingCart.getTotalShipping() isoCode=shoppingCart.getCurrency() /></td>
+                                    <tr id="checkouttotal">
+                                        <td colspan="2"><b>${uiLabelMap.OrderShippingAndHandling}</b></td>
+                                        <td class="text-right"><b><@ofbizCurrency amount=shoppingCart.getTotalShipping() isoCode=shoppingCart.getCurrency() /></b></td>
                                     </tr>
-                                    <tr>
-                                        <th colspan="2">${uiLabelMap.OrderSalesTax}</th>
-                                        <td class="text-right"><@ofbizCurrency amount=shoppingCart.getTotalSalesTax() isoCode=shoppingCart.getCurrency() /></td>
+                                    <tr id="checkouttotal">
+                                        <td colspan="2"><b>${uiLabelMap.OrderSalesTax}</b></td>
+                                        <td class="text-right"><b><@ofbizCurrency amount=shoppingCart.getTotalSalesTax() isoCode=shoppingCart.getCurrency() /></b></td>
                                     </tr>
-                                    <tr>
-                                        <th colspan="2">${uiLabelMap.OrderGrandTotal}</th>
-                                        <td class="text-right"><@ofbizCurrency amount=shoppingCart.getDisplayGrandTotal() isoCode=shoppingCart.getCurrency() /></td>
+                                    <tr id="checkouttotal">
+                                        <td colspan="2"><b>${uiLabelMap.OrderGrandTotal}</b></td>
+                                        <td class="text-right"><b><@ofbizCurrency amount=shoppingCart.getDisplayGrandTotal() isoCode=shoppingCart.getCurrency() /></b></td>
                                     </tr>
                                 </tfoot>
                             </table>

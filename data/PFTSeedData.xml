@@ -23,7 +23,7 @@ under the License.
     <SystemProperty systemResourceId="general" systemPropertyId="ORGANIZATION_PARTY" systemPropertyValue="pft"/>
     <SystemProperty systemResourceId="general" systemPropertyId="useVerify" systemPropertyValue="Y"/>
     <SystemProperty systemResourceId="general" systemPropertyId="verifyServices" systemPropertyValue="getVerifyTemplate"/>
-    <SystemProperty systemResourceId="catalog" systemPropertyId="convertProductPriceCurrency" systemPropertyValue="false"/>
+    <SystemProperty systemResourceId="catalog" systemPropertyId="convertProductPriceCurrency" systemPropertyValue="true"/>
     <!-- Setting up on the production server
     <SystemProperty systemResourceId="general" systemPropertyId="mail.notifications.enabled" systemPropertyValue="Y"/>
     <SystemProperty systemResourceId="general" systemPropertyId="mail.smtp.relay.host" systemPropertyValue="smtp.gmail.com"/>
@@ -140,6 +140,7 @@ under the License.
         autoOrderCcTryExp="Y" autoOrderCcTryOtherCards="Y" autoOrderCcTryLaterNsf="Y" storeCreditValidDays="90" autoApproveInvoice="Y" autoApproveOrder="Y"
         shipIfCaptureFails="Y" reqReturnInventoryReceive="N" showOutOfStockProducts="Y" inventoryFacilityId="pftWarehouse"/>
 
+    <TaxAuthorityRateProduct fromDate="2017-10-01 00:00:00.0" isTaxInShippingPrice="N" productStoreId="PFTSTORE" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxAuthorityRateSeqId="10000" taxAuthorityRateTypeId="SALES_TAX" taxPercentage="7.000000" taxPromotions="N" taxShipping="N"/>
     <ProductStoreFacility productStoreId="PFTSTORE" facilityId="pftWarehouse" fromDate="2009-09-25 10:38:07.561"/>
     <WebSite webSiteId="PFT" siteName="Product from Thailand website" visualThemeSetId="ECOMMERCE" productStoreId="PFTSTORE"/>
     <WebAnalyticsType webAnalyticsTypeId="GOOGLE_ANALYTICS" parentTypeId="WEB_ANALYTICS" hasTable="N" description="Google Analytics"/>
@@ -213,4 +214,10 @@ under the License.
 
     <ShipmentMethodType description="ThaiPost : Domestic EMS" shipmentMethodTypeId="DOMESTIC_EMS"/>
     <ShipmentMethodType description="ThaiPost : Domestic Registered" shipmentMethodTypeId="DOMESTIC_REG"/>
+
+    <!-- Calculate Sale Price -->
+    <SystemProperty systemResourceId="pft" systemPropertyId="paypal.fee" description="PayPal Fee Percent" systemPropertyValue="5"/>
+    <SystemProperty systemResourceId="pft" systemPropertyId="pft.fee" description="Product From Thailand Fee Percent" systemPropertyValue="5"/>
+    <SystemProperty systemResourceId="pft" systemPropertyId="pft.vat" description="Product From Thailand Vat Percent" systemPropertyValue="7"/>
+
 </entity-engine-xml>

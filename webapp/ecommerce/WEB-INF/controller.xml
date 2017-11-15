@@ -427,6 +427,12 @@ under the License.
         <response name="success" type="view-last-noparam"/>
         <response name="error" type="view-last-noparam"/>
     </request-map>
+    <request-map uri="clearcart">
+        <security https="false" auth="false"/>
+        <event type="java" path="org.apache.ofbiz.order.shoppingcart.ShoppingCartEvents" invoke="clearCart"/>
+        <response name="success" type="view-last-noparam"/>
+        <response name="error" type="view-last-noparam"/>
+    </request-map>
 
     <!-- Wish List -->
     <request-map uri="addProductToWishList">

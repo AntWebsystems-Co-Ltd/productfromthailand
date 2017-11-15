@@ -31,23 +31,23 @@ under the License.
 </div>
 <div class="panel-body">
   <div class="table-responsive">
-    <table class="table table-bordered">
+    <table class="table table-bordered" id="checkoutreview-table">
       <thead>
         <tr>
-          <td>${uiLabelMap.OrderProduct}</td>
+          <th>${uiLabelMap.OrderProduct}</th>
           <#if maySelectItems?default("N") == "Y">
-            <td>${uiLabelMap.OrderQtyOrdered}</td>
-            <td>${uiLabelMap.OrderQtyPicked}</td>
-            <td>${uiLabelMap.OrderQtyShipped}</td>
-            <td>${uiLabelMap.OrderQtyCanceled}</td>
+            <th>${uiLabelMap.OrderQtyOrdered}</th>
+            <th>${uiLabelMap.OrderQtyPicked}</th>
+            <th>${uiLabelMap.OrderQtyShipped}</th>
+            <th>${uiLabelMap.OrderQtyCanceled}</th>
           <#else>
-            <td colspan="3">${uiLabelMap.OrderQtyOrdered}</td>
+            <th colspan="3">${uiLabelMap.OrderQtyOrdered}</th>
           </#if>
-          <td >${uiLabelMap.EcommerceUnitPrice}</td>
-          <td >${uiLabelMap.OrderAdjustments}</td>
-          <td >${uiLabelMap.CommonSubtotal}</td>
+          <th>${uiLabelMap.EcommerceUnitPrice}</th>
+          <th>${uiLabelMap.OrderAdjustments}</th>
+          <th>${uiLabelMap.CommonSubtotal}</th>
           <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">
-            <td colspan="3"></td>
+            <th colspan="3"></th>
           </#if>
         </tr>
       </thead>
@@ -74,7 +74,7 @@ under the License.
                </#list>
             </#if>
           </#if>
-          <tr>
+          <tr id="checkoutreview-detail">
             <#if !orderItem.productId?exists || orderItem.productId == "_?_">
               <td >
                 ${StringUtil.wrapString(orderItem.itemDescription?default(""))}
@@ -166,7 +166,7 @@ under the License.
           </tr>
           <#-- now cancel reason and comment field -->
           <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER" && (orderHeader.statusId != "ORDER_SENT" && orderItem.statusId != "ITEM_COMPLETED" && orderItem.statusId != "ITEM_CANCELLED" && pickedQty == 0)>
-            <tr>
+            <tr id="checkoutreview-detail">
               <td colspan="7">${uiLabelMap.OrderReturnReason}
                 <select name="irm_${orderItem.orderItemSeqId}" class="selectBox">
                   <option value=""></option>
@@ -191,7 +191,7 @@ under the License.
           <#-- now show adjustment details per line item -->
           <#assign itemAdjustments = localOrderReadHelper.getOrderItemAdjustments(orderItem)>
           <#list itemAdjustments as orderItemAdjustment>
-            <tr>
+            <tr id="checkoutreview-detail-adjust">
               <td>
                 ${uiLabelMap.EcommerceAdjustment}: ${localOrderReadHelper.getAdjustmentType(orderItemAdjustment)}
                 <#if orderItemAdjustment.description?has_content>: ${orderItemAdjustment.description}</#if>
@@ -211,7 +211,7 @@ under the License.
                   <#if orderItemAdjustment.exemptAmount?exists>${uiLabelMap.EcommerceExemptAmount}: ${orderItemAdjustment.exemptAmount}</#if>
                 </#if>
               </td>
-              <td colspan="5"></td>
+              <td colspan="4"></td>
               <td>
                 <@ofbizCurrency amount=localOrderReadHelper.getOrderItemAdjustmentTotal(orderItem, orderItemAdjustment)*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=localOrderReadHelper.getOrderItemAdjustmentTotal(orderItem, orderItemAdjustment) isoCode=currencyUomId/-->
               </td>
@@ -221,30 +221,30 @@ under the License.
           </#list>
         </#list>
         <#if orderItems?size == 0 || !orderItems?has_content>
-          <tr><td colspan="${numColumns}">${uiLabelMap.OrderSalesOrderLookupFailed}</td></tr>
+          <tr id="checkoutreview-detail"><td colspan="${numColumns}">${uiLabelMap.OrderSalesOrderLookupFailed}</td></tr>
         </#if>
-        <tr>
-          <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>>${uiLabelMap.CommonSubtotal}</td>
-          <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>><@ofbizCurrency amount=orderSubTotal*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=orderSubTotal isoCode=currencyUomId/--></td>
+        <tr id="checkouttotal">
+          <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>><b>${uiLabelMap.CommonSubtotal}</b></td>
+          <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>><b><@ofbizCurrency amount=orderSubTotal*conversionRate isoCode=currencyUom/></b><#--@ofbizCurrency amount=orderSubTotal isoCode=currencyUomId/--></td>
         </tr>
         <#list headerAdjustmentsToShow as orderHeaderAdjustment>
-          <tr>
-            <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>>${localOrderReadHelper.getAdjustmentType(orderHeaderAdjustment)}</td>
-            <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>><@ofbizCurrency amount=localOrderReadHelper.getOrderAdjustmentTotal(orderHeaderAdjustment)*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=localOrderReadHelper.getOrderAdjustmentTotal(orderHeaderAdjustment) isoCode=currencyUomId/--></td>
+          <tr id="checkouttotal">
+            <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>><b>${localOrderReadHelper.getAdjustmentType(orderHeaderAdjustment)}</b></td>
+            <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>><b><@ofbizCurrency amount=localOrderReadHelper.getOrderAdjustmentTotal(orderHeaderAdjustment)*conversionRate isoCode=currencyUom/></b><#--@ofbizCurrency amount=localOrderReadHelper.getOrderAdjustmentTotal(orderHeaderAdjustment) isoCode=currencyUomId/--></td>
           </tr>
         </#list>
-        <tr>
-          <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>>${uiLabelMap.OrderShippingAndHandling}</td>
-          <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>><@ofbizCurrency amount=orderShippingTotal*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=orderShippingTotal isoCode=currencyUomId/--></td>
+        <tr id="checkouttotal">
+          <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>><b>${uiLabelMap.OrderShippingAndHandling}</b></td>
+          <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>><b><@ofbizCurrency amount=orderShippingTotal*conversionRate isoCode=currencyUom/></b><#--@ofbizCurrency amount=orderShippingTotal isoCode=currencyUomId/--></td>
         </tr>
-        <tr>
-          <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>>${uiLabelMap.OrderSalesTax}</td>
-          <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>><@ofbizCurrency amount=orderTaxTotal*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=orderTaxTotal isoCode=currencyUomId/--></td>
+        <tr id="checkouttotal">
+          <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>><b>${uiLabelMap.OrderSalesTax}</b></td>
+          <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>><b><@ofbizCurrency amount=orderTaxTotal*conversionRate isoCode=currencyUom/></b><#--@ofbizCurrency amount=orderTaxTotal isoCode=currencyUomId/--></td>
         </tr>
-        <tr>
-          <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>>${uiLabelMap.OrderGrandTotal}</td>
+        <tr id="checkouttotal">
+          <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>><b>${uiLabelMap.OrderGrandTotal}</b></td>
           <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>>
-            <@ofbizCurrency amount=orderGrandTotal*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=orderGrandTotal isoCode=currencyUomId/-->
+            <b><@ofbizCurrency amount=orderGrandTotal*conversionRate isoCode=currencyUom/></b><#--@ofbizCurrency amount=orderGrandTotal isoCode=currencyUomId/-->
           </td>
         </tr>
       <tbody>

@@ -251,3 +251,17 @@ img.img-responsive {
 #productsdetail .caption .description{
     height: 80px;
 }
+
+.table-bordered thead, #checkouttotal{
+    background-color: #692426;
+    color: white;
+}
+#checkoutreview-table #checkoutreview-detail td, #checkoutreview-table #checkoutreview-detail-adjust td{
+    border: none;
+}
+#checkoutreview-table #checkoutreview-detail-adjust td{
+    border-bottom: solid 1px;
+}
+#checkoutreview-table>thead>tr>th{
+    border: none;
+}

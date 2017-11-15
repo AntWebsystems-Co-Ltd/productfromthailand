@@ -78,10 +78,16 @@ under the License.
                             <a href="javascript:removeFromCart(removecartformheader_${cartLineIndex!});">
                                 <i class="fa fa-times"></i>
                             </a>
+                            <#if (shoppingCartSize == 1)>
+                            <form method="post" action="<@ofbizUrl>clearcart</@ofbizUrl>" name="removecartformheader_${cartLineIndex!}" id="removecartformheader_${cartLineIndex!}">
+                                <input type="hidden" name="clear" value="true"/>
+                            </form>
+                            <#else>
                             <form method="post" action="<@ofbizUrl>removecart</@ofbizUrl>" name="removecartformheader_${cartLineIndex!}" id="removecartformheader_${cartLineIndex!}">
                                 <input type="hidden" name="removeSelected" value="true"/>
                                 <input type="hidden" name="selectedItem" value="${cartLineIndex!}"/>
                             </form>
+                            </#if>
                         </td>
                     </tr>
                 </#list>
@@ -91,8 +97,8 @@ under the License.
             <table class="table table-bordered total">
                 <tbody>
                     <tr>
-                        <td class="text-right"><strong>Sub-Total</strong></td>
-                        <td class="text-left"><@ofbizCurrency amount=shoppingCart.getDisplayGrandTotal() isoCode=shoppingCart.getCurrency()/></td>
+                        <td class="text-right"><strong>${uiLabelMap.CommonSubtotal}</strong></td>
+                        <td class="text-left"><@ofbizCurrency amount=shoppingCart.getSubTotal() isoCode=shoppingCart.getCurrency()/></td>
                     </tr>
                     <#-- <tr>
                         <td class="text-right"><strong>Eco Tax (-2.00)</strong></td>
@@ -103,7 +109,7 @@ under the License.
                         <td class="text-left">$192.68</td>
                     </tr> -->
                     <tr>
-                        <td class="text-right"><strong>Total</strong></td>
+                        <td class="text-right"><strong>${uiLabelMap.CommonTotal}</strong></td>
                         <td class="text-left"><@ofbizCurrency amount=shoppingCart.getDisplayGrandTotal() isoCode=shoppingCart.getCurrency()/></td>
                     </tr>
                 </tbody>
