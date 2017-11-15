@@ -33,6 +33,9 @@ under the License.
                                 <div class="item">
                                     <img src="/pft-default/pftimages/slide/slide-2.png" alt="Slider" class="img-responsive">
                                 </div>
+                                <div class="item">
+                                    <img src="/pft-default/pftimages/slide/slide-3.png" alt="Slider" class="img-responsive">
+                                </div>
                             </div>
                         <#-- Wrapper For Slides Ends -->
                         <#-- Controls Starts -->

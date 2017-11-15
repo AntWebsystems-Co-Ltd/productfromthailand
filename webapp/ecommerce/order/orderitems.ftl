@@ -82,7 +82,7 @@ under the License.
             <#else>
               <#assign product = orderItem.getRelatedOne("Product", true)!/> <#-- should always exist because of FK constraint, but just in case -->
               <td >
-                <a href="<@ofbizCatalogAltUrl fullPath="true" secure="false" productId=orderItem.productId/>" class="linktext">${orderItem.productId} - ${StringUtil.wrapString(orderItem.itemDescription?default(""))}</a>
+                <a href="<@ofbizCatalogAltUrl productId=orderItem.productId/>" class="linktext">${orderItem.productId} - ${StringUtil.wrapString(orderItem.itemDescription?default(""))}</a>
                 <#if product?has_content>
                   <#if product.piecesIncluded?exists && product.piecesIncluded?long != 0>
                       [${uiLabelMap.OrderPieces}: ${product.piecesIncluded}]

@@ -30,6 +30,10 @@
         <value xml:lang="en">US Dollar</value>
         <value xml:lang="th">ดอลลาร์สหรัฐ</value>
     </property>
+    <property key="PFTHeaderAccount">
+        <value xml:lang="en">'s Account</value>
+        <value xml:lang="th">บัญชีของ</value>
+    </property>
     <property key="CurrencyNameEuro">
         <value xml:lang="en">Euro</value>
         <value xml:lang="th">ยูโร</value>

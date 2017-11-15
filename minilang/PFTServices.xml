@@ -223,7 +223,9 @@ under the License.
                                     <!-- Update shipping address -->
                                     <set-service-fields service-name="updatePartyPostalAddress" map="parameters" to-map="updatePartyPostalAddressMap"/>
                                     <set field="updatePartyPostalAddressMap.contactMechId" from-field="parameters.shipping_contact_mech_id"/>
-                                    <call-service service-name="updatePartyPostalAddress" in-map-name="updatePartyPostalAddressMap"/>
+                                    <call-service service-name="updatePartyPostalAddress" in-map-name="updatePartyPostalAddressMap">
+                                        <result-to-field result-name="contactMechId" field="parameters.shipping_contact_mech_id"/>
+                                    </call-service>
                                 </else>
                             </if-compare-field>
                         </then>

@@ -196,9 +196,17 @@ under the License.
                                         <i class="fa fa-user-circle" title="${uiLabelMap.PFTMyAccount}"></i>
                                         <span class="hidden-sm hidden-xs">
                                             <#if loginName.groupName?has_content>
-                                                ${loginName.groupName} ${uiLabelMap.PartyAccount}
+                                                <#if parameters.locale == "th">
+                                                    ${uiLabelMap.PFTHeaderAccount} ${loginName.groupName}
+                                                <#else>
+                                                    ${loginName.groupName} ${uiLabelMap.PFTHeaderAccount}
+                                                </#if>
                                             <#elseif loginName.firstName?has_content>
-                                                ${loginName.firstName}  ${loginName.lastName} ${uiLabelMap.PartyAccount}
+                                                <#if parameters.locale == "th">
+                                                    ${uiLabelMap.PFTHeaderAccount} ${loginName.firstName}  ${loginName.lastName}
+                                                <#else>
+                                                    ${loginName.firstName}  ${loginName.lastName} ${uiLabelMap.PFTHeaderAccount}
+                                                </#if>
                                             <#else>
                                                 ${uiLabelMap.PFTMyAccount}
                                             </#if>
