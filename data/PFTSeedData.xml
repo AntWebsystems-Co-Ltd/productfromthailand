@@ -117,6 +117,13 @@ under the License.
     <FacilityContactMechPurpose facilityId="pftWarehouse" contactMechId="PFTADDR" contactMechPurposeTypeId="SHIP_ORIG_LOCATION" fromDate="2009-09-25 10:37:46.428"/>
     <FacilityContactMechPurpose facilityId="pftWarehouse" contactMechId="PFTADDR" contactMechPurposeTypeId="SHIPPING_LOCATION" fromDate="2009-09-25 10:37:46.414"/>
 
+    <!-- THAI TaxAuthority -->
+    <Party partyId="THA_RD" partyTypeId="PARTY_GROUP"  statusId="PARTY_ENABLED"/>
+    <PartyGroup partyId="THA_RD" groupName="Thailand - Internal Revenue Service"/>
+    <PartyRole partyId="THA_RD" roleTypeId="TAX_AUTHORITY"/>
+    <TaxAuthority taxAuthGeoId="THA" taxAuthPartyId="THA_RD" includeTaxInPrice="N"/>
+    <PartyTaxAuthInfo partyId="pft" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" fromDate="2017-10-09 00:00:00.000" thruDate="" partyTaxId="" isExempt="Y" isNexus="N"/>
+
     <ProductStore productStoreId="PFTSTORE" storeName="Product from Thailand Store" companyName="Product from Thailand Co.,Ltd" payToPartyId="pft"
         daysToCancelNonPay="30" manualAuthIsCapture="N" prorateShipping="Y" prorateTaxes="Y" viewCartOnAdd="N" autoSaveCart="N" autoApproveReviews="N"
         isDemoStore="N" title="Welcome to Product FromThailand.com" subtitle="Thailand Located in Southeast Asia, Thailand is commonly known as the land of smiles. Thailand's major exports include textiles, fishery products and electrical applicances. Look through the categories below to find more Thai products." 
@@ -129,7 +136,7 @@ under the License.
         authFraudMessage="Your order has been rejected and your account has been disabled due to fraud."
         authErrorMessage="Problem connecting to payment processor; we will continue to retry and notify you by email." visualThemeId="EC_PFT"
         storeCreditAccountEnumId="FIN_ACCOUNT" usePrimaryEmailUsername="N" requireCustomerRole="N" autoInvoiceDigitalItems="Y" reqShipAddrForDigItems="Y"
-        showCheckoutGiftOptions="Y" selectPaymentTypePerItem="N" showPricesWithVatTax="N" showTaxIsExempt="Y" enableDigProdUpload="N" prodSearchExcludeVariants="Y"
+        showCheckoutGiftOptions="Y" selectPaymentTypePerItem="N" showPricesWithVatTax="N" vatTaxAuthGeoId="THA" vatTaxAuthPartyId="THA_RD" showTaxIsExempt="Y" enableDigProdUpload="N" prodSearchExcludeVariants="Y"
         autoOrderCcTryExp="Y" autoOrderCcTryOtherCards="Y" autoOrderCcTryLaterNsf="Y" storeCreditValidDays="90" autoApproveInvoice="Y" autoApproveOrder="Y"
         shipIfCaptureFails="Y" reqReturnInventoryReceive="N" showOutOfStockProducts="Y" inventoryFacilityId="pftWarehouse"/>
 
@@ -196,12 +203,6 @@ under the License.
     <ProductFeature productFeatureId="CF20006" productFeatureCategoryId="CF20000" productFeatureTypeId="COLOR" description="#07 : Kissme"/>
     <ProductFeature productFeatureId="CF20007" productFeatureCategoryId="CF20000" productFeatureTypeId="COLOR" description="#08 : Charming"/>
     <ProductFeature productFeatureId="CF20008" productFeatureCategoryId="CF20000" productFeatureTypeId="COLOR" description="#09 : Grayberry"/>
-
-    <!-- THAI TaxAuthority -->
-    <Party partyId="THA_RD" partyTypeId="PARTY_GROUP"  statusId="PARTY_ENABLED"/>
-    <PartyGroup partyId="THA_RD" groupName="Thailand - Internal Revenue Service"/>
-    <PartyRole partyId="THA_RD" roleTypeId="TAX_AUTHORITY"/>
-    <TaxAuthority taxAuthGeoId="THA" taxAuthPartyId="THA_RD" includeTaxInPrice="Y"/>
 
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_ODR_CONFIRM" bodyScreenLocation="component://productfromthailand/widget/OrderScreens.xml#OrderConfirmNotice" xslfoAttachScreenLocation="component://productfromthailand/widget/OrderScreens.xml#OrderPDF" subject="Product From Thailand - Order Confirmation #${orderId}" bccAddress="info@productfromthailand.com" fromAddress="info@productfromthailand.com"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_ODR_COMPLETE" bodyScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#OrderCompleteNotice" subject="Product From Thailand - Your Order Is Complete #${orderId}" fromAddress="info@productfromthailand.com"/>
