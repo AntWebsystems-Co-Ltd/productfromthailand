@@ -23,6 +23,7 @@ under the License.
     <SystemProperty systemResourceId="general" systemPropertyId="ORGANIZATION_PARTY" systemPropertyValue="pft"/>
     <SystemProperty systemResourceId="general" systemPropertyId="useVerify" systemPropertyValue="Y"/>
     <SystemProperty systemResourceId="general" systemPropertyId="verifyServices" systemPropertyValue="getVerifyTemplate"/>
+    <SystemProperty systemResourceId="catalog" systemPropertyId="convertProductPriceCurrency" systemPropertyValue="false"/>
     <!-- Setting up on the production server
     <SystemProperty systemResourceId="general" systemPropertyId="mail.notifications.enabled" systemPropertyValue="Y"/>
     <SystemProperty systemResourceId="general" systemPropertyId="mail.smtp.relay.host" systemPropertyValue="smtp.gmail.com"/>

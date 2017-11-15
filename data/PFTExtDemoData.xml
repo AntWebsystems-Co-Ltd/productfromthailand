@@ -239,4 +239,12 @@
     <SystemProperty systemResourceId="pft" systemPropertyId="paypal.fee" description="PayPal Fee Percent" systemPropertyValue="5"/>
     <SystemProperty systemResourceId="pft" systemPropertyId="pft.fee" description="Product From Thailand Fee Percent" systemPropertyValue="5"/>
     <SystemProperty systemResourceId="pft" systemPropertyId="pft.vat" description="Product From Thailand Vat Percent" systemPropertyValue="7"/>
+    <!-- Currency Convert -->
+    <UomConversionDated conversionFactor="0.03" createdStamp="2017-11-15 09:49:32.0" createdTxStamp="2017-11-15 09:49:32.0" decimalScale="2" fromDate="2017-11-01 00:00:00.0" roundingMode="HalfUp" uomId="THB" uomIdTo="USD"/>
+    <UomConversionDated conversionFactor="0.026" createdStamp="2017-11-15 09:54:33.706" createdTxStamp="2017-11-15 09:54:33.705" decimalScale="2" fromDate="2017-11-01 00:00:00.0" roundingMode="HalfUp" uomId="THB" uomIdTo="EUR"/>
+    <UomConversionDated conversionFactor="38.98" createdStamp="2017-11-15 09:55:22.426" createdTxStamp="2017-11-15 09:55:22.423" decimalScale="2" fromDate="2017-11-01 00:00:00.0" roundingMode="HalfUp" uomId="EUR" uomIdTo="THB"/>
+    <UomConversionDated conversionFactor="1.18" createdStamp="2017-11-15 09:56:06.196" createdTxStamp="2017-11-15 09:56:06.192" decimalScale="2" fromDate="2017-11-01 00:00:00.0" roundingMode="HalfUp" uomId="EUR" uomIdTo="USD"/>
+    <UomConversionDated conversionFactor="33.04" createdStamp="2017-11-15 09:57:55.676" createdTxStamp="2017-11-15 09:57:55.654" decimalScale="2" fromDate="2017-11-01 00:00:00.0" roundingMode="HalfUp" uomId="USD" uomIdTo="THB"/>
+    <UomConversionDated conversionFactor="0.85" createdStamp="2017-11-15 09:59:23.435" createdTxStamp="2017-11-15 09:59:23.434" decimalScale="2" fromDate="2017-11-01 00:00:00.0" roundingMode="HalfUp" uomId="USD" uomIdTo="EUR"/>
+
 </entity-engine-xml>

@@ -22,6 +22,18 @@
         <value xml:lang="en">Company Name</value>
         <value xml:lang="th">ชื่อ ร้านค้า/บริษัท</value>
     </property>
+    <property key="CurrencyNameThaiBaht">
+        <value xml:lang="en">Thai Baht</value>
+        <value xml:lang="th">บาท</value>
+    </property>
+    <property key="CurrencyNameUSDollar">
+        <value xml:lang="en">US Dollar</value>
+        <value xml:lang="th">ดอลลาร์สหรัฐ</value>
+    </property>
+    <property key="CurrencyNameEuro">
+        <value xml:lang="en">Euro</value>
+        <value xml:lang="th">ยูโร</value>
+    </property>
     <property key="PartyFullName">
         <value xml:lang="en">Full Name</value>
         <value xml:lang="th">ชื่อ - นามสกุล</value>

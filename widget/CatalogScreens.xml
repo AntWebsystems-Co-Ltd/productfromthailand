@@ -415,7 +415,7 @@ under the License.
                 <set field="productsummaryScreen" value="component://productfromthailand/widget/CatalogScreens.xml#productsummary"/>
                 <set field="breadcrumbs" value="component://productfromthailand/widget/CatalogScreens.xml#breadcrumbs"/>
                 <set field="inlineProductDetailScreen" value="component://ecommerce/widget/CatalogScreens.xml#inlineProductDetail"/>
-                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/ProductDetail.groovy"/>
                 <script location="component://order/groovyScripts/entry/catalog/PrepareConfigForm.groovy"/>
             </actions>
             <widgets>
@@ -513,7 +513,7 @@ under the License.
     <screen name="quickaddsummary">
         <section>
             <actions>
-                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/ProductSummary.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://order/webapp/ordermgr/entry/catalog/quickaddsummary.ftl"/></html></platform-specific>

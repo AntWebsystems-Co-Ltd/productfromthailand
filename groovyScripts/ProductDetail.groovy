@@ -180,6 +180,8 @@ if (product) {
         priceContext.productStoreId = productStoreId
         priceContext.checkIncludeVat = "Y"
         priceContext.agreementId = cart.getAgreementId()
+        priceContext.currencyUomIdTo = context.currencyUom
+        priceContext.currencyUomId = ProductStoreWorker.getProductStore(request).getString("defaultCurrencyUomId")
         priceContext.partyId = cart.getPartyId() // IMPORTANT: must put this in, or price will be calculated for the CSR instead of the customer
         priceMap = runService('calculateProductPrice', priceContext)
         context.priceMap = priceMap

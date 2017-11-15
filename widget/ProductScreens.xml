@@ -1234,7 +1234,7 @@ under the License.
                 <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
-                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/ProductSummary.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/ProductSummary.ftl"/></html></platform-specific>
@@ -1298,7 +1298,7 @@ under the License.
                 <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
-                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/ProductSummary.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/categorycontent.ftl"/></html></platform-specific>
@@ -1312,7 +1312,7 @@ under the License.
                 <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
-                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/ProductSummary.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/productcategorylist.ftl"/></html></platform-specific>
@@ -1326,7 +1326,7 @@ under the License.
                 <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
-                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/ProductSummary.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/productcategorygrid.ftl"/></html></platform-specific>

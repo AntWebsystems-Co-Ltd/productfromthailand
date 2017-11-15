@@ -144,6 +144,17 @@ under the License.
             alert("${uiLabelMap.CommonRequired} ${uiLabelMap.CommonLogin}");
         </#if>
         }
+        function setCurrency(currency) {
+            $.ajax({
+                url: '<@ofbizUrl>setSessionCurrencyUom</@ofbizUrl>',
+                type: 'POST',
+                data: {currencyUom : currency},
+                async: false,
+                success: function(data) {
+                    location.reload();
+                }
+            });
+        }
      </script>
 </head>
 <body>
@@ -238,17 +249,20 @@ under the License.
                 <div class="col-sm-4 col-xs-12">
                     <div class="pull-right">
                     <#-- Currency Starts -->
-                        <#-- <div class="btn-group">
+                        <div class="btn-group">
                             <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                                $
+                                <#if currencyUom == "THB">฿
+                                <#elseif currencyUom == "USD">$
+                                <#elseif currencyUom == "EUR">€
+                                </#if>
                                 <i class="fa fa-caret-down"></i>
                             </button>
                             <ul class="pull-right dropdown-menu">
-                                <li><a tabindex="-1" href="#">Pound </a></li>
-                                <li><a tabindex="-1" href="#">US Dollar</a></li>
-                                <li><a tabindex="-1" href="#">Euro</a></li>
+                                <li><a tabindex="-1" href="javascript: setCurrency('THB');">${uiLabelMap.CurrencyNameThaiBaht}</a></li>
+                                <li><a tabindex="-1" href="javascript: setCurrency('USD');">${uiLabelMap.CurrencyNameUSDollar}</a></li>
+                                <li><a tabindex="-1" href="javascript: setCurrency('EUR');">${uiLabelMap.CurrencyNameEuro}</a></li>
                             </ul>
-                        </div> -->
+                        </div>
                     <#-- Currency Ends -->
                     <#-- Languages Starts -->
                         <div class="btn-group" style="padding-top: 10px; padding-bottom: 10px">
