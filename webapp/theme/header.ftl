@@ -167,7 +167,7 @@ under the License.
         <div class="header-top">
             <div class="container">
             <#-- Header Links Starts -->
-                <div class="col-sm-8 col-xs-12">
+                <div class="col-sm-10 col-xs-12">
                     <div class="header-links">
                         <ul class="nav navbar-nav pull-left">
                             <li>
@@ -254,7 +254,7 @@ under the License.
                 </div>
             <#-- Header Links Ends -->
             <#-- Currency & Languages Starts -->
-                <div class="col-sm-4 col-xs-12">
+                <div class="col-sm-2 col-xs-12">
                     <div class="pull-right">
                     <#-- Currency Starts -->
                         <div class="btn-group">

@@ -119,6 +119,10 @@
         <value xml:lang="en">E-mail</value>
         <value xml:lang="th">อีเมล์</value>
     </property>
+    <property key="PFTEng">
+        <value xml:lang="en">Eng</value>
+        <value xml:lang="th">อังกฤษ</value>
+    </property>
     <property key="PFTDeliveryWorldWideShouldBe15Day">
         <value xml:lang="en">Delivery time worldwide should be within 15 days.</value>
         <value xml:lang="th">เวลาในการจัดส่งทั่วโลกควรอยู่ภายใน 15 วัน</value>
@@ -470,6 +474,14 @@
     <property key="PFTTermsAndCons">
         <value xml:lang="en">Terms and Conditions</value>
         <value xml:lang="th">เงื่อนไขในการใช้บริการ</value>
+    </property>
+    <property key="PFTThai">
+        <value xml:lang="en">Thai</value>
+        <value xml:lang="th">ไทย</value>
+    </property>
+    <property key="PFTThaiBaht">
+        <value xml:lang="en">THB</value>
+        <value xml:lang="th">บาท</value>
     </property>
     <property key="PFTThisProductAddedToWishListSuccessful">
         <value xml:lang="en">This product added to wish list successful.</value>

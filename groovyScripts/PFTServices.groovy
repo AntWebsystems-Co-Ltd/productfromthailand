@@ -44,3 +44,43 @@ public Map calculateSalePrice() {
     result.salePrice = salePrice.setScale(PriceServices.taxFinalScale, PriceServices.taxRounding)
     return result
 }
+
+public Map createUpdateSupplierProductOtherCurrencies() {
+    Map<String, Object> result = ServiceUtil.returnSuccess()
+    String productId = parameters.productId
+    BigDecimal lastPrice = parameters.lastPrice
+    systemUserLogin = from("UserLogin").where("userLoginId", "system").queryOne();
+    currencyList = from("Uom").where("uomTypeId", "CURRENCY_MEASURE").queryList()
+    if (currencyList) {
+        currencyList.each { currency ->
+            supplierProduct = from("SupplierProduct").where("productId", productId, "currencyUomId", "THB").orderBy("-availableFromDate").queryFirst()
+            if (supplierProduct) {
+                if (!currency.uomId.equals(supplierProduct.currencyUomId)) {
+                    uomConversionDated = from("UomConversionDated").where("uomId", supplierProduct.currencyUomId, "uomIdTo", currency.uomId).filterByDate().queryList()
+                    if (uomConversionDated) {
+                        Double conversionFactor = uomConversionDated[0].conversionFactor
+                        BigDecimal newPrice = BigDecimal.ZERO
+                        newPrice = lastPrice.multiply(conversionFactor)
+                        checkPriceExist = from("SupplierProduct").where("productId", supplierProduct.productId, "currencyUomId", currency.uomId).queryFirst()
+                        if (checkPriceExist) {
+                            updateSupplierProduct = [:]
+                            updateSupplierProduct = dispatcher.getDispatchContext().makeValidContext("updateSupplierProduct", "IN", supplierProduct)
+                            updateSupplierProduct.currencyUomId = currency.uomId
+                            updateSupplierProduct.lastPrice = newPrice
+                            updateSupplierProduct.userLogin = systemUserLogin
+                            runService('updateSupplierProduct', updateSupplierProduct)
+                        } else {
+                            newSupplierProduct = [:]
+                            newSupplierProduct = dispatcher.getDispatchContext().makeValidContext("createSupplierProduct", "IN", supplierProduct)
+                            newSupplierProduct.currencyUomId = currency.uomId
+                            newSupplierProduct.lastPrice = newPrice
+                            newSupplierProduct.userLogin = systemUserLogin
+                            runService('createSupplierProduct', newSupplierProduct)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return result
+}

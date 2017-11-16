@@ -154,7 +154,7 @@ under the License.
                         <input type="hidden" name="isCreate" value="N"/>
                         <input type="hidden" name="productId" value="${productId}"/>
                         <div class="form-group">
-                            <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.ProductProductId}</label>
+                            <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.ProductProductId}</label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="productId" size="15" maxlength="20" value="${productId}" disabled/>
                             </div>
@@ -162,32 +162,48 @@ under the License.
                     <#else>
                         <input type="hidden" name="isCreate" value="Y"/>
                         <div class="form-group">
-                            <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.ProductProductId}</label>
+                            <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.ProductProductId}</label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" name="productId" size="15" maxlength="20"/>
                             </div>
                         </div>
                     </#if>
                     <div class="form-group">
-                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.ProductProductName} *</label>
+                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.ProductProductName} (${uiLabelMap.PFTEng}) *</label>
                         <div class="col-sm-6">
-                            <input type="text" name="internalName" id="internalName" size="30" maxlength="60" value="${(product.internalName)?default(internalName!)}" class="required form-control"/><span class="tooltip">${uiLabelMap.CommonRequired}</span>
+                            <input type="hidden" name="dataResourceProdENId" value="${dataResourceProdENId!}"/>
+                            <input type="text" name="productName" id="productName" size="30" maxlength="60" value="${StringUtil.wrapString(productName)!}" class="required form-control"/><span class="tooltip">${uiLabelMap.CommonRequired}</span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonDescription}</label>
+                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.ProductProductName} (${uiLabelMap.PFTThai}) *</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" name="description" size="60" maxlength="250" value="${(product.description)?default(description!)}"/>
+                            <input type="hidden" name="dataResourceProdTHId" value="${dataResourceProdTHId!}"/>
+                            <input type="text" name="productNameTH" id="productNameTH" size="30" maxlength="60" value="${StringUtil.wrapString(productNameTH)!}" class="required form-control"/><span class="tooltip">${uiLabelMap.CommonRequired}</span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="brandName" class="col-sm-3 control-label">${uiLabelMap.PFTProductbrandName}</label>
+                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.CommonDescription} (${uiLabelMap.PFTEng}) *</label>
+                        <div class="col-sm-6">
+                            <input type="hidden" name="dataResourceDescENId" value="${dataResourceDescENId!}"/>
+                            <textarea class="required form-control" name="description" rows="6" cols="50">${StringUtil.wrapString(description)!}</textarea><span class="tooltip">${uiLabelMap.CommonRequired}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.CommonDescription} (${uiLabelMap.PFTThai})</label>
+                        <div class="col-sm-6">
+                            <input type="hidden" name="dataResourceDescTHId" value="${dataResourceDescTHId!}"/>
+                            <textarea class="form-control" name="descriptionTH" rows="6" cols="50">${StringUtil.wrapString(descriptionTH)!}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="brandName" class="col-sm-4 control-label">${uiLabelMap.PFTProductbrandName}</label>
                         <div class="col-sm-6">
                             <input type="text" class="form-control" name="brandName" size="30" maxlength="250" value="${(product.brandName)?default(brandName!)}"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.ProductProductCategoryId} *</label>
+                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.ProductProductCategoryId} *</label>
                         <div class="col-sm-6">
                             <select name="productCategoryId" class="required form-control">
                                 <#if productCategoryMember??>
@@ -204,27 +220,27 @@ under the License.
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTPurchasePrice} *</label>
+                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.PFTPurchasePrice} (${uiLabelMap.PFTThaiBaht}) *</label>
                         <div class="col-sm-6">
                             <input type="number" class="form-control required" step='any' placeholder='0.00' min="1" onkeyup="allowOnly2Numeric2Decimal(this)" name="price" id="price" size="8" value="${price?default('')}" class="required"/><span class="tooltip">${uiLabelMap.CommonRequired}</span>
                             <span id="advice-validate-number-defaultPrice" style="display:none;" class="errorMessage"> (${uiLabelMap.CommonPleaseEnterValidNumberInThisField})</span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTSalePrice}</label>
+                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.PFTSalePrice} (${uiLabelMap.PFTThaiBaht})</label>
                         <div class="col-sm-6">
                             <input type="hidden" id="salePrice" name="salePrice" value="${salePrice?default('')}"/>
                             <input type="number" class="form-control required" id="salePriceDisplay" name="salePriceDisplay" placeholder='0.00' value="${salePrice?default('')}" class="required" readonly="readonly"/><span class="tooltip">${uiLabelMap.CommonRequired}</span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTProductWeight} *</label>
+                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.PFTProductWeight} *</label>
                         <div class="col-sm-6">
-                            <input type="number" class="form-control required" step='any' placeholder='0.00' min="1" onkeyup="allowOnly2Numeric2Decimal(this)" name="productWeight" size="8" value="${(product.productWeight)?default(productWeight!)}" class="required form-control"/><span class="tooltip">${uiLabelMap.CommonRequired}</span>
+                            <input type="number" class="form-control required" step='any' placeholder='0.00' min="0.1" onkeyup="allowOnly2Numeric2Decimal(this)" name="productWeight" size="8" value="${(product.productWeight)?default(productWeight!)}" class="required form-control"/><span class="tooltip">${uiLabelMap.CommonRequired}</span>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTUnitOfWeight} *</label>
+                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.PFTUnitOfWeight} *</label>
                         <div class="col-sm-6">
                             <select name="weightUomId" class="required form-control">
                                 <#if product?exists && product.weightUomId?exists>
@@ -244,7 +260,7 @@ under the License.
                     </div>
                     <#-- small image -->
                     <div class="form-group">
-                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.ProductSmallImage}</label>
+                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.ProductSmallImage}</label>
                         <div class="col-sm-6">
                             <div class="browserNotIE">
                                 <div class="imageBlock">
@@ -283,7 +299,7 @@ under the License.
                     </div>
                     <#-- medium image -->
                     <div class="form-group">
-                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.ProductMediumImage}</label>
+                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.ProductMediumImage}</label>
                         <div class="col-sm-6">
                             <div class="browserNotIE">
                                 <div class="imageBlock">
@@ -322,7 +338,7 @@ under the License.
                     </div>
                     <#-- large image -->
                     <div class="form-group">
-                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.ProductLargeImage}</label>
+                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.ProductLargeImage}</label>
                         <div class="col-sm-6">
                             <div class="browserNotIE">
                                 <div class="imageBlock">
@@ -361,7 +377,7 @@ under the License.
                     </div>
                     <#-- Additional image -->
                     <div class="form-group">
-                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTProductAdditionalImages}</label>
+                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.PFTProductAdditionalImages}</label>
                         <div class="col-sm-6">
                             <div class="browserNotIE">
                                 <div class="additionalImageList">
@@ -482,7 +498,7 @@ under the License.
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputFname" class="col-sm-3 control-label"></label>
+                        <label for="inputFname" class="col-sm-4 control-label"></label>
                         <div class="col-sm-6">
                             <input type="submit" name="submit" id="submitButton" value="${uiLabelMap.CommonSubmit}" class="btn btn-main"/>
                             <input type="button" name="backButton" id="backButton" value="${uiLabelMap.CommonGoBack}" class="btn btn-main" onclick="javascript:location.href = '<@ofbizUrl>StoreManagement</@ofbizUrl>';"/>

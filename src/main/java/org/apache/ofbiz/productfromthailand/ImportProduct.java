@@ -376,15 +376,18 @@ public class ImportProduct {
                                 createPDescEnDataResources.add(prepareDataResource(pDescEnDataResourceId, "en", description , userLogin));
                                 pDescEnContents.add(prepareContent(pDescEnContentId, pDescEnDataResourceId, "en", userLogin));
 
-                                if(descriptionTH != null){
+                                //if(descriptionTH != null){
                                     pDescThContentId = pDescThDataResourceId;
                                     createPDescThDataResources.add(prepareDataResource(pDescThDataResourceId, "th", descriptionTH , userLogin));
                                     pDescThContents.add(prepareContent(pDescThContentId, pDescThDataResourceId, "th", userLogin));
-                                    if(pDescEnContentId != null)
+                                    //if(pDescEnContentId != null)
                                         createDescContentAssocs.add(prepareContentAssoc(pDescEnContentId, pDescThContentId, now, userLogin));
-                                }
+                                //}
                                 createDescProductContents.add(prepareProductContent(productId, pDescEnContentId, now, "DESCRIPTION", actionField, userLogin));
                                 pDescCtx.put("productId", productId);
+                            } else {
+                                request.setAttribute("_ERROR_MESSAGE_", "Error Product description is missing.");
+                                return "error";
                             }
 
                         }else if("update".equals(actionField)){

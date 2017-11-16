@@ -33,8 +33,13 @@ under the License.
         <attribute name="toName" type="String" mode="IN" optional="true"/>
         <attribute name="productStoreId" type="String" mode="IN" optional="true"/>
     </service>
+
     <service name="createMissingProductPrice" engine="simple" invoke="createMissingProductPrice" location="component://productfromthailand/minilang/ProductEvents.xml">
         <description>To Create Missing Product Price in Other Currencies</description>
+    </service>
+
+    <service name="createMissingSupplierPrice" engine="simple" invoke="createMissingSupplierPrice" location="component://productfromthailand/minilang/ProductEvents.xml">
+        <description>To Create Missing Supplier Price in Other Currencies</description>
     </service>
 
     <service name="approveSupplier" engine="simple" invoke="approveSupplier" location="component://productfromthailand/minilang/PFTServices.xml">
@@ -42,12 +47,14 @@ under the License.
         <attribute name="partyId" type="String" mode="IN" optional="true"/>
         <attribute name="webSiteId" type="String" mode="IN" optional="true"/>
     </service>
+
     <service name="rejectSupplier" engine="simple" invoke="rejectSupplier" location="component://productfromthailand/minilang/PFTServices.xml">
         <description>Reject Supplier</description>
         <attribute name="partyId" type="String" mode="IN" optional="true"/>
         <attribute name="webSiteId" type="String" mode="IN" optional="true"/>
         <attribute name="reason" type="String" mode="IN" optional="true"/>
     </service>
+
     <service name="sendCustomerConfirmationEmail" engine="simple" location="component://productfromthailand/minilang/customer/CustomerEvents.xml" invoke="sendCustomerConfirmationEmail">
         <description>Send ContactListParty Verify Email</description>
         <attribute name="emailAddress" type="String" mode="IN" optional="false"/>
@@ -94,5 +101,11 @@ under the License.
         <description>Calculate sale price</description>
         <attribute name="purchasePrice" type="BigDecimal" mode="IN" optional="false"/>
         <attribute name="salePrice" type="BigDecimal" mode="OUT" optional="false"/>
+    </service>
+
+    <service name="createUpdateSupplierProductOtherCurrencies" engine="groovy" location="component://productfromthailand/groovyScripts/PFTServices.groovy" invoke="createUpdateSupplierProductOtherCurrencies">
+        <description>Create Update Supplier Product Price in Other Currencies</description>
+        <attribute name="productId" type="String" mode="IN" optional="false"/>
+        <attribute name="lastPrice" type="BigDecimal" mode="IN" optional="false"/>
     </service>
 </services>

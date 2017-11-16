@@ -26,6 +26,7 @@ import org.apache.ofbiz.base.util.string.*;
 import org.apache.ofbiz.product.image.ScaleImage;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.product.category.CategoryWorker
+import org.apache.ofbiz.product.product.ProductContentWrapper
 
 webSite = from('WebSite').where('webSiteId', webSiteId).queryOne();
 if (webSite) {
@@ -52,15 +53,63 @@ if (product) {
     }
 
     supplierProduct = from("SupplierProduct")
-                .where('partyId', userLogin.partyId, 'productId', parameters.productId)
+                .where('partyId', userLogin.partyId, 'productId', parameters.productId, "currencyUomId", context.currencyUomId)
                 .queryFirst()
     if (supplierProduct) {
         context.price = supplierProduct.lastPrice;
     }
 
-    productPrice = from("ProductPrice").where("productId", parameters.productId, "productPriceTypeId", "DEFAULT_PRICE", "productPricePurposeId", "PURCHASE").filterByDate().queryFirst()
+    productPrice = from("ProductPrice").where("productId", parameters.productId, "productPriceTypeId", "DEFAULT_PRICE", "productPricePurposeId", "PURCHASE", "currencyUomId", context.currencyUomId).filterByDate().queryFirst()
     if (productPrice) {
         context.salePrice = productPrice.price;
+    }
+
+    productContentAndInfo = from("ProductContentAndInfo").where('productId', product.productId, 'productContentTypeId', 'PRODUCT_NAME').filterByDate().queryFirst()
+    if (productContentAndInfo) {
+        contentAssoc = from("ContentAssoc").where('contentId', productContentAndInfo.contentId).filterByDate().queryFirst()
+        if (contentAssoc) {
+            serviceInMap = [:]
+            serviceInMap.contentId = contentAssoc.contentId
+            resultMap = runService("getContentAndDataResource", serviceInMap)
+            localeString = resultMap.resultData.content.localeString
+            if (localeString.equals("en")) {
+                context.dataResourceProdENId = resultMap.resultData.electronicText.dataResourceId
+                context.productName = resultMap.resultData.electronicText.textData
+            }
+            serviceInMap.clear();
+            serviceInMap.contentId = contentAssoc.contentIdTo
+            resultMap = runService("getContentAndDataResource", serviceInMap)
+            localeString = resultMap.resultData.content.localeString
+            if (localeString.equals("th")) {
+                context.dataResourceProdTHId = resultMap.resultData.electronicText.dataResourceId
+                context.productNameTH = resultMap.resultData.electronicText.textData
+            }
+        }
+    }
+
+    productContentAndInfo = from("ProductContentAndInfo").where('productId', product.productId, 'productContentTypeId', 'DESCRIPTION').filterByDate().queryFirst()
+    if (productContentAndInfo) {
+        contentAssoc = from("ContentAssoc").where('contentId', productContentAndInfo.contentId).filterByDate().queryFirst()
+        if (contentAssoc) {
+            serviceInMap = [:]
+            serviceInMap.contentId = contentAssoc.contentId
+            resultMap = runService("getContentAndDataResource", serviceInMap)
+            localeString = resultMap.resultData.content.localeString
+            electronicText = resultMap.resultData.electronicText
+            if (localeString.equals("en") && electronicText) {
+                context.dataResourceDescENId = resultMap.resultData.electronicText.dataResourceId
+                context.description = resultMap.resultData.electronicText.textData
+            }
+            serviceInMap.clear();
+            serviceInMap.contentId = contentAssoc.contentIdTo
+            resultMap = runService("getContentAndDataResource", serviceInMap)
+            localeString = resultMap.resultData.content.localeString
+            electronicText = resultMap.resultData.electronicText
+            if (localeString.equals("th") && electronicText) {
+                context.dataResourceDescTHId = resultMap.resultData.electronicText.dataResourceId
+                context.descriptionTH = resultMap.resultData.electronicText.textData
+            }
+        }
     }
 
     //Get Images

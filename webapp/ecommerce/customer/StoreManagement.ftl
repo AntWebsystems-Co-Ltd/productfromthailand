@@ -105,6 +105,7 @@ under the License.
                     <td colspan="3" class="text-center">${uiLabelMap.ProductProductNameId}</td>
                     <td class="text-center">${uiLabelMap.CommonFromDateTime}</td>
                     <td class="text-center">${uiLabelMap.SupplierProductPrice}</td>
+                    <td class="text-center">${uiLabelMap.PFTSalePrice}</td>
                   </tr>
               </thead>
               <tbody>
@@ -127,10 +128,22 @@ under the License.
                               <a href="<@ofbizUrl>EditProduct?productId=${(supplierProduct.productId)?if_exists}</@ofbizUrl>"><img alt="Small Image" src="<@ofbizContentUrl>${(product.smallImageUrl)?default("/pft-default/images/defaultImage.jpg")}</@ofbizContentUrl>" height="80" width="80" align="middle"></a>
                             <a href="<@ofbizUrl>EditProduct?productId=${(supplierProduct.productId)?if_exists}</@ofbizUrl>" class="btn btn-main"><#if product?exists>${(product.internalName)?if_exists}</#if> [${(supplierProduct.productId)?if_exists}]</a>
                           </td>
-                          <td class="text-center" <#if hasntStarted> style="color: red;"</#if>>${(product.createdDate)?if_exists}</td>
+                          <td class="text-center" <#if hasntStarted> style="color: red;"</#if>>${(product.createdDate?string.medium)?if_exists}</td>
                           <td class="text-center">
                             <span><div><@ofbizCurrency amount=supplierProduct.lastPrice isoCode=supplierProduct.currencyUomId/></div></span>
                             <input type="hidden" name="productId${suffix}" value="${(supplierProduct.productId)?if_exists}">
+                          </td>
+                          <td class="text-center">
+                            <#assign webSite = EntityQuery.use(delegator).from("WebSite").where("webSiteId", webSiteId).queryOne()!>
+                            <#if webSite?has_content>
+                              <#assign productStore = EntityQuery.use(delegator).from("ProductStore").where("productStoreId", webSite.productStoreId).queryOne()!>
+                              <#if productStore?has_content>
+                                <#assign productPrice = EntityQuery.use(delegator).from("ProductPrice").where("productId", supplierProduct.productId, "productPriceTypeId", "DEFAULT_PRICE", "productPricePurposeId", "PURCHASE", "currencyUomId", productStore.defaultCurrencyUomId).filterByDate().queryFirst()!>
+                                <#if productPrice?has_content>
+                                  <span><div><@ofbizCurrency amount=productPrice.price isoCode=productPrice.currencyUomId/></div></span>
+                                </#if>
+                              </#if>
+                            </#if>
                           </td>
                         </tr>
                       </form>

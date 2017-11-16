@@ -188,150 +188,144 @@ under the License.
         productIdTo="CR10000-RG" quantity="1.0" reason=""/>
 
     <ProductCategoryMember productCategoryId="COFFEE-CAT" productId="CR10000" sequenceNum="1" fromDate="2017-10-09 00:00:00.000"/>
-    <ProductPrice productId="CR10000" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="200.00" createdDate="2017-10-09 00:00:00.000" />
-    <ProductPrice productId="CR10000" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="8.00" createdDate="2017-10-09 00:00:00.000" />
+    <ProductPrice productId="CR10000" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="235.94" createdDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10000" lastPrice="200.00" supplierProductId="SP-COFFEE" supplierProductName="CAREEL Coffee" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
 
-    <DataResource dataResourceId="CR10000TH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="CR10000EN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    <ElectronicText dataResourceId="CR10000TH" textData="กาแฟ คารีล คอฟฟี่"/>
-    <ElectronicText dataResourceId="CR10000EN" textData="CAREEL Coffee"/>
-    <Content contentId="CR10000TH" contentTypeId="DOCUMENT" dataResourceId="CR10000TH" description="PRODUCT NAME TH CAREEL Coffee" localeString="th"/>
-    <Content contentId="CR10000EN" contentTypeId="DOCUMENT" dataResourceId="CR10000EN" description="PRODUCT NAME EN CAREEL Coffee" localeString="en"/>
-    <ProductContent productId="CR10000" contentId="CR10000EN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
-    <ContentAssoc contentId="CR10000EN" contentIdTo="CR10000TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+    <DataResource dataResourceId="CR10000-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10000-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10000-PNAMETH" textData="กาแฟ คารีล คอฟฟี่"/>
+    <ElectronicText dataResourceId="CR10000-PNAMEEN" textData="CAREEL Coffee"/>
+    <Content contentId="CR10000-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10000-PNAMETH" description="PRODUCT NAME TH CAREEL Coffee" localeString="th"/>
+    <Content contentId="CR10000-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10000-PNAMEEN" description="PRODUCT NAME EN CAREEL Coffee" localeString="en"/>
+    <ProductContent productId="CR10000" contentId="CR10000-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10000-PNAMEEN" contentIdTo="CR10000-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
-    <DataResource dataResourceId="CR10000TH_1" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="CR10000EN_1" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    <ElectronicText dataResourceId="CR10000TH_1" textData="กาแฟสด อราบีก้า จากไร่ออแกนิกส์ 100% (ปลูกแซมป่า) กาแฟเกรดสูง คุณภาพกาแฟและความหอมที่เลื่องลือ เราคั่วใหม่เสมอ เพื่อคอกาแฟแท้ ทั้งชนิดเม็ดและบด"/>
-    <ElectronicText dataResourceId="CR10000EN_1" textData="CAREEL Coffee Arabica shade grown 100%. Single origin from Bakker's farm at DOI CHAANG CHIANGMAI, we make sure our customer get only the best and fresh coffee from our farm."/>
-    <Content contentId="CR10000TH_1" contentTypeId="DOCUMENT" dataResourceId="CR10000TH_1" description="DESCRIPTION TH CAREEL Coffee" localeString="th"/>
-    <Content contentId="CR10000EN_1" contentTypeId="DOCUMENT" dataResourceId="CR10000EN_1" description="DESCRIPTION EN CAREEL Coffee" localeString="en"/>
-    <ProductContent productId="CR10000" contentId="CR10000EN_1" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
-    <ContentAssoc contentId="CR10000EN_1" contentIdTo="CR10000TH_1" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+    <DataResource dataResourceId="CR10000-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10000-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10000-DESCTH" textData="กาแฟสด อราบีก้า จากไร่ออแกนิกส์ 100% (ปลูกแซมป่า) กาแฟเกรดสูง คุณภาพกาแฟและความหอมที่เลื่องลือ เราคั่วใหม่เสมอ เพื่อคอกาแฟแท้ ทั้งชนิดเม็ดและบด"/>
+    <ElectronicText dataResourceId="CR10000-DESCEN" textData="CAREEL Coffee Arabica shade grown 100%. Single origin from Bakker's farm at DOI CHAANG CHIANGMAI, we make sure our customer get only the best and fresh coffee from our farm."/>
+    <Content contentId="CR10000-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10000-DESCTH" description="DESCRIPTION TH CAREEL Coffee" localeString="th"/>
+    <Content contentId="CR10000-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10000-DESCEN" description="DESCRIPTION EN CAREEL Coffee" localeString="en"/>
+    <ProductContent productId="CR10000" contentId="CR10000-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10000-DESCEN" contentIdTo="CR10000-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
     <!-- CR10001: L-carnitine -->
     <Product productId="CR10001" productName="CAREEL L-carnitine Complex" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="CAREEL L-carnitine Complex" inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="N" isVirtual="N" orderDecimalQuantity="N" requirementMethodEnumId="PRODRQM_DS"/>
     <ProductCategoryMember productCategoryId="HEALTHANDBEAUTY" productId="CR10001" sequenceNum="1" fromDate="2017-10-09 00:00:00.000"/>
-    <ProductPrice productId="CR10001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="200.00" createdDate="2017-10-09 00:00:00.000" />
-    <ProductPrice productId="CR10001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="8.00" createdDate="2017-10-09 00:00:00.000" />
+    <ProductPrice productId="CR10001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="235.94" createdDate="2017-10-09 00:00:00.000" />
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10001" lastPrice="200.00" supplierProductId="SP-LCA" supplierProductName="CAREEL L-carnatine Complex" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
 
-    <DataResource dataResourceId="CR10001TH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="CR10001EN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    <ElectronicText dataResourceId="CR10001TH" textData="คารีล"/>
-    <ElectronicText dataResourceId="CR10001EN" textData="L-carnitine"/>
-    <Content contentId="CR10001TH" contentTypeId="DOCUMENT" dataResourceId="CR10001TH" description="PRODUCT NAME TH CAREEL L-carnitine Complex" localeString="th"/>
-    <Content contentId="CR10001EN" contentTypeId="DOCUMENT" dataResourceId="CR10001EN" description="PRODUCT NAME EN CAREEL L-carnitine Complex" localeString="en"/>
-    <ProductContent productId="CR10001" contentId="CR10001EN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
-    <ContentAssoc contentId="CR10001EN" contentIdTo="CR10001TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+    <DataResource dataResourceId="CR10001-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10001-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10001-PNAMETH" textData="คารีล"/>
+    <ElectronicText dataResourceId="CR10001-PNAMEEN" textData="L-carnitine"/>
+    <Content contentId="CR10001-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10001-PNAMETH" description="PRODUCT NAME TH CAREEL L-carnitine Complex" localeString="th"/>
+    <Content contentId="CR10001-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10001-PNAMEEN" description="PRODUCT NAME EN CAREEL L-carnitine Complex" localeString="en"/>
+    <ProductContent productId="CR10001" contentId="CR10001-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10001-PNAMEEN" contentIdTo="CR10001-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
-    <DataResource dataResourceId="CR10001TH_1" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="CR10001EN_1" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    <ElectronicText dataResourceId="CR10001TH_1" textData="อาหารเสริม แอลคาร์นิทีน คอมเพล็กซ์ จากธรรมชาติ"/>
-    <ElectronicText dataResourceId="CR10001EN_1" textData="CAREEL L-carnitine Complex 30+"/>
-    <Content contentId="CR10001TH_1" contentTypeId="DOCUMENT" dataResourceId="CR10001TH_1" description="DESCRIPTION TH CAREEL L-carnitine Complex" localeString="th"/>
-    <Content contentId="CR10001EN_1" contentTypeId="DOCUMENT" dataResourceId="CR10001EN_1" description="DESCRIPTION EN CAREEL L-carnitine Complex" localeString="en"/>
-    <ProductContent productId="CR10001" contentId="CR10001EN_1" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
-    <ContentAssoc contentId="CR10001EN_1" contentIdTo="CR10001TH_1" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+    <DataResource dataResourceId="CR10001-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10001-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10001-DESCTH" textData="อาหารเสริม แอลคาร์นิทีน คอมเพล็กซ์ จากธรรมชาติ"/>
+    <ElectronicText dataResourceId="CR10001-DESCEN" textData="CAREEL L-carnitine Complex 30+"/>
+    <Content contentId="CR10001-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10001-DESCTH" description="DESCRIPTION TH CAREEL L-carnitine Complex" localeString="th"/>
+    <Content contentId="CR10001-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10001-DESCEN" description="DESCRIPTION EN CAREEL L-carnitine Complex" localeString="en"/>
+    <ProductContent productId="CR10001" contentId="CR10001-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10001-DESCEN" contentIdTo="CR10001-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
     <!-- CR10002: Scarf made of Batik Silk-->
     <Product productId="CR10002" productName="Scarf made of Batik Silk" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="Scarf made of Batik Silk" inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="N" isVirtual="N" orderDecimalQuantity="N" requirementMethodEnumId="PRODRQM_DS"/>
     <ProductCategoryMember productCategoryId="THAISILK" productId="CR10002" sequenceNum="1" fromDate="2017-10-09 00:00:00.000"/>
-    <ProductPrice productId="CR10002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="2439.00" createdDate="2017-10-09 00:00:00.000" />
-    <ProductPrice productId="CR10002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="69.9" createdDate="2017-10-09 00:00:00.000" />
+    <ProductPrice productId="CR10002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="2877.23" createdDate="2017-10-09 00:00:00.000" />
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10002" lastPrice="2439.00" supplierProductId="SP-SCF" supplierProductName="Scarf made of Batik Silk" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
 
-    <DataResource dataResourceId="CR10002TH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="CR10002EN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    <ElectronicText dataResourceId="CR10002TH" textData="ผ้าพันคอ"/>
-    <ElectronicText dataResourceId="CR10002EN" textData="Scarf made of Batik Silk"/>
-    <Content contentId="CR10002TH" contentTypeId="DOCUMENT" dataResourceId="CR10002TH" description="PRODUCT NAME TH Scarf made of Batik Silk" localeString="th"/>
-    <Content contentId="CR10002EN" contentTypeId="DOCUMENT" dataResourceId="CR10002EN" description="PRODUCT NAME TH Scarf made of Batik Silk" localeString="en"/>
-    <ProductContent productId="CR10002" contentId="CR10002EN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
-    <ContentAssoc contentId="CR10002EN" contentIdTo="CR10002TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+    <DataResource dataResourceId="CR10002-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10002-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10002-PNAMETH" textData="ผ้าพันคอ"/>
+    <ElectronicText dataResourceId="CR10002-PNAMEEN" textData="Scarf made of Batik Silk"/>
+    <Content contentId="CR10002-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10002-PNAMETH" description="PRODUCT NAME TH Scarf made of Batik Silk" localeString="th"/>
+    <Content contentId="CR10002-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10002-PNAMEEN" description="PRODUCT NAME TH Scarf made of Batik Silk" localeString="en"/>
+    <ProductContent productId="CR10002" contentId="CR10002-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10002-PNAMEEN" contentIdTo="CR10002-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
-    <DataResource dataResourceId="CR10002TH_1" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="CR10002EN_1" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    <ElectronicText dataResourceId="CR10002TH_1" textData="ผ้าพันคอ ผ้าไหมบาติก งานฝีมือสินค้าไทยแท้"/>
-    <ElectronicText dataResourceId="CR10002EN_1" textData="'Scarf made of Batik Silk' The authentic Thai product from the south of Thailand and HANDMADE."/>
-    <Content contentId="CR10002TH_1" contentTypeId="DOCUMENT" dataResourceId="CR10002TH_1" description="DESCRIPTION TH Shawl made of Batik Silk" localeString="th"/>
-    <Content contentId="CR10002EN_1" contentTypeId="DOCUMENT" dataResourceId="CR10002EN_1" description="DESCRIPTION EN Shawl made of Batik Silk" localeString="en"/>
-    <ProductContent productId="CR10002" contentId="CR10002EN_1" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
-    <ContentAssoc contentId="CR10002EN_1" contentIdTo="CR10002TH_1" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+    <DataResource dataResourceId="CR10002-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10002-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10002-DESCTH" textData="ผ้าพันคอ ผ้าไหมบาติก งานฝีมือสินค้าไทยแท้"/>
+    <ElectronicText dataResourceId="CR10002-DESCEN" textData="'Scarf made of Batik Silk' The authentic Thai product from the south of Thailand and HANDMADE."/>
+    <Content contentId="CR10002-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10002-DESCTH" description="DESCRIPTION TH Shawl made of Batik Silk" localeString="th"/>
+    <Content contentId="CR10002-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10002-DESCEN" description="DESCRIPTION EN Shawl made of Batik Silk" localeString="en"/>
+    <ProductContent productId="CR10002" contentId="CR10002-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10002-DESCEN" contentIdTo="CR10002-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
     <!-- CR10003: Shawl made of Batik Silk-->
     <Product productId="CR10003" productName="Shawl made of Batik Silk" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="Shawl made of Batik Silk" inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="N" isVirtual="N" orderDecimalQuantity="N" requirementMethodEnumId="PRODRQM_DS"/>
     <ProductCategoryMember productCategoryId="THAISILK" productId="CR10003" sequenceNum="1" fromDate="2017-10-09 00:00:00.000"/>
-    <ProductPrice productId="CR10003" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="2789.00" createdDate="2017-10-09 00:00:00.000" />
-    <ProductPrice productId="CR10003" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="79.9" createdDate="2017-10-09 00:00:00.000" />
+    <ProductPrice productId="CR10003" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="3290.11" createdDate="2017-10-09 00:00:00.000" />
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10003" lastPrice="2789.00" supplierProductId="SP-SHW" supplierProductName="Shawl made of Batik Silk" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
 
-    <DataResource dataResourceId="CR10003TH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="CR10003EN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    <ElectronicText dataResourceId="CR10003TH" textData="ผ้าคลุมไหล่"/>
-    <ElectronicText dataResourceId="CR10003EN" textData="Shawl made of Batik Silk"/>
-    <Content contentId="CR10003TH" contentTypeId="DOCUMENT" dataResourceId="CR10003TH" description="PRODUCT NAME TH Shawl made of Batik Silk" localeString="th"/>
-    <Content contentId="CR10003EN" contentTypeId="DOCUMENT" dataResourceId="CR10003EN" description="PRODUCT NAME TH Shawl made of Batik Silk" localeString="en"/>
-    <ProductContent productId="CR10003" contentId="CR10003EN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
-    <ContentAssoc contentId="CR10003EN" contentIdTo="CR10003TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+    <DataResource dataResourceId="CR10003-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10003-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10003-PNAMETH" textData="ผ้าคลุมไหล่"/>
+    <ElectronicText dataResourceId="CR10003-PNAMEEN" textData="Shawl made of Batik Silk"/>
+    <Content contentId="CR10003-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10003-PNAMETH" description="PRODUCT NAME TH Shawl made of Batik Silk" localeString="th"/>
+    <Content contentId="CR10003-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10003-PNAMEEN" description="PRODUCT NAME TH Shawl made of Batik Silk" localeString="en"/>
+    <ProductContent productId="CR10003" contentId="CR10003-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10003-PNAMEEN" contentIdTo="CR10003-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
-    <DataResource dataResourceId="CR10003TH_1" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="CR10003EN_1" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    <ElectronicText dataResourceId="CR10003TH_1" textData="ผ้าคลุมไหล่ ผ้าไหมบาติก งานฝีมือสินค้าไทยแท้"/>
-    <ElectronicText dataResourceId="CR10003EN_1" textData="'Shawl made of Batik Silk' The authentic Thai product from the south of Thailand and HANDMADE."/>
-    <Content contentId="CR10003TH_1" contentTypeId="DOCUMENT" dataResourceId="CR10003TH_1" description="DESCRIPTION TH Shawl made of Batik Silk" localeString="th"/>
-    <Content contentId="CR10003EN_1" contentTypeId="DOCUMENT" dataResourceId="CR10003EN_1" description="DESCRIPTION EN Shawl made of Batik Silk" localeString="en"/>
-    <ProductContent productId="CR10003" contentId="CR10003EN_1" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
-    <ContentAssoc contentId="CR10003EN_1" contentIdTo="CR10003TH_1" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+    <DataResource dataResourceId="CR10003-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10003-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10003-DESCTH" textData="ผ้าคลุมไหล่ ผ้าไหมบาติก งานฝีมือสินค้าไทยแท้"/>
+    <ElectronicText dataResourceId="CR10003-DESCEN" textData="'Shawl made of Batik Silk' The authentic Thai product from the south of Thailand and HANDMADE."/>
+    <Content contentId="CR10003-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10003-DESCTH" description="DESCRIPTION TH Shawl made of Batik Silk" localeString="th"/>
+    <Content contentId="CR10003-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10003-DESCEN" description="DESCRIPTION EN Shawl made of Batik Silk" localeString="en"/>
+    <ProductContent productId="CR10003" contentId="CR10003-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10003-DESCEN" contentIdTo="CR10003-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
     <!-- CR10004: CAREEL Bird's Nest White Ultimate -->
     <Product productId="CR10004" productName="CAREEL Bird's Nest White Ultimate" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="CAREEL Bird's Nest White Ultimate" inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="N" isVirtual="N" orderDecimalQuantity="N" requirementMethodEnumId="PRODRQM_DS"/>
     <ProductCategoryMember productCategoryId="HEALTHANDBEAUTY" productId="CR10004" sequenceNum="1" fromDate="2017-10-09 00:00:00.000"/>
-    <ProductPrice productId="CR10004" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="350.00" createdDate="2017-10-09 00:00:00.000" />
-    <ProductPrice productId="CR10004" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="13.9" createdDate="2017-10-09 00:00:00.000" />
+    <ProductPrice productId="CR10004" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="412.89" createdDate="2017-10-09 00:00:00.000" />
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10004" lastPrice="350.00" supplierProductId="SP-SOAP" supplierProductName="CAREEL Bird's Nest White Ultimate" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
 
-    <DataResource dataResourceId="CR10004TH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="CR10004EN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    <ElectronicText dataResourceId="CR10004TH" textData="สบู่รังนกแท้"/>
-    <ElectronicText dataResourceId="CR10004EN" textData="CAREEL Bird's Nest White Ultimate"/>
-    <Content contentId="CR10004TH" contentTypeId="DOCUMENT" dataResourceId="CR10004TH" description="PRODUCT NAME TH CAREEL Bird's Nest White Ultimate" localeString="th"/>
-    <Content contentId="CR10004EN" contentTypeId="DOCUMENT" dataResourceId="CR10004EN" description="PRODUCT NAME TH CAREEL Bird's Nest White Ultimate" localeString="en"/>
-    <ProductContent productId="CR10004" contentId="CR10004EN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
-    <ContentAssoc contentId="CR10004EN" contentIdTo="CR10004TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+    <DataResource dataResourceId="CR10004-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10004-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10004-PNAMETH" textData="สบู่รังนกแท้"/>
+    <ElectronicText dataResourceId="CR10004-PNAMEEN" textData="CAREEL Bird's Nest White Ultimate"/>
+    <Content contentId="CR10004-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10004-PNAMETH" description="PRODUCT NAME TH CAREEL Bird's Nest White Ultimate" localeString="th"/>
+    <Content contentId="CR10004-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10004-PNAMEEN" description="PRODUCT NAME TH CAREEL Bird's Nest White Ultimate" localeString="en"/>
+    <ProductContent productId="CR10004" contentId="CR10004-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10004-PNAMEEN" contentIdTo="CR10004-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
-    <DataResource dataResourceId="CR10004TH_1" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="CR10004EN_1" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    <ElectronicText dataResourceId="CR10004TH_1" textData="สบู่รังนกแท้"/>
-    <ElectronicText dataResourceId="CR10004EN_1" textData="Natural Soap from bird's nest and extract tea, Collagen + Vitamin B3"/>
-    <Content contentId="CR10004TH_1" contentTypeId="DOCUMENT" dataResourceId="CR10004TH_1" description="DESCRIPTION TH ฺCAREEL Bird's Nest White Ultimate" localeString="th"/>
-    <Content contentId="CR10004EN_1" contentTypeId="DOCUMENT" dataResourceId="CR10004EN_1" description="DESCRIPTION EN ฺCAREEL Bird's Nest White Ultimate" localeString="en"/>
-    <ProductContent productId="CR10004" contentId="CR10004EN_1" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
-    <ContentAssoc contentId="CR10004EN_1" contentIdTo="CR10004TH_1" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+    <DataResource dataResourceId="CR10004-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10004-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10004-DESCTH" textData="สบู่รังนกแท้"/>
+    <ElectronicText dataResourceId="CR10004-DESCEN" textData="Natural Soap from bird's nest and extract tea, Collagen + Vitamin B3"/>
+    <Content contentId="CR10004-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10004-DESCTH" description="DESCRIPTION TH ฺCAREEL Bird's Nest White Ultimate" localeString="th"/>
+    <Content contentId="CR10004-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10004-DESCEN" description="DESCRIPTION EN ฺCAREEL Bird's Nest White Ultimate" localeString="en"/>
+    <ProductContent productId="CR10004" contentId="CR10004-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10004-DESCEN" contentIdTo="CR10004-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
     <!-- CR10005: CAREEL Natural -->
     <Product productId="CR10005" productName="CAREEL Natural" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="CAREEL Natural" inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="N" isVirtual="N" orderDecimalQuantity="N" requirementMethodEnumId="PRODRQM_DS"/>
     <ProductCategoryMember productCategoryId="HEALTHANDBEAUTY" productId="CR10005" sequenceNum="1" fromDate="2017-10-09 00:00:00.000"/>
-    <ProductPrice productId="CR10005" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="235.00" createdDate="2017-10-09 00:00:00.000" />
-    <ProductPrice productId="CR10005" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="8.9" createdDate="2017-10-09 00:00:00.000" />
+    <ProductPrice productId="CR10005" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="277.22" createdDate="2017-10-09 00:00:00.000" />
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10005" lastPrice="235.00" supplierProductId="SP-NATURAL" supplierProductName="CAREEL Natural" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
 
-    <DataResource dataResourceId="CR10005TH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="CR10005EN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    <ElectronicText dataResourceId="CR10005TH" textData="คารีล เนเจอรัล"/>
-    <ElectronicText dataResourceId="CR10005EN" textData="CAREEL Natural"/>
-    <Content contentId="CR10005TH" contentTypeId="DOCUMENT" dataResourceId="CR10005TH" description="PRODUCT NAME TH CAREEL NATURAL" localeString="th"/>
-    <Content contentId="CR10005EN" contentTypeId="DOCUMENT" dataResourceId="CR10005EN" description="PRODUCT NAME TH CAREEL NATURAL" localeString="en"/>
-    <ProductContent productId="CR10005" contentId="CR10005EN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
-    <ContentAssoc contentId="CR10005EN" contentIdTo="CR10005TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+    <DataResource dataResourceId="CR10005-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10005-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10005-PNAMETH" textData="คารีล เนเจอรัล"/>
+    <ElectronicText dataResourceId="CR10005-PNAMEEN" textData="CAREEL Natural"/>
+    <Content contentId="CR10005-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10005-PNAMETH" description="PRODUCT NAME TH CAREEL NATURAL" localeString="th"/>
+    <Content contentId="CR10005-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10005-PNAMEEN" description="PRODUCT NAME TH CAREEL NATURAL" localeString="en"/>
+    <ProductContent productId="CR10005" contentId="CR10005-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10005-PNAMEEN" contentIdTo="CR10005-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
-    <DataResource dataResourceId="CR10005TH_1" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
-    <DataResource dataResourceId="CR10005EN_1" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    <ElectronicText dataResourceId="CR10005TH_1" textData="ครีมทาผิวผสมสารสกัดจากว่าหางจระเข้และมะคาเดเมีย"/>
-    <ElectronicText dataResourceId="CR10005EN_1" textData="Body lotion the secret to balance your skin"/>
-    <Content contentId="CR10005TH_1" contentTypeId="DOCUMENT" dataResourceId="CR10005TH_1" description="DESCRIPTION TH CAREEL NATURAL" localeString="th"/>
-    <Content contentId="CR10005EN_1" contentTypeId="DOCUMENT" dataResourceId="CR10005EN_1" description="DESCRIPTION EN CAREEL NATURAL" localeString="en"/>
-    <ProductContent productId="CR10005" contentId="CR10005EN_1" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
-    <ContentAssoc contentId="CR10005EN_1" contentIdTo="CR10005TH_1" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+    <DataResource dataResourceId="CR10005-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10005-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10005-DESCTH" textData="ครีมทาผิวผสมสารสกัดจากว่าหางจระเข้และมะคาเดเมีย"/>
+    <ElectronicText dataResourceId="CR10005-DESCEN" textData="Body lotion the secret to balance your skin"/>
+    <Content contentId="CR10005-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10005-DESCTH" description="DESCRIPTION TH CAREEL NATURAL" localeString="th"/>
+    <Content contentId="CR10005-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10005-DESCEN" description="DESCRIPTION EN CAREEL NATURAL" localeString="en"/>
+    <ProductContent productId="CR10005" contentId="CR10005-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10005-DESCEN" contentIdTo="CR10005-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 </entity-engine-xml>

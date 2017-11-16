@@ -56,75 +56,322 @@
     <UserLoginSecurityGroup groupId="MYPORTAL_SUPPLIER" userLoginId="demoSupplier02" fromDate="2009-09-25 00:00:00.000"/>
 
     <!-- Product from Demo Supplier 01 -->
-    <Product productId="INSTANTTEA" productTypeId="FINISHED_GOOD" internalName="Instant Tea" productName="Instant Tea" brandName="Supplier Product 01" description="Instant Tea Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="SEASONING" productTypeId="FINISHED_GOOD" internalName="Seasoning" productName="Seasoning" brandName="Supplier Product 01" description="Seasoning Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="TEA" productTypeId="FINISHED_GOOD" internalName="Tea" productName="Tea" brandName="Supplier Product 01" description="GREEN TEA, OOLONG TEA, PUERS TEA, ORGANIC TEA" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="THAISPICES" productTypeId="FINISHED_GOOD" internalName="Thai Spices" productName="Thai Spices" brandName="Supplier Product 01" description="Thai Spices Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="INSTANTTEA" productTypeId="FINISHED_GOOD" internalName="Instant Tea" productName="Instant Tea" brandName="Supplier Product 01" description="Instant Tea Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS" productWeight="200.000000" weightUomId="WT_g"/>
+    <Product productId="SEASONING" productTypeId="FINISHED_GOOD" internalName="Seasoning" productName="Seasoning" brandName="Supplier Product 01" description="Seasoning Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS" productWeight="250.000000" weightUomId="WT_g"/>
+    <Product productId="TEA" productTypeId="FINISHED_GOOD" internalName="Tea" productName="Tea" brandName="Supplier Product 01" description="GREEN TEA, OOLONG TEA, PUERS TEA, ORGANIC TEA" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS" productWeight="300.000000" weightUomId="WT_g"/>
+    <Product productId="THAISPICES" productTypeId="FINISHED_GOOD" internalName="Thai Spices" productName="Thai Spices" brandName="Supplier Product 01" description="Thai Spices Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS" productWeight="350.000000" weightUomId="WT_g"/>
     <ProductCategoryMember productCategoryId="HEALTHANDBEAUTY" productId="INSTANTTEA" sequenceNum="1" fromDate="2009-09-25 00:00:00.000"/>
     <ProductCategoryMember productCategoryId="CRAFTANDGIFT" productId="SEASONING" sequenceNum="2" fromDate="2009-09-25 00:00:00.000"/>
     <ProductCategoryMember productCategoryId="HEALTHANDBEAUTY" productId="TEA" sequenceNum="3" fromDate="2009-09-25 00:00:00.000"/>
     <ProductCategoryMember productCategoryId="CRAFTANDGIFT" productId="THAISPICES" sequenceNum="4" fromDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="INSTANTTEA" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="10.50" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="INSTANTTEA" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="350" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="SEASONING" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="11.50" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="SEASONING" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="385" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="TEA" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="15.00" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="TEA" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="500" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="THAISPICES" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="13.99" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="THAISPICES" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="468" createdDate="2009-09-25 00:00:00.000"/>
-    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="INSTANTTEA" lastPrice="5.0" supplierProductId="TVK-INSTANTTEA" supplierProductName="TAVEEKUN INSTANTTEA" availableFromDate="2009-09-25 00:00:00.000"/>
-    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="SEASONING" lastPrice="5.0" supplierProductId="TVK-SEASONING" supplierProductName="TAVEEKUN SEASONING" availableFromDate="2009-09-25 00:00:00.000"/>
-    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="TEA" lastPrice="5.0" supplierProductId="TVK-TEA" supplierProductName="TAVEEKUN TEA" availableFromDate="2009-09-25 00:00:00.000"/>
-    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="THAISPICES" lastPrice="5.0" supplierProductId="TVK-THAISPICES" supplierProductName="TAVEEKUN THAISPICES" availableFromDate="2009-09-25 00:00:00.000"/>
+    <ProductPrice productId="INSTANTTEA" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="412.89" createdDate="2009-09-25 00:00:00.000"/>
+    <ProductPrice productId="SEASONING" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="454.17" createdDate="2009-09-25 00:00:00.000"/>
+    <ProductPrice productId="TEA" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="589.84" createdDate="2009-09-25 00:00:00.000"/>
+    <ProductPrice productId="THAISPICES" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="552.09" createdDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="THB" canDropShip="Y" productId="INSTANTTEA" lastPrice="350.0" supplierProductId="TVK-INSTANTTEA" supplierProductName="TAVEEKUN INSTANTTEA" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="THB" canDropShip="Y" productId="SEASONING" lastPrice="385.0" supplierProductId="TVK-SEASONING" supplierProductName="TAVEEKUN SEASONING" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="THB" canDropShip="Y" productId="TEA" lastPrice="500.0" supplierProductId="TVK-TEA" supplierProductName="TAVEEKUN TEA" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="THB" canDropShip="Y" productId="THAISPICES" lastPrice="468.0" supplierProductId="TVK-THAISPICES" supplierProductName="TAVEEKUN THAISPICES" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="EUR" canDropShip="Y" productId="INSTANTTEA" lastPrice="9.0" supplierProductId="TVK-INSTANTTEA" supplierProductName="TAVEEKUN INSTANTTEA" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="EUR" canDropShip="Y" productId="SEASONING" lastPrice="9.902" supplierProductId="TVK-SEASONING" supplierProductName="TAVEEKUN SEASONING" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="EUR" canDropShip="Y" productId="TEA" lastPrice="12.858" supplierProductId="TVK-TEA" supplierProductName="TAVEEKUN TEA" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="EUR" canDropShip="Y" productId="THAISPICES" lastPrice="12.035" supplierProductId="TVK-THAISPICES" supplierProductName="TAVEEKUN THAISPICES" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="INSTANTTEA" lastPrice="10.61" supplierProductId="TVK-INSTANTTEA" supplierProductName="TAVEEKUN INSTANTTEA" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="SEASONING" lastPrice="11.67" supplierProductId="TVK-SEASONING" supplierProductName="TAVEEKUN SEASONING" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="TEA" lastPrice="15.15" supplierProductId="TVK-TEA" supplierProductName="TAVEEKUN TEA" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="THAISPICES" lastPrice="14.182" supplierProductId="TVK-THAISPICES" supplierProductName="TAVEEKUN THAISPICES" availableFromDate="2009-09-25 00:00:00.000"/>
 
-    <Product productId="MG-001" productTypeId="FINISHED_GOOD" internalName="Bags" productName="Bags" brandName="Supplier Product 01" description="Bags Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="MG-002" productTypeId="FINISHED_GOOD" internalName="Floor Rock" productName="Floor Rock" brandName="Supplier Product 01" description="Floor Rock Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="MG-003" productTypeId="FINISHED_GOOD" internalName="Belts" productName="Belts" brandName="Supplier Product 01" description="Belts Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS"/>
+    <DataResource dataResourceId="INSTANTTEA-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="INSTANTTEA-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="INSTANTTEA-PNAMETH" textData="ชาสำเร็จรูป"/>
+    <ElectronicText dataResourceId="INSTANTTEA-PNAMEEN" textData="Instant Tea"/>
+    <Content contentId="INSTANTTEA-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="INSTANTTEA-PNAMETH" description="PRODUCT NAME TH Instant Tea" localeString="th"/>
+    <Content contentId="INSTANTTEA-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="INSTANTTEA-PNAMEEN" description="PRODUCT NAME EN Instant Tea" localeString="en"/>
+    <ProductContent productId="INSTANTTEA" contentId="INSTANTTEA-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="INSTANTTEA-PNAMEEN" contentIdTo="INSTANTTEA-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="INSTANTTEA-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="INSTANTTEA-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="INSTANTTEA-DESCTH" textData="ชาสำเร็จรูป พร้อมดื่ม"/>
+    <ElectronicText dataResourceId="INSTANTTEA-DESCEN" textData="Instant Tea description"/>
+    <Content contentId="INSTANTTEA-DESCTH" contentTypeId="DOCUMENT" dataResourceId="INSTANTTEA-DESCTH" description="DESCRIPTION TH Instant Tea" localeString="th"/>
+    <Content contentId="INSTANTTEA-DESCEN" contentTypeId="DOCUMENT" dataResourceId="INSTANTTEA-DESCEN" description="DESCRIPTION EN Instant Tea" localeString="en"/>
+    <ProductContent productId="INSTANTTEA" contentId="INSTANTTEA-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="INSTANTTEA-DESCEN" contentIdTo="INSTANTTEA-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="SEASONING-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="SEASONING-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="SEASONING-PNAMETH" textData="เครื่องเทศ"/>
+    <ElectronicText dataResourceId="SEASONING-PNAMEEN" textData="Seasoning"/>
+    <Content contentId="SEASONING-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="SEASONING-PNAMETH" description="PRODUCT NAME TH Seasoning" localeString="th"/>
+    <Content contentId="SEASONING-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="SEASONING-PNAMEEN" description="PRODUCT NAME EN Seasoning" localeString="en"/>
+    <ProductContent productId="SEASONING" contentId="SEASONING-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="SEASONING-PNAMEEN" contentIdTo="SEASONING-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="SEASONING-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="SEASONING-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="SEASONING-DESCTH" textData="เครื่องเทศ สำหรับปรุงอาหาร"/>
+    <ElectronicText dataResourceId="SEASONING-DESCEN" textData="Seasoning description"/>
+    <Content contentId="SEASONING-DESCTH" contentTypeId="DOCUMENT" dataResourceId="SEASONING-DESCTH" description="DESCRIPTION TH Seasoning" localeString="th"/>
+    <Content contentId="SEASONING-DESCEN" contentTypeId="DOCUMENT" dataResourceId="SEASONING-DESCEN" description="DESCRIPTION EN Seasoning" localeString="en"/>
+    <ProductContent productId="SEASONING" contentId="SEASONING-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="SEASONING-DESCEN" contentIdTo="SEASONING-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="TEA-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="TEA-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="TEA-PNAMETH" textData="ชา"/>
+    <ElectronicText dataResourceId="TEA-PNAMEEN" textData="TEA"/>
+    <Content contentId="TEA-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="TEA-PNAMETH" description="PRODUCT NAME TH TEA" localeString="th"/>
+    <Content contentId="TEA-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="TEA-PNAMEEN" description="PRODUCT NAME EN TEA" localeString="en"/>
+    <ProductContent productId="TEA" contentId="TEA-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="TEA-PNAMEEN" contentIdTo="TEA-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="TEA-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="TEA-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="TEA-DESCTH" textData="คำอธิบาย ชา"/>
+    <ElectronicText dataResourceId="TEA-DESCEN" textData="TEA description"/>
+    <Content contentId="TEA-DESCTH" contentTypeId="DOCUMENT" dataResourceId="TEA-DESCTH" description="DESCRIPTION TH TEA" localeString="th"/>
+    <Content contentId="TEA-DESCEN" contentTypeId="DOCUMENT" dataResourceId="TEA-DESCEN" description="DESCRIPTION EN TEA" localeString="en"/>
+    <ProductContent productId="TEA" contentId="TEA-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="TEA-DESCEN" contentIdTo="TEA-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="THAISPICES-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="THAISPICES-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="THAISPICES-PNAMETH" textData="พริก"/>
+    <ElectronicText dataResourceId="THAISPICES-PNAMEEN" textData="THAISPICES"/>
+    <Content contentId="THAISPICES-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="THAISPICES-PNAMETH" description="PRODUCT NAME TH THAISPICES" localeString="th"/>
+    <Content contentId="THAISPICES-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="THAISPICES-PNAMEEN" description="PRODUCT NAME EN THAISPICES" localeString="en"/>
+    <ProductContent productId="THAISPICES" contentId="THAISPICES-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="THAISPICES-PNAMEEN" contentIdTo="THAISPICES-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="THAISPICES-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="THAISPICES-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="THAISPICES-DESCTH" textData="คำอธิบาย พริก"/>
+    <ElectronicText dataResourceId="THAISPICES-DESCEN" textData="THAISPICES description"/>
+    <Content contentId="THAISPICES-DESCTH" contentTypeId="DOCUMENT" dataResourceId="THAISPICES-DESCTH" description="DESCRIPTION TH THAISPICES" localeString="th"/>
+    <Content contentId="THAISPICES-DESCEN" contentTypeId="DOCUMENT" dataResourceId="THAISPICES-DESCEN" description="DESCRIPTION EN THAISPICES" localeString="en"/>
+    <ProductContent productId="THAISPICES" contentId="THAISPICES-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="THAISPICES-DESCEN" contentIdTo="THAISPICES-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <Product productId="MG-001" productTypeId="FINISHED_GOOD" internalName="Bags" productName="Bags" brandName="Supplier Product 01" description="Bags Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS" productWeight="750.000000" weightUomId="WT_g"/>
+    <Product productId="MG-002" productTypeId="FINISHED_GOOD" internalName="Floor Rock" productName="Floor Rock" brandName="Supplier Product 01" description="Floor Rock Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS" productWeight="20.000000" weightUomId="WT_kg"/>
+    <Product productId="MG-003" productTypeId="FINISHED_GOOD" internalName="Belts" productName="Belts" brandName="Supplier Product 01" description="Belts Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS" productWeight="500.000000" weightUomId="WT_g"/>
     <ProductCategoryMember productCategoryId="BAGS" productId="MG-001" sequenceNum="1" fromDate="2009-09-25 00:00:00.000"/>
     <ProductCategoryMember productCategoryId="FURNITURE" productId="MG-002" sequenceNum="2" fromDate="2009-09-25 00:00:00.000"/>
     <ProductCategoryMember productCategoryId="BODYACCESSORIES" productId="MG-003" sequenceNum="3" fromDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="MG-001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="25.45" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="MG-001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="850" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="MG-002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="55.99" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="MG-002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="1870" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="MG-003" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="102.55" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="MG-003" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="3425" createdDate="2009-09-25 00:00:00.000"/>
-    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="MG-001" lastPrice="4.50" supplierProductId="CMMG-001" supplierProductName="MARBLE GRANITE Bags" availableFromDate="2009-09-25 00:00:00.000"/>
-    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="MG-002" lastPrice="11.25" supplierProductId="CMMG-002" supplierProductName="MARBLE GRANITE Floor Rock" availableFromDate="2009-09-25 00:00:00.000"/>
-    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="MG-003" lastPrice="27.99" supplierProductId="CMMG-003" supplierProductName="MARBLE GRANITE Belts" availableFromDate="2009-09-25 00:00:00.000"/>
+    <ProductPrice productId="MG-001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="1002.72" createdDate="2009-09-25 00:00:00.000"/>
+    <ProductPrice productId="MG-002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="2205.99" createdDate="2009-09-25 00:00:00.000"/>
+    <ProductPrice productId="MG-003" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="4040.39" createdDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="THB" canDropShip="Y" productId="MG-001" lastPrice="850" supplierProductId="CMMG-001" supplierProductName="MARBLE GRANITE Bags" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="THB" canDropShip="Y" productId="MG-002" lastPrice="1870" supplierProductId="CMMG-002" supplierProductName="MARBLE GRANITE Floor Rock" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="THB" canDropShip="Y" productId="MG-003" lastPrice="3425" supplierProductId="CMMG-003" supplierProductName="MARBLE GRANITE Belts" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="EUR" canDropShip="Y" productId="MG-001" lastPrice="21.843" supplierProductId="CMMG-001" supplierProductName="MARBLE GRANITE Bags" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="EUR" canDropShip="Y" productId="MG-002" lastPrice="48.05" supplierProductId="CMMG-002" supplierProductName="MARBLE GRANITE Floor Rock" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="EUR" canDropShip="Y" productId="MG-003" lastPrice="88.01" supplierProductId="CMMG-003" supplierProductName="MARBLE GRANITE Belts" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="MG-001" lastPrice="25.742" supplierProductId="CMMG-001" supplierProductName="MARBLE GRANITE Bags" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="MG-002" lastPrice="56.63" supplierProductId="CMMG-002" supplierProductName="MARBLE GRANITE Floor Rock" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_01" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="MG-003" lastPrice="103.73" supplierProductId="CMMG-003" supplierProductName="MARBLE GRANITE Belts" availableFromDate="2009-09-25 00:00:00.000"/>
+
+    <DataResource dataResourceId="MG-001-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="MG-001-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="MG-001-PNAMETH" textData="กระเป๋า"/>
+    <ElectronicText dataResourceId="MG-001-PNAMEEN" textData="Bags"/>
+    <Content contentId="MG-001-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="MG-001-PNAMETH" description="PRODUCT NAME TH Bags" localeString="th"/>
+    <Content contentId="MG-001-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="MG-001-PNAMEEN" description="PRODUCT NAME EN Bags" localeString="en"/>
+    <ProductContent productId="MG-001" contentId="MG-001-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="MG-001-PNAMEEN" contentIdTo="MG-001-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="MG-001-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="MG-001-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="MG-001-DESCTH" textData="คำอธิบาย กระเป๋า"/>
+    <ElectronicText dataResourceId="MG-001-DESCEN" textData="Bags Description"/>
+    <Content contentId="MG-001-DESCTH" contentTypeId="DOCUMENT" dataResourceId="MG-001-DESCTH" description="DESCRIPTION TH Bags" localeString="th"/>
+    <Content contentId="MG-001-DESCEN" contentTypeId="DOCUMENT" dataResourceId="MG-001-DESCEN" description="DESCRIPTION EN Bags" localeString="en"/>
+    <ProductContent productId="MG-001" contentId="MG-001-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="MG-001-DESCEN" contentIdTo="MG-001-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="MG-002-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="MG-002-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="MG-002-PNAMETH" textData="พื้นหิน"/>
+    <ElectronicText dataResourceId="MG-002-PNAMEEN" textData="Floor Rock"/>
+    <Content contentId="MG-002-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="MG-002-PNAMETH" description="PRODUCT NAME TH Floor Rock" localeString="th"/>
+    <Content contentId="MG-002-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="MG-002-PNAMEEN" description="PRODUCT NAME EN Floor Rock" localeString="en"/>
+    <ProductContent productId="MG-002" contentId="MG-002-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="MG-002-PNAMEEN" contentIdTo="MG-002-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="MG-002-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="MG-002-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="MG-002-DESCTH" textData="คำอธิบาย พื้นหิน"/>
+    <ElectronicText dataResourceId="MG-002-DESCEN" textData="Floor Rock Description"/>
+    <Content contentId="MG-002-DESCTH" contentTypeId="DOCUMENT" dataResourceId="MG-002-DESCTH" description="DESCRIPTION TH Floor Rock" localeString="th"/>
+    <Content contentId="MG-002-DESCEN" contentTypeId="DOCUMENT" dataResourceId="MG-002-DESCEN" description="DESCRIPTION EN Floor Rock" localeString="en"/>
+    <ProductContent productId="MG-002" contentId="MG-002-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="MG-002-DESCEN" contentIdTo="MG-002-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="MG-003-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="MG-003-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="MG-003-PNAMETH" textData="เข็มขัด"/>
+    <ElectronicText dataResourceId="MG-003-PNAMEEN" textData="Belts"/>
+    <Content contentId="MG-003-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="MG-003-PNAMETH" description="PRODUCT NAME TH Belts" localeString="th"/>
+    <Content contentId="MG-003-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="MG-003-PNAMEEN" description="PRODUCT NAME EN Belts" localeString="en"/>
+    <ProductContent productId="MG-003" contentId="MG-003-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="MG-003-PNAMEEN" contentIdTo="MG-003-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="MG-003-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="MG-003-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="MG-003-DESCTH" textData="คำอธิบาย เข็มขัด"/>
+    <ElectronicText dataResourceId="MG-003-DESCEN" textData="Belts Description"/>
+    <Content contentId="MG-003-DESCTH" contentTypeId="DOCUMENT" dataResourceId="MG-003-DESCTH" description="DESCRIPTION TH Belts" localeString="th"/>
+    <Content contentId="MG-003-DESCEN" contentTypeId="DOCUMENT" dataResourceId="MG-003-DESCEN" description="DESCRIPTION EN Belts" localeString="en"/>
+    <ProductContent productId="MG-003" contentId="MG-003-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="MG-003-DESCEN" contentIdTo="MG-003-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
     <!-- Product from Demo  -->
-    <Product productId="MH-001" productTypeId="FINISHED_GOOD" internalName="Box" productName="Box" brandName="Supplier Product 02" description="Box Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="MH-002" productTypeId="FINISHED_GOOD" internalName="Embroidery" productName="Embroidery" brandName="Supplier Product 02" description="Embroidery Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="MH-003" productTypeId="FINISHED_GOOD" internalName="Handbags texttile" productName="Handbags texttile" brandName="Supplier Product 02" description="Handbags texttile Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="MH-004" productTypeId="FINISHED_GOOD" internalName="Morhom Shirt" productName="Morhom Shirt" brandName="Supplier Product 02" description="Morhom Shirt Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="MH-001" productTypeId="FINISHED_GOOD" internalName="Box" productName="Box" brandName="Supplier Product 02" description="Box Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS" productWeight="300.000000" weightUomId="WT_g"/>
+    <Product productId="MH-002" productTypeId="FINISHED_GOOD" internalName="Embroidery" productName="Embroidery" brandName="Supplier Product 02" description="Embroidery Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS" productWeight="750.000000" weightUomId="WT_g"/>
+    <Product productId="MH-003" productTypeId="FINISHED_GOOD" internalName="Handbags texttile" productName="Handbags texttile" brandName="Supplier Product 02" description="Handbags texttile Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS" productWeight="750.000000" weightUomId="WT_g"/>
+    <Product productId="MH-004" productTypeId="FINISHED_GOOD" internalName="Morhom Shirt" productName="Morhom Shirt" brandName="Supplier Product 02" description="Morhom Shirt Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS" productWeight="250.000000" weightUomId="WT_g"/>
     <ProductCategoryMember productCategoryId="CRAFTANDGIFT" productId="MH-001" sequenceNum="1" fromDate="2009-09-25 00:00:00.000"/>
     <ProductCategoryMember productCategoryId="THAISILK" productId="MH-002" sequenceNum="2" fromDate="2009-09-25 00:00:00.000"/>
     <ProductCategoryMember productCategoryId="BAGS" productId="MH-003" sequenceNum="3" fromDate="2009-09-25 00:00:00.000"/>
     <ProductCategoryMember productCategoryId="CLOTHING" productId="MH-004" sequenceNum="3" fromDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="MH-001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="15.45" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="MH-001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="516" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="MH-002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="45.99" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="MH-002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="1536" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="MH-003" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="125.00" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="MH-003" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="4175" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="MH-004" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="99.00" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="MH-004" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="3306" createdDate="2009-09-25 00:00:00.000"/>
-    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="MH-001" lastPrice="5.0" supplierProductId="MH-IMH-001" supplierProductName="Supplier 02 Box" availableFromDate="2009-09-25 00:00:00.000"/>
-    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="MH-002" lastPrice="15.0" supplierProductId="MH-IMH-002" supplierProductName="Supplier 02 Embroidery" availableFromDate="2009-09-25 00:00:00.000"/>
-    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="MH-003" lastPrice="50.99" supplierProductId="MH-IMH-003" supplierProductName="Supplier 02 Handbags texttile" availableFromDate="2009-09-25 00:00:00.000"/>
-    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="MH-004" lastPrice="40.0" supplierProductId="MH-IMH-004" supplierProductName="Supplier 02 Morhom Shirt" availableFromDate="2009-09-25 00:00:00.000"/>
+    <ProductPrice productId="MH-001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="608.71" createdDate="2009-09-25 00:00:00.000"/>
+    <ProductPrice productId="MH-002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="1811.98" createdDate="2009-09-25 00:00:00.000"/>
+    <ProductPrice productId="MH-003" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="4925.14" createdDate="2009-09-25 00:00:00.000"/>
+    <ProductPrice productId="MH-004" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="3900.01" createdDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="THB" canDropShip="Y" productId="MH-001" lastPrice="516.0" supplierProductId="MH-IMH-001" supplierProductName="Supplier 02 Box" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="THB" canDropShip="Y" productId="MH-002" lastPrice="1536.0" supplierProductId="MH-IMH-002" supplierProductName="Supplier 02 Embroidery" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="THB" canDropShip="Y" productId="MH-003" lastPrice="4175.0" supplierProductId="MH-IMH-003" supplierProductName="Supplier 02 Handbags texttile" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="THB" canDropShip="Y" productId="MH-004" lastPrice="3306.0" supplierProductId="MH-IMH-004" supplierProductName="Supplier 02 Morhom Shirt" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="EUR" canDropShip="Y" productId="MH-001" lastPrice="13.27" supplierProductId="MH-IMH-001" supplierProductName="Supplier 02 Box" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="EUR" canDropShip="Y" productId="MH-002" lastPrice="39.49" supplierProductId="MH-IMH-002" supplierProductName="Supplier 02 Embroidery" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="EUR" canDropShip="Y" productId="MH-003" lastPrice="107.34" supplierProductId="MH-IMH-003" supplierProductName="Supplier 02 Handbags texttile" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="EUR" canDropShip="Y" productId="MH-004" lastPrice="85.00" supplierProductId="MH-IMH-004" supplierProductName="Supplier 02 Morhom Shirt" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="MH-001" lastPrice="15.63" supplierProductId="MH-IMH-001" supplierProductName="Supplier 02 Box" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="MH-002" lastPrice="46.52" supplierProductId="MH-IMH-002" supplierProductName="Supplier 02 Embroidery" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="MH-003" lastPrice="126.44" supplierProductId="MH-IMH-003" supplierProductName="Supplier 02 Handbags texttile" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="MH-004" lastPrice="100.12" supplierProductId="MH-IMH-004" supplierProductName="Supplier 02 Morhom Shirt" availableFromDate="2009-09-25 00:00:00.000"/>
 
-    <Product productId="ST-001" productTypeId="FINISHED_GOOD" internalName="LADIES WEAR" productName="LADIES WEAR" brandName="Supplier Product 02" description="LADIES WEAR Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="ST-002" productTypeId="FINISHED_GOOD" internalName="HOUSE HOLD PRODUCT" productName="HOUSE HOLD PRODUCT" brandName="Supplier Product 02" description="HOUSE HOLD PRODUCT Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS"/>
+    <DataResource dataResourceId="MH-001-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="MH-001-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="MH-001-PNAMETH" textData="กล่อง"/>
+    <ElectronicText dataResourceId="MH-001-PNAMEEN" textData="Box"/>
+    <Content contentId="MH-001-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="MH-001-PNAMETH" description="PRODUCT NAME TH Box" localeString="th"/>
+    <Content contentId="MH-001-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="MH-001-PNAMEEN" description="PRODUCT NAME EN Box" localeString="en"/>
+    <ProductContent productId="MH-001" contentId="MH-001-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="MH-001-PNAMEEN" contentIdTo="MH-001-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="MH-001-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="MH-001-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="MH-001-DESCTH" textData="คำอธิบาย กล่อง"/>
+    <ElectronicText dataResourceId="MH-001-DESCEN" textData="Box Description"/>
+    <Content contentId="MH-001-DESCTH" contentTypeId="DOCUMENT" dataResourceId="MH-001-DESCTH" description="DESCRIPTION TH Box" localeString="th"/>
+    <Content contentId="MH-001-DESCEN" contentTypeId="DOCUMENT" dataResourceId="MH-001-DESCEN" description="DESCRIPTION EN Box" localeString="en"/>
+    <ProductContent productId="MH-001" contentId="MH-001-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="MH-001-DESCEN" contentIdTo="MH-001-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="MH-002-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="MH-002-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="MH-002-PNAMETH" textData="เย็บปักถักร้อย"/>
+    <ElectronicText dataResourceId="MH-002-PNAMEEN" textData="Embroidery"/>
+    <Content contentId="MH-002-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="MH-002-PNAMETH" description="PRODUCT NAME TH Embroidery" localeString="th"/>
+    <Content contentId="MH-002-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="MH-002-PNAMEEN" description="PRODUCT NAME EN Embroidery" localeString="en"/>
+    <ProductContent productId="MH-002" contentId="MH-002-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="MH-002-PNAMEEN" contentIdTo="MH-002-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="MH-002-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="MH-002-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="MH-002-DESCTH" textData="คำอธิบาย เย็บปักถักร้อย"/>
+    <ElectronicText dataResourceId="MH-002-DESCEN" textData="Embroidery Description"/>
+    <Content contentId="MH-002-DESCTH" contentTypeId="DOCUMENT" dataResourceId="MH-002-DESCTH" description="DESCRIPTION TH Embroidery" localeString="th"/>
+    <Content contentId="MH-002-DESCEN" contentTypeId="DOCUMENT" dataResourceId="MH-002-DESCEN" description="DESCRIPTION EN Embroidery" localeString="en"/>
+    <ProductContent productId="MH-002" contentId="MH-002-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="MH-002-DESCEN" contentIdTo="MH-002-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="MH-003-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="MH-003-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="MH-003-PNAMETH" textData="กระเป๋า สิ่งทอ"/>
+    <ElectronicText dataResourceId="MH-003-PNAMEEN" textData="Handbags texttile"/>
+    <Content contentId="MH-003-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="MH-003-PNAMETH" description="PRODUCT NAME TH Handbags texttile" localeString="th"/>
+    <Content contentId="MH-003-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="MH-003-PNAMEEN" description="PRODUCT NAME EN Handbags texttile" localeString="en"/>
+    <ProductContent productId="MH-003" contentId="MH-003-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="MH-003-PNAMEEN" contentIdTo="MH-003-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="MH-003-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="MH-003-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="MH-003-DESCTH" textData="คำอธิบาย กระเป๋า สิ่งทอ"/>
+    <ElectronicText dataResourceId="MH-003-DESCEN" textData="Handbags texttile Description"/>
+    <Content contentId="MH-003-DESCTH" contentTypeId="DOCUMENT" dataResourceId="MH-003-DESCTH" description="DESCRIPTION TH Handbags texttile" localeString="th"/>
+    <Content contentId="MH-003-DESCEN" contentTypeId="DOCUMENT" dataResourceId="MH-003-DESCEN" description="DESCRIPTION EN Handbags texttile" localeString="en"/>
+    <ProductContent productId="MH-003" contentId="MH-003-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="MH-003-DESCEN" contentIdTo="MH-003-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="MH-004-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="MH-004-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="MH-004-PNAMETH" textData="เสื้อม่อฮ่อม"/>
+    <ElectronicText dataResourceId="MH-004-PNAMEEN" textData="Morhom Shirt"/>
+    <Content contentId="MH-004-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="MH-004-PNAMETH" description="PRODUCT NAME TH Morhom Shirt" localeString="th"/>
+    <Content contentId="MH-004-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="MH-004-PNAMEEN" description="PRODUCT NAME EN Morhom Shirt" localeString="en"/>
+    <ProductContent productId="MH-004" contentId="MH-004-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="MH-004-PNAMEEN" contentIdTo="MH-004-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="MH-004-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="MH-004-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="MH-004-DESCTH" textData="คำอธิบาย เสื้อม่อฮ่อม"/>
+    <ElectronicText dataResourceId="MH-004-DESCEN" textData="Morhom Shirt Description"/>
+    <Content contentId="MH-004-DESCTH" contentTypeId="DOCUMENT" dataResourceId="MH-004-DESCTH" description="DESCRIPTION TH Morhom Shirt" localeString="th"/>
+    <Content contentId="MH-004-DESCEN" contentTypeId="DOCUMENT" dataResourceId="MH-004-DESCEN" description="DESCRIPTION EN Morhom Shirt" localeString="en"/>
+    <ProductContent productId="MH-004" contentId="MH-004-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="MH-004-DESCEN" contentIdTo="MH-004-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <Product productId="ST-001" productTypeId="FINISHED_GOOD" internalName="LADIES WEAR" productName="LADIES WEAR" brandName="Supplier Product 02" description="LADIES WEAR Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS" productWeight="650.000000" weightUomId="WT_g"/>
+    <Product productId="ST-002" productTypeId="FINISHED_GOOD" internalName="HOUSEHOLD PRODUCT" productName="HOUSE HOLD PRODUCT" brandName="Supplier Product 02" description="HOUSE HOLD PRODUCT Description" smallImageUrl="" mediumImageUrl="" largeImageUrl="" isVirtual="N" isVariant="N" billOfMaterialLevel="0" createdDate="2009-09-25 00:00:00.000" requirementMethodEnumId="PRODRQM_DS" productWeight="15.000000" weightUomId="WT_kg"/>
     <ProductCategoryMember productCategoryId="BODYACCESSORIES" productId="ST-001" sequenceNum="1" fromDate="2009-09-25 00:00:00.000"/>
     <ProductCategoryMember productCategoryId="BODYACCESSORIES" productId="ST-002" sequenceNum="2" fromDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="ST-001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="30.55" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="ST-001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="1020" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="ST-002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="USD" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="52.99" createdDate="2009-09-25 00:00:00.000"/>
-    <ProductPrice productId="ST-002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="1770" createdDate="2009-09-25 00:00:00.000"/>
-    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="ST-001" lastPrice="5.0" supplierProductId="CMST-001" supplierProductName="Supplier 02 LADIES WEAR" availableFromDate="2009-09-25 00:00:00.000"/>
-    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="ST-002" lastPrice="7.0" supplierProductId="CMST-002" supplierProductName="Supplier 02 HOUSE HOLD PRODUCT" availableFromDate="2009-09-25 00:00:00.000"/>
+    <ProductPrice productId="ST-001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="1203.27" createdDate="2009-09-25 00:00:00.000"/>
+    <ProductPrice productId="ST-002" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2009-09-25 00:00:00.000" price="2088.02" createdDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="THB" canDropShip="Y" productId="ST-001" lastPrice="1020.0" supplierProductId="CMST-001" supplierProductName="Supplier 02 LADIES WEAR" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="THB" canDropShip="Y" productId="ST-002" lastPrice="1770.0" supplierProductId="CMST-002" supplierProductName="Supplier 02 HOUSE HOLD PRODUCT" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="EUR" canDropShip="Y" productId="ST-001" lastPrice="26.22" supplierProductId="CMST-001" supplierProductName="Supplier 02 LADIES WEAR" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="EUR" canDropShip="Y" productId="ST-002" lastPrice="45.51" supplierProductId="CMST-002" supplierProductName="Supplier 02 HOUSE HOLD PRODUCT" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="ST-001" lastPrice="30.89" supplierProductId="CMST-001" supplierProductName="Supplier 02 LADIES WEAR" availableFromDate="2009-09-25 00:00:00.000"/>
+    <SupplierProduct partyId="DEMOSUP_02" minimumOrderQuantity="0" currencyUomId="USD" canDropShip="Y" productId="ST-002" lastPrice="53.60" supplierProductId="CMST-002" supplierProductName="Supplier 02 HOUSE HOLD PRODUCT" availableFromDate="2009-09-25 00:00:00.000"/>
+
+    <DataResource dataResourceId="ST-001-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="ST-001-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="ST-001-PNAMETH" textData="เสื้อผ้าสตรี"/>
+    <ElectronicText dataResourceId="ST-001-PNAMEEN" textData="LADIES WEAR"/>
+    <Content contentId="ST-001-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="ST-001-PNAMETH" description="PRODUCT NAME TH LADIES WEAR" localeString="th"/>
+    <Content contentId="ST-001-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="ST-001-PNAMEEN" description="PRODUCT NAME EN LADIES WEAR" localeString="en"/>
+    <ProductContent productId="ST-001" contentId="ST-001-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="ST-001-PNAMEEN" contentIdTo="ST-001-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="ST-001-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="ST-001-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="ST-001-DESCTH" textData="คำอธิบาย เสื้อผ้าสตรี"/>
+    <ElectronicText dataResourceId="ST-001-DESCEN" textData="LADIES WEAR Description"/>
+    <Content contentId="ST-001-DESCTH" contentTypeId="DOCUMENT" dataResourceId="ST-001-DESCTH" description="DESCRIPTION TH LADIES WEAR" localeString="th"/>
+    <Content contentId="ST-001-DESCEN" contentTypeId="DOCUMENT" dataResourceId="ST-001-DESCEN" description="DESCRIPTION EN LADIES WEAR" localeString="en"/>
+    <ProductContent productId="ST-001" contentId="ST-001-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="ST-001-DESCEN" contentIdTo="ST-001-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="ST-002-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="ST-002-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="ST-002-PNAMETH" textData="เครื่องใช้ในครัวเรือน"/>
+    <ElectronicText dataResourceId="ST-002-PNAMEEN" textData="HOUSEHOLD PRODUCT"/>
+    <Content contentId="ST-002-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="ST-002-PNAMETH" description="PRODUCT NAME TH HOUSEHOLD PRODUCT" localeString="th"/>
+    <Content contentId="ST-002-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="ST-002-PNAMEEN" description="PRODUCT NAME EN HOUSEHOLD PRODUCT" localeString="en"/>
+    <ProductContent productId="ST-002" contentId="ST-002-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="ST-002-PNAMEEN" contentIdTo="ST-002-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="ST-002-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="ST-002-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="ST-002-DESCTH" textData="คำอธิบาย เครื่องใช้ในครัวเรือน"/>
+    <ElectronicText dataResourceId="ST-002-DESCEN" textData="HOUSEHOLD PRODUCT Description"/>
+    <Content contentId="ST-002-DESCTH" contentTypeId="DOCUMENT" dataResourceId="ST-002-DESCTH" description="DESCRIPTION TH HOUSEHOLD PRODUCT" localeString="th"/>
+    <Content contentId="ST-002-DESCEN" contentTypeId="DOCUMENT" dataResourceId="ST-002-DESCEN" description="DESCRIPTION EN HOUSEHOLD PRODUCT" localeString="en"/>
+    <ProductContent productId="ST-002" contentId="ST-002-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="ST-002-DESCEN" contentIdTo="ST-002-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
     <ProductCategoryMember productCategoryId="PFTPROMOTION" productId="MH-003" fromDate="2009-10-01 11:03:04.0"/>
     <ProductCategoryMember productCategoryId="PFTPROMOTION" productId="MH-002" fromDate="2009-10-01 11:03:04.0"/>
