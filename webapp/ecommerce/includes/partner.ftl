@@ -27,13 +27,12 @@ under the License.
           <p>${uiLabelMap.PFTSalescond}
            <br/><br/><a href="<@ofbizUrl>newsupplier</@ofbizUrl>" class="btn btn-main text-uppercase">${uiLabelMap.PFTClickToRegister}</a></p><br/><br/>
           <ul class="partnerconditions">
-            <li class="partnerconditions">The supplier is free to maintain his own products at our website without any further costs.</li>
-            <li class="partnerconditions">The supplier will provide product information with at least one picture, title, longer description and price.</li>
-            <li class="partnerconditions">The products prices do include shipping costs to a customer worldwide.</li>
-            <li class="partnerconditions">Delivery time worldwide should be within 15 days.</li>
-            <li class="partnerconditions">if a sale comes in and is paid, the supplier will be notified by email, and the supplier will send the order to the customer within 3 days.</li>
-            <li class="partnerconditions">The supplier will enter in the system when the order is sent, and what it contains so the customer can be notified.</li>
-            <li class="partnerconditions">The supplier will be paid monthly - 7% and can always see the status in the system.</li>
+            <li class="partnerconditions">${uiLabelMap.PFTMaintainYourProductWithAnyCost}</li>
+            <li class="partnerconditions">${uiLabelMap.PFTSupplierProvideInfomation}</li>
+            <li class="partnerconditions">${uiLabelMap.PFTDeliveryWorldWideShouldBe15Day}</li>
+            <li class="partnerconditions">${uiLabelMap.PFTSaleComeAndPaidSupplierSendToCustomerWith3Day}</li>
+            <#-- <li class="partnerconditions">The supplier will enter in the system when the order is sent, and what it contains so the customer can be notified.</li> -->
+            <li class="partnerconditions">${uiLabelMap.PFTSupplierWillPaidMonthly}</li>
           </ul>
           <br/><br/><h2>${uiLabelMap.PFTSupplierRegisterGuide}</h2></div><br/><br/>
           <table class="steps" cellspacing="0" width="100%">

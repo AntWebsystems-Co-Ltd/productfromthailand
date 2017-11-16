@@ -82,13 +82,17 @@
         <value xml:lang="en">Cart</value>
         <value xml:lang="th">ตระกร้าสินค้า</value>
     </property>
+    <property key="PFTCheckout">
+        <value xml:lang="en">Check out</value>
+        <value xml:lang="th">ดำเนินการชำระเงิน</value>
+    </property>
     <property key="PFTClickToRegister">
         <value xml:lang="en">Click here to Register</value>
         <value xml:lang="th">สมัครสมาชิกใหม่ คลิกที่นี่</value>
     </property>
     <property key="PFTCompanyAddress">
-        <value xml:lang="en">73/1 M.8, Soi AntWebsystems Tambon Sanklang, Amphur Sanpatong, Chiang Mai, Thailand 50120</value>
-        <value xml:lang="th">73/1 หมู่ 8 ซอย AntWebsystems ต.สันกลาง อ.สันป่าตอง จ.เชียงใหม่ ประเทศไทย 50120 </value>
+        <value xml:lang="en">73/2 M.8, Soi AntWebsystems Tambon Sanklang, Amphur Sanpatong, Chiang Mai, Thailand 50120</value>
+        <value xml:lang="th">73/2 หมู่ 8 ซอย AntWebsystems ต.สันกลาง อ.สันป่าตอง จ.เชียงใหม่ ประเทศไทย 50120 </value>
     </property>
     <property key="PFTCompanyName">
         <value xml:lang="en">Antwebsystems Co.,Ltd.</value>
@@ -115,6 +119,10 @@
         <value xml:lang="en">E-mail</value>
         <value xml:lang="th">อีเมล์</value>
     </property>
+    <property key="PFTDeliveryWorldWideShouldBe15Day">
+        <value xml:lang="en">Delivery time worldwide should be within 15 days.</value>
+        <value xml:lang="th">เวลาในการจัดส่งทั่วโลกควรอยู่ภายใน 15 วัน</value>
+    </property>
     <property key="PFTDownloadProductTemplate">
         <value xml:lang="en">Download Product Template</value>
         <value xml:lang="th">ดาวน์โหลดรูปแบบการอัปโหลดสินค้า</value>
@@ -130,6 +138,10 @@
     <property key="PFTFax">
         <value xml:lang="en">Fax</value>
         <value xml:lang="th">โทรสาร</value>
+    </property>
+    <property key="PFTFeaturedProduct">
+        <value xml:lang="en">Featured Product</value>
+        <value xml:lang="th">สินค้าแนะนำ</value>
     </property>
     <property key="PFTFollowUs">
         <value xml:lang="en">Follow us</value>
@@ -224,6 +236,10 @@
         <value xml:lang="en">Preview</value>
         <value xml:lang="th">เข้าชมเว็บไซท์</value>
     </property>
+    <property key="PFTProductAdditionalImages">
+        <value xml:lang="en">Additional Images</value>
+        <value xml:lang="th">ภาพเพิ่มเติม</value>
+    </property>
     <property key="PFTProductbrandName">
         <value xml:lang="en">Brand Name</value>
         <value xml:lang="th">ชื่อแบรนด์สินค้า</value>
@@ -255,6 +271,10 @@
     <property key="PFTProductsOf">
         <value xml:lang="en">Products of</value>
         <value xml:lang="th">สินค้าของ</value>
+    </property>
+    <property key="PFTProductWeight">
+        <value xml:lang="en">Product Weight</value>
+        <value xml:lang="th">น้ำหนักสินค้า</value>
     </property>
     <property key="PFTPurchasePrice">
         <value xml:lang="en">Purchase Price</value>
@@ -305,6 +325,14 @@
         <value xml:lang="en">Remove product from wish list successful.</value>
         <value xml:lang="th">ลบสินค้าออกจากรายการโปรดเรียบร้อยแล้ว</value>
     </property>
+    <property key="PFTReview">
+        <value xml:lang="en">Review</value>
+        <value xml:lang="th">ความคิดเห็น</value>
+    </property>
+    <property key="PFTSaleComeAndPaidSupplierSendToCustomerWith3Day">
+        <value xml:lang="en">if a sale comes in and is paid, the supplier will be notified by email, and the supplier will send the order to the customer within 3 days.</value>
+        <value xml:lang="th">ร้านค้าจะได้รับอีเมล์แจ้งเตือนทุกครั้งที่มีการสั่งซื้อ</value>
+    </property>
     <property key="PFTSalePrice">
         <value xml:lang="en">Sale Price</value>
         <value xml:lang="th">ราคาขาย</value>
@@ -319,6 +347,10 @@
     <property key="PFTSalesconditions">
         <value xml:lang="en">Sales conditions</value>
         <value xml:lang="th">เงื่อนไขในการขายสินค้า</value>
+    </property>
+    <property key="PFTSalesTax">
+        <value xml:lang="en">VAT</value>
+        <value xml:lang="th">ภาษีการขาย</value>
     </property>
     <property key="PFTSearchYourProducts">
         <value xml:lang="en">Search our product catalog</value>
@@ -422,6 +454,10 @@
     <property key="PFTSupplierTypeIndividual">
         <value xml:lang="en">Individual</value>
         <value xml:lang="th">บุคคลธรรมดา</value>
+    </property>
+    <property key="PFTSupplierWillPaidMonthly">
+        <value xml:lang="en">The supplier will be paid monthly and can always see the status in the system.</value>
+        <value xml:lang="th">ร้านค้าจะได้รับเงินเป็นรายเดือนและสามารถดูสถานะในระบบได้ตลอดเวลา</value>
     </property>
     <property key="PFTSwitchCurrency">
         <value xml:lang="en">Switch Currency</value>

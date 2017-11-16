@@ -97,7 +97,7 @@ under the License.
     <#-- Featured Products Starts -->
         <section class="products-list">
         <#-- Heading Starts -->
-            <h2 class="product-head">Featured Products</h2>
+            <h2 class="product-head">${uiLabelMap.PFTFeaturedProduct}</h2>
         <#-- Heading Ends -->
         <#-- Products Row Starts -->
             <#if requestAttributes.productCategoryId?has_content>

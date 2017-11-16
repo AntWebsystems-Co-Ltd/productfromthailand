@@ -119,7 +119,7 @@ under the License.
                     ${uiLabelMap.OrderViewCart}
                 </a>
                 <a href="<@ofbizUrl>quickcheckout</@ofbizUrl>">
-                    ${uiLabelMap.OrderCheckout}
+                    ${uiLabelMap.PFTCheckout}
                 </a>
             </p>
         </li>

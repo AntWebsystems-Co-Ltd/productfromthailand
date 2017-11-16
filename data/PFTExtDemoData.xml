@@ -221,7 +221,7 @@
     <PartyRole partyId="_NA_" roleTypeId="CARRIER"/>
     <ShipmentMethodType description="Free Shipping" shipmentMethodTypeId="FREE_SHIPPING"/>
     <CarrierShipmentMethod partyId="_NA_" roleTypeId="CARRIER" shipmentMethodTypeId="FREE_SHIPPING" sequenceNumber="1"/>
-    <ProductStoreShipmentMeth productStoreShipMethId="PFTSTORE" productStoreId="PFTSTORE" partyId="_NA_" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="FREE_SHIPPING" sequenceNumber="1"/>
+    <!--<ProductStoreShipmentMeth productStoreShipMethId="PFTSTORE" productStoreId="PFTSTORE" partyId="_NA_" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="FREE_SHIPPING" sequenceNumber="1"/>-->
 
     <!-- Thai Post shipping method -->
     <Party partyId="THAIPOST" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" />
@@ -233,7 +233,7 @@
     <!--ProductStoreShipmentMeth productStoreShipMethId="PFT10000" productStoreId="PFTSTORE" partyId="THAIPOST" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_REG" sequenceNumber="1"/-->
     <ProductStoreShipmentMeth productStoreShipMethId="PFT10001" productStoreId="PFTSTORE" partyId="THAIPOST" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_EMS" sequenceNumber="1"/>
     <!-- ShipmentCostEstimate productStoreShipMethId="PFT10000" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="5.0" shipmentMethodTypeId="DOMESTIC_REG" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"/-->
-    <ShipmentCostEstimate productStoreShipMethId="PFT10001" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="10.0" shipmentMethodTypeId="DOMESTIC_EMS" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"/>
+    <ShipmentCostEstimate productStoreShipMethId="PFT10001" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="8.0" shipmentMethodTypeId="DOMESTIC_EMS" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"/>
 
     <!-- Currency Convert -->
     <UomConversionDated conversionFactor="0.03" createdStamp="2017-11-15 09:49:32.0" createdTxStamp="2017-11-15 09:49:32.0" decimalScale="2" fromDate="2017-11-01 00:00:00.0" roundingMode="HalfUp" uomId="THB" uomIdTo="USD"/>

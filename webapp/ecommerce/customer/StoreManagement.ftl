@@ -21,7 +21,7 @@ under the License.
   <div class="row">
     <!-- Store Management Menu Start -->
     <div class="col-sm-3">
-      <h3 class="side-heading">Store Menu</h3>
+      <h3 class="side-heading">${uiLabelMap.PFTStoreMenu}</h3>
       <div class="list-group">
           <a href="<@ofbizUrl>StoreManagement</@ofbizUrl>" class="list-group-item selected">
               <i class="fa fa-chevron-right"></i>

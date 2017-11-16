@@ -317,7 +317,7 @@ under the License.
                                     <input type="hidden" name="VIEW_SIZE" value="5"/>
                                     <input type="hidden" name="PAGING" value="Y"/>
                                     <input type="hidden" name="SEARCH_OPERATOR" value="OR"/>
-                                    <input type="text" name="SEARCH_STRING" class="form-control input-lg" placeholder="Search" value="${requestParameters.SEARCH_STRING!}">
+                                    <input type="text" name="SEARCH_STRING" class="form-control input-lg" placeholder="${uiLabelMap.CommonSearch}" value="${requestParameters.SEARCH_STRING!}">
                                 </form>
                                 <span class="input-group-btn">
                                     <button class="btn btn-lg" type="button" onclick="document.getElementById('keywordsearchform').submit()">

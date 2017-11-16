@@ -46,7 +46,6 @@ under the License.
                             ${uiLabelMap.EcommerceItemTotal}
                         </td>
                         <td class="text-center">
-                            ${uiLabelMap.FormFieldTitle_actionEnumId}
                         </td>
                     </tr>
                 </thead>
@@ -185,7 +184,7 @@ under the License.
                                 <dd><@ofbizCurrency amount=shoppingCart.getSubTotal() isoCode=shoppingCart.getCurrency() /></dd>
                                 <dt>${uiLabelMap.OrderShippingAndHandling} :</dt>
                                 <dd><@ofbizCurrency amount=shoppingCart.getTotalShipping() isoCode=shoppingCart.getCurrency() /></dd>
-                                <dt>${uiLabelMap.OrderSalesTax} :</dt>
+                                <dt>${uiLabelMap.PFTSalesTax} :</dt>
                                 <dd><@ofbizCurrency amount=shoppingCart.getTotalSalesTax() isoCode=shoppingCart.getCurrency() /></dd>
                             </dl>
                             <hr />
@@ -200,7 +199,7 @@ under the License.
                                     <span class="visible-xs">${uiLabelMap.CommonContinue}</span>
                                 </a>
                                 <a href="<@ofbizUrl>quickcheckout</@ofbizUrl>" class="btn btn-main pull-right">
-                                    ${uiLabelMap.OrderCheckout}
+                                    ${uiLabelMap.PFTCheckout}
                                 </a>
                             </div>
                         </div>

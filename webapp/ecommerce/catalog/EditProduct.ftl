@@ -218,7 +218,7 @@ under the License.
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.ProductProductWeight} *</label>
+                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTProductWeight} *</label>
                         <div class="col-sm-6">
                             <input type="number" class="form-control required" step='any' placeholder='0.00' min="1" onkeyup="allowOnly2Numeric2Decimal(this)" name="productWeight" size="8" value="${(product.productWeight)?default(productWeight!)}" class="required form-control"/><span class="tooltip">${uiLabelMap.CommonRequired}</span>
                         </div>
@@ -361,7 +361,7 @@ under the License.
                     </div>
                     <#-- Additional image -->
                     <div class="form-group">
-                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.ProductAddAdditionalImages}</label>
+                        <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.PFTProductAdditionalImages}</label>
                         <div class="col-sm-6">
                             <div class="browserNotIE">
                                 <div class="additionalImageList">

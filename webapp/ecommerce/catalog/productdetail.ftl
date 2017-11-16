@@ -451,7 +451,7 @@ $(function(){
       </ul>
       <hr/>
       <div class="price">
-        <span class="price-head">${uiLabelMap.CommonPrice} :</span>
+        <span class="price-head">${uiLabelMap.OrderPrice} :</span>
         <#if price.isSale?? && price.isSale>
             <span class="price-new"><@ofbizCurrency amount=price.price isoCode=price.currencyUsed /></span>
             <span class="price-old"><@ofbizCurrency amount=price.listPrice isoCode=price.currencyUsed /></span>
@@ -816,6 +816,7 @@ $(function(){
           <#else>
             <#if productStore??>
               <#if productStore.requireInventory?? && productStore.requireInventory == "N">
+                <span class="price-head">${uiLabelMap.CommonQuantity} :</span>
                 <input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" class="form-control"
                              <#if product.isVirtual!?upper_case == "Y">disabled="disabled"</#if>/>
                 <button type="button" class="btn btn-cart" id="addToCart" name="addToCart" onclick="javascript:addItem()">
@@ -858,7 +859,7 @@ $(function(){
           <input name="productId" type="hidden" value="${product.productId}"/>
       </form>
     </div>
-    <hr/>
+
     <#-- Prefill first select box (virtual products only) -->
     <#if variantTree?? && 0 &lt; variantTree.size()>
       <script type="text/javascript">eval("list" + "${featureOrderFirst}" + "()");</script>
@@ -911,55 +912,6 @@ $(function(){
       <div>${productContentWrapper.get("LONG_DESCRIPTION", "html")!}</div>
       <div>${productContentWrapper.get("WARNINGS", "html")!}</div>
     </div>
-
-    <#-- Any attributes/etc may go here -->
-
-    <div class="product-tags">
-      <p class="titleProductTags">
-      <h3>${uiLabelMap.EcommerceProductTags}</h3></p>
-    <#if productTags??>
-      <p class="titleAddTags"><strong>${uiLabelMap.EcommerceProductTagsDetail}:</strong></p>
-      <p>
-        <ul>
-          <li>
-            <#assign no = 0 />
-            <#list productTags?keys?sort as productTag>
-              <#assign tagValue = productTags.get(productTag)!/>
-              <#if tagValue?has_content>
-                <span>
-                  <a href="javascript:void(0);" id="productTag_${productTag}">${productTag}</a>
-                  (${tagValue}) <#if no < (productTags.size() - 1)> | </#if>
-                </span>
-                <#assign no = no + 1 />
-              </#if>
-            </#list>
-          </li>
-        </ul>
-      </p>
-    </#if>
-
-      <p class="titleAddTags"><strong>${uiLabelMap.EcommerceAddYourTags}:</strong></p>
-      <p>
-      <form method="post" action="<@ofbizUrl>addProductTags</@ofbizUrl>" name="addProductTags">
-        <input type="hidden" name="productId" value="${product.productId!}"/>
-        <input class="form-control" type="text" value="" name="productTags" id="productTags" size="40"/>
-        <button type="button" class="btn btn-main" id="addTag" name="addTag" onclick="javascript:document.addProductTags.submit();">
-            ${uiLabelMap.EcommerceAddTags}
-            <i class="fa fa-tags"></i>
-        </button>
-      </form>
-      <span>${uiLabelMap.EcommerceAddTagsDetail}</span>
-      </p>
-    </div>
-    <hr/>
-    <form action="<@ofbizUrl>tagsearch</@ofbizUrl>" method="post" name="productTagsearchform" id="productTagsearchform">
-      <input type="hidden" name="keywordTypeId" value="KWT_TAG"/>
-      <input type="hidden" name="statusId" value="KW_APPROVED"/>
-      <input type="hidden" name="clearSearch" value="Y"/>
-      <input type="hidden" name="VIEW_SIZE" value="10"/>
-      <input type="hidden" name="PAGING" value="Y"/>
-      <input type="hidden" name="SEARCH_STRING" id="productTagStr"/>
-    </form>
   </div>
   </div>
   </div>
@@ -1046,7 +998,7 @@ $(function(){
                             </div>
                         </div>
                         <div class="form-group required">
-                            <label class="col-sm-2 control-label" for="input-review">${uiLabelMap.CommonReview}</label>
+                            <label class="col-sm-2 control-label" for="input-review">${uiLabelMap.PFTReview}</label>
                             <div class="col-sm-10">
                                 <textarea rows="5" name="productReview" class="form-control"></textarea>
                             </div>
