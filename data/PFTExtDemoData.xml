@@ -143,8 +143,8 @@
         *** Please set auto return for seller account at
             https://www.sandbox.paypal.com/cgi-bin/customerprofileweb?cmd=%5fprofile%2dwebsite%2dpayments
     -->
-    <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.clientId" systemPropertyValue="AeL5vwu9lFArgloz_DB6qJibApis3153lWkT-Lhki8_f_2o4uqu8dWS5nouPq5yMIXQPDjFHmzQhMoav"/>
-    <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.clientSecret" systemPropertyValue="ELiuO8dScOToIUALBcYautKsuLTO5CDhfs7qGqnISDR4DYsCpl1MpWQZeqzgSX2rVVuIsTV25XSQucu9"/>
+    <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.clientId" systemPropertyValue="ASAiIrhpaehJ_PpELh8fXHVnvqPOgpHNFqdKd5wSaNWP81ff_3SHVl0yB6316Uq3G2IH8hnlL8OkB1BI"/>
+    <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.clientSecret" systemPropertyValue="EN2nbxjEuSNHQw-a70yOpsF4uQHKv9Dxzh8ydnqR1YBvsWxvr2GaXCLULhPOr9b5sAULru64qimbXwBZ"/>
     <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.apiUrl.sandbox" systemPropertyValue="https://api.sandbox.paypal.com/"/>
     <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.apiUrl.live" systemPropertyValue="https://api.paypal.com/"/>
 
@@ -251,7 +251,12 @@
     <!--ProductStoreShipmentMeth productStoreShipMethId="PFT10000" productStoreId="PFTSTORE" partyId="THAIPOST" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_REG" sequenceNumber="1"/-->
     <ProductStoreShipmentMeth productStoreShipMethId="PFT10001" productStoreId="PFTSTORE" partyId="THAIPOST" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_EMS" sequenceNumber="1"/>
     <!-- ShipmentCostEstimate productStoreShipMethId="PFT10000" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="5.0" shipmentMethodTypeId="DOMESTIC_REG" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"/-->
-    <ShipmentCostEstimate productStoreShipMethId="PFT10001" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="8.0" shipmentMethodTypeId="DOMESTIC_EMS" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"/>
+    <ShipmentCostEstimate productStoreShipMethId="PFT10001" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="8.0" shipmentMethodTypeId="DOMESTIC_EMS" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"  geoIdTo="THA" geoIdFrom="THA"/>
+
+    <ShipmentMethodType description="Fedex International Priority" shipmentMethodTypeId="FEDEX_IP"/>
+    <CarrierShipmentMethod partyId="FEDEX" roleTypeId="CARRIER" shipmentMethodTypeId="FEDEX_IP" sequenceNumber="18" carrierServiceCode="INTERNATIONAL_PRIORITY"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9015" productStoreId="PFTSTORE" partyId="FEDEX" includeNoChargeItems="N" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="FEDEX_IP" serviceName="fedexRateInquire" sequenceNumber="16"/>
+    <ShipmentCostEstimate productStoreShipMethId="9015" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="9208" shipmentMethodTypeId="FEDEX_IP" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER"/>
 
     <!-- Currency Convert -->
     <UomConversionDated conversionFactor="0.03" createdStamp="2017-11-15 09:49:32.0" createdTxStamp="2017-11-15 09:49:32.0" decimalScale="2" fromDate="2017-11-01 00:00:00.0" roundingMode="HalfUp" uomId="THB" uomIdTo="USD"/>

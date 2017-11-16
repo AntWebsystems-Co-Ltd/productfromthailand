@@ -33,6 +33,12 @@ if (webSite) {
     productStore = from('ProductStore').where("productStoreId", webSite.productStoreId).queryOne();
     context.currencyUomId = productStore.defaultCurrencyUomId;
 }
+baseCond = []
+baseCond.add(EntityCondition.makeCondition("uomTypeId", EntityOperator.EQUALS, "WEIGHT_MEASURE"))
+baseCond.add(EntityCondition.makeCondition("uomId", EntityOperator.IN, ["WT_kg", "WT_g"]))
+weightUomList = EntityQuery.use(delegator).from("Uom").where(baseCond).orderBy("description").queryList();
+context.weightUomList = weightUomList;
+
 
 defaultTopCategoryId = requestParameters.TOP_CATEGORY ? requestParameters.TOP_CATEGORY : EntityUtilProperties.getPropertyValue("catalog", "top.category.default", delegator)
 currentTopCategoryId = CategoryWorker.getCatalogTopCategory(request, defaultTopCategoryId)

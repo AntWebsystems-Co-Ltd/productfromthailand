@@ -251,10 +251,11 @@ under the License.
                                     <option value=""></option>
                                     <option value="">---</option>
                                 </#if>
-                                <#assign weightUomList = EntityQuery.use(delegator).from("Uom").where("uomTypeId", "WEIGHT_MEASURE").orderBy("description").queryList()!>
-                                <#list weightUomList as weightUom>
-                                    <option value="${weightUom.uomId!}">${weightUom.get("description",locale)!}</option>
-                                </#list>
+                                <#if weightUomList?has_content>
+                                    <#list weightUomList as weightUom>
+                                        <option value="${weightUom.uomId!}">${weightUom.get("description",locale)!}</option>
+                                    </#list>
+                                </#if>
                             </select><span class="tooltip">${uiLabelMap.CommonRequired}</span>
                         </div>
                     </div>

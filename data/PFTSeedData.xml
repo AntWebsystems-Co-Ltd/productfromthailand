@@ -220,4 +220,19 @@ under the License.
     <SystemProperty systemResourceId="pft" systemPropertyId="pft.fee" description="Product From Thailand Fee Percent" systemPropertyValue="5"/>
     <SystemProperty systemResourceId="pft" systemPropertyId="pft.vat" description="Product From Thailand Vat Percent" systemPropertyValue="7"/>
 
+    <!-- Fedex shipping method -->
+    <SystemProperty systemResourceId="fedex" systemPropertyId="fedexaccountnum" description="fedex Account Number" systemPropertyValue="510087380"/>
+    <SystemProperty systemResourceId="fedex" systemPropertyId="fedexmeternum" description="fedex meter Number" systemPropertyValue="118965778"/>
+    <SystemProperty systemResourceId="fedex" systemPropertyId="fedexapikey" description="fedex Api key" systemPropertyValue="aFP6Cx8GTwP7dqn0"/>
+    <SystemProperty systemResourceId="fedex" systemPropertyId="fedexpassword" description="fedex Api Password" systemPropertyValue="kNW57I5rdTKoR1wy5o7Klx3y3"/>
+
+    <Party partyId="FEDEX" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" />
+    <PartyGroup partyId="FEDEX" groupName="Fedex" />
+    <PartyRole partyId="FEDEX" roleTypeId="CARRIER" />
+    <PartyStatus partyId="FEDEX" statusId="PARTY_ENABLED" statusDate="2001-01-01 12:00:00.0" />
+    <ShipmentMethodType description="Fedex International Economy" shipmentMethodTypeId="FEDEX_IE"/>
+    <CarrierShipmentMethod partyId="FEDEX" roleTypeId="CARRIER" shipmentMethodTypeId="FEDEX_IE" sequenceNumber="17" carrierServiceCode="INTERNATIONAL_ECONOMY"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9014" productStoreId="PFTSTORE" partyId="FEDEX" includeNoChargeItems="N" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="FEDEX_IE" serviceName="fedexRateInquire" sequenceNumber="15"/>
+    <ShipmentCostEstimate productStoreShipMethId="9014" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="9207" shipmentMethodTypeId="FEDEX_IE" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER"/>
+
 </entity-engine-xml>

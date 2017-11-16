@@ -450,6 +450,19 @@ under the License.
         <response name="success" type="view" value="WishList" save-current-view="true"/>
     </request-map>
 
+    <request-map uri="confirmAddress">
+        <security https="false" auth="false"/>
+        <event type="service" invoke="checkShippingAddress"/>
+        <response name="success" type="request" value="json"/>
+        <response name="error" type="request" value="json"/>
+    </request-map>
+    <request-map uri="updateCheckoutOption">
+        <security https="true" auth="true"/>
+        <event type="java" path="org.apache.ofbiz.order.shoppingcart.CheckOutEvents" invoke="setPartialCheckOutOptions"/>
+        <response name="success" type="view" value="quickcheckout"/>
+        <response name="error" type="view" value="quickcheckout"/>
+    </request-map>
+
     <!-- Calculate Sale Price -->
     <request-map uri="calculateSalePrice">
         <security https="true" auth="true"/>

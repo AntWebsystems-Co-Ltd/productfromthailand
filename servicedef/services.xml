@@ -108,4 +108,9 @@ under the License.
         <attribute name="productId" type="String" mode="IN" optional="false"/>
         <attribute name="lastPrice" type="BigDecimal" mode="IN" optional="false"/>
     </service>
+
+    <service name="fedexRateInquire" engine="java" location="org.apache.ofbiz.productfromthailand.RateWebServiceClient" invoke="fedexRateInquire" auth="false">
+        <implements service="calcShipmentEstimateInterface"/>
+    </service>
+
 </services>

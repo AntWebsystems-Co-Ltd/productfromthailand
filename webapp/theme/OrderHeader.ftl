@@ -232,83 +232,79 @@ under the License.
     <div class="panel-heading">
       <h3 class="panel-title">${uiLabelMap.OrderShippingInformation}</h3>
     </div>
-    <div class="panel-body">
-      <#-- shipping address -->
-      <#assign groupIdx = 0>
-      <#list orderItemShipGroups as shipGroup>
-        <#if orderHeader?has_content>
-          <#assign shippingAddress = shipGroup.getRelatedOne("PostalAddress", false)!>
-          <#assign groupNumber = shipGroup.shipGroupSeqId!>
-        <#else>
-          <#assign shippingAddress = cart.getShippingAddress(groupIdx)!>
-          <#assign groupNumber = groupIdx + 1>
-        </#if>
-          <#if shippingAddress?has_content>
-            <p>
-              ${uiLabelMap.OrderDestination} [${groupNumber}]
-              <#if shippingAddress.toName?has_content>${uiLabelMap.CommonTo}: ${shippingAddress.toName}</#if>
-            </p>
-            <p>
-              <#if shippingAddress.attnName?has_content>
-                ${uiLabelMap.PartyAddrAttnName}  : ${shippingAddress.attnName}
-              </#if>
-            </p>
-            <p>
-              ${shippingAddress.address1}
-            </p>
-            <p>
-              <#if shippingAddress.address2?has_content>${shippingAddress.address2}</#if>
-            </p>
-            <p>
-              <#assign shippingStateGeo = (delegator.findOne("Geo", {"geoId", shippingAddress.stateProvinceGeoId!}, false))! />
-              ${shippingAddress.city}
-              <#if shippingStateGeo?has_content>, ${shippingStateGeo.geoName!}</#if>
-              ${shippingAddress.postalCode!}
-            </p>
-            <p>
-              <#assign shippingCountryGeo = (delegator.findOne("Geo", {"geoId", shippingAddress.countryGeoId!}, false))! />
-              <#if shippingCountryGeo?has_content>${shippingCountryGeo.geoName!}</#if>
-            </p>
+    <div class="panel-body table-responsive">
+      <table width="100%" class="table table-bordered">
+
+      <#-- header -->
+
+      <tr>
+        <td><span>${uiLabelMap.OrderDestination}</span></td>
+        <td><span>${uiLabelMap.PartySupplier}</span></td>
+        <td><span>${uiLabelMap.ProductShipmentMethod}</span></td>
+        <td><span>${uiLabelMap.ProductItem}</span></td>
+        <td><span>${uiLabelMap.ProductQuantity}</span></td>
+      </tr>
+      <#list cart.getShipGroups() as cartShipInfo>
+      <#assign numberOfItems = cartShipInfo.getShipItems().size()>
+      <#if (numberOfItems > 0)>
+
+      <#-- spacer goes here -->
+
+      <tr>
+
+        <#-- address destination column (spans a number of rows = number of cart items in it) -->
+
+        <td rowspan="${numberOfItems}">
+          <#assign contactMech = delegator.findOne("ContactMech", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contactMechId", cartShipInfo.contactMechId), false)! />
+          <#if contactMech?has_content>
+            <#assign address = contactMech.getRelatedOne("PostalAddress", false)! />
           </#if>
-          <p>
-            ${uiLabelMap.OrderMethod}:
-            <#if orderHeader?has_content>
-              <#assign shipmentMethodType = shipGroup.getRelatedOne("ShipmentMethodType", false)!>
-              <#assign carrierPartyId = shipGroup.carrierPartyId!>
-            <#else>
-              <#assign shipmentMethodType = cart.getShipmentMethodType(groupIdx)!>
-              <#assign carrierPartyId = cart.getCarrierPartyId(groupIdx)!>
-            </#if>
-            <#if carrierPartyId?? && carrierPartyId != "_NA_">${carrierPartyId!}</#if>
-            ${(shipmentMethodType.description)?default("N/A")}
-          </p>
-          <p>
-            <#if shippingAccount??>${uiLabelMap.AccountingUseAccount}: ${shippingAccount}</#if>
-          </p>
-          <#-- tracking number -->
-          <#if trackingNumber?has_content || orderShipmentInfoSummaryList?has_content>
-            <p>
-              ${uiLabelMap.OrderTrackingNumber}
-              <#-- TODO: add links to UPS/FEDEX/etc based on carrier partyId  -->
-              <#if shipGroup.trackingNumber?has_content>
-                ${shipGroup.trackingNumber}
-              </#if>
-              <#if orderShipmentInfoSummaryList?has_content>
-                <#list orderShipmentInfoSummaryList as orderShipmentInfoSummary>
-                  <#if (orderShipmentInfoSummaryList?size > 1)>${orderShipmentInfoSummary.shipmentPackageSeqId}: </#if>
-                  Code: ${orderShipmentInfoSummary.trackingCode?default("[Not Yet Known]")}
-                  <#if orderShipmentInfoSummary.boxNumber?has_content>
-                    ${uiLabelMap.OrderBoxNumber}${orderShipmentInfoSummary.boxNumber}
-                  </#if>
-                  <#if orderShipmentInfoSummary.carrierPartyId?has_content>
-                    (${uiLabelMap.ProductCarrier}: ${orderShipmentInfoSummary.carrierPartyId})
-                  </#if>
-                </#list>
-              </#if>
-            </p>
+
+          <#if address??>
+            <#if address.toName?has_content><b>${uiLabelMap.CommonTo}:</b>&nbsp;${address.toName}<br /></#if>
+            <#if address.attnName?has_content><b>${uiLabelMap.CommonAttn}:</b>&nbsp;${address.attnName}<br /></#if>
+            <#if address.address1?has_content>${address.address1}<br /></#if>
+            <#if address.address2?has_content>${address.address2}<br /></#if>
+            <#if address.city?has_content>${address.city}</#if>
+            <#assign shippingStateGeo = (delegator.findOne("Geo", {"geoId", address.stateProvinceGeoId!}, false))! />
+            <#if address.stateProvinceGeoId?has_content>&nbsp;${shippingStateGeo.geoName!}</#if>
+            <#if address.postalCode?has_content>, ${address.postalCode!}</#if>
           </#if>
-          <#if shipGroup_has_next></#if>
-        <#assign groupIdx = groupIdx + 1>
-      </#list><#-- end list of orderItemShipGroups -->
+        </td>
+
+        <#-- supplier id (for drop shipments) (also spans rows = number of items) -->
+
+        <td rowspan="${numberOfItems}" valign="top">
+          <#assign supplier =  delegator.findOne("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", cartShipInfo.getSupplierPartyId()), false)! />
+          <#if supplier?has_content>${supplier.groupName?default(supplier.partyId)}</#if>
+        </td>
+
+        <#-- carrier column (also spans rows = number of items) -->
+
+        <td rowspan="${numberOfItems}" valign="top">
+          <#assign carrier =  delegator.findOne("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", cartShipInfo.getCarrierPartyId()), false)! />
+          <#assign method =  delegator.findOne("ShipmentMethodType", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("shipmentMethodTypeId", cartShipInfo.getShipmentMethodTypeId()), false)! />
+          <#if carrier?has_content>${carrier.groupName?default(carrier.partyId)}</#if>
+          <#if method?has_content>${method.description?default(method.shipmentMethodTypeId)}</#if>
+        </td>
+
+        <#-- list each ShoppingCartItem in this group -->
+
+        <#assign itemIndex = 0 />
+        <#list cartShipInfo.getShipItems() as shoppingCartItem>
+        <#if (itemIndex > 0)> <tr> </#if>
+
+        <td valign="top"> ${shoppingCartItem.getProductId()?default("")} - ${shoppingCartItem.getName()?default("")} </td>
+        <td valign="top"> ${cartShipInfo.getShipItemInfo(shoppingCartItem).getItemQuantity()?default("0")} </td>
+
+        <#if (itemIndex == 0)> </tr> </#if>
+        <#assign itemIndex = itemIndex + 1 />
+        </#list>
+
+      </tr>
+
+      </#if>
+      </#list>
+      </table>
     </div>
 </#if>

@@ -82,6 +82,10 @@
         <value xml:lang="en">Cart</value>
         <value xml:lang="th">ตระกร้าสินค้า</value>
     </property>
+    <property key="PFTChangeAddress">
+        <value xml:lang="en">Change Address</value>
+        <value xml:lang="th">เปลี่ยนค่าอยู่การส่งใหม่</value>
+    </property>
     <property key="PFTCheckout">
         <value xml:lang="en">Check out</value>
         <value xml:lang="th">ดำเนินการชำระเงิน</value>
@@ -97,6 +101,10 @@
     <property key="PFTCompanyName">
         <value xml:lang="en">Antwebsystems Co.,Ltd.</value>
         <value xml:lang="th">บริษัท แอนท์ เว็บซิสเต็มส์ จำกัด</value>
+    </property>
+    <property key="PFTConfirmAddress">
+        <value xml:lang="en">Confirm Address</value>
+        <value xml:lang="th">ยืนยัน ที่อยู่การส่ง</value>
     </property>
     <property key="PFTCompanyUpdateSuccessful">
         <value xml:lang="en">Company Update Successful</value>
