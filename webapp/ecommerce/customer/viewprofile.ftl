@@ -20,6 +20,22 @@ under the License.
 <#if party?exists>
 <#-- Main Heading -->
 <div id="main-container" class="container">
+	<div class="row">
+    <!-- Store Management Menu Start -->
+    <div class="col-sm-3">
+      <h3 class="side-heading">${uiLabelMap.PFTMyAccountMenu}</h3>
+      <div class="list-group">
+          <a href="<@ofbizUrl>viewprofile</@ofbizUrl> " class="list-group-item selected">
+              <i class="fa fa-chevron-right"></i>
+              ${uiLabelMap.PFTMyProfile}
+          </a>
+          <a href="<@ofbizUrl>myOrderlist</@ofbizUrl>" class="list-group-item">
+              <i class="fa fa-chevron-right"></i>
+              ${uiLabelMap.PFTMyOrder}
+          </a>
+      </div>
+    </div>
+	<div class="col-sm-9">
   <h1>
     ${uiLabelMap.PartyTheProfileOf}
     <#if person?exists>
@@ -138,7 +154,7 @@ under the License.
     </div>
     <#-- ============================================================= -->
     <#if person?exists>
-      <div class="panel panel-smart">
+      <#-- <div class="panel panel-smart">
         <div class="panel-heading navbar">
           <h3>${uiLabelMap.OrderSalesHistory}</h3>
         </div>
@@ -152,6 +168,7 @@ under the License.
                 <th>${uiLabelMap.CommonStatus}</th>
                 <th>${uiLabelMap.OrderInvoices}</th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -164,9 +181,9 @@ under the License.
                     <td>${orderHeader.orderDate.toString()}</td>
                     <td>${orderHeader.orderId}</td>
                     <td><@ofbizCurrency amount=orderHeader.grandTotal*conversionRate isoCode=currencyUom /></td>
-                    <td>${status.get("description",locale)}</td>
+                    <td>${status.get("description",locale)}</td>  -->
                     <#-- invoices -->
-                    <#assign invoices = delegator.findByAnd("OrderItemBilling", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId", "${orderHeader.orderId}"), Static["org.apache.ofbiz.base.util.UtilMisc"].toList("invoiceId"), false) />
+                    <#-- <#assign invoices = delegator.findByAnd("OrderItemBilling", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId", "${orderHeader.orderId}"), Static["org.apache.ofbiz.base.util.UtilMisc"].toList("invoiceId"), false) />
                     <#assign distinctInvoiceIds = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFieldListFromEntityList(invoices, "invoiceId", true)>
                     <#if distinctInvoiceIds?has_content>
                       <td>
@@ -177,7 +194,7 @@ under the License.
                     <#else>
                       <td></td>
                     </#if>
-                    <td><a href="<@ofbizUrl>orderstatus?orderId=${orderHeader.orderId}</@ofbizUrl>" class="btn btn-main">${uiLabelMap.CommonView}</a></td>
+                    <td><a href="<@ofbizUrl>orderstatus?orderId=${orderHeader.orderId}</@ofbizUrl>" class="btn btn-main">${uiLabelMap.CommonView} ${status}</a></td>
                   </tr>
                 </#list>
               <#else>
@@ -186,7 +203,7 @@ under the License.
             </tbody>
           </table>
         </div>
-      </div>
+      </div>  -->
 
       <#-- ============================================================= -->
       <#if monthsToInclude?exists && totalSubRemainingAmount?exists && totalOrders?exists>
@@ -717,5 +734,7 @@ under the License.
     <#else>
         <h3>${uiLabelMap.PartyNoPartyForCurrentUserName}: ${userLogin.userLoginId}</h3>
     </#if>
+    </div>
+    </div>
   </div>
 </div>

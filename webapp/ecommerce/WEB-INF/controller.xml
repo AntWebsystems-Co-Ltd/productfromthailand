@@ -517,10 +517,24 @@ under the License.
         <response name="error" type="view" value="PaymentsReports"/>
     </request-map>
 
+    <request-map uri="myOrderlist">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="myOrderlist"/>
+        <response name="error" type="view" value="myOrderlist"/>
+    </request-map>
+
+    <request-map uri="quickDropShipOrder">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="quickDropShipOrderPFT"/>
+        <response name="success" type="request" value="myOrderlist"/>
+        <response name="error" type="request" value="myOrderlist"/>
+    </request-map>
+
     <request-map uri="trackingShipment">
         <security https="true" auth="false"/>
         <response name="success" type="view" value="trackingShipment"/>
     </request-map>
+
     <!-- Calculate Sale Price -->
     <request-map uri="calculateSalePrice">
         <security https="true" auth="true"/>
@@ -568,6 +582,7 @@ under the License.
     <view-map name="checkoutreview" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#checkoutreview"/>
     <view-map name="ordercomplete" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#ordercomplete"/>
     <view-map name="orderstatus" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#orderstatus"/>
+    <view-map name="myOrderlist" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#myOrderlist"/>
 
     <!-- Request Views -->
     <view-map name="ViewRequest" type="screen" page="component://productfromthailand/widget/CustRequestScreens.xml#ViewRequest"/>

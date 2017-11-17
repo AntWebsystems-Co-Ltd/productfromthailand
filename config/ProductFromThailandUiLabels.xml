@@ -248,6 +248,10 @@
         <value xml:lang="zh-TW">我的帳戶</value>
         <value xml:lang="th">ข้อมูลของฉัน</value>
     </property>
+    <property key="PFTMyAccountMenu">
+        <value xml:lang="en">My Account Menu</value>
+        <value xml:lang="th">เมนูข้อมูลของฉัน</value>
+    </property>
     <property key="PFTMyOrders">
         <value xml:lang="en">My Orders</value>
         <value xml:lang="th">รายการสั่งซื้อของฉัน</value>
@@ -256,9 +260,21 @@
         <value xml:lang="en">My Products</value>
         <value xml:lang="th">รายการสินค้าของฉัน</value>
     </property>
+    <property key="PFTMyProfile">
+        <value xml:lang="en">My profile</value>
+        <value xml:lang="th">ข้อมูลของฉัน</value>
+    </property>
+    <property key="PFTMyOrder">
+        <value xml:lang="en">My Order</value>
+        <value xml:lang="th">ข้อมูลการสั่งซื้อของฉัน</value>
+    </property>
     <property key="PFTOr">
         <value xml:lang="en">Or</value>
         <value xml:lang="th">หรือ</value>
+    </property>
+    <property key="PFTOrderHistory">
+        <value xml:lang="en">Order History of</value>
+        <value xml:lang="th">ประวัติการสั่งซื้อของ</value>
     </property>
     <property key="PFTPages">
         <value xml:lang="en">Pages</value>
@@ -353,6 +369,10 @@
     <property key="PFTRecentlyAddedItems">
         <value xml:lang="en">Recently Added Items</value>
         <value xml:lang="th">สินค้าใหม่ล่าสุด</value>
+    </property>
+    <property key="PFTReceiveItem">
+        <value xml:lang="en">Receive</value>
+        <value xml:lang="th">ได้รับสินค้าแล้ว</value>
     </property>
     <property key="PFTRegister">
         <value xml:lang="da">Registrer</value>

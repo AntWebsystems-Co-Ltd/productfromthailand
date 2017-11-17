@@ -257,4 +257,13 @@ under the License.
         <set field="changeOrderStatusMap.userLogin" from-field="systemUserLogin"/>
         <call-service service-name="changeOrderStatus" in-map-name="changeOrderStatusMap"/>
     </simple-method>
+
+    <simple-method method-name="quickDropShipOrderPFT" short-description="Update Supplier Information">
+        <entity-one value-field="systemUserLogin" entity-name="UserLogin">
+            <field-map field-name="userLoginId" value="system"/>
+        </entity-one>
+        <set-service-fields service-name="quickDropShipOrder" map="parameters" to-map="quickDropShipOrderMap"/>
+        <set field="quickDropShipOrderMap.userLogin" from-field="systemUserLogin"/>
+        <call-service service-name="quickDropShipOrder" in-map-name="quickDropShipOrderMap"/>
+    </simple-method>
 </simple-methods>

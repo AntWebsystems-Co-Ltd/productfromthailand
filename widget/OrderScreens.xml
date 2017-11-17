@@ -356,4 +356,33 @@
             </widgets>
         </section>
     </screen>
+
+    <screen name="myOrderlist">
+        <section>
+            <actions>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-one entity-name="Party" value-field="party"/>
+                <entity-one entity-name="Person" value-field="person"/>
+                <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
+                <entity-one entity-name="PartyIdentification" value-field="regisNo">
+                    <field-map field-name="partyId" from-field="partyId"/>
+                    <field-map field-name="partyIdentificationTypeId" value="ID_BIZ_REGISTER_NO"/>
+                </entity-one>
+                <entity-one entity-name="PartyIdentification" value-field="idNo">
+                    <field-map field-name="partyId" from-field="partyId"/>
+                    <field-map field-name="partyIdentificationTypeId" value="ID_NUMBER"/>
+                </entity-one>
+                <script location="component://ecommerce/groovyScripts/customer/ViewProfile.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/OrderHistory.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/order/myOrderList.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
 </screens>
