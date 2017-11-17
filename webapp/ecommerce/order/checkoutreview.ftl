@@ -35,7 +35,7 @@ under the License.
 </script>
 
 <div id="main-container" class="container">
-    <h1>${uiLabelMap.OrderFinalCheckoutReview}</h1>
+    <h1>${uiLabelMap.PFTFinalCheckoutReview}</h1>
     <#if !isDemoStore?exists && isDemoStore><p>${uiLabelMap.OrderDemoFrontNote}.</p></#if>
     <div class="panel-smart">
     <#if cart?exists && 0 < cart.size()>

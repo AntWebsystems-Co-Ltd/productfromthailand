@@ -180,8 +180,8 @@
                 <set field="orderBy" value="geoName"/>
                 <set field="selectedDependentOption" from-field="shipToStateProvinceGeoId" default-value="_none_"/>
                 <script location="component://order/groovyScripts/entry/CheckoutPayment.groovy"/>
-                <script location="component://order/groovyScripts/entry/CheckoutOptions.groovy"/>
                 <script location="component://order/groovyScripts/entry/StorePaymentOptions.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/CheckoutOptions.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">

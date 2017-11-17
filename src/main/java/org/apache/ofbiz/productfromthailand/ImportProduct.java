@@ -289,16 +289,22 @@ public class ImportProduct {
                         Timestamp now = UtilDateTime.nowTimestamp();
 
                         BigDecimal salePrice = BigDecimal.ZERO;
-                        try {
-                            Map<String, Object> calculateSalePriceResult = dispatcher.runSync("calculateSalePrice", UtilMisc.<String, Object>toMap("purchasePrice", price, "userLogin", userLogin));
-                            if (ServiceUtil.isError(calculateSalePriceResult)) {
-                                request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(calculateSalePriceResult));
+
+                        if (price != BigDecimal.ZERO) {
+                            try {
+                                Map<String, Object> calculateSalePriceResult = dispatcher.runSync("calculateSalePrice", UtilMisc.<String, Object>toMap("purchasePrice", price, "userLogin", userLogin));
+                                if (ServiceUtil.isError(calculateSalePriceResult)) {
+                                    request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(calculateSalePriceResult));
+                                    return "error";
+                                }
+                                salePrice = (BigDecimal) calculateSalePriceResult.get("salePrice");
+                            } catch (GenericServiceException e) {
+                                String errMsg = "Error Calculate Sale Price : " + e.toString();
+                                request.setAttribute("_ERROR_MESSAGE_", errMsg);
                                 return "error";
                             }
-                            salePrice = (BigDecimal) calculateSalePriceResult.get("salePrice");
-                        } catch (GenericServiceException e) {
-                            String errMsg = "Error Calculate Sale Price : " + e.toString();
-                            request.setAttribute("_ERROR_MESSAGE_", errMsg);
+                        } else {
+                            request.setAttribute("_ERROR_MESSAGE_", "Error Product price is missing.");
                             return "error";
                         }
 
@@ -656,6 +662,12 @@ public class ImportProduct {
                         if (ServiceUtil.isError(createSupplierProductResult)) {
                             request.setAttribute("_ERROR_MESSAGE_", ServiceUtil.getErrorMessage(createSupplierProductResult));
                             return "error";
+                        } else {
+                            Map<String, Object> supplierProduct = createSupplierProducts.get(j);
+                            String productId = (String) supplierProduct.get("productId");
+                            BigDecimal lastPrice =  (BigDecimal) supplierProduct.get("lastPrice");
+                            Map<String, Object> supplierProductOtherCurrenciesMap = UtilMisc.toMap("productId", productId, "lastPrice", lastPrice, "userLogin", userLogin);
+                            dispatcher.runSync("createUpdateSupplierProductOtherCurrencies", supplierProductOtherCurrenciesMap);
                         }
                     } catch (GenericServiceException e) {
                         String errMsg = "Error setting SupplierProduct : " + e.toString();

@@ -63,6 +63,10 @@ function submitForm(form, mode, value) {
         // selected shipping address
         form.action="<@ofbizUrl>updateCheckoutOption</@ofbizUrl>";
         form.submit();
+    } else if (mode == "SM") {
+        // selected shipping method
+        form.action="<@ofbizUrl>updateCheckoutOptionAndShipping</@ofbizUrl>";
+        form.submit();
     } else if (mode == "SC") {
         // selected ship to party
         form.action="<@ofbizUrl>cartUpdateShipToCustomerParty</@ofbizUrl>";
@@ -171,20 +175,13 @@ function submitForm(form, mode, value) {
                                 <h3 class="hs-1 text-center-xs text-color-6 text-uppercase text-bold">${uiLabelMap.OrderSelectShippingMethod}</h3>
                             <#-- Heading Ends -->
                                 <div class="form-group">
-                                    <#list carrierShipmentMethodList as carrierShipmentMethod>
-                                        <#if shoppingCart.getShippingContactMechId()??>
-                                            <#assign shippingEst = shippingEstWpr.getShippingEstimate(carrierShipmentMethod)?default(-1)>
-                                        </#if>
-                                        <#if shippingEst?has_content>
-                                            <#if (shippingEst > -1)>
+                                    <#list ShippingList as carrierShipmentMethod>
                                         <div>
                                             <#assign shippingMethod = carrierShipmentMethod.shipmentMethodTypeId + "@" + carrierShipmentMethod.partyId>
                                             <input type="radio" id="shipping_method_${shippingMethod!}" name="shipping_method" value="${shippingMethod!}"/>
                                             <#if carrierShipmentMethod.partyId != "_NA_">${carrierShipmentMethod.partyId!}&nbsp;</#if>${carrierShipmentMethod.description!}
-                                            <#if shippingEst?has_content> - <#if (shippingEst > -1)><@ofbizCurrency amount=shippingEst isoCode=shoppingCart.getCurrency()/><#else>${uiLabelMap.OrderCalculatedOffline}</#if></#if>
+                                            <#if carrierShipmentMethod.shippingEst?has_content> - <#if (carrierShipmentMethod.shippingEst > -1)><@ofbizCurrency amount=carrierShipmentMethod.shippingEst isoCode=shoppingCart.getCurrency()/><#else>${uiLabelMap.OrderCalculatedOffline}</#if></#if>
                                         </div>
-                                            </#if>
-                                        </#if>
                                     </#list>
                                 </div>
                             </div>
@@ -304,7 +301,7 @@ function submitForm(form, mode, value) {
                                         <td class="text-right"><b><@ofbizCurrency amount=shoppingCart.getTotalShipping() isoCode=shoppingCart.getCurrency() /></b></td>
                                     </tr>
                                     <tr id="checkouttotal">
-                                        <td colspan="2"><b>${uiLabelMap.OrderSalesTax}</b></td>
+                                        <td colspan="2"><b>${uiLabelMap.PFTSalesTax}</b></td>
                                         <td class="text-right"><b><@ofbizCurrency amount=shoppingCart.getTotalSalesTax() isoCode=shoppingCart.getCurrency() /></b></td>
                                     </tr>
                                     <tr id="checkouttotal">
@@ -351,7 +348,7 @@ jQuery(document).ready( function() {
     isCheckedShippingAndPayment();
     $("input:radio[name='shipping_method']").change(function() {
         waitSpinnerShow();
-        submitForm(document.checkoutInfoForm, 'SA', '');
+        submitForm(document.checkoutInfoForm, 'SM', '');
     })
     $("#acceptcondition").change(function() {
         if ($("#acceptcondition").is(":checked")) {

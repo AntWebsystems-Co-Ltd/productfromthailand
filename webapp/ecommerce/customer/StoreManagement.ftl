@@ -102,7 +102,7 @@ under the License.
             <table class="table table-bordered">
               <thead>
                   <tr>
-                    <td colspan="3" class="text-center">${uiLabelMap.ProductProductNameId}</td>
+                    <td colspan="4" class="text-center">${uiLabelMap.ProductProductNameId}</td>
                     <td class="text-center">${uiLabelMap.CommonFromDateTime}</td>
                     <td class="text-center">${uiLabelMap.SupplierProductPrice}</td>
                     <td class="text-center">${uiLabelMap.PFTSalePrice}</td>
@@ -126,7 +126,9 @@ under the License.
                         <tr valign="middle"<#if rowClass == "1"> class="alternate-row"</#if>>
                           <td colspan="3">
                               <a href="<@ofbizUrl>EditProduct?productId=${(supplierProduct.productId)?if_exists}</@ofbizUrl>"><img alt="Small Image" src="<@ofbizContentUrl>${(product.smallImageUrl)?default("/pft-default/images/defaultImage.jpg")}</@ofbizContentUrl>" height="80" width="80" align="middle"></a>
-                            <a href="<@ofbizUrl>EditProduct?productId=${(supplierProduct.productId)?if_exists}</@ofbizUrl>" class="btn btn-main"><#if product?exists>${(product.internalName)?if_exists}</#if> [${(supplierProduct.productId)?if_exists}]</a>
+                          </td>
+                          <td>
+                            <a href="<@ofbizUrl>EditProduct?productId=${(supplierProduct.productId)?if_exists}</@ofbizUrl>" class="btn btn-main">[${(supplierProduct.productId)?if_exists}] <#if product.internalName?? && product.internalName?length &gt; 35>${product.internalName?substring(0,35)!}...<#else>${product.internalName!}</#if></a>
                           </td>
                           <td class="text-center" <#if hasntStarted> style="color: red;"</#if>>${(product.createdDate?string.medium)?if_exists}</td>
                           <td class="text-center">

@@ -236,14 +236,15 @@ under the License.
       <table width="100%" class="table table-bordered">
 
       <#-- header -->
-
-      <tr>
-        <td><span>${uiLabelMap.OrderDestination}</span></td>
-        <td><span>${uiLabelMap.PartySupplier}</span></td>
-        <td><span>${uiLabelMap.ProductShipmentMethod}</span></td>
-        <td><span>${uiLabelMap.ProductItem}</span></td>
-        <td><span>${uiLabelMap.ProductQuantity}</span></td>
-      </tr>
+      <thead>
+        <tr>
+          <td><span>${uiLabelMap.OrderDestination}</span></td>
+          <td><span>${uiLabelMap.PFTSupplier}</span></td>
+          <td><span>${uiLabelMap.ProductShipmentMethod}</span></td>
+          <td><span>${uiLabelMap.ProductItem}</span></td>
+          <td><span>${uiLabelMap.ProductQuantity}</span></td>
+        </tr>
+      </thead>
       <#list cart.getShipGroups() as cartShipInfo>
       <#assign numberOfItems = cartShipInfo.getShipItems().size()>
       <#if (numberOfItems > 0)>
@@ -275,8 +276,8 @@ under the License.
         <#-- supplier id (for drop shipments) (also spans rows = number of items) -->
 
         <td rowspan="${numberOfItems}" valign="top">
-          <#assign supplier =  delegator.findOne("PartyGroup", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", cartShipInfo.getSupplierPartyId()), false)! />
-          <#if supplier?has_content>${supplier.groupName?default(supplier.partyId)}</#if>
+          <#assign supplier =  delegator.findOne("PartyNameView", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", cartShipInfo.getSupplierPartyId()), false)! />
+          <#if supplier?has_content>${supplier.groupName!}${supplier.firstName!}&nbsp;&nbsp;${supplier.lastName!}</#if>
         </td>
 
         <#-- carrier column (also spans rows = number of items) -->

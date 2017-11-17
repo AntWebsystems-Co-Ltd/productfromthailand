@@ -27,15 +27,15 @@ under the License.
                     <div id="main-carousel" class="carousel slide" data-ride="carousel">
                         <#-- Wrapper For Slides Starts -->
                             <div class="carousel-inner">
-                                <div class="item active">
-                                    <img src="/pft-default/pftimages/slide/slide-1.png" alt="Slider" class="img-responsive"/>
-                                </div>
-                                <div class="item">
-                                    <img src="/pft-default/pftimages/slide/slide-2.png" alt="Slider" class="img-responsive">
-                                </div>
-                                <div class="item">
-                                    <img src="/pft-default/pftimages/slide/slide-3.png" alt="Slider" class="img-responsive">
-                                </div>
+                                <#assign numSlide = 3>
+                                <#assign currentSlide = 1>
+                                <#if (numSlide?int > 1)>
+                                    <#list 1 .. numSlide as foo>
+                                        <div class="item <#if (foo?int = 1)>active</#if>">
+                                            <img src="/pft-default/pftimages/slide/slide-${foo}.jpg" alt="Slider" class="img-responsive"/>
+                                        </div>
+                                    </#list>
+                                </#if>
                             </div>
                         <#-- Wrapper For Slides Ends -->
                         <#-- Controls Starts -->
@@ -117,7 +117,7 @@ under the License.
                     <img src="/pft-default/pftimages/banners/banner-bottom-left.png" alt="banners" class="img-responsive">
                 </li>
                 <li class="col-sm-8">
-                    <img src="/pft-default/pftimages/banners/banner-bottom-right.png" alt="banners" class="img-responsive">
+                    <img src="/pft-default/pftimages/banners/banner-bottom-right.jpg" alt="banners" class="img-responsive">
                 </li>
             </ul>
         </div>

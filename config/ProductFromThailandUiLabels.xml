@@ -90,6 +90,10 @@
         <value xml:lang="en">Check out</value>
         <value xml:lang="th">ดำเนินการชำระเงิน</value>
     </property>
+    <property key="PFTFinalCheckoutReview">
+        <value xml:lang="en">Final Check Out Review</value>
+        <value xml:lang="th">ดำเนินการชำระเงินครั้งสุดท้าย</value>
+    </property>
     <property key="PFTClickToRegister">
         <value xml:lang="en">Click here to Register</value>
         <value xml:lang="th">สมัครสมาชิกใหม่ คลิกที่นี่</value>
@@ -251,6 +255,14 @@
         <value xml:lang="en">Partner</value>
         <value xml:lang="th">หุ้นส่วน</value>
     </property>
+    <property key="PFTProductSuccessfullyCreated">
+        <value xml:lang="en">Product successfully created.</value>
+        <value xml:lang="th">สร้างข้อมูลสินค้าใหม่เสร็จสมบูรณ์</value>
+    </property>
+    <property key="PFTProductSuccessfullyUpdated">
+        <value xml:lang="en">Product successfully updated.</value>
+        <value xml:lang="th">แก้ไขข้อมูลสินค้าเสร็จสมบูรณ์</value>
+    </property>
     <property key="PFTPartySuccessfullyVerified">
         <value xml:lang="en">You have successfully registered your account</value>
         <value xml:lang="th">หุ้นส่วน</value>
@@ -383,6 +395,10 @@
         <value xml:lang="en">Sales conditions</value>
         <value xml:lang="th">เงื่อนไขในการขายสินค้า</value>
     </property>
+    <property key="PFTSalesTax">
+        <value xml:lang="en">VAT</value>
+        <value xml:lang="th">ภาษีมูลค่าเพิ่ม</value>
+    </property>
     <property key="PFTSearchYourProducts">
         <value xml:lang="en">Search our product catalog</value>
         <value xml:lang="th">ค้นหาตามหมวดหมู่สินค้า</value>
@@ -430,6 +446,10 @@
     <property key="PFTStoreMenu">
         <value xml:lang="en">Store Menu</value>
         <value xml:lang="th">เมนูร้านค้า</value>
+    </property>
+    <property key="PFTSupplier">
+        <value xml:lang="en">Supplier</value>
+        <value xml:lang="th">ผู้จัดจำหน่าย</value>
     </property>
     <property key="PFTSupplierName">
         <value xml:lang="en">Supplier Name</value>

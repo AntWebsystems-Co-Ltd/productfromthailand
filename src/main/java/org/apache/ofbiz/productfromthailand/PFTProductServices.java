@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -44,8 +45,10 @@ import org.apache.ofbiz.base.util.Debug;
 import org.apache.ofbiz.base.util.FileUtil;
 import org.apache.ofbiz.base.util.GeneralException;
 import org.apache.ofbiz.base.util.UtilGenerics;
+import org.apache.ofbiz.base.util.UtilHttp;
 import org.apache.ofbiz.base.util.UtilDateTime;
 import org.apache.ofbiz.base.util.UtilMisc;
+import org.apache.ofbiz.base.util.UtilProperties;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.base.util.string.FlexibleStringExpander;
 import org.apache.ofbiz.entity.Delegator;
@@ -65,6 +68,7 @@ import org.apache.ofbiz.productfromthailand.ImportProduct;
 public class PFTProductServices {
     public static final String module = PFTProductServices.class.getName();
     public static final String err_resource = "ContentErrorUiLabels";
+    public static final String resource = "ProductFromThailandUiLabels";
     private static List<Map<String,Object>> josonMap = null;
     public static String createProductAndUploadMultiImage(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException{
         HttpSession session = request.getSession(true);
@@ -84,6 +88,7 @@ public class PFTProductServices {
         String imageServerPath = FlexibleStringExpander.expandString(EntityUtilProperties.getPropertyValue("catalog", "image.management.path", delegator), UtilMisc.toMap("userLoginId", userLogin.getString("userLoginId")));
         String imageServerUrl = FlexibleStringExpander.expandString(EntityUtilProperties.getPropertyValue("catalog", "image.management.url", delegator), UtilMisc.toMap("userLoginId", userLogin.getString("userLoginId")));
         List<String> sizeTypeList = UtilMisc.toList("small", "medium", "large");
+        Locale locale = UtilHttp.getLocale(request);
 
         try {
            lst = UtilGenerics.checkList(fu.parseRequest(request));
@@ -420,6 +425,11 @@ public class PFTProductServices {
                         }
                     }
                 }
+            }
+            if (formInput.get("isCreate").equals("Y")) {
+                request.setAttribute("_EVENT_MESSAGE_", UtilProperties.getMessage(resource, "PFTProductSuccessfullyCreated", locale));
+            } else {
+                request.setAttribute("_EVENT_MESSAGE_", UtilProperties.getMessage(resource, "PFTProductSuccessfullyUpdated", locale));
             }
             request.setAttribute("productId", productId);
             return "success";

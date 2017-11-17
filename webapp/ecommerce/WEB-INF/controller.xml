@@ -462,6 +462,18 @@ under the License.
         <response name="success" type="view" value="quickcheckout"/>
         <response name="error" type="view" value="quickcheckout"/>
     </request-map>
+    <request-map uri="updateCheckoutOptionAndShipping">
+        <security https="true" auth="true"/>
+        <event type="java" path="org.apache.ofbiz.order.shoppingcart.CheckOutEvents" invoke="setPartialCheckOutOptions"/>
+        <response name="success" type="request" value="updateCheckoutOptionAndShippingCalcShipping"/>
+        <response name="error" type="view" value="quickcheckout"/>
+    </request-map>
+    <request-map uri="updateCheckoutOptionAndShippingCalcShipping">
+        <security direct-request="false"/>
+        <event type="java" path="org.apache.ofbiz.order.shoppingcart.shipping.ShippingEvents" invoke="getShipEstimate"/>
+        <response name="success" type="view" value="quickcheckout"/>
+        <response name="error" type="view" value="quickcheckout"/>
+    </request-map>
 
     <request-map uri="trackingShipment">
         <security https="true" auth="false"/>
