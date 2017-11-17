@@ -21,21 +21,8 @@ under the License.
   <div class="row">
     <!-- Store Management Menu Start -->
     <div class="col-sm-3">
-      <h3 class="side-heading">${uiLabelMap.PFTStoreMenu}</h3>
-      <div class="list-group">
-          <a href="<@ofbizUrl>StoreManagement</@ofbizUrl>" class="list-group-item selected">
-              <i class="fa fa-chevron-right"></i>
-              ${uiLabelMap.PFTMyProducts}
-          </a>
-          <a href="<@ofbizUrl>SupplierInvoiceList</@ofbizUrl>" class="list-group-item">
-              <i class="fa fa-chevron-right"></i>
-              ${uiLabelMap.AccountingListInvoices}
-          </a>
-          <a href="<@ofbizUrl>PurchaseOrderList</@ofbizUrl>" class="list-group-item">
-              <i class="fa fa-chevron-right"></i>
-              ${uiLabelMap.AccountingFixedAssetMaintOrders}
-          </a>
-      </div>
+        ${setRequestAttribute("isMyProducts", "Y")}
+        ${screens.render("component://productfromthailand/widget/CatalogScreens.xml#StoreManagementMenus")}
     </div>
     <!-- Store Management Menu Ends -->
     <div class="col-sm-9">

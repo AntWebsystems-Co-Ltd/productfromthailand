@@ -118,7 +118,7 @@ under the License.
                 <tfoot>
                     <tr>
                       <td colspan="4" class="text-right">
-                        <strong>${uiLabelMap.OrderCartTotal} :</strong>
+                        <strong>${uiLabelMap.PFTTotal} :</strong>
                       </td>
                       <td colspan="2" class="text-left">
                         <@ofbizCurrency amount=shoppingCart.getDisplaySubTotal() isoCode=shoppingCart.getCurrency()/>

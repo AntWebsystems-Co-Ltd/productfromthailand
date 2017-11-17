@@ -20,13 +20,14 @@ under the License.
   <div class="row">
     <!-- Store Management Menu Start -->
     <div class="col-sm-3">
-        ${setRequestAttribute("isMyOrders", "Y")}
+        ${setRequestAttribute("isCancellations", "Y")}
+        ${setRequestAttribute("isMyOrdersSub", "Y")}
         ${screens.render("component://productfromthailand/widget/CatalogScreens.xml#StoreManagementMenus")}
     </div>
     <!-- Store Management Menu Ends -->
     <div class="col-sm-9">
       <h4 class="main-heading text-center">
-        ${uiLabelMap.PFTMyOrders}
+        ${uiLabelMap.PFTCancellations} ${uiLabelMap.OrderOrder}
       </h4>
       <div class="table-responsive shopping-cart-table">
           <table class="table table-bordered">
@@ -37,9 +38,6 @@ under the License.
                 </td>
                 <td class="text-center">
                     ${uiLabelMap.OrderDate}
-                </td>
-                <td class="text-center">
-                    ${uiLabelMap.CommonStatus}
                 </td>
                 <td class="text-center">
                     ${uiLabelMap.OrderGrandTotal}
@@ -57,17 +55,12 @@ under the License.
             <tbody>
               <#if orderLists?has_content>
                 <#list orderLists as orderList>
-                  <#assign orderStatus = delegator.findOne("StatusItem", {"statusId" : orderList.statusId}, false)!/>
-                  <#assign roleType = delegator.findOne("RoleType", {"roleTypeId" : orderList.roleTypeId}, false)!/>
                   <tr>
                     <td class="text-center">
                       ${orderList.orderId}
                     </td>
                     <td class="text-center">
                       ${orderList.orderDate?string.medium}
-                    </td>
-                    <td class="text-center">
-                      ${orderStatus.description}
                     </td>
                     <td class="text-center">
                       <@ofbizCurrency amount=orderList.grandTotal! isoCode=orderList.currencyUom/>

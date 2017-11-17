@@ -62,9 +62,15 @@
         <value xml:lang="en">Add products to wish list so you will find easily</value>
         <value xml:lang="th">เพิ่มสินค้าโปรดของคุณได้ง่ายๆ</value>
     </property>
+    <property key="PFTAllPayments">
+        <value xml:lang="en">All Payments</value>
+    </property>
     <property key="PFTAvailableOptions">
         <value xml:lang="en">Available Options</value>
         <value xml:lang="th">ตัวเลือกที่ใช้ได้</value>
+    </property>
+    <property key="PFTAwaitingShipment">
+        <value xml:lang="en">Awaiting Shipment</value>
     </property>
     <property key="PFTBrand">
         <value xml:lang="en">Brand</value>
@@ -73,6 +79,9 @@
     <property key="PFTBrowseHelp">
         <value xml:lang="en">Browse Help</value>
         <value xml:lang="th">ดูตามหัวข้อ</value>
+    </property>
+    <property key="PFTCancellations">
+        <value xml:lang="en">Cancellations</value>
     </property>
     <property key="PFTCaptchaMissingError">
         <value xml:lang="en">Missing or wrong captcha.</value>
@@ -239,6 +248,10 @@
         <value xml:lang="zh-TW">我的帳戶</value>
         <value xml:lang="th">ข้อมูลของฉัน</value>
     </property>
+    <property key="PFTMyOrders">
+        <value xml:lang="en">My Orders</value>
+        <value xml:lang="th">รายการสั่งซื้อของฉัน</value>
+    </property>
     <property key="PFTMyProducts">
         <value xml:lang="en">My Products</value>
         <value xml:lang="th">รายการสินค้าของฉัน</value>
@@ -250,6 +263,9 @@
     <property key="PFTPages">
         <value xml:lang="en">Pages</value>
         <value xml:lang="th">หน้าอื่นๆ</value>
+    </property>
+    <property key="PFTPaidAndShipped">
+        <value xml:lang="en">Paid and Shipped</value>
     </property>
     <property key="PFTPartner">
         <value xml:lang="en">Partner</value>
@@ -266,6 +282,9 @@
     <property key="PFTPartySuccessfullyVerified">
         <value xml:lang="en">You have successfully registered your account</value>
         <value xml:lang="th">หุ้นส่วน</value>
+    </property>
+    <property key="PFTPaymentsReports">
+        <value xml:lang="en">Payments Reports</value>
     </property>
     <property key="PFTPleaseRegister">
         <value xml:lang="en">Please Register if you like to be notified when we go online.</value>
@@ -410,6 +429,10 @@
     <property key="PFTSelectByCategories">
         <value xml:lang="en">Select by Categories</value>
         <value xml:lang="th">ค้นหาในหมวดหมู่สินค้า</value>
+    </property>
+    <property key="PFTTotal">
+        <value xml:lang="en">TOTAL</value>
+        <value xml:lang="th">ผลรวม</value>
     </property>
     <property key="PFTSelectOptions">
         <value xml:lang="en">Select Options</value>
@@ -573,6 +596,9 @@
     <property key="PFTUnitOfWeight">
         <value xml:lang="en">Unit of Weight</value>
         <value xml:lang="th">หน่วยน้ำหนัก</value>
+    </property>
+    <property key="PFTUpcomingPayments">
+        <value xml:lang="en">Upcoming Payments</value>
     </property>
     <property key="PFTUpdateProfile">
         <value xml:lang="en">Update Profile</value>

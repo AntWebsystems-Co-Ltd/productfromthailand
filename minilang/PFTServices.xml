@@ -245,4 +245,16 @@ under the License.
         <property-to-field resource="ProductFromThailandUiLabels" property="PFTCompanyUpdateSuccessful" field="successMessage"/>
         <field-to-result field="parameters.partyId" result-name="partyId"/>
     </simple-method>
+
+    <simple-method method-name="shippedOrder" short-description="Approve purchase order">
+        <entity-one entity-name="UserLogin" value-field="systemUserLogin">
+            <field-map field-name="userLoginId" value="system"/>
+        </entity-one>
+
+        <set field="changeOrderStatusMap.orderId" from-field="parameters.orderId"/>
+        <set field="changeOrderStatusMap.statusId" value="ORDER_APPROVED"/>
+        <set field="changeOrderStatusMap.setItemStatus" value="Y"/>
+        <set field="changeOrderStatusMap.userLogin" from-field="systemUserLogin"/>
+        <call-service service-name="changeOrderStatus" in-map-name="changeOrderStatusMap"/>
+    </simple-method>
 </simple-methods>

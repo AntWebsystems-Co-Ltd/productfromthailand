@@ -235,4 +235,5 @@ under the License.
     <ProductStoreShipmentMeth productStoreShipMethId="9014" productStoreId="PFTSTORE" partyId="FEDEX" includeNoChargeItems="N" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="FEDEX_IE" serviceName="fedexRateInquire" sequenceNumber="15"/>
     <ShipmentCostEstimate productStoreShipMethId="9014" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="9207" shipmentMethodTypeId="FEDEX_IE" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER"/>
 
+    <!-- <JobSandbox jobId="AUTO_GEN_PURC_INV" jobName="Auto generate purchase invoice" runTime="2017-01-01 00:00:00.000" serviceName="autoGeneratePurchaseInvoice" poolId="pool" runAsUser="system" tempExprId="DAYOFMONTH_01" maxRecurrenceCount="-1"/> -->
 </entity-engine-xml>

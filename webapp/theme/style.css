@@ -242,6 +242,14 @@ img.img-responsive {
     background-color: #ff434a;
 }
 
+ul.store-dropdown {
+    margin-top: 1px;
+}
+
+ul.store-dropdown li {
+    list-style-type: none;
+}
+
 #productsdetail .image, #productsdetail .caption {
     height: 250px;
 }

@@ -268,7 +268,7 @@ public class RateWebServiceClient {
             convertCurrencyCtx.put("uomIdTo",currencyUom);
             convertCurrencyCtx.put("uomId",fedexCurrency);
             convertCurrencyCtx.put("originalValue",estimateAmount);
-            if(!currencyUom.equals("fedexCurrency")) {
+            if(!currencyUom.equals(fedexCurrency) && UtilValidate.isNotEmpty(fedexCurrency)) {
                 Map<String, Object> resultConvert = dispatcher.runSync("convertUom", convertCurrencyCtx);
                 estimateAmount = (BigDecimal) resultConvert.get("convertedValue");
             }else {estimateAmount = estimateAmount;}
@@ -474,6 +474,9 @@ public class RateWebServiceClient {
             RateReply reply = port.getRates(request); // Service call
             if (isResponseOk(reply.getHighestSeverity())) {
                 result = writeServiceOutput(reply);
+            }else {
+                result.put("estimateAmount", BigDecimal.ZERO);
+                result.put("currency", "USD");
             }
             printNotifications(reply.getNotifications());
         } catch (Exception e) {

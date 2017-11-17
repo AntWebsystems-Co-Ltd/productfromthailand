@@ -83,7 +83,31 @@ under the License.
         <security https="true" auth="true"/>
         <response name="success" type="view" value="PurchaseOrderList"/>
     </request-map>
-
+    <request-map uri="PaidAndShippedOrder">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="PaidAndShippedOrder"/>
+    </request-map>
+    <request-map uri="AwaitingShipment">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="AwaitingShipment"/>
+    </request-map>
+    <request-map uri="CancellationsOrder">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="CancellationsOrder"/>
+    </request-map>
+    <request-map uri="PaymentsReports">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="PaymentsReports"/>
+    </request-map>
+    <request-map uri="findAllPayments">
+        <security https="true" auth="true"/>
+        <response name="success" type="request" value="PaymentsReports"/>
+        <response name="error" type="request" value="PaymentsReports"/>
+    </request-map>
+    <request-map uri="UpcomingPayments">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="UpcomingPayments"/>
+    </request-map>
 
     <request-map uri="createrequest">
         <security https="true" auth="true"/>
@@ -475,11 +499,28 @@ under the License.
         <response name="error" type="view" value="quickcheckout"/>
     </request-map>
 
+    <request-map uri="ViewPurchaseInvoice">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ViewPurchaseInvoice"/>
+    </request-map>
+    <request-map uri="shippedOrder">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="shippedOrder"/>
+        <response name="success" type="view" value="AwaitingShipment"/>
+        <response name="error" type="view" value="AwaitingShipment"/>
+    </request-map>
+
+    <!-- PDF -->
+    <request-map uri="PaymentReport.pdf">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="PaymentReportPdf"/>
+        <response name="error" type="view" value="PaymentsReports"/>
+    </request-map>
+
     <request-map uri="trackingShipment">
         <security https="true" auth="false"/>
         <response name="success" type="view" value="trackingShipment"/>
     </request-map>
-
     <!-- Calculate Sale Price -->
     <request-map uri="calculateSalePrice">
         <security https="true" auth="true"/>
@@ -558,12 +599,16 @@ under the License.
     <view-map name="OrderPDF" type="screenfop" page="component://productfromthailand/widget/OrderScreens.xml#OrderPDF" content-type="application/pdf" encoding="none"/>
     <view-map name="InvoicePDF" type="screenfop" page="component://productfromthailand/widget/OrderScreens.xml#InvoicePDF" content-type="application/pdf" encoding="none"/>
     <view-map name="ProductBarCode.pdf" type="screenfop" page="component://product/widget/catalog/ProductScreens.xml#ProductBarCode.fo" content-type="application/pdf" encoding="none"/>
+    <view-map name="PaymentReportPdf" type="screenfop" page="component://productfromthailand/widget/CatalogScreens.xml#PaymentReportPdf" content-type="application/pdf" encoding="none"/>
 
-    <view-map name="StoreManagement" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#StoreManagement"/>
     <view-map name="StoreManagement" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#StoreManagement"/>
     <view-map name="SupplierInvoiceList" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#SupplierInvoiceList"/>
     <view-map name="PurchaseOrderList" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#PurchaseOrderList"/>
-
+    <view-map name="AwaitingShipment" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#AwaitingShipment"/>
+    <view-map name="PaidAndShippedOrder" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#PaidAndShippedOrder"/>
+    <view-map name="CancellationsOrder" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#CancellationsOrder"/>
+    <view-map name="PaymentsReports" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#PaymentsReports"/>
+    <view-map name="UpcomingPayments" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#UpcomingPayments"/>
 
     <view-map name="ViewSimpleContent" page="" type="simplecontent"/>
 
@@ -580,4 +625,5 @@ under the License.
     <view-map name="messagelist" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#messagelist"/>
     <view-map name="messagedetail" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#messagedetail"/>
 
+    <view-map name="ViewPurchaseInvoice" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#ViewPurchaseInvoice"/>
 </site-conf>

@@ -125,21 +125,8 @@ under the License.
 <div id="main-container" class="container">
     <div class="row">
         <div class="col-sm-3">
-            <h3 class="side-heading">Store Menu</h3>
-            <div class="list-group">
-                <a href="<@ofbizUrl>StoreManagement</@ofbizUrl>" class="list-group-item selected">
-                    <i class="fa fa-chevron-right"></i>
-                    ${uiLabelMap.PFTMyProducts}
-                </a>
-                <a href="<@ofbizUrl>SupplierInvoiceList</@ofbizUrl>" class="list-group-item">
-                    <i class="fa fa-chevron-right"></i>
-                    ${uiLabelMap.AccountingListInvoices}
-                </a>
-                <a href="<@ofbizUrl>PurchaseOrderList</@ofbizUrl>" class="list-group-item">
-                    <i class="fa fa-chevron-right"></i>
-                    ${uiLabelMap.AccountingFixedAssetMaintOrders}
-                </a>
-          </div>
+            ${setRequestAttribute("isMyProducts", "Y")}
+            ${screens.render("component://productfromthailand/widget/CatalogScreens.xml#StoreManagementMenus")}
         </div>
         <div class="col-sm-8">
             <div class="panel-smart">

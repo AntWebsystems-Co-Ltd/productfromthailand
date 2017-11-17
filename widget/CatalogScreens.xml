@@ -830,4 +830,192 @@ under the License.
         </section>
     </screen>
 
+    <screen name="StoreManagementMenus">
+        <section>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/StoreManagementMenus.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="AwaitingShipment">
+        <section>
+            <actions>
+                <script location="component://productfromthailand/groovyScripts/AwaitingShipment.groovy"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-has-permission permission="MYPORTAL" action="_SUPPLIER"/>
+                    </condition>
+                    <widgets>
+                        <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                            <decorator-section name="body">
+                                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/customer/AwaitingShipment.ftl"/></html></platform-specific>
+                            </decorator-section>
+                        </decorator-screen>
+                    </widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="PaidAndShippedOrder">
+        <section>
+            <actions>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <set field="roleTypeId" value="SUPPLIER_AGENT"/>
+                <entity-and entity-name="OrderHeaderAndRoles" list="orderLists">
+                    <field-map field-name="partyId" from-field="partyId"/>
+                    <field-map field-name="roleTypeId" from-field="roleTypeId"/>
+                    <field-map field-name="statusId" value="ORDER_APPROVED"/>
+                    <order-by field-name="orderDate DESC"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-has-permission permission="MYPORTAL" action="_SUPPLIER"/>
+                    </condition>
+                    <widgets>
+                        <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                            <decorator-section name="body">
+                                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/customer/PaidAndShippedOrder.ftl"/></html></platform-specific>
+                            </decorator-section>
+                        </decorator-screen>
+                    </widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CancellationsOrder">
+        <section>
+            <actions>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <set field="roleTypeId" value="SUPPLIER_AGENT"/>
+                <entity-and entity-name="OrderHeaderAndRoles" list="orderLists">
+                    <field-map field-name="partyId" from-field="partyId"/>
+                    <field-map field-name="roleTypeId" from-field="roleTypeId"/>
+                    <field-map field-name="statusId" value="ORDER_CANCELLED"/>
+                    <order-by field-name="orderDate DESC"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-has-permission permission="MYPORTAL" action="_SUPPLIER"/>
+                    </condition>
+                    <widgets>
+                        <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                            <decorator-section name="body">
+                                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/customer/CancellationsOrder.ftl"/></html></platform-specific>
+                            </decorator-section>
+                        </decorator-screen>
+                    </widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="PaymentsReports">
+        <section>
+            <actions>
+                <script location="component://productfromthailand/groovyScripts/AllPayments.groovy"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-has-permission permission="MYPORTAL" action="_SUPPLIER"/>
+                    </condition>
+                    <widgets>
+                        <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                            <decorator-section name="body">
+                                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/customer/AllPayments.ftl"/></html></platform-specific>
+                            </decorator-section>
+                        </decorator-screen>
+                    </widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="UpcomingPayments">
+        <section>
+            <actions>
+                <script location="component://productfromthailand/groovyScripts/UpcomingPayments.groovy"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-has-permission permission="MYPORTAL" action="_SUPPLIER"/>
+                    </condition>
+                    <widgets>
+                        <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                            <decorator-section name="body">
+                                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/customer/UpcomingPayments.ftl"/></html></platform-specific>
+                            </decorator-section>
+                        </decorator-screen>
+                    </widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="ViewPurchaseInvoice">
+        <section>
+            <actions>
+                <script location="component://productfromthailand/groovyScripts/ViewPurchaseInvoice.groovy"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-has-permission permission="MYPORTAL" action="_SUPPLIER"/>
+                    </condition>
+                    <widgets>
+                        <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                            <decorator-section name="body">
+                                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/customer/ViewPurchaseInvoice.ftl"/></html></platform-specific>
+                            </decorator-section>
+                        </decorator-screen>
+                    </widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="PaymentReportPdf">
+        <section>
+            <actions>
+                <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="titleProperty" value="AccountingInvoice"/>
+                <script location="component://accounting/groovyScripts/invoice/EditInvoice.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="FoReportDecorator" location="component://common/widget/CommonScreens.xml">
+                    <decorator-section name="topLeft">
+                        <platform-specific>
+                            <xsl-fo><html-template location="component://productfromthailand/webapp/ecommerce/customer/SupplierInfo.fo.ftl"/></xsl-fo>
+                        </platform-specific>
+                    </decorator-section>
+                    <decorator-section name="topRight">
+                       <platform-specific>
+                            <xsl-fo><html-template location="component://accounting/template/invoice/InvoiceReportHeaderInfo.fo.ftl"/></xsl-fo>
+                        </platform-specific>
+                    </decorator-section>
+                    <decorator-section name="body">
+                       <platform-specific>
+                           <xsl-fo><html-template location="component://productfromthailand/webapp/ecommerce/customer/InvoiceReportContactMechs.fo.ftl"/></xsl-fo>
+                      </platform-specific>
+                       <platform-specific>
+                           <xsl-fo><html-template location="component://accounting/template/invoice/InvoiceReportItems.fo.ftl"/></xsl-fo>
+                       </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
 </screens>
