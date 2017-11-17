@@ -34,24 +34,60 @@ under the License.
             <#-- <li class="partnerconditions">The supplier will enter in the system when the order is sent, and what it contains so the customer can be notified.</li> -->
             <li class="partnerconditions">${uiLabelMap.PFTSupplierWillPaidMonthly}</li>
           </ul>
-          <br/><br/><h2>${uiLabelMap.PFTSupplierRegisterGuide}</h2></div><br/><br/>
-          <table class="steps" cellspacing="0" width="100%">
-              <tr>
-                  <td><img class="stepSuppile" src="<@ofbizContentUrl>/pft-default/pftimages/Step1.png</@ofbizContentUrl>"/></td>
-                  <td> <lable class="stepSuppile">${uiLabelMap.PFTSupplierHeadStep1}</lable>
-                  <br><lable>${uiLabelMap.PFTSupplierStep1}</lable></br></td>
-                </tr>
-                <tr>
-                  <td><img class="stepSuppile" src="<@ofbizContentUrl>/pft-default/pftimages/Step2.png</@ofbizContentUrl>"/></td>
-                  <td> <lable class="stepSuppile">${uiLabelMap.PFTSupplierHeadStep2}</lable>
-                  <lable><br>${uiLabelMap.PFTSupplierStep2}</br><lable></td>
-                </tr>
-                <tr>
-                  <td><img class="stepSuppile" src="<@ofbizContentUrl>/pft-default/pftimages/Step3.png</@ofbizContentUrl>"/></td>
-                  <td><lable class="stepSuppile">${uiLabelMap.PFTSupplierHeadStep3}</lable>
-                  <br><lable>${uiLabelMap.PFTSupplierStep3}</lable></br></td>
-                </tr>
-          </table>
+        </div>
+        <div class="table-responsive shopping-cart-table">
+            <br/><br/><h2>${uiLabelMap.PFTSupplierRegisterGuide}</h2><br/><br/>
+            <table class="table">
+                <tbody>
+                  <thead>
+                    <tr>
+                      <td><img class="stepSuppile" src="<@ofbizContentUrl>/pft-default/pftimages/Step1.png</@ofbizContentUrl>"/></td>
+                      <td> <lable class="stepSuppile">${uiLabelMap.PFTSupplierHeadStep1}</lable>
+                      <br>${uiLabelMap.PFTSupplierStep1}</br></td>
+                    </tr>
+                    <tr>
+                      <td><img class="stepSuppile" src="<@ofbizContentUrl>/pft-default/pftimages/Step2.png</@ofbizContentUrl>"/></td>
+                      <td> <lable class="stepSuppile">${uiLabelMap.PFTSupplierHeadStep2}</lable>
+                      <br>${uiLabelMap.PFTSupplierStep2}</br></td>
+                    </tr>
+                    <tr>
+                      <td><img class="stepSuppile" src="<@ofbizContentUrl>/pft-default/pftimages/Step3.png</@ofbizContentUrl>"/></td>
+                      <td><lable class="stepSuppile">${uiLabelMap.PFTSupplierHeadStep3}</lable>
+                      <br>${uiLabelMap.PFTSupplierStep3}</br></td>
+                    </tr>
+                  </thead>
+                </tbody>
+            </table>
+            <div class="shopping-cart-table">
+            <br/><h2>${uiLabelMap.PFTCommisionFee} ${uiLabelMap.CommonOn} ${uiLabelMap.PFTCompanyNamePFT}</h2><br/>
+              <table class="table table-bordered">
+                <tbody>
+                <thead>
+                  <tr>
+                    <th class="text-center">${uiLabelMap.PFTCommision}</th>
+                    <th class="text-center">${uiLabelMap.PFTFee}</th>
+                  </tr>
+                  <tr>
+                    <td>${uiLabelMap.PFTRegisterAsSupplier}</td>
+                    <td>${uiLabelMap.PFTFree}</td>
+                  </tr>
+                  <tr>
+                    <td>${uiLabelMap.PFTRatePayPal}</td>
+                    <td>5%</td>
+                  </tr>
+                  <tr>
+                    <td>${uiLabelMap.PFTRatePFT}</td>
+                    <td>5% (${uiLabelMap.PFTIncludingPaymentFee})</td>
+                  </tr>
+                  <tr>
+                    <td>${uiLabelMap.PFTVat}</td>
+                    <td>7%</td>
+                  </tr>
+                  </thead>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>

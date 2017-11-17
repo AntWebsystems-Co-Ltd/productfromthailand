@@ -121,7 +121,7 @@ under the License.
     <DataResource dataResourceId="HEALTHDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
     <DataResource dataResourceId="HEALTHDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
 
-    <ElectronicText dataResourceId="HEALTHDESCTH" textData="สุขาพและความงาม"/>
+    <ElectronicText dataResourceId="HEALTHDESCTH" textData="สุขภาพและความงาม"/>
     <ElectronicText dataResourceId="HEALTHDESCEN" textData="Health &amp; Beauty"/>
 
     <Content contentId="HEALTHDESCTH" contentTypeId="DOCUMENT" dataResourceId="HEALTHDESCTH" description="DESCRIPTION TH Health And Beauty" localeString="th"/>

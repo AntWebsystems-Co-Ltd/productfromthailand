@@ -94,6 +94,14 @@
         <value xml:lang="en">Click here to Register</value>
         <value xml:lang="th">สมัครสมาชิกใหม่ คลิกที่นี่</value>
     </property>
+    <property key="PFTCommision">
+        <value xml:lang="en">Commission</value>
+        <value xml:lang="th">คอมมิชชั่น</value>
+    </property>
+    <property key="PFTCommisionFee">
+        <value xml:lang="en">Commission Fee</value>
+        <value xml:lang="th">ค่าคอมมิชชั่น</value>
+    </property>
     <property key="PFTCompanyAddress">
         <value xml:lang="en">73/2 M.8, Soi AntWebsystems Tambon Sanklang, Amphur Sanpatong, Chiang Mai, Thailand 50120</value>
         <value xml:lang="th">73/2 หมู่ 8 ซอย AntWebsystems ต.สันกลาง อ.สันป่าตอง จ.เชียงใหม่ ประเทศไทย 50120 </value>
@@ -101,6 +109,9 @@
     <property key="PFTCompanyName">
         <value xml:lang="en">Antwebsystems Co.,Ltd.</value>
         <value xml:lang="th">บริษัท แอนท์ เว็บซิสเต็มส์ จำกัด</value>
+    </property>
+    <property key="PFTCompanyNamePFT">
+        <value xml:lang="en">Productfromthailand (PFT)</value>
     </property>
     <property key="PFTConfirmAddress">
         <value xml:lang="en">Confirm Address</value>
@@ -154,6 +165,10 @@
     <property key="PFTFeaturedProduct">
         <value xml:lang="en">Featured Product</value>
         <value xml:lang="th">สินค้าแนะนำ</value>
+    </property>
+    <property key="PFTFee">
+        <value xml:lang="en">Fee</value>
+        <value xml:lang="th">ค่าธรรมเนียม</value>
     </property>
     <property key="PFTFollowUs">
         <value xml:lang="en">Follow us</value>
@@ -296,6 +311,14 @@
         <value xml:lang="en">Rate and Comment Products</value>
         <value xml:lang="th">ให้คะแนนและแสดงความคิดเห็นเกี่ยวกับสินค้า</value>
     </property>
+    <property key="PFTRatePayPal">
+        <value xml:lang="en">PayPal Rate</value>
+        <value xml:lang="th">อัตราค่าธรรมเนียม PayPal</value>
+    </property>
+    <property key="PFTRatePFT">
+        <value xml:lang="en">PFT Rate</value>
+        <value xml:lang="th">อัตราค่าธรรมเนียม PFT</value>
+    </property>
     <property key="PFTRecentlyAddedItems">
         <value xml:lang="en">Recently Added Items</value>
         <value xml:lang="th">สินค้าใหม่ล่าสุด</value>
@@ -359,10 +382,6 @@
     <property key="PFTSalesconditions">
         <value xml:lang="en">Sales conditions</value>
         <value xml:lang="th">เงื่อนไขในการขายสินค้า</value>
-    </property>
-    <property key="PFTSalesTax">
-        <value xml:lang="en">VAT</value>
-        <value xml:lang="th">ภาษีการขาย</value>
     </property>
     <property key="PFTSearchYourProducts">
         <value xml:lang="en">Search our product catalog</value>
@@ -475,6 +494,10 @@
         <value xml:lang="en">Switch Currency</value>
         <value xml:lang="th">เปลี่ยนสกุลเงิน</value>
     </property>
+    <property key="PFTTrackingShipment">
+        <value xml:lang="en">Tracking Shipment</value>
+        <value xml:lang="th">ติดตามพัสดุ</value>
+    </property>
     <property key="PFTTel">
         <value xml:lang="en">Tel</value>
         <value xml:lang="th">โทรศัพท์</value>
@@ -542,6 +565,10 @@
     <property key="PFTUploadProductSpreadsheet">
         <value xml:lang="en">Upload Products from Spreadsheet</value>
         <value xml:lang="th">อัพโหลดข้อมูลสินค้าจากไฟล์ตารางจัดการ</value>
+    </property>
+    <property key="PFTVat">
+        <value xml:lang="en">VAT</value>
+        <value xml:lang="th">ภาษี</value>
     </property>
     <property key="PFTVerifySupplier">
         <value xml:lang="en">Verify Supplier</value>

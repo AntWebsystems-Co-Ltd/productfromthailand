@@ -386,6 +386,7 @@ under the License.
                                 <li><a tabindex="-1" href="<@ofbizUrl>main</@ofbizUrl>">${uiLabelMap.PFTHome}</a></li>
                                 <li><a tabindex="-1" href="<@ofbizUrl>partner</@ofbizUrl>">${uiLabelMap.PFTPartner}</a></li>
                                 <li><a tabindex="-1" href="<@ofbizUrl>aboutus</@ofbizUrl>">${uiLabelMap.PFTAboutUs}</a></li>
+                                <li><a tabindex="-1" href="<@ofbizUrl>trackingShipment</@ofbizUrl>">${uiLabelMap.PFTTrackingShipment}</a></li>
                                 <li><a tabindex="-1" href="<@ofbizUrl>AnonContactus</@ofbizUrl>">${uiLabelMap.PFTContact}</a></li>
                             </ul>
                         </li>

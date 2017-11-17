@@ -463,6 +463,11 @@ under the License.
         <response name="error" type="view" value="quickcheckout"/>
     </request-map>
 
+    <request-map uri="trackingShipment">
+        <security https="true" auth="false"/>
+        <response name="success" type="view" value="trackingShipment"/>
+    </request-map>
+
     <!-- Calculate Sale Price -->
     <request-map uri="calculateSalePrice">
         <security https="true" auth="true"/>
@@ -492,6 +497,7 @@ under the License.
     <view-map name="services" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#services"/>
     <view-map name="help" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#help"/>
     <view-map name="WishList" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#WishList"/>
+    <view-map name="trackingShipment" type="screen" page="component://productfromthailand/widget/ShoppingListScreens.xml#trackingShipment"/>
 
     <view-map name="productCategoryList" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#productCategoryList"/>
     <view-map name="tellafriend" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#tellafriend"/>
