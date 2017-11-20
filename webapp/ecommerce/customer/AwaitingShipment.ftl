@@ -42,9 +42,9 @@ under the License.
                 <td class="text-center">
                     ${uiLabelMap.OrderGrandTotal}
                 </td>
-                <td class="text-center">
+                <#-- <td class="text-center">
                     ${uiLabelMap.OrderCustomer} ${uiLabelMap.CommonName}
-                </td>
+                </td>  -->
                 <#if orderLists?has_content>
                 <td class="text-center">
                     ${uiLabelMap.CommonEmptyHeader}
@@ -65,9 +65,9 @@ under the License.
                     <td class="text-center">
                       <@ofbizCurrency amount=orderList.grandTotal! isoCode=orderList.currencyUom/>
                     </td>
-                    <td class="text-center">
+                    <#-- <td class="text-center">
                       ${Static["org.apache.ofbiz.party.party.PartyHelper"].getPartyName(delegator, orderList.partyId, false)!}[${orderList.partyId}]
-                    </td>
+                    </td>  -->
                     <td class="text-center">
                       <input type="button" class="btn btn-main" value="${uiLabelMap.CommonView}" onclick="javascript: location.href = '<@ofbizUrl>orderstatus?orderId=${orderList.orderId}</@ofbizUrl>';"/>
                       <input type="button" class="btn btn-main" value="${uiLabelMap.OrderQuantityShipped}" onclick="javascript: quickShipped('${orderList.orderId!}')"/>

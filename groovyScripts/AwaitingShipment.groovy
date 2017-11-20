@@ -18,24 +18,20 @@
 */
 
 orderLists = [];
-saleOrderLists = [];
-saleOrders = from("OrderHeaderAndRoles").where("partyId", userLogin.partyId, "roleTypeId", "BILL_TO_CUSTOMER", "orderTypeId", "SALES_ORDER", "statusId", "ORDER_APPROVED").orderBy("-orderDate").queryList();
-if (saleOrders) {
-    saleOrders.each { saleOrder ->
-        saleOrderPaymentPref = from("OrderHeaderAndPaymentPref").where("orderId", saleOrder.orderId, "paymentStatusId", "PAYMENT_RECEIVED").queryFirst();
-        if (saleOrderPaymentPref) {
-            saleOrderLists.add(saleOrder)
-        }
-    }
-}
-
-if (saleOrderLists) {
-    saleOrderLists.each { saleOrder ->
-        getPurchaseOrder = from("OrderItemAssoc").where("orderId", saleOrder.orderId).queryFirst();
+// Get all PO with not approved yet
+purchaseOrders = from("OrderHeaderAndRoles").where("partyId", userLogin.partyId, "roleTypeId", "SUPPLIER_AGENT", "orderTypeId", "PURCHASE_ORDER", "statusId", "ORDER_CREATED").orderBy("-orderDate").queryList();
+if (purchaseOrders) {
+    purchaseOrders.each { purchaseOrder ->
+        getPurchaseOrder = from("OrderItemAssoc").where("toOrderId", purchaseOrder.orderId).queryFirst();
         if (getPurchaseOrder) {
-            orderLists = from("OrderHeaderAndRoles").where("orderId", getPurchaseOrder.toOrderId, "roleTypeId", "SUPPLIER_AGENT", "orderTypeId", "PURCHASE_ORDER", "statusId", "ORDER_CREATED").orderBy("-orderDate").queryList();
+            saleOrderPaymentPref = from("OrderHeaderAndPaymentPref").where("orderId", getPurchaseOrder.orderId, "paymentStatusId", "PAYMENT_RECEIVED").queryFirst();
+            if (saleOrderPaymentPref) {
+                saleOrder = from("OrderHeaderAndRoles").where("orderId", saleOrderPaymentPref.orderId, "roleTypeId", "BILL_TO_CUSTOMER", "orderTypeId", "SALES_ORDER", "statusId", "ORDER_APPROVED").orderBy("-orderDate").queryFirst();
+                if (saleOrder) {
+                    orderLists.add(purchaseOrder);
+                }
+            }
         }
     }
 }
-
 context.orderLists = orderLists;
