@@ -523,7 +523,7 @@ under the License.
         <response name="error" type="view" value="myOrderlist"/>
     </request-map>
 
-    <request-map uri="quickDropShipOrder">
+    <request-map uri="receiveOrder">
         <security https="true" auth="true"/>
         <event type="service" path="" invoke="quickDropShipOrderPFT"/>
         <response name="success" type="request" value="myOrderlist"/>

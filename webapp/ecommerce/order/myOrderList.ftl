@@ -112,8 +112,8 @@ under the License.
                     <td><a href="<@ofbizUrl>orderstatus?orderId=${orderHeader.orderId}</@ofbizUrl>" class="btn btn-main">${uiLabelMap.CommonView}</a></td>
                     <td><#if orderHeader.purchaseStaus.equals("ORDER_APPROVED")>
                         <#assign orderItemShipGroup = EntityQuery.use(delegator).from("OrderItemShipGroup").where("orderId", orderHeader.purchaseId).queryFirst()!>
-                        <a href="javascript:document.quickDropShipOrder_${countList!}.submit();" class="btn btn-main">${uiLabelMap.PFTReceiveItem}</a>
-                        <form name="quickDropShipOrder_${countList!}" method="post" action="<@ofbizUrl>quickDropShipOrder</@ofbizUrl>">
+                        <a href="javascript:document.receiveOrder_${countList!}.submit();" class="btn btn-main">${uiLabelMap.PFTReceiveItemOrder}</a>
+                        <form name="receiveOrder_${countList!}" method="post" action="<@ofbizUrl>receiveOrder</@ofbizUrl>">
                           <input type="hidden" name="orderId" value="${orderHeader.purchaseId!}"/>
                           <input type="hidden" name="shipGroupSeqId" value="${orderItemShipGroup.shipGroupSeqId!}"/>
                         </form>

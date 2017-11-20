@@ -370,8 +370,8 @@
         <value xml:lang="en">Recently Added Items</value>
         <value xml:lang="th">สินค้าใหม่ล่าสุด</value>
     </property>
-    <property key="PFTReceiveItem">
-        <value xml:lang="en">Receive</value>
+    <property key="PFTReceiveItemOrder">
+        <value xml:lang="en">Receive Order</value>
         <value xml:lang="th">ได้รับสินค้าแล้ว</value>
     </property>
     <property key="PFTRegister">
