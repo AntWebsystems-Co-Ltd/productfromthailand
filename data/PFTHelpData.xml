@@ -60,11 +60,12 @@ Welcome to Productfromthailand (PFT)! We are glad you are here. We will help you
         localeString="en" createdDate="2009-09-12 00:00:00.000" />
     <ElectronicText dataResourceId="HELP_EDITACCOUNT" createdStamp="2009-09-12 00:00:00.000">
         <textData><![CDATA[
-            <div class="head2">To update your account information:</div>
+            <div class="head2">To update your account information</div>
             <div class="tabletext">
                 <ol>
                     <li>Click your name at the top of most Productfromthailand (PFT) pages.</li>
-                    <li>click the link that corresponds to the account information you want to update.</li>
+                    <img src="/pft-default/images/helpImages/myAccountLocate.png" width="550px"/>
+                    <li>Click the link that corresponds to the account information you want to update.</li>
                     <li>Enter your account information you want to update and click 'Save' button to complete the process.</li>
                 </ol>
             </div>
@@ -78,12 +79,10 @@ Welcome to Productfromthailand (PFT)! We are glad you are here. We will help you
         localeString="en" createdDate="2009-09-13 00:00:00.000"/>
     <ElectronicText dataResourceId="HELP_SEARCH" createdStamp="2009-09-13 00:00:00.000">
         <textData><![CDATA[
-            <div class="head2">Search products steps</div>
             <div class="tabletext">To search products, go to the search section on the top of most Productfromthailand (PFT) page, and follow these steps:</div>
             <div class="tabletext">
                 <ol>
-                    <li>Select the categories that you want to search products </li>
-                    <li>You need to enter keyword or product name that you want to search and click 'Find' button.</li>
+                    <li>You need to enter keyword or product name that you want to search and click 'Find' icon.</li>
                 </ol>
             </div>
         ]]></textData>
@@ -92,8 +91,38 @@ Welcome to Productfromthailand (PFT)! We are glad you are here. We will help you
         localeString="en" privilegeEnumId="CNT_PRV_BRONZE" contentName="Search products" description="How to search products?" createdDate="2009-09-13 00:00:00.000"/>
     <ContentAssoc contentId="HELPROOT" contentIdTo="HELP_SEARCH" contentAssocTypeId="SUB_CONTENT" sequenceNum="4" fromDate="2009-09-13 00:00:00.000" createdDate="2009-09-13 00:00:00.000" />
 
-    <DataResource dataResourceId="CREATE_NEW_PRODUCT" localeString="en" dataResourceTypeId="OFBIZ_FILE" dataTemplateTypeId="FTL" statusId="CTNT_PUBLISHED"
-        dataResourceName="Create New Product" mimeTypeId="text/html" isPublic="Y" objectInfo="hot-deploy/productfromthailand/data/helpdata/createNewProduct.ftl"/>
+    <DataResource dataResourceId="CREATE_NEW_PRODUCT" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_PUBLISHED"
+        createdDate="2009-09-15 00:00:00.000" mimeTypeId="text/html" localeString="en"/>
+    <ElectronicText dataResourceId="CREATE_NEW_PRODUCT">
+        <textData><![CDATA[
+            <div class="tabletext">On this help will explain you how to create a product on the system and how to upload your products from a spread sheet.</div>
+<div class="head2"><h3>How to Create a product ?</h3></div>
+<div class="tabletext">
+  <ol>
+    <li>To create a product first you need to <a href="checkLogin">log on</a> to the system.</li>
+    <li>You will see the button called "Store Management" on the menubar then click on that.</li>
+    <img src="/pft-default/images/helpImages/storeManagementLocate.png" width="550px"/>
+    <li>After that, click "New Product"</li>
+    <img src="/pft-default/images/helpImages/newProductButtonLocate.png" width="550px"/>
+    <li>Put the information about the product you want to create. You can leave the field "Product Id" empty the system will auto generate it for you then press "Submit"</li>
+    <img src="/pft-default/images/helpImages/productInformation.png" width="550px"/>
+  </ol>
+</div>
+<div class="head2"><h3>How to Create a product by uploading spread sheet ?</h3></div>
+<div class="tabletext">
+  <ol>
+    <li>To create a product first you need to <a href="checkLogin">log on</a> to the system.</li>
+    <li>You will see the button called "Store Management" on the menubar then click on that.</li>
+    <img src="/pft-default/images/helpImages/storeManagementLocate.png" width="550px"/>
+    <li>After that, click "Download Product Template" to download template of spread sheet.</li>
+    <img src="/pft-default/images/helpImages/spreadSheetDownloadLocate.png" width="550px"/>
+    <li>Put products information in the spread sheet then click "Upload Products from Spreadsheet".</li>
+    <img src="/pft-default/images/helpImages/spreadSheetButtonLocate.png" width="550px"/>
+    <li>Choose your spread sheet and then click "Upload Product".</li>
+  </ol>
+</div>]]>
+        </textData>
+    </ElectronicText>
     <Content contentId="CREATE_NEW_PRODUCT" contentTypeId="DOCUMENT" dataResourceId="CREATE_NEW_PRODUCT" statusId="CTNT_PUBLISHED"
         contentName="Create New Product" description="Create New Product" mimeTypeId="text/html"/>
     <ContentAssoc contentId="HELPROOT" contentIdTo="CREATE_NEW_PRODUCT" contentAssocTypeId="SUB_CONTENT" sequenceNum="5" fromDate="2006-01-14 01:01:01"/>

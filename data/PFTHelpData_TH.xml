@@ -77,10 +77,11 @@
         localeString="th" createdDate="2009-09-12 00:00:00.000" />
     <ElectronicText dataResourceId="HELP_EDITACCOUNT_TH" createdStamp="2009-09-12 00:00:00.000">
         <textData><![CDATA[
-            <div class="head2">การแก้ไขข้อมูลส่วนตัวของคุณ:</div>
+            <div class="head2">การแก้ไขข้อมูลส่วนตัวของคุณ</div>
             <div class="tabletext">
                 <ol>
-                    <li>กดตรงชื่อผู้ใช้งานอยูุ่ที่มุมขวาด้านบนของเว็บไซต์ Productfromthailand (PFT)</li>
+                    <li>กดตรงชื่อผู้ใช้งานอยูุ่ที่ด้านบนของเว็บไซต์ Productfromthailand (PFT)</li>
+                    <img src="/pft-default/images/helpImages/myAccountLocate_th.png" width="550px"/>
                     <li>กดปุ่มลิ้งที่เกี่ยวข้องที่คุณต้องการจะเปลี่ยนแปลงข้อมูลส่วนนั้นๆ</li>
                     <li>กรอกข้อมูลที่คุณต้องการจะแก้ไข หลังจากนั้นกดปุ่ม 'บันทึก' เพื่อยืนยันการเปลี่ยนแปลงข้อมูล</li>
                 </ol>
@@ -99,8 +100,7 @@
             <div class="tabletext">การค้นหาสินค้าสามารถไปที่ช่องบนขวาของเว็บไซต์ Productfromthailand (PFT) และทำตามขั้นตอนต่อไปนี้:</div>
             <div class="tabletext">
                 <ol>
-                    <li>เลือกประเภทของสินค้าที่ต้องการจะค้นหา</li>
-                    <li>กรอกคำค้นหาหลักหรือชื่อของสินค้าที่ต้องการค้นหา หลังจากนั้นกดปุ่ม 'ค้นหา'</li>
+                    <li>กรอกคำค้นหาหลักหรือชื่อของสินค้าที่ต้องการค้นหา หลังจากนั้นกดเครื่องหมายแว่นขยาย</li>
                 </ol>
             </div>
         ]]></textData>
@@ -109,8 +109,39 @@
         privilegeEnumId="CNT_PRV_BRONZE" contentName="การค้นหาสินค้า" description="วิธีการค้นหาสินค้า" localeString="th" createdDate="2009-09-13 00:00:00.000"/>
     <ContentAssoc contentId="HELP_SEARCH" contentIdTo="HELP_SEARCH_TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-12 00:00:00.000"/>
 
-    <DataResource dataResourceId="CREATE_NEW_PROD_TH" localeString="th" dataResourceTypeId="OFBIZ_FILE" dataTemplateTypeId="FTL" statusId="CTNT_PUBLISHED"
-        dataResourceName="Create New Product" mimeTypeId="text/html" isPublic="Y" objectInfo="hot-deploy/productfromthailand/data/helpdata/createNewProduct.ftl"/>
+    <DataResource dataResourceId="CREATE_NEW_PROD_TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_PUBLISHED"
+        mimeTypeId="text/html" localeString="th" createdDate="2009-09-15 00:00:00.000"/>
+        <ElectronicText dataResourceId="CREATE_NEW_PROD_TH">
+        <textData><![CDATA[
+            <div class="tabletext">ในหน้านี้เราจะอธิบายวิธีสร้างสินค้าในเว็ปไซด์ และ วิธีสร้างสินค้าผ่านการอัพโหลดไฟล์สเปรดชีต</div>
+<div class="head2"><h3>วิธีสร้างสินค้า</h3></div>
+<div class="tabletext">
+  <ol>
+    <li><a href="checkLogin">ล็อกอิน</a>เข้าสู่ระบบ</li>
+    <li>บนแทบเมนูด้านบน คลิกปุ่ม "จัดการร้านค้า"</li>
+    <img src="/pft-default/images/helpImages/storeManagementLocate_th.png" width="550px"/>
+    <li>คลิกปุ่ม "สินค้าใหม่"</li>
+    <img src="/pft-default/images/helpImages/newProductButtonLocate_th.png" width="550px"/>
+    <li>กรอกข้อมูลสินค้าให้ครบ สำหรับช่อง "รหัสสินค้า" คุณทิ้งว่างไว้ ระบบจะสร้างให้เอง หลังจากกรอกข้อมูลครบกดปุ่ม "ยอมรับ"</li>
+    <img src="/pft-default/images/helpImages/productInformation_th.png" width="550px"/>
+  </ol>
+</div>
+<div class="head2"><h3>วิธีสร้างสินค้าจากไฟล์ตารางจัดการ</h3></div>
+<div class="tabletext">
+  <ol>
+    <li><a href="checkLogin">ล็อกอิน</a>เข้าสู่ระบบ</li>
+    <li>บนแทบเมนูด้านบน คลิกปุ่ม "จัดการร้านค้า"</li>
+    <img src="/pft-default/images/helpImages/storeManagementLocate_th.png" width="550px"/>
+    <li>กดปุ่ม"ดาวน์โหลดรูปแบบการอัปโหลดสินค้า" เพื่อดาวน์โหลดแบบฟอร์ม.</li>
+    <img src="/pft-default/images/helpImages/spreadSheetDownloadLocate_th.png" width="550px"/>
+    <li>กรอกข้อมูลสินค้าลงในแบบฟอร์ม หลังจากนั้นกดปุ่ม "อัพโหลดข้อมูลสินค้าจากไฟล์ตารางจัดการ".</li>
+    <img src="/pft-default/images/helpImages/spreadSheetButtonLocate_th.png" width="550px"/>
+    <li>เลือกไฟล์แบบฟอร์มของคุณ หลังจากนั้นกด "อัพโหลดข้อมูลสินค้า"</li>
+  </ol>
+</div>
+            ]]>
+        </textData>
+    </ElectronicText>
     <Content contentId="CREATE_NEW_PROD_TH" contentTypeId="DOCUMENT" dataResourceId="CREATE_NEW_PROD_TH" statusId="CTNT_PUBLISHED"
         contentName="สร้างสินค้าใหม่" description="สร้างสินค้าใหม่" mimeTypeId="text/html" localeString="th"/>
     <ContentAssoc contentId="CREATE_NEW_PRODUCT" contentIdTo="CREATE_NEW_PROD_TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2006-01-14 01:01:01"/>

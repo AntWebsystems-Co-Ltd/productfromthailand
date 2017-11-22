@@ -64,6 +64,7 @@
     </property>
     <property key="PFTAllPayments">
         <value xml:lang="en">All Payments</value>
+        <value xml:lang="th">การชำระเงินทั้งหมด</value>
     </property>
     <property key="PFTAvailableOptions">
         <value xml:lang="en">Available Options</value>
@@ -301,6 +302,7 @@
     </property>
     <property key="PFTPaymentsReports">
         <value xml:lang="en">Payments Reports</value>
+        <value xml:lang="th">รายงานการชำระเงิน</value>
     </property>
     <property key="PFTPleaseRegister">
         <value xml:lang="en">Please Register if you like to be notified when we go online.</value>
@@ -619,6 +621,7 @@
     </property>
     <property key="PFTUpcomingPayments">
         <value xml:lang="en">Upcoming Payments</value>
+        <value xml:lang="th">การชำระเงินที่จะเกิดขึ้น</value>
     </property>
     <property key="PFTUpdateProfile">
         <value xml:lang="en">Update Profile</value>
