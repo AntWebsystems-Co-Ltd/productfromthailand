@@ -270,5 +270,21 @@
     <SystemProperty systemResourceId="pft" systemPropertyId="paypal.fee" description="PayPal Fee Percent" systemPropertyValue="5"/>
     <SystemProperty systemResourceId="pft" systemPropertyId="pft.fee" description="Product From Thailand Fee Percent" systemPropertyValue="5"/>
     <SystemProperty systemResourceId="pft" systemPropertyId="pft.vat" description="Product From Thailand Vat Percent" systemPropertyValue="7"/>
-    
+
+    <!-- Finum Brewing basket for promotion -->
+    <Product productId="FINUM_BB" productName="Finum Brewing basket" productTypeId="FINISHED_GOOD" brandName="finum" createdDate="2017-11-01 00:00:00.000" internalName="Finum Brewing basket" inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="N" isVirtual="N" orderDecimalQuantity="N"/>
+    <ProductPrice productId="FINUM_BB" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-11-01 00:00:00.000" price="500.00"/>
+
+    <!-- Product Promotion 15 free 1 -->
+    <ProductPromo productPromoId="Buy15CCFree1BB" promoName="buy 15 Careel Coffee FREE 1 Brewing basket" promoText="buy 15 Careel Coffee FREE 1 Brewing basket" requireCode="N" showToCustomer="Y" userEntered="Y"/>
+    <ProductPromoRule productPromoId="Buy15CCFree1BB" productPromoRuleId="00001" ruleName="buy 15 coffe free 1 brewing basket"/>
+    <ProductPromoCond condValue="15" inputParamEnumId="PPIP_PRODUCT_QUANT" operatorEnumId="PPC_EQ" productPromoCondSeqId="01" productPromoId="Buy15CCFree1BB" productPromoRuleId="00001"/>
+    <Enumeration description="Is" enumCode="EQ" enumId="PPC_EQ" enumTypeId="PROD_PROMO_COND" sequenceId="01"/>
+    <Enumeration description="X Amount of Product" enumCode="PRODUCT_AMOUNT" enumId="PPIP_PRODUCT_AMOUNT" enumTypeId="PROD_PROMO_IN_PARAM" sequenceId="03"/>
+    <ProductPromoProduct productId="CR10000" productPromoActionSeqId="_NA_" productPromoApplEnumId="PPPA_INCLUDE" productPromoCondSeqId="01" productPromoId="Buy15CCFree1BB" productPromoRuleId="00001"/>
+    <ProductPromoProduct productId="CR10000-RB" productPromoActionSeqId="_NA_" productPromoApplEnumId="PPPA_INCLUDE" productPromoCondSeqId="01" productPromoId="Buy15CCFree1BB" productPromoRuleId="00001"/>
+    <ProductPromoProduct productId="CR10000-RG" productPromoActionSeqId="_NA_" productPromoApplEnumId="PPPA_INCLUDE" productPromoCondSeqId="01" productPromoId="Buy15CCFree1BB" productPromoRuleId="00001"/>
+    <ProductPromoAction orderAdjustmentTypeId="PROMOTION_ADJUSTMENT" productId="FINUM_BB" productPromoActionEnumId="PROMO_GWP" productPromoActionSeqId="10000" productPromoId="Buy15CCFree1BB" productPromoRuleId="00001" quantity="1.000000" useCartQuantity="N"/>
+    <ProductStorePromoAppl productPromoId="Buy15CCFree1BB" productStoreId="PFTSTORE" fromDate="2017-11-01 00:00:00.000" />
+
 </entity-engine-xml>
