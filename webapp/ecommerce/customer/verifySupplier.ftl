@@ -17,22 +17,6 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<#if getUsername>
-<script type="text/javascript">
-  //<![CDATA[
-     function hideShowUsaStates() {
-        var customerStateElement = document.getElementById('newuserform_stateProvinceGeoId');
-        var customerCountryElement = document.getElementById('newuserform_countryGeoId');
-        if (customerCountryElement.value == "USA" || customerCountryElement.value == "UMI" || customerCountryElement.value == "THA") {
-          customerStateElement.style.display = "block";
-        } else {
-          customerStateElement.style.display = "none";
-        }
-      }
-   //]]>
-</script>
-</#if>
-
 <div id="main-container" class="container">
   <div class="panal panel-smart">
     <div class="panel-heading">
@@ -43,9 +27,29 @@ under the License.
     <form id="newuserform" name="newuserform" method="post" action="updatesupplier" enctype="multipart/form-data" class="form-horizontal">
         <input type="hidden" name="partyId" value="${parameters.partyId!}"/>
         <input type="hidden" name="partyContentTypeId" value="INTERNAL"/>
-        <input type="hidden" name="supplierType" value="SUPP_INDIVIDUAL"/>
+        <input type="hidden" name="supplierType" value="<#if partyType == "PARTY_GROUP">SUPP_COMPANY<#else>SUPP_INDIVIDUAL</#if>"/>
         <#assign productStoreId = Static["org.apache.ofbiz.product.store.ProductStoreWorker"].getProductStoreId(request) />
         <input type="hidden" name="productStoreId" value="${productStoreId?if_exists}"/>
+        <#if partyType == "PARTY_GROUP">
+        <div class="form-group company">
+            <label class="col-sm-3 control-label ">${uiLabelMap.PFTSupplierName} *</label>
+            <div class="col-sm-6" >
+                <input type="text" class="form-control required" name="groupName" id="groupName" class="required" value="${groupName?if_exists}" maxlength="30"/>
+            </div>
+        </div>
+        <div class="form-group company">
+            <label class="col-sm-3 control-label">${uiLabelMap.PFTTitleIdBizRegisterNo} *</label>
+            <div class="col-sm-6" >
+                <input type="text" class="form-control required" name="businessRegistNo" id="newsupplier_businessRegistNo" class="required" value="${businessRegistNo?if_exists}" maxlength="30"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label company">${uiLabelMap.PFTTitleUploadBizRegisterNo} *</label>
+            <div class="col-sm-6" >
+                <input type="file" class="form-control required" size="50" name="imageFileName"/>
+            </div>
+        </div>
+        <#else>
         <div class="form-group individual">
           <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonTitle}</label>
           <div class="col-sm-6">
@@ -82,6 +86,7 @@ under the License.
               <input type="file" class="form-control required" name="imageFileName" id="imageFileName"/>
           </div>
         </div>
+        </#if>
         <div class="form-group individual">
           <label for="inputFname" class="col-sm-3 control-label">${uiLabelMap.CommonEmail}</label>
           <div class="col-sm-6">
@@ -117,10 +122,14 @@ under the License.
           <div class="col-sm-6">
             <select name="shipToCountryGeoId" id="newuserform_countryGeoId" class="form-control">
                 ${screens.render("component://common/widget/CommonScreens.xml#countries")}
-                <#assign defaultCountryGeoId = Static["org.apache.ofbiz.entity.util.EntityUtilProperties"].getPropertyValue("general", "country.geo.id.default", delegator)>
+                <#if shipToCountryGeoId??>
+                    <#assign defaultCountryGeoId = shipToCountryGeoId>
+                <#else>
+                    <#assign defaultCountryGeoId = Static["org.apache.ofbiz.entity.util.EntityUtilProperties"].getPropertyValue("general", "country.geo.id.default", delegator)>
+                </#if>
                 <option selected="selected" value="${defaultCountryGeoId}">
                 <#assign countryGeo = delegator.findOne("Geo",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("geoId",defaultCountryGeoId), false)>
-                ${countryGeo.get("geoName",locale)}
+                ${countryGeo.get("geoName",locale)!}
                 </option>
             </select>
           </div>
@@ -143,27 +152,27 @@ under the License.
           <tbody>
             <tr>
               <th scope="row">${uiLabelMap.PartyHomePhone}</th>
-              <td><input type="text" class="form-control" name="SUPPLIER_HOME_COUNTRY" size="5" value="${requestParameters.SUPPLIER_HOME_COUNTRY?if_exists}" /></td>
-              <td><input type="text" class="form-control" name="SUPPLIER_HOME_AREA" size="5" value="${requestParameters.SUPPLIER_HOME_AREA?if_exists}" /></td>
-              <td><input type="text" class="form-control" ame="SUPPLIER_HOME_CONTACT" value="${requestParameters.SUPPLIER_HOME_CONTACT?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_HOME_COUNTRY" size="5" value="${homeCountryCode?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_HOME_AREA" size="5" value="${homeAreaCode?if_exists}" /></td>
+              <td><input type="text" class="form-control" ame="SUPPLIER_HOME_CONTACT" value="${homeContactNumber?if_exists}" /></td>
             </tr>
             <tr>
               <th scope="row">${uiLabelMap.PartyBusinessPhone}</th>
-              <td><input type="text" class="form-control" name="SUPPLIER_WORK_COUNTRY" size="5" value="${requestParameters.SUPPLIER_WORK_COUNTRY?if_exists}" /></td>
-              <td><input type="text" class="form-control" name="SUPPLIER_WORK_AREA" size="5" value="${requestParameters.SUPPLIER_WORK_AREA?if_exists}" /></td>
-              <td><input type="text" class="form-control" name="SUPPLIER_WORK_CONTACT" value="${requestParameters.SUPPLIER_WORK_CONTACT?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_WORK_COUNTRY" size="5" value="${workCountryCode?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_WORK_AREA" size="5" value="${workAreaCode?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_WORK_CONTACT" value="${workContactNumber?if_exists}" /></td>
             </tr>
             <tr>
               <th scope="row">${uiLabelMap.PartyFaxNumber}</th>
-              <td><input type="text" class="form-control" name="SUPPLIER_FAX_COUNTRY" size="5" value="${requestParameters.SUPPLIER_FAX_COUNTRY?if_exists}" /></td>
-              <td><input type="text" class="form-control" name="SUPPLIER_FAX_AREA" size="5" value="${requestParameters.SUPPLIER_FAX_AREA?if_exists}" /></td>
-              <td><input type="text" class="form-control" name="SUPPLIER_FAX_CONTACT" value="${requestParameters.SUPPLIER_FAX_CONTACT?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_FAX_COUNTRY" size="5" value="${faxCountryCode?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_FAX_AREA" size="5" value="${faxAreaCode?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_FAX_CONTACT" value="${faxContactNumber?if_exists}" /></td>
             </tr>
             <tr>
               <th scope="row">${uiLabelMap.PartyMobilePhone}</th>
-              <td><input type="text" class="form-control" name="SUPPLIER_MOBILE_COUNTRY" size="5" value="${requestParameters.SUPPLIER_MOBILE_COUNTRY?if_exists}" /></td>
-              <td><input type="text" class="form-control" name="SUPPLIER_MOBILE_AREA" size="5" value="${requestParameters.SUPPLIER_MOBILE_AREA?if_exists}" /></td>
-              <td><input type="text" class="form-control" name="SUPPLIER_MOBILE_CONTACT" value="${requestParameters.SUPPLIER_MOBILE_CONTACT?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_MOBILE_COUNTRY" size="5" value="${mobileCountryCode?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_MOBILE_AREA" size="5" value="${mobileAreaCode?if_exists}" /></td>
+              <td><input type="text" class="form-control" name="SUPPLIER_MOBILE_CONTACT" value="${mobileContactNumber?if_exists}" /></td>
             </tr>
           </tbody>
         </table>
@@ -174,7 +183,6 @@ under the License.
 </div>
 <script type="text/javascript">
   //<![CDATA[
-    hideShowUsaStates();
     jQuery(document).ready( function() {
         jQuery("#newuserform").validate();
     });

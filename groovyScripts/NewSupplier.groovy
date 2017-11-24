@@ -64,6 +64,9 @@ if (parameters.partyId) {
         if (getPartyNameForDate.lastName) {
             context.lastName = getPartyNameForDate.lastName;
         }
+        if (getPartyNameForDate.groupName) {
+            context.groupName = getPartyNameForDate.groupName;
+        }
     }
     // Get party email
     getPartyEmail = dispatcher.runSync("getPartyEmail", [partyId: parameters.partyId, userLogin: userLogin]);
@@ -89,6 +92,12 @@ if (parameters.partyId) {
         }
         if (getPartyPostalAddress.postalCode) {
             context.shipToPostalCode = getPartyPostalAddress.postalCode;
+        }
+        if (getPartyPostalAddress.stateProvinceGeoId) {
+            context.shipToStateProvinceGeoId = getPartyPostalAddress.stateProvinceGeoId;
+        }
+        if (getPartyPostalAddress.countryGeoId) {
+            context.shipToCountryGeoId = getPartyPostalAddress.countryGeoId;
         }
     }
     // Get home phone
@@ -149,4 +158,7 @@ if (parameters.partyId) {
             context.mobileContactNumber = getMobileTelephone.contactNumber;
         }
     }
+
+    getPartyType = from("Party").where("partyId", parameters.partyId).queryOne();
+    context.partyType = getPartyType.partyTypeId ?: "PERSON";
 }

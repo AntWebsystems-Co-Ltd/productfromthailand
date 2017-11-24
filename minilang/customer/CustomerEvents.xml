@@ -410,19 +410,36 @@ under the License.
         </call-map-processor>
         <check-errors/>
 
-        <entity-one value-field="person" entity-name="Person">
-            <field-map field-name="partyId" from-field="formInput.formInput.partyId"/>
-        </entity-one>
-        <if-empty field="person">
-            <set-service-fields service-name="createPerson" map="formInput.formInput" to-map="newParty"/>
-            <call-service service-name="createPerson" in-map-name="newParty">
-                <result-to-field result-name="partyId"/>
-            </call-service>
+        <if-compare field="formInput.formInput.supplierType" operator="equals" value="SUPP_COMPANY">
+            <entity-one value-field="partyGroup" entity-name="PartyGroup">
+                <field-map field-name="partyId" from-field="formInput.formInput.partyId"/>
+            </entity-one>
+            <if-empty field="partyGroup">
+                <set-service-fields service-name="createPartyGroup" map="formInput.formInput" to-map="newPartyGroup"/>
+                <call-service service-name="createPartyGroup" in-map-name="newPartyGroup">
+                    <result-to-field result-name="partyId"/>
+                </call-service>
+                <else>
+                    <set-service-fields service-name="updatePartyGroup" map="formInput.formInput" to-map="updatePartyGroup"/>
+                    <call-service service-name="updatePartyGroup" in-map-name="updatePartyGroup"/>
+                </else>
+            </if-empty>
             <else>
-                <set-service-fields service-name="updatePerson" map="formInput.formInput" to-map="updateParty"/>
-                <call-service service-name="updatePerson" in-map-name="updateParty"/>
-            </else>
-        </if-empty>
+                <entity-one value-field="person" entity-name="Person">
+                    <field-map field-name="partyId" from-field="formInput.formInput.partyId"/>
+                </entity-one>
+                <if-empty field="person">
+                    <set-service-fields service-name="createPerson" map="formInput.formInput" to-map="newParty"/>
+                    <call-service service-name="createPerson" in-map-name="newParty">
+                        <result-to-field result-name="partyId"/>
+                    </call-service>
+                    <else>
+                        <set-service-fields service-name="updatePerson" map="formInput.formInput" to-map="updateParty"/>
+                        <call-service service-name="updatePerson" in-map-name="updateParty"/>
+                    </else>
+                </if-empty>
+	        </else>
+        </if-compare>
 
         <!-- Create Id card number or passport number -->
         <if-not-empty field="formInput.formInput.idCardNo">
@@ -438,6 +455,24 @@ under the License.
                 <create-value value-field="partyIdentification"/>
                 <else>
                     <set field="partyIdentification.idValue" from-field="formInput.formInput.idCardNo"/>
+                    <store-value value-field="partyIdentification"/>
+                </else>
+            </if-empty>
+        </if-not-empty>
+        <!-- Create a business registration number -->
+        <if-not-empty field="formInput.formInput.businessRegistNo">
+            <entity-one value-field="partyIdentification" entity-name="PartyIdentification">
+                <field-map field-name="partyId" from-field="formInput.formInput.partyId"/>
+                <field-map field-name="partyIdentificationTypeId" value="ID_BIZ_REGISTER_NO"/>
+            </entity-one>
+            <if-empty field="partyIdentification">
+                <make-value value-field="partyIdentification" entity-name="PartyIdentification"/>
+                <set field="partyIdentification.partyId" from-field="formInput.formInput.partyId"/>
+                <set field="partyIdentification.partyIdentificationTypeId" value="ID_BIZ_REGISTER_NO"/>
+                <set field="partyIdentification.idValue" from-field="formInput.formInput.businessRegistNo"/>
+                <create-value value-field="partyIdentification"/>
+                <else>
+                    <set field="partyIdentification.idValue" from-field="formInput.formInput.businessRegistNo"/>
                     <store-value value-field="partyIdentification"/>
                 </else>
             </if-empty>

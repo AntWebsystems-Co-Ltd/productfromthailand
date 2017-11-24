@@ -197,7 +197,7 @@ under the License.
                 <set field="dependentKeyName" value="geoId"/>
                 <set field="descName" value="geoName"/>
                 <set field="orderBy" value="geoName"/>
-                <set field="selectedDependentOption" default-value="_none_"/>
+                <set field="selectedDependentOption" from-field="shipToStateProvinceGeoId" default-value="_none_"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
