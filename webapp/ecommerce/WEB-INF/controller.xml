@@ -572,6 +572,8 @@ under the License.
     <!-- Cart Views -->
     <view-map name="showcart" type="screen" page="component://productfromthailand/widget/CartScreens.xml#showcart"/>
     <view-map name="cartontop" type="screen" page="component://productfromthailand/widget/CartScreens.xml#cartontop"/>
+    <view-map name="showPromotionDetails" type="screen" page="component://productfromthailand/widget/CartScreens.xml#showPromotionDetails"/>
+    <view-map name="showAllPromotions" type="screen" page="component://productfromthailand/widget/CartScreens.xml#showAllPromotions"/>
 
     <view-map name="quickcheckout" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#checkoutoptions"/>
     <view-map name="checkoutshippingaddress" type="screen" page="component://productfromthailand/widget/OrderScreens.xml#checkoutshippingaddress"/>

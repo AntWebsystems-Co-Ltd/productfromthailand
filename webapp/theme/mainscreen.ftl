@@ -50,8 +50,9 @@ under the License.
                 </div>
             <#-- Slider Section Ends -->
             <#-- Main Banner Starts -->
-                <div class="col-md-3 col-xs-12" align="center">
-                    <img src="/pft-default/pftimages/banners/banner-top-right.png" alt="banners" class="img-responsive">
+                <div class="col-md-3 col-xs-12">
+                    <#-- <img src="/pft-default/pftimages/banners/banner-top-right.png" alt="banners" class="img-responsive"> -->
+                    ${screens.render("component://productfromthailand/widget/CartScreens.xml#minipromotext")}
                 </div>
             <#-- Main Banner Ends -->
             </div>

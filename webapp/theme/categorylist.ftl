@@ -191,6 +191,7 @@ under the License.
                     </#if>
                 </div>
             <#-- Categories Links Ends -->
+                ${screens.render("component://productfromthailand/widget/CartScreens.xml#minipromotext")}
             <#--
             <#-- Shopping Options Starts
                 <h3 class="side-heading">Shopping Options</h3>

@@ -18,52 +18,22 @@ under the License.
 -->
 
 <#if showPromoText>
-<div id="minipromotext" class="screenlet">
-    <table cellspacing="0" cellpadding="0" border="0">
-        <tbody>
-            <tr>
-                <td height="8" background="/pft/images/promo01.gif"></td>
-            </tr>
-            <tr>
-                <td bgcolor="#D3C970"> 
-                    <div class="screenlet-header">
-                        <center><h3>${uiLabelMap.OrderSpecialOffers}</h3></center>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td bgcolor="#D3C970">
-                    <div class="screenlet-body">
-                        <#-- show promotions text -->
-                        <#list productPromos as productPromo>
-                            <p>
-                                <a href="<@ofbizUrl>showPromotionDetails?productPromoId=${productPromo.productPromoId}</@ofbizUrl>" class="linktext">${uiLabelMap.CommonDetails}</a>
-                                ${StringUtil.wrapString(productPromo.promoText?if_exists)}
-                            </p>
-                            <#if productPromo_has_next>
-                                <div><hr/></div>
-                            </#if>
-                        </#list>
-                        <div><hr/></div>
-                        <a href="<@ofbizUrl>showAllPromotions</@ofbizUrl>" class="buttontext">${uiLabelMap.OrderViewAllPromotions}</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td height="7" background="/pft/images/promo02.gif"></td>
-            </tr>
-        </tbody>
-    </table>
-    <br>
-    <table>
-        <tbody>
-            <tr>
-                <td height="88" width="200" background="/pft/images/adver.gif"></td>
-            </tr>
-            <tr>
-                <td height="215" width="200" background="/pft/images/adver02.gif"></td>
-            </tr>
-        </tbody>
-    </table>
+<h3 class="side-heading">${uiLabelMap.OrderSpecialOffers}</h3>
+<div class="list-group" id="list-group-promo">
+    <div class="list-group-item" id="promotionslist">
+        <#list productPromos as productPromo>
+            <a href="<@ofbizUrl>showPromotionDetails?productPromoId=${productPromo.productPromoId}</@ofbizUrl>" class="linktext"><b>${uiLabelMap.CommonDetails}</b></a>
+            <#assign promoText = StringUtil.wrapString(productPromo.promoText?if_exists)>
+            <#if promoText??>
+                <#if promoText?length &gt; 70>${promoText?substring(0, 70)}...<#else>${promoText}</#if>
+            </#if>
+            <#if productPromo_has_next>
+               <hr/>
+            </#if>
+        </#list>
+    </div>
+    <div class="list-group-item">
+        <a href="<@ofbizUrl>showAllPromotions</@ofbizUrl>" class="btn btn-main">${uiLabelMap.OrderViewAllPromotions}</a>
+    </div>
 </div>
 </#if>

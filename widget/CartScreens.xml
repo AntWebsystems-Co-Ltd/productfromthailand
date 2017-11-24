@@ -54,7 +54,7 @@ under the License.
     <screen name="promoUseDetailsInline">
         <section>
             <widgets>
-                <platform-specific><html><html-template location="component://order/template/entry/cart/PromoUseDetailsInline.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/cart/PromoUseDetailsInline.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
@@ -84,10 +84,7 @@ under the License.
     <screen name="showAllPromotions">
         <section>
             <actions>
-                <set field="leftbarScreenName" value="leftbar"/>
-                <set field="MainColumnStyle" value="leftonly"/>
-
-                <set field="promoUseDetailsInlineScreen" value="component://ecommerce/widget/CartScreens.xml#promoUseDetailsInline"/>
+                <set field="promoUseDetailsInlineScreen" value="component://productfromthailand/widget/CartScreens.xml#promoUseDetailsInline"/>
 
                 <set field="titleProperty" value="PageTitleShowAllPromotions"/>
                 <script location="component://ecommerce/groovyScripts/cart/ShowCart.groovy"/>
@@ -96,7 +93,7 @@ under the License.
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <platform-specific><html><html-template location="component://order/template/entry/cart/ShowAllPromotions.ftl"/></html></platform-specific>
+                        <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/cart/ShowAllPromotions.ftl"/></html></platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -105,17 +102,14 @@ under the License.
     <screen name="showPromotionDetails">
         <section>
             <actions>
-                <set field="leftbarScreenName" value="leftbar"/>
-                <set field="rightbarScreenName" value="rightbar"/>
-                <set field="MainColumnStyle" value="center"/>
-                <set field="productsummaryScreen" value="component://ecommerce/widget/CatalogScreens.xml#productsummary"/>
+                <set field="productcategorylist" value="component://productfromthailand/widget/ProductScreens.xml#productcategorylist"/>
                 <set field="titleProperty" value="PageTitleShowPromotionDetails"/>
                 <script location="component://order/groovyScripts/entry/cart/ShowPromotionDetails.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
-                        <include-screen name="promotion" location="component://order/widget/ordermgr/OrderEntryCartScreens.xml"/>
+                        <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/cart/ShowPromotionDetail.ftl"/></html></platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>

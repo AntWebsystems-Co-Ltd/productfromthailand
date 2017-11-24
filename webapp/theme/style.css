@@ -273,3 +273,14 @@ ul.store-dropdown li {
 #checkoutreview-table>thead>tr>th{
     border: none;
 }
+
+/* promotion */
+div#promotionslist {
+    height: 332px;
+}
+div#showallpromo {
+    text-transform: none;
+}
+div#list-group-promo {
+    margin-bottom: 0px;
+}

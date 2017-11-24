@@ -177,7 +177,7 @@ under the License.
         <#-- Sidebar Starts -->
             <div class="col-md-3">
             <#-- Categories Links Starts -->
-                <h3 class="side-heading">Categories</h3>
+                <h3 class="side-heading">${uiLabelMap.ProductCategories}</h3>
                 <div class="list-group">
                     <#if (completedTree?has_content)>
                         <#list completedTree?sort_by("productCategoryId") as root>
@@ -191,6 +191,7 @@ under the License.
                     </#if>
                 </div>
             <#-- Categories Links Ends -->
+                ${screens.render("component://productfromthailand/widget/CartScreens.xml#minipromotext")}
             <#--
             <#-- Shopping Options Starts
                 <h3 class="side-heading">Shopping Options</h3>
