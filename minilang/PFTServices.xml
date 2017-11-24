@@ -266,4 +266,45 @@ under the License.
         <set field="quickDropShipOrderMap.userLogin" from-field="systemUserLogin"/>
         <call-service service-name="quickDropShipOrder" in-map-name="quickDropShipOrderMap"/>
     </simple-method>
+
+    <simple-method method-name="sendPurchaseOrderConfirmation" short-description="Send Purchase Order Confirmation">
+        <entity-one entity-name="UserLogin" value-field="systemUserLogin">
+            <field-map field-name="userLoginId" value="system"/>
+        </entity-one>
+        <entity-and entity-name="OrderHeaderAndRoles" list="orderRoles">
+            <field-map field-name="orderId" from-field="parameters.orderId"/>
+            <field-map field-name="roleTypeId" value="SUPPLIER_AGENT"/>
+        </entity-and>
+        <if-not-empty field="orderRoles">
+            <first-from-list list="orderRoles" entry="orderRole"/>
+            <entity-and entity-name="WebSite" list="webSites">
+                <field-map field-name="productStoreId" from-field="orderRole.productStoreId"/>
+            </entity-and>
+            <first-from-list list="webSites" entry="webSite"/>
+            <set field="getEmailTo.partyId" from-field="orderRole.partyId"/>
+            <call-service service-name="getPartyEmail" in-map-name="getEmailTo">
+                <result-to-field result-name="emailAddress" field="sendTo"/>
+            </call-service>
+            <entity-one entity-name="ProductStoreEmailSetting" value-field="storeEmail">
+                <field-map field-name="productStoreId" from-field="orderRole.productStoreId"/>
+                <field-map field-name="emailType" value="PRCHS_ODR_CONFIRM"/>
+            </entity-one>
+            <if-not-empty field="storeEmail.bodyScreenLocation">
+                <set field="bodyParameters.orderId" from-field="parameters.orderId"/>
+                <set field="bodyParameters.partyId" from-field="orderRole.partyId"/>
+                <set field="bodyParameters.userLogin" from-field="systemUserLogin"/>
+                <set field="emailParams.bodyParameters" from-field="bodyParameters"/>
+                <set field="emailParams.sendTo" from-field="sendTo"/>
+                <set field="emailParams.subject" from-field="storeEmail.subject"/>
+                <set field="emailParams.sendFrom" from-field="storeEmail.fromAddress"/>
+                <set field="emailParams.sendCc" from-field="storeEmail.ccAddress"/>
+                <set field="emailParams.sendBcc" from-field="storeEmail.bccAddress"/>
+                <set field="emailParams.bodyScreenUri" from-field="storeEmail.bodyScreenLocation"/>
+                <set field="emailParams.xslfoAttachScreenLocation" from-field="storeEmail.xslfoAttachScreenLocation"/>
+                <set field="emailParams.webSiteId" from-field="webSite.webSiteId"/>
+                <set field="emailParams.userLogin" from-field="systemUserLogin"/>
+                <call-service service-name="sendMailFromScreen" in-map-name="emailParams"/>
+            </if-not-empty>
+        </if-not-empty>
+    </simple-method>
 </simple-methods>

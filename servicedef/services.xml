@@ -128,4 +128,9 @@ under the License.
         <attribute name="orderId" type="String" mode="IN" optional="false"/>
         <attribute name="shipGroupSeqId" type="String" mode="IN" optional="false"/>
     </service>
+
+    <service name="sendPurchaseOrderConfirmation" engine="simple" location="component://productfromthailand/minilang/PFTServices.xml" invoke="sendPurchaseOrderConfirmation">
+        <description>Send Purchase Order Confirmation</description>
+        <attribute name="orderId" type="String" mode="IN" optional="false"/>
+    </service>
 </services>

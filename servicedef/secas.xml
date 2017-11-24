@@ -24,4 +24,9 @@ under the License.
     <eca service="createPartyEmailAddress" event="commit">
         <action service="sendCustomerConfirmationEmail" mode="sync" persist="true"/>
     </eca>
+
+    <eca service="storeOrder" event="return">
+        <condition field-name="orderTypeId" operator="equals" value="PURCHASE_ORDER"/>
+        <action service="sendPurchaseOrderConfirmation" mode="sync"/>
+    </eca>
 </service-eca>

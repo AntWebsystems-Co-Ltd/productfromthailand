@@ -210,7 +210,7 @@ under the License.
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_ODR_BACKORDER" bodyScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#BackorderNotice" subject="Product From Thailand - Backorder Notification #${orderId}" fromAddress="info@productfromthailand.com"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_ODR_CHANGE" bodyScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#OrderChangeNotice" subject="Product From Thailand - Order Change Notification #${orderId}" fromAddress="info@productfromthailand.com"/>
     <Enumeration description="Purchase Order Confirmation" enumCode="PRCHS_ODR_CONFIRM" enumId="PRCHS_ODR_CONFIRM" sequenceId="01" enumTypeId="PARTY_EMAIL"/>
-    <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRCHS_ODR_CONFIRM" bodyScreenLocation="component://productfromthailand/widget/EmailScreens.xml#NewPurchaseOrderNotice" subject="You have got a new purchase order from a customer #${orderId}" bccAddress="info@productfromthailand.com" fromAddress="info@productfromthailand.com"/>
+    <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRCHS_ODR_CONFIRM" bodyScreenLocation="component://productfromthailand/widget/OrderScreens.xml#OrderConfirmNotice" xslfoAttachScreenLocation="component://productfromthailand/widget/OrderScreens.xml#OrderPDF" subject="Product From Thailand - You have got a new purchase order from a customer #${orderId}" bccAddress="info@productfromthailand.com" fromAddress="info@productfromthailand.com"/>
 
     <ShipmentMethodType description="ThaiPost : Domestic EMS" shipmentMethodTypeId="DOMESTIC_EMS"/>
     <ShipmentMethodType description="ThaiPost : Domestic Registered" shipmentMethodTypeId="DOMESTIC_REG"/>
