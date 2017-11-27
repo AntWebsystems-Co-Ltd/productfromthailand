@@ -22,39 +22,41 @@ under the License.
     <#-- Slider & Main Banner Starts -->
         <div class="slider">
             <div class="row">
-            <#-- Slider Section Starts -->
-                <div class="col-md-9 col-xs-12">
-                    <div id="main-carousel" class="carousel slide" data-ride="carousel">
-                        <#-- Wrapper For Slides Starts -->
-                            <div class="carousel-inner">
-                                <#assign numSlide = 3>
-                                <#assign currentSlide = 1>
-                                <#if (numSlide?int > 1)>
-                                    <#list 1 .. numSlide as foo>
-                                        <div class="item <#if (foo?int = 1)>active</#if>">
-                                            <img src="/pft-default/pftimages/slide/slide-${foo}.jpg" alt="Slider" class="img-responsive"/>
-                                        </div>
-                                    </#list>
-                                </#if>
-                            </div>
-                        <#-- Wrapper For Slides Ends -->
-                        <#-- Controls Starts -->
-                            <a class="left carousel-control" href="#main-carousel" role="button" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#main-carousel" role="button" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        <#-- Controls Ends -->
+                <#assign numSlide = Static["org.apache.ofbiz.entity.util.EntityUtilProperties"].getPropertyValue("pft", "image.slide.size", delegator)>
+                <#assign intNumSlide = Static["java.lang.Integer"].parseInt("${numSlide}")>
+                <#-- Slider Section Starts -->
+                    <div class="col-md-9 col-xs-12">
+                        <div id="main-carousel" class="carousel slide" data-ride="carousel">
+                            <#-- Wrapper For Slides Starts -->
+                                <div class="carousel-inner">
+                                    <#if (intNumSlide?int >= 1)>
+                                        <#list 1 .. intNumSlide as foo>
+                                            <div class="item <#if (foo?int = 1)>active</#if>">
+                                                <img src="/pft-default/pftimages/slide/slide-${foo}.jpg" alt="Slider" class="img-responsive"/>
+                                            </div>
+                                        </#list>
+                                    </#if>
+                                </div>
+                            <#-- Wrapper For Slides Ends -->
+                            <#-- Controls Starts -->
+                            <#if (intNumSlide?int > 1)>
+                                <a class="left carousel-control" href="#main-carousel" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                </a>
+                                <a class="right carousel-control" href="#main-carousel" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </#if>
+                            <#-- Controls Ends -->
+                        </div>
                     </div>
-                </div>
-            <#-- Slider Section Ends -->
-            <#-- Main Banner Starts -->
-                <div class="col-md-3 col-xs-12">
-                    <#-- <img src="/pft-default/pftimages/banners/banner-top-right.png" alt="banners" class="img-responsive"> -->
-                    ${screens.render("component://productfromthailand/widget/CartScreens.xml#minipromotext")}
-                </div>
-            <#-- Main Banner Ends -->
+                <#-- Slider Section Ends -->
+                <#-- Main Banner Starts -->
+                    <div class="col-md-3 col-xs-12">
+                        <#-- <img src="/pft-default/pftimages/banners/banner-top-right.png" alt="banners" class="img-responsive"> -->
+                        ${screens.render("component://productfromthailand/widget/CartScreens.xml#minipromotext")}
+                    </div>
+                <#-- Main Banner Ends -->
             </div>
         </div>
     <#-- Slider & Main Banner Ends -->
