@@ -161,7 +161,7 @@ under the License.
     <PartyGroup partyId="SUP10000" groupName="Careel" />
     <PartyRole  partyId="SUP10000" roleTypeId="SUPPLIER"/>
     <ContactMech contactMechId="SUP10000_ADDR" contactMechTypeId="POSTAL_ADDRESS"/>
-    <ContactMech contactMechId="SUP10000_EMAIL" contactMechTypeId="EMAIL_ADDRESS" infoString="natkrita@careelnatural.com"/>
+    <ContactMech contactMechId="SUP10000_EMAIL" contactMechTypeId="EMAIL_ADDRESS" infoString="ofbiztest08@gmail.com"/>
     <PartyContactMech partyId="SUP10000" contactMechId="SUP10000_ADDR" fromDate="2017-10-09 00:00:00.000" allowSolicitation="Y"/>
     <PartyContactMech partyId="SUP10000" contactMechId="SUP10000_EMAIL" fromDate="2017-10-09 00:00:00.000" allowSolicitation="Y"/>
     <PostalAddress contactMechId="SUP10000_ADDR" toName="Careel" address1="171/28 M.3" city="Tambon Nongkaew, Amphur Hangdong" postalCode="50230" countryGeoId="THA" stateProvinceGeoId="TH-50"/>
