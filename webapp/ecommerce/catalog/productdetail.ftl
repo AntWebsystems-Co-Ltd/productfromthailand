@@ -870,7 +870,7 @@ $(function(){
       <#assign imageKeys = variantSample.keySet() />
       <#assign imageMap = variantSample />
       <p>&nbsp;</p>
-      <#assign maxIndex = 7 />
+      <#-- <#assign maxIndex = 7 />
       <#assign indexer = 0 />
       <#list imageKeys as key>
         <#assign swatchProduct = imageMap.get(key) />
@@ -893,7 +893,25 @@ $(function(){
       </#list>
       <#if (indexer > maxIndex)>
         <div><strong>${uiLabelMap.ProductMoreOptions}</strong></div>
-      </#if>
+      </#if> -->
+      <#assign indexer = 0 />
+      <#list imageKeys as key>
+        <#assign swatchProduct = imageMap.get(key) />
+        <#assign imageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(swatchProduct, "SMALL_IMAGE_URL", request, "url")! />
+        <#assign variantLargeImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(swatchProduct, "LARGE_IMAGE_URL", request, "url")! />
+        <#if !imageUrl?string?has_content>
+          <#assign imageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url")! />
+        </#if>
+        <#if !imageUrl?string?has_content>
+          <#assign imageUrl = "/pft-default/images/defaultImage.jpg" />
+        </#if>
+        <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1,'${variantLargeImageUrl!}');">
+          <img src="<@ofbizContentUrl>${contentPathPrefix!}${imageUrl}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail" id="variantProduct"/>
+        </a>
+        <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1,'');" class="linktext">${key}</a>
+        <br/><br/>
+        <#assign indexer = indexer + 1 />
+      </#list>
     </#if>
 
     <#-- Digital Download Files Associated with this Product -->
