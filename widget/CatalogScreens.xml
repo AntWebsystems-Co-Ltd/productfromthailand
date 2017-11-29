@@ -746,7 +746,7 @@ under the License.
                                             <decorator-section name="body">
                                                 <container style="container">
                                                     <container style="panel panel-smart">
-                                                        <label style="h2" text="${uiLabelMap.CommonNotification} ${uiLabelMap.CommonMessage}"/>
+                                                        <label style="h2" text="${uiLabelMap.PFTNotificationMessage}"/>
                                                         <label style="h4 text" text="${uiLabelMap.PartyInformationNotBelongToYou}"/>
                                                     </container>
                                                 </container>
@@ -760,7 +760,7 @@ under the License.
                                     <decorator-section name="body">
                                         <container style="container">
                                             <container style="panel panel-smart">
-                                                <label style="h2" text="${uiLabelMap.CommonNotification} ${uiLabelMap.CommonMessage}"/>
+                                                <label style="h2" text="${uiLabelMap.PFTNotificationMessage}"/>
                                                 <label style="h4 text" text="${uiLabelMap.PFTPWaitingForApproval}"/>
                                             </container>
                                         </container>

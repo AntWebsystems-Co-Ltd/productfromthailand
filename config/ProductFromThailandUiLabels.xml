@@ -100,6 +100,10 @@
         <value xml:lang="en">Check out</value>
         <value xml:lang="th">ดำเนินการชำระเงิน</value>
     </property>
+    <property key="PFTCity">
+        <value xml:lang="en">City</value>
+        <value xml:lang="th">อำเภอ</value>
+    </property>
     <property key="PFTFinalCheckoutReview">
         <value xml:lang="en">Final Check Out Review</value>
         <value xml:lang="th">ดำเนินการชำระเงินครั้งสุดท้าย</value>
@@ -147,6 +151,10 @@
     <property key="PFTCustomerOrders">
         <value xml:lang="en">Customer Orders</value>
         <value xml:lang="th">รายการสั่งซื้อจากลูกค้า</value>
+    </property>
+    <property key="PFTCurrency">
+        <value xml:lang="en">Currency</value>
+        <value xml:lang="th">สกุลเงิน</value>
     </property>
     <property key="PFTEmail">
         <value xml:lang="en">E-mail</value>
@@ -268,6 +276,10 @@
     <property key="PFTMyOrder">
         <value xml:lang="en">My Order</value>
         <value xml:lang="th">ข้อมูลการสั่งซื้อของฉัน</value>
+    </property>
+    <property key="PFTNotificationMessage">
+        <value xml:lang="en">Notification Message</value>
+        <value xml:lang="th">ข้อความแจ้งเตือน</value>
     </property>
     <property key="PFTOr">
         <value xml:lang="en">Or</value>

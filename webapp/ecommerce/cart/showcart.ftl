@@ -182,10 +182,10 @@ under the License.
                                 <dd><@ofbizCurrency amount=orderAdjustmentsTotal isoCode=shoppingCart.getCurrency() /></dd>
                                 <dt>${uiLabelMap.CommonSubtotal} :</dt>
                                 <dd><@ofbizCurrency amount=shoppingCart.getSubTotal() isoCode=shoppingCart.getCurrency() /></dd>
-                                <dt>${uiLabelMap.OrderShippingAndHandling} :</dt>
+                                <#-- <dt>${uiLabelMap.OrderShippingAndHandling} :</dt>
                                 <dd><@ofbizCurrency amount=shoppingCart.getTotalShipping() isoCode=shoppingCart.getCurrency() /></dd>
                                 <dt>${uiLabelMap.PFTSalesTax} :</dt>
-                                <dd><@ofbizCurrency amount=shoppingCart.getTotalSalesTax() isoCode=shoppingCart.getCurrency() /></dd>
+                                <dd><@ofbizCurrency amount=shoppingCart.getTotalSalesTax() isoCode=shoppingCart.getCurrency() /></dd> -->
                             </dl>
                             <hr />
                             <dl class="dl-horizontal total">

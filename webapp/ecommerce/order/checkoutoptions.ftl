@@ -117,7 +117,7 @@ function submitForm(form, mode, value) {
                             <#-- Address2 Ends -->
                             <#-- City Starts -->
                                 <div class="form-group">
-                                    <label class="text-uppercase" for="shipping-city">${uiLabelMap.CommonCity} <span class="text-color-5 font2">*</span></label>
+                                    <label class="text-uppercase" for="shipping-city">${uiLabelMap.PFTCity} <span class="text-color-5 font2">*</span></label>
                                     <input type="text" class="form-control flat animation required" id="shipToCity" name="city" value="${shipToCity!}">
                                 </div>
                             <#-- City Ends -->
@@ -147,7 +147,7 @@ function submitForm(form, mode, value) {
                             <#-- Country Ends -->
                             <#-- State Starts -->
                                 <div class="form-group">
-                                    <label class="text-uppercase" for="shipping-state">${uiLabelMap.CommonState} <span class="text-color-5 font2">*</span></label>
+                                    <label class="text-uppercase" for="shipping-state">${uiLabelMap.PartyState} <span class="text-color-5 font2">*</span></label>
                                     <select class="form-control required" name="stateProvinceGeoId" id="checkoutInfoForm_stateProvinceGeoId"></select>
                                 </div>
                             <#-- State Ends -->
