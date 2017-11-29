@@ -31,35 +31,51 @@ partyId = shoppingCart.getPartyId()
 party = from("Party").where("partyId", partyId).cache(true).queryOne()
 productStore = ProductStoreWorker.getProductStore(request)
 
+// Estimate shipping cost
 if (shoppingCart) {
-    ShippingList = [];
-    shippingEstWprFirst = new ShippingEstimateWrapper(dispatcher, shoppingCart, 0)
-    carrierShipmentMethodList = shippingEstWprFirst.getShippingMethods()
-    carrierShipmentMethodList.each{ carrierShipmentMethod ->
-        ShippingMap = [:];
-        ShipGroupLoop = 0;
-        estimateError = false;
-        ShippingMap.put("partyId", carrierShipmentMethod.partyId);
-        ShippingMap.put("shipmentMethodTypeId", carrierShipmentMethod.shipmentMethodTypeId);
-        ShippingMap.put("description", carrierShipmentMethod.description);
-        ShippingMap.put("shippingEst", 0);
-        getShipGroupSize = shoppingCart.getShipGroupSize();
-        for(ShipGroup in shoppingCart.getShipGroups()) {
-            shippingEstWpr = new ShippingEstimateWrapper(dispatcher, shoppingCart, ShipGroupLoop)
-            shippingEst = shippingEstWpr.getShippingEstimate(carrierShipmentMethod);
-            if(shippingEst) {
-                ShippingMap.put("shippingEst", ShippingMap.get("shippingEst")+shippingEst);
+    shippingList = [];
+    shipGroupIndex = 0;
+    for(shipGroup in shoppingCart.getShipGroups()) {
+        shippingEstWpr = new ShippingEstimateWrapper(dispatcher, shoppingCart, shipGroupIndex);
+        allEstimates = shippingEstWpr.getAllEstimates();
+        for(oneEstimate in allEstimates) {
+            checkNotInclude = true;
+            listIndex = 0;
+            plusIndex = 0;
+            shipGroupEstimate = oneEstimate.getKey();
+            estimateValue = oneEstimate.getValue();
+            if(estimateValue > 0 || shipGroupEstimate.shipmentMethodTypeId.equals("FREE_SHIPPING")) {
+                for(oneShipping in shippingList) {
+                    if(oneShipping.productStoreShipMethId.equals(shipGroupEstimate.productStoreShipMethId)) {
+                        oneShipping.shippingEst += estimateValue;
+                        checkNotInclude = false;
+                        break;
+                    } else if(oneShipping.partyId.equals(shipGroupEstimate.partyId)) {
+                        plusIndex = listIndex+1;
+                    }
+                    listIndex++;
+                }
             } else {
-                estimateError = true;
-                break;
+                checkNotInclude = false;
             }
-            ShipGroupLoop++;
+            if(checkNotInclude) {
+                shippingMap = [:];
+                shippingMap.put("productStoreShipMethId", shipGroupEstimate.productStoreShipMethId);
+                shippingMap.put("shipmentMethodTypeId", shipGroupEstimate.shipmentMethodTypeId);
+                shippingMap.put("description", shipGroupEstimate.description);
+                shippingMap.put("partyId", shipGroupEstimate.partyId);
+                shippingMap.put("shippingEst", 0+estimateValue);
+                if(plusIndex == 0) {
+                    shippingList.add(shippingMap);
+                } else {
+                    shippingList.add(plusIndex, shippingMap);
+                }
+            }
         }
-        if(!estimateError) {
-            ShippingList.add(ShippingMap);
-        }
+        shipGroupIndex++;
     }
-    context.ShippingList = ShippingList;
+    context.ShippingList = shippingList;
+
     // Reassign items requiring drop-shipping to new or existing drop-ship groups
     shoppingCart.createDropShipGroups(dispatcher)
 }
