@@ -63,10 +63,7 @@ if (suppliers) {
             if (approvalSupplier) {
                 approvelList.add(listMap)
             } else {
-                isReject = from("PartyNoteView").where("targetPartyId", it.partyId, "noteName", "Reject Reason").queryFirst();
-                if (!isReject) {
-                    pendingList.add(listMap)
-                }
+                pendingList.add(listMap)
             }
         }
     }

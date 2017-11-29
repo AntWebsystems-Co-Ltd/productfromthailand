@@ -659,22 +659,48 @@ under the License.
             </if-empty>
         </if-not-empty>
 
-        <!-- Create shipping address -->
-        <set field="shipToAddressCtx.partyId" from-field="formInput.formInput.partyId"/>
-        <set field="shipToAddressCtx.userLogin" from-field="userLogin"/>
-        <set field="shipToAddressCtx.setPaymentPurpose" value="Y"/>
-        <set field="shipToAddressCtx.setGeneralPurpose" value="Y"/>
-        <set field="shipToAddressCtx.productStoreId" from-field="formInput.formInput.productStoreId"/>
-        <set field="shipToAddressCtx.setBillingPurpose" value="Y"/>
-        <set field="shipToAddressCtx.setShippingPurpose" value="Y"/>
-        <set field="shipToAddressCtx.toName" value="${formInput.formInput.firstName} ${formInput.formInput.lastName}"/>
-        <if-not-empty field="formInput.formInput.groupName">
-            <set field="shipToAddressCtx.toName" value="${formInput.formInput.groupName}"/>
-        </if-not-empty>
-        <call-service service-name="createSupplierPostalAddressAndPurposes" in-map-name="shipToAddressCtx">
-           <result-to-field result-name="contactMechId" field="billToContactMechId"/>
+        <!-- Get general address -->
+        <clear-field field="generalMap"/>
+        <set field="generalMap.partyId" from-field="formInput.formInput.partyId"/>
+        <set field="generalMap.contactMechPurposeTypeId" value="GENERAL_LOCATION"/>
+        <call-service service-name="getPartyPostalAddress" in-map-name="generalMap">
+            <result-to-field result-name="address1" field="generalAddress1"/>
+            <result-to-field result-name="address2" field="generalAddress2"/>
+            <result-to-field result-name="city" field="generalCity"/>
+            <result-to-field result-name="postalCode" field="generalPostalCode"/>
+            <result-to-field result-name="stateProvinceGeoId" field="generalStateProvinceGeoId"/>
+            <result-to-field result-name="countryGeoId" field="generalCountryGeoId"/>
         </call-service>
-        <log level="info" message="Billing address created with contactMechId ${billToContactMechId}"/>
+        <if>
+            <condition>
+                <or>
+                    <if-compare-field field="generalAddress1" operator="not-equals" to-field="shipToAddressCtx.address1"/>
+                    <if-compare-field field="generalAddress2" operator="not-equals" to-field="shipToAddressCtx.address2"/>
+                    <if-compare-field field="generalCity" operator="not-equals" to-field="shipToAddressCtx.city"/>
+                    <if-compare-field field="generalPostalCode" operator="not-equals" to-field="shipToAddressCtx.postalCode"/>
+                    <if-compare-field field="generalCountryGeoId" operator="not-equals" to-field="shipToAddressCtx.countryGeoId"/>
+                    <if-compare-field field="generalStateProvinceGeoId" operator="not-equals" to-field="shipToAddressCtx.stateProvinceGeoId"/>
+                </or>
+            </condition>
+            <then>
+                <!-- Create shipping address -->
+                <set field="shipToAddressCtx.partyId" from-field="formInput.formInput.partyId"/>
+                <set field="shipToAddressCtx.userLogin" from-field="userLogin"/>
+                <set field="shipToAddressCtx.setPaymentPurpose" value="Y"/>
+                <set field="shipToAddressCtx.setGeneralPurpose" value="Y"/>
+                <set field="shipToAddressCtx.productStoreId" from-field="formInput.formInput.productStoreId"/>
+                <set field="shipToAddressCtx.setBillingPurpose" value="Y"/>
+                <set field="shipToAddressCtx.setShippingPurpose" value="Y"/>
+                <set field="shipToAddressCtx.toName" value="${formInput.formInput.firstName} ${formInput.formInput.lastName}"/>
+                <if-not-empty field="formInput.formInput.groupName">
+                    <set field="shipToAddressCtx.toName" value="${formInput.formInput.groupName}"/>
+                </if-not-empty>
+                <call-service service-name="createSupplierPostalAddressAndPurposes" in-map-name="shipToAddressCtx">
+                   <result-to-field result-name="contactMechId" field="billToContactMechId"/>
+                </call-service>
+                <log level="info" message="Billing address created with contactMechId ${billToContactMechId}"/>
+            </then>
+        </if>
 
         <!-- Create new content form upload file -->
         <set-service-fields service-name="createContentFromUploadedFile" map="formInput.formInput" to-map="inMap"/>

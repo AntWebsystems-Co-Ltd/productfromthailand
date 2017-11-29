@@ -85,6 +85,7 @@ under the License.
         <!-- Set email body parameters -->
         <set field="bodyParameters.supplierName" from-field="supplierName"/>
         <set field="bodyParameters.webSiteId" from-field="parameters.webSiteId"/>
+        <set field="bodyParameters.partyId" from-field="parameters.partyId"/>
         <set field="bodyParameters.reason" from-field="parameters.reason"/>
         <!-- Send mail reject -->
         <clear-field field="sendMailMap"/>
@@ -95,13 +96,13 @@ under the License.
         <call-service service-name="sendMailFromTemplateSetting" in-map-name="sendMailMap"/>
 
         <!-- Disable party -->
-        <clear-field field="setPartyStatusMap"/>
+        <!-- <clear-field field="setPartyStatusMap"/>
         <set field="setPartyStatusMap.partyId" from-field="parameters.partyId"/>
         <set field="setPartyStatusMap.statusId" value="PARTY_DISABLED"/>
-        <call-service service-name="setPartyStatus" in-map-name="setPartyStatusMap"/>
+        <call-service service-name="setPartyStatus" in-map-name="setPartyStatusMap"/> -->
 
         <!-- Expire email -->
-        <entity-and entity-name="PartyContactMech" list="partyContactMechList" filter-by-date="true">
+        <!-- <entity-and entity-name="PartyContactMech" list="partyContactMechList" filter-by-date="true">
             <field-map field-name="partyId" from-field="parameters.partyId"/>
         </entity-and>
         <if-not-empty field="partyContactMechList">
@@ -118,10 +119,10 @@ under the License.
                 <set field="partyContactMechPurpose.thruDate" from-field="nowTimestamp"/>
             </iterate>
             <store-list list="partyContactMechPurposeList"/>
-        </if-not-empty>
+        </if-not-empty> -->
 
         <!-- Expire user login -->
-        <entity-and entity-name="UserLogin" list="userLoginList">
+        <!-- <entity-and entity-name="UserLogin" list="userLoginList">
             <field-map field-name="partyId" from-field="parameters.partyId"/>
         </entity-and>
         <if-not-empty field="userLoginList">
@@ -129,7 +130,7 @@ under the License.
                 <set field="userLogin.enabled" value="N"/>
             </iterate>
             <store-list list="userLoginList"/>
-        </if-not-empty>
+        </if-not-empty> -->
 
         <clear-field field="createPartyNoteMap"/>
         <set field="createPartyNoteMap.partyId" from-field="parameters.partyId"/>

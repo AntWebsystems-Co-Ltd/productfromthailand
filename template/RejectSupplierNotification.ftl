@@ -109,6 +109,11 @@ under the License.
               Reason for rejection : ${parameters.reason!}
             </td>
           </tr>
+          <tr>
+            <td>
+              Please click <a href="${baseURL!}/pft/control/StoreManagement?partyId=${parameters.partyId!}">here</a> to update your account.
+            </td>
+          </tr>
           <tr class="blank_row">
               <td colspan="3"></td>
           </tr>

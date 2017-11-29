@@ -78,6 +78,11 @@ if (parameters.partyId) {
     if (getIdNo) {
         context.idCardNo = getIdNo.idValue;
     }
+    // Get company registration number
+    getRegisNo = from("PartyIdentification").where("partyId", parameters.partyId, "partyIdentificationTypeId", "ID_BIZ_REGISTER_NO").queryOne();
+    if (getRegisNo) {
+        context.businessRegistNo = getRegisNo.idValue;
+    }
     // Get party address
     getPartyPostalAddress = dispatcher.runSync("getPartyPostalAddress", [partyId: parameters.partyId, userLogin: userLogin]);
     if (getPartyPostalAddress) {
