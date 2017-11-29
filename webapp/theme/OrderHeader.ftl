@@ -286,9 +286,9 @@ under the License.
             <#if shippingAccount??>${uiLabelMap.AccountingUseAccount}: ${shippingAccount}</#if>
           </p>
           <#-- tracking number -->
-          <#if trackingNumber?has_content || orderShipmentInfoSummaryList?has_content>
+          <#if shipGroup.trackingNumber?exists>
             <p>
-              ${uiLabelMap.OrderTrackingNumber}
+              ${uiLabelMap.OrderTrackingNumber}:
               <#-- TODO: add links to UPS/FEDEX/etc based on carrier partyId  -->
               <#if shipGroup.trackingNumber?has_content>
                 ${shipGroup.trackingNumber}

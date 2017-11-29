@@ -120,6 +120,7 @@ under the License.
     <service name="shippedOrder" engine="simple" location="component://productfromthailand/minilang/PFTServices.xml" invoke="shippedOrder">
         <description>Approve purchase order</description>
         <attribute name="orderId" type="String" mode="IN" optional="false"/>
+        <attribute name="trackingNumber" type="String" mode="IN" optional="false"/>
     </service>
 
     <service name="quickDropShipOrderPFT" engine="simple" invoke="quickDropShipOrderPFT" location="component://productfromthailand/minilang/PFTServices.xml">

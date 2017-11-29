@@ -250,6 +250,20 @@ under the License.
         <entity-one entity-name="UserLogin" value-field="systemUserLogin">
             <field-map field-name="userLoginId" value="system"/>
         </entity-one>
+        <entity-and entity-name="OrderItemAssoc" list="orderItemAssocs">
+            <field-map field-name="toOrderId" from-field="parameters.orderId"/>
+        </entity-and>
+        <entity-and entity-name="OrderItemShipGroup" list="shipGroupList">
+            <field-map field-name="orderId" from-field="orderItemAssocs[0].orderId"/>
+            <field-map field-name="supplierPartyId" from-field="userLogin.partyId"/>
+        </entity-and>
+        <if-not-empty field="shipGroupList">
+           <iterate list="shipGroupList" entry="shipGroup">
+              <set-service-fields service-name="updateOrderItemShipGroup" map="shipGroup" to-map="orderItemShipGroupMap"/>
+              <set field="orderItemShipGroupMap.trackingNumber" from-field="parameters.trackingNumber"/>
+              <call-service service-name="updateOrderItemShipGroup" in-map-name="orderItemShipGroupMap"/>
+           </iterate>
+        </if-not-empty>
 
         <set field="changeOrderStatusMap.orderId" from-field="parameters.orderId"/>
         <set field="changeOrderStatusMap.statusId" value="ORDER_APPROVED"/>

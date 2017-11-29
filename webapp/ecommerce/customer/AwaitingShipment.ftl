@@ -70,9 +70,32 @@ under the License.
                     </td>  -->
                     <td class="text-center">
                       <input type="button" class="btn btn-main" value="${uiLabelMap.CommonView}" onclick="javascript: location.href = '<@ofbizUrl>orderstatus?orderId=${orderList.orderId}</@ofbizUrl>';"/>
-                      <input type="button" class="btn btn-main" value="${uiLabelMap.OrderQuantityShipped}" onclick="javascript: quickShipped('${orderList.orderId!}')"/>
+                      <button type="button" class="btn btn-main" data-toggle="modal" data-target="#myModal">${uiLabelMap.FacilityShip}</button>
                     </td>
                   </tr>
+                  <!-- Modal -->
+                  <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Add New Tracking Code</h4>
+                        </div>
+                        <div class="modal-body">
+                          <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                              <input class="form-control required" id="trackingNumber" placeholder="Tracking Number" type="text"/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" id="btn" class="btn btn-primary" onclick="javascript: quickShipped('${orderList.orderId!}')">Save</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </#list>
               </#if>
             </tbody>
@@ -84,14 +107,19 @@ under the License.
 
 <script>
     function quickShipped(orderId) {
-        $.ajax({
-            url: 'shippedOrder',
-            type: 'POST',
-            data: "orderId="+orderId,
-            async: false,
-            success: function(data) {
-                location.reload();
-            }
-        });
+        var trackingNumber = $("#trackingNumber").val();
+        if (trackingNumber != "") {
+            $.ajax({
+                url: 'shippedOrder',
+                type: 'POST',
+                data: "orderId="+orderId + "&trackingNumber=" + trackingNumber,
+                async: false,
+                success: function(data) {
+                    location.reload();
+                }
+            });
+        } else {
+            alert('Please insert tracking number');
+        }
     }
 </script>
