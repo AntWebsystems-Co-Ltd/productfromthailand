@@ -37,6 +37,7 @@ public Map calculateSalePrice() {
     BigDecimal pftFeeAmount = BigDecimal.ZERO
     BigDecimal pftVatAmount = BigDecimal.ZERO
     BigDecimal salePrice = BigDecimal.ZERO
+    BigDecimal totalSalePrice = BigDecimal.ZERO
     String paypalFeeStr = EntityUtilProperties.getPropertyValue("pft", "paypal.fee", delegator)
     String pftFeeStr = EntityUtilProperties.getPropertyValue("pft", "pft.fee", delegator)
     String pftVatStr = EntityUtilProperties.getPropertyValue("pft", "pft.vat", delegator)
@@ -47,9 +48,20 @@ public Map calculateSalePrice() {
         paypalFeeAmount = purchasePrice.multiply(paypalFee.movePointLeft(2))
         pftFeeAmount = purchasePrice.add(paypalFeeAmount).multiply(pftFee.movePointLeft(2))
         pftVatAmount = purchasePrice.add(paypalFeeAmount).add(pftFeeAmount).multiply(pftVat.movePointLeft(2))
-        salePrice = purchasePrice.add(paypalFeeAmount).add(pftFeeAmount).add(pftVatAmount)
+        salePrice = purchasePrice.add(paypalFeeAmount).add(pftFeeAmount).add(pftVatAmount).setScale(0, PriceServices.taxRounding)
+        String salePriceStr = salePrice.toString()
+        String lastDigitStr = salePriceStr.substring(salePriceStr.length() - 1);
+        if (lastDigitStr >= "1" && lastDigitStr <= "5") {
+            BigDecimal a =  new BigDecimal("5")
+            totalSalePrice = salePrice.add(a.subtract(new BigDecimal(lastDigitStr)))
+        } else if (lastDigitStr >= "6" && lastDigitStr <= "9") {
+            BigDecimal b =  new BigDecimal("9")
+            totalSalePrice = salePrice.add(b.subtract(new BigDecimal(lastDigitStr)))
+        } else {
+            totalSalePrice = salePrice
+        }
     }
-    result.salePrice = salePrice.setScale(PriceServices.taxFinalScale, PriceServices.taxRounding)
+    result.salePrice = totalSalePrice
     return result
 }
 

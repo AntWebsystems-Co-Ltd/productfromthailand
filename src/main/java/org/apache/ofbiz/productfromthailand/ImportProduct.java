@@ -32,6 +32,7 @@ import org.apache.ofbiz.entity.GenericValue;
 import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityConditionList;
 import org.apache.ofbiz.entity.condition.EntityOperator;
+import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.service.GenericServiceException;
 import org.apache.ofbiz.service.LocalDispatcher;
@@ -347,7 +348,7 @@ public class ImportProduct {
                                 request.setAttribute("_ERROR_MESSAGE_", "Error setting SupplierProduct: "+ supplierProductId+ " already exists.");
                                 return "error";
                             }
-                            createProductPrices.add(prepareProductPrice(productId, salePrice, now, "THB", "_NA_", actionField, userLogin));
+                            createProductPrices.add(prepareProductPrice(productId, salePrice, now, "THB", "_NA_", actionField, userLogin, delegator));
 
                             // create ProductContent for product name & description in Thai and Eng language
                             if(productName != null){
@@ -407,7 +408,7 @@ public class ImportProduct {
                             }
                             if(productPriceGV != null){
                                 updateProductPrices.add(prepareProductPrice(productId, salePrice, productPriceGV.getTimestamp("fromDate"), productPriceGV.getString("currencyUomId")
-                                        , productPriceGV.getString("productStoreGroupId"), actionField, userLogin));
+                                        , productPriceGV.getString("productStoreGroupId"), actionField, userLogin, delegator));
                             }else{
                                 request.setAttribute("_ERROR_MESSAGE_", "Error updating ProductPrice: ");
                                 return "error";
@@ -516,7 +517,7 @@ public class ImportProduct {
                             /*
                             if(productPriceGV != null){
                                 removeProductPrices.add(prepareProductPrice(productId, salePrice, productPriceGV.getTimestamp("fromDate"), productPriceGV.getString("currencyUomId")
-                                        , productPriceGV.getString("productStoreGroupId"), actionField, userLogin));
+                                        , productPriceGV.getString("productStoreGroupId"), actionField, userLogin, delegator));
 
                             }else{
                                 request.setAttribute("_ERROR_MESSAGE_", "Error updating ProductPrice: ");
@@ -1284,7 +1285,7 @@ public class ImportProduct {
 
     // prepare the ProductContent map
     public static Map<String, Object> prepareProductPrice(String productId, BigDecimal salePrice, Timestamp fromDate, String currencyUomId, String productStoreGroupId
-            , String actionField, GenericValue userLogin) {
+            , String actionField, GenericValue userLogin , Delegator delegator) {
         Map<String, Object> fields = new HashMap<String, Object>();
         fields.put("productId", productId);
         fields.put("productPriceTypeId", "DEFAULT_PRICE");
@@ -1293,6 +1294,17 @@ public class ImportProduct {
         fields.put("fromDate", fromDate);
         fields.put("productPricePurposeId", "PURCHASE");
         fields.put("userLogin", userLogin);
+        try {
+            GenericValue taxAuthRate = EntityQuery.use(delegator).from("TaxAuthorityRateProduct").where("taxAuthGeoId", "THA", "taxAuthPartyId", "THA_RD").queryFirst();
+            if (taxAuthRate != null) {
+                fields.put("taxPercentage", taxAuthRate.getBigDecimal("taxPercentage"));
+                fields.put("taxAuthPartyId", taxAuthRate.getString("taxAuthPartyId"));
+                fields.put("taxAuthGeoId", taxAuthRate.getString("taxAuthGeoId"));
+                fields.put("taxInPrice", "Y");
+            }
+        } catch (GenericEntityException e) {
+            Debug.logError("Problem in reading data of taxAuthority rate product", module);
+        }
         if(!"delete".equals(actionField))
             fields.put("price", salePrice);
         return fields;

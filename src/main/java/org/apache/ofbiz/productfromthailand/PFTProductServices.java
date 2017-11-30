@@ -117,6 +117,7 @@ public class PFTProductServices {
                 , formInput.get("productName"), "productTypeId", formInput.get("productTypeId"), "productName", formInput.get("internalName"), "brandName", formInput.get("brandName"), "productWeight"
                 , productWeight, "weightUomId", formInput.get("weightUomId"), "requirementMethodEnumId", "PRODRQM_DS", "userLogin", userLogin);
 
+            GenericValue taxAuthRate = EntityQuery.use(delegator).from("TaxAuthorityRateProduct").where("taxAuthGeoId", "THA", "taxAuthPartyId", "THA_RD").queryFirst();
             if (formInput.get("isCreate").equals("Y")) {
                 if (formInput.get("productId") != null) {
                     GenericValue product = delegator.findOne("Product", UtilMisc.toMap("productId", formInput.get("productId")), true);
@@ -139,10 +140,14 @@ public class PFTProductServices {
                     productId = (String) productIdResult.get("productId");
                 }
                 if (productId != null) {
-                    /*Create Default Price*/
-                    Map<String, Object> productPriceMap = UtilMisc.toMap("productId", productId, "price", salePriceb, "productPriceTypeId", "DEFAULT_PRICE"
-                        , "productPricePurposeId", "PURCHASE", "currencyUomId", formInput.get("currencyUomId"), "productStoreGroupId", "_NA_", "userLogin", userLogin);
-                    createPriceResult = dispatcher.runSync("createProductPrice", productPriceMap);
+                    if (taxAuthRate != null) {
+                        /*Create Default Price*/
+                        Map<String, Object> productPriceMap = UtilMisc.toMap("productId", productId, "price", salePriceb, "productPriceTypeId", "DEFAULT_PRICE"
+                            , "productPricePurposeId", "PURCHASE", "currencyUomId", formInput.get("currencyUomId"), "productStoreGroupId", "_NA_"
+                            , "taxPercentage", taxAuthRate.getBigDecimal("taxPercentage"), "taxAuthPartyId", taxAuthRate.getString("taxAuthPartyId")
+                            , "taxAuthGeoId", taxAuthRate.getString("taxAuthGeoId"), "taxInPrice", "Y", "userLogin", userLogin);
+                        createPriceResult = dispatcher.runSync("createProductPrice", productPriceMap);
+                    }
 
                     /*Create Supplier Product*/
                     Map<String, Object> supplierProductMap = UtilMisc.toMap("productId", productId, "lastPrice", priceb, "partyId", userLogin.getString("partyId")
@@ -219,13 +224,21 @@ public class PFTProductServices {
                                     "currencyUomId", formInput.get("currencyUomId"))
                             .orderBy("-fromDate").filterByDate().queryFirst();
                 if(UtilValidate.isEmpty(productPrice)) {
-                    Map<String, Object> productPriceMap = UtilMisc.toMap("productId", productId, "price", salePriceb, "productPriceTypeId", "DEFAULT_PRICE"
-                            , "productPricePurposeId", "PURCHASE", "currencyUomId", formInput.get("currencyUomId"), "productStoreGroupId", "_NA_", "userLogin", userLogin);
+                    if (taxAuthRate != null) {
+                        Map<String, Object> productPriceMap = UtilMisc.toMap("productId", productId, "price", salePriceb, "productPriceTypeId", "DEFAULT_PRICE"
+                            , "productPricePurposeId", "PURCHASE", "currencyUomId", formInput.get("currencyUomId"), "productStoreGroupId", "_NA_"
+                            , "taxPercentage", taxAuthRate.getBigDecimal("taxPercentage"), "taxAuthPartyId", taxAuthRate.getString("taxAuthPartyId")
+                            , "taxAuthGeoId", taxAuthRate.getString("taxAuthGeoId"), "taxInPrice", "Y", "userLogin", userLogin);
                         createPriceResult = dispatcher.runSync("createProductPrice", productPriceMap);
+                    }
                 } else {
-                    Map<String, Object> productPriceMap = UtilMisc.toMap("productId", productId, "price", salePriceb, "productPriceTypeId", "DEFAULT_PRICE", "fromDate", productPrice.getTimestamp("fromDate")
-                            , "productPricePurposeId", "PURCHASE", "currencyUomId", formInput.get("currencyUomId"), "productStoreGroupId", "_NA_", "userLogin", userLogin);
+                    if (taxAuthRate != null) {
+                        Map<String, Object> productPriceMap = UtilMisc.toMap("productId", productId, "price", salePriceb, "productPriceTypeId", "DEFAULT_PRICE", "fromDate", productPrice.getTimestamp("fromDate")
+                            , "productPricePurposeId", "PURCHASE", "currencyUomId", formInput.get("currencyUomId"), "productStoreGroupId", "_NA_"
+                            , "taxPercentage", taxAuthRate.getBigDecimal("taxPercentage"), "taxAuthPartyId", taxAuthRate.getString("taxAuthPartyId")
+                            , "taxAuthGeoId", taxAuthRate.getString("taxAuthGeoId"), "taxInPrice", "Y", "userLogin", userLogin);
                         createPriceResult = dispatcher.runSync("updateProductPrice", productPriceMap);
+                    }
                 }
 
                 /*Update Supplier Product*/
