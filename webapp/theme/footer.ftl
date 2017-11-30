@@ -101,7 +101,7 @@ under the License.
             <div class="clearfix">
             <#-- Starts -->
                 <p class="pull-left">
-                    Copyright <i class="fa fa-copyright" aria-hidden="true"></i> 2017 <a href="http://www.productfromthailand.com">productfromthailand.com</a> All Rights Reserved.
+                    Copyright <i class="fa fa-copyright" aria-hidden="true"></i> 2017 <a href="http://www.productfromthailand.com">productfromthailand.com</a> by <a href="https://www.antwebsystems.com" target="_blank">AntWebsystems Co.,Ltd</a>
                 </p>
             <#-- Ends -->
             <#-- Payment Gateway Links Starts -->

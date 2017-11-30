@@ -61,7 +61,7 @@ under the License.
 </div>
 <div class="copyright-section">
     <br/>
-    <div class="copyright">Copyright © ${nowTimestamp?string("yyyy")} <a href="http://www.productfromthailand.com" style="" target="_blank">productfromthailand.com</a> All Rights Reserved</div>
+    <div class="copyright">Copyright © ${nowTimestamp?string("yyyy")} <a href="http://www.productfromthailand.com" style="" target="_blank">productfromthailand.com</a> By <a href="https://www.antwebsystems.com" style="" target="_blank">AntWebsystems Co.,Ltd</a></div>
     <br/><br/>
 </div>
 </center>

@@ -114,7 +114,7 @@
     <ProductPromoRule productPromoId="PFT10000" productPromoRuleId="00001" ruleName="Sales 10%"/>
     <ProductPromoCond condValue="1000" inputParamEnumId="PPIP_ORDER_TOTAL" operatorEnumId="PPC_GTE" productPromoCondSeqId="01" productPromoId="PFT10000" productPromoRuleId="00001"/>
     <ProductPromoAction amount="10.000000" orderAdjustmentTypeId="PROMOTION_ADJUSTMENT" productPromoActionEnumId="PROMO_ORDER_PERCENT" productPromoActionSeqId="10000" productPromoId="PFT10000" productPromoRuleId="00001" useCartQuantity="N"/>
-    <ProductPromoCode productPromoCodeId="PFT10ORD" productPromoId="PFT10000" requireEmailOrParty="N" useLimitPerCode="1" useLimitPerCustomer="1" userEntered="Y"/> 
+    <ProductPromoCode productPromoCodeId="PFT10ORD" productPromoId="PFT10000" requireEmailOrParty="N" useLimitPerCode="1" useLimitPerCustomer="1" userEntered="Y"/>
     <ProductStorePromoAppl productStoreId="PFTSTORE" productPromoId="PFT10000" fromDate="2017-10-01 00:00:00.0"/>
 
     <!-- PayPal -->
@@ -286,5 +286,212 @@
     <ProductPromoProduct productId="CR10000-RG" productPromoActionSeqId="_NA_" productPromoApplEnumId="PPPA_INCLUDE" productPromoCondSeqId="01" productPromoId="Buy15CCFree1BB" productPromoRuleId="00001"/>
     <ProductPromoAction orderAdjustmentTypeId="PROMOTION_ADJUSTMENT" productId="FINUM_BB" productPromoActionEnumId="PROMO_GWP" productPromoActionSeqId="10000" productPromoId="Buy15CCFree1BB" productPromoRuleId="00001" quantity="1.000000" useCartQuantity="N"/>
     <ProductStorePromoAppl productPromoId="Buy15CCFree1BB" productStoreId="PFTSTORE" fromDate="2017-11-01 00:00:00.000" />
+
+    <!-- NB Lip Data -->
+    <Product brandName="NB" createdDate="2017-10-09 00:00:00.0"
+                description="NB Matte Lipstick." internalName="NB Matte Lipstick Collection#1"
+                inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="N" isVirtual="Y"
+                largeImageUrl=""
+                mediumImageUrl=""
+                orderDecimalQuantity="N" productId="CR10011" productTypeId="FINISHED_GOOD"
+                productWeight="300.000000" requirementMethodEnumId="PRODRQM_DS"
+                smallImageUrl=""
+                weightUomId="WT_g" />
+    <Product brandName="NB" createdStamp="2017-11-18 03:11:42.785"
+                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 #01 (Charming)"
+                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 #01 (Charming)"
+                    inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="Y"
+                    isVirtual="N" lastModifiedDate="2017-11-20 08:01:00.478"
+                    lastUpdatedStamp="2017-11-27 06:26:39.613" lastUpdatedTxStamp="2017-11-27 06:26:39.054"
+                    lotIdFilledIn="Allowed" productId="CR10011-01"
+                    productName="NB Matte Lipstick Collection1 #01 (Charming)"
+                    productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
+                    smallImageUrl="" />
+    <Product brandName="NB" createdStamp="2017-11-18 03:11:42.926"
+                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 #03 (Elegant)"
+                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 #03 (Elegant)"
+                    inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="Y"
+                    isVirtual="N" lastModifiedDate="2017-11-20 08:05:22.229"
+                    lastUpdatedStamp="2017-11-27 06:28:00.941" lastUpdatedTxStamp="2017-11-27 06:28:00.633"
+                    lotIdFilledIn="Allowed" productId="CR10011-03"
+                    productName="NB Matte Lipstick Collection1 #03 (Elegant)"
+                    productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
+                    smallImageUrl="" />
+    <Product brandName="NB" createdStamp="2017-11-18 03:11:42.995"
+                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 #05 (Hot Plum)"
+                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 #05 (Hot Plum)"
+                    inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="Y"
+                    isVirtual="N" lastModifiedDate="2017-11-20 08:06:40.088"
+                    lastUpdatedStamp="2017-11-27 06:28:39.356" lastUpdatedTxStamp="2017-11-27 06:28:39.049"
+                    lotIdFilledIn="Allowed" productId="CR10011-05"
+                    productName="NB Matte Lipstick Collection1 #05 (Hot Plum)"
+                    productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
+                    smallImageUrl="" />
+    <Product brandName="NB" createdStamp="2017-11-18 03:11:42.868"
+                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 #02 (Red Rose)"
+                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 #02 (Red Rose)"
+                    inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="Y"
+                    isVirtual="N" lastModifiedDate="2017-11-20 08:04:59.348"
+                    lastUpdatedStamp="2017-11-27 06:27:37.356" lastUpdatedTxStamp="2017-11-27 06:27:36.899"
+                    lotIdFilledIn="Allowed" productId="CR10011-02"
+                    productName="NB Matte Lipstick Collection1 #02 (Red Rose)"
+                    productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
+                    smallImageUrl="" />
+    <Product brandName="NB" createdStamp="2017-11-18 03:11:42.961"
+                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 #04 (Sexy Girl)"
+                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 #04 (Sexy Girl)"
+                    inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="Y"
+                    isVirtual="N" lastModifiedDate="2017-11-20 08:06:02.39"
+                    lastUpdatedStamp="2017-11-27 06:28:18.62" lastUpdatedTxStamp="2017-11-27 06:28:18.335"
+                    lotIdFilledIn="Allowed" productId="CR10011-04"
+                    productName="NB Matte Lipstick Collection1 #04 (Sexy Girl)"
+                    productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
+                    smallImageUrl="" />
+    <Product brandName="NB" createdStamp="2017-11-18 03:11:43.053"
+                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 #06 (Pink Gold)"
+                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 #06 (Pink Gold)"
+                    inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="Y"
+                    isVirtual="N" lastModifiedDate="2017-11-20 08:06:59.894"
+                    lastUpdatedStamp="2017-11-27 06:28:54.153" lastUpdatedTxStamp="2017-11-27 06:28:53.847"
+                    lotIdFilledIn="Allowed" productId="CR10011-06"
+                    productName="NB Matte Lipstick Collection1 #06 (Pink Gold)"
+                    productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
+                    smallImageUrl="" />
+    <Product brandName="NB" createdStamp="2017-11-18 03:11:43.115"
+                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 #07 (Soft Burry)"
+                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 #07 (Soft Burry)"
+                    inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="Y"
+                    isVirtual="N" lastModifiedDate="2017-11-20 08:07:30.372"
+                    lastUpdatedStamp="2017-11-27 06:29:11.268" lastUpdatedTxStamp="2017-11-27 06:29:10.997"
+                    lotIdFilledIn="Allowed" productId="CR10011-07"
+                    productName="NB Matte Lipstick Collection1 #07 (SoftBurry)"
+                    productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
+                    smallImageUrl="" />
+    <Product brandName="NB" createdStamp="2017-11-18 03:11:43.174"
+                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 #08 (Hot Sand)"
+                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 #08 (Hot Sand)"
+                    inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="Y"
+                    isVirtual="N" lastModifiedDate="2017-11-20 10:22:35.937"
+                    lastUpdatedStamp="2017-11-27 06:29:36.852" lastUpdatedTxStamp="2017-11-27 06:29:36.554"
+                    lotIdFilledIn="Allowed" productId="CR10011-08"
+                    productName="NB Matte Lipstick Collection1 #08 (Hot Sand)"
+                    productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
+                    smallImageUrl="" />
+    <DataResource dataResourceId="CR10011-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-PNAMETH" textData="NB ลิปสติก"/>
+    <ElectronicText dataResourceId="CR10011-PNAMEEN" textData="NB Matte Lipstick"/>
+    <Content contentId="CR10011-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10011-PNAMETH" description="PRODUCT NAME TH CAREEL Coffee" localeString="th"/>
+    <Content contentId="CR10011-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-PNAMEEN" description="PRODUCT NAME EN CAREEL Coffee" localeString="en"/>
+    <ProductContent productId="CR10011" contentId="CR10011-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-PNAMEEN" contentIdTo="CR10011-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10011-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-DESCTH" textData="ลิปสติกแนวใหม่ที่เรียบละมุนดุจใยไหม เมื่อแห้งจะเซ็ตตัวเป้นลิปแมทที่สีสวยคมชัดและติดทนนานอย่างเหลือเชื่อ เนื้อลิปนุ่มละมุนและให้ความชุ่มชื่นสู่ริมฝีปากมากกว่าลิปแมทอื่นๆ"/>
+    <ElectronicText dataResourceId="CR10011-DESCEN" textData="NB Matte Lipstick."/>
+    <Content contentId="CR10011-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10011-DESCTH" description="DESCRIPTION TH CAREEL Coffee" localeString="th"/>
+    <Content contentId="CR10011-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-DESCEN" description="DESCRIPTION EN CAREEL Coffee" localeString="en"/>
+    <ProductContent productId="CR10011" contentId="CR10011-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-DESCEN" contentIdTo="CR10011-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <ProductPrice currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="450.000" productId="CR10011" productPricePurposeId="PURCHASE" productPriceTypeId="LIST_PRICE" productStoreGroupId="_NA_" />
+    <ProductPrice currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="450.000" productId="CR10011" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" productStoreGroupId="_NA_" />
+    <SupplierProduct availableFromDate="2017-10-09 00:00:00.0"
+                canDropShip="Y" createdStamp="2017-11-18 03:11:44.42"
+                createdTxStamp="2017-11-18 03:11:42.513" currencyUomId="THB"
+                lastPrice="450.000" lastUpdatedStamp="2017-11-18 03:11:44.42"
+                lastUpdatedTxStamp="2017-11-18 03:11:42.513" minimumOrderQuantity="0.000000"
+                partyId="SUP10000" productId="CR10011-01" supplierProductId="SP-CR10011-01"
+                supplierProductName="NB Matte Lipstick" />
+    <SupplierProduct availableFromDate="2017-10-09 00:00:00.0"
+                    canDropShip="Y" createdStamp="2017-11-18 03:11:44.422"
+                    createdTxStamp="2017-11-18 03:11:42.513" currencyUomId="THB"
+                    lastPrice="450.000" lastUpdatedStamp="2017-11-18 03:11:44.422"
+                    lastUpdatedTxStamp="2017-11-18 03:11:42.513"
+                    minimumOrderQuantity="0.000000" partyId="SUP10000" productId="CR10011-02"
+                    supplierProductId="SP-CR10011-02" supplierProductName="NB Matte Lipstick" />
+    <SupplierProduct availableFromDate="2017-10-09 00:00:00.0"
+                    canDropShip="Y" createdStamp="2017-11-18 03:11:44.424"
+                    createdTxStamp="2017-11-18 03:11:42.513" currencyUomId="THB"
+                    lastPrice="450.000" lastUpdatedStamp="2017-11-18 03:11:44.424"
+                    lastUpdatedTxStamp="2017-11-18 03:11:42.513"
+                    minimumOrderQuantity="0.000000" partyId="SUP10000" productId="CR10011-03"
+                    supplierProductId="SP-CR10011-03" supplierProductName="NB Matte Lipstick" />
+    <SupplierProduct availableFromDate="2017-10-09 00:00:00.0"
+                    canDropShip="Y" createdStamp="2017-11-18 03:11:44.426"
+                    createdTxStamp="2017-11-18 03:11:42.513" currencyUomId="THB"
+                    lastPrice="450.000" lastUpdatedStamp="2017-11-18 03:11:44.426"
+                    lastUpdatedTxStamp="2017-11-18 03:11:42.513"
+                    minimumOrderQuantity="0.000000" partyId="SUP10000" productId="CR10011-04"
+                    supplierProductId="SP-CR10011-04" supplierProductName="NB Matte Lipstick" />
+    <SupplierProduct availableFromDate="2017-10-09 00:00:00.0"
+                    canDropShip="Y" createdStamp="2017-11-18 03:11:44.428"
+                    createdTxStamp="2017-11-18 03:11:42.513" currencyUomId="THB"
+                    lastPrice="450.000" lastUpdatedStamp="2017-11-18 03:11:44.428"
+                    lastUpdatedTxStamp="2017-11-18 03:11:42.513"
+                    minimumOrderQuantity="0.000000" partyId="SUP10000" productId="CR10011-05"
+                    supplierProductId="SP-CR10011-05" supplierProductName="NB Matte Lipstick" />
+    <SupplierProduct availableFromDate="2017-10-09 00:00:00.0"
+                    canDropShip="Y" createdStamp="2017-11-18 03:11:44.43"
+                    createdTxStamp="2017-11-18 03:11:42.513" currencyUomId="THB"
+                    lastPrice="450.000" lastUpdatedStamp="2017-11-18 03:11:44.43"
+                    lastUpdatedTxStamp="2017-11-18 03:11:42.513"
+                    minimumOrderQuantity="0.000000" partyId="SUP10000" productId="CR10011-07"
+                    supplierProductId="SP-CR10011-07" supplierProductName="NB Matte Lipstick" />
+    <SupplierProduct availableFromDate="2017-10-09 00:00:00.0"
+                    canDropShip="Y" createdStamp="2017-11-18 03:11:44.432"
+                    createdTxStamp="2017-11-18 03:11:42.513" currencyUomId="THB"
+                    lastPrice="450.000" lastUpdatedStamp="2017-11-18 03:11:44.432"
+                    lastUpdatedTxStamp="2017-11-18 03:11:42.513"
+                    minimumOrderQuantity="0.000000" partyId="SUP10000" productId="CR10011-08"
+                    supplierProductId="SP-CR10011-08" supplierProductName="NB Matte Lipstick" />
+    <SupplierProduct availableFromDate="2017-10-09 00:00:00.0"
+                    canDropShip="Y" createdStamp="2017-11-18 03:11:44.417"
+                    createdTxStamp="2017-11-18 03:11:42.513" currencyUomId="THB"
+                    lastPrice="450.000" lastUpdatedStamp="2017-11-27 01:38:56.708"
+                    lastUpdatedTxStamp="2017-11-27 01:38:51.195"
+                    minimumOrderQuantity="0.000000" partyId="SUP10000" productId="CR10011"
+                    supplierProductId="SUP10000" supplierProductName="NB Matte Lipstick" />
+    <SupplierProduct availableFromDate="2017-10-09 00:00:00.0"
+                    canDropShip="Y" createdStamp="2017-11-18 03:15:54.835"
+                    createdTxStamp="2017-11-18 03:15:53.281" currencyUomId="EUR"
+                    lastPrice="11.700" lastUpdatedStamp="2017-11-27 01:38:57.136"
+                    lastUpdatedTxStamp="2017-11-27 01:38:51.195"
+                    minimumOrderQuantity="0.000000" partyId="SUP10000" productId="CR10011"
+                    supplierProductId="SUP10000" supplierProductName="NB Matte Lipstick" />
+    <SupplierProduct availableFromDate="2017-10-09 00:00:00.0"
+                    canDropShip="Y" createdStamp="2017-11-18 03:15:55.017"
+                    createdTxStamp="2017-11-18 03:15:53.281" currencyUomId="USD"
+                    lastPrice="13.500" lastUpdatedStamp="2017-11-27 01:38:57.344"
+                    lastUpdatedTxStamp="2017-11-27 01:38:51.195"
+                    minimumOrderQuantity="0.000000" partyId="SUP10000" productId="CR10011"
+                    supplierProductId="SUP10000" supplierProductName="NB Matte Lipstick" />
+    <ProductCategoryMember productCategoryId="HEALTHANDBEAUTY" productId="CR10011" sequenceNum="1" fromDate="2017-10-09 00:00:00.000"/>
+    <ProductCategoryMember productCategoryId="PFTPROMOTION" productId="CR10011" sequenceNum="1" fromDate="2017-10-09 00:00:00.000"/>
+    <ProductFeatureAppl fromDate="2017-10-09 00:00:00.0" productFeatureApplTypeId="SELECTABLE_FEATURE" productFeatureId="NB10000" productId="CR10011" sequenceNum="1" />
+    <ProductFeatureAppl fromDate="2017-10-09 00:00:00.0" productFeatureApplTypeId="SELECTABLE_FEATURE" productFeatureId="NB10001" productId="CR10011" sequenceNum="2" />
+    <ProductFeatureAppl fromDate="2017-10-09 00:00:00.0" productFeatureApplTypeId="SELECTABLE_FEATURE" productFeatureId="NB10002" productId="CR10011" sequenceNum="3" />
+    <ProductFeatureAppl fromDate="2017-10-09 00:00:00.0" productFeatureApplTypeId="SELECTABLE_FEATURE" productFeatureId="NB10003" productId="CR10011" sequenceNum="4" />
+    <ProductFeatureAppl fromDate="2017-10-09 00:00:00.0" productFeatureApplTypeId="SELECTABLE_FEATURE" productFeatureId="NB10004" productId="CR10011" sequenceNum="5" />
+    <ProductFeatureAppl fromDate="2017-10-09 00:00:00.0" productFeatureApplTypeId="SELECTABLE_FEATURE" productFeatureId="NB10005" productId="CR10011" sequenceNum="6" />
+    <ProductFeatureAppl fromDate="2017-10-09 00:00:00.0" productFeatureApplTypeId="SELECTABLE_FEATURE" productFeatureId="NB10006" productId="CR10011" sequenceNum="7" />
+    <ProductFeatureAppl fromDate="2017-10-09 00:00:00.0" productFeatureApplTypeId="SELECTABLE_FEATURE" productFeatureId="NB10007" productId="CR10011" sequenceNum="8" />
+    <ProductFeatureAppl fromDate="2017-10-09 00:00:00.0" productFeatureApplTypeId="STANDARD_FEATURE" productFeatureId="NB10000" productId="CR10011-01" sequenceNum="1" />
+    <ProductFeatureAppl fromDate="2017-10-09 00:00:00.0" productFeatureApplTypeId="STANDARD_FEATURE" productFeatureId="NB10001" productId="CR10011-02" sequenceNum="1" />
+    <ProductFeatureAppl fromDate="2017-10-09 00:00:00.0" productFeatureApplTypeId="STANDARD_FEATURE" productFeatureId="NB10002" productId="CR10011-03" sequenceNum="1" />
+    <ProductFeatureAppl fromDate="2017-10-09 00:00:00.0" productFeatureApplTypeId="STANDARD_FEATURE" productFeatureId="NB10003" productId="CR10011-04" sequenceNum="1" />
+    <ProductFeatureAppl fromDate="2017-10-09 00:00:00.0" productFeatureApplTypeId="STANDARD_FEATURE" productFeatureId="NB10004" productId="CR10011-05" sequenceNum="1" />
+    <ProductFeatureAppl fromDate="2017-10-09 00:00:00.0" productFeatureApplTypeId="STANDARD_FEATURE" productFeatureId="NB10005" productId="CR10011-06" sequenceNum="1" />
+    <ProductFeatureAppl fromDate="2017-10-09 00:00:00.0" productFeatureApplTypeId="STANDARD_FEATURE" productFeatureId="NB10006" productId="CR10011-07" sequenceNum="1" />
+    <ProductFeatureAppl fromDate="2017-10-09 00:00:00.0" productFeatureApplTypeId="STANDARD_FEATURE" productFeatureId="NB10007" productId="CR10011-08" sequenceNum="1"/>
+    <ProductAssoc fromDate="2017-10-09 00:00:00.0" productAssocTypeId="PRODUCT_VARIANT" productId="CR10011" productIdTo="CR10011-01" quantity="1.000000" />
+    <ProductAssoc fromDate="2017-10-09 00:00:00.0" productAssocTypeId="PRODUCT_VARIANT" productId="CR10011" productIdTo="CR10011-02" quantity="1.000000" />
+    <ProductAssoc fromDate="2017-10-09 00:00:00.0" productAssocTypeId="PRODUCT_VARIANT" productId="CR10011" productIdTo="CR10011-03" quantity="1.000000" />
+    <ProductAssoc fromDate="2017-10-09 00:00:00.0" productAssocTypeId="PRODUCT_VARIANT" productId="CR10011" productIdTo="CR10011-04" quantity="1.000000" />
+    <ProductAssoc fromDate="2017-10-09 00:00:00.0" productAssocTypeId="PRODUCT_VARIANT" productId="CR10011" productIdTo="CR10011-05" quantity="1.000000" />
+    <ProductAssoc fromDate="2017-10-09 00:00:00.0" productAssocTypeId="PRODUCT_VARIANT" productId="CR10011" productIdTo="CR10011-07" quantity="1.000000" />
+    <ProductAssoc fromDate="2017-11-20 08:09:32.0" productAssocTypeId="PRODUCT_VARIANT" productId="CR10011" productIdTo="CR10011-06" quantity="1.000000" />
+    <ProductAssoc fromDate="2017-11-20 10:15:45.0" productAssocTypeId="PRODUCT_VARIANT" productId="CR10011" productIdTo="CR10011-08" quantity="1.000000" />
 
 </entity-engine-xml>

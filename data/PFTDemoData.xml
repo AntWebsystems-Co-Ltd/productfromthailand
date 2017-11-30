@@ -1706,7 +1706,7 @@ but they are grouped here for convenience purposes -->
     <ShipmentMethodType description="Same Day" shipmentMethodTypeId="SAME_DAY"/>
     <ShipmentMethodType description="International Express" shipmentMethodTypeId="INT_EXPRESS"/>
 
-    <!-- For USPS, only certain container types are allowed for rate estimates of Priority or Express service codes -->
+    <!-- For USPS, only certain container types are allowed for rate estimates of Priority or Express service codes
     <CarrierShipmentMethod partyId="pft" roleTypeId="CARRIER" shipmentMethodTypeId="LOCAL_DELIVERY" sequenceNumber="4"/>
     <CarrierShipmentMethod partyId="USPS" roleTypeId="CARRIER" shipmentMethodTypeId="STANDARD" sequenceNumber="7" carrierServiceCode="Parcel"/>
     <CarrierShipmentMethod partyId="USPS" roleTypeId="CARRIER" shipmentMethodTypeId="EXPRESS" sequenceNumber="6" carrierServiceCode="Express"/>
@@ -1731,8 +1731,9 @@ but they are grouped here for convenience purposes -->
     <CarrierShipmentMethod partyId="FEDEX" roleTypeId="CARRIER" shipmentMethodTypeId="EXPRESS" sequenceNumber="17" carrierServiceCode="FEDEXEXPRESSSAVER"/>
     <CarrierShipmentMethod partyId="FEDEX" roleTypeId="CARRIER" shipmentMethodTypeId="GROUND" sequenceNumber="18" carrierServiceCode="FEDEXGROUND"/>
     <CarrierShipmentMethod partyId="FEDEX" roleTypeId="CARRIER" shipmentMethodTypeId="GROUND_HOME" sequenceNumber="19" carrierServiceCode="GROUNDHOMEDELIVERY"/>
+    -->
 
-    <!-- ProductStoreShipmentMeth for PFTSTORE -->
+    <!-- ProductStoreShipmentMeth for PFTSTORE
     <ProductStoreShipmentMeth productStoreShipMethId="9000" productStoreId="PFTSTORE" partyId="_NA_" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="NO_SHIPPING" sequenceNumber="6"/>
     <ProductStoreShipmentMeth productStoreShipMethId="9001" productStoreId="PFTSTORE" partyId="UPS" includeNoChargeItems="N" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="GROUND" sequenceNumber="3"/>
     <ProductStoreShipmentMeth productStoreShipMethId="9002" productStoreId="PFTSTORE" partyId="UPS" includeNoChargeItems="N" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="AIR" sequenceNumber="2"/>
@@ -1750,6 +1751,7 @@ but they are grouped here for convenience purposes -->
     <ProductStoreShipmentMeth productStoreShipMethId="9014" productStoreId="PFTSTORE" partyId="FEDEX" includeNoChargeItems="N" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="EXPRESS" sequenceNumber="15"/>
     <ProductStoreShipmentMeth productStoreShipMethId="9015" productStoreId="PFTSTORE" partyId="FEDEX" includeNoChargeItems="N" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="GROUND" sequenceNumber="16"/>
     <ProductStoreShipmentMeth productStoreShipMethId="9016" productStoreId="PFTSTORE" partyId="FEDEX" includeNoChargeItems="N" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="GROUND_HOME" sequenceNumber="17"/>
+    -->
 
     <QuantityBreak fromQuantity="0.0" quantityBreakId="9000" quantityBreakTypeId="SHIP_WEIGHT" thruQuantity="0.0"/>
     <QuantityBreak fromQuantity="0.0" quantityBreakId="9001" quantityBreakTypeId="SHIP_WEIGHT" thruQuantity="0.0"/>
@@ -1762,7 +1764,7 @@ but they are grouped here for convenience purposes -->
     <QuantityBreak fromQuantity="0.0" quantityBreakId="9008" quantityBreakTypeId="SHIP_WEIGHT" thruQuantity="0.0"/>
     <QuantityBreak fromQuantity="0.0" quantityBreakId="9009" quantityBreakTypeId="SHIP_WEIGHT" thruQuantity="0.0"/>
 
-    <!-- ShipmentCostEstimate for PFTSTORE -->
+    <!-- ShipmentCostEstimate for PFTSTORE
     <ShipmentCostEstimate productStoreId="PFTSTORE" orderFlatPrice="5.0" orderItemFlatPrice="0.0" carrierPartyId="pft" carrierRoleTypeId="CARRIER" orderPricePercent="0.0" shipmentCostEstimateId="9002" shipmentMethodTypeId="LOCAL_DELIVERY"/>
     <ShipmentCostEstimate productStoreShipMethId="9002" productStoreId="PFTSTORE" orderFlatPrice="5.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="9000" shipmentMethodTypeId="AIR" carrierPartyId="UPS" carrierRoleTypeId="CARRIER" weightBreakId="9000" weightUnitPrice="0.2"/>
     <ShipmentCostEstimate productStoreShipMethId="9001" productStoreId="PFTSTORE" orderFlatPrice="3.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="9001" shipmentMethodTypeId="GROUND" carrierPartyId="UPS" carrierRoleTypeId="CARRIER" weightBreakId="9001" weightUnitPrice="0.1"/>
@@ -1780,6 +1782,7 @@ but they are grouped here for convenience purposes -->
     <ShipmentCostEstimate productStoreShipMethId="9014" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="9207" shipmentMethodTypeId="EXPRESS" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER"/>
     <ShipmentCostEstimate productStoreShipMethId="9015" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="9208" shipmentMethodTypeId="GROUND" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER"/>
     <ShipmentCostEstimate productStoreShipMethId="9016" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="9209" shipmentMethodTypeId="GROUND_HOME" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER"/>
+    -->
 
 <!--    <ShipmentCostEstimate productStoreId="PFTSTORE" orderFlatPrice="5.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="19000" shipmentMethodTypeId="AIR" carrierPartyId="UPS" carrierRoleTypeId="CARRIER" weightBreakId="9100" weightUnitPrice="0.2"/>-->
 <!--    <ShipmentCostEstimate productStoreId="PFTSTORE" orderFlatPrice="3.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="19001" shipmentMethodTypeId="GROUND" carrierPartyId="UPS" carrierRoleTypeId="CARRIER" weightBreakId="9101" weightUnitPrice="0.1"/>-->

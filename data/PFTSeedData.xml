@@ -128,7 +128,7 @@ under the License.
         daysToCancelNonPay="30" manualAuthIsCapture="N" prorateShipping="Y" prorateTaxes="Y" viewCartOnAdd="N" autoSaveCart="N" autoApproveReviews="N"
         isDemoStore="N" title="Welcome to Product FromThailand.com" subtitle="Thailand Located in Southeast Asia, Thailand is commonly known as the land of smiles. Thailand's major exports include textiles, fishery products and electrical applicances. Look through the categories below to find more Thai products." 
         isImmediatelyFulfilled="N" oneInventoryFacility="N" checkInventory="N" reserveInventory="N"
-        reserveOrderEnumId="INVRO_FIFO_REC" requireInventory="N" balanceResOnOrderCreation="Y" orderNumberPrefix="" defaultLocaleString="en_US"
+        reserveOrderEnumId="INVRO_FIFO_REC" requireInventory="N" balanceResOnOrderCreation="Y" orderNumberPrefix="" defaultLocaleString="th"
         defaultCurrencyUomId="THB" defaultSalesChannelEnumId="WEB_SALES_CHANNEL" allowPassword="Y" explodeOrderItems="N" checkGcBalance="N" retryFailedAuths="Y"
         headerApprovedStatus="ORDER_APPROVED" itemApprovedStatus="ITEM_APPROVED" digitalItemApprovedStatus="ITEM_APPROVED" headerDeclinedStatus="ORDER_REJECTED"
         itemDeclinedStatus="ITEM_REJECTED" headerCancelStatus="ORDER_CANCELLED" itemCancelStatus="ITEM_CANCELLED"
@@ -204,6 +204,16 @@ under the License.
     <ProductFeature productFeatureId="CF20006" productFeatureCategoryId="CF20000" productFeatureTypeId="COLOR" description="#07 : Kissme"/>
     <ProductFeature productFeatureId="CF20007" productFeatureCategoryId="CF20000" productFeatureTypeId="COLOR" description="#08 : Charming"/>
     <ProductFeature productFeatureId="CF20008" productFeatureCategoryId="CF20000" productFeatureTypeId="COLOR" description="#09 : Grayberry"/>
+
+    <ProductFeatureCategory description="NB Lip Features" productFeatureCategoryId="NB10000"/>
+    <ProductFeature description="#01 : Charming" productFeatureCategoryId="NB10000" productFeatureId="NB10000" productFeatureTypeId="COLOR" />
+    <ProductFeature description="#02 : Red Rose" productFeatureCategoryId="NB10000" productFeatureId="NB10001" productFeatureTypeId="COLOR" />
+    <ProductFeature description="#03 : Elegant" productFeatureCategoryId="NB10000" productFeatureId="NB10002" productFeatureTypeId="COLOR" />
+    <ProductFeature description="#04 : Sexy Girl" productFeatureCategoryId="NB10000" productFeatureId="NB10003" productFeatureTypeId="COLOR" />
+    <ProductFeature description="#05 : Hot Plum" productFeatureCategoryId="NB10000" productFeatureId="NB10004" productFeatureTypeId="COLOR" />
+    <ProductFeature description="#06 : Pink Gold" productFeatureCategoryId="NB10000" productFeatureId="NB10005" productFeatureTypeId="COLOR" />
+    <ProductFeature description="#07 : Soft Burry" productFeatureCategoryId="NB10000" productFeatureId="NB10006" productFeatureTypeId="COLOR" />
+    <ProductFeature description="#08 : Hot Sand" productFeatureCategoryId="NB10000" productFeatureId="NB10007" productFeatureTypeId="COLOR" />
 
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_ODR_CONFIRM" bodyScreenLocation="component://productfromthailand/widget/OrderScreens.xml#OrderConfirmNotice" xslfoAttachScreenLocation="component://productfromthailand/widget/OrderScreens.xml#OrderPDF" subject="Product From Thailand - Order Confirmation #${orderId}" bccAddress="info@productfromthailand.com" fromAddress="info@productfromthailand.com"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_ODR_COMPLETE" bodyScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#OrderCompleteNotice" subject="Product From Thailand - Your Order Is Complete #${orderId}" fromAddress="info@productfromthailand.com"/>

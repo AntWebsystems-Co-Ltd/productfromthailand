@@ -29,13 +29,28 @@ under the License.
                         <div id="main-carousel" class="carousel slide" data-ride="carousel">
                             <#-- Wrapper For Slides Starts -->
                                 <div class="carousel-inner">
-                                    <#if (intNumSlide?int >= 1)>
+                                    <#-- if (intNumSlide?int >= 1)>
                                         <#list 1 .. intNumSlide as foo>
                                             <div class="item <#if (foo?int = 1)>active</#if>">
-                                                <img src="/pft-default/pftimages/slide/slide-${foo}.jpg" alt="Slider" class="img-responsive"/>
+                                                <a href="<@ofbizUrl>categorylist?productCategoryId=THAISILK</@ofbizUrl>"><img src="/pft-default/pftimages/slide/slide-${foo}.jpg" alt="Slider" class="img-responsive"></a>
                                             </div>
                                         </#list>
-                                    </#if>
+                                    </#if-->
+                                    <div class="item active">
+                                        <a href="<@ofbizCatalogAltUrl productId='CR10002' productCategoryId='THAISILK'/>"><img src="/pft-default/pftimages/slide/slide-1.jpg" alt="Slider" class="img-responsive"></a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="<@ofbizCatalogAltUrl productId='CR10003' productCategoryId='THAISILK'/>"><img src="/pft-default/pftimages/slide/slide-2.jpg" alt="Slider" class="img-responsive"></a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="<@ofbizUrl>categorygrid?productCategoryId=BODYACCESSORIES</@ofbizUrl>"><img src="/pft-default/pftimages/slide/slide-3.jpg" alt="Slider" class="img-responsive"></a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="<@ofbizCatalogAltUrl productId='CR10011' productCategoryId='HEALTHANDBEAUTY'/>"><img src="/pft-default/pftimages/slide/slide-4.jpg" alt="Slider" class="img-responsive"></a>
+                                    </div>
+                                    <div class="item">
+                                        <a href="<@ofbizCatalogAltUrl productId='CR10011' productCategoryId='HEALTHANDBEAUTY'/>"><img src="/pft-default/pftimages/slide/slide-5.jpg" alt="Slider" class="img-responsive"></a>
+                                    </div>
                                 </div>
                             <#-- Wrapper For Slides Ends -->
                             <#-- Controls Starts -->

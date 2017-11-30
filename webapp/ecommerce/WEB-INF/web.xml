@@ -79,7 +79,7 @@ under the License.
         <filter-class>org.apache.ofbiz.product.category.CatalogUrlFilter</filter-class>
         <init-param>
             <param-name>defaultLocaleString</param-name>
-            <param-value>en_US</param-value>
+            <param-value>th</param-value>
         </init-param>
     </filter>
     <filter-mapping>
