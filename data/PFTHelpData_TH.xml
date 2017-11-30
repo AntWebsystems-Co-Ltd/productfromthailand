@@ -525,4 +525,47 @@ Productfromthailand (PFT) ประเทศไทย เป็นส่วน�
         privilegeEnumId="CNT_PRV_BRONZE" contentName="เกี่ยวกับเรา" description="เกี่ยวกับเรา" mimeTypeId="text/html" localeString="th" createdDate="2009-09-17 00:00:00.000"/>
     <ContentAssoc contentId="HELP_ABOUTUS" contentIdTo="HELP_ABOUTUS_TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-09-15 00:00:00.0"/>
 
+    <!-- Paypal Checkout Help -->
+    <DataResource dataResourceId="CHECKOUT_PAYPAL_TH" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_PUBLISHED"
+        createdDate="2009-09-15 00:00:00.000" mimeTypeId="text/html" localeString="th"/>
+    <ElectronicText dataResourceId="CHECKOUT_PAYPAL_TH">
+        <textData><![CDATA[
+            <div class="head2"><h3>วิธีการชำระเงินด้วย PayPal</h3></div>
+            <div class="tabletext">
+                <ol>
+                    <li>ในหน้าการชำระเงิน เลือกวิธีการชำระเงินด้วย "PayPal" และคลิกยอมรับ "เงื่อนไขในการใช้บริการ" จากนั้น คลิก "ดูรายการสั่งซื้อในหน้าสุดท้ายต่อไป"</li>
+                    <img src="/pft-default/images/helpImages/SelectCheckOutPaypal_TH.png" width="550px"/>
+                    <li>คลิก "ยืนยันการสั่งซื้อสินค้า"</li>
+                    <img src="/pft-default/images/helpImages/SubmitOrder_TH.png" width="550px"/>
+                    <li>ระบบจะนำท่านไปสู่เว็บไซด์ของ PayPal ลูกค้ามี 2 ทางเลือกในการชำระเงินคือ ชำระผ่านบัญชี PayPal ที่มีอยู่ หรือ ชำระผ่านบัตรเดบิตหรือเครดิตการ์ด</li>
+                    <img src="/pft-default/images/helpImages/PaypalCheckOutOption_TH.png" width="550px"/>
+                    <div class="head3"><h5>3.1 ชำระผ่านบัญชี PayPal ที่มีอยู่</h5></div>
+                    <div class="tabletext">
+                        <ol>
+                            <li>เข้าสู่ระบบด้วยบัญชี PayPal</li>
+                            <img src="/pft-default/images/helpImages/LogInPaypal_TH.png" width="550px"/>
+                            <li>คลิก "Pay Now"</li>
+                            <img src="/pft-default/images/helpImages/PayAtPaypal.png" width="550px"/>
+                            <li>เมื่อการชำระเงินเสร็จสิ้น ระบบจะนำท่านกลับสู่ เว็บไซด์ productfromthailand ภายใน 10 วินาที</li>
+                            <img src="/pft-default/images/helpImages/PaypalCheckOutSuccess.png" width="550px"/>
+                        </ol>
+                    </div>
+                    <div class="head3"><h5>3.2 ชำระผ่านบัตรเดบิตหรือเครดิตการ์ด</h5></div>
+                    <div class="tabletext">
+                        <ol>
+                            <li>คลิก "ชำระเงินโดยไม่เข้าสู่ระบบ"</li>
+                            <img src="/pft-default/images/helpImages/PayWithCredit_TH.png" width="550px"/>
+                            <li>กรอกข้อมูลของท่าน จากนั้นคลิก "Pay Now"</li>
+                            <img src="/pft-default/images/helpImages/CheckoutCreditPaypal.png" width="550px"/>
+                            <li>เมื่อการชำระเงินเสร็จสิ้น ระบบจะนำท่านกลับสู่ เว็บไซด์ productfromthailand ภายใน 10 วินาที</li>
+                            <img src="/pft-default/images/helpImages/PaypalCheckOutSuccess.png" width="550px"/>
+                        </ol>
+                    </div>
+                </ol>
+            </div>]]>
+        </textData>
+    </ElectronicText>
+    <Content contentId="CHECKOUT_PAYPAL_TH" contentTypeId="DOCUMENT" ownerContentId="HELPROOT" dataResourceId="CHECKOUT_PAYPAL_TH" statusId="CTNT_PUBLISHED"
+        privilegeEnumId="CNT_PRV_BRONZE" contentName="วิธีการชำระเงินด้วย PayPal" description="วิธีการชำระเงินด้วย PayPal" localeString="th" createdDate="2009-09-13 00:00:00.000"/>
+    <ContentAssoc contentId="CHECKOUT_PAYPAL" contentIdTo="CHECKOUT_PAYPAL_TH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2006-01-14 01:01:01"/>
 </entity-engine-xml>

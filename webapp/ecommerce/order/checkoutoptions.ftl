@@ -199,6 +199,13 @@ function submitForm(form, mode, value) {
                                 <#if productStorePaymentMethodTypeIdMap.EXT_PAYPAL?exists>
                                     <div class="form-group">
                                         <input type="radio" id="checkOutPaymentId" name="checkOutPaymentId" value="EXT_PAYPAL" checked="checked"/>${uiLabelMap.AccountingPayWithPayPal}
+                                        <#if parameters.locale == "th">
+                                            <a href="<@ofbizUrl>showhelpcontent?contentId=CHECKOUT_PAYPAL_TH&nodeTrailCsv=CHECKOUT_PAYPAL_TH</@ofbizUrl>">
+                                        <#else>
+                                            <a href="<@ofbizUrl>showhelpcontent?contentId=CHECKOUT_PAYPAL&nodeTrailCsv=CHECKOUT_PAYPAL</@ofbizUrl>">
+                                        </#if>
+                                            <i class="fa fa-question-circle-o" style="font-size: 20px"></i>
+                                        </a>
                                     </div>
                                 </#if>
                                 <#if productStorePaymentMethodTypeIdMap.EXT_COD?exists>

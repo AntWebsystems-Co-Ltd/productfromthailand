@@ -501,4 +501,48 @@ When you visit  Productfromthailand (PFT) , our servers will automatically recor
         privilegeEnumId="CNT_PRV_BRONZE" contentName="About Us" description="About Us" createdDate="2009-09-17 00:00:00.000" mimeTypeId="text/html" localeString="en"/>
     <ContentAssoc contentId="ABOUTUS" contentIdTo="HELP_ABOUTUS" contentAssocTypeId="SUB_CONTENT" sequenceNum="8" fromDate="2009-09-17 00:00:00.000" createdDate="2009-09-17 00:00:00.000"/>
 
+    <!-- Paypal Checkout Help -->
+    <DataResource dataResourceId="CHECKOUT_PAYPAL" dataResourceTypeId="ELECTRONIC_TEXT" dataTemplateTypeId="NONE" statusId="CTNT_PUBLISHED"
+        createdDate="2009-09-15 00:00:00.000" mimeTypeId="text/html" localeString="en"/>
+    <ElectronicText dataResourceId="CHECKOUT_PAYPAL">
+        <textData><![CDATA[
+            <div class="tabletext">On this help will explain you how to buy the product by using PayPal.</div>
+            <div class="head2"><h3>How to checkout by using PayPal ?</h3></div>
+            <div class="tabletext">
+                <ol>
+                    <li>On checkout screen, make sure you selected payment method "PayPal", check "Accept Terms and Conditions" and then click "Continue to final order review".</li>
+                    <img src="/pft-default/images/helpImages/SelectCheckOutPaypal.png" width="550px"/>
+                    <li>Click "Submit Order"</li>
+                    <img src="/pft-default/images/helpImages/SubmitOrder.png" width="550px"/>
+                    <li>System will lead you to PayPal website. You have 2 options. Pay with your existing PayPal account OR Pay with credit card.</li>
+                    <img src="/pft-default/images/helpImages/PaypalCheckOutOption.png" width="550px"/>
+                    <div class="head3"><h5>3.1 Pay with your existing PayPal account.</h5></div>
+                    <div class="tabletext">
+                        <ol>
+                            <li>Login to system using PayPal account.</li>
+                            <img src="/pft-default/images/helpImages/LogInPaypal.png" width="550px"/>
+                            <li>Click "Pay Now"</li>
+                            <img src="/pft-default/images/helpImages/PayAtPaypal.png" width="550px"/>
+                            <li>If the transection is complete your will get screen like picture below and system will automatic back to productfromthailand website in 10 seconds.</li>
+                            <img src="/pft-default/images/helpImages/PaypalCheckOutSuccess.png" width="550px"/>
+                        </ol>
+                    </div>
+                    <div class="head3"><h5>3.2 Pay with credit card.</h5></div>
+                    <div class="tabletext">
+                        <ol>
+                            <li>Click "Pay with Debit or Credit Card"</li>
+                            <img src="/pft-default/images/helpImages/PayWithCredit.png" width="550px"/>
+                            <li>Insert your infomation then click "Pay Now"</li>
+                            <img src="/pft-default/images/helpImages/CheckoutCreditPaypal.png" width="550px"/>
+                            <li>If the transection is complete your will get screen like picture below and system will automatic back to productfromthailand website in 10 seconds.</li>
+                            <img src="/pft-default/images/helpImages/PaypalCheckOutSuccess.png" width="550px"/>
+                        </ol>
+                    </div>
+                </ol>
+            </div>]]>
+        </textData>
+    </ElectronicText>
+    <Content contentId="CHECKOUT_PAYPAL" contentTypeId="DOCUMENT" dataResourceId="CHECKOUT_PAYPAL" statusId="CTNT_PUBLISHED"
+        contentName="How To Checkout With PayPal?" description="How to checkout with PayPal?" mimeTypeId="text/html"/>
+    <ContentAssoc contentId="HELPROOT" contentIdTo="CHECKOUT_PAYPAL" contentAssocTypeId="SUB_CONTENT" sequenceNum="5" fromDate="2006-01-14 01:01:01"/>
 </entity-engine-xml>
