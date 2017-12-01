@@ -19,7 +19,7 @@
 -->
 
 <entity-engine-xml>
-
+    <ContactMech contactMechId="PFTEMAIL" contactMechTypeId="EMAIL_ADDRESS" infoString="ofbiztest04@gmail.com"/>
     <!-- DemoCustomer -->
     <Party partyId="DemoCustomer" partyTypeId="PERSON" statusId="PARTY_ENABLED"/>
     <Person partyId="DemoCustomer" firstName="Demo" lastName="Customer"/>
@@ -242,20 +242,22 @@
     <!--<ProductStoreShipmentMeth productStoreShipMethId="PFTSTORE" productStoreId="PFTSTORE" partyId="_NA_" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="FREE_SHIPPING" sequenceNumber="1"/>-->
 
     <!-- Thai Post shipping method -->
-    <Party partyId="THAIPOST" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" />
-    <PartyGroup partyId="THAIPOST" groupName="Thailand Post" />
-    <PartyRole partyId="THAIPOST" roleTypeId="CARRIER" />
-    <PartyStatus partyId="THAIPOST" statusId="PARTY_ENABLED" statusDate="2001-01-01 12:00:00.0" />
-    <CarrierShipmentMethod partyId="THAIPOST" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_EMS" sequenceNumber="1"/>
-    <CarrierShipmentMethod partyId="THAIPOST" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_REG" sequenceNumber="1"/>
-    <!--ProductStoreShipmentMeth productStoreShipMethId="PFT10000" productStoreId="PFTSTORE" partyId="THAIPOST" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_REG" sequenceNumber="1"/-->
-    <ProductStoreShipmentMeth productStoreShipMethId="PFT10001" productStoreId="PFTSTORE" partyId="THAIPOST" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_EMS" sequenceNumber="1"/>
-    <!-- ShipmentCostEstimate productStoreShipMethId="PFT10000" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="5.0" shipmentMethodTypeId="DOMESTIC_REG" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"/-->
-    <ShipmentCostEstimate productStoreShipMethId="PFT10001" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="8.0" shipmentMethodTypeId="DOMESTIC_EMS" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"  geoIdTo="THA" geoIdFrom="THA"/>
+    <ShipmentMethodType description="International EMS" shipmentMethodTypeId="EMS_INTERNATIONAL"/>
+    <CarrierShipmentMethod partyId="THAIPOST" roleTypeId="CARRIER" shipmentMethodTypeId="EMS_INTERNATIONAL" sequenceNumber="1" carrierServiceCode="THAIPOST_INTEREMS"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="PFT10002" productStoreId="PFTSTORE" partyId="THAIPOST" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="EMS_INTERNATIONAL" serviceName="thaiPostRateInquire" sequenceNumber="1"/>
+    <ShipmentCostEstimate productStoreShipMethId="PFT10002" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentMethodTypeId="EMS_INTERNATIONAL" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"  geoIdTo="USA" geoIdFrom="THA"/>
+
+    <PartyGroup partyId="FEDEX" groupName="Fedex" />
+    <PartyRole partyId="FEDEX" roleTypeId="CARRIER" />
+    <PartyStatus partyId="FEDEX" statusId="PARTY_ENABLED" statusDate="2001-01-01 12:00:00.0" />
+    <ShipmentMethodType description="Fedex International Economy" shipmentMethodTypeId="FEDEX_IE"/>
+    <CarrierShipmentMethod partyId="FEDEX" roleTypeId="CARRIER" shipmentMethodTypeId="FEDEX_IE" sequenceNumber="17" carrierServiceCode="INTERNATIONAL_ECONOMY"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9014" productStoreId="PFTSTORE" partyId="FEDEX" includeNoChargeItems="N" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="FEDEX_IE" serviceName="" sequenceNumber="15"/>
+    <ShipmentCostEstimate productStoreShipMethId="9014" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="9207" shipmentMethodTypeId="FEDEX_IE" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER"/>
 
     <ShipmentMethodType description="Fedex International Priority" shipmentMethodTypeId="FEDEX_IP"/>
     <CarrierShipmentMethod partyId="FEDEX" roleTypeId="CARRIER" shipmentMethodTypeId="FEDEX_IP" sequenceNumber="18" carrierServiceCode="INTERNATIONAL_PRIORITY"/>
-    <ProductStoreShipmentMeth productStoreShipMethId="9015" productStoreId="PFTSTORE" partyId="FEDEX" includeNoChargeItems="N" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="FEDEX_IP" serviceName="fedexRateInquire" sequenceNumber="16"/>
+    <ProductStoreShipmentMeth productStoreShipMethId="9015" productStoreId="PFTSTORE" partyId="FEDEX" includeNoChargeItems="N" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="FEDEX_IP" serviceName="" sequenceNumber="16"/>
     <ShipmentCostEstimate productStoreShipMethId="9015" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentCostEstimateId="9208" shipmentMethodTypeId="FEDEX_IP" carrierPartyId="FEDEX" carrierRoleTypeId="CARRIER"/>
 
     <!-- Currency Convert -->

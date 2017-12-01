@@ -2,6 +2,7 @@ package org.apache.ofbiz.productfromthailand;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,9 +24,12 @@ import org.apache.ofbiz.entity.util.EntityUtil;
 import org.apache.ofbiz.entity.util.EntityUtilProperties;
 import org.apache.ofbiz.order.order.OrderChangeHelper;
 import org.apache.ofbiz.product.store.ProductStoreWorker;
+import org.apache.ofbiz.service.DispatchContext;
 import org.apache.ofbiz.service.GenericServiceException;
 import org.apache.ofbiz.service.LocalDispatcher;
 import org.apache.ofbiz.service.ModelService;
+import org.apache.ofbiz.service.ServiceUtil;
+
 import org.json.JSONObject;
 
 public class PFTEvents {
@@ -357,5 +361,288 @@ public class PFTEvents {
         }
 
         return true;
+    }
+
+    public static Map<String, Object> thaiPostRateInquire(DispatchContext dctx, Map<String, ? extends Object> context) {
+        String currencyUom = (String) context.get("currency");
+        Delegator delegator = dctx.getDelegator();
+        LocalDispatcher dispatcher = dctx.getDispatcher();
+        Locale locale = (Locale) context.get("locale");
+        String shipmentGatewayConfigId = (String) context.get("shipmentGatewayConfigId");
+        BigDecimal estimateAmount = BigDecimal.ZERO;
+        List<GenericValue> shippableItemInfo = UtilGenerics.checkList(context.get("shippableItemInfo"));
+        List<Map<String, Object>> newListShippableItemInfo = new LinkedList<Map<String,Object>>();
+        String checkSupplierTo = null;
+        BigDecimal totalweight = BigDecimal.ZERO;
+        BigDecimal quantity = BigDecimal.ZERO;
+        BigDecimal amount = BigDecimal.ZERO;
+
+        String serviceCode = null;
+        try {
+            GenericValue carrierShipmentMethod = EntityQuery.use(delegator).from("CarrierShipmentMethod")
+                    .where("shipmentMethodTypeId", (String) context.get("shipmentMethodTypeId"), "partyId", (String) context.get("carrierPartyId"), "roleTypeId", (String) context.get("carrierRoleTypeId"))
+                    .queryOne();
+            if (carrierShipmentMethod != null) {
+                serviceCode = carrierShipmentMethod.getString("carrierServiceCode").toUpperCase();
+            }
+        } catch (GenericEntityException e) {
+            Debug.logError(e, module);
+        }
+
+        if(UtilValidate.isNotEmpty(shippableItemInfo)) {
+            for (Map<String, Object> itemInfo: shippableItemInfo) {
+                try {
+                    Map<String, Object> newMapListCtx = new HashMap<String, Object>();
+                    GenericValue supplierTo = EntityQuery.use(delegator).from("SupplierProduct").where("productId", (String) itemInfo.get("productId")).queryFirst();
+                    if (UtilValidate.isNotEmpty(supplierTo)) {
+                        newMapListCtx.putAll(itemInfo);
+                        newMapListCtx.put("supplierTo", supplierTo.getString("partyId"));
+                        newListShippableItemInfo.add(newMapListCtx);
+                    }
+                }catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        if (UtilValidate.isNotEmpty(newListShippableItemInfo)) {
+            Collections.sort(newListShippableItemInfo, new Comparator<Map<String, Object>>() {
+                public int compare(Map<String, Object> node1, Map<String, Object> node2) {
+                    String title1 = (String) node1.get("supplierTo");
+                    String title2 = (String) node2.get("supplierTo");
+                    if (title1 == null || title2 == null) {
+                        return 0;
+                    }
+                    return title1.compareTo(title2);
+                }
+            });
+        }
+        int conutLits = 0;
+        for (Map<String, Object> itemInfo: newListShippableItemInfo) {
+            conutLits ++;
+            String supplierProductId = (String)itemInfo.get("supplierTo");
+            String productId = (String)itemInfo.get("productId");
+            if (supplierProductId == null || !supplierProductId.equals(checkSupplierTo)) {
+                checkSupplierTo = supplierProductId;
+                if(conutLits == shippableItemInfo.size()) {
+                    if(totalweight.intValue()>BigDecimal.ZERO.intValue()) {
+                        if(serviceCode.equals("THAIPOST_EMS")) {
+                            amount = getRateThaiPost(totalweight, delegator);
+                        }else {
+                            amount = getInterRateThaiPost(totalweight, delegator);
+                        }
+                        quantity = (BigDecimal) itemInfo.get("quantity");
+                        totalweight = getWeightProduct(productId,delegator).multiply(quantity);
+                        if(serviceCode.equals("THAIPOST_EMS")) {
+                            amount = amount.add(getRateThaiPost(totalweight, delegator));
+                        }else {
+                            amount = amount.add(getInterRateThaiPost(totalweight, delegator));
+                        }
+                    }else {
+                        quantity = (BigDecimal) itemInfo.get("quantity");
+                        totalweight = getWeightProduct(productId,delegator).multiply(quantity);
+                        if(serviceCode.equals("THAIPOST_EMS")) {
+                            amount = getRateThaiPost(totalweight, delegator);
+                        }else {
+                            amount = getInterRateThaiPost(totalweight, delegator);
+                        }
+                    }
+                }else {
+                    if(totalweight.intValue() > BigDecimal.ZERO.intValue()) {
+                        if(serviceCode.equals("THAIPOST_EMS")) {
+                            amount = getRateThaiPost(totalweight, delegator);
+                        }else {
+                            amount = getInterRateThaiPost(totalweight, delegator);
+                        }
+                        quantity = (BigDecimal) itemInfo.get("quantity");
+                        totalweight = getWeightProduct(productId,delegator).multiply(quantity);
+                    }else {
+                        quantity = (BigDecimal) itemInfo.get("quantity");
+                        totalweight = getWeightProduct(productId,delegator).multiply(quantity);
+                    }
+                }
+            }else {
+                if(conutLits == shippableItemInfo.size()) {
+                    quantity = (BigDecimal) itemInfo.get("quantity");
+                    totalweight = totalweight.add(getWeightProduct(productId,delegator).multiply(quantity));
+                    if(amount.intValue() > BigDecimal.ZERO.intValue()) {
+                        if(serviceCode.equals("THAIPOST_EMS")) {
+                            amount = amount.add(getRateThaiPost(totalweight, delegator));
+                        }else {
+                            amount = amount.add(getInterRateThaiPost(totalweight, delegator));
+                        }
+                    }else {
+                        if(serviceCode.equals("THAIPOST_EMS")) {
+                            amount = getRateThaiPost(totalweight, delegator);
+                        }else {
+                            amount = getInterRateThaiPost(totalweight, delegator);
+                        }
+                    }
+                }else {
+                    quantity = (BigDecimal) itemInfo.get("quantity");
+                    totalweight = totalweight.add(getWeightProduct(productId,delegator).multiply(quantity));
+                }
+            }
+        }
+        Map<String, Object> result = ServiceUtil.returnSuccess();
+        result.put("shippingEstimateAmount", amount);
+        return result;
+    }
+
+    public static BigDecimal getRateThaiPost(BigDecimal totalweight , Delegator delegator) {
+        BigDecimal amount = BigDecimal.ZERO;
+        int res;
+        res = new BigDecimal (0.25).compareTo(totalweight);
+        if(res == -1) {
+            //weight between 0.25 - 0.5 KG
+            res = new BigDecimal (0.5).compareTo(totalweight);
+            if(res != -1) {
+                amount = new BigDecimal (52.00);
+            }else {
+                //weight between 0.5-3 KG
+                res = new BigDecimal (3.00).compareTo(totalweight);
+                if(res != -1) {
+                    BigDecimal startWeight = new BigDecimal (0.5);
+                    int LoopCount = 0;
+                    int resLoop = 0;
+                    while (resLoop != 1) {
+                        resLoop = startWeight.compareTo(totalweight);
+                        if(resLoop == -1) {
+                            startWeight = startWeight.add(new BigDecimal (0.5));
+                            LoopCount ++;
+                        } else if(resLoop == 0) {
+                            resLoop = 1;
+                        }
+                    }
+                    amount = new BigDecimal (67).add(new BigDecimal (15).multiply(new BigDecimal (LoopCount-1)));
+                    int resOver2Kg = totalweight.compareTo(new BigDecimal (2.00));
+                    if(resOver2Kg != -1) {
+                        amount = amount.add(new BigDecimal(10.00));
+                    }
+                }else {
+                    res = new BigDecimal (5.00).compareTo(totalweight);
+                    if(res != -1) {
+                        //weight between 3-5 KG
+                        BigDecimal startWeight = new BigDecimal (3);
+                        int LoopCount = 0;
+                        int resLoop = 0;
+                        while (resLoop != 1) {
+                            resLoop = startWeight.compareTo(totalweight);
+                            if(resLoop == -1) {
+                                startWeight = startWeight.add(new BigDecimal (0.5));
+                                LoopCount ++;
+                            } else if(resLoop == 0) {
+                                resLoop = 1;
+                            }
+                        }
+                        amount = new BigDecimal (157).add(new BigDecimal (20).multiply(new BigDecimal (LoopCount-1)));
+                    }else {
+                        res = new BigDecimal (8.00).compareTo(totalweight);
+                        if(res != -1) {
+                            //weight between 5-8 KG
+                            BigDecimal startWeight = new BigDecimal (5);
+                            int LoopCount = 0;
+                            int resLoop = 0;
+                            while (resLoop != 1) {
+                                resLoop = startWeight.compareTo(totalweight);
+                                if(resLoop == -1) {
+                                    startWeight = startWeight.add(new BigDecimal (0.5));
+                                    LoopCount ++;
+                                } else if(resLoop == 0) {
+                                    resLoop = 1;
+                                }
+                            }
+                            amount = new BigDecimal (242).add(new BigDecimal (25).multiply(new BigDecimal (LoopCount-1)));
+                        }else {
+                            //weight between 8-10 KG
+                            res = new BigDecimal (10.00).compareTo(totalweight);
+                            if(res != -1) {
+                                BigDecimal startWeight = new BigDecimal (8);
+                                int LoopCount = 0;
+                                int resLoop = 0;
+                                while (resLoop != 1) {
+                                    resLoop = startWeight.compareTo(totalweight);
+                                    if(resLoop == -1) {
+                                        startWeight = startWeight.add(new BigDecimal (0.5));
+                                        LoopCount ++;
+                                    } else if(resLoop == 0) {
+                                        resLoop = 1;
+                                    }
+                                }
+                                amount = new BigDecimal (397).add(new BigDecimal (30).multiply(new BigDecimal (LoopCount-1)));
+                            }else {
+                                //Over 10 KG
+                                BigDecimal startWeight = new BigDecimal (10);
+                                int LoopCount = 0;
+                                int resLoop = 0;
+                                while (resLoop != 1) {
+                                    resLoop = startWeight.compareTo(totalweight);
+                                    if(resLoop == -1) {
+                                        startWeight = startWeight.add(new BigDecimal (1));
+                                        LoopCount ++;
+                                    } else if(resLoop == 0) {
+                                        resLoop = 1;
+                                    }
+                                }
+                                amount = new BigDecimal (502).add(new BigDecimal (15).multiply(new BigDecimal (LoopCount-1)));
+                            }
+                        }
+                    }
+                }
+            }
+        }else {
+            //weight between 0 0.02KG
+            res = new BigDecimal (0.02).compareTo(totalweight);
+            if(res != -1) {
+                amount = new BigDecimal (32.00);
+            }else {
+                res = new BigDecimal (0.1).compareTo(totalweight);
+                if(res != -1) {
+                    amount = new BigDecimal (37.00);
+                }else {
+                    amount = new BigDecimal (42.00);
+                }
+            }
+        }
+        return amount;
+    }
+
+    public static BigDecimal getInterRateThaiPost(BigDecimal totalweight , Delegator delegator) {
+        BigDecimal amount = BigDecimal.ZERO;
+        int res;
+        //Over 1 KG
+        BigDecimal startWeight = new BigDecimal (1);
+        int LoopCount = 0;
+        int resLoop = 0;
+        while (resLoop != 1) {
+            resLoop = startWeight.compareTo(totalweight);
+            LoopCount ++;
+            if(resLoop == -1) {
+                startWeight = startWeight.add(new BigDecimal (1));
+            } else if(resLoop == 0) {
+                resLoop = 1;
+            }
+        }
+        amount = new BigDecimal (950).add(new BigDecimal(500).multiply(new BigDecimal (LoopCount-1)));
+        return amount;
+    }
+
+    public static BigDecimal getWeightProduct(String productId , Delegator delegator) {
+        BigDecimal weightProudct = BigDecimal.ZERO;
+        try {
+            GenericValue productItem = EntityQuery.use(delegator).from("Product").where("productId", productId).cache().queryOne();
+            if (UtilValidate.isNotEmpty(productItem)) {
+                if (UtilValidate.isNotEmpty(productItem.get("productWeight"))) {
+                    if(productItem.getString("weightUomId").equals("WT_g")) {
+                        BigDecimal weightProudcts = (BigDecimal) productItem.get("productWeight");
+                        weightProudct = (BigDecimal) weightProudcts.divide(BigDecimal.valueOf(1000), 3, RoundingMode.CEILING);
+                    }else {
+                        weightProudct = (BigDecimal) productItem.get("productWeight");
+                    }
+                }
+            }
+        } catch (GenericEntityException e) {
+            Debug.logError(e, module);
+        }
+        return weightProudct;
     }
 }

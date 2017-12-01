@@ -134,4 +134,13 @@ under the License.
         <description>Send Purchase Order Confirmation</description>
         <attribute name="orderId" type="String" mode="IN" optional="false"/>
     </service>
+
+    <service name="thaiPostRateInquire" engine="java" location="org.apache.ofbiz.productfromthailand.PFTEvents" invoke="thaiPostRateInquire" auth="false">
+        <implements service="calcShipmentEstimateInterface"/>
+    </service>
+
+    <service name="thaiPostInterRateInquire" engine="java" location="org.apache.ofbiz.productfromthailand.PFTEvents" invoke="thaiPostInterRateInquire" auth="false">
+        <implements service="calcShipmentEstimateInterface"/>
+    </service>
+
 </services>
