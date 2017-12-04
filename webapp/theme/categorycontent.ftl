@@ -35,11 +35,13 @@ under the License.
 <#-- Category Intro Content Starts -->
     <div class="row cat-intro">
         <#if categoryImageUrl?default("") != "">
-        <div class="col-sm-3">
+        <div class="col-sm-12">
             <img src="<@ofbizContentUrl>${categoryImageUrl}</@ofbizContentUrl>" alt="Image" class="img-responsive img-thumbnail" />
         </div>
         </#if>
-        <div class="col-sm-8 <#if categoryImageUrl?default("") != "">cat-body</#if>">
+    </div>
+    <div class="row">
+        <div class="col-sm-12 <#if categoryImageUrl?default("") != "">cat-body</#if>">
             <#assign categoryDescription = categoryContentWrapper.get("DESCRIPTION", "html")!/>
             <#if categoryDescription?has_content>
             <p>${categoryDescription}</p>
