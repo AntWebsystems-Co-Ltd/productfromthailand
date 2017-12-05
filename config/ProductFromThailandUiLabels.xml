@@ -651,6 +651,10 @@
         <value xml:lang="en">Upload Products from Spreadsheet</value>
         <value xml:lang="th">อัพโหลดข้อมูลสินค้าจากไฟล์ตารางจัดการ</value>
     </property>
+    <property key="PFTUserGuide">
+        <value xml:lang="en">User Guide</value>
+        <value xml:lang="th">คู่มือการชำระเงิน</value>
+    </property>
     <property key="PFTVat">
         <value xml:lang="en">VAT</value>
         <value xml:lang="th">ภาษี</value>
