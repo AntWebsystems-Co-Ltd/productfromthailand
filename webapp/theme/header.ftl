@@ -137,7 +137,7 @@ under the License.
                 data: $(form).serialize(),
                 async: false,
                 success: function(data) {
-                    alert(" \""+productName+"\" ${uiLabelMap.PFTThisProductAddedToWishListSuccessful}");
+                    alert(" \""+productName+"\" ${StringUtil.wrapString(uiLabelMap.PFTThisProductAddedToWishListSuccessful)}");
                 }
             });
         <#else>

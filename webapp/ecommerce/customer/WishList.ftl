@@ -34,22 +34,70 @@ under the License.
               <#if wishLists?has_content>
                 <#assign wishIndex = 0>
                 <#list wishLists as wishList>
+                <#if backendPath?default("N") == "Y">
+                    <#assign productUrl><@ofbizCatalogUrl productId=wishList.productId/></#assign>
+                <#else>
+                    <#assign productUrl><@ofbizCatalogAltUrl productId=wishList.productId/></#assign>
+                </#if>
                 <#assign wishIndex = wishIndex?int+1>
                     <tr>
                         <td>${wishList.date}</td>
                         <td><a href="/pft/products/p_${wishList.productId}"> ${wishList.productName}</a></td>
                         <td>
                             <div class="product-col" style="padding: 0; margin: 0;">
-                                <form method="post" action="<@ofbizUrl>additem</@ofbizUrl>" name="addToCart${wishIndex!}form">
-                                    <input type="hidden" name="add_product_id" value="${wishList.productId}"/>
-                                    <input type="hidden" name="quantity" value="1"/>
-                                    <input type="hidden" name="clearSearch" value="N"/>
-                                    <input type="hidden" name="mainSubmitted" value="Y"/>
-                                </form>
-                                <button type="button" class="btn btn-cart" onclick="javascript:document.addToCart${wishIndex!}form.submit()">
-                                    ${uiLabelMap.OrderAddToCart}
-                                    <i class="fa fa-shopping-cart"></i>
-                                </button>
+                                <#if wishList.introductionDate?? && nowTimestamp.before(wishList.introductionDate)>
+                                    <div style="color: red;">${uiLabelMap.ProductNotYetAvailable}</div>
+                                    <button type="button" class="btn btn-cart">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        ${uiLabelMap.ProductNotYetAvailable}
+                                    </button>
+                                <#-- check to see if salesDiscontinuationDate has passed -->
+                                <#elseif wishList.salesDiscontinuationDate?? && nowTimestamp.after(wishList.salesDiscontinuationDate)>
+                                    <button type="button" class="btn btn-cart">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        ${uiLabelMap.ProductNoLongerAvailable}
+                                    </button>
+                                <#-- check to see if it is a rental item; will enter parameters on the detail screen-->
+                                <#elseif wishList.productTypeId! == "ASSET_USAGE">
+                                    <button type="button" class="btn btn-cart" onclick="window.location.href='${productUrl}'">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        ${uiLabelMap.OrderMakeBooking}
+                                    </button>
+                                <#-- check to see if it is an aggregated or configurable product; will enter parameters on the detail screen-->
+                                <#elseif wishList.productTypeId! == "AGGREGATED" || wishList.productTypeId! == "AGGREGATED_SERVICE">
+                                    <button type="button" class="btn btn-cart" onclick="window.location.href='${productUrl}'">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        ${uiLabelMap.OrderConfigure}
+                                    </button>
+                                <#-- check to see if the product is a virtual product -->
+                                <#elseif wishList.isVirtual?? && wishList.isVirtual == "Y">
+                                    <button type="button" class="btn btn-cart" onclick="window.location.href='${productUrl}'">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        ${uiLabelMap.OrderChooseVariations}
+                                    </button>
+                                <#-- check to see if the product requires an amount -->
+                                <#elseif wishList.requireAmount?? && wishList.requireAmount == "Y">
+                                    <button type="button" class="btn btn-cart" onclick="window.location.href='${productUrl}'">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        ${uiLabelMap.OrderChooseAmount}
+                                    </button>
+                                <#elseif wishList.productTypeId! == "ASSET_USAGE_OUT_IN">
+                                    <button type="button" class="btn btn-cart" onclick="${productUrl}">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        ${uiLabelMap.OrderRent}
+                                    </button>
+                                <#else>
+                                    <form method="post" action="<@ofbizUrl>additem</@ofbizUrl>" name="addToCart${wishIndex!}form">
+                                        <input type="hidden" name="add_product_id" value="${wishList.productId}"/>
+                                        <input type="hidden" name="quantity" value="1"/>
+                                        <input type="hidden" name="clearSearch" value="N"/>
+                                        <input type="hidden" name="mainSubmitted" value="Y"/>
+                                    </form>
+                                    <button type="button" class="btn btn-cart" onclick="addToCart(addToCart${wishIndex!}form)">
+                                        ${uiLabelMap.OrderAddToCart}
+                                        <i class="fa fa-shopping-cart"></i>
+                                    </button>
+                                </#if>
                             </div>
                         </td>
                         <td>
@@ -69,3 +117,45 @@ under the License.
         </div>
       </div>
 </div>
+
+<#if productLists?has_content>
+    <#list productLists as productList>
+        <#assign product = productList.product>
+        <#if product?has_content>
+            <#assign productContentWrapper = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(product, request)>
+            <#if backendPath?default("N") == "Y">
+                <#assign productUrl><@ofbizCatalogUrl productId=product.productId productCategoryId=productList.categoryId!/></#assign>
+            <#else>
+                <#assign productUrl><@ofbizCatalogAltUrl productId=product.productId productCategoryId=productList.categoryId!/></#assign>
+            </#if>
+
+            <#assign smallImageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url")!>
+            <#if !smallImageUrl?string?has_content><#assign smallImageUrl = "/pft-default/images/defaultImage.jpg"></#if>
+            <#-- Add cart dialog -->
+            ${setRequestAttribute("productUrl", productUrl)}
+            ${setRequestAttribute("smallImageUrl", smallImageUrl)}
+            ${setRequestAttribute("productId", product.productId)}
+            ${setRequestAttribute("productContentWrapper", productContentWrapper)}
+            ${setRequestAttribute("price", productList.price)}
+            ${screens.render("component://productfromthailand/widget/CartScreens.xml#addToCartDialog")}
+        </#if>
+    </#list>
+
+    <script>
+        function addToCart(form) {
+            prodId = form.add_product_id.value;
+            $.ajax({
+                url: form.action,
+                type: 'POST',
+                data: $(form).serialize(),
+                async: false,
+                success: function(data) {
+                    $('#addCartModal_'+prodId).modal('toggle');
+                    $('#addCartModal_'+prodId).modal('show');
+                    $('#addCartModal_'+prodId).modal({backdrop: 'static', keyboard: false})
+                    $('#addCartModal_'+prodId+' #qtyDisplay').text(form.quantity.value);
+                }
+            });
+        }
+    </script>
+</#if>

@@ -284,3 +284,11 @@ div#showallpromo {
 div#list-group-promo {
     margin-bottom: 0px;
 }
+
+/* add cart dialog */
+.addcartmsg {
+    color: #0fff0f;
+}
+#addcart-content-dialog {
+    background: #191919;
+}

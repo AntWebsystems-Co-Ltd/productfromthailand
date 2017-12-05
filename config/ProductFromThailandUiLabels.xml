@@ -62,6 +62,10 @@
         <value xml:lang="en">Add products to wish list so you will find easily</value>
         <value xml:lang="th">เพิ่มสินค้าโปรดของคุณได้ง่ายๆ</value>
     </property>
+    <property key="PFTAddToCartSuccessMsg">
+        <value xml:lang="en">item(s) added to your cart</value>
+        <value xml:lang="th">สินค้าได้ถูกเพิ่มเข้าไปยังตะกร้าสินค้าของคุณ</value>
+    </property>
     <property key="PFTAllPayments">
         <value xml:lang="en">All Payments</value>
         <value xml:lang="th">การชำระเงินทั้งหมด</value>

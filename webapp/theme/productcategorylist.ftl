@@ -130,20 +130,32 @@ ${virtualJavaScript!}
             </div>
         </div>
     <!-- Product Ends -->
+
+    <#-- Add cart dialog -->
+    ${setRequestAttribute("productUrl", productUrl)}
+    ${setRequestAttribute("smallImageUrl", smallImageUrl)}
+    ${setRequestAttribute("productId", product.productId)}
+    ${setRequestAttribute("productContentWrapper", productContentWrapper)}
+    ${setRequestAttribute("price", price)}
+    ${screens.render("component://productfromthailand/widget/CartScreens.xml#addToCartDialog")}
+
+    <script>
+        function addToCart(form) {
+            prodId = form.add_product_id.value;
+            $.ajax({
+                url: form.action,
+                type: 'POST',
+                data: $(form).serialize(),
+                async: false,
+                success: function(data) {
+                    $('#addCartModal_'+prodId).modal('toggle');
+                    $('#addCartModal_'+prodId).modal('show');
+                    $('#addCartModal_'+prodId).modal({backdrop: 'static', keyboard: false})
+                    $('#addCartModal_'+prodId+' #qtyDisplay').text(form.quantity.value);
+                }
+            });
+        }
+    </script>
 <#else>
 &nbsp;${uiLabelMap.ProductErrorProductNotFound}.<br />
 </#if>
-
-<script>
-    function addToCart(form) {
-        $.ajax({
-            url: form.action,
-            type: 'POST',
-            data: $(form).serialize(),
-            async: false,
-            success: function(data) {
-                location.reload()
-            }
-        });
-    }
-</script>

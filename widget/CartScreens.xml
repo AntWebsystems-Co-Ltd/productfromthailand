@@ -128,4 +128,12 @@ under the License.
             </widgets>
         </section>
     </screen>
+
+    <screen name="addToCartDialog">
+        <section>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/AddToCartDialog.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
 </screens>

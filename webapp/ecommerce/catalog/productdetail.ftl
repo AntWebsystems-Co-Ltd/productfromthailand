@@ -93,7 +93,19 @@ ${virtualVariantJavaScript!}
                document.location = '<@ofbizUrl>product?category_id=${categoryId!}&amp;product_id=</@ofbizUrl>' + document.addform.add_product_id.value;
                return;
            } else {
-               document.addform.submit();
+               prodId = document.addform.add_product_id.value;
+               $.ajax({
+                   url: document.addform.action,
+                   type: 'POST',
+                   data: $(document.addform).serialize(),
+                   async: false,
+                   success: function(data) {
+                       $('#addCartModal_'+prodId).modal('toggle');
+                       $('#addCartModal_'+prodId).modal('show');
+                       $('#addCartModal_'+prodId).modal({backdrop: 'static', keyboard: false})
+                       $('#addCartModal_'+prodId+' #qtyDisplay').text(document.addform.quantity.value);
+                   }
+               });
            }
        }
     }
@@ -354,6 +366,13 @@ $(function(){
   </#if>
 </#macro>
 
+<#-- variable setup -->
+<#if backendPath?default("N") == "Y">
+    <#assign productUrl><@ofbizCatalogUrl productId=product.productId productCategoryId=categoryId/></#assign>
+<#else>
+    <#assign productUrl><@ofbizCatalogAltUrl productId=product.productId productCategoryId=categoryId/></#assign>
+</#if>
+
 <div id="main-container" class="container">
   <ol class="breadcrumb">
     ${screens.render(breadcrumbs)}
@@ -395,6 +414,7 @@ $(function(){
             </a>
         </#if>
         <#if !productLargeImageUrl?string?has_content>
+            <#assign productLargeImageUrl = "/pft-default/images/defaultImage.jpg">
             <img src="/pft-default/images/defaultImage.jpg" alt="Image" class="img-responsive thumbnail" />
         </#if>
         <ul class="list-unstyled list-inline">
@@ -762,6 +782,13 @@ $(function(){
           <#if (availableInventory??) && (availableInventory <= 0) && product.requireAmount?default("N") == "N">
             <#assign inStock = false />
           </#if>
+          <#-- Add cart dialog -->
+          ${setRequestAttribute("productUrl", productUrl)}
+          ${setRequestAttribute("smallImageUrl", productLargeImageUrl)}
+          ${setRequestAttribute("productId", product.productId)}
+          ${setRequestAttribute("productContentWrapper", productContentWrapper)}
+          ${setRequestAttribute("price", price)}
+          ${screens.render("component://productfromthailand/widget/CartScreens.xml#addToCartDialog")}
         </#if>
         <#-- check to see if introductionDate hasnt passed yet -->
         <#if product.introductionDate?? && nowTimestamp.before(product.introductionDate)>
@@ -910,6 +937,14 @@ $(function(){
         </a>
         <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1,'');" class="linktext">${key}</a>
         <br/><br/>
+        <#assign variantProductContentWrapper = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(imageMap.get(key), request)>
+        <#-- Add cart dialog -->
+        ${setRequestAttribute("productUrl", productUrl)}
+        ${setRequestAttribute("smallImageUrl", imageUrl)}
+        ${setRequestAttribute("productId", imageMap.get(key).productId)}
+        ${setRequestAttribute("productContentWrapper", variantProductContentWrapper)}
+        ${setRequestAttribute("price", price)}
+        ${screens.render("component://productfromthailand/widget/CartScreens.xml#addToCartDialog")}
         <#assign indexer = indexer + 1 />
       </#list>
     </#if>
