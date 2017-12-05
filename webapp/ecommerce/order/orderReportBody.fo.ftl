@@ -19,11 +19,11 @@ under the License.
 <#escape x as x?xml>
     <#if orderHeader?has_content>
         <fo:table table-layout="fixed" border-spacing="3pt">
-            <fo:table-column column-width="3in"/>
-            <fo:table-column column-width="1in"/>
-            <fo:table-column column-width="1in"/>
-            <fo:table-column column-width="1in"/>
-            <fo:table-column column-width="1in"/>
+            <fo:table-column column-width="2.7in"/>
+            <fo:table-column column-width="1.2in"/>
+            <fo:table-column column-width="1.2in"/>
+            <fo:table-column column-width="1.2in"/>
+            <fo:table-column column-width="1.2in"/>
             <fo:table-header>
                 <fo:table-row>
                     <fo:table-cell>

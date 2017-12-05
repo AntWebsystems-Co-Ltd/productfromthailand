@@ -27,7 +27,7 @@
             <actions>
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
                 <set field="logoImageUrl" value="/pft-default/pftimages/pft-logo.png"/>
-                <set field="defaultFontFamily" value="Loma"/>
+                <set field="defaultFontFamily" value="CS PraKas"/>
             </actions>
             <widgets>
                 <platform-specific><xsl-fo><html-template location="component://common/template/includes/ReportTemplate.fo.ftl"/></xsl-fo></platform-specific>
@@ -261,7 +261,7 @@
                             <widgets>
                                 <!-- the contach mechanisms, terms, payment and shipping methods are shown in the first page -->
                                 <platform-specific>
-                                    <xsl-fo><html-template location="component://order/template/order/OrderReportContactMechs.fo.ftl"/></xsl-fo>
+                                    <xsl-fo><html-template location="component://productfromthailand/webapp/ecommerce/order/OrderReportContactMechs.fo.ftl"/></xsl-fo>
                                 </platform-specific>
                                 <!-- order items and totals -->
                                 <platform-specific>
@@ -344,7 +344,7 @@
                 <script location="component://productfromthailand/groovyScripts/CompanyHeader.groovy"/>
             </actions>
             <widgets>
-                <platform-specific><xsl-fo><html-template location="component://order/template/order/CompanyHeader.fo.ftl"/></xsl-fo></platform-specific>
+                <platform-specific><xsl-fo><html-template location="component://productfromthailand/webapp/ecommerce/order/CompanyHeader.fo.ftl"/></xsl-fo></platform-specific>
             </widgets>
         </section>
     </screen>
