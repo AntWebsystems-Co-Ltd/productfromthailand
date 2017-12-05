@@ -30,14 +30,14 @@ under the License.
         detailScreen="component://productfromthailand/widget/ProductScreens.xml#categorydetailmatrix"/>
     <ProductCategory description="Agricultural &amp; Forestry" primaryParentCategoryId="PFT_ROOT" productCategoryId="AGRICULTURAL" productCategoryTypeId="CATALOG_CATEGORY"/>
 
-    <ProductCategory description="Bags" primaryParentCategoryId="PFT_ROOT" productCategoryId="BAGS" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Clothing" primaryParentCategoryId="PFT_ROOT" productCategoryId="CLOTHING" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Craft &amp; Gift" primaryParentCategoryId="PFT_ROOT" productCategoryId="CRAFTANDGIFT" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Furniture" primaryParentCategoryId="PFT_ROOT" productCategoryId="FURNITURE" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Thai Silk" primaryParentCategoryId="PFT_ROOT" productCategoryId="THAISILK" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Health &amp; Beauty" primaryParentCategoryId="PFT_ROOT" productCategoryId="HEALTHANDBEAUTY" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Body Accessories" primaryParentCategoryId="PFT_ROOT" productCategoryId="BODYACCESSORIES" productCategoryTypeId="CATALOG_CATEGORY"/>
-    <ProductCategory description="Coffee" categoryName="Coffee" productCategoryId="COFFEE-CAT" productCategoryTypeId="CATALOG_CATEGORY"/>
+    <ProductCategory categoryName="Bags" primaryParentCategoryId="PFT_ROOT" productCategoryId="BAGS" productCategoryTypeId="CATALOG_CATEGORY" categoryImageUrl="/pft-default/categories/Bag.jpg"/>
+    <ProductCategory categoryName="Clothing" primaryParentCategoryId="PFT_ROOT" productCategoryId="CLOTHING" productCategoryTypeId="CATALOG_CATEGORY" categoryImageUrl=""/>
+    <ProductCategory categoryName="Craft &amp; Gift" primaryParentCategoryId="PFT_ROOT" productCategoryId="CRAFTANDGIFT" productCategoryTypeId="CATALOG_CATEGORY" categoryImageUrl="/pft-default/categories/CraftGift.jpg"/>
+    <ProductCategory categoryName="Furniture" primaryParentCategoryId="PFT_ROOT" productCategoryId="FURNITURE" productCategoryTypeId="CATALOG_CATEGORY" categoryImageUrl=""/>
+    <ProductCategory categoryName="Thai Silk" primaryParentCategoryId="PFT_ROOT" productCategoryId="THAISILK" productCategoryTypeId="CATALOG_CATEGORY" categoryImageUrl="/pft-default/categories/HealthBeauty.jpg"/>
+    <ProductCategory categoryName="Health &amp; Beauty" primaryParentCategoryId="PFT_ROOT" productCategoryId="HEALTHANDBEAUTY" productCategoryTypeId="CATALOG_CATEGORY" categoryImageUrl="/pft-default/categories/HealthBeauty.jpg"/>
+    <ProductCategory categoryName="Body Accessories" primaryParentCategoryId="PFT_ROOT" productCategoryId="BODYACCESSORIES" productCategoryTypeId="CATALOG_CATEGORY" categoryImageUrl="/pft-default/categories/BodyAccessories.jpg"/>
+    <ProductCategory categoryName="Coffee" productCategoryId="COFFEE-CAT" productCategoryTypeId="CATALOG_CATEGORY" categoryImageUrl="/pft-default/categories/Coffee.png"/>
 
     <ProductCategoryRollup fromDate="2009-01-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="BAGS" sequenceNum="1"/>
     <ProductCategoryRollup fromDate="2009-02-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="CLOTHING" sequenceNum="2"/>
