@@ -201,7 +201,7 @@ under the License.
                                     <option value="">---</option>
                                 </#if>
                                 <#list productCategoryList as productCategory>
-                                    <option value="${productCategory.productCategoryId}">${productCategory.description}</option>
+                                    <option value="${productCategory.productCategoryId}">${productCategory.categoryName!}</option>
                                 </#list>
                             </select><span class="tooltip">${uiLabelMap.CommonRequired}</span>
                         </div>

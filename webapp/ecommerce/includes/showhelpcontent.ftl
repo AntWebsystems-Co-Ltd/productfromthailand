@@ -53,7 +53,6 @@ under the License.
           <#assign subContent = delegator.findByPrimaryKeyCache("Content", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("contentId", subContentId))/>
       </#if>
       <#assign dummy=Static["org.apache.ofbiz.base.util.Debug"].logInfo("in viewcontent, subContent:" + subContent, "")/>
-      <br/>
       <#--h1>${uiLabelMap.EcommerceContentFor} [${subContentId}] ${subContent.contentName?if_exists} - ${subContent.description?if_exists}:</h1><br/-->
       <div class="panel-body" style="color: #838383;">
         <@renderSubContentCache subContentId=subContentId />

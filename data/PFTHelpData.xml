@@ -39,15 +39,31 @@ Welcome to Productfromthailand (PFT)! We are glad you are here. We will help you
         localeString="en" createdDate="2009-09-11 00:00:00.000"/>
     <ElectronicText dataResourceId="HELP_SIGNIN" createdStamp="2009-09-11 00:00:00.000">
         <textData><![CDATA[
-            <div class="head2">Registration steps</div>
-            <div class="tabletext">To register, click the 'Sign in or Register' link at the top right of most Productfromthailand (PFT) pages , and follow these steps:</div>
+            <div class="tabletext">Sign in, there are two kinds of sign in to Productfromthailand (PFT) which are manual sign in or sign in with social media. Click 'Login' button on the top of Productfromthailand (PFT) page and the steps should be as the follows:</div>
+            </br>
+            <div class="tabletext">
+                <li><b>Manual Sign in</b></li>
+                    <ol>
+                        <li>Enter User Name and Password</li>
+                        <li>Click 'Login' button to access to Productfromthailand (PFT)</li>
+                    </ol>
+                </br>
+                <li><b>Sign in with Social Media</b></li>
+                    <ol>
+                        <li>Click 'Google' or 'Facebook' buttons on Sign in with Social Media section</li>
+                        <li>Redirect to Login screen of a social media</li>
+                    </ol>
+            </div>
+            </br>
+            </br>
+            <div class="tabletext">Registration, there are two kinds of registration which are Register as Customer or Register as Supplier. Click 'Register' button on the top of Productfromthailand (PFT) page and the steps should be as the follows:</div>
+            </br>
             <div class="tabletext">
                 <ol>
-                    <li>Click the 'Create' link below 'Login' button.</li>
-                    <li>Enter your contact and personal information.</li>
-                    <li>Enter your email address.</li>
-                    <li>Choose a username, password, and password hint.<br/>
-                    <li>Click 'Save' to complete the registration process, otherwise click 'Back' to go to the previous page.</li>
+                    <li>Click 'REGISTER' button on Register as Customer section or Register as Supplier section</li>
+                    <li>Enter your information</li>
+                    <li>Enter your username and password<br/>
+                    <li>Click 'Submit' button to complete the register user</li>
                 </ol>
             </div>
         ]]></textData>
@@ -60,13 +76,18 @@ Welcome to Productfromthailand (PFT)! We are glad you are here. We will help you
         localeString="en" createdDate="2009-09-12 00:00:00.000" />
     <ElectronicText dataResourceId="HELP_EDITACCOUNT" createdStamp="2009-09-12 00:00:00.000">
         <textData><![CDATA[
+            <style type="text/css">
+                .list_items {
+                    margin:20px 0 7px 0;
+                }
+            </style>
             <div class="head2">To update your account information</div>
             <div class="tabletext">
                 <ol>
-                    <li>Click your name at the top of most Productfromthailand (PFT) pages.</li>
+                    <li class="list_items">Click your name at the top of most Productfromthailand (PFT) pages.</li>
                     <img src="/pft-default/images/helpImages/myAccountLocate.png" width="550px"/>
-                    <li>Click the link that corresponds to the account information you want to update.</li>
-                    <li>Enter your account information you want to update and click 'Save' button to complete the process.</li>
+                    <li class="list_items">Click the link that corresponds to the account information you want to update.</li>
+                    <li class="list_items">Enter your account information you want to update and click 'Save' button to complete the process.</li>
                 </ol>
             </div>
         ]]></textData>
@@ -95,30 +116,35 @@ Welcome to Productfromthailand (PFT)! We are glad you are here. We will help you
         createdDate="2009-09-15 00:00:00.000" mimeTypeId="text/html" localeString="en"/>
     <ElectronicText dataResourceId="CREATE_NEW_PRODUCT">
         <textData><![CDATA[
+            <style type="text/css">
+                .list_items {
+                    margin:20px 0 7px 0;
+                }
+            </style>
             <div class="tabletext">On this help will explain you how to create a product on the system and how to upload your products from a spread sheet.</div>
 <div class="head2"><h3>How to Create a product ?</h3></div>
 <div class="tabletext">
   <ol>
-    <li>To create a product first you need to <a href="checkLogin">log on</a> to the system.</li>
-    <li>You will see the button called "Store Management" on the menubar then click on that.</li>
+    <li class="list_items">To create a product first you need to <a href="checkLogin">log on</a> to the system.</li>
+    <li class="list_items">You will see the button called "Store Management" on the menubar then click on that.</li>
     <img src="/pft-default/images/helpImages/storeManagementLocate.png" width="550px"/>
-    <li>After that, click "New Product"</li>
+    <li class="list_items">After that, click "New Product"</li>
     <img src="/pft-default/images/helpImages/newProductButtonLocate.png" width="550px"/>
-    <li>Put the information about the product you want to create. You can leave the field "Product Id" empty the system will auto generate it for you then press "Submit"</li>
+    <li class="list_items">Put the information about the product you want to create. You can leave the field "Product Id" empty the system will auto generate it for you then press "Submit"</li>
     <img src="/pft-default/images/helpImages/productInformation.png" width="550px"/>
   </ol>
 </div>
 <div class="head2"><h3>How to Create a product by uploading spread sheet ?</h3></div>
 <div class="tabletext">
   <ol>
-    <li>To create a product first you need to <a href="checkLogin">log on</a> to the system.</li>
-    <li>You will see the button called "Store Management" on the menubar then click on that.</li>
+    <li class="list_items">To create a product first you need to <a href="checkLogin">log on</a> to the system.</li>
+    <li class="list_items">You will see the button called "Store Management" on the menubar then click on that.</li>
     <img src="/pft-default/images/helpImages/storeManagementLocate.png" width="550px"/>
-    <li>After that, click "Download Product Template" to download template of spread sheet.</li>
+    <li class="list_items">After that, click "Download Product Template" to download template of spread sheet.</li>
     <img src="/pft-default/images/helpImages/spreadSheetDownloadLocate.png" width="550px"/>
-    <li>Put products information in the spread sheet then click "Upload Products from Spreadsheet".</li>
+    <li class="list_items">Put products information in the spread sheet then click "Upload Products from Spreadsheet".</li>
     <img src="/pft-default/images/helpImages/spreadSheetButtonLocate.png" width="550px"/>
-    <li>Choose your spread sheet and then click "Upload Product".</li>
+    <li class="list_items">Choose your spread sheet and then click "Upload Product".</li>
   </ol>
 </div>]]>
         </textData>
@@ -506,35 +532,42 @@ When you visit  Productfromthailand (PFT) , our servers will automatically recor
         createdDate="2009-09-15 00:00:00.000" mimeTypeId="text/html" localeString="en"/>
     <ElectronicText dataResourceId="CHECKOUT_PAYPAL">
         <textData><![CDATA[
-            <div class="tabletext">On this help will explain you how to buy the product by using PayPal.</div>
-            <div class="head2"><h3>How to checkout by using PayPal ?</h3></div>
+            <style type="text/css">
+                .list_items {
+                    margin:20px 0 7px 0;
+                }
+            </style>
             <div class="tabletext">
                 <ol>
-                    <li>On checkout screen, make sure you selected payment method "PayPal", check "Accept Terms and Conditions" and then click "Continue to final order review".</li>
+                    <li class="list_items">On checkout screen, make sure you selected payment method "PayPal", check "Accept Terms and Conditions" and then click "Continue to final order review".</li>
                     <img src="/pft-default/images/helpImages/SelectCheckOutPaypal.png" width="550px"/>
-                    <li>Click "Submit Order"</li>
+                    <li class="list_items">Click "Submit Order"</li>
                     <img src="/pft-default/images/helpImages/SubmitOrder.png" width="550px"/>
-                    <li>System will lead you to PayPal website. You have 2 options. Pay with your existing PayPal account OR Pay with credit card.</li>
+                    <li class="list_items">System will lead you to PayPal website. You have 2 options. Pay with your existing PayPal account OR Pay with credit card.</li>
                     <img src="/pft-default/images/helpImages/PaypalCheckOutOption.png" width="550px"/>
+                </ol></br>
+                <ol>
                     <div class="head3"><h5>3.1 Pay with your existing PayPal account.</h5></div>
                     <div class="tabletext">
                         <ol>
-                            <li>Login to system using PayPal account.</li>
+                            <li class="list_items">Login to system using PayPal account.</li>
                             <img src="/pft-default/images/helpImages/LogInPaypal.png" width="550px"/>
-                            <li>Click "Pay Now"</li>
+                            <li class="list_items">Click "Pay Now"</li>
                             <img src="/pft-default/images/helpImages/PayAtPaypal.png" width="550px"/>
-                            <li>If the transection is complete your will get screen like picture below and system will automatic back to productfromthailand website in 10 seconds.</li>
+                            <li class="list_items">If the transection is complete your will get screen like picture below and system will automatic back to productfromthailand website in 10 seconds.</li>
                             <img src="/pft-default/images/helpImages/PaypalCheckOutSuccess.png" width="550px"/>
                         </ol>
                     </div>
+                </ol></br>
+                <ol>
                     <div class="head3"><h5>3.2 Pay with credit card.</h5></div>
                     <div class="tabletext">
                         <ol>
-                            <li>Click "Pay with Debit or Credit Card"</li>
+                            <li class="list_items">Click "Pay with Debit or Credit Card"</li>
                             <img src="/pft-default/images/helpImages/PayWithCredit.png" width="550px"/>
-                            <li>Insert your infomation then click "Pay Now"</li>
+                            <li class="list_items">Insert your infomation then click "Pay Now"</li>
                             <img src="/pft-default/images/helpImages/CheckoutCreditPaypal.png" width="550px"/>
-                            <li>If the transection is complete your will get screen like picture below and system will automatic back to productfromthailand website in 10 seconds.</li>
+                            <li class="list_items">If the transection is complete your will get screen like picture below and system will automatic back to productfromthailand website in 10 seconds.</li>
                             <img src="/pft-default/images/helpImages/PaypalCheckOutSuccess.png" width="550px"/>
                         </ol>
                     </div>
