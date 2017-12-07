@@ -117,7 +117,7 @@ ${virtualJavaScript!}
                                 <i class="fa fa-shopping-cart"></i>
                             </button>
                         </#if>
-                        <button type="button" onclick="addToWishlist(addProductToWishList_${timeId},'${productContentWrapper.get("PRODUCT_NAME", "html")!}')" title="Wishlist" class="btn btn-wishlist">
+                        <button type="button" onclick="addToWishlist(addProductToWishList_${timeId})" title="Wishlist" class="btn btn-wishlist">
                             <i class="fa fa-heart"></i>
                         </button>
                         <#--

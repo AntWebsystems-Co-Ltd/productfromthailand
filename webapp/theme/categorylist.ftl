@@ -176,21 +176,6 @@ under the License.
         <#-- Primary Content Ends -->
         <#-- Sidebar Starts -->
             <div class="col-md-3">
-            <#-- Categories Links Starts -->
-                <h3 class="side-heading">${uiLabelMap.ProductCategories}</h3>
-                <div class="list-group">
-                    <#if (completedTree?has_content)>
-                        <#list completedTree?sort_by("productCategoryId") as root>
-                            <#if !root.child?has_content>
-                                <a href="<@ofbizUrl>categorylist?productCategoryId=${root.productCategoryId!}</@ofbizUrl>" class="list-group-item">
-                                    <i class="fa fa-chevron-right"></i>
-                                    <#if root.categoryName??>${root.categoryName?js_string}<#elseif root.categoryDescription??>${root.categoryDescription?js_string}<#else>${root.productCategoryId?js_string}</#if>
-                                </a>
-                            </#if>
-                        </#list>
-                    </#if>
-                </div>
-            <#-- Categories Links Ends -->
                 ${screens.render("component://productfromthailand/widget/CartScreens.xml#minipromotext")}
             <#--
             <#-- Shopping Options Starts

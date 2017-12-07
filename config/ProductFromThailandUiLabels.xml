@@ -429,6 +429,10 @@
         <value xml:lang="en">Remove product from wish list successful.</value>
         <value xml:lang="th">ลบสินค้าออกจากรายการโปรดเรียบร้อยแล้ว</value>
     </property>
+    <property key="PFTRequiredLogin">
+        <value xml:lang="en">Required Login</value>
+        <value xml:lang="th">กรุณาเข้าสู่ระบบ</value>
+    </property>
     <property key="PFTReview">
         <value xml:lang="en">Review</value>
         <value xml:lang="th">ความคิดเห็น</value>

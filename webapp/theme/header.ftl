@@ -129,7 +129,7 @@ under the License.
     </#if>
     <script>
     <#-- wishlist script -->
-        function addToWishlist(form,productName) {
+        function addToWishlist(form) {
         <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
             $.ajax({
                 url: form.action,
@@ -137,11 +137,11 @@ under the License.
                 data: $(form).serialize(),
                 async: false,
                 success: function(data) {
-                    alert(" \""+productName+"\" ${StringUtil.wrapString(uiLabelMap.PFTThisProductAddedToWishListSuccessful)}");
+                    alert("${StringUtil.wrapString(uiLabelMap.PFTThisProductAddedToWishListSuccessful)}");
                 }
             });
         <#else>
-            alert("${uiLabelMap.CommonRequired} ${uiLabelMap.CommonLogin}");
+            alert("${StringUtil.wrapString(uiLabelMap.PFTRequiredLogin)}");
         </#if>
         }
         function setCurrency(currency) {

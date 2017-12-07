@@ -21,12 +21,13 @@ under the License.
         <div class="panel-heading navbar">
           <h3>${uiLabelMap.PFTWishList}</h3>
         </div>
-        <div class="panel-body">
+        <div class="table-responsive">
           <table class="table">
             <thead>
               <tr>
+                <th>${uiLabelMap.CommonImage}</th>
+                <th>${uiLabelMap.PFTProducts}</th>
                 <th>${uiLabelMap.CommonDate}</th>
-                <th>${uiLabelMap.PFTProducts}
                 <th></th>
               </tr>
             </thead>
@@ -41,8 +42,21 @@ under the License.
                 </#if>
                 <#assign wishIndex = wishIndex?int+1>
                     <tr>
-                        <td>${wishList.date}</td>
-                        <td><a href="/pft/products/p_${wishList.productId}"> ${wishList.productName}</a></td>
+                        <#assign product = EntityQuery.use(delegator).from("Product").where("productId", wishList.productId).queryOne()!>
+                        <#assign smallImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(product, "SMALL_IMAGE_URL", request, "url")!>
+                        <#if !smallImageUrl?string?has_content><#assign smallImageUrl = "/pft-default/images/defaultImage.jpg"/></#if>
+                        <#if smallImageUrl?string?has_content>
+                            <td>
+                                <a href="<@ofbizUrl>product?product_id=${wishList.productId!}</@ofbizUrl>">
+                                    <img src="<@ofbizContentUrl>${contentPathPrefix!}${smallImageUrl}</@ofbizContentUrl>" class="img-thumbnail"/>
+                                </a>
+                            </td>
+                        </#if>
+                        <td>
+                            <#assign productName = Static['org.apache.ofbiz.product.product.ProductContentWrapper'].getProductContentAsText(product, 'PRODUCT_NAME', request, "html")!>
+                            <a href="/pft/products/p_${wishList.productId}">${StringUtil.wrapString(productName)!}</a>
+                        </td>
+                        <td>${wishList.date?string.medium}</td>
                         <td>
                             <div class="product-col" style="padding: 0; margin: 0;">
                                 <#if wishList.introductionDate?? && nowTimestamp.before(wishList.introductionDate)>

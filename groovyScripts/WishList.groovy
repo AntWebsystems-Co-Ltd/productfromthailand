@@ -76,3 +76,7 @@ if (products) {
     }
 }
 context.productLists = productList;
+
+// set the content path prefix
+contentPathPrefix = CatalogWorker.getContentPathPrefix(request)
+context.contentPathPrefix = contentPathPrefix
