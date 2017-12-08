@@ -114,7 +114,7 @@
             <actions>
                 <set field="titleProperty" value="PageTitleCheckoutReview"/>
                 <set field="parameters.formNameValue" value="orderreview" global="true"/>
-                <script location="component://ecommerce/groovyScripts/order/CheckoutReview.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/CheckoutReview.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -131,7 +131,7 @@
             <actions>
                 <set field="titleProperty" value="PageTitleOrderSummary"/>
                 <set field="MainColumnStyle" value="nocolumns"/>
-                <script location="component://ecommerce/groovyScripts/order/OrderStatus.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/OrderStatus.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -151,7 +151,7 @@
 
                 <set field="maySelectItems" value="Y"/>
                 <set field="titleProperty" value="PageTitleOrderStatus"/>
-                <script location="component://ecommerce/groovyScripts/order/OrderStatus.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/OrderStatus.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -217,7 +217,7 @@
                 <set field="title" value="${uiLabelMap.PageTitleOrderConfirmationNotice}"/>
                 <set field="baseEcommerceSecureUrl" value="${baseSecureUrl}/pft/control"/>
                 <set field="allowAnonymousView" value="Y"/>  <!-- this field will instruction OrderStatus.groovy to allow an anonymous order to be viewed by anybody, so the email confirmation screen will work -->
-                <script location="component://ecommerce/groovyScripts/order/OrderStatus.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/OrderStatus.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://ecommerce/template/email/OrderNoticeEmail.ftl"/></html></platform-specific>
@@ -233,8 +233,9 @@
                 <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductFromThailandUiLabels" map-name="uiLabelMap" global="true"/>
 
-                <script location="component://order/groovyScripts/order/OrderView.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/OrderView.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="FoReportDecorator">

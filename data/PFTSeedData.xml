@@ -140,7 +140,7 @@ under the License.
         autoOrderCcTryExp="Y" autoOrderCcTryOtherCards="Y" autoOrderCcTryLaterNsf="Y" storeCreditValidDays="90" autoApproveInvoice="Y" autoApproveOrder="Y"
         shipIfCaptureFails="Y" reqReturnInventoryReceive="N" showOutOfStockProducts="Y" inventoryFacilityId="pftWarehouse"/>
 
-    <TaxAuthorityRateProduct fromDate="2017-10-01 00:00:00.0" isTaxInShippingPrice="N" productStoreId="PFTSTORE" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxAuthorityRateSeqId="10000" taxAuthorityRateTypeId="SALES_TAX" taxPercentage="7.000000" taxPromotions="N" taxShipping="N"/>
+    <TaxAuthorityRateProduct fromDate="2017-10-01 00:00:00.0" isTaxInShippingPrice="N" productStoreId="PFTSTORE" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxAuthorityRateSeqId="10000" taxAuthorityRateTypeId="SALES_TAX" taxPercentage="7.000000" taxPromotions="N" taxShipping="Y"/>
     <ProductStoreFacility productStoreId="PFTSTORE" facilityId="pftWarehouse" fromDate="2009-09-25 10:38:07.561"/>
     <WebSite webSiteId="PFT" siteName="Product from Thailand website" visualThemeSetId="ECOMMERCE" productStoreId="PFTSTORE"/>
     <WebAnalyticsType webAnalyticsTypeId="GOOGLE_ANALYTICS" parentTypeId="WEB_ANALYTICS" hasTable="N" description="Google Analytics"/>

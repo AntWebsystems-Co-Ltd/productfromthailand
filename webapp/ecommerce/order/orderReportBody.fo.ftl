@@ -98,7 +98,7 @@ under the License.
                         </fo:table-row>
                     </#if>
                 </#list>
-                <#list orderHeaderAdjustments as orderHeaderAdjustment>
+                <#-- <#list orderHeaderAdjustments as orderHeaderAdjustment>
                     <#assign adjustmentType = orderHeaderAdjustment.getRelatedOne("OrderAdjustmentType", false)>
                     <#assign adjustmentAmount = Static["org.apache.ofbiz.order.order.OrderReadHelper"].calcOrderAdjustment(orderHeaderAdjustment, orderSubTotal)>
                     <#if adjustmentAmount != 0>
@@ -118,7 +118,7 @@ under the License.
                             </fo:table-cell>
                         </fo:table-row>
                     </#if>
-                </#list>
+                </#list> -->
                 <#-- summary of order amounts -->
                 <fo:table-row>
                     <fo:table-cell><fo:block></fo:block></fo:table-cell>
@@ -159,7 +159,7 @@ under the License.
                         <fo:table-cell><fo:block></fo:block></fo:table-cell>
                         <fo:table-cell><fo:block></fo:block></fo:table-cell>
                         <fo:table-cell number-columns-spanned="2">
-                            <fo:block font-weight="bold">${uiLabelMap.OrderTotalSalesTax}</fo:block>
+                            <fo:block font-weight="bold">${uiLabelMap.CommonTotal} ${uiLabelMap.PFTSalesTax}</fo:block>
                         </fo:table-cell>
                         <fo:table-cell text-align="right">
                             <fo:block><@ofbizCurrency amount=taxAmount isoCode=currencyUomId/></fo:block>
