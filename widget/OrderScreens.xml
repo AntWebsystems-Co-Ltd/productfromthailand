@@ -182,6 +182,7 @@
                 <script location="component://order/groovyScripts/entry/CheckoutPayment.groovy"/>
                 <script location="component://order/groovyScripts/entry/StorePaymentOptions.groovy"/>
                 <script location="component://productfromthailand/groovyScripts/CheckoutOptions.groovy"/>
+                <set field="layoutSettings.styleSheets[]" value="/theme/css/arrowProgressBar.css" global="true"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -194,6 +195,55 @@
                         </platform-specific>
                     </decorator-section>
                 </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="checkoutoptionsAddress">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/CheckoutPayment.groovy"/>
+                <script location="component://order/groovyScripts/entry/StorePaymentOptions.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/CheckoutOptions.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/order/checkoutoptionsAddress.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="checkoutoptionsPayments">
+        <section>
+            <actions>
+                <property-map resource="ProductFromThailandUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/CheckoutPayment.groovy"/>
+                <script location="component://order/groovyScripts/entry/StorePaymentOptions.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/CheckoutOptions.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/order/checkoutoptionsPayments.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="checkoutoptionsOrderDetails">
+        <section>
+            <actions>
+                <property-map resource="ProductFromThailandUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/CheckoutPayment.groovy"/>
+                <script location="component://order/groovyScripts/entry/StorePaymentOptions.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/CheckoutOptions.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/order/checkoutoptionsOrderDetails.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>

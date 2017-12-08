@@ -1,0 +1,136 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+.arrow-steps .step {
+    font-size: 14px;
+    text-align: center;
+    color: #f7f1f1;
+    cursor: default;
+    margin: 0 3px;
+    padding: 10px 10px 10px 30px;
+    min-width: 40px;
+    height: 66px;
+    float: left;
+    position: relative;
+    background-color: #656262;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  transition: background-color 0.2s ease;
+}
+.arrow-steps .arrow-width {
+    width: 32.5%
+}
+.arrow-steps .step:after,
+.arrow-steps .step:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: -17px;
+    width: 0;
+    height: 0;
+    border-top: 33px solid transparent;
+    border-bottom: 33px solid transparent;
+    border-left: 17px solid #656262;
+    z-index: 2;
+  transition: border-color 0.2s ease;
+}
+
+.arrow-steps .step:before {
+    right: auto;
+    left: 0;
+    border-left: 17px solid #000;
+    z-index: 0;
+}
+
+.arrow-steps .step:first-child:before {
+    border: none;
+}
+
+.arrow-steps .step:first-child {
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+.arrow-steps .step:last-child:after {
+    border: none;
+}
+
+.arrow-steps .step:last-child {
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.arrow-steps .step span {
+    position: relative;
+}
+
+.arrow-steps .step span:before {
+    opacity: 0;
+    content: "✔";
+    position: absolute;
+    top: -2px;
+    left: -20px;
+}
+
+.arrow-steps .step.done span:before {
+    opacity: 1;
+    -webkit-transition: opacity 0.3s ease 0.5s;
+    -moz-transition: opacity 0.3s ease 0.5s;
+    -ms-transition: opacity 0.3s ease 0.5s;
+    transition: opacity 0.3s ease 0.5s;
+}
+
+.arrow-steps .step.current {
+    color: #fff;
+    background-color: #0d9cd7;
+}
+
+.arrow-steps .step.current:after {
+    border-left: 17px solid #0d9cd7;
+}
+
+.stepController {
+    margin-top: 12px;
+}
+
+@media only screen and (max-width: 768px) {
+    .arrow-steps .arrow-width {
+        width: 31%
+    }
+    .arrow-steps .arrow-width span{
+        font-size: 81%;
+    }
+    .step-description {
+        display: none;
+    }
+    .checkoutNotCurrent {
+        display: none;
+    }
+    .arrow-steps .step {
+        height: 42px;
+        margin: 0 2px;
+    }
+    .arrow-steps .step:after,
+    .arrow-steps .step:before {
+        border-top: 21px solid transparent;
+        border-bottom: 21px solid transparent;
+    }
+}

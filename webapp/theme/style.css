@@ -260,7 +260,7 @@ ul.store-dropdown li {
     height: 80px;
 }
 
-.table-bordered thead, #checkouttotal{
+.table-bordered thead, .checkouttotal{
     background-color: #692426;
     color: white;
 }

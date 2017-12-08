@@ -96,10 +96,6 @@
         <value xml:lang="en">Cart</value>
         <value xml:lang="th">ตระกร้าสินค้า</value>
     </property>
-    <property key="PFTChangeAddress">
-        <value xml:lang="en">Change Address</value>
-        <value xml:lang="th">เปลี่ยนค่าอยู่การส่งใหม่</value>
-    </property>
     <property key="PFTCheckout">
         <value xml:lang="en">Check out</value>
         <value xml:lang="th">ดำเนินการชำระเงิน</value>
@@ -501,8 +497,24 @@
         <value xml:lang="th">แผนผังเว็บไซต์</value>
     </property>
     <property key="PFTStatus">
-        <value xml:lang="de">Status</value>
+        <value xml:lang="en">Status</value>
         <value xml:lang="th">สถานะ</value>
+    </property>
+    <property key="PFTStep">
+        <value xml:lang="en">Step</value>
+        <value xml:lang="th">ขั้นตอน</value>
+    </property>
+    <property key="PFTStepHeader1">
+        <value xml:lang="en">Shipping &amp; Billing</value>
+        <value xml:lang="th">สถานที่จัดส่ง</value>
+    </property>
+    <property key="PFTStepHeader2">
+        <value xml:lang="en">Shipping Options &amp; Payment</value>
+        <value xml:lang="th">ตัวเลือกการจัดส่งและการชำระเงิน</value>
+    </property>
+    <property key="PFTStepHeader3">
+        <value xml:lang="en">Term &amp; Conditions</value>
+        <value xml:lang="th">ข้อกำหนดและเงื่อนไข</value>
     </property>
     <property key="PFTStoreManagement">
         <value xml:lang="en">Store Management</value>
