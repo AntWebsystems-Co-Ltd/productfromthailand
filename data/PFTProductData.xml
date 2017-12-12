@@ -193,8 +193,8 @@ under the License.
 
     <DataResource dataResourceId="CR10000-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
     <DataResource dataResourceId="CR10000-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    <ElectronicText dataResourceId="CR10000-PNAMETH" textData="กาแฟ คารีล คอฟฟี่"/>
-    <ElectronicText dataResourceId="CR10000-PNAMEEN" textData="CAREEL Coffee"/>
+    <ElectronicText dataResourceId="CR10000-PNAMETH" textData="กาแฟ คารีล คอฟฟี่ ขนาด 200 กรัม"/>
+    <ElectronicText dataResourceId="CR10000-PNAMEEN" textData="CAREEL Coffee 200g"/>
     <Content contentId="CR10000-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10000-PNAMETH" description="PRODUCT NAME TH CAREEL Coffee" localeString="th"/>
     <Content contentId="CR10000-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10000-PNAMEEN" description="PRODUCT NAME EN CAREEL Coffee" localeString="en"/>
     <ProductContent productId="CR10000" contentId="CR10000-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>

@@ -69,9 +69,9 @@
     <SystemProperty systemPropertyId="mail.smtp.socketFactory.fallbac" systemPropertyValue="false" systemResourceId="general"/>
 
     <!-- Demo Product -->
-    <Product productId="CR10000" productName="CAREEL Coffee" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="CAREEL Coffee" inventoryItemTypeId="NON_SERIAL_INV_ITEM" orderDecimalQuantity="N" productWeight="200.000000" requirementMethodEnumId="PRODRQM_DS" weightUomId="WT_g" isVirtual="Y" isVariant="N"/>
-    <Product productId="CR10000-RB" productTypeId="FINISHED_GOOD" productName="CAREEL Coffee Roast Whole Bean Coffee" brandName="Careel" internalName="CAREEL Coffee : Roast Whole Bean Coffee" description="CAREEL Coffee : Roast Whole Bean Coffee" longDescription="" productWeight="200.000000" weightUomId="WT_g" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10000-RG" productTypeId="FINISHED_GOOD" productName="CAREEL Coffee Roast Ground Coffee" brandName="Careel" internalName="CAREEL Coffee : Roast Ground Coffee" description="CAREEL Coffee : Roast Ground Coffee" productWeight="200.000000" weightUomId="WT_g" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10000" productName="CAREEL Coffee" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="CAREEL Coffee 200g" inventoryItemTypeId="NON_SERIAL_INV_ITEM" orderDecimalQuantity="N" productWeight="200.000000" requirementMethodEnumId="PRODRQM_DS" weightUomId="WT_g" isVirtual="Y" isVariant="N"/>
+    <Product productId="CR10000-RB" productTypeId="FINISHED_GOOD" productName="CAREEL Coffee Roast Whole Bean Coffee" brandName="Careel" internalName="CAREEL Coffee : Roast Whole Bean Coffee 200g" description="CAREEL Coffee : Roast Whole Bean Coffee" longDescription="" productWeight="200.000000" weightUomId="WT_g" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10000-RG" productTypeId="FINISHED_GOOD" productName="CAREEL Coffee Roast Ground Coffee" brandName="Careel" internalName="CAREEL Coffee : Roast Ground Coffee 200g" description="CAREEL Coffee : Roast Ground Coffee" productWeight="200.000000" weightUomId="WT_g" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
     <ProductFeatureAppl productId="CR10000" productFeatureId="CF10000"
         productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
     <ProductFeatureAppl productId="CR10000" productFeatureId="CF10001"
@@ -97,6 +97,48 @@
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="USD" productId="CR10000-RB" lastPrice="6.06" supplierProductId="SP-CR10000-RB" supplierProductName="CAREEL Coffee" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="USD" productId="CR10000-RG" lastPrice="6.06" supplierProductId="SP-CR10000-RG" supplierProductName="CAREEL Coffee" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
 
+    <!-- Coffee 500g -->
+    <Product productId="CR10009" productName="CAREEL Coffee" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="CAREEL Coffee 500g" inventoryItemTypeId="NON_SERIAL_INV_ITEM" orderDecimalQuantity="N" productWeight="500.000000" requirementMethodEnumId="PRODRQM_DS" weightUomId="WT_g" isVirtual="Y" isVariant="N"/>
+    <Product productId="CR10009-RB" productTypeId="FINISHED_GOOD" productName="CAREEL Coffee Roast Whole Bean Coffee 500g" brandName="Careel" internalName="CAREEL Coffee : Roast Whole Bean Coffee 500g" description="CAREEL Coffee : Roast Whole Bean Coffee 500g" longDescription="" productWeight="500.000000" weightUomId="WT_g" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10009-RG" productTypeId="FINISHED_GOOD" productName="CAREEL Coffee Roast Ground Coffee 500g" brandName="Careel" internalName="CAREEL Coffee : Roast Ground Coffee 500g" description="CAREEL Coffee : Roast Ground Coffee 500g" productWeight="500.000000" weightUomId="WT_g" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <ProductFeatureAppl productId="CR10009" productFeatureId="CF10000"
+        productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
+    <ProductFeatureAppl productId="CR10009" productFeatureId="CF10001"
+        productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="2"/>
+    <ProductFeatureAppl productId="CR10009-RB" productFeatureId="CF10000"
+        productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
+    <ProductFeatureAppl productId="CR10009-RG" productFeatureId="CF10001"
+        productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
+    <ProductAssoc fromDate="2017-10-09 00:00:00.000" productAssocTypeId="PRODUCT_VARIANT" productId="CR10009"
+        productIdTo="CR10009-RB" quantity="1.0" reason=""/>
+    <ProductAssoc fromDate="2017-10-09 00:00:00.000" productAssocTypeId="PRODUCT_VARIANT" productId="CR10009"
+        productIdTo="CR10009-RG" quantity="1.0" reason=""/>
+
+    <DataResource dataResourceId="CR10009-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10009-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10009-PNAMETH" textData="กาแฟ คารีล คอฟฟี่ ขนาด 500 กรัม"/>
+    <ElectronicText dataResourceId="CR10009-PNAMEEN" textData="CAREEL Coffee 500 Grams"/>
+    <Content contentId="CR10009-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10009-PNAMETH" description="PRODUCT NAME TH CAREEL Coffee" localeString="th"/>
+    <Content contentId="CR10009-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10009-PNAMEEN" description="PRODUCT NAME EN CAREEL Coffee" localeString="en"/>
+    <ProductContent productId="CR10009" contentId="CR10009-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10009-PNAMEEN" contentIdTo="CR10009-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10009-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10009-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10009-DESCTH" textData="กาแฟสด อราบีก้า จากไร่ออแกนิกส์ 100% (ปลูกแซมป่า) กาแฟเกรดสูง คุณภาพกาแฟและความหอมที่เลื่องลือ เราคั่วใหม่เสมอ เพื่อคอกาแฟแท้ ทั้งชนิดเม็ดและบด"/>
+    <ElectronicText dataResourceId="CR10009-DESCEN" textData="CAREEL Coffee Arabica shade grown 100%. Single origin from Bakker's farm at DOI CHAANG CHIANGMAI, we make sure our customer get only the best and fresh coffee from our farm."/>
+    <Content contentId="CR10009-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10009-DESCTH" description="DESCRIPTION TH CAREEL Coffee" localeString="th"/>
+    <Content contentId="CR10009-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10009-DESCEN" description="DESCRIPTION EN CAREEL Coffee" localeString="en"/>
+    <ProductContent productId="CR10009" contentId="CR10009-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10009-DESCEN" contentIdTo="CR10009-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <ProductCategoryMember productCategoryId="COFFEE-CAT" productId="CR10009" sequenceNum="1" fromDate="2017-10-09 00:00:00.000"/>
+    <ProductPrice productId="CR10009" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="500.00" createdDate="2017-10-09 00:00:00.000" />
+    <ProductPrice productId="CR10009" productPricePurposeId="PURCHASE" productPriceTypeId="LIST_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="500.00" createdDate="2017-10-09 00:00:00.000" />
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10009" lastPrice="450.00" supplierProductId="SP-CR10009" supplierProductName="CAREEL Coffee 500g" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10009-RB" lastPrice="450.00" supplierProductId="SP-CR10009-RB" supplierProductName="CAREEL Coffee : Roast Whole Bean Coffee 500g" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10009-RG" lastPrice="450.00" supplierProductId="SP-CR10009-RG" supplierProductName="CAREEL Coffee : Roast Ground Coffee 500g" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+
     <!-- Sales from 200 to 185 -->
     <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10000" ruleName="Careel Coffee Sales 185" thruDate="2017-12-30 23:59:59.0"/>
     <ProductPriceCond condValue="CR10000" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10000"/>
@@ -109,6 +151,19 @@
     <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10002" ruleName="Careel Coffee Roast Ground Sales 185" thruDate="2017-12-30 23:59:59.0"/>
     <ProductPriceCond condValue="CR10000-RG" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10002"/>
     <ProductPriceAction amount="185.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10002"/>
+
+    <!-- Sales from 500 to 450 -->
+    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10003" ruleName="Careel Coffee Sales 450" thruDate="2018-12-30 23:59:59.0"/>
+    <ProductPriceCond condValue="CR10009" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10003"/>
+    <ProductPriceAction amount="450.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10003"/>
+
+    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10004" ruleName="Careel Coffee Roast Bean Sales 450" thruDate="2018-12-30 23:59:59.0"/>
+    <ProductPriceCond condValue="CR10009-RB" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10004"/>
+    <ProductPriceAction amount="450.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10004"/>
+
+    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10005" ruleName="Careel Coffee Roast Ground Sales 450" thruDate="2018-12-30 23:59:59.0"/>
+    <ProductPriceCond condValue="CR10009-RG" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10005"/>
+    <ProductPriceAction amount="450.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10005"/>
 
     <!-- Sales 10% for order that greater than ฿1000 (PFT10ORD)-->
     <ProductPromo productPromoId="PFT10000" promoName="Sales 10% for order that greater than ฿1000" promoText="Sales 10% for order that greater than ฿1000" requireCode="Y" showToCustomer="Y" useLimitPerCustomer="1" useLimitPerOrder="1" useLimitPerPromotion="1" userEntered="Y" createdDate="2017-10-01 00:00:00.0"/>
@@ -400,8 +455,8 @@
     <ProductContent productId="CR10011" contentId="CR10011-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
     <ContentAssoc contentId="CR10011-DESCEN" contentIdTo="CR10011-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
-    <ProductPrice currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="450.000" productId="CR10011" productPricePurposeId="PURCHASE" productPriceTypeId="LIST_PRICE" productStoreGroupId="_NA_" />
-    <ProductPrice currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="450.000" productId="CR10011" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" productStoreGroupId="_NA_" />
+    <ProductPrice productId="CR10011" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" createdDate="2017-10-09 00:00:00.0" currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="450.000" priceWithTax="450.000" priceWithoutTax="420.561" productStoreGroupId="_NA_" taxAmount="29.439" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
+    <ProductPrice productId="CR10011" productPricePurposeId="PURCHASE" productPriceTypeId="LIST_PRICE" createdDate="2017-10-09 00:00:00.0" currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="450.000" priceWithTax="450.000" priceWithoutTax="420.561" productStoreGroupId="_NA_" taxAmount="29.439" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
     <SupplierProduct availableFromDate="2017-10-09 00:00:00.0"
                 canDropShip="Y" createdStamp="2017-11-18 03:11:44.42"
                 createdTxStamp="2017-11-18 03:11:42.513" currencyUomId="THB"
@@ -501,4 +556,22 @@
 
     <SystemProperty systemResourceId="catalog" systemPropertyId="top.category.default" systemPropertyValue="PFT_ROOT"/>
     <SystemProperty systemResourceId="catalog" systemPropertyId="all.product.category" systemPropertyValue="PFT_ROOT"/>
+
+    <!-- Promotion Rule -->
+    <ProductPrice currencyUomId="THB" fromDate="2017-12-07 14:55:40.0" price="850.000" priceWithTax="850.000" priceWithoutTax="794.393" productId="CR10002" productPricePurposeId="PURCHASE" productPriceTypeId="SPECIAL_PROMO_PRICE" productStoreGroupId="_NA_" taxAmount="55.607" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
+    <ProductPromo productPromoId="PFT20000" promoName="Scarf" promoText="Buy Scarf 20 pieces get a special promo price" requireCode="N" showToCustomer="Y" userEntered="N"/>
+    <ProductPromoRule productPromoId="PFT20000" productPromoRuleId="00001" ruleName="Buy Scarf 20 pieces get a special promo price"/>
+    <ProductPromoCond condValue="20" createdStamp="2017-12-07 14:25:55.893" createdTxStamp="2017-12-07 14:25:55.866" inputParamEnumId="PPIP_PRODUCT_QUANT" lastUpdatedStamp="2017-12-07 14:29:15.024" lastUpdatedTxStamp="2017-12-07 14:29:14.997" operatorEnumId="PPC_GTE" productPromoCondSeqId="01" productPromoId="PFT20000" productPromoRuleId="00001"/>
+    <ProductPromoAction orderAdjustmentTypeId="PROMOTION_ADJUSTMENT" productPromoActionEnumId="PROMO_PROD_SPPRC" productPromoActionSeqId="10000" productPromoId="PFT20000" productPromoRuleId="00001" useCartQuantity="N"/>
+    <ProductPromoProduct productId="CR10002" productPromoActionSeqId="_NA_" productPromoApplEnumId="PPPA_INCLUDE" productPromoCondSeqId="01" productPromoId="PFT20000" productPromoRuleId="00001"/>
+    <ProductStorePromoAppl productStoreId="PFTSTORE" productPromoId="PFT20000" fromDate="2017-10-01 00:00:00.0"/>
+
+    <ProductPrice productId="CR10011" productPricePurposeId="PURCHASE" productPriceTypeId="SPECIAL_PROMO_PRICE" createdDate="2017-10-09 00:00:00.0" currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="350.000" priceWithTax="350.000" priceWithoutTax="327.103" productStoreGroupId="_NA_" taxAmount="22.897" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
+    <ProductPromo productPromoId="PFT20001" promoName="NB Lip" promoText="Buy NB Lip 8 pieces Get price 350 per piece." requireCode="N" showToCustomer="Y" userEntered="N"/>
+    <ProductPromoRule productPromoId="PFT20001" productPromoRuleId="00001" ruleName="Buy NB Lip 8 pieces Get price 350 per piece."/>
+    <ProductPromoCond condValue="8" createdStamp="2017-12-07 14:25:55.893" createdTxStamp="2017-12-07 14:25:55.866" inputParamEnumId="PPIP_PRODUCT_QUANT" lastUpdatedStamp="2017-12-07 14:29:15.024" lastUpdatedTxStamp="2017-12-07 14:29:14.997" operatorEnumId="PPC_GTE" productPromoCondSeqId="01" productPromoId="PFT20001" productPromoRuleId="00001"/>
+    <ProductPromoAction orderAdjustmentTypeId="PROMOTION_ADJUSTMENT" productPromoActionEnumId="PROMO_PROD_SPPRC" productPromoActionSeqId="10000" productPromoId="PFT20001" productPromoRuleId="00001" useCartQuantity="N"/>
+    <ProductPromoProduct productId="CR10011" productPromoActionSeqId="_NA_" productPromoApplEnumId="PPPA_INCLUDE" productPromoCondSeqId="01" productPromoId="PFT20001" productPromoRuleId="00001"/>
+    <ProductStorePromoAppl productStoreId="PFTSTORE" productPromoId="PFT20001" fromDate="2017-10-01 00:00:00.0"/>
+
 </entity-engine-xml>
