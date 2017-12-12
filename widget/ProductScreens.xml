@@ -1351,4 +1351,20 @@ under the License.
             </widgets>
         </section>
     </screen>
+
+    <screen name="AllFeatureProducts">
+        <section>
+            <actions>
+                <set field="productsummaryScreen" value="component://productfromthailand/widget/ProductScreens.xml#productsummary"/>
+                <script location="component://productfromthailand/groovyScripts/FeatureProductList.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/includes/allFeatureProducts.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
 </screens>

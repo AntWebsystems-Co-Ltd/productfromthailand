@@ -18,16 +18,32 @@
  */
 
 import java.sql.Timestamp
+import java.util.HashMap
+import java.util.LinkedList
+import java.util.List
 import java.util.Map
 
 import org.apache.ofbiz.accounting.invoice.InvoiceWorker
+import org.apache.ofbiz.base.util.Debug
+import org.apache.ofbiz.base.util.GeneralException
 import org.apache.ofbiz.base.util.UtilDateTime
+import org.apache.ofbiz.base.util.UtilGenerics
+import org.apache.ofbiz.base.util.UtilValidate
 import org.apache.ofbiz.entity.Delegator
+import org.apache.ofbiz.entity.GenericEntityException
 import org.apache.ofbiz.entity.GenericValue
+import org.apache.ofbiz.entity.condition.EntityCondition
 import org.apache.ofbiz.entity.condition.EntityConditionBuilder
+import org.apache.ofbiz.entity.condition.EntityOperator
+import org.apache.ofbiz.entity.util.EntityListIterator
 import org.apache.ofbiz.entity.util.EntityQuery
+import org.apache.ofbiz.entity.util.EntityUtil
 import org.apache.ofbiz.entity.util.EntityUtilProperties
+import org.apache.ofbiz.product.catalog.CatalogWorker
+import org.apache.ofbiz.product.category.CategoryServices
+import org.apache.ofbiz.product.category.CategoryWorker
 import org.apache.ofbiz.product.price.PriceServices
+import org.apache.ofbiz.product.product.ProductWorker
 import org.apache.ofbiz.service.ServiceUtil
 
 public Map calculateSalePrice() {
@@ -192,4 +208,251 @@ public Map createUpdateSupplierProductOtherCurrencies() {
         }
     }
     return result
+}
+
+public Map getProductCategoryAndLimitedMembers() {
+    String productCategoryId = (String) context.get("productCategoryId");
+    boolean limitView = ((Boolean) context.get("limitView")).booleanValue();
+    int defaultViewSize = ((Integer) context.get("defaultViewSize")).intValue();
+    Timestamp introductionDateLimit = (Timestamp) context.get("introductionDateLimit");
+    Timestamp releaseDateLimit = (Timestamp) context.get("releaseDateLimit");
+
+    List<String> orderByFields = UtilGenerics.checkList(context.get("orderByFields"));
+    if (orderByFields == null) orderByFields = new LinkedList<String>();
+    String entityName = new CategoryServices().getCategoryFindEntityName(delegator, orderByFields, introductionDateLimit, releaseDateLimit);
+
+    String prodCatalogId = (String) context.get("prodCatalogId");
+
+    boolean useCacheForMembers = (context.get("useCacheForMembers") == null || ((Boolean) context.get("useCacheForMembers")).booleanValue());
+    boolean activeOnly = (context.get("activeOnly") == null || ((Boolean) context.get("activeOnly")).booleanValue());
+
+    boolean useRandomForMembers = context.get("useRandomForMembers");
+    // Set random for featured products
+    if (productCategoryId.equals("PFTPROMOTION")) {
+        useRandomForMembers = true;
+    }
+
+    // checkViewAllow defaults to false, must be set to true and pass the prodCatalogId to enable
+    boolean checkViewAllow = (prodCatalogId != null && context.get("checkViewAllow") != null &&
+            ((Boolean) context.get("checkViewAllow")).booleanValue());
+
+    String viewProductCategoryId = null;
+    if (checkViewAllow) {
+        viewProductCategoryId = CatalogWorker.getCatalogViewAllowCategoryId(delegator, prodCatalogId);
+    }
+
+    Timestamp nowTimestamp = UtilDateTime.nowTimestamp();
+    int viewIndex = 0;
+    try {
+        viewIndex = Integer.valueOf((String) context.get("viewIndexString")).intValue();
+    } catch (Exception e) {
+        viewIndex = 0;
+    }
+
+    int viewSize = defaultViewSize;
+    try {
+        viewSize = Integer.valueOf((String) context.get("viewSizeString")).intValue();
+    } catch (Exception e) {
+        viewSize = defaultViewSize;
+    }
+
+    GenericValue productCategory = null;
+    try {
+        productCategory = EntityQuery.use(delegator).from("ProductCategory").where("productCategoryId", productCategoryId).cache().queryOne();
+    } catch (GenericEntityException e) {
+        Debug.logWarning(e.getMessage(), "");
+        productCategory = null;
+    }
+
+    int listSize = 0;
+    int lowIndex = 0;
+    int highIndex = 0;
+
+    if (limitView) {
+        // get the indexes for the partial list
+        lowIndex = ((viewIndex * viewSize) + 1);
+        highIndex = (viewIndex + 1) * viewSize;
+    } else {
+        lowIndex = 0;
+        highIndex = 0;
+    }
+
+    boolean filterOutOfStock = false;
+    try {
+        String productStoreId = (String) context.get("productStoreId");
+        if (UtilValidate.isNotEmpty(productStoreId)) {
+            GenericValue productStore = EntityQuery.use(delegator).from("ProductStore").where("productStoreId", productStoreId).queryOne();
+            if (productStore != null && "N".equals(productStore.getString("showOutOfStockProducts"))) {
+                filterOutOfStock = true;
+            }
+        }
+    } catch (GenericEntityException e) {
+        Debug.logWarning(e.getMessage(), "");
+    }
+
+    List<GenericValue> productCategoryMembers = null;
+    if (productCategory != null) {
+        EntityListIterator pli = null;
+        try {
+            if (useCacheForMembers) {
+                productCategoryMembers = EntityQuery.use(delegator).from(entityName).where("productCategoryId", productCategoryId).orderBy(orderByFields).cache(true).queryList();
+                if (activeOnly) {
+                    productCategoryMembers = EntityUtil.filterByDate(productCategoryMembers, true);
+                }
+                List<EntityCondition> filterConditions = new LinkedList<EntityCondition>();
+                if (introductionDateLimit != null) {
+                    EntityCondition condition = EntityCondition.makeCondition(EntityCondition.makeCondition("introductionDate", EntityOperator.EQUALS, null), EntityOperator.OR, EntityCondition.makeCondition("introductionDate", EntityOperator.LESS_THAN_EQUAL_TO, introductionDateLimit));
+                    filterConditions.add(condition);
+                }
+                if (releaseDateLimit != null) {
+                    EntityCondition condition = EntityCondition.makeCondition(EntityCondition.makeCondition("releaseDate", EntityOperator.EQUALS, null), EntityOperator.OR, EntityCondition.makeCondition("releaseDate", EntityOperator.LESS_THAN_EQUAL_TO, releaseDateLimit));
+                    filterConditions.add(condition);
+                }
+                if (!filterConditions.isEmpty()) {
+                    productCategoryMembers = EntityUtil.filterByCondition(productCategoryMembers, EntityCondition.makeCondition(filterConditions, EntityOperator.AND));
+                }
+
+                // filter out of stock products
+                if (filterOutOfStock) {
+                    try {
+                        productCategoryMembers = ProductWorker.filterOutOfStockProducts(productCategoryMembers, dispatcher, delegator);
+                    } catch (GeneralException e) {
+                        Debug.logWarning("Problem filtering out of stock products :"+e.getMessage(), "");
+                    }
+                }
+                // filter out the view allow before getting the sublist
+                if (UtilValidate.isNotEmpty(viewProductCategoryId)) {
+                    productCategoryMembers = CategoryWorker.filterProductsInCategory(delegator, productCategoryMembers, viewProductCategoryId);
+                }
+
+                // set the index and size
+                listSize = productCategoryMembers.size();
+                if (limitView) {
+                    // limit high index to (filtered) listSize
+                    if (highIndex > listSize) {
+                        highIndex = listSize;
+                    }
+                    // if lowIndex > listSize, the input is wrong => reset to first page
+                    if (lowIndex > listSize) {
+                        viewIndex = 0;
+                        lowIndex = 1;
+                        highIndex = Math.min(viewSize, highIndex);
+                    }
+                    // get only between low and high indexes
+                    if (UtilValidate.isNotEmpty(productCategoryMembers)) {
+                        // Random for featured products
+                        if (useRandomForMembers) {
+                            List productCategoryMembersRandomTemp = new ArrayList(productCategoryMembers);
+                            List<Map<String, Object>> productCategoryMembersList = new LinkedList<Map<String,Object>>();
+                            Random rand = new Random();
+                            while (productCategoryMembersRandomTemp.size() > 0) {
+                                int index = rand.nextInt(productCategoryMembersRandomTemp.size());
+                                productCategoryMembersList.add(productCategoryMembersRandomTemp.remove(index))
+                            }
+                            productCategoryMembers = productCategoryMembersList.subList(lowIndex-1, highIndex);
+                        } else {
+                            productCategoryMembers = productCategoryMembers.subList(lowIndex-1, highIndex);
+                        }
+                    }
+                } else {
+                    lowIndex = 1;
+                    highIndex = listSize;
+                }
+            } else {
+                List<EntityCondition> mainCondList = new LinkedList<EntityCondition>();
+                mainCondList.add(EntityCondition.makeCondition("productCategoryId", EntityOperator.EQUALS, productCategory.getString("productCategoryId")));
+                if (activeOnly) {
+                    mainCondList.add(EntityCondition.makeCondition("fromDate", EntityOperator.LESS_THAN_EQUAL_TO, nowTimestamp));
+                    mainCondList.add(EntityCondition.makeCondition(EntityCondition.makeCondition("thruDate", EntityOperator.EQUALS, null), EntityOperator.OR, EntityCondition.makeCondition("thruDate", EntityOperator.GREATER_THAN, nowTimestamp)));
+                }
+                if (introductionDateLimit != null) {
+                    mainCondList.add(EntityCondition.makeCondition(EntityCondition.makeCondition("introductionDate", EntityOperator.EQUALS, null), EntityOperator.OR, EntityCondition.makeCondition("introductionDate", EntityOperator.LESS_THAN_EQUAL_TO, introductionDateLimit)));
+                }
+                if (releaseDateLimit != null) {
+                    mainCondList.add(EntityCondition.makeCondition(EntityCondition.makeCondition("releaseDate", EntityOperator.EQUALS, null), EntityOperator.OR, EntityCondition.makeCondition("releaseDate", EntityOperator.LESS_THAN_EQUAL_TO, releaseDateLimit)));
+                }
+                EntityCondition mainCond = EntityCondition.makeCondition(mainCondList, EntityOperator.AND);
+
+                // set distinct on
+                // using list iterator
+                pli = EntityQuery.use(delegator).from(entityName).where(mainCond).orderBy(orderByFields).cursorScrollInsensitive().maxRows(highIndex).queryIterator();
+
+                // get the partial list for this page
+                if (limitView) {
+                    if (viewProductCategoryId != null) {
+                        // do manual checking to filter view allow
+                        productCategoryMembers = new LinkedList<GenericValue>();
+                        GenericValue nextValue;
+                        int chunkSize = 0;
+                        listSize = 0;
+
+                        while ((nextValue = pli.next()) != null) {
+                            String productId = nextValue.getString("productId");
+                            if (CategoryWorker.isProductInCategory(delegator, productId, viewProductCategoryId)) {
+                                if (listSize + 1 >= lowIndex && chunkSize < viewSize) {
+                                    productCategoryMembers.add(nextValue);
+                                    chunkSize++;
+                                }
+                                listSize++;
+                            }
+                        }
+                    } else {
+                        productCategoryMembers = pli.getPartialList(lowIndex, viewSize);
+                        listSize = pli.getResultsSizeAfterPartialList();
+                    }
+                } else {
+                    productCategoryMembers = pli.getCompleteList();
+                    if (UtilValidate.isNotEmpty(viewProductCategoryId)) {
+                        // filter out the view allow
+                        productCategoryMembers = CategoryWorker.filterProductsInCategory(delegator, productCategoryMembers, viewProductCategoryId);
+                    }
+
+                    listSize = productCategoryMembers.size();
+                    lowIndex = 1;
+                    highIndex = listSize;
+                }
+
+                // filter out of stock products
+                if (filterOutOfStock) {
+                    try {
+                        productCategoryMembers = ProductWorker.filterOutOfStockProducts(productCategoryMembers, dispatcher, delegator);
+                        listSize = productCategoryMembers.size();
+                    } catch (GeneralException e) {
+                        Debug.logWarning("Problem filtering out of stock products :"+e.getMessage(), "");
+                    }
+                }
+
+                // null safety
+                if (productCategoryMembers == null) {
+                    productCategoryMembers = new LinkedList<GenericValue>();
+                }
+
+                if (highIndex > listSize) {
+                    highIndex = listSize;
+                }
+            }
+        } catch (GenericEntityException e) {
+            Debug.logError(e, "");
+        }
+        finally {
+            // close the list iterator, if used
+            if (pli != null) {
+                try {
+                    pli.close();
+                } catch (GenericEntityException e) {
+                    Debug.logError(e, "");
+                }
+            }
+        }
+    }
+
+    Map<String, Object> result = new HashMap<String, Object>();
+    result.put("viewIndex", Integer.valueOf(viewIndex));
+    result.put("viewSize", Integer.valueOf(viewSize));
+    result.put("lowIndex", Integer.valueOf(lowIndex));
+    result.put("highIndex", Integer.valueOf(highIndex));
+    result.put("listSize", Integer.valueOf(listSize));
+    if (productCategory != null) result.put("productCategory", productCategory);
+    if (productCategoryMembers != null) result.put("productCategoryMembers", productCategoryMembers);
+    return result;
 }

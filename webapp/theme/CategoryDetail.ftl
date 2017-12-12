@@ -47,7 +47,9 @@ under the License.
         <#assign highNext = viewIndexMax?int>
     </#if>
 </#if>
+<#-- End Paginate Logic -->
 
+<#if productCategoryId?? && productCategoryId != "PFTPROMOTION">
 <#-- Pagination & Results Starts -->
 <#if (viewIndexMax > 0)>
     <div class="row">
@@ -69,13 +71,15 @@ under the License.
     <#-- Pagination Ends -->
     <#-- Results Starts -->
         <div class="col-sm-6 results">
-            Showing ${lowIndex} to ${highIndex} of ${listSize} (${viewIndexMax?int + 1} Pages)
+            ${uiLabelMap.PFTShowing} ${lowIndex} ${uiLabelMap.CommonTo} ${highIndex} ${uiLabelMap.CommonOf} ${listSize} (${viewIndexMax?int + 1} ${uiLabelMap.PFTPages})
         </div>
     <#-- Results Ends -->
     </#if>
     </div>
 </#if>
 <#-- Pagination & Results Ends -->
+</#if>
+
 <div class="row">
 <#if productCategoryMembers?has_content>
     <#list productCategoryMembers as productCategoryMember>
@@ -89,6 +93,8 @@ under the License.
     ${uiLabelMap.ProductNoProductsInThisCategory}
 </#if>
 </div>
+
+<#if productCategoryId?? && productCategoryId != "PFTPROMOTION">
 <#-- Pagination & Results Starts -->
 <#if (viewIndexMax > 0)>
     <div class="row">
@@ -110,10 +116,11 @@ under the License.
     <#-- Pagination Ends -->
     <#-- Results Starts -->
         <div class="col-sm-6 results">
-            Showing ${lowIndex} to ${highIndex} of ${listSize} (${viewIndexMax?int + 1} Pages)
+            ${uiLabelMap.PFTShowing} ${lowIndex} ${uiLabelMap.CommonTo} ${highIndex} ${uiLabelMap.CommonOf} ${listSize} (${viewIndexMax?int + 1} ${uiLabelMap.PFTPages})
         </div>
     <#-- Results Ends -->
     </#if>
     </div>
 </#if>
 <#-- Pagination & Results Ends -->
+</#if>

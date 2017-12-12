@@ -115,7 +115,12 @@ under the License.
     <#-- Featured Products Starts -->
         <section class="products-list">
         <#-- Heading Starts -->
-            <h2 class="product-head">${uiLabelMap.PFTFeaturedProduct}</h2>
+            <div id="featureproduct-header">
+                <h2 class="product-header">
+                    ${uiLabelMap.PFTFeaturedProduct}
+                    <a href="<@ofbizUrl>AllFeatureProducts?productCategoryId=${productCategoryId!}</@ofbizUrl>" class="btn btn-main pull-right" id="allfeature-btn">${uiLabelMap.ProductShowAll}</a>
+                </h2>
+            </div>
         <#-- Heading Ends -->
         <#-- Products Row Starts -->
             <#if requestAttributes.productCategoryId?has_content>

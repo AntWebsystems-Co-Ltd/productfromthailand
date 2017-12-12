@@ -143,4 +143,29 @@ under the License.
         <implements service="calcShipmentEstimateInterface"/>
     </service>
 
+    <service name="getProductCategoryAndLimitedMembers" engine="groovy" location="component://productfromthailand/groovyScripts/PFTServices.groovy" invoke="getProductCategoryAndLimitedMembers">
+        <description>Gets a productCategory and a Collection of associated productCategoryMembers and calculates limiting parameters</description>
+        <attribute name="productCategoryId" type="String" mode="IN" optional="false"/>
+        <attribute name="prodCatalogId" type="String" mode="IN" optional="true"/>
+        <attribute name="defaultViewSize" type="Integer" mode="IN" optional="false"/>
+        <attribute name="limitView" type="Boolean" mode="IN" optional="false"/>
+        <attribute name="checkViewAllow" type="Boolean" mode="IN" optional="true"/>
+        <attribute name="viewIndexString" type="String" mode="IN" optional="true"/>
+        <attribute name="viewSizeString" type="String" mode="IN" optional="true"/>
+        <attribute name="useCacheForMembers" type="Boolean" mode="IN" optional="true"/>
+        <attribute name="useRandomForMembers" type="Boolean" mode="IN" optional="true" default-value="false"/>
+        <attribute name="activeOnly" type="Boolean" mode="IN" optional="true"/>
+        <attribute name="introductionDateLimit" type="java.sql.Timestamp" mode="IN" optional="true"/>
+        <attribute name="releaseDateLimit" type="java.sql.Timestamp" mode="IN" optional="true"/>
+        <attribute name="orderByFields" type="List" mode="IN" optional="true"/>
+        <attribute name="productStoreId" mode="IN" type="String" optional="true"/>
+        <attribute name="productCategory" type="org.apache.ofbiz.entity.GenericValue" mode="OUT" optional="true"/>
+        <attribute name="productCategoryMembers" type="java.util.Collection" mode="OUT" optional="true"/> <!-- this list will only contain the limited members if limitView=true -->
+        <attribute name="viewIndex" type="Integer" mode="OUT" optional="false"/> <!-- this is a 1 based index, ie the first results are in index 1 -->
+        <attribute name="viewSize" type="Integer" mode="OUT" optional="false"/>
+        <attribute name="lowIndex" type="Integer" mode="OUT" optional="false"/>
+        <attribute name="highIndex" type="Integer" mode="OUT" optional="false"/>
+        <attribute name="listSize" type="Integer" mode="OUT" optional="false"/>
+    </service>
+
 </services>

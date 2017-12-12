@@ -292,3 +292,19 @@ div#list-group-promo {
 #addcart-content-dialog {
     background: #191919;
 }
+
+#allfeature-btn {
+    padding: 3px 20px;
+}
+
+#featureproduct-header {
+    background-color: #191919;
+    border-radius: 5px;
+}
+#featureproduct-header .product-header{
+    padding: 14px 20px;
+    margin: 0 0 20px;
+    font-size: 24px;
+    color: #ff434a;
+    text-transform: uppercase;
+}

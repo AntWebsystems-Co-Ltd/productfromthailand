@@ -242,7 +242,7 @@ under the License.
                             <#else/>
                                 <li>
                                     <a href="<@ofbizUrl>register</@ofbizUrl>">
-                                        <i class="fa fa-unlock" title="${uiLabelMap.PFTRegister}"></i>
+                                        <i class="fa fa-user-plus" title="${uiLabelMap.PFTRegister}"></i>
                                         <span class="hidden-sm hidden-xs">
                                             ${uiLabelMap.PFTRegister}
                                         </span>

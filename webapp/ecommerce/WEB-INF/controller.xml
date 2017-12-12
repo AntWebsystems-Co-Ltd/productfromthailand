@@ -561,6 +561,11 @@ under the License.
         <response name="error" type="request" value="json"/>
     </request-map>
 
+    <request-map uri="AllFeatureProducts">
+        <security https="false" auth="false"/>
+        <response name="success" type="view" value="AllFeatureProducts"/>
+    </request-map>
+
     <view-map name="orderview" type="screen" page="component://productfromthailand/widget/OrderViewScreens.xml#OrderHeaderView"/>
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
     <view-map name="main" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#main"/>
@@ -583,6 +588,7 @@ under the License.
     <view-map name="help" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#help"/>
     <view-map name="WishList" type="screen" page="component://productfromthailand/widget/CustomerScreens.xml#WishList"/>
     <view-map name="trackingShipment" type="screen" page="component://productfromthailand/widget/ShoppingListScreens.xml#trackingShipment"/>
+    <view-map name="AllFeatureProducts" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#AllFeatureProducts"/>
 
     <view-map name="productCategoryList" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#productCategoryList"/>
     <view-map name="tellafriend" type="screen" page="component://productfromthailand/widget/CatalogScreens.xml#tellafriend"/>

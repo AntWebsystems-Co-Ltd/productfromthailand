@@ -66,6 +66,10 @@
         <value xml:lang="en">item(s) added to your cart</value>
         <value xml:lang="th">สินค้าได้ถูกเพิ่มเข้าไปยังตะกร้าสินค้าของคุณ</value>
     </property>
+    <property key="PFTAllFeaturedProducts">
+        <value xml:lang="en">All Featured Products</value>
+        <value xml:lang="th">สินค้าแนะนำทั้งหมด</value>
+    </property>
     <property key="PFTAllPayments">
         <value xml:lang="en">All Payments</value>
         <value xml:lang="th">การชำระเงินทั้งหมด</value>
