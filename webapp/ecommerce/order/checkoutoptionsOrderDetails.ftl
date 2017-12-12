@@ -57,19 +57,19 @@ $(document).ready( function() {
         </tr>
         <tr id="checkouttotal_subtotal" class="checkouttotal">
             <td colspan="2"><b>${uiLabelMap.CommonSubtotal}</b></td>
-            <td class="text-right"><b><#if orderSubTotal??><@ofbizCurrency amount=orderSubTotal isoCode=shoppingCart.getCurrency()/></#if></b></td>
+            <td class="text-right"><b><@ofbizCurrency amount=shoppingCart.getSubTotal() isoCode=shoppingCart.getCurrency()/></b></td>
         </tr>
         <tr id="checkouttotal_shipping" class="checkouttotal">
             <td colspan="2"><b>${uiLabelMap.OrderShippingAndHandling}</b></td>
-            <td class="text-right"><b><#if orderShippingTotal??><@ofbizCurrency amount=orderShippingTotal isoCode=shoppingCart.getCurrency()/></#if></b></td>
+            <td class="text-right"><b><@ofbizCurrency amount=shoppingCart.getTotalShipping() isoCode=shoppingCart.getCurrency() /></b></td>
         </tr>
         <tr id="checkouttotal_tax" class="checkouttotal">
             <td colspan="2"><b>${uiLabelMap.PFTSalesTax}</b></td>
-            <td class="text-right"><b><#if orderTaxTotal??><@ofbizCurrency amount=orderTaxTotal isoCode=shoppingCart.getCurrency()/></#if></b></td>
+            <td class="text-right"><b><@ofbizCurrency amount=shoppingCart.getTotalSalesTax() isoCode=shoppingCart.getCurrency() /></b></td>
         </tr>
         <tr id="checkouttotal_grandtotal" class="checkouttotal">
             <td colspan="2"><b>${uiLabelMap.OrderGrandTotal}</b></td>
-            <td class="text-right"><b><#if orderGrandTotal??><@ofbizCurrency amount=orderGrandTotal isoCode=shoppingCart.getCurrency()/></#if></b></td>
+            <td class="text-right"><b><@ofbizCurrency amount=shoppingCart.getDisplayGrandTotal() isoCode=shoppingCart.getCurrency() /></b></td>
         </tr>
     </tfoot>
 </table>

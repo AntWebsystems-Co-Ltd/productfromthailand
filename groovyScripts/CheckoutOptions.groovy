@@ -17,7 +17,6 @@
  * under the License.
  */
 
-import java.math.BigDecimal
 import org.apache.ofbiz.base.util.*
 import org.apache.ofbiz.entity.*
 import org.apache.ofbiz.entity.util.*
@@ -25,7 +24,6 @@ import org.apache.ofbiz.accounting.payment.*
 import org.apache.ofbiz.party.contact.*
 import org.apache.ofbiz.product.store.*
 import org.apache.ofbiz.order.shoppingcart.shipping.*
-import org.apache.ofbiz.product.price.PriceServices
 
 shoppingCart = session.getAttribute("shoppingCart")
 currencyUomId = shoppingCart.getCurrency()
@@ -138,44 +136,3 @@ if (salesReps) {
     }
 }
 context.cartParties = cartParties
-
-BigDecimal shippingEst = BigDecimal.ZERO
-BigDecimal orderSubTotal = BigDecimal.ZERO
-BigDecimal orderTaxTotal = BigDecimal.ZERO
-BigDecimal orderGrandTotal = shoppingCart.getDisplayGrandTotal().setScale(PriceServices.taxFinalScale, PriceServices.taxRounding)
-BigDecimal orderShippingTotal = shoppingCart.getTotalShipping().setScale(PriceServices.taxFinalScale, PriceServices.taxRounding)
-
-if (shippingList && shoppingCart.getTotalSalesTax() != BigDecimal.ZERO) {
-    shippingList.each { shipping ->
-        shippingEst = shippingEst.add(shipping.shippingEst)
-    }
-    taxAuthRate = from("TaxAuthorityRateProduct").where("taxAuthGeoId", "THA", "taxAuthPartyId", "THA_RD").queryFirst()
-    if (taxAuthRate) {
-        taxPercentage = taxAuthRate.taxPercentage
-        orderTaxTotal = shippingEst.multiply(taxPercentage).divide(new BigDecimal("100"))
-    }
-}
-
-orderItems = shoppingCart.items()
-if (orderItems) {
-    orderItems.each { orderItem ->
-        productPrice = from("ProductPrice").where("productId", orderItem.getProductId()).queryFirst()
-        if (productPrice) {
-            BigDecimal priceWithoutTax = productPrice.priceWithoutTax
-            orderItemSubTotal = priceWithoutTax.multiply(orderItem.getQuantity())
-            BigDecimal taxAmount = productPrice.taxAmount
-            orderSalesTax = taxAmount.multiply(orderItem.getQuantity())
-            orderTaxTotal = orderSalesTax.add(orderTaxTotal)
-        }
-        orderSubTotal = orderSubTotal.add(orderItemSubTotal)
-    }
-}
-
-if (shoppingCart.getTotalSalesTax() != BigDecimal.ZERO) {
-    orderGrandTotal = orderSubTotal.add(orderTaxTotal).add(shippingEst)
-}
-
-context.orderSubTotal = orderSubTotal
-context.orderTaxTotal = orderTaxTotal
-context.orderGrandTotal = orderGrandTotal
-context.orderShippingTotal = orderShippingTotal
