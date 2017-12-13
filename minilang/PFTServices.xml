@@ -239,6 +239,19 @@ under the License.
         <field-to-result field="parameters.shipping_contact_mech_id" result-name="shipping_contact_mech_id"/>
     </simple-method>
 
+    <simple-method method-name="createPFTShippingAddress" short-description="Create Shipping Address">
+        <call-service service-name="createPartyPostalAddress" in-map-name="parameters">
+            <result-to-field result-name="contactMechId" field="addressPurposeContext.contactMechId"/>
+        </call-service>
+        <set from-field="parameters.partyId" field="addressPurposeContext.partyId"/>
+        <!-- create the shipping location -->
+        <set value="SHIPPING_LOCATION" field="addressPurposeContext.contactMechPurposeTypeId"/>
+        <call-service service-name="createPartyContactMechPurpose" in-map-name="addressPurposeContext"/>
+        <!-- also consider this address the general correspondence address -->
+        <set value="GENERAL_LOCATION" field="addressPurposeContext.contactMechPurposeTypeId"/>
+        <call-service service-name="createPartyContactMechPurpose" in-map-name="addressPurposeContext"/>
+    </simple-method>
+
     <simple-method method-name="updateSupplierInfo" short-description="Update Supplier Information">
         <set-service-fields service-name="updatePartyGroup" map="parameters" to-map="updatePartyGroupMap"/>
         <call-service service-name="updatePartyGroup" in-map-name="updatePartyGroupMap"/>

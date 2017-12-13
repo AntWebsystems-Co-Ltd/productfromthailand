@@ -81,6 +81,10 @@
     <property key="PFTAwaitingShipment">
         <value xml:lang="en">Awaiting Shipment</value>
     </property>
+    <property key="PFTBackToEdit">
+        <value xml:lang="en">Back to edit</value>
+        <value xml:lang="th">กลับ</value>
+    </property>
     <property key="PFTBrand">
         <value xml:lang="en">Brand</value>
         <value xml:lang="th">แบรนด์</value>
@@ -115,6 +119,10 @@
     <property key="PFTClickToRegister">
         <value xml:lang="en">Click here to Register</value>
         <value xml:lang="th">สมัครสมาชิกใหม่ คลิกที่นี่</value>
+    </property>
+    <property key="PFTContinue">
+        <value xml:lang="en">Continue</value>
+        <value xml:lang="th">ดำเนินการต่อ</value>
     </property>
     <property key="PFTCommision">
         <value xml:lang="en">Commission</value>
@@ -175,6 +183,18 @@
     <property key="PFTDownloadProductTemplate">
         <value xml:lang="en">Download Product Template</value>
         <value xml:lang="th">ดาวน์โหลดรูปแบบการอัปโหลดสินค้า</value>
+    </property>
+    <property key="PFTErrorCheckoutStep1">
+        <value xml:lang="en">Please select your shipping address</value>
+        <value xml:lang="th">กรุณาเลือกที่อยู่ในการจัดส่ง</value>
+    </property>
+    <property key="PFTErrorCheckoutStep2">
+        <value xml:lang="en">Please select your shipping method</value>
+        <value xml:lang="th">กรุณาเลือกวิธีการขนส่ง</value>
+    </property>
+    <property key="PFTErrorCheckoutStep3">
+        <value xml:lang="en">Please accept Terms and Conditions</value>
+        <value xml:lang="th">กรุณายอมรับเงื่อนไขในการใช้บริการ</value>
     </property>
     <property key="PFTEmailAlreadyUsed">
         <value xml:lang="en">Email already used</value>

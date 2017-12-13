@@ -168,4 +168,9 @@ under the License.
         <attribute name="listSize" type="Integer" mode="OUT" optional="false"/>
     </service>
 
+    <service name="createPFTShippingAddress" engine="simple" invoke="createPFTShippingAddress" location="component://productfromthailand/minilang/PFTServices.xml">
+        <description>Create Shipping Address</description>
+        <implements service="createPartyPostalAddress"/>
+    </service>
+
 </services>

@@ -357,7 +357,7 @@ under the License.
     </request-map>
     <request-map uri="quickCheckoutCreatePostalAddressAndPurpose">
         <security https="true" auth="true"/>
-        <event type="service" invoke="createPartyPostalAddress"/>
+        <event type="service" invoke="createPFTShippingAddress"/>
         <response name="success" type="view" value="quickcheckout"/>
         <response name="error" type="view" value="quickcheckout"/>
     </request-map>

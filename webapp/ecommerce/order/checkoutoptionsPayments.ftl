@@ -18,20 +18,11 @@ under the License.
 -->
 <script language="javascript" type="text/javascript">
 $(document).ready( function() {
-    $("#step2NextButton").addClass("hide");
     <#if shoppingCart.getShippingContactMechId()?exists>
         <#if chosenShippingMethod?exists>
             $("input:radio[name='shipping_method'][value='${StringUtil.wrapString(chosenShippingMethod)}']").attr('checked', 'checked');
-            if ($("input:radio[name='shipping_method']").is(":checked")) {
-                $("#step2NextButton").removeClass("hide");
-            }
         </#if>
     </#if>
-    $("input:radio[name='shipping_method']").change(function() {
-        if ($("input:radio[name='shipping_method']").is(":checked")) {
-            $("#step2NextButton").removeClass("hide");
-        }
-    })
 });
 </script>
 <#-- Shipping Method Starts -->

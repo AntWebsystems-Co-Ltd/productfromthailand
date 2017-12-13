@@ -18,14 +18,13 @@ under the License.
 -->
 <script language="javascript" type="text/javascript">
 $(document).ready( function() {
-    <#if shoppingCart.getShippingContactMechId()??>
-        $("#step1NextButton").removeClass("hide");
+    <#if !shoppingCart.getShippingContactMechId()??>
+        $("input:radio[name='shipping_contact_mech_id']:first").attr('checked', 'checked');
     </#if>
-    $("input:radio[name='shipping_contact_mech_id']").change(function() {
-        if ($("input:radio[name='shipping_contact_mech_id']").is(":checked")) {
-            $("#step1NextButton").removeClass("hide");
-        }
-    })
+    <#if !shippingContactMechList?has_content>
+        toggleNewAddress();
+        $("#cancelNewAddressButton").addClass("hide");
+    </#if>
 });
 </script>
 <#-- Choose Address Starts -->

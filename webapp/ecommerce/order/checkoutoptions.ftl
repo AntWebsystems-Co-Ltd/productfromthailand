@@ -18,12 +18,15 @@ under the License.
 -->
 
 <script language="javascript" type="text/javascript">
+var checkoutStep = 0;
+
 $(document).ready( function() {
     enterStep(1)
     $("#newaddressform").validate();
 });
 
 function enterStep(step) {
+    checkoutStep = step;
     if(step == 1) {
         step1Function(true);
         step2Function(false);
@@ -147,7 +150,7 @@ function saveAddress() {
             ajaxUpdateArea("step2Ajax", "<@ofbizUrl>checkoutoptionsPayments</@ofbizUrl>", null);
             setTimeout(function(){
                 enterStep(2);
-            }, 100);
+            }, 200);
             waitSpinnerHide();
         }
     });
@@ -165,7 +168,7 @@ function savePaymentsMethod() {
             ajaxUpdateArea("step3Ajax", "<@ofbizUrl>checkoutoptionsOrderDetails</@ofbizUrl>", null);
             setTimeout(function(){
                 enterStep(3);
-            }, 100);
+            }, 200);
             waitSpinnerHide();
         }
     });
@@ -174,13 +177,23 @@ function savePaymentsMethod() {
 function stepAction(action, step) {
     if(action === "next") {
         if(step == 1) {
-            //submitForm(document.checkoutInfoForm, 'SA', null);
-            saveAddress();
+            if ($("input:radio[name='shipping_contact_mech_id']").is(":checked")) {
+                saveAddress();
+            } else {
+                alert("${StringUtil.wrapString(uiLabelMap.PFTErrorCheckoutStep1)}");
+            }
         } else if(step == 2) {
-            //submitForm(document.checkoutInfoForm, 'SM', null);
-            savePaymentsMethod();
+            if ($("input:radio[name='shipping_method']").is(":checked")) {
+                savePaymentsMethod();
+            } else {
+                alert("${StringUtil.wrapString(uiLabelMap.PFTErrorCheckoutStep2)}");
+            }
         } else if(step == 3) {
-            checkShippingAddress();
+            if ($("#acceptcondition").is(":checked")) {
+                checkShippingAddress();
+            } else {
+                alert("${StringUtil.wrapString(uiLabelMap.PFTErrorCheckoutStep3)}");
+            }
         }
     } else if(action === "back") {
         if(step == 2) {
@@ -197,7 +210,6 @@ function stepAction(action, step) {
     <input type="hidden" name="checkoutStep" id="checkoutStep" value="1">
     <input type="hidden" name="contactMechTypeId" value="POSTAL_ADDRESS">
     <input type="hidden" name="partyId" value="${partyId!}"/>
-    <input type="hidden" name="contactMechPurposeTypeId" value="SHIPPING_LOCATION">
     <input type="hidden" name="preContactMechTypeId" value="POSTAL_ADDRESS">
     <input type="hidden" name="toName" id="newaddressform_toName">
     <input type="hidden" name="address1" id="newaddressform_address1">
@@ -312,9 +324,9 @@ function stepAction(action, step) {
                         </div>
                         <#-- Step 1 Controller Starts -->
                         <div id="step1Controller" class="stepController hide">
-                            <button type="button" id="step1NextButton" class="btn btn-main btn-style-1 animation flat text-uppercase hide"
+                            <button type="button" id="step1NextButton" class="btn btn-main btn-style-1 animation flat text-uppercase"
                                 onclick="javascript:stepAction('next',1);" style="float: right; background-color: #0d9cd7;">
-                                ${uiLabelMap.CommonNext}
+                                ${uiLabelMap.PFTContinue}
                             </button>
                         </div>
                         <#-- Step 1 Controller Ends -->
@@ -327,13 +339,13 @@ function stepAction(action, step) {
                     </div>
                 <#-- Step 2 Controller Starts -->
                     <div id="step2Controller" class="stepController hide" style="text-align: center;">
-                        <button type="button" id="step2NextButton" class="btn btn-main btn-style-1 animation flat text-uppercase hide"
+                        <button type="button" id="step2NextButton" class="btn btn-main btn-style-1 animation flat text-uppercase"
                             onclick="javascript:stepAction('next',2);" style="float: right; background-color: #0d9cd7;">
-                            ${uiLabelMap.CommonNext}
+                            ${uiLabelMap.PFTContinue}
                         </button>
                         <button type="button" id="step2BackButton" class="btn btn-main btn-style-1 animation flat text-uppercase"
                             onclick="stepAction('back',2);" style="float: left; background-color: #0d9cd7;">
-                            ${uiLabelMap.CommonBack}
+                            ${uiLabelMap.PFTBackToEdit}
                         </button>
                     </div>
                 <#-- Step 2 Controller Ends -->
@@ -357,7 +369,7 @@ function stepAction(action, step) {
                         <div id="step3Controller" class="stepController hide">
                             <button type="button" id="step3BackButton" class="btn btn-main btn-style-1 animation flat text-uppercase"
                                 onclick="javascript:stepAction('back',3);" style="float: left; background-color: #0d9cd7;">
-                                ${uiLabelMap.CommonBack}
+                                ${uiLabelMap.PFTBackToEdit}
                             </button>
                         </div>
                     <#-- Step 3 Controller Ends -->

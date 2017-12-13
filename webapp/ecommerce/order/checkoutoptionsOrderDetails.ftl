@@ -18,13 +18,15 @@ under the License.
 -->
 <script language="javascript" type="text/javascript">
 $(document).ready( function() {
-    $("#acceptcondition").change(function() {
-        if ($("#acceptcondition").is(":checked")) {
-            $("#finalOrderBtn").removeClass("hide");
-        } else {
-            $("#finalOrderBtn").addClass("hide");
-        }
-    })
+    <#if shoppingCart.getShippingContactMechId()?exists>
+        <#if chosenShippingMethod?exists>
+            if ($("input:radio[name='shipping_method']").is(":checked")) {
+                if(checkoutStep == 3) {
+                    $("#checkoutStep3Button").removeClass("hide");
+                }
+            }
+        </#if>
+    </#if>
 });
 </script>
 <table class="table table-bordered" id="checkoutreview-table">
@@ -77,13 +79,13 @@ $(document).ready( function() {
 <#-- Spacer Starts -->
 <div class="spacer"></div>
 <#-- Spacer Ends -->
-<div id="checkoutStep3Button" class="hide">
+<div id="checkoutStep3Button" class="">
     <div class="checkbox">
         <label class="checkbox-style-1">
             <input type="checkbox" id="acceptcondition"> ${uiLabelMap.PFTIHaveReadAndAcceptThe} <a href="<@ofbizUrl>showhelpcontent</@ofbizUrl>?contentId=HELP_TERMSANDCON&nodeTrailCsv=HELP_TERMSANDCON" target="_blank">${uiLabelMap.PFTTermsAndCons}</a>
         </label>
-        <button type="button" id="finalOrderBtn" class="btn btn-main btn-block  btn-style-1 animation flat text-uppercase hide"
-        onclick="javascript:checkShippingAddress()">
+        <button type="button" id="finalOrderBtn" class="btn btn-main btn-block  btn-style-1 animation flat text-uppercase"
+        onclick="javascript:stepAction('next',3);">
         ${uiLabelMap.OrderContinueToFinalOrderReview}
     </button>
     </div>
