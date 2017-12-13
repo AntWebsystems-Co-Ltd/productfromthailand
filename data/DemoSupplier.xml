@@ -18,7 +18,7 @@
 
     <TelecomNumber contactMechId="DEMOSUP_01_TELE" countryCode="+66" areaCode="053" contactNumber="999999"/>
     <TelecomNumber contactMechId="DEMOSUP_01_FAX" countryCode="+66" areaCode="053" contactNumber="888888"/>
-    <PostalAddress contactMechId="DEMOSUP_01_ADDR" toName="SOMJIT SERMBOONYASOOK" address1="12/34 MOO 1, CHIANGMAI - SANKAMPANG RD., TASALA, MUANGCHIANG MAI" city="Chiangmai" postalCode="50000" countryGeoId="THA"/>
+    <PostalAddress contactMechId="DEMOSUP_01_ADDR" toName="SOMJIT SERMBOONYASOOK" address1="12/34 MOO 1, CHIANGMAI - SANKAMPANG RD., TASALA" city="Chiangmai" stateProvinceGeoId="TH-50" postalCode="50000" countryGeoId="THA"/>
     <PartyContactMechPurpose partyId="DEMOSUP_01" contactMechId="DEMOSUP_01_ADDR" contactMechPurposeTypeId="BILLING_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
     <PartyContactMechPurpose partyId="DEMOSUP_01" contactMechId="DEMOSUP_01_ADDR" contactMechPurposeTypeId="GENERAL_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
     <PartyContactMechPurpose partyId="DEMOSUP_01" contactMechId="DEMOSUP_01_ADDR" contactMechPurposeTypeId="PAYMENT_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
@@ -29,7 +29,7 @@
     <UserLoginSecurityGroup groupId="MYPORTAL_SUPPLIER" userLoginId="demoSupplier01" fromDate="2009-09-25 00:00:00.000"/>
 
     <Party partyId="DEMOSUP_02" partyTypeId="PARTY_GROUP"/>
-    <PartyGroup partyId="DEMOSUP_02" groupName="Demo Supplier 01"/>
+    <PartyGroup partyId="DEMOSUP_02" groupName="Demo Supplier 02"/>
     <PartyRole partyId="DEMOSUP_02" roleTypeId="SUPPLIER"/>
     <PartyRole partyId="DEMOSUP_02" roleTypeId="ACCOUNT"/>
     <PartyRole partyId="DEMOSUP_02" roleTypeId="OWNER"/>
@@ -44,8 +44,8 @@
 
     <TelecomNumber contactMechId="DEMOSUP_02_TELE" countryCode="+66" areaCode="053" contactNumber="204823"/>
     <TelecomNumber contactMechId="DEMOSUP_02_FAX" countryCode="+66" areaCode="053" contactNumber="204815"/>
-    <PostalAddress contactMechId="DEMOSUP_02_ADDR" toName="CHOMCHALEO NGOENPISUTSILP" address1="78/89 CHIANGMAILAND SOI 5, CHANGKLAN RD.,MUANGCHIANG MAI"
-        city="Chiangmai" postalCode="50100" countryGeoId="THA"/>
+    <PostalAddress contactMechId="DEMOSUP_02_ADDR" toName="CHOMCHALEO NGOENPISUTSILP" address1="78/89 CHIANGMAILAND SOI 5, CHANGKLAN RD."
+        city="Chiangmai" postalCode="50100" stateProvinceGeoId="TH-50" countryGeoId="THA"/>
     <PartyContactMechPurpose partyId="DEMOSUP_02" contactMechId="DEMOSUP_02_ADDR" contactMechPurposeTypeId="BILLING_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
     <PartyContactMechPurpose partyId="DEMOSUP_02" contactMechId="DEMOSUP_02_ADDR" contactMechPurposeTypeId="GENERAL_LOCATION" fromDate="2009-09-25 00:00:00.000"/>
     <PartyContactMechPurpose partyId="DEMOSUP_02" contactMechId="DEMOSUP_02_ADDR" contactMechPurposeTypeId="PAYMENT_LOCATION" fromDate="2009-09-25 00:00:00.000"/>

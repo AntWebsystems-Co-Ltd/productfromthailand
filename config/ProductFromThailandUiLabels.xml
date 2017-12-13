@@ -255,6 +255,10 @@
         <value xml:lang="en">Internal Party Note is missing</value>
         <value xml:lang="th">กรุณาใส่ข้อความสมาชิกภายใน</value>
     </property>
+    <property key="PFTInvoices">
+        <value xml:lang="en">Invoices</value>
+        <value xml:lang="th">ใบกำกับสินค้า</value>
+    </property>
     <property key="PFTInvoiceTypeId">
         <value xml:lang="en">Invoice Type ID</value>
         <value xml:lang="th">รหัสใบกำกับสินค้า</value>

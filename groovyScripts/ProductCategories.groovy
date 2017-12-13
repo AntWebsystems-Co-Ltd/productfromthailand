@@ -55,7 +55,6 @@ List fillTree(rootCat ,CatLvl, parentCategoryId) {
                 def rootMap = [:]
                 category = from("ProductCategory").where("productCategoryId", root.productCategoryId).queryOne()
                 categoryContentWrapper = new CategoryContentWrapper(category, request)
-                context.title = categoryContentWrapper.get("CATEGORY_NAME", "html")
                 categoryDescription = categoryContentWrapper.get("DESCRIPTION", "html")
 
                 if(categoryContentWrapper.get("CATEGORY_NAME", "html").toString())

@@ -343,17 +343,6 @@
             </actions>
             <widgets>
                 <section>
-                    <condition>
-                        <or>
-                            <if-has-permission permission="ACCOUNTING" action="_VIEW"/>
-                            <!-- can always see own invoice -->
-                            <if-compare field="invoice.partyIdFrom" operator="equals" value="${userLogin.partyId}"/>
-                            <if-compare field="invoice.partyId" operator="equals" value="${userLogin.partyId}"/>
-                            <!-- or is a contact of a company who owns the invoice-->
-                            <if-compare field="invoice.partyIdFrom" operator="equals" value="${myCompanyId}"/>
-                            <if-compare field="invoice.partyId" operator="equals" value="${myCompanyId}"/>
-                        </or>
-                    </condition>
                     <widgets>
                         <decorator-screen name="FoReportDecorator">
                             <decorator-section name="topLeft">
@@ -361,12 +350,12 @@
                             </decorator-section>
                             <decorator-section name="topRight">
                                 <platform-specific>
-                                    <xsl-fo><html-template location="component://accounting/webapp/accounting/invoice/invoiceReportHeaderInfo.fo.ftl"/></xsl-fo>
+                                    <xsl-fo><html-template location="component://accounting/template/invoice/InvoiceReportHeaderInfo.fo.ftl"/></xsl-fo>
                                 </platform-specific>
                             </decorator-section>
                             <decorator-section name="body">
                                 <platform-specific>
-                                    <xsl-fo><html-template location="component://accounting/webapp/accounting/invoice/invoiceReportContactMechs.fo.ftl"/></xsl-fo>
+                                    <xsl-fo><html-template location="component://growerpbackend/template/invoiceReportContactMechs.fo.ftl"/></xsl-fo>
                                 </platform-specific>
                                 <platform-specific>
                                     <xsl-fo><html-template location="component://productfromthailand/webapp/ecommerce/invoice/invoiceReportItems.fo.ftl"/></xsl-fo>
@@ -374,15 +363,6 @@
                             </decorator-section>
                         </decorator-screen>
                     </widgets>
-                    <fail-widgets>
-                        <decorator-screen name="FoReportDecorator">
-                            <decorator-section name="body">
-                                <platform-specific>
-                                    <xsl-fo><html-template location="component://accounting/webapp/accounting/invoice/NoAccountingView.fo.ftl"/></xsl-fo>
-                                </platform-specific>
-                            </decorator-section>
-                        </decorator-screen>
-                    </fail-widgets>
                 </section>
             </widgets>
         </section>
@@ -424,6 +404,7 @@
                 </entity-one>
                 <script location="component://ecommerce/groovyScripts/customer/ViewProfile.groovy"/>
                 <script location="component://productfromthailand/groovyScripts/OrderHistory.groovy"/>
+                <set field="titleProperty" value="PFTMyOrder"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">

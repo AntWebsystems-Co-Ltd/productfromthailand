@@ -247,6 +247,11 @@ under the License.
         <response name="success" type="view" value="OrderPDF"/>
     </request-map>
 
+    <request-map uri="invoice.pdf">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="InvoicePDF"/>
+    </request-map>
+
     <request-map uri="ProductBarCode.pdf">
         <security https="true" auth="true"/>
         <response name="success" type="view" value="ProductBarCode.pdf"/>

@@ -30,6 +30,7 @@ orderHeaderList = EntityUtil.orderBy(EntityUtil.filterByAnd(EntityUtil.getRelate
 newOrderList = [];
 if(orderHeaderList) {
     String orderCheck = null;
+    String orderHeaderCheck = null;
     for (orderHeader in orderHeaderList) {
         porderItemAssocList = from("OrderItemAssoc").where("orderId", orderHeader.orderId).queryList();
         if (porderItemAssocList) {
@@ -38,9 +39,15 @@ if(orderHeaderList) {
                     porderHeader = from("OrderHeader").where("orderId", porderItemAssoc.toOrderId).queryFirst();
                     if(porderHeader) {
                         newOrderCtx = [:];
-                        newOrderCtx.putAll(orderHeader);
+                        if(!orderHeaderCheck.equals(orderHeader.orderId)) {
+                            newOrderCtx.putAll(orderHeader);
+                            orderHeaderCheck = orderHeader.orderId;
+                        }else {
+                            newOrderCtx.put("orderId", orderHeader.orderId);
+                        }
                         newOrderCtx.put("purchaseId", porderItemAssoc.toOrderId);
                         newOrderCtx.put("purchaseStaus", porderHeader.statusId);
+                        newOrderCtx.put("orderItemSeqId", porderItemAssoc.orderItemSeqId);
                         newOrderList.add(newOrderCtx);
                         orderCheck = porderItemAssoc.toOrderId;
                     }
@@ -48,9 +55,7 @@ if(orderHeaderList) {
             }
         }
     }
-    
 }
-println "newOrderList ::::::::::: "+newOrderList;
 context.newOrderList = newOrderList
 context.orderHeaderList = orderHeaderList
 

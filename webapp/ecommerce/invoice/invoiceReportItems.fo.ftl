@@ -19,7 +19,7 @@ under the License.
 <#escape x as x?xml>
     <#-- list of orders -->
     <#if orders?has_content>
-    <fo:table table-layout="fixed" width="100%">
+    <fo:table table-layout="fixed" width="100%" margin-top="0.25in">
         <fo:table-column column-width="1in"/>
         <fo:table-column column-width="5.5in"/>
 
@@ -139,19 +139,19 @@ under the License.
             <#if !isItemAdjustment>
                 <fo:table-row height="14px" space-start=".15in">
                     <fo:table-cell>
-                        <fo:block text-align="left">${invoiceItem.productId?if_exists} </fo:block>
+                        <fo:block text-align="left" margin-top="2mm">${invoiceItem.productId?if_exists} </fo:block>
                     </fo:table-cell>
                     <fo:table-cell border-top-style="solid" border-top-width="thin" border-top-color="black">
-                        <fo:block text-align="left">${description?if_exists}</fo:block>
+                        <fo:block text-align="left" margin-top="2mm">${description?if_exists}</fo:block>
                     </fo:table-cell>
                       <fo:table-cell>
-                        <fo:block text-align="right"> <#if invoiceItem.quantity?exists>${invoiceItem.quantity?string.number}</#if> </fo:block>
+                        <fo:block text-align="right" margin-top="2mm"> <#if invoiceItem.quantity?exists>${invoiceItem.quantity?string.number}</#if> </fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="right">
-                        <fo:block> <#if invoiceItem.quantity?exists><@ofbizCurrency amount=invoiceItem.amount?if_exists*conversionRate isoCode=currencyUom/></#if> </fo:block>
+                        <fo:block margin-top="2mm"> <#if invoiceItem.quantity?exists><@ofbizCurrency amount=invoiceItem.amount?if_exists*conversionRate isoCode=currencyUom/></#if> </fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="right">
-                        <fo:block> <@ofbizCurrency amount=(Static["org.apache.ofbiz.accounting.invoice.InvoiceWorker"].getInvoiceItemTotal(invoiceItem))*conversionRate isoCode=currencyUom/> </fo:block>
+                        <fo:block margin-top="2mm"> <@ofbizCurrency amount=(Static["org.apache.ofbiz.accounting.invoice.InvoiceWorker"].getInvoiceItemTotal(invoiceItem))*conversionRate isoCode=currencyUom/> </fo:block>
                     </fo:table-cell>
                 </fo:table-row>
             <#else>
@@ -164,10 +164,10 @@ under the License.
                 </#if>
                 <fo:table-row height="14px" space-start=".15in">
                     <fo:table-cell number-columns-spanned="2">
-                        <fo:block text-align="right">${description?if_exists}</fo:block>
+                        <fo:block text-align="right" margin-top="2mm" >${description?if_exists}</fo:block>
                     </fo:table-cell>
                     <fo:table-cell text-align="right" number-columns-spanned="3">
-                        <fo:block> <@ofbizCurrency amount=(Static["org.apache.ofbiz.accounting.invoice.InvoiceWorker"].getInvoiceItemTotal(invoiceItem))*conversionRate isoCode=currencyUom/> </fo:block>
+                        <fo:block margin-top="2mm"> <@ofbizCurrency amount=(Static["org.apache.ofbiz.accounting.invoice.InvoiceWorker"].getInvoiceItemTotal(invoiceItem))*conversionRate isoCode=currencyUom/> </fo:block>
                     </fo:table-cell>
                 </fo:table-row>
             </#if>
@@ -184,10 +184,10 @@ under the License.
               <fo:block/>
            </fo:table-cell>
            <fo:table-cell number-columns-spanned="2">
-              <fo:block font-weight="bold">${uiLabelMap.AccountingTotalCapital}</fo:block>
+              <fo:block font-weight="bold" margin-top="2mm">${uiLabelMap.AccountingTotalCapital}</fo:block>
            </fo:table-cell>
            <fo:table-cell text-align="right" border-top-style="solid" border-top-width="thin" border-top-color="black">
-              <fo:block><@ofbizCurrency amount=invoiceTotal*conversionRate isoCode=currencyUom/></fo:block>
+              <fo:block margin-top="2mm"><@ofbizCurrency amount=invoiceTotal*conversionRate isoCode=currencyUom/></fo:block>
            </fo:table-cell>
         </fo:table-row>
         <fo:table-row height="7px">
@@ -200,10 +200,10 @@ under the License.
               <fo:block/>
            </fo:table-cell>
            <fo:table-cell number-columns-spanned="2">
-              <fo:block>${uiLabelMap.AccountingTotalExclTax}</fo:block>
+              <fo:block margin-top="2mm">${uiLabelMap.AccountingTotalExclTax}</fo:block>
            </fo:table-cell>
            <fo:table-cell text-align="right" border-top-style="solid" border-top-width="thin" border-top-color="black">
-              <fo:block>
+              <fo:block margin-top="2mm">
                  <@ofbizCurrency amount=invoiceNoTaxTotal*conversionRate isoCode=currencyUom/>
               </fo:block>
            </fo:table-cell>

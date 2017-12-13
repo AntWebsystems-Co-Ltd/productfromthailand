@@ -35,21 +35,7 @@ under the License.
           </a>
       </div>
     </div>
-	<div class="col-sm-9">
-  <h1>
-    ${uiLabelMap.PartyTheProfileOf}
-    <#if person?exists>
-      ${person.personalTitle?if_exists}
-      ${person.firstName?if_exists}
-      ${person.middleName?if_exists}
-      ${person.lastName?if_exists}
-      ${person.suffix?if_exists}
-    <#elseif partyGroup?exists>
-      ${partyGroup.groupName?if_exists}
-    <#else>
-      "${uiLabelMap.PartyNewUser}"
-    </#if>
-  </h1>
+    <div class="col-sm-9">
   <div class="panel panel-smart">
     <div class="panel-heading navbar">
       <#if person?exists>
