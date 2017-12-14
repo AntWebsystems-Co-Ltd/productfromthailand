@@ -215,10 +215,18 @@ under the License.
     <ProductFeature description="#07 : Soft Burry" productFeatureCategoryId="NB10000" productFeatureId="NB10006" productFeatureTypeId="COLOR" />
     <ProductFeature description="#08 : Hot Sand" productFeatureCategoryId="NB10000" productFeatureId="NB10007" productFeatureTypeId="COLOR" />
 
+    <ProductFeatureCategory productFeatureCategoryId="CF30000" description="Scarf Features"/>
+    <ProductFeature productFeatureId="CF30001" productFeatureCategoryId="CF30000" productFeatureTypeId="COLOR" description="#01 : Blue"/>
+    <ProductFeature productFeatureId="CF30002" productFeatureCategoryId="CF30000" productFeatureTypeId="COLOR" description="#02 : Violet"/>
+    <ProductFeature productFeatureId="CF30003" productFeatureCategoryId="CF30000" productFeatureTypeId="COLOR" description="#03 : White"/>
+    <ProductFeature productFeatureId="CF30004" productFeatureCategoryId="CF30000" productFeatureTypeId="COLOR" description="#04 : Pink"/>
+
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_ODR_CONFIRM" bodyScreenLocation="component://productfromthailand/widget/OrderScreens.xml#OrderConfirmNotice" xslfoAttachScreenLocation="component://productfromthailand/widget/OrderScreens.xml#OrderPDF" subject="Product From Thailand - Order Confirmation #${orderId}" bccAddress="info@productfromthailand.com" fromAddress="info@productfromthailand.com"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_ODR_COMPLETE" bodyScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#OrderCompleteNotice" subject="Product From Thailand - Your Order Is Complete #${orderId}" fromAddress="info@productfromthailand.com"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_ODR_BACKORDER" bodyScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#BackorderNotice" subject="Product From Thailand - Backorder Notification #${orderId}" fromAddress="info@productfromthailand.com"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_ODR_CHANGE" bodyScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#OrderChangeNotice" subject="Product From Thailand - Order Change Notification #${orderId}" fromAddress="info@productfromthailand.com"/>
+    <Enumeration description="Cancel" enumCode="ODR_CANCEL" enumId="PRDS_ODR_CANCEL" enumTypeId="PRDS_EMAIL" sequenceId="20"/>
+    <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_ODR_CANCEL" bodyScreenLocation="component://productfromthailand/widget/OrderScreens.xml#OrderConfirmNotice" subject="Product From Thailand - Your Order Is Cancel #${orderId}" fromAddress="info@productfromthailand.com"/>
     <Enumeration description="Purchase Order Confirmation" enumCode="PRCHS_ODR_CONFIRM" enumId="PRCHS_ODR_CONFIRM" sequenceId="01" enumTypeId="PARTY_EMAIL"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRCHS_ODR_CONFIRM" bodyScreenLocation="component://productfromthailand/widget/OrderScreens.xml#OrderConfirmNotice" xslfoAttachScreenLocation="component://productfromthailand/widget/OrderScreens.xml#OrderPDF" subject="Product From Thailand - You have got a new purchase order from a customer #${orderId}" bccAddress="info@productfromthailand.com" fromAddress="info@productfromthailand.com"/>
 

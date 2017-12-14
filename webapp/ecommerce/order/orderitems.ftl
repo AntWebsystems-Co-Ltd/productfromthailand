@@ -151,14 +151,18 @@ under the License.
                 <@ofbizCurrency amount=localOrderReadHelper.getOrderItemAdjustmentsTotal(orderItem)*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=localOrderReadHelper.getOrderItemAdjustmentsTotal(orderItem) isoCode=currencyUomId/-->
               </td>
               <td>
-                <#if workEfforts?exists>
-                  <@ofbizCurrency amount=localOrderReadHelper.getOrderItemTotal(orderItem)*rentalQuantity*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=localOrderReadHelper.getOrderItemTotal(orderItem)*rentalQuantity isoCode=currencyUomId/-->
+                <#if orderItem.statusId != "ITEM_CANCELLED">
+                  <#if workEfforts?exists>
+                    <@ofbizCurrency amount=localOrderReadHelper.getOrderItemTotal(orderItem)*rentalQuantity*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=localOrderReadHelper.getOrderItemTotal(orderItem)*rentalQuantity isoCode=currencyUomId/-->
+                  <#else>
+                    <@ofbizCurrency amount=localOrderReadHelper.getOrderItemTotal(orderItem)*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=localOrderReadHelper.getOrderItemTotal(orderItem) isoCode=currencyUomId/-->
+                  </#if>
                 <#else>
-                  <@ofbizCurrency amount=localOrderReadHelper.getOrderItemTotal(orderItem)*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=localOrderReadHelper.getOrderItemTotal(orderItem) isoCode=currencyUomId/-->
+                    <@ofbizCurrency amount=0.00 isoCode=currencyUom/>
                 </#if>
               </td>
               <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">
-                <td>
+                <td colspan="3">
                   <input name="item_id" value="${orderItem.orderItemSeqId}" type="checkbox"/>
                 </td>
               </#if>
@@ -216,7 +220,7 @@ under the License.
                 <@ofbizCurrency amount=localOrderReadHelper.getOrderItemAdjustmentTotal(orderItem, orderItemAdjustment)*conversionRate isoCode=currencyUom/><#--@ofbizCurrency amount=localOrderReadHelper.getOrderItemAdjustmentTotal(orderItem, orderItemAdjustment) isoCode=currencyUomId/-->
               </td>
               <td></td>
-              <#if maySelectItems?default("N") == "Y"><td colspan="3"></td></#if>
+              <#if maySelectItems?default("N") == "Y"><td colspan="4"></td></#if>
             </tr>
           </#list>
         </#list>
@@ -244,7 +248,13 @@ under the License.
         <tr class="checkouttotal">
           <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>><b>${uiLabelMap.OrderGrandTotal}</b></td>
           <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>>
-            <b><@ofbizCurrency amount=orderGrandTotal*conversionRate isoCode=currencyUom/></b><#--@ofbizCurrency amount=orderGrandTotal isoCode=currencyUomId/-->
+            <b>
+              <#if orderHeader?has_content && orderHeader.statusId.equals("ORDER_CANCELLED")>
+                <@ofbizCurrency amount=0.00 isoCode=currencyUom/>
+              <#else>
+                <@ofbizCurrency amount=orderGrandTotal*conversionRate isoCode=currencyUom/>
+              </#if>
+            </b><#--@ofbizCurrency amount=orderGrandTotal isoCode=currencyUomId/-->
           </td>
         </tr>
       <tbody>

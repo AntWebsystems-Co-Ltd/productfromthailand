@@ -299,9 +299,57 @@ under the License.
         <entity-one entity-name="UserLogin" value-field="systemUserLogin">
             <field-map field-name="userLoginId" value="system"/>
         </entity-one>
+        <entity-and entity-name="OrderItemAssoc" list="orderItemAssocList">
+            <field-map field-name="orderId" from-field="parameters.orderId"/>
+        </entity-and>
+        <if-not-empty field="orderItemAssocList">
+            <iterate list="orderItemAssocList" entry="orderItemAssoc">
+                <entity-and entity-name="OrderHeaderAndRoles" list="orderRoles">
+                    <field-map field-name="orderId" from-field="orderItemAssoc.toOrderId"/>
+                    <field-map field-name="roleTypeId" value="SUPPLIER_AGENT"/>
+                </entity-and>
+                <if-not-empty field="orderRoles">
+                    <first-from-list list="orderRoles" entry="orderRole"/>
+                    <entity-and entity-name="WebSite" list="webSites">
+                        <field-map field-name="productStoreId" from-field="orderRole.productStoreId"/>
+                    </entity-and>
+                    <first-from-list list="webSites" entry="webSite"/>
+                    <set field="getEmailTo.partyId" from-field="orderRole.partyId"/>
+                    <call-service service-name="getPartyEmail" in-map-name="getEmailTo">
+                        <result-to-field result-name="emailAddress" field="sendTo"/>
+                    </call-service>
+                    <entity-one entity-name="ProductStoreEmailSetting" value-field="storeEmail">
+                        <field-map field-name="productStoreId" from-field="orderRole.productStoreId"/>
+                        <field-map field-name="emailType" value="PRCHS_ODR_CONFIRM"/>
+                    </entity-one>
+                    <if-not-empty field="storeEmail.bodyScreenLocation">
+                        <set field="bodyParameters.orderId" from-field="orderItemAssoc.toOrderId"/>
+                        <set field="bodyParameters.partyId" from-field="orderRole.partyId"/>
+                        <set field="bodyParameters.userLogin" from-field="systemUserLogin"/>
+                        <set field="emailParams.bodyParameters" from-field="bodyParameters"/>
+                        <set field="emailParams.sendTo" from-field="sendTo"/>
+                        <set field="emailParams.subject" from-field="storeEmail.subject"/>
+                        <set field="emailParams.sendFrom" from-field="storeEmail.fromAddress"/>
+                        <set field="emailParams.sendCc" from-field="storeEmail.ccAddress"/>
+                        <set field="emailParams.sendBcc" from-field="storeEmail.bccAddress"/>
+                        <set field="emailParams.bodyScreenUri" from-field="storeEmail.bodyScreenLocation"/>
+                        <set field="emailParams.xslfoAttachScreenLocation" from-field="storeEmail.xslfoAttachScreenLocation"/>
+                        <set field="emailParams.webSiteId" from-field="webSite.webSiteId"/>
+                        <set field="emailParams.userLogin" from-field="systemUserLogin"/>
+                        <call-service service-name="sendMailFromScreen" in-map-name="emailParams"/>
+                    </if-not-empty>
+                </if-not-empty>
+            </iterate>
+        </if-not-empty>
+    </simple-method>
+
+    <simple-method method-name="sendOrderCancelNotification" short-description="Send Order Cancel Notification">
+        <entity-one entity-name="UserLogin" value-field="systemUserLogin">
+            <field-map field-name="userLoginId" value="system"/>
+        </entity-one>
         <entity-and entity-name="OrderHeaderAndRoles" list="orderRoles">
             <field-map field-name="orderId" from-field="parameters.orderId"/>
-            <field-map field-name="roleTypeId" value="SUPPLIER_AGENT"/>
+            <field-map field-name="roleTypeId" value="END_USER_CUSTOMER"/>
         </entity-and>
         <if-not-empty field="orderRoles">
             <first-from-list list="orderRoles" entry="orderRole"/>
@@ -315,7 +363,7 @@ under the License.
             </call-service>
             <entity-one entity-name="ProductStoreEmailSetting" value-field="storeEmail">
                 <field-map field-name="productStoreId" from-field="orderRole.productStoreId"/>
-                <field-map field-name="emailType" value="PRCHS_ODR_CONFIRM"/>
+                <field-map field-name="emailType" value="PRDS_ODR_CANCEL"/>
             </entity-one>
             <if-not-empty field="storeEmail.bodyScreenLocation">
                 <set field="bodyParameters.orderId" from-field="parameters.orderId"/>
@@ -328,7 +376,6 @@ under the License.
                 <set field="emailParams.sendCc" from-field="storeEmail.ccAddress"/>
                 <set field="emailParams.sendBcc" from-field="storeEmail.bccAddress"/>
                 <set field="emailParams.bodyScreenUri" from-field="storeEmail.bodyScreenLocation"/>
-                <set field="emailParams.xslfoAttachScreenLocation" from-field="storeEmail.xslfoAttachScreenLocation"/>
                 <set field="emailParams.webSiteId" from-field="webSite.webSiteId"/>
                 <set field="emailParams.userLogin" from-field="systemUserLogin"/>
                 <call-service service-name="sendMailFromScreen" in-map-name="emailParams"/>

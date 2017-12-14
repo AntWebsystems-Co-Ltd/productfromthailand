@@ -25,8 +25,14 @@ under the License.
         <action service="sendCustomerConfirmationEmail" mode="sync" persist="true"/>
     </eca>
 
-    <eca service="storeOrder" event="return">
-        <condition field-name="orderTypeId" operator="equals" value="PURCHASE_ORDER"/>
+    <eca service="changeOrderStatus" event="commit" run-on-error="false">
+        <condition field-name="statusId" operator="equals" value="ORDER_APPROVED"/>
+        <condition field-name="orderTypeId" operator="equals" value="SALES_ORDER"/>
         <action service="sendPurchaseOrderConfirmation" mode="sync"/>
+    </eca>
+
+    <eca service="changeOrderStatus" event="commit" run-on-error="false">
+        <condition field-name="statusId" operator="equals" value="ORDER_CANCELLED"/>
+        <action service="sendOrderCancelNotification" mode="async" persist="true"/>
     </eca>
 </service-eca>

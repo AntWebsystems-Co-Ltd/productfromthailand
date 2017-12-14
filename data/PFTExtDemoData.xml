@@ -140,15 +140,15 @@
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10009-RG" lastPrice="450.00" supplierProductId="SP-CR10009-RG" supplierProductName="CAREEL Coffee : Roast Ground Coffee 500g" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
 
     <!-- Sales from 200 to 185 -->
-    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10000" ruleName="Careel Coffee Sales 185" thruDate="2017-12-30 23:59:59.0"/>
+    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10000" ruleName="Careel Coffee Sales 185" thruDate="2018-12-30 23:59:59.0"/>
     <ProductPriceCond condValue="CR10000" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10000"/>
     <ProductPriceAction amount="185.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10000"/>
 
-    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10001" ruleName="Careel Coffee Roast Bean Sales 185" thruDate="2017-12-30 23:59:59.0"/>
+    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10001" ruleName="Careel Coffee Roast Bean Sales 185" thruDate="2018-12-30 23:59:59.0"/>
     <ProductPriceCond condValue="CR10000-RB" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10001"/>
     <ProductPriceAction amount="185.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10001"/>
 
-    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10002" ruleName="Careel Coffee Roast Ground Sales 185" thruDate="2017-12-30 23:59:59.0"/>
+    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10002" ruleName="Careel Coffee Roast Ground Sales 185" thruDate="2018-12-30 23:59:59.0"/>
     <ProductPriceCond condValue="CR10000-RG" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10002"/>
     <ProductPriceAction amount="185.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10002"/>
 
@@ -164,6 +164,27 @@
     <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10005" ruleName="Careel Coffee Roast Ground Sales 450" thruDate="2018-12-30 23:59:59.0"/>
     <ProductPriceCond condValue="CR10009-RG" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10005"/>
     <ProductPriceAction amount="450.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10005"/>
+
+    <!-- Sales scarf from 1600 to 990 -->
+    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10003" ruleName="Scarf Sales 990" thruDate="2018-12-30 23:59:59.0"/>
+    <ProductPriceCond condValue="CR10002" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10003"/>
+    <ProductPriceAction amount="990.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10003"/>
+
+    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10004" ruleName="Scarf Sales 990" thruDate="2018-12-30 23:59:59.0"/>
+    <ProductPriceCond condValue="CR10002-01" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10004"/>
+    <ProductPriceAction amount="990.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10004"/>
+
+    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10005" ruleName="Scarf Sales 990" thruDate="2018-12-30 23:59:59.0"/>
+    <ProductPriceCond condValue="CR10002-02" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10005"/>
+    <ProductPriceAction amount="990.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10005"/>
+
+    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10006" ruleName="Scarf Sales 990" thruDate="2018-12-30 23:59:59.0"/>
+    <ProductPriceCond condValue="CR10002-03" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10006"/>
+    <ProductPriceAction amount="990.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10006"/>
+
+    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10007" ruleName="Scarf Sales 990" thruDate="2018-12-30 23:59:59.0"/>
+    <ProductPriceCond condValue="CR10002-04" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10007"/>
+    <ProductPriceAction amount="990.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10007"/>
 
     <!-- Sales 10% for order that greater than ฿1000 (PFT10ORD)-->
     <ProductPromo productPromoId="PFT10000" promoName="Sales 10% for order that greater than ฿1000" promoText="Sales 10% for order that greater than ฿1000" requireCode="Y" showToCustomer="Y" useLimitPerCustomer="1" useLimitPerOrder="1" useLimitPerPromotion="1" userEntered="Y" createdDate="2017-10-01 00:00:00.0"/>

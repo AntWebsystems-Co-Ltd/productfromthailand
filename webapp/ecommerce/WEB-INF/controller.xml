@@ -436,6 +436,12 @@ under the License.
         </response>
         <response name="error" type="view" value="main"/>
     </request-map>
+    <request-map uri="payPalCancel">
+        <security https="true"/>
+        <event type="java" path="org.apache.ofbiz.productfromthailand.PFTEvents" invoke="cancelPayPalOrder"/>
+        <response name="success" type="view" value="main"/>
+        <response name="error" type="view" value="main"/>
+    </request-map>
 
     <request-map uri="categorylist">
         <security https="false" auth="false"/>

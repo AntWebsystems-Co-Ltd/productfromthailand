@@ -203,7 +203,22 @@ public class PFTEvents {
             if (paymentStatus.equals("COMPLETED")) {
                 okay = OrderChangeHelper.approveOrder(dispatcher, userLogin, orderId);
             } else if (paymentStatus.equals("FAILED")) {
-                okay = OrderChangeHelper.cancelOrder(dispatcher, userLogin, orderId);
+                List<String> payPalOrderIds = new LinkedList<String>();
+                payPalOrderIds.add(orderId);
+                List <GenericValue> orderItemAssocList = null;
+                try {
+                    orderItemAssocList = EntityQuery.use(delegator).from("OrderItemAssoc").where("orderId", orderId).queryList();
+                    if (orderItemAssocList != null) {
+                        for (GenericValue orderItemAssoc : orderItemAssocList) {
+                            payPalOrderIds.add(orderItemAssoc.getString("toOrderId"));
+                        }
+                    }
+                } catch (GenericEntityException e) {
+                    Debug.logError(e, module);
+                }
+                for (String payPalOrderId : payPalOrderIds) {
+                    okay = OrderChangeHelper.cancelOrder(dispatcher, userLogin, payPalOrderId);
+                }
             }
 
             if (okay) {
@@ -644,5 +659,68 @@ public class PFTEvents {
             Debug.logError(e, module);
         }
         return weightProudct;
+    }
+
+    public static String cancelPayPalOrder(HttpServletRequest request, HttpServletResponse response) {
+        Locale locale = UtilHttp.getLocale(request);
+        LocalDispatcher dispatcher = (LocalDispatcher) request.getAttribute("dispatcher");
+        Delegator delegator = (Delegator) request.getAttribute("delegator");
+        List<String> orderIds = new LinkedList<String>();
+
+        GenericValue userLogin = null;
+        try {
+            userLogin = EntityQuery.use(delegator).from("UserLogin").where("userLoginId", "system").queryOne();
+        } catch (GenericEntityException e) {
+            Debug.logError(e, module);
+        }
+
+        // get the stored order id from the session
+        String payPalOrderId = (String) request.getSession().getAttribute("PAYPAL_ORDER");
+        orderIds.add(payPalOrderId);
+        List <GenericValue> orderItemAssocList = null;
+        try {
+            orderItemAssocList = EntityQuery.use(delegator).from("OrderItemAssoc").where("orderId", payPalOrderId).queryList();
+            if (orderItemAssocList != null) {
+                for (GenericValue orderItemAssoc : orderItemAssocList) {
+                    orderIds.add(orderItemAssoc.getString("toOrderId"));
+                }
+            }
+        } catch (GenericEntityException e) {
+            Debug.logError(e, module);
+        }
+
+        for (String orderId : orderIds) {
+            // attempt to start a transaction
+            boolean beganTransaction = false;
+            try {
+                beganTransaction = TransactionUtil.begin();
+            } catch (GenericTransactionException gte) {
+                Debug.logError(gte, "Unable to begin transaction", module);
+            }
+
+            // cancel the order
+            boolean okay = OrderChangeHelper.cancelOrder(dispatcher, userLogin, orderId);
+
+            if (okay) {
+                try {
+                    TransactionUtil.commit(beganTransaction);
+                } catch (GenericTransactionException gte) {
+                    Debug.logError(gte, "Unable to commit transaction", module);
+                }
+            } else {
+                try {
+                    TransactionUtil.rollback(beganTransaction, "Failure in processing PayPal cancel callback", null);
+                } catch (GenericTransactionException gte) {
+                    Debug.logError(gte, "Unable to rollback transaction", module);
+                }
+            }
+
+            // attempt to release the offline hold on the order (workflow)
+            if (okay)
+                OrderChangeHelper.releaseInitialOrderHold(dispatcher, orderId);
+
+        }
+        request.setAttribute("_EVENT_MESSAGE_", UtilProperties.getMessage(resourceErr, "payPalEvents.previousPayPalOrderHasBeenCancelled", locale));
+        return "success";
     }
 }

@@ -173,4 +173,8 @@ under the License.
         <implements service="createPartyPostalAddress"/>
     </service>
 
+    <service name="sendOrderCancelNotification" engine="simple" location="component://productfromthailand/minilang/PFTServices.xml" invoke="sendOrderCancelNotification">
+        <description>Send Order Cancel Notification</description>
+        <attribute name="orderId" type="String" mode="IN" optional="false"/>
+    </service>
 </services>
