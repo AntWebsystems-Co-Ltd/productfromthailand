@@ -264,13 +264,14 @@
                 <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductFromThailandUiLabels" map-name="uiLabelMap" global="true"/>
                 <set field="title" value="${uiLabelMap.PageTitleOrderConfirmationNotice}"/>
                 <set field="baseEcommerceSecureUrl" value="${baseSecureUrl}/pft/control"/>
                 <set field="allowAnonymousView" value="Y"/>  <!-- this field will instruction OrderStatus.groovy to allow an anonymous order to be viewed by anybody, so the email confirmation screen will work -->
                 <script location="component://ecommerce/groovyScripts/order/OrderStatus.groovy"/>
             </actions>
             <widgets>
-                <platform-specific><html><html-template location="component://ecommerce/template/email/OrderNoticeEmail.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/order/OrderNoticeEmail.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
@@ -283,6 +284,7 @@
                 <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductFromThailandUiLabels" map-name="uiLabelMap" global="true"/>
 
                 <script location="component://order/groovyScripts/order/OrderView.groovy"/>
             </actions>
@@ -301,7 +303,7 @@
                         <section>
                             <widgets>
                                 <platform-specific>
-                                    <xsl-fo><html-template location="component://order/template/order/OrderReportHeaderInfo.fo.ftl"/></xsl-fo>
+                                    <xsl-fo><html-template location="component://productfromthailand/webapp/ecommerce/order/OrderReportHeaderInfo.fo.ftl"/></xsl-fo>
                                 </platform-specific>
                             </widgets>
                         </section>
@@ -416,4 +418,19 @@
         </section>
     </screen>
 
+    <screen name="OrderHeaderNotice">
+        <section>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/OrderHeaderNotice.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="OrderItemsNotice">
+        <section>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/OrderItemsNotice.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
 </screens>

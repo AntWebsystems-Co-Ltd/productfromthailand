@@ -1073,7 +1073,7 @@ $(function(){
                         <input type="hidden" name="product_id" value="${product.productId}" />
                         <input type="hidden" name="category_id" value="${productCategoryMember.productCategoryId!}" />
                         <div class="form-group required">
-                            <label class="col-sm-2 control-label ratings">${uiLabelMap.PFTRating}</label>
+                            <label class="col-sm-2 control-label ratings">${uiLabelMap.PFTRateThisProduct}</label>
                             <div class="col-sm-10">
                                 1&nbsp;
                                 <input type="radio" name="productRating" value="1" />

@@ -21,8 +21,7 @@ under the License.
     function getFile(inputIndex){
         document.getElementById("upfile_"+inputIndex).click();
     }
-    function showPreview(ele,index)
-    {
+    function showPreview(ele,index){
         if (ele.files && ele.files[0]) {
             var reader = new FileReader();
             reader.onload = function (e) {
@@ -190,11 +189,11 @@ under the License.
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.ProductProductCategoryId} *</label>
+                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.ProductProductCategoryId}</label>
                         <div class="col-sm-6">
-                            <select name="productCategoryId" class="required form-control">
+                            <select name="productCategoryId" class="form-control">
                                 <#if productCategoryMember??>
-                                    <option value="${productCategoryMember.productCategoryId}">${productCategoryMember.description!}</option>
+                                    <option value="${productCategoryMember.productCategoryId}">${productCategoryMember.categoryName!}</option>
                                     <option value="${productCategoryMember.productCategoryId}">---</option>
                                 <#else>
                                     <option value=""></option>
@@ -203,7 +202,7 @@ under the License.
                                 <#list productCategoryList as productCategory>
                                     <option value="${productCategory.productCategoryId}">${productCategory.categoryName!}</option>
                                 </#list>
-                            </select><span class="tooltip">${uiLabelMap.CommonRequired}</span>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">

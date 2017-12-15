@@ -25,7 +25,7 @@ under the License.
             data: $(form).serialize(),
             async: false,
             success: function(data) {
-                ajaxUpdateArea("cart", "<@ofbizUrl>cartontop</@ofbizUrl>", data);
+                window.location = "<@ofbizUrl>${parameters._CURRENT_VIEW_?if_exists}</@ofbizUrl>";
             }
         });
     }
@@ -37,7 +37,7 @@ under the License.
         <span class="hidden-md">${uiLabelMap.PFTCart}:</span>
         <span id="cart-total">
             ${shoppingCart.getTotalQuantity()} <#if shoppingCart.getTotalQuantity() == 1>${uiLabelMap.OrderItem}<#else>${uiLabelMap.OrderItems}</#if>
-             - <@ofbizCurrency amount=shoppingCart.getDisplayGrandTotal() isoCode=shoppingCart.getCurrency()/>
+             - <@ofbizCurrency amount=orderGrandTotal isoCode=shoppingCart.getCurrency()/>
         </span>
         <i class="fa fa-caret-down"></i>
     </button>
@@ -96,11 +96,11 @@ under the License.
         <li>
             <table class="table table-bordered total">
                 <tbody>
-                    <tr>
+                    <#-- <tr>
                         <td class="text-right"><strong>${uiLabelMap.CommonSubtotal}</strong></td>
                         <td class="text-left"><@ofbizCurrency amount=shoppingCart.getSubTotal() isoCode=shoppingCart.getCurrency()/></td>
                     </tr>
-                    <#-- <tr>
+                    <tr>
                         <td class="text-right"><strong>Eco Tax (-2.00)</strong></td>
                         <td class="text-left">$4.00</td>
                     </tr>
@@ -108,9 +108,19 @@ under the License.
                         <td class="text-right"><strong>VAT (17.5%)</strong></td>
                         <td class="text-left">$192.68</td>
                     </tr> -->
+                    <#assign orderAdjustmentsTotal = 0 />
+                    <#list shoppingCart.getAdjustments() as cartAdjustment>
+                      <#assign orderAdjustmentsTotal = orderAdjustmentsTotal +
+                          Static["org.apache.ofbiz.order.order.OrderReadHelper"]
+                          .calcOrderAdjustment(cartAdjustment, shoppingCart.getSubTotal()) />
+                    </#list>
                     <tr>
-                        <td class="text-right"><strong>${uiLabelMap.CommonTotal}</strong></td>
-                        <td class="text-left"><@ofbizCurrency amount=shoppingCart.getDisplayGrandTotal() isoCode=shoppingCart.getCurrency()/></td>
+                        <td class="text-right"><strong>${uiLabelMap.EcommerceAdjustment}</strong></td>
+                        <td class="text-left"><@ofbizCurrency amount=orderAdjustmentsTotal isoCode=shoppingCart.getCurrency()/></td>
+                    </tr>
+                    <tr>
+                        <td class="text-right"><strong>${uiLabelMap.CommonSubtotal}</strong></td>
+                        <td class="text-left"><@ofbizCurrency amount=orderGrandTotal isoCode=shoppingCart.getCurrency()/></td>
                     </tr>
                 </tbody>
             </table>

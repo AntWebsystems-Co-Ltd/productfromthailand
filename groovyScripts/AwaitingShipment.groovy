@@ -28,7 +28,20 @@ if (purchaseOrders) {
             if (saleOrderPaymentPref) {
                 saleOrder = from("OrderHeaderAndRoles").where("orderId", saleOrderPaymentPref.orderId, "roleTypeId", "BILL_TO_CUSTOMER", "orderTypeId", "SALES_ORDER", "statusId", "ORDER_APPROVED").orderBy("-orderDate").queryFirst();
                 if (saleOrder) {
-                    orderLists.add(purchaseOrder);
+                    orderMap = [:]
+                    customerName = from("PartyNameView").where("partyId", saleOrder.partyId).queryOne();
+                    if (customerName) {
+                        if (customerName.partyTypeId.equals("PERSON") && customerName.firstName && customerName.lastName) {
+                            orderMap.customerName = customerName.firstName + " " + customerName.lastName;
+                        } else if (customerName.partyTypeId.equals("PARTY_GROUP") && customerName.groupName) {
+                            orderMap.customerName = customerName.groupName;
+                        }
+                    }
+                    orderMap.orderId = purchaseOrder.orderId
+                    orderMap.orderDate = purchaseOrder.orderDate
+                    orderMap.grandTotal = purchaseOrder.grandTotal
+                    orderMap.currencyUom = purchaseOrder.currencyUom
+                    orderLists.add(orderMap);
                 }
             }
         }

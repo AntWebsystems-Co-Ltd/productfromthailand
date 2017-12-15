@@ -27,7 +27,7 @@ under the License.
     <!-- Store Management Menu Ends -->
     <div class="col-sm-9">
       <h4 class="main-heading text-center">
-        ${uiLabelMap.PFTCancellations} ${uiLabelMap.OrderOrder}
+        ${uiLabelMap.PFTCancellations}
       </h4>
       <div class="table-responsive shopping-cart-table">
           <table class="table table-bordered">

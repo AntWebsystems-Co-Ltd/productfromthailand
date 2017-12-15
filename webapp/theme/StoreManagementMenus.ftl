@@ -29,7 +29,7 @@ under the License.
     </a>
     <a href="<@ofbizUrl>PurchaseOrderList</@ofbizUrl>" class="list-group-item <#if requestAttributes.isMyOrders?default("N") == "Y">selected</#if>">
         <i class="fa fa-chevron-right"></i>
-        ${uiLabelMap.PFTMyOrders}
+        ${uiLabelMap.OrderOrderList}
     </a>
     <#if requestAttributes.isMyOrders?default("N") == "Y" || requestAttributes.isMyOrdersSub?default("N") == "Y">
     <ul class="store-dropdown">

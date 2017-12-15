@@ -18,13 +18,8 @@
  *******************************************************************************/
 package org.apache.ofbiz.productfromthailand;
 
-import java.math.BigDecimal;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.RandomAccessFile;
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,9 +39,9 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.ofbiz.base.util.Debug;
 import org.apache.ofbiz.base.util.FileUtil;
 import org.apache.ofbiz.base.util.GeneralException;
+import org.apache.ofbiz.base.util.UtilDateTime;
 import org.apache.ofbiz.base.util.UtilGenerics;
 import org.apache.ofbiz.base.util.UtilHttp;
-import org.apache.ofbiz.base.util.UtilDateTime;
 import org.apache.ofbiz.base.util.UtilMisc;
 import org.apache.ofbiz.base.util.UtilProperties;
 import org.apache.ofbiz.base.util.UtilValidate;
@@ -57,10 +52,8 @@ import org.apache.ofbiz.entity.condition.EntityCondition;
 import org.apache.ofbiz.entity.condition.EntityOperator;
 import org.apache.ofbiz.entity.util.EntityQuery;
 import org.apache.ofbiz.entity.util.EntityUtilProperties;
-import org.apache.ofbiz.product.imagemanagement.ImageManagementServices;
 import org.apache.ofbiz.service.GenericServiceException;
 import org.apache.ofbiz.service.LocalDispatcher;
-import org.apache.ofbiz.productfromthailand.ImportProduct;
 
 /**
  * Product Services
@@ -264,33 +257,43 @@ public class PFTProductServices {
                 }
 
                 /*Product Category Member*/
-                GenericValue categoryMember = EntityQuery.use(delegator).from("ProductCategoryMember")
-                            .where("productId", formInput.get("productId"))
-                            .filterByDate().queryFirst();
-                if(categoryMember != null){
-                    if(!formInput.get("productCategoryId").equals(categoryMember.get("productCategoryId"))){
-                        Map<String, Object> productCategoryMap = UtilMisc.toMap("productId", productId, "fromDate", categoryMember.getTimestamp("fromDate"), "productCategoryId", categoryMember.get("productCategoryId"), "userLogin", userLogin);
-                        productCategoryResult = dispatcher.runSync("removeProductFromCategory", productCategoryMap);
-                        if("success".equals(productCategoryResult.get("responseMessage"))){
-                            Map<String, Object> newProductCategoryMap = UtilMisc.toMap("productId", productId, "fromDate", UtilDateTime.nowTimestamp(), "productCategoryId", formInput.get("productCategoryId"), "userLogin", userLogin);
-                            productCategoryResult = dispatcher.runSync("safeAddProductToCategory", newProductCategoryMap);
+                if (UtilValidate.isNotEmpty(formInput.get("productCategoryId"))) {
+                    GenericValue categoryMember = EntityQuery.use(delegator).from("ProductCategoryMember")
+                                .where("productId", formInput.get("productId"))
+                                .filterByDate().queryFirst();
+
+                    if(categoryMember != null){
+                        if(!formInput.get("productCategoryId").equals(categoryMember.get("productCategoryId"))){
+                            Map<String, Object> productCategoryMap = UtilMisc.toMap("productId", productId, "fromDate", categoryMember.getTimestamp("fromDate"), "productCategoryId", categoryMember.get("productCategoryId"), "userLogin", userLogin);
+                            productCategoryResult = dispatcher.runSync("removeProductFromCategory", productCategoryMap);
+                            if("success".equals(productCategoryResult.get("responseMessage"))){
+                                Map<String, Object> newProductCategoryMap = UtilMisc.toMap("productId", productId, "fromDate", UtilDateTime.nowTimestamp(), "productCategoryId", formInput.get("productCategoryId"), "userLogin", userLogin);
+                                productCategoryResult = dispatcher.runSync("safeAddProductToCategory", newProductCategoryMap);
+                            }
                         }
+                    } else {
+                        /*Create Product Category Member*/
+                        Map<String, Object> productCategoryMap = UtilMisc.toMap("productId", productId, "fromDate", UtilDateTime.nowTimestamp(), "productCategoryId", formInput.get("productCategoryId"), "userLogin", userLogin);
+                        productCategoryResult = dispatcher.runSync("safeAddProductToCategory", productCategoryMap);
                     }
-                } else {
-                    /*Create Product Category Member*/
-                    Map<String, Object> productCategoryMap = UtilMisc.toMap("productId", productId, "fromDate", UtilDateTime.nowTimestamp(), "productCategoryId", formInput.get("productCategoryId"), "userLogin", userLogin);
-                    productCategoryResult = dispatcher.runSync("safeAddProductToCategory", productCategoryMap);
                 }
 
                 /*Update Product Name Content*/
+                String pNameEnDataResourceId = productId + "-PNAMEEN";
+                String pNameThDataResourceId = productId + "-PNAMETH";
+                String pNameEnContentId = pNameEnDataResourceId;
+                String pNameThContentId = pNameThDataResourceId;
                 GenericValue prodNameTextEN = EntityQuery.use(delegator).from("ElectronicText").where("dataResourceId", formInput.get("dataResourceProdENId")).queryOne();
                 if (prodNameTextEN != null) {
                     Map<String, Object> updateProdNameTextENMap = UtilMisc.toMap("dataResourceId", prodNameTextEN.get("dataResourceId"), "textData", formInput.get("productName"), "userLogin", userLogin);
                     dispatcher.runSync("updateElectronicText", updateProdNameTextENMap);
                 } else {
-                    String pNameEnDataResourceId = productId + "-PNAMEEN";
-                    Map<String, Object> createProdNameTextENMap = UtilMisc.toMap("dataResourceId", pNameEnDataResourceId, "textData", formInput.get("productName"), "userLogin", userLogin);
-                    dispatcher.runSync("createElectronicText", createProdNameTextENMap);
+                    Map<String, Object> createPNameEnDataResource = ImportProduct.prepareDataResource(pNameEnDataResourceId, "en", (String) formInput.get("productName"), userLogin);
+                    dispatcher.runSync("createDataResourceAndText", createPNameEnDataResource);
+                    Map<String, Object> pNameEnContent = ImportProduct.prepareContent(pNameEnContentId, pNameEnDataResourceId, "en", userLogin);
+                    dispatcher.runSync("createContent", pNameEnContent);
+                    Map<String, Object> createNameProductContent = ImportProduct.prepareProductContent(productId, pNameEnDataResourceId, UtilDateTime.nowTimestamp(), "PRODUCT_NAME", "add", userLogin);
+                    dispatcher.runSync("createProductContent", createNameProductContent);
                 }
 
                 GenericValue prodNameTextTH = EntityQuery.use(delegator).from("ElectronicText").where("dataResourceId", formInput.get("dataResourceProdTHId")).queryOne();
@@ -298,20 +301,33 @@ public class PFTProductServices {
                     Map<String, Object> updateProdNameTextTHMap = UtilMisc.toMap("dataResourceId", prodNameTextTH.get("dataResourceId"), "textData", formInput.get("productNameTH"), "userLogin", userLogin);
                     dispatcher.runSync("updateElectronicText", updateProdNameTextTHMap);
                 } else {
-                    String pNameThDataResourceId = productId + "-PNAMETH";
-                    Map<String, Object> createProdNameTextTHMap = UtilMisc.toMap("dataResourceId", pNameThDataResourceId, "textData", formInput.get("productNameTH"), "userLogin", userLogin);
-                    dispatcher.runSync("createElectronicText", createProdNameTextTHMap);
+                    Map<String, Object> createPNameThDataResource = ImportProduct.prepareDataResource(pNameThDataResourceId, "th", (String) formInput.get("productNameTH"), userLogin);
+                    dispatcher.runSync("createDataResourceAndText", createPNameThDataResource);
+                    Map<String, Object> pNameThContent = ImportProduct.prepareContent(pNameThContentId, pNameThDataResourceId, "th", userLogin);
+                    dispatcher.runSync("createContent", pNameThContent);
+                }
+                GenericValue pNameContentAssoc = EntityQuery.use(delegator).from("ContentAssoc").where("contentId", pNameEnContentId, "contentIdTo", pNameThContentId).filterByDate().queryFirst();
+                if (pNameContentAssoc == null) {
+                    Map<String, Object> createNameContentAssoc = ImportProduct.prepareContentAssoc(pNameEnContentId, pNameThContentId, UtilDateTime.nowTimestamp(), userLogin);
+                    dispatcher.runSync("createContentAssoc", createNameContentAssoc);
                 }
 
                 /*Update Product Description Content*/
+                String pDescEnDataResourceId = productId + "-DESCEN";
+                String pDescThDataResourceId = productId + "-DESCTH";
+                String pDescEnContentId = pDescEnDataResourceId;
+                String pDescThContentId = pDescThDataResourceId;
                 GenericValue prodDescTextEN = EntityQuery.use(delegator).from("ElectronicText").where("dataResourceId", formInput.get("dataResourceDescENId")).queryOne();
                 if (prodDescTextEN != null) {
                     Map<String, Object> updateProdDescTextENMap = UtilMisc.toMap("dataResourceId", prodDescTextEN.get("dataResourceId"), "textData", formInput.get("description"), "userLogin", userLogin);
                     dispatcher.runSync("updateElectronicText", updateProdDescTextENMap);
                 } else {
-                    String pDescEnDataResourceId = productId + "-DESCEN";
-                    Map<String, Object> createProdDescTextENMap = UtilMisc.toMap("dataResourceId", pDescEnDataResourceId, "textData", formInput.get("description"), "userLogin", userLogin);
-                    dispatcher.runSync("createElectronicText", createProdDescTextENMap);
+                    Map<String, Object> createPDescEnDataResource = ImportProduct.prepareDataResource(pDescEnDataResourceId, "en", (String) formInput.get("description") , userLogin);
+                    dispatcher.runSync("createDataResourceAndText", createPDescEnDataResource);
+                    Map<String, Object> pDescEnContent = ImportProduct.prepareContent(pDescEnContentId, pDescEnDataResourceId, "en", userLogin);
+                    dispatcher.runSync("createContent", pDescEnContent);
+                    Map<String, Object> createDescProductContent = ImportProduct.prepareProductContent(productId, pDescEnContentId, UtilDateTime.nowTimestamp(), "DESCRIPTION", "add", userLogin);
+                    dispatcher.runSync("createProductContent", createDescProductContent);
                 }
 
                 GenericValue prodDescTextTH = EntityQuery.use(delegator).from("ElectronicText").where("dataResourceId", formInput.get("dataResourceDescTHId")).queryOne();
@@ -319,9 +335,15 @@ public class PFTProductServices {
                     Map<String, Object> updateProdDescTextTHMap = UtilMisc.toMap("dataResourceId", prodDescTextTH.get("dataResourceId"), "textData", formInput.get("descriptionTH"), "userLogin", userLogin);
                     dispatcher.runSync("updateElectronicText", updateProdDescTextTHMap);
                 } else {
-                    String pDescThDataResourceId = productId + "-DESCTH";
-                    Map<String, Object> createProdDescTextTHMap = UtilMisc.toMap("dataResourceId", pDescThDataResourceId, "textData", formInput.get("descriptionTH"), "userLogin", userLogin);
-                    dispatcher.runSync("createElectronicText", createProdDescTextTHMap);
+                    Map<String, Object> createPDescThDataResource = ImportProduct.prepareDataResource(pDescThDataResourceId, "th", (String) formInput.get("descriptionTH") , userLogin);
+                    dispatcher.runSync("createDataResourceAndText", createPDescThDataResource);
+                    Map<String, Object> pDescThContent = ImportProduct.prepareContent(pDescThContentId, pDescThDataResourceId, "th", userLogin);
+                    dispatcher.runSync("createContent", pDescThContent);
+                }
+                GenericValue pDescContentAssoc = EntityQuery.use(delegator).from("ContentAssoc").where("contentId", pDescEnContentId, "contentIdTo", pDescThContentId).filterByDate().queryFirst();
+                if (pDescContentAssoc == null) {
+                    Map<String, Object> createDescContentAssoc = ImportProduct.prepareContentAssoc(pDescEnContentId, pDescThContentId, UtilDateTime.nowTimestamp(), userLogin);
+                    dispatcher.runSync("createContentAssoc", createDescContentAssoc);
                 }
             }
             FileItem fi2 = null;

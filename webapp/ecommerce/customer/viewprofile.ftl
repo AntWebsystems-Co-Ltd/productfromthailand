@@ -46,7 +46,7 @@ under the License.
     </div>
     <div class="panel-body">
       <#if person?exists || partyGroup?exists>
-      <dl class="dl-horizontal">
+      <dl class="dl-horizontal" id="partyinformation">
         <#if person?exists>
           <dt>${uiLabelMap.PartyName} :</dt>
           <dd>

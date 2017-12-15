@@ -43,6 +43,9 @@ under the License.
                             ${uiLabelMap.EcommerceUnitPrice}
                         </td>
                         <td class="text-center">
+                            ${uiLabelMap.EcommerceAdjustments}
+                        </td>
+                        <td class="text-center">
                             ${uiLabelMap.EcommerceItemTotal}
                         </td>
                         <td class="text-center">
@@ -88,6 +91,9 @@ under the License.
                                 <@ofbizCurrency amount=cartLine.getDisplayPrice() isoCode=shoppingCart.getCurrency()/>
                             </td>
                             <td class="text-center">
+                                <@ofbizCurrency amount=cartLine.getOtherAdjustments() isoCode=shoppingCart.getCurrency()/>
+                            </td>
+                            <td class="text-center">
                                 <@ofbizCurrency amount=cartLine.getDisplayItemSubTotal() isoCode=shoppingCart.getCurrency()/>
                             </td>
                             <td class="text-center">
@@ -117,8 +123,8 @@ under the License.
                 </tbody>
                 <tfoot>
                     <tr>
-                      <td colspan="4" class="text-right">
-                        <strong>${uiLabelMap.PFTTotal} :</strong>
+                      <td colspan="5" class="text-right">
+                        <strong>${uiLabelMap.CommonSubtotal} :</strong>
                       </td>
                       <td colspan="2" class="text-left">
                         <@ofbizCurrency amount=shoppingCart.getDisplaySubTotal() isoCode=shoppingCart.getCurrency()/>
@@ -180,17 +186,17 @@ under the License.
                                 </#list>
                                 <dt>${uiLabelMap.EcommerceAdjustment} :</dt>
                                 <dd><@ofbizCurrency amount=orderAdjustmentsTotal isoCode=shoppingCart.getCurrency() /></dd>
-                                <dt>${uiLabelMap.CommonSubtotal} :</dt>
+                                <#-- <dt>${uiLabelMap.CommonSubtotal} :</dt>
                                 <dd><@ofbizCurrency amount=shoppingCart.getSubTotal() isoCode=shoppingCart.getCurrency() /></dd>
-                                <#-- <dt>${uiLabelMap.OrderShippingAndHandling} :</dt>
+                                <dt>${uiLabelMap.OrderShippingAndHandling} :</dt>
                                 <dd><@ofbizCurrency amount=shoppingCart.getTotalShipping() isoCode=shoppingCart.getCurrency() /></dd>
                                 <dt>${uiLabelMap.PFTSalesTax} :</dt>
                                 <dd><@ofbizCurrency amount=shoppingCart.getTotalSalesTax() isoCode=shoppingCart.getCurrency() /></dd> -->
                             </dl>
                             <hr />
                             <dl class="dl-horizontal total">
-                                <dt>${uiLabelMap.OrderGrandTotal} :</dt>
-                                <dd><@ofbizCurrency amount=shoppingCart.getDisplayGrandTotal() isoCode=shoppingCart.getCurrency() /></dd>
+                                <dt>${uiLabelMap.CommonTotal} :</dt>
+                                <dd><@ofbizCurrency amount=orderGrandTotal isoCode=shoppingCart.getCurrency() /></dd>
                             </dl>
                             <hr />
                             <div class="text-uppercase clearfix">

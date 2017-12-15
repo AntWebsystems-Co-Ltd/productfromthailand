@@ -31,9 +31,8 @@ under the License.
         <a href="<@ofbizUrl fullPath="true">makeReturn?orderId=${orderHeader.orderId}</@ofbizUrl>"
             class="submenutextright">${uiLabelMap.OrderRequestReturn}</a>
       </#if>
-      ${uiLabelMap.OrderOrder}
       <#if orderHeader?has_content>
-        ${uiLabelMap.CommonNbr}
+        ${uiLabelMap.PFTOrderNbr}
         <a href="<@ofbizUrl fullPath="true">orderstatus?orderId=${orderHeader.orderId}</@ofbizUrl>"
             class="lightbuttontext">${orderHeader.orderId}</a>
       </#if>
@@ -47,22 +46,31 @@ under the License.
     <div class="panel-body">
       <#-- placing customer information -->
         <#if localOrderReadHelper?? && orderHeader?has_content>
-          <#assign displayParty = localOrderReadHelper.getPlacingParty()!/>
-          <#if displayParty?has_content>
-            <#assign displayPartyNameResult = dispatcher.runSync("getPartyNameForDate", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", displayParty.partyId, "compareDate", orderHeader.orderDate, "userLogin", userLogin))/>
+          <#assign customerParty = localOrderReadHelper.getPlacingParty()!/>
+          <#if customerParty?has_content>
+            <#assign customerPartyNameResult = dispatcher.runSync("getPartyNameForDate", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", customerParty.partyId, "compareDate", orderHeader.orderDate, "userLogin", userLogin))/>
           </#if>
-          <#if displayPartyNameResult?exists && displayPartyNameResult.fullName?exists>
+          <#assign supplierParty = localOrderReadHelper.getSupplierAgent()!/>
+          <#if supplierParty?has_content>
+            <#assign supplierPartyNameResult = dispatcher.runSync("getPartyNameForDate", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", supplierParty.partyId, "compareDate", orderHeader.orderDate, "userLogin", userLogin))/>
+          </#if>
           <p>
             ${uiLabelMap.PartyName}
-            ${(displayPartyNameResult.fullName)?default("[Name Not Found]")}
+            <#if customerPartyNameResult?has_content>
+                ${customerPartyNameResult.fullName!}
+            <#elseif supplierPartyNameResult?has_content>
+                ${supplierPartyNameResult.groupName!} ${supplierPartyNameResult.fullName!}
+            <#else>
+                [Name Not Found]
+            </#if>
           </p>
-          </#if>
         </#if>
         <#-- order status information -->
         <p>
           ${uiLabelMap.CommonStatus}
           <#if orderHeader?has_content>
-            ${localOrderReadHelper.getStatusString(locale)}
+            <#assign statusItem = orderHeader.getRelatedOne("StatusItem", false)!>
+            ${statusItem.get("description", locale)}
           <#else>
             ${uiLabelMap.OrderNotYetOrdered}
           </#if>
@@ -271,7 +279,7 @@ under the License.
             </p>
           </#if>
           <p>
-            ${uiLabelMap.OrderMethod}:
+            ${uiLabelMap.PFTShippingMethod}:
             <#if orderHeader?has_content>
               <#assign shipmentMethodType = shipGroup.getRelatedOne("ShipmentMethodType", false)!>
               <#assign carrierPartyId = shipGroup.carrierPartyId!>

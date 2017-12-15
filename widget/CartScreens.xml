@@ -69,7 +69,7 @@ under the License.
 
                 <set field="titleProperty" value="PageTitleShoppingCart"/>
                 <set field="headerItem" value="Shopping Cart"/>
-                <script location="component://ecommerce/groovyScripts/cart/ShowCart.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/ShowCart.groovy"/>
                 <script location="component://ecommerce/groovyScripts/cart/ShowPromoText.groovy"/>
             </actions>
             <widgets>
@@ -87,7 +87,7 @@ under the License.
                 <set field="promoUseDetailsInlineScreen" value="component://productfromthailand/widget/CartScreens.xml#promoUseDetailsInline"/>
 
                 <set field="titleProperty" value="PageTitleShowAllPromotions"/>
-                <script location="component://ecommerce/groovyScripts/cart/ShowCart.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/ShowCart.groovy"/>
                 <script location="component://ecommerce/groovyScripts/cart/ShowPromoText.groovy"/>
             </actions>
             <widgets>
@@ -121,7 +121,7 @@ under the License.
             <actions>
                 <property-map resource="ProductFromThailandUiLabels" map-name="uiLabelMap"/>
                 <property-map resource="OrderUiLabels" map-name="uiLabelMap"/>
-                <script location="component://ecommerce/groovyScripts/cart/ShowCart.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/ShowCart.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/CartOnTop.ftl"/></html></platform-specific>

@@ -27,6 +27,10 @@ import org.apache.ofbiz.product.image.ScaleImage;
 import org.apache.ofbiz.base.util.*;
 import org.apache.ofbiz.product.category.CategoryWorker
 import org.apache.ofbiz.product.product.ProductContentWrapper
+import org.apache.ofbiz.product.catalog.CatalogWorker
+import org.apache.ofbiz.entity.condition.EntityConditionBuilder
+
+exprBldr = new EntityConditionBuilder();
 
 webSite = from('WebSite').where('webSiteId', webSiteId).queryOne();
 if (webSite) {
@@ -47,14 +51,21 @@ context.topLevelList = request.getAttribute("topLevelList")
 categoryList = request.getAttribute("topLevelList")
 context.productCategoryList = categoryList;
 
+// get promotion category
+promoCat = CatalogWorker.getCatalogPromotionsCategoryId(request);
 productImageList = [];
 if (product) {
-    productCategory = from("ProductCategoryMember").where("productId", product.productId).filterByDate().queryFirst();
+    productCategoryCond = exprBldr.AND() {
+        EQUALS(productId: product.productId)
+        NOT_EQUALS(productCategoryId: promoCat)
+    }
+    productCategory = from("ProductCategoryMember").where(productCategoryCond).filterByDate().queryFirst();
     if(productCategory){
-        description = from("ProductCategory").where("productCategoryId", productCategory.productCategoryId).queryOne();
+        catDes = from("ProductCategory").where("productCategoryId", productCategory.productCategoryId).queryOne();
         productCategoryMember = [:]
-        productCategoryMember.description = description.description;
-        productCategoryMember.productCategoryId = productCategory.productCategoryId;
+        productCategoryMember.description = catDes.description;
+        productCategoryMember.categoryName = catDes.categoryName;
+        productCategoryMember.productCategoryId = catDes.productCategoryId;
         context.productCategoryMember = productCategoryMember;
     }
 

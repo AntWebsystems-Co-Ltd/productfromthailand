@@ -57,7 +57,7 @@ under the License.
             <thead>
               <tr>
                 <th>${uiLabelMap.CommonDate}</th>
-                <th>${uiLabelMap.OrderOrder} ${uiLabelMap.CommonNbr}</th>
+                <th>${uiLabelMap.PFTOrderNbr}</th>
                 <th>${uiLabelMap.ProductProductName}</th>
                 <th>${uiLabelMap.CommonAmount}</th>
                 <th>${uiLabelMap.CommonStatus}</th>

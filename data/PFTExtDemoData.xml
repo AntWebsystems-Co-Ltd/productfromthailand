@@ -72,6 +72,43 @@
     <Product productId="CR10000" productName="CAREEL Coffee" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="CAREEL Coffee 200g" inventoryItemTypeId="NON_SERIAL_INV_ITEM" orderDecimalQuantity="N" productWeight="200.000000" requirementMethodEnumId="PRODRQM_DS" weightUomId="WT_g" isVirtual="Y" isVariant="N"/>
     <Product productId="CR10000-RB" productTypeId="FINISHED_GOOD" productName="CAREEL Coffee Roast Whole Bean Coffee" brandName="Careel" internalName="CAREEL Coffee : Roast Whole Bean Coffee 200g" description="CAREEL Coffee : Roast Whole Bean Coffee" longDescription="" productWeight="200.000000" weightUomId="WT_g" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
     <Product productId="CR10000-RG" productTypeId="FINISHED_GOOD" productName="CAREEL Coffee Roast Ground Coffee" brandName="Careel" internalName="CAREEL Coffee : Roast Ground Coffee 200g" description="CAREEL Coffee : Roast Ground Coffee" productWeight="200.000000" weightUomId="WT_g" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <!-- Name and Description -->
+    <DataResource dataResourceId="CR10000-RB-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10000-RB-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10000-RB-PNAMETH" textData="กาแฟ คารีล คอฟฟี่ คั่วทั้งเม็ด ขนาด 200 กรัม"/>
+    <ElectronicText dataResourceId="CR10000-RB-PNAMEEN" textData="CAREEL Coffee Roast Whole Bean Coffee 200g"/>
+    <Content contentId="CR10000-RB-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10000-RB-PNAMETH" description="PRODUCT NAME TH CAREEL Coffee" localeString="th"/>
+    <Content contentId="CR10000-RB-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10000-RB-PNAMEEN" description="PRODUCT NAME EN CAREEL Coffee" localeString="en"/>
+    <ProductContent productId="CR10000-RB" contentId="CR10000-RB-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10000-RB-PNAMEEN" contentIdTo="CR10000-RB-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10000-RB-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10000-RB-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10000-RB-DESCTH" textData="กาแฟสด อราบีก้า จากไร่ออแกนิกส์ 100% (ปลูกแซมป่า) กาแฟเกรดสูง คุณภาพกาแฟและความหอมที่เลื่องลือ เราคั่วใหม่เสมอ เพื่อคอกาแฟแท้ ทั้งชนิดเม็ดและบด"/>
+    <ElectronicText dataResourceId="CR10000-RB-DESCEN" textData="CAREEL Coffee Arabica shade grown 100%. Single origin from Bakker's farm at DOI CHAANG CHIANGMAI, we make sure our customer get only the best and fresh coffee from our farm."/>
+    <Content contentId="CR10000-RB-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10000-RB-DESCTH" description="DESCRIPTION TH CAREEL Coffee" localeString="th"/>
+    <Content contentId="CR10000-RB-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10000-RB-DESCEN" description="DESCRIPTION EN CAREEL Coffee" localeString="en"/>
+    <ProductContent productId="CR10000-RB" contentId="CR10000-RB-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10000-RB-DESCEN" contentIdTo="CR10000-RB-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10000-RG-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10000-RG-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10000-RG-PNAMETH" textData="กาแฟ คารีล คอฟฟี่ คั่วบด ขนาด 200 กรัม"/>
+    <ElectronicText dataResourceId="CR10000-RG-PNAMEEN" textData="CAREEL Coffee Roast Ground Coffee 200g"/>
+    <Content contentId="CR10000-RG-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10000-RG-PNAMETH" description="PRODUCT NAME TH CAREEL Coffee" localeString="th"/>
+    <Content contentId="CR10000-RG-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10000-RG-PNAMEEN" description="PRODUCT NAME EN CAREEL Coffee" localeString="en"/>
+    <ProductContent productId="CR10000-RG" contentId="CR10000-RG-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10000-RG-PNAMEEN" contentIdTo="CR10000-RG-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10000-RG-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10000-RG-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10000-RG-DESCTH" textData="กาแฟสด อราบีก้า จากไร่ออแกนิกส์ 100% (ปลูกแซมป่า) กาแฟเกรดสูง คุณภาพกาแฟและความหอมที่เลื่องลือ เราคั่วใหม่เสมอ เพื่อคอกาแฟแท้ ทั้งชนิดเม็ดและบด"/>
+    <ElectronicText dataResourceId="CR10000-RG-DESCEN" textData="CAREEL Coffee Arabica shade grown 100%. Single origin from Bakker's farm at DOI CHAANG CHIANGMAI, we make sure our customer get only the best and fresh coffee from our farm."/>
+    <Content contentId="CR10000-RG-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10000-RG-DESCTH" description="DESCRIPTION TH CAREEL Coffee" localeString="th"/>
+    <Content contentId="CR10000-RG-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10000-RG-DESCEN" description="DESCRIPTION EN CAREEL Coffee" localeString="en"/>
+    <ProductContent productId="CR10000-RG" contentId="CR10000-RG-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10000-RG-DESCEN" contentIdTo="CR10000-RG-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
     <ProductFeatureAppl productId="CR10000" productFeatureId="CF10000"
         productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
     <ProductFeatureAppl productId="CR10000" productFeatureId="CF10001"

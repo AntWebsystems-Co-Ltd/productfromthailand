@@ -27,7 +27,7 @@ under the License.
     <!-- Store Management Menu Ends -->
     <div class="col-sm-9">
       <h4 class="main-heading text-center">
-        ${uiLabelMap.PFTAwaitingShipment} ${uiLabelMap.OrderOrder}
+        ${uiLabelMap.PFTAwaitingShipment}
       </h4>
       <div class="table-responsive shopping-cart-table">
           <table class="table table-bordered">
@@ -38,6 +38,9 @@ under the License.
                 </td>
                 <td class="text-center">
                     ${uiLabelMap.OrderDate}
+                </td>
+                <td class="text-center">
+                    ${uiLabelMap.GrowErpCustomerName}
                 </td>
                 <td class="text-center">
                     ${uiLabelMap.OrderGrandTotal}
@@ -63,14 +66,17 @@ under the License.
                       ${orderList.orderDate?string.medium}
                     </td>
                     <td class="text-center">
+                      ${orderList.customerName}
+                    </td>
+                    <td class="text-center">
                       <@ofbizCurrency amount=orderList.grandTotal! isoCode=orderList.currencyUom/>
                     </td>
                     <#-- <td class="text-center">
                       ${Static["org.apache.ofbiz.party.party.PartyHelper"].getPartyName(delegator, orderList.partyId, false)!}[${orderList.partyId}]
                     </td>  -->
                     <td class="text-center">
-                      <input type="button" class="btn btn-main" value="${uiLabelMap.CommonView}" onclick="javascript: location.href = '<@ofbizUrl>orderstatus?orderId=${orderList.orderId}</@ofbizUrl>';"/>
-                      <button type="button" class="btn btn-main" id="${orderList.orderId!}" data-toggle="modal" data-target="#trackingModal">${uiLabelMap.FacilityShip}</button>
+                      <a class="btn btn-main" href="<@ofbizUrl>orderstatus?orderId=${orderList.orderId}</@ofbizUrl>" target="_blank">${uiLabelMap.CommonView}</a>
+                      <button type="button" class="btn btn-main" id="${orderList.orderId!}" data-toggle="modal" data-target="#trackingModal">${uiLabelMap.PFTShip}</button>
                     </td>
                   </tr>
                   <!-- Modal -->

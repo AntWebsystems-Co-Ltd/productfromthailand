@@ -80,6 +80,7 @@
     </property>
     <property key="PFTAwaitingShipment">
         <value xml:lang="en">Awaiting Shipment</value>
+        <value xml:lang="th">รอการจัดส่ง</value>
     </property>
     <property key="PFTBackToEdit">
         <value xml:lang="en">Back to edit</value>
@@ -95,6 +96,7 @@
     </property>
     <property key="PFTCancellations">
         <value xml:lang="en">Cancellations</value>
+        <value xml:lang="th">ยกเลิก</value>
     </property>
     <property key="PFTCaptchaMissingError">
         <value xml:lang="en">Missing or wrong captcha.</value>
@@ -313,6 +315,10 @@
         <value xml:lang="en">Or</value>
         <value xml:lang="th">หรือ</value>
     </property>
+    <property key="PFTOrderNbr">
+        <value xml:lang="en">Order Nbr</value>
+        <value xml:lang="th">หมายเลขคำสั่งซื้อ</value>
+    </property>
     <property key="PFTOrderHistory">
         <value xml:lang="en">Order History of</value>
         <value xml:lang="th">ประวัติการสั่งซื้อของ</value>
@@ -323,6 +329,7 @@
     </property>
     <property key="PFTPaidAndShipped">
         <value xml:lang="en">Paid and Shipped</value>
+        <value xml:lang="th">ชำระเงินและจัดส่งแล้ว</value>
     </property>
     <property key="PFTPartner">
         <value xml:lang="en">Partner</value>
@@ -407,6 +414,10 @@
     <property key="PFTRatePFT">
         <value xml:lang="en">PFT Rate</value>
         <value xml:lang="th">อัตราค่าธรรมเนียม PFT</value>
+    </property>
+    <property key="PFTRateThisProduct">
+        <value xml:lang="en">Rate This Product</value>
+        <value xml:lang="th">ให้คะแนนสินค้าชิ้นนี้</value>
     </property>
     <property key="PFTRecentlyAddedItems">
         <value xml:lang="en">Recently Added Items</value>
@@ -507,6 +518,14 @@
     <property key="PFTServices">
         <value xml:lang="en">Services</value>
         <value xml:lang="th">บริการ</value>
+    </property>
+    <property key="PFTShip">
+        <value xml:lang="en">Ship</value>
+        <value xml:lang="th">จัดส่งสินค้า</value>
+    </property>
+    <property key="PFTShippingMethod">
+        <value xml:lang="en">Shipping Method</value>
+        <value xml:lang="th">วิธีการจัดส่งสินค้า</value>
     </property>
     <property key="PFTShowing">
         <value xml:lang="en">Showing</value>
@@ -638,6 +657,10 @@
     <property key="PFTThaiBaht">
         <value xml:lang="en">THB</value>
         <value xml:lang="th">บาท</value>
+    </property>
+    <property key="PFTThankYouForYourPatronage">
+        <value xml:lang="en">THANK YOU FOR YOUR PATRONAGE!</value>
+        <value xml:lang="th">ขอบคุณที่ใช้บริการ</value>
     </property>
     <property key="PFTThisProductAddedToWishListSuccessful">
         <value xml:lang="en">This product added to wish list successful.</value>

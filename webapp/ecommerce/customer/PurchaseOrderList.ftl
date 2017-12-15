@@ -26,7 +26,7 @@ under the License.
     <!-- Store Management Menu Ends -->
     <div class="col-sm-9">
       <h4 class="main-heading text-center">
-        ${uiLabelMap.PFTMyOrders}
+        ${uiLabelMap.OrderOrderList}
       </h4>
       <div class="table-responsive shopping-cart-table">
           <table class="table table-bordered">
@@ -67,7 +67,7 @@ under the License.
                       ${orderList.orderDate?string.medium}
                     </td>
                     <td class="text-center">
-                      ${orderStatus.description}
+                      ${orderStatus.get("description", locale)}
                     </td>
                     <td class="text-center">
                       <@ofbizCurrency amount=orderList.grandTotal! isoCode=orderList.currencyUom/>
