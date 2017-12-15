@@ -67,11 +67,11 @@ $(document).ready( function() {
         </tr>
         <tr id="checkouttotal_tax" class="checkouttotal">
             <td colspan="2"><b>${uiLabelMap.PFTSalesTax}</b></td>
-            <td class="text-right"><b><@ofbizCurrency amount=shoppingCart.getTotalSalesTax() isoCode=shoppingCart.getCurrency() /></b></td>
+            <td class="text-right"><b><@ofbizCurrency amount=orderTaxTotal isoCode=shoppingCart.getCurrency() /></b></td>
         </tr>
         <tr id="checkouttotal_grandtotal" class="checkouttotal">
             <td colspan="2"><b>${uiLabelMap.OrderGrandTotal}</b></td>
-            <td class="text-right"><b><@ofbizCurrency amount=shoppingCart.getDisplayGrandTotal() isoCode=shoppingCart.getCurrency() /></b></td>
+            <td class="text-right"><b><@ofbizCurrency amount=orderGrandTotal isoCode=shoppingCart.getCurrency() /></b></td>
         </tr>
     </tfoot>
 </table>

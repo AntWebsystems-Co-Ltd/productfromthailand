@@ -136,3 +136,22 @@ if (salesReps) {
     }
 }
 context.cartParties = cartParties
+
+BigDecimal shippingEst = BigDecimal.ZERO
+BigDecimal orderTaxTotal = BigDecimal.ZERO
+BigDecimal orderGrandTotal = shoppingCart.getDisplayGrandTotal()
+if (shippingList && shoppingCart.getTotalSalesTax() != BigDecimal.ZERO) {
+    shippingList.each { shipping ->
+        shippingEst = shippingEst.add(shipping.shippingEst)
+    }
+    taxAuthRate = from("TaxAuthorityRateProduct").where("taxAuthGeoId", "THA", "taxAuthPartyId", "THA_RD").queryFirst()
+    if (taxAuthRate) {
+        taxPercentage = taxAuthRate.taxPercentage
+        orderTaxTotal = shippingEst.multiply(taxPercentage).divide(new BigDecimal("100"))
+    }
+}
+if (shoppingCart.getTotalSalesTax() != BigDecimal.ZERO) {
+    orderGrandTotal = shoppingCart.getSubTotal().add(orderTaxTotal).add(shippingEst)
+}
+context.orderTaxTotal = orderTaxTotal
+context.orderGrandTotal = orderGrandTotal

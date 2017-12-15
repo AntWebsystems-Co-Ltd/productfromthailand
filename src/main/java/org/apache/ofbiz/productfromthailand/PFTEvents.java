@@ -530,8 +530,12 @@ public class PFTEvents {
                     }
                     amount = new BigDecimal (67).add(new BigDecimal (15).multiply(new BigDecimal (LoopCount-1)));
                     int resOver2Kg = totalweight.compareTo(new BigDecimal (2.00));
-                    if(resOver2Kg != -1) {
-                        amount = amount.add(new BigDecimal(10.00));
+                    if(resOver2Kg == 1) {
+                        amount = new BigDecimal(122);
+                        int resOverKg = totalweight.compareTo(new BigDecimal (2.5));
+                        if(resOverKg == 1){
+                            amount = new BigDecimal (137);
+                        }
                     }
                 }else {
                     res = new BigDecimal (5.00).compareTo(totalweight);
