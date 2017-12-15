@@ -73,6 +73,26 @@ ${virtualVariantJavaScript!}
             }
         }
     }
+    function setVariantName(sku, vname) {
+        if (vname == '' || vname == 'NULL' || isVirtual(sku) == true) {
+            var elem = document.getElementById('variant_name_display');
+            var txt = document.createTextNode('');
+            if(elem.hasChildNodes()) {
+                elem.replaceChild(txt, elem.firstChild);
+            } else {
+                elem.appendChild(txt);
+            }
+        }
+        else {
+            var elem = document.getElementById('variant_name_display');
+            var txt = document.createTextNode(vname);
+            if(elem.hasChildNodes()) {
+                elem.replaceChild(txt, elem.firstChild);
+            } else {
+                elem.appendChild(txt);
+            }
+        }
+    }
     function isVirtual(product) {
         var isVirtual = false;
         <#if virtualJavaScript??>
@@ -154,7 +174,7 @@ ${virtualVariantJavaScript!}
         return -1;
     }
 
-    function getList(name, index, src, img) {
+    function getList(name, index, src, img, vname) {
         currentFeatureIndex = findIndex(name);
 
         if (currentFeatureIndex == 0) {
@@ -187,6 +207,8 @@ ${virtualVariantJavaScript!}
 
             // set the variant price to NULL
             setVariantPrice('NULL');
+
+            setVariantName('NULL', 'NULL');
         } else {
             // this is the final selection -- locate the selected index of the last selection
             var indexSelected = document.forms["addform"].elements[name].selectedIndex;
@@ -202,6 +224,10 @@ ${virtualVariantJavaScript!}
 
             // set the variant price
             setVariantPrice(sku);
+            // set the variant name
+            if (vname != "") {
+                setVariantName(sku, vname);
+            }
 
             // check for amount box
             toggleAmt(checkAmtReq(sku));
@@ -326,8 +352,10 @@ ${virtualVariantJavaScript!}
     }
 
     function changeToVariantImg(img) {
-        $("#mainImageLink").attr("href", img)
-        $("#mainImage").attr("src", img)
+        $("#mainImageLink").remove()
+        $("#mainImage").remove()
+        $("#images-block").prepend('<a href="' + img + '" id="mainImageLink"></a>')
+        $("#mainImageLink").prepend('<img src="'+img+'" alt="Image" class="img-responsive thumbnail" id="mainImage"/>')
     }
 //]]>
 $(function(){
@@ -403,11 +431,11 @@ $(function(){
   </#if>
 
   <div class="row product-info full">
-    <div class="col-sm-4 images-block">
+    <div class="col-sm-4 images-block" id="images-block">
         <#assign productLargeImageUrl = productContentWrapper.get("LARGE_IMAGE_URL", "url")! />
-        <#if firstLargeImage?has_content>
+        <#-- <#if firstLargeImage?has_content>
             <#assign productLargeImageUrl = firstLargeImage />
-        </#if>
+        </#if> -->
         <#if productLargeImageUrl?string?has_content>
             <a href="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>" id="mainImageLink">
                 <img src="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail" id="mainImage"/>
@@ -415,7 +443,7 @@ $(function(){
         </#if>
         <#if !productLargeImageUrl?string?has_content>
             <#assign productLargeImageUrl = "/pft-default/images/defaultImage.jpg">
-            <img src="/pft-default/images/defaultImage.jpg" alt="Image" class="img-responsive thumbnail" />
+            <img src="/pft-default/images/defaultImage.jpg" alt="Image" class="img-responsive thumbnail" id="mainImage"/>
         </#if>
         <ul class="list-unstyled list-inline">
             <#if productAdditionalImage1?string?has_content>
@@ -738,11 +766,11 @@ $(function(){
           </#if>
           <#if !product.virtualVariantMethodEnum?? || product.virtualVariantMethodEnum == "VV_VARIANTTREE">
             <#if variantTree?? && (variantTree.size() &gt; 0)>
-              <div class="form-group">
+              <div class="form-group hidden">
                 <label for="select" class="control-label text-uppercase">${uiLabelMap.CommonSelect}:</label>
                 <#list featureSet as currentType>
                 <div id="variantTreeOption">
-                  <select name="FT${currentType}" onchange="javascript:getList(this.name, (this.selectedIndex-1), 1, '');" class="form-control">
+                  <select name="FT${currentType}" onchange="javascript:getList(this.name, (this.selectedIndex-1), 1, '', '');" class="form-control">
                     <option>${featureTypes.get(currentType)}</option>
                   </select>
                 </div>
@@ -760,6 +788,87 @@ $(function(){
             <#else>
               <input type="hidden" name="add_product_id" value="NULL"/>
               <#assign inStock = false />
+            </#if>
+
+            <#-- Prefill first select box (virtual products only) -->
+            <#if variantTree?? && 0 &lt; variantTree.size()>
+              <script type="text/javascript">eval("list" + "${featureOrderFirst}" + "()");</script>
+            </#if>
+
+            <#-- Swatches (virtual products only) -->
+            <#if variantSample?? && 0 &lt; variantSample.size()>
+              <#assign imageKeys = variantSample.keySet() />
+              <#assign imageMap = variantSample />
+              <ul class="list-unstyled list-inline" id="variantitem">
+                <#assign indexer = 0 />
+                <#list imageKeys as key>
+                  <#assign swatchProduct = imageMap.get(key) />
+                  <#assign variantProductContentWrapper = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(swatchProduct, request)>
+                  <#assign variantLargeImageUrl = variantProductContentWrapper.get("LARGE_IMAGE_URL", "url")!/>
+                  <#if !variantLargeImageUrl?string?has_content>
+                    <#assign variantLargeImageUrl = "/pft-default/images/defaultImage.jpg">
+                  </#if>
+                  <#assign variantMediumImageUrl = variantProductContentWrapper.get("MEDIUM_IMAGE_URL", "url")!/>
+                  <#if !variantMediumImageUrl?string?has_content>
+                    <#assign variantMediumImageUrl = "/pft-default/images/defaultImage.jpg">
+                  </#if>
+                  <#assign variantSmallImageUrl = variantProductContentWrapper.get("SMALL_IMAGE_URL", "url")!/>
+                  <#if !variantSmallImageUrl?string?has_content>
+                    <#assign variantSmallImageUrl = "/pft-default/images/defaultImage.jpg">
+                  </#if>
+                  <#assign variantName = variantProductContentWrapper.get("PRODUCT_NAME", "html")! />
+                  <li>
+                    <#assign productInfoLinkId = "productInfoLink">
+                    <#assign productInfoLinkId = productInfoLinkId + swatchProduct.productId/>
+                    <#assign productDetailId = "productDetailId"/>
+                    <#assign productDetailId = productDetailId + swatchProduct.productId/>
+                    <a href="#images-block" id="imageLink_${indexer}">
+                      <span id="${productInfoLinkId}" class="popup_link" data-toggle="tooltip">
+                        <img src="<@ofbizContentUrl>${contentPathPrefix!}${variantSmallImageUrl!}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail vr-img" id="variantProduct${indexer!}"/>
+                      </span>
+                    </a>
+                    <div id="${productDetailId}" class="popup img-responsive thumbnail" style="display:none;">
+                      <img src="<@ofbizContentUrl>${contentPathPrefix!}${variantMediumImageUrl!}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail vr-img"/>
+                    </div>
+                    <script type="text/javascript">
+                      $(document).ready(function(){
+                        jQuery("#${productInfoLinkId}").attr('title', jQuery("#${productDetailId}").remove().html());
+                        jQuery("#${productInfoLinkId}").tooltip({
+                          content: function(){
+                            return this.getAttribute("title");
+                          },
+                          tooltipClass: "popup",
+                          track: true,
+                          html: true,
+                          placement: function (context, element) {
+                            var position = $(element).position();
+                            if ((position.top - $(window).scrollTop()) < 0){
+                              return "bottom";
+                            }
+                            return "top";
+                          }
+                        });
+                        $("#imageLink_${indexer!}").click(function() {
+                          var image = unescape("${variantLargeImageUrl!}")
+                          getList('FT${featureOrderFirst}','${indexer}',1,image,'${variantName!}')
+                        })
+                      });
+                    </script>
+                  </li>
+                  <#-- Add cart dialog -->
+                  ${setRequestAttribute("productUrl", productUrl)}
+                  ${setRequestAttribute("smallImageUrl", variantLargeImageUrl)}
+                  ${setRequestAttribute("productId", swatchProduct.productId)}
+                  ${setRequestAttribute("productContentWrapper", variantProductContentWrapper)}
+                  ${setRequestAttribute("price", price)}
+                  ${screens.render("component://productfromthailand/widget/CartScreens.xml#addToCartDialog")}
+                  <#assign indexer = indexer + 1 />
+                </#list>
+              </ul>
+              <div>
+                <strong><span id="variant_name_display" class="h4"> </span></strong>
+              </div>
+              <br/>
             </#if>
           </#if>
         <#else>
@@ -886,68 +995,6 @@ $(function(){
           <input name="productId" type="hidden" value="${product.productId}"/>
       </form>
     </div>
-
-    <#-- Prefill first select box (virtual products only) -->
-    <#if variantTree?? && 0 &lt; variantTree.size()>
-      <script type="text/javascript">eval("list" + "${featureOrderFirst}" + "()");</script>
-    </#if>
-
-    <#-- Swatches (virtual products only) -->
-    <#if variantSample?? && 0 &lt; variantSample.size()>
-      <#assign imageKeys = variantSample.keySet() />
-      <#assign imageMap = variantSample />
-      <p>&nbsp;</p>
-      <#-- <#assign maxIndex = 7 />
-      <#assign indexer = 0 />
-      <#list imageKeys as key>
-        <#assign swatchProduct = imageMap.get(key) />
-        <#if swatchProduct?has_content && indexer &lt; maxIndex>
-          <#assign imageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(swatchProduct, "SMALL_IMAGE_URL", request, "url")! />
-          <#assign variantLargeImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(swatchProduct, "LARGE_IMAGE_URL", request, "url")! />
-          <#if !imageUrl?string?has_content>
-            <#assign imageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url")! />
-          </#if>
-          <#if !imageUrl?string?has_content>
-            <#assign imageUrl = "/pft-default/images/defaultImage.jpg" />
-          </#if>
-          <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1,'${variantLargeImageUrl!}');">
-            <img src="<@ofbizContentUrl>${contentPathPrefix!}${imageUrl}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail" id="variantProduct"/>
-          </a>
-          <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1,'');" class="linktext">${key}</a>
-          <br/><br/>
-        </#if>
-        <#assign indexer = indexer + 1 />
-      </#list>
-      <#if (indexer > maxIndex)>
-        <div><strong>${uiLabelMap.ProductMoreOptions}</strong></div>
-      </#if> -->
-      <#assign indexer = 0 />
-      <#list imageKeys as key>
-        <#assign swatchProduct = imageMap.get(key) />
-        <#assign imageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(swatchProduct, "SMALL_IMAGE_URL", request, "url")! />
-        <#assign variantLargeImageUrl = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].getProductContentAsText(swatchProduct, "LARGE_IMAGE_URL", request, "url")! />
-        <#if !imageUrl?string?has_content>
-          <#assign imageUrl = productContentWrapper.get("SMALL_IMAGE_URL", "url")! />
-        </#if>
-        <#if !imageUrl?string?has_content>
-          <#assign imageUrl = "/pft-default/images/defaultImage.jpg" />
-        </#if>
-        <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1,'${variantLargeImageUrl!}');">
-          <img src="<@ofbizContentUrl>${contentPathPrefix!}${imageUrl}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail" id="variantProduct"/>
-        </a>
-        <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1,'');" class="linktext">${key}</a>
-        <br/><br/>
-        <#assign variantProductContentWrapper = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(imageMap.get(key), request)>
-        <#-- Add cart dialog -->
-        ${setRequestAttribute("productUrl", productUrl)}
-        ${setRequestAttribute("smallImageUrl", imageUrl)}
-        ${setRequestAttribute("productId", imageMap.get(key).productId)}
-        ${setRequestAttribute("productContentWrapper", variantProductContentWrapper)}
-        ${setRequestAttribute("price", price)}
-        ${screens.render("component://productfromthailand/widget/CartScreens.xml#addToCartDialog")}
-        <#assign indexer = indexer + 1 />
-      </#list>
-    </#if>
 
     <#-- Digital Download Files Associated with this Product -->
     <#if downloadProductContentAndInfoList?has_content>

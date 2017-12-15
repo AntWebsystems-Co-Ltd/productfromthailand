@@ -293,6 +293,25 @@ div#list-group-promo {
     background: #191919;
 }
 
+/* variant product */
+#variantitem > li {
+    width: 20% !important;
+}
+#variantitem div.tooltip-inner {
+    max-width: initial;
+}
+#variantitem div.tooltip.in {
+    opacity: 1 !important;
+}
+#variant_name_display {
+    color: #e66d72;
+}
+.vr-img {
+    padding: 0px;
+    background-color: initial;
+    border: 3px solid #ddd;
+}
+
 #allfeature-btn {
     padding: 3px 20px;
 }
@@ -307,4 +326,11 @@ div#list-group-promo {
     font-size: 24px;
     color: #ff434a;
     text-transform: uppercase;
+}
+
+/* bootstrap */
+@media screen and (max-width : 1024px) {
+    #variantitem .tooltip {
+        display: none !important;
+    }
 }
