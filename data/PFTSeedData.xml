@@ -140,7 +140,7 @@ under the License.
         autoOrderCcTryExp="Y" autoOrderCcTryOtherCards="Y" autoOrderCcTryLaterNsf="Y" storeCreditValidDays="90" autoApproveInvoice="Y" autoApproveOrder="Y"
         shipIfCaptureFails="Y" reqReturnInventoryReceive="N" showOutOfStockProducts="Y" inventoryFacilityId="pftWarehouse"/>
 
-    <TaxAuthorityRateProduct fromDate="2017-10-01 00:00:00.0" isTaxInShippingPrice="N" productStoreId="PFTSTORE" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxAuthorityRateSeqId="10000" taxAuthorityRateTypeId="SALES_TAX" taxPercentage="7.000000" taxPromotions="N" taxShipping="Y"/>
+    <TaxAuthorityRateProduct fromDate="2017-10-01 00:00:00.0" isTaxInShippingPrice="N" productStoreId="PFTSTORE" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxAuthorityRateSeqId="10000" taxAuthorityRateTypeId="SALES_TAX" taxPercentage="7.000000" taxPromotions="N" taxShipping="N"/>
     <ProductStoreFacility productStoreId="PFTSTORE" facilityId="pftWarehouse" fromDate="2009-09-25 10:38:07.561"/>
     <WebSite webSiteId="PFT" siteName="Product from Thailand website" visualThemeSetId="ECOMMERCE" productStoreId="PFTSTORE"/>
     <WebAnalyticsType webAnalyticsTypeId="GOOGLE_ANALYTICS" parentTypeId="WEB_ANALYTICS" hasTable="N" description="Google Analytics"/>
@@ -246,7 +246,7 @@ under the License.
     <ShipmentMethodType description="Thai Post EMS" shipmentMethodTypeId="DOMESTIC_EMS"/>
     <CarrierShipmentMethod partyId="THAIPOST" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_EMS" sequenceNumber="1" carrierServiceCode="THAIPOST_EMS"/>
     <ProductStoreShipmentMeth productStoreShipMethId="PFT10001" productStoreId="PFTSTORE" partyId="THAIPOST" includeNoChargeItems="Y" allowUspsAddr="N" requireUspsAddr="N" roleTypeId="CARRIER" shipmentMethodTypeId="DOMESTIC_EMS" serviceName="thaiPostRateInquire" sequenceNumber="1"/>
-    <ShipmentCostEstimate productStoreShipMethId="PFT10001" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentMethodTypeId="DOMESTIC_EMS" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"  geoIdTo="THA" geoIdFrom="THA"/>
+    <ShipmentCostEstimate shipmentCostEstimateId="PFT10000" productStoreShipMethId="PFT10001" productStoreId="PFTSTORE" orderFlatPrice="0.0" orderItemFlatPrice="0.0" orderPricePercent="0.0" shipmentMethodTypeId="DOMESTIC_EMS" carrierPartyId="THAIPOST" carrierRoleTypeId="CARRIER"  geoIdTo="THA" geoIdFrom="THA"/>
 
     <!-- Fedex shipping method -->
     <SystemProperty systemResourceId="fedex" systemPropertyId="fedexaccountnum" description="fedex Account Number" systemPropertyValue="510087380"/>
