@@ -9,5 +9,8 @@
     <SecurityGroup groupId="SUPER"/>
     <SecurityGroupPermission groupId="SUPER" permissionId="PFT_ADMIN"/>
 
+    <!--Add PARTYMGR_CREATE for create shopping list item when logout -->
+    <SecurityGroupPermission groupId="ECOMMERCE_CUSTOMER" permissionId="PARTYMGR_CREATE"/>
+
 </entity-engine-xml>
 

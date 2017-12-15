@@ -125,7 +125,7 @@ under the License.
     <PartyTaxAuthInfo partyId="pft" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" fromDate="2017-10-09 00:00:00.000" thruDate="" partyTaxId="" isExempt="Y" isNexus="N"/>
 
     <ProductStore productStoreId="PFTSTORE" storeName="Product from Thailand Store" companyName="Product from Thailand Co.,Ltd" payToPartyId="pft"
-        daysToCancelNonPay="30" manualAuthIsCapture="N" prorateShipping="Y" prorateTaxes="Y" viewCartOnAdd="N" autoSaveCart="N" autoApproveReviews="N"
+        daysToCancelNonPay="30" manualAuthIsCapture="N" prorateShipping="Y" prorateTaxes="Y" viewCartOnAdd="N" autoSaveCart="Y" autoApproveReviews="N"
         isDemoStore="N" title="Welcome to Product FromThailand.com" subtitle="Thailand Located in Southeast Asia, Thailand is commonly known as the land of smiles. Thailand's major exports include textiles, fishery products and electrical applicances. Look through the categories below to find more Thai products." 
         isImmediatelyFulfilled="N" oneInventoryFacility="N" checkInventory="N" reserveInventory="N"
         reserveOrderEnumId="INVRO_FIFO_REC" requireInventory="N" balanceResOnOrderCreation="Y" orderNumberPrefix="" defaultLocaleString="th"
