@@ -70,8 +70,8 @@
 
     <!-- Demo Product -->
     <Product productId="CR10000" productName="CAREEL Coffee" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="CAREEL Coffee 200g" inventoryItemTypeId="NON_SERIAL_INV_ITEM" orderDecimalQuantity="N" productWeight="200.000000" requirementMethodEnumId="PRODRQM_DS" weightUomId="WT_g" isVirtual="Y" isVariant="N"/>
-    <Product productId="CR10000-RB" productTypeId="FINISHED_GOOD" productName="CAREEL Coffee Roast Whole Bean Coffee" brandName="Careel" internalName="CAREEL Coffee : Roast Whole Bean Coffee 200g" description="CAREEL Coffee : Roast Whole Bean Coffee" longDescription="" productWeight="200.000000" weightUomId="WT_g" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10000-RG" productTypeId="FINISHED_GOOD" productName="CAREEL Coffee Roast Ground Coffee" brandName="Careel" internalName="CAREEL Coffee : Roast Ground Coffee 200g" description="CAREEL Coffee : Roast Ground Coffee" productWeight="200.000000" weightUomId="WT_g" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10000-RB" productTypeId="FINISHED_GOOD" productName="CAREEL Coffee Roast Whole Bean Coffee" brandName="Careel" internalName="CAREEL Coffee : Roast Whole Bean Coffee 200g" description="CAREEL Coffee : Roast Whole Bean Coffee" longDescription="" productWeight="200.000000" weightUomId="WT_g" isVirtual="N" isVariant="Y"/>
+    <Product productId="CR10000-RG" productTypeId="FINISHED_GOOD" productName="CAREEL Coffee Roast Ground Coffee" brandName="Careel" internalName="CAREEL Coffee : Roast Ground Coffee 200g" description="CAREEL Coffee : Roast Ground Coffee" productWeight="200.000000" weightUomId="WT_g" isVirtual="N" isVariant="Y"/>
     <!-- Name and Description -->
     <DataResource dataResourceId="CR10000-RB-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
     <DataResource dataResourceId="CR10000-RB-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
@@ -632,4 +632,10 @@
     <ProductPromoProduct productId="CR10011" productPromoActionSeqId="_NA_" productPromoApplEnumId="PPPA_INCLUDE" productPromoCondSeqId="01" productPromoId="PFT20001" productPromoRuleId="00001"/>
     <ProductStorePromoAppl productStoreId="PFTSTORE" productPromoId="PFT20001" fromDate="2017-10-01 00:00:00.0"/>
 
+    <InventoryItem facilityId="pftWarehouse" inventoryItemId="PFT10000" inventoryItemTypeId="NON_SERIAL_INV_ITEM" datetimeReceived="2017-12-01 00:00:00" productId="CR10001" ownerPartyId="pft" currencyUomId="THB" unitCost="825"/>
+    <InventoryItemDetail inventoryItemId="PFT10000" inventoryItemDetailSeqId="0001" effectiveDate="2017-12-01 00:00:00" availableToPromiseDiff="100" quantityOnHandDiff="100" accountingQuantityDiff="100"/>
+    <InventoryItem facilityId="pftWarehouse" inventoryItemId="PFT10001" inventoryItemTypeId="NON_SERIAL_INV_ITEM" datetimeReceived="2017-12-01 00:00:00" productId="CR10000-RB" ownerPartyId="pft" currencyUomId="THB" unitCost="200"/>
+    <InventoryItemDetail inventoryItemId="PFT10001" inventoryItemDetailSeqId="0001" effectiveDate="2017-12-01 00:00:00" availableToPromiseDiff="100" quantityOnHandDiff="100" accountingQuantityDiff="100"/>
+    <InventoryItem facilityId="pftWarehouse" inventoryItemId="PFT10002" inventoryItemTypeId="NON_SERIAL_INV_ITEM" datetimeReceived="2017-12-01 00:00:00" productId="CR10000-RG" ownerPartyId="pft" currencyUomId="THB" unitCost="200"/>
+    <InventoryItemDetail inventoryItemId="PFT10002" inventoryItemDetailSeqId="0001" effectiveDate="2017-12-01 00:00:00" availableToPromiseDiff="100" quantityOnHandDiff="100" accountingQuantityDiff="100"/>
 </entity-engine-xml>

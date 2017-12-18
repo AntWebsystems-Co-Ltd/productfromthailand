@@ -210,7 +210,7 @@ under the License.
     <ContentAssoc contentId="CR10000-DESCEN" contentIdTo="CR10000-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
     <!-- CR10001: L-carnitine -->
-    <Product productId="CR10001" productName="CAREEL L-carnitine Complex" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="CAREEL L-carnitine Complex" inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="N" isVirtual="N" orderDecimalQuantity="N" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10001" productName="CAREEL L-carnitine Complex" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="CAREEL L-carnitine Complex" inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="N" isVirtual="N" orderDecimalQuantity="N"/>
     <ProductCategoryMember productCategoryId="HEALTHANDBEAUTY" productId="CR10001" sequenceNum="1" fromDate="2017-10-09 00:00:00.000"/>
     <ProductPrice productId="CR10001" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-10-09 00:00:00.000" price="235.94" createdDate="2017-10-09 00:00:00.000" />
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10001" lastPrice="200.00" supplierProductId="SP-LCA" supplierProductName="CAREEL L-carnatine Complex" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
