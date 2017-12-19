@@ -267,9 +267,9 @@ under the License.
                     <#-- Currency Starts -->
                         <div class="btn-group">
                             <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-                                <#if currencyUom == "THB">${uiLabelMap.PFTCurrency} : ฿
-                                <#elseif currencyUom == "USD">${uiLabelMap.PFTCurrency} : $
-                                <#elseif currencyUom == "EUR">${uiLabelMap.PFTCurrency} : €
+                                <#if currencyUom == "THB">${uiLabelMap.PFTCurrency} : &#3647;
+                                <#elseif currencyUom == "USD">${uiLabelMap.PFTCurrency} : &#36;
+                                <#elseif currencyUom == "EUR">${uiLabelMap.PFTCurrency} : &#8364;
                                 </#if>
                                 <i class="fa fa-caret-down"></i>
                             </button>

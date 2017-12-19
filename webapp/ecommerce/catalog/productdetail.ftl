@@ -1030,8 +1030,8 @@ $(function(){
             <div class="tab-content clearfix">
             <!-- Description Starts -->
                 <div class="tab-pane active" id="tab-description">
-                    <div>${productContentWrapper.get("DESCRIPTION", "html")!}</div>
-                    <div>${productContentWrapper.get("LONG_DESCRIPTION", "html")!}</div>
+                    <div>${productContentWrapper.get("DESCRIPTION", "html")?string?replace("\n", "<br/>")!}</div>
+                    <div>${productContentWrapper.get("LONG_DESCRIPTION", "html")?string?replace("\n", "<br/>")!}</div>
                 </div>
             <!-- Description Ends -->
             <!-- Review Starts -->
