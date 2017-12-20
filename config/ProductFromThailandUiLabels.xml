@@ -47,8 +47,8 @@
         <value xml:lang="th">ที่อยู่</value>
     </property>
     <property key="PFTAboutCompany">
-        <value xml:lang="en">About Productfromthailand (PFT) &amp; How we work.</value>
-        <value xml:lang="th">ข้อมูลเกี่ยวกับ Productfromthailand (PFT) </value>
+        <value xml:lang="en">About ProductFromThailand (PFT) &amp; How we work.</value>
+        <value xml:lang="th">ข้อมูลเกี่ยวกับ ProductFromThailand (PFT) </value>
     </property>
     <property key="PFTAboutUs">
         <value xml:lang="en">About Us</value>
@@ -143,7 +143,7 @@
         <value xml:lang="th">บริษัท แอนท์ เว็บซิสเต็มส์ จำกัด</value>
     </property>
     <property key="PFTCompanyNamePFT">
-        <value xml:lang="en">Productfromthailand (PFT)</value>
+        <value xml:lang="en">ProductFromThailand (PFT)</value>
     </property>
     <property key="PFTConfirmAddress">
         <value xml:lang="en">Confirm Address</value>

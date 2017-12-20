@@ -328,9 +328,57 @@ div#list-group-promo {
     text-transform: uppercase;
 }
 
+.add-promo-form {
+    display: inline;
+}
+.add-promo-form #quantity {
+    width: 10%;
+    display: inline;
+    height: auto;
+}
+.promo-item {
+    padding-right: 1px;
+}
+.promo-item .product-col.list {
+    padding: 10px 10px;
+}
+
 /* bootstrap */
 @media screen and (max-width : 1024px) {
     #variantitem .tooltip {
         display: none !important;
+    }
+}
+
+@media screen and (max-width : 1200px) {
+    .add-promo-form #quantity {
+        width: 20%;
+    }
+}
+
+@media screen and (max-width : 1200px) {
+    .promo-item .showPromoItem {
+        display: inline-block;
+    }
+    .showPromoItem .btn-cart {
+        margin-top: 0px;
+    }
+}
+
+@media (max-width: 767px) {
+    #productspromotion .product-col {
+       text-align: left !important;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .table-responsive>#productspromotion>tbody>tr>td {
+       white-space: initial;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+    #productspromotion .product-col.list .image {
+        padding: 40px 30px 10px 0 !important;
     }
 }

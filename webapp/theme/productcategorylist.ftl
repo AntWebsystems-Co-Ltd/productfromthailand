@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
 -->
 ${virtualJavaScript!}
-
+<#assign isFromPromo = requestAttributes.isFromPromo?default("N")>
 <#if product??>
     <#-- variable setup -->
     <#if backendPath?default("N") == "Y">
@@ -39,7 +39,7 @@ ${virtualJavaScript!}
     <#assign productDetailId = "productDetailId"/>
     <#assign productDetailId = productDetailId + product.productId/>
     <!-- Product Starts -->
-        <div class="col-xs-12">
+        <div class="col-xs-12 <#if isFromPromo == "Y">promo-item</#if>">
             <div class="product-col list clearfix">
                 <div class="image">
                     <a href="${productUrl}">
@@ -49,7 +49,8 @@ ${virtualJavaScript!}
                 <div class="caption">
                     <h4><a href="${productUrl}">${productContentWrapper.get("PRODUCT_NAME", "html")!}</a></h4>
                     <div class="description">
-                        ${productContentWrapper.get("DESCRIPTION", "html")!}
+                        <#assign prodDesc = productContentWrapper.get("DESCRIPTION", "html")?string?replace("\n", "<br/>")!>
+                        <#if prodDesc?length &gt; 200>${prodDesc?substring(0, 200)}...<#else>${prodDesc!}</#if>
                     </div>
                     <div class="price">
                         <#if price.isSale?? && price.isSale>
@@ -59,7 +60,7 @@ ${virtualJavaScript!}
                             <span class="price-new"><@ofbizCurrency amount=price.price isoCode=price.currencyUsed/></span>
                         </#if>
                     </div>
-                    <div class="cart-button button-group">
+                    <div class="cart-button button-group <#if isFromPromo == "Y">showPromoItem</#if>">
                         <#assign timeId = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp().getTime()/>
                         <form name="addProductToWishList_${timeId}" method="post" action="<@ofbizUrl>addProductToWishList</@ofbizUrl>">
                             <input name="productId" type="hidden" value="${product.productId}"/>
@@ -106,9 +107,15 @@ ${virtualJavaScript!}
                                 ${uiLabelMap.OrderRent}
                             </button>
                         <#else>
-                            <form method="post" action="<@ofbizUrl>additem</@ofbizUrl>" name="the${requestAttributes.formNamePrefix!}${requestAttributes.listIndex!}form" class="hidden">
+                            <form method="post" action="<@ofbizUrl>additem</@ofbizUrl>" name="the${requestAttributes.formNamePrefix!}${requestAttributes.listIndex!}form"
+                                <#if isFromPromo != "Y">class="hidden"<#else>class="add-promo-form"</#if>>
                                 <input type="hidden" name="add_product_id" value="${product.productId}"/>
-                                <input type="hidden" name="quantity" value="1"/>
+                                <#if isFromPromo == "Y" && productStore?? && productStore.requireInventory?? && productStore.requireInventory == "N">
+                                    <input name="quantity" id="quantity" value="1" maxLength="4" type="text" class="form-control"
+                                        onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
+                                <#else>
+                                    <input type="hidden" name="quantity" value="1"/>
+                                </#if>
                                 <input type="hidden" name="clearSearch" value="N"/>
                                 <input type="hidden" name="mainSubmitted" value="Y"/>
                             </form>

@@ -57,8 +57,8 @@ under the License.
                     <h3 class="panel-title">${uiLabelMap.OrderPromotionDetails}</h3>
                 </div>
                 <div class="panel-body">
-                    <div>${StringUtil.wrapString(productPromo.promoText!)}</div><br/>
-                    <div>${uiLabelMap.OrderGeneratedDescription} ${StringUtil.wrapString(promoAutoDescription!)}</div>
+                    <div><#if productPromo??>${StringUtil.wrapString(productPromo.promoText)!}</#if></div><br/>
+                    <div><#if promoAutoDescription?has_content>${uiLabelMap.OrderGeneratedDescription} ${StringUtil.wrapString(promoAutoDescription!)}</#if></div>
                 </div>
             </div>
 
@@ -112,9 +112,6 @@ under the License.
             <#if productIds?has_content>
             <br/>
             <div class="panel panel-smart">
-                <div class="panel-heading">
-                    <h3 class="panel-title">${uiLabelMap.OrderProductsForPromotion}</h3>
-                </div>
                 <div class="panel-body">
                     <#-- Pagination & Results Starts -->
                     <#if (viewIndexMax > 0)>
@@ -143,13 +140,12 @@ under the License.
                         </#if>
                         </div>
                     </#if>
+                    <div class="table-responsive">
                     <table class="table table-bordered" id="productspromotion">
                         <thead>
                             <tr>
-                                <th>${uiLabelMap.CommonQualifier}</th>
-                                <th>${uiLabelMap.CommonBenefit}</th>
                                 <#if (listSize > 0)>
-                                    <th>&nbsp;</th>
+                                    <th><center>${uiLabelMap.OrderProductsForPromotion}</center></th>
                                 </#if>
                             </tr>
                         </thead>
@@ -157,11 +153,10 @@ under the License.
                             <#if (listSize > 0)>
                                 <#list productIds as productId>
                                     <tr>
-                                        <td>[<#if productIdsCond.contains(productId)>x<#else>&nbsp;</#if>]</td>
-                                        <td>[<#if productIdsAction.contains(productId)>x<#else>&nbsp;</#if>]</td>
                                         <td>
                                             ${setRequestAttribute("optProductId", productId)}
                                             ${setRequestAttribute("listIndex", productId_index)}
+                                            ${setRequestAttribute("isFromPromo", "Y")}
                                             ${screens.render(productcategorylist)}
                                         </td>
                                     </tr>
@@ -169,6 +164,7 @@ under the License.
                             </#if>
                         </tbody>
                     </table>
+                    </div>
                     <#-- Pagination & Results Starts -->
                     <#if (viewIndexMax > 0)>
                         <div class="row">

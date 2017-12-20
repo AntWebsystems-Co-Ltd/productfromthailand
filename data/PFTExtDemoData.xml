@@ -299,15 +299,15 @@
     <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.apiUrl.live" systemPropertyValue="https://api.paypal.com/"/>
 
     <Product productId="CR10010" productName="Baybee Soft Matte Lip Cream" productTypeId="FINISHED_GOOD" brandName="Baybee" createdDate="2017-10-09 00:00:00.000" internalName="Baybee Soft Matte Lip Cream" inventoryItemTypeId="NON_SERIAL_INV_ITEM" orderDecimalQuantity="N" requirementMethodEnumId="PRODRQM_DS" isVirtual="Y" isVariant="N"/>
-    <Product productId="CR10010-01" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #01 (Pink Lady)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #01 (Pink Lady)" description="Baybee Soft Matte Lip Cream #02 (Violet)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10010-02" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #02 (Violet)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #02 (Violet)" description="Baybee Soft Matte Lip Cream #02 (Violet)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10010-03" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #03 (Burry Nude)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #03 (Burry Nude)" description="Baybee Soft Matte Lip Cream #03 (Burry Nude)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10010-04" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #04 (Hot Baech)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #04 (Hot Baech)" description="Baybee Soft Matte Lip Cream #04 (Hot Baech)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10010-05" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #05 (Blueburry)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #05 (Blueburry)" description="Baybee Soft Matte Lip Cream #05 (Blueburry)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10010-06" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #06 (Rose)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #06 (Rose)" description="Baybee Soft Matte Lip Cream #06 (Rose)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10010-07" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #07 (Kissme)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #07 (Kissme)" description="Baybee Soft Matte Lip Cream #07 (Kissme)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10010-08" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #08 (Charming)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #08 (Charming)" description="Baybee Soft Matte Lip Cream #08 (Charming)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10010-09" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream #09 (Grayberry)" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream #09 (Grayberry)" description="Baybee Soft Matte Lip Cream #09 (Grayberry)" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010-01" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 01 Pink Lady" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 01 Pink Lady" description="Baybee Soft Matte Lip Cream - 01 Pink Lady" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010-02" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 02 Violet" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 02 Violet" description="Baybee Soft Matte Lip Cream - 02 Violet" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010-03" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 03 Burry Nude" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 03 Burry Nude" description="Baybee Soft Matte Lip Cream - 03 Burry Nude" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010-04" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 04 Hot Baech" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 04 Hot Baech" description="Baybee Soft Matte Lip Cream - 04 Hot Baech" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010-05" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 05 Blueburry" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 05 Blueburry" description="Baybee Soft Matte Lip Cream - 05 Blueburry" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010-06" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 06 Rose" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 06 Rose" description="Baybee Soft Matte Lip Cream - 06 Rose" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010-07" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 07 Kissme" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 07 Kissme" description="Baybee Soft Matte Lip Cream - 07 Kissme" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010-08" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 08 Charming" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 08 Charming" description="Baybee Soft Matte Lip Cream - 08 Charming" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010-09" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 09 Grayberry" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 09 Grayberry" description="Baybee Soft Matte Lip Cream - 09 Grayberry" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
 
     <ProductFeatureAppl productId="CR10010" productFeatureId="CF20000"
         productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
@@ -358,7 +358,13 @@
     <ProductAssoc fromDate="2017-10-09 00:00:00.000" productAssocTypeId="PRODUCT_VARIANT" productId="CR10010"
         productIdTo="CR10010-05" quantity="1.0" reason=""/>
     <ProductAssoc fromDate="2017-10-09 00:00:00.000" productAssocTypeId="PRODUCT_VARIANT" productId="CR10010"
+        productIdTo="CR10010-06" quantity="1.0" reason=""/>
+    <ProductAssoc fromDate="2017-10-09 00:00:00.000" productAssocTypeId="PRODUCT_VARIANT" productId="CR10010"
         productIdTo="CR10010-07" quantity="1.0" reason=""/>
+    <ProductAssoc fromDate="2017-10-09 00:00:00.000" productAssocTypeId="PRODUCT_VARIANT" productId="CR10010"
+        productIdTo="CR10010-08" quantity="1.0" reason=""/>
+    <ProductAssoc fromDate="2017-10-09 00:00:00.000" productAssocTypeId="PRODUCT_VARIANT" productId="CR10010"
+        productIdTo="CR10010-09" quantity="1.0" reason=""/>
 
     <ProductCategoryMember productCategoryId="HEALTHANDBEAUTY" productId="CR10010" sequenceNum="1" fromDate="2017-10-09 00:00:00.000"/>
     <ProductCategoryMember productCategoryId="PFTPROMOTION" productId="CR10010" fromDate="2017-10-09 00:00:00.000"/>
@@ -372,21 +378,210 @@
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-03" lastPrice="285.00" supplierProductId="SP-CR10010-03" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-04" lastPrice="285.00" supplierProductId="SP-CR10010-04" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-05" lastPrice="285.00" supplierProductId="SP-CR10010-05" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-06" lastPrice="285.00" supplierProductId="SP-CR10010-06" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-07" lastPrice="285.00" supplierProductId="SP-CR10010-07" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-08" lastPrice="285.00" supplierProductId="SP-CR10010-08" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10010-09" lastPrice="285.00" supplierProductId="SP-CR10010-09" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="EUR" productId="CR10010" lastPrice="7.33" supplierProductId="SP-CR10010-01" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="EUR" productId="CR10010-01" lastPrice="7.33" supplierProductId="SP-CR10010-01" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="EUR" productId="CR10010-02" lastPrice="7.33" supplierProductId="SP-CR10010-02" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="EUR" productId="CR10010-03" lastPrice="7.33" supplierProductId="SP-CR10010-03" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="EUR" productId="CR10010-04" lastPrice="7.33" supplierProductId="SP-CR10010-04" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="EUR" productId="CR10010-05" lastPrice="7.33" supplierProductId="SP-CR10010-05" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="EUR" productId="CR10010-06" lastPrice="7.33" supplierProductId="SP-CR10010-06" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="EUR" productId="CR10010-07" lastPrice="7.33" supplierProductId="SP-CR10010-07" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="EUR" productId="CR10010-08" lastPrice="7.33" supplierProductId="SP-CR10010-08" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="EUR" productId="CR10010-09" lastPrice="7.33" supplierProductId="SP-CR10010-09" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="USD" productId="CR10010" lastPrice="8.63" supplierProductId="SP-CR10010-01" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="USD" productId="CR10010-01" lastPrice="8.63" supplierProductId="SP-CR10010-01" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="USD" productId="CR10010-02" lastPrice="8.63" supplierProductId="SP-CR10010-02" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="USD" productId="CR10010-03" lastPrice="8.63" supplierProductId="SP-CR10010-03" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="USD" productId="CR10010-04" lastPrice="8.63" supplierProductId="SP-CR10010-04" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="USD" productId="CR10010-05" lastPrice="8.63" supplierProductId="SP-CR10010-05" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="USD" productId="CR10010-06" lastPrice="8.63" supplierProductId="SP-CR10010-06" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="USD" productId="CR10010-07" lastPrice="8.63" supplierProductId="SP-CR10010-07" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="USD" productId="CR10010-08" lastPrice="8.63" supplierProductId="SP-CR10010-08" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="USD" productId="CR10010-09" lastPrice="8.63" supplierProductId="SP-CR10010-09" supplierProductName="Baybee Soft Matte Lip Cream" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-PNAMETH" textData="แมตต์ ลิควิด ลิปสติก"/>
+    <ElectronicText dataResourceId="CR10010-PNAMEEN" textData="BayBee Soft Matte Lip Cream"/>
+    <Content contentId="CR10010-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10010-PNAMETH" description="PRODUCT NAME TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-PNAMEEN" description="PRODUCT NAME EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010" contentId="CR10010-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-PNAMEEN" contentIdTo="CR10010-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-DESCTH" textData="แมตต์ ลิควิด ลิปสติกแนวใหม่ที่เรียบละมุนดุจใยไหม เมื่อแห้งจะเซ็ตตัวเป้นลิปแมตต์ที่สีสวยคมชัดและติดทนนานอย่างเหลือเชื่อ เนื้อลิปนุ่มละมุนและให้ความชุ่มชื่นสู่ริมฝีปากมากกว่าลิปแมตต์อื่นๆ"/>
+    <ElectronicText dataResourceId="CR10010-DESCEN" textData="Formulated with Organic Beeswax, Organic Shea Butter, Vitamin E, the 100% natural ingredients work to keep your lips feeling moist and hydrated through the day."/>
+    <Content contentId="CR10010-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10010-DESCTH" description="DESCRIPTION TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-DESCEN" description="DESCRIPTION EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010" contentId="CR10010-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-DESCEN" contentIdTo="CR10010-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-01-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-01-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-01-PNAMETH" textData="แมตต์ ลิควิด ลิปสติก - 01 Pink Lady"/>
+    <ElectronicText dataResourceId="CR10010-01-PNAMEEN" textData="Baybee Soft Matte Lip Cream - 01 Pink Lady"/>
+    <Content contentId="CR10010-01-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10010-01-PNAMETH" description="PRODUCT NAME TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-01-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-01-PNAMEEN" description="PRODUCT NAME EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-01" contentId="CR10010-01-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-01-PNAMEEN" contentIdTo="CR10010-01-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-01-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-01-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-01-DESCTH" textData="BayBee แมตต์ ลิควิด ลิปสติก - 01 Pink Lady"/>
+    <ElectronicText dataResourceId="CR10010-01-DESCEN" textData="Baybee Soft Matte Lip Cream - 01 Pink Lady"/>
+    <Content contentId="CR10010-01-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10010-01-DESCTH" description="DESCRIPTION TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-01-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-01-DESCEN" description="DESCRIPTION EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-01" contentId="CR10010-01-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-01-DESCEN" contentIdTo="CR10010-01-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-02-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-02-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-02-PNAMETH" textData="แมตต์ ลิควิด ลิปสติก - 02 Violet"/>
+    <ElectronicText dataResourceId="CR10010-02-PNAMEEN" textData="Baybee Soft Matte Lip Cream - 02 Violet"/>
+    <Content contentId="CR10010-02-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10010-02-PNAMETH" description="PRODUCT NAME TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-02-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-02-PNAMEEN" description="PRODUCT NAME EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-02" contentId="CR10010-02-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-02-PNAMEEN" contentIdTo="CR10010-02-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-02-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-02-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-02-DESCTH" textData="BayBee แมตต์ ลิควิด ลิปสติก - 02 Violet"/>
+    <ElectronicText dataResourceId="CR10010-02-DESCEN" textData="Baybee Soft Matte Lip Cream - 02 Violet"/>
+    <Content contentId="CR10010-02-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10010-02-DESCTH" description="DESCRIPTION TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-02-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-02-DESCEN" description="DESCRIPTION EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-02" contentId="CR10010-02-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-02-DESCEN" contentIdTo="CR10010-02-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-03-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-03-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-03-PNAMETH" textData="แมตต์ ลิควิด ลิปสติก - 03 Burry Nude"/>
+    <ElectronicText dataResourceId="CR10010-03-PNAMEEN" textData="Baybee Soft Matte Lip Cream - 03 Burry Nude"/>
+    <Content contentId="CR10010-03-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10010-03-PNAMETH" description="PRODUCT NAME TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-03-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-03-PNAMEEN" description="PRODUCT NAME EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-03" contentId="CR10010-03-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-03-PNAMEEN" contentIdTo="CR10010-03-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-03-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-03-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-03-DESCTH" textData="แมตต์ ลิควิด ลิปสติก - 03 Burry Nude"/>
+    <ElectronicText dataResourceId="CR10010-03-DESCEN" textData="Baybee Soft Matte Lip Cream - 03 Burry Nude"/>
+    <Content contentId="CR10010-03-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10010-03-DESCTH" description="DESCRIPTION TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-03-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-03-DESCEN" description="DESCRIPTION EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-03" contentId="CR10010-03-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-03-DESCEN" contentIdTo="CR10010-03-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-04-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-04-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-04-PNAMETH" textData="แมตต์ ลิควิด ลิปสติก - 04 Hot Baech"/>
+    <ElectronicText dataResourceId="CR10010-04-PNAMEEN" textData="Baybee Soft Matte Lip Cream - 04 Hot Baech"/>
+    <Content contentId="CR10010-04-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10010-04-PNAMETH" description="PRODUCT NAME TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-04-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-04-PNAMEEN" description="PRODUCT NAME EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-04" contentId="CR10010-04-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-04-PNAMEEN" contentIdTo="CR10010-04-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-04-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-04-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-04-DESCTH" textData="BayBee แมตต์ ลิควิด ลิปสติก - 04 Hot Baech"/>
+    <ElectronicText dataResourceId="CR10010-04-DESCEN" textData="Baybee Soft Matte Lip Cream - 04 Hot Baech"/>
+    <Content contentId="CR10010-04-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10010-04-DESCTH" description="DESCRIPTION TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-04-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-04-DESCEN" description="DESCRIPTION EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-04" contentId="CR10010-04-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-04-DESCEN" contentIdTo="CR10010-04-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-05-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-05-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-05-PNAMETH" textData="แมตต์ ลิควิด ลิปสติก - 05 Blueburry"/>
+    <ElectronicText dataResourceId="CR10010-05-PNAMEEN" textData="Baybee Soft Matte Lip Cream - 05 Blueburry"/>
+    <Content contentId="CR10010-05-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10010-05-PNAMETH" description="PRODUCT NAME TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-05-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-05-PNAMEEN" description="PRODUCT NAME EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-05" contentId="CR10010-05-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-05-PNAMEEN" contentIdTo="CR10010-05-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-05-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-05-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-05-DESCTH" textData="BayBee แมตต์ ลิควิด ลิปสติก - 05 Blueburry"/>
+    <ElectronicText dataResourceId="CR10010-05-DESCEN" textData="Baybee Soft Matte Lip Cream - 05 Blueburry"/>
+    <Content contentId="CR10010-05-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10010-05-DESCTH" description="DESCRIPTION TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-05-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-05-DESCEN" description="DESCRIPTION EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-05" contentId="CR10010-05-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-05-DESCEN" contentIdTo="CR10010-05-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-06-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-06-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-06-PNAMETH" textData="แมตต์ ลิควิด ลิปสติก - 06 Rose"/>
+    <ElectronicText dataResourceId="CR10010-06-PNAMEEN" textData="Baybee Soft Matte Lip Cream - 06 Rose"/>
+    <Content contentId="CR10010-06-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10010-06-PNAMETH" description="PRODUCT NAME TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-06-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-06-PNAMEEN" description="PRODUCT NAME EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-06" contentId="CR10010-06-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-06-PNAMEEN" contentIdTo="CR10010-06-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-06-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-06-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-06-DESCTH" textData="BayBee แมตต์ ลิควิด ลิปสติก - 06 Rose"/>
+    <ElectronicText dataResourceId="CR10010-06-DESCEN" textData="Baybee Soft Matte Lip Cream - 06 Rose"/>
+    <Content contentId="CR10010-06-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10010-06-DESCTH" description="DESCRIPTION TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-06-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-06-DESCEN" description="DESCRIPTION EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-06" contentId="CR10010-06-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-06-DESCEN" contentIdTo="CR10010-06-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-07-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-07-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-07-PNAMETH" textData="แมตต์ ลิควิด ลิปสติก - 07 Kissme"/>
+    <ElectronicText dataResourceId="CR10010-07-PNAMEEN" textData="Baybee Soft Matte Lip Cream - 07 Kissme"/>
+    <Content contentId="CR10010-07-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10010-07-PNAMETH" description="PRODUCT NAME TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-07-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-07-PNAMEEN" description="PRODUCT NAME EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-07" contentId="CR10010-07-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-07-PNAMEEN" contentIdTo="CR10010-07-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-07-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-07-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-07-DESCTH" textData="BayBee แมตต์ ลิควิด ลิปสติก - 07 Kissme"/>
+    <ElectronicText dataResourceId="CR10010-07-DESCEN" textData="Baybee Soft Matte Lip Cream - 07 Kissme"/>
+    <Content contentId="CR10010-07-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10010-07-DESCTH" description="DESCRIPTION TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-07-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-07-DESCEN" description="DESCRIPTION EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-07" contentId="CR10010-07-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-07-DESCEN" contentIdTo="CR10010-07-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-08-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-08-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-08-PNAMETH" textData="แมตต์ ลิควิด ลิปสติก - 08 Charming"/>
+    <ElectronicText dataResourceId="CR10010-08-PNAMEEN" textData="Baybee Soft Matte Lip Cream - 08 Charming"/>
+    <Content contentId="CR10010-08-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10010-08-PNAMETH" description="PRODUCT NAME TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-08-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-08-PNAMEEN" description="PRODUCT NAME EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-08" contentId="CR10010-08-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-08-PNAMEEN" contentIdTo="CR10010-08-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-08-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-08-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-08-DESCTH" textData="BayBee แมตต์ ลิควิด ลิปสติก - 08 Charming"/>
+    <ElectronicText dataResourceId="CR10010-08-DESCEN" textData="Baybee Soft Matte Lip Cream - 08 Charming"/>
+    <Content contentId="CR10010-08-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10010-08-DESCTH" description="DESCRIPTION TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-08-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-08-DESCEN" description="DESCRIPTION EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-08" contentId="CR10010-08-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-08-DESCEN" contentIdTo="CR10010-08-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-09-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-09-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-09-PNAMETH" textData="แมตต์ ลิควิด ลิปสติก - 09 Grayberry"/>
+    <ElectronicText dataResourceId="CR10010-09-PNAMEEN" textData="Baybee Soft Matte Lip Cream - 09 Grayberry"/>
+    <Content contentId="CR10010-09-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10010-09-PNAMETH" description="PRODUCT NAME TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-09-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-09-PNAMEEN" description="PRODUCT NAME EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-09" contentId="CR10010-09-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-09-PNAMEEN" contentIdTo="CR10010-09-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10010-09-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10010-09-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10010-09-DESCTH" textData="BayBee แมตต์ ลิควิด ลิปสติก - 09 Grayberry"/>
+    <ElectronicText dataResourceId="CR10010-09-DESCEN" textData="Baybee Soft Matte Lip Cream - 09 Grayberry"/>
+    <Content contentId="CR10010-09-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10010-09-DESCTH" description="DESCRIPTION TH BayBee Soft Matte Lip Cream" localeString="th"/>
+    <Content contentId="CR10010-09-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10010-09-DESCEN" description="DESCRIPTION EN BayBee Soft Matte Lip Cream" localeString="en"/>
+    <ProductContent productId="CR10010-09" contentId="CR10010-09-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10010-09-DESCEN" contentIdTo="CR10010-09-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
     <PartyRole partyId="_NA_" roleTypeId="CARRIER"/>
     <ShipmentMethodType description="Free Shipping" shipmentMethodTypeId="FREE_SHIPPING"/>
@@ -428,9 +623,12 @@
     <!-- Finum Brewing Basket for promotion -->
     <Product productId="FINUM_BB" productName="Finum Brewing Basket" productTypeId="FINISHED_GOOD" brandName="finum" createdDate="2017-11-01 00:00:00.000" internalName="Finum Brewing basket" inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="N" isVirtual="N" orderDecimalQuantity="N"/>
     <ProductPrice productId="FINUM_BB" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" currencyUomId="THB" productStoreGroupId="_NA_" fromDate="2017-11-01 00:00:00.000" price="500.00"/>
+    <ProductFacility productId="FINUM_BB" facilityId="pftWarehouse" minimumStock="2" reorderQuantity="10" daysToShip=""/>
+    <InventoryItem accountingQuantityTotal="10.000000" availableToPromiseTotal="10.000000" currencyUomId="THB" datetimeReceived="2017-11-01 00:00:00.000" facilityId="pftWarehouse" inventoryItemId="PFT20000" inventoryItemTypeId="NON_SERIAL_INV_ITEM" ownerPartyId="pft" productId="FINUM_BB" quantityOnHandTotal="10.000000" unitCost="0.000000"/>
+    <InventoryItemDetail accountingQuantityDiff="10.000000" availableToPromiseDiff="0.000000" effectiveDate="2017-11-01 00:00:00.000" inventoryItemDetailSeqId="10011" inventoryItemId="PFT20000" quantityOnHandDiff="0.000000"/>
 
     <!-- Product Promotion 15 free 1 -->
-    <ProductPromo productPromoId="Buy15CCFree1BB" promoName="Buy 15 Careel Coffee FREE 1 Brewing basket" promoText="Buy 15 Careel Coffee FREE 1 Brewing basket" requireCode="N" showToCustomer="Y" userEntered="Y"/>
+    <ProductPromo productPromoId="Buy15CCFree1BB" promoName="Buy 15 Careel Coffee FREE 1 Brewing basket" promoText="Buy 15 Careel Coffee FREE 1 Brewing basket" requireCode="N" showToCustomer="Y" userEntered="Y" createdDate="2017-11-01 00:00:00.000"/>
     <ProductPromoRule productPromoId="Buy15CCFree1BB" productPromoRuleId="00001" ruleName="buy 15 coffe free 1 brewing basket"/>
     <ProductPromoCond condValue="15" inputParamEnumId="PPIP_PRODUCT_QUANT" operatorEnumId="PPC_EQ" productPromoCondSeqId="01" productPromoId="Buy15CCFree1BB" productPromoRuleId="00001"/>
     <Enumeration description="Is" enumCode="EQ" enumId="PPC_EQ" enumTypeId="PROD_PROMO_COND" sequenceId="01"/>
@@ -452,91 +650,91 @@
                 smallImageUrl=""
                 weightUomId="WT_g" />
     <Product brandName="NB" createdStamp="2017-11-18 03:11:42.785"
-                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 #01 (Charming)"
-                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 #01 (Charming)"
+                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 - 01 Charming"
+                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 - 01 Charming"
                     inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="Y"
                     isVirtual="N" lastModifiedDate="2017-11-20 08:01:00.478"
                     lastUpdatedStamp="2017-11-27 06:26:39.613" lastUpdatedTxStamp="2017-11-27 06:26:39.054"
                     lotIdFilledIn="Allowed" productId="CR10011-01"
-                    productName="NB Matte Lipstick Collection1 #01 (Charming)"
+                    productName="NB Matte Lipstick Collection1 - 01 Charming"
                     productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
                     smallImageUrl="" />
     <Product brandName="NB" createdStamp="2017-11-18 03:11:42.926"
-                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 #03 (Elegant)"
-                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 #03 (Elegant)"
+                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 - 03 Elegant"
+                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 - 03 Elegant"
                     inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="Y"
                     isVirtual="N" lastModifiedDate="2017-11-20 08:05:22.229"
                     lastUpdatedStamp="2017-11-27 06:28:00.941" lastUpdatedTxStamp="2017-11-27 06:28:00.633"
                     lotIdFilledIn="Allowed" productId="CR10011-03"
-                    productName="NB Matte Lipstick Collection1 #03 (Elegant)"
+                    productName="NB Matte Lipstick Collection1 - 03 Elegant"
                     productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
                     smallImageUrl="" />
     <Product brandName="NB" createdStamp="2017-11-18 03:11:42.995"
-                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 #05 (Hot Plum)"
-                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 #05 (Hot Plum)"
+                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 - 05 Hot Plum"
+                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 - 05 Hot Plum"
                     inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="Y"
                     isVirtual="N" lastModifiedDate="2017-11-20 08:06:40.088"
                     lastUpdatedStamp="2017-11-27 06:28:39.356" lastUpdatedTxStamp="2017-11-27 06:28:39.049"
                     lotIdFilledIn="Allowed" productId="CR10011-05"
-                    productName="NB Matte Lipstick Collection1 #05 (Hot Plum)"
+                    productName="NB Matte Lipstick Collection1 - 05 Hot Plum"
                     productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
                     smallImageUrl="" />
     <Product brandName="NB" createdStamp="2017-11-18 03:11:42.868"
-                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 #02 (Red Rose)"
-                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 #02 (Red Rose)"
+                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 - 02 Red Rose"
+                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 - 02 Red Rose"
                     inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="Y"
                     isVirtual="N" lastModifiedDate="2017-11-20 08:04:59.348"
                     lastUpdatedStamp="2017-11-27 06:27:37.356" lastUpdatedTxStamp="2017-11-27 06:27:36.899"
                     lotIdFilledIn="Allowed" productId="CR10011-02"
-                    productName="NB Matte Lipstick Collection1 #02 (Red Rose)"
+                    productName="NB Matte Lipstick Collection1 - 02 Red Rose"
                     productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
                     smallImageUrl="" />
     <Product brandName="NB" createdStamp="2017-11-18 03:11:42.961"
-                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 #04 (Sexy Girl)"
-                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 #04 (Sexy Girl)"
+                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 - 04 Sexy Girl"
+                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 - 04 Sexy Girl"
                     inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="Y"
                     isVirtual="N" lastModifiedDate="2017-11-20 08:06:02.39"
                     lastUpdatedStamp="2017-11-27 06:28:18.62" lastUpdatedTxStamp="2017-11-27 06:28:18.335"
                     lotIdFilledIn="Allowed" productId="CR10011-04"
-                    productName="NB Matte Lipstick Collection1 #04 (Sexy Girl)"
+                    productName="NB Matte Lipstick Collection1 - 04 Sexy Girl"
                     productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
                     smallImageUrl="" />
     <Product brandName="NB" createdStamp="2017-11-18 03:11:43.053"
-                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 #06 (Pink Gold)"
-                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 #06 (Pink Gold)"
+                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 - 06 Pink Gold"
+                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 - 06 Pink Gold"
                     inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="Y"
                     isVirtual="N" lastModifiedDate="2017-11-20 08:06:59.894"
                     lastUpdatedStamp="2017-11-27 06:28:54.153" lastUpdatedTxStamp="2017-11-27 06:28:53.847"
                     lotIdFilledIn="Allowed" productId="CR10011-06"
-                    productName="NB Matte Lipstick Collection1 #06 (Pink Gold)"
+                    productName="NB Matte Lipstick Collection1 - 06 Pink Gold"
                     productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
                     smallImageUrl="" />
     <Product brandName="NB" createdStamp="2017-11-18 03:11:43.115"
-                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 #07 (Soft Burry)"
-                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 #07 (Soft Burry)"
+                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 - 07 Soft Burry"
+                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 - 07 Soft Burry"
                     inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="Y"
                     isVirtual="N" lastModifiedDate="2017-11-20 08:07:30.372"
                     lastUpdatedStamp="2017-11-27 06:29:11.268" lastUpdatedTxStamp="2017-11-27 06:29:10.997"
                     lotIdFilledIn="Allowed" productId="CR10011-07"
-                    productName="NB Matte Lipstick Collection1 #07 (SoftBurry)"
+                    productName="NB Matte Lipstick Collection1 - 07 SoftBurry"
                     productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
                     smallImageUrl="" />
     <Product brandName="NB" createdStamp="2017-11-18 03:11:43.174"
-                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 #08 (Hot Sand)"
-                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 #08 (Hot Sand)"
+                    createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 - 08 Hot Sand"
+                    inShippingBox="N" internalName="NB Matte Lipstick Collection1 - 08 Hot Sand"
                     inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="Y"
                     isVirtual="N" lastModifiedDate="2017-11-20 10:22:35.937"
                     lastUpdatedStamp="2017-11-27 06:29:36.852" lastUpdatedTxStamp="2017-11-27 06:29:36.554"
                     lotIdFilledIn="Allowed" productId="CR10011-08"
-                    productName="NB Matte Lipstick Collection1 #08 (Hot Sand)"
+                    productName="NB Matte Lipstick Collection1 - 08 Hot Sand"
                     productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
                     smallImageUrl="" />
     <DataResource dataResourceId="CR10011-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
     <DataResource dataResourceId="CR10011-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
     <ElectronicText dataResourceId="CR10011-PNAMETH" textData="NB ลิปสติก"/>
     <ElectronicText dataResourceId="CR10011-PNAMEEN" textData="NB Matte Lipstick"/>
-    <Content contentId="CR10011-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10011-PNAMETH" description="PRODUCT NAME TH CAREEL Coffee" localeString="th"/>
-    <Content contentId="CR10011-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-PNAMEEN" description="PRODUCT NAME EN CAREEL Coffee" localeString="en"/>
+    <Content contentId="CR10011-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10011-PNAMETH" description="PRODUCT NAME TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-PNAMEEN" description="PRODUCT NAME EN NB Matte Lipstick" localeString="en"/>
     <ProductContent productId="CR10011" contentId="CR10011-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
     <ContentAssoc contentId="CR10011-PNAMEEN" contentIdTo="CR10011-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
@@ -544,8 +742,8 @@
     <DataResource dataResourceId="CR10011-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
     <ElectronicText dataResourceId="CR10011-DESCTH" textData="ลิปสติกแนวใหม่ที่เรียบละมุนดุจใยไหม เมื่อแห้งจะเซ็ตตัวเป้นลิปแมทที่สีสวยคมชัดและติดทนนานอย่างเหลือเชื่อ เนื้อลิปนุ่มละมุนและให้ความชุ่มชื่นสู่ริมฝีปากมากกว่าลิปแมทอื่นๆ"/>
     <ElectronicText dataResourceId="CR10011-DESCEN" textData="NB Matte Lipstick."/>
-    <Content contentId="CR10011-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10011-DESCTH" description="DESCRIPTION TH CAREEL Coffee" localeString="th"/>
-    <Content contentId="CR10011-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-DESCEN" description="DESCRIPTION EN CAREEL Coffee" localeString="en"/>
+    <Content contentId="CR10011-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10011-DESCTH" description="DESCRIPTION TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-DESCEN" description="DESCRIPTION EN NB Matte Lipstick" localeString="en"/>
     <ProductContent productId="CR10011" contentId="CR10011-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
     <ContentAssoc contentId="CR10011-DESCEN" contentIdTo="CR10011-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
@@ -647,6 +845,150 @@
     <ProductAssoc fromDate="2017-10-09 00:00:00.0" productAssocTypeId="PRODUCT_VARIANT" productId="CR10011" productIdTo="CR10011-07" quantity="1.000000" />
     <ProductAssoc fromDate="2017-11-20 08:09:32.0" productAssocTypeId="PRODUCT_VARIANT" productId="CR10011" productIdTo="CR10011-06" quantity="1.000000" />
     <ProductAssoc fromDate="2017-11-20 10:15:45.0" productAssocTypeId="PRODUCT_VARIANT" productId="CR10011" productIdTo="CR10011-08" quantity="1.000000" />
+
+    <DataResource dataResourceId="CR10011-01-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-01-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-01-PNAMETH" textData="NB ลิปสติก - 01 Charming"/>
+    <ElectronicText dataResourceId="CR10011-01-PNAMEEN" textData="NB Matte Lipstick Collection1 - 01 Charming"/>
+    <Content contentId="CR10011-01-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10011-01-PNAMETH" description="PRODUCT NAME TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-01-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-01-PNAMEEN" description="PRODUCT NAME EN NB Matte Lipstick" localeString="en"/>
+    <ProductContent productId="CR10011-01" contentId="CR10011-01-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-01-PNAMEEN" contentIdTo="CR10011-01-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10011-01-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-01-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-01-DESCTH" textData="ลิปสติกแนวใหม่ที่เรียบละมุนดุจใยไหม เมื่อแห้งจะเซ็ตตัวเป้นลิปแมทที่สีสวยคมชัดและติดทนนานอย่างเหลือเชื่อ เนื้อลิปนุ่มละมุนและให้ความชุ่มชื่นสู่ริมฝีปากมากกว่าลิปแมทอื่นๆ"/>
+    <ElectronicText dataResourceId="CR10011-01-DESCEN" textData="NB Matte Lipstick - 01 Charming"/>
+    <Content contentId="CR10011-01-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10011-01-DESCTH" description="DESCRIPTION TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-01-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-01-DESCEN" description="DESCRIPTION EN NB Matte Lipstick" localeString="en"/>
+    <ProductContent productId="CR10011-01" contentId="CR10011-01-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-01-DESCEN" contentIdTo="CR10011-01-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10011-02-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-02-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-02-PNAMETH" textData="NB ลิปสติก - 02 Red Rose"/>
+    <ElectronicText dataResourceId="CR10011-02-PNAMEEN" textData="NB Matte Lipstick Collection1 - 02 Red Rose"/>
+    <Content contentId="CR10011-02-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10011-02-PNAMETH" description="PRODUCT NAME TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-02-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-02-PNAMEEN" description="PRODUCT NAME EN NB Matte Lipstick" localeString="en"/>
+    <ProductContent productId="CR10011-02" contentId="CR10011-02-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-02-PNAMEEN" contentIdTo="CR10011-02-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10011-02-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-02-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-02-DESCTH" textData="ลิปสติกแนวใหม่ที่เรียบละมุนดุจใยไหม เมื่อแห้งจะเซ็ตตัวเป้นลิปแมทที่สีสวยคมชัดและติดทนนานอย่างเหลือเชื่อ เนื้อลิปนุ่มละมุนและให้ความชุ่มชื่นสู่ริมฝีปากมากกว่าลิปแมทอื่นๆ"/>
+    <ElectronicText dataResourceId="CR10011-02-DESCEN" textData="NB Matte Lipstick - 02 Red Rose"/>
+    <Content contentId="CR10011-02-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10011-02-DESCTH" description="DESCRIPTION TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-02-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-02-DESCEN" description="DESCRIPTION EN NB Matte Lipstick" localeString="en"/>
+    <ProductContent productId="CR10011-02" contentId="CR10011-02-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-02-DESCEN" contentIdTo="CR10011-02-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10011-03-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-03-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-03-PNAMETH" textData="NB ลิปสติก - 03 Elegant"/>
+    <ElectronicText dataResourceId="CR10011-03-PNAMEEN" textData="NB Matte Lipstick Collection1 - 03 Elegant"/>
+    <Content contentId="CR10011-03-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10011-03-PNAMETH" description="PRODUCT NAME TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-03-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-03-PNAMEEN" description="PRODUCT NAME EN NB Matte Lipstick" localeString="en"/>
+    <ProductContent productId="CR10011-03" contentId="CR10011-03-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-03-PNAMEEN" contentIdTo="CR10011-03-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10011-03-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-03-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-03-DESCTH" textData="ลิปสติกแนวใหม่ที่เรียบละมุนดุจใยไหม เมื่อแห้งจะเซ็ตตัวเป้นลิปแมทที่สีสวยคมชัดและติดทนนานอย่างเหลือเชื่อ เนื้อลิปนุ่มละมุนและให้ความชุ่มชื่นสู่ริมฝีปากมากกว่าลิปแมทอื่นๆ"/>
+    <ElectronicText dataResourceId="CR10011-03-DESCEN" textData="NB Matte Lipstick - 03 Elegant"/>
+    <Content contentId="CR10011-03-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10011-03-DESCTH" description="DESCRIPTION TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-03-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-03-DESCEN" description="DESCRIPTION EN NB Matte Lipstick" localeString="en"/>
+    <ProductContent productId="CR10011-03" contentId="CR10011-03-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-03-DESCEN" contentIdTo="CR10011-03-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10011-04-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-04-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-04-PNAMETH" textData="NB ลิปสติก - 04 Sexy Girl"/>
+    <ElectronicText dataResourceId="CR10011-04-PNAMEEN" textData="NB Matte Lipstick Collection1 - 04 Sexy Girl"/>
+    <Content contentId="CR10011-04-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10011-04-PNAMETH" description="PRODUCT NAME TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-04-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-04-PNAMEEN" description="PRODUCT NAME EN NB Matte Lipstick" localeString="en"/>
+    <ProductContent productId="CR10011-04" contentId="CR10011-04-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-04-PNAMEEN" contentIdTo="CR10011-04-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10011-04-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-04-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-04-DESCTH" textData="ลิปสติกแนวใหม่ที่เรียบละมุนดุจใยไหม เมื่อแห้งจะเซ็ตตัวเป้นลิปแมทที่สีสวยคมชัดและติดทนนานอย่างเหลือเชื่อ เนื้อลิปนุ่มละมุนและให้ความชุ่มชื่นสู่ริมฝีปากมากกว่าลิปแมทอื่นๆ"/>
+    <ElectronicText dataResourceId="CR10011-04-DESCEN" textData="NB Matte Lipstick - 04 Sexy Girl"/>
+    <Content contentId="CR10011-04-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10011-04-DESCTH" description="DESCRIPTION TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-04-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-04-DESCEN" description="DESCRIPTION EN NB Matte Lipstick" localeString="en"/>
+    <ProductContent productId="CR10011-04" contentId="CR10011-04-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-04-DESCEN" contentIdTo="CR10011-04-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10011-05-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-05-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-05-PNAMETH" textData="NB ลิปสติก - 05 Hot Plum"/>
+    <ElectronicText dataResourceId="CR10011-05-PNAMEEN" textData="NB Matte Lipstick Collection1 - 05 Hot Plum"/>
+    <Content contentId="CR10011-05-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10011-05-PNAMETH" description="PRODUCT NAME TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-05-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-05-PNAMEEN" description="PRODUCT NAME EN NB Matte Lipstick" localeString="en"/>
+    <ProductContent productId="CR10011-05" contentId="CR10011-05-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-05-PNAMEEN" contentIdTo="CR10011-05-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10011-05-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-05-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-05-DESCTH" textData="ลิปสติกแนวใหม่ที่เรียบละมุนดุจใยไหม เมื่อแห้งจะเซ็ตตัวเป้นลิปแมทที่สีสวยคมชัดและติดทนนานอย่างเหลือเชื่อ เนื้อลิปนุ่มละมุนและให้ความชุ่มชื่นสู่ริมฝีปากมากกว่าลิปแมทอื่นๆ"/>
+    <ElectronicText dataResourceId="CR10011-05-DESCEN" textData="NB Matte Lipstick - 05 Hot Plum"/>
+    <Content contentId="CR10011-05-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10011-05-DESCTH" description="DESCRIPTION TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-05-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-05-DESCEN" description="DESCRIPTION EN NB Matte Lipstick" localeString="en"/>
+    <ProductContent productId="CR10011-05" contentId="CR10011-05-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-05-DESCEN" contentIdTo="CR10011-05-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10011-06-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-06-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-06-PNAMETH" textData="NB ลิปสติก - 06 Pink Gold"/>
+    <ElectronicText dataResourceId="CR10011-06-PNAMEEN" textData="NB Matte Lipstick Collection1 - 06 Pink Gold"/>
+    <Content contentId="CR10011-06-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10011-06-PNAMETH" description="PRODUCT NAME TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-06-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-06-PNAMEEN" description="PRODUCT NAME EN NB Matte Lipstick" localeString="en"/>
+    <ProductContent productId="CR10011-06" contentId="CR10011-06-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-06-PNAMEEN" contentIdTo="CR10011-06-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10011-06-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-06-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-06-DESCTH" textData="ลิปสติกแนวใหม่ที่เรียบละมุนดุจใยไหม เมื่อแห้งจะเซ็ตตัวเป้นลิปแมทที่สีสวยคมชัดและติดทนนานอย่างเหลือเชื่อ เนื้อลิปนุ่มละมุนและให้ความชุ่มชื่นสู่ริมฝีปากมากกว่าลิปแมทอื่นๆ"/>
+    <ElectronicText dataResourceId="CR10011-06-DESCEN" textData="NB Matte Lipstick - 06 Pink Gold"/>
+    <Content contentId="CR10011-06-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10011-06-DESCTH" description="DESCRIPTION TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-06-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-06-DESCEN" description="DESCRIPTION EN NB Matte Lipstick" localeString="en"/>
+    <ProductContent productId="CR10011-06" contentId="CR10011-06-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-06-DESCEN" contentIdTo="CR10011-06-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10011-07-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-07-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-07-PNAMETH" textData="NB ลิปสติก - 07 Soft Burry"/>
+    <ElectronicText dataResourceId="CR10011-07-PNAMEEN" textData="NB Matte Lipstick Collection1 - 07 Soft Burry"/>
+    <Content contentId="CR10011-07-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10011-07-PNAMETH" description="PRODUCT NAME TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-07-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-07-PNAMEEN" description="PRODUCT NAME EN NB Matte Lipstick" localeString="en"/>
+    <ProductContent productId="CR10011-07" contentId="CR10011-07-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-07-PNAMEEN" contentIdTo="CR10011-07-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10011-07-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-07-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-07-DESCTH" textData="ลิปสติกแนวใหม่ที่เรียบละมุนดุจใยไหม เมื่อแห้งจะเซ็ตตัวเป้นลิปแมทที่สีสวยคมชัดและติดทนนานอย่างเหลือเชื่อ เนื้อลิปนุ่มละมุนและให้ความชุ่มชื่นสู่ริมฝีปากมากกว่าลิปแมทอื่นๆ"/>
+    <ElectronicText dataResourceId="CR10011-07-DESCEN" textData="NB Matte Lipstick - 07 Soft Burry"/>
+    <Content contentId="CR10011-07-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10011-07-DESCTH" description="DESCRIPTION TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-07-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-07-DESCEN" description="DESCRIPTION EN NB Matte Lipstick" localeString="en"/>
+    <ProductContent productId="CR10011-07" contentId="CR10011-07-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-07-DESCEN" contentIdTo="CR10011-07-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10011-08-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-08-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-08-PNAMETH" textData="NB ลิปสติก - 08 Hot Sand"/>
+    <ElectronicText dataResourceId="CR10011-08-PNAMEEN" textData="NB Matte Lipstick Collection1 - 08 Hot Sand"/>
+    <Content contentId="CR10011-08-PNAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10011-08-PNAMETH" description="PRODUCT NAME TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-08-PNAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-08-PNAMEEN" description="PRODUCT NAME EN NB Matte Lipstick" localeString="en"/>
+    <ProductContent productId="CR10011-08" contentId="CR10011-08-PNAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-08-PNAMEEN" contentIdTo="CR10011-08-PNAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10011-08-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10011-08-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10011-08-DESCTH" textData="ลิปสติกแนวใหม่ที่เรียบละมุนดุจใยไหม เมื่อแห้งจะเซ็ตตัวเป้นลิปแมทที่สีสวยคมชัดและติดทนนานอย่างเหลือเชื่อ เนื้อลิปนุ่มละมุนและให้ความชุ่มชื่นสู่ริมฝีปากมากกว่าลิปแมทอื่นๆ"/>
+    <ElectronicText dataResourceId="CR10011-08-DESCEN" textData="NB Matte Lipstick - 08 Hot Sand"/>
+    <Content contentId="CR10011-08-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10011-08-DESCTH" description="DESCRIPTION TH NB Matte Lipstick" localeString="th"/>
+    <Content contentId="CR10011-08-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10011-08-DESCEN" description="DESCRIPTION EN NB Matte Lipstick" localeString="en"/>
+    <ProductContent productId="CR10011-08" contentId="CR10011-08-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10011-08-DESCEN" contentIdTo="CR10011-08-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
     <SystemProperty systemResourceId="catalog" systemPropertyId="top.category.default" systemPropertyValue="PFT_ROOT"/>
     <SystemProperty systemResourceId="catalog" systemPropertyId="all.product.category" systemPropertyValue="PFT_ROOT"/>

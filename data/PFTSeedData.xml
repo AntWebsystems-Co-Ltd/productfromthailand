@@ -220,6 +220,8 @@ under the License.
     <ProductFeature productFeatureId="CF30002" productFeatureCategoryId="CF30000" productFeatureTypeId="COLOR" description="#02 : Violet"/>
     <ProductFeature productFeatureId="CF30003" productFeatureCategoryId="CF30000" productFeatureTypeId="COLOR" description="#03 : White"/>
     <ProductFeature productFeatureId="CF30004" productFeatureCategoryId="CF30000" productFeatureTypeId="COLOR" description="#04 : Pink"/>
+    <ProductFeature productFeatureId="CF30005" productFeatureCategoryId="CF30000" productFeatureTypeId="COLOR" description="#05 : Yellow"/>
+    <ProductFeature productFeatureId="CF30006" productFeatureCategoryId="CF30000" productFeatureTypeId="COLOR" description="#06 : White with green flower."/>
 
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_ODR_CONFIRM" bodyScreenLocation="component://productfromthailand/widget/OrderScreens.xml#OrderConfirmNotice" xslfoAttachScreenLocation="component://productfromthailand/widget/OrderScreens.xml#OrderPDF" subject="Product From Thailand - Order Confirmation #${orderId}" bccAddress="info@productfromthailand.com" fromAddress="info@productfromthailand.com"/>
     <ProductStoreEmailSetting productStoreId="PFTSTORE" emailType="PRDS_ODR_COMPLETE" bodyScreenLocation="component://ecommerce/widget/EmailOrderScreens.xml#OrderCompleteNotice" subject="Product From Thailand - Your Order Is Complete #${orderId}" fromAddress="info@productfromthailand.com"/>

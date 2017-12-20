@@ -234,13 +234,15 @@ under the License.
     <ContentAssoc contentId="CR10001-DESCEN" contentIdTo="CR10001-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
     <!-- CR10002: Scarf made of Batik Silk-->
-    <Product productId="CR10002" productName="Scarf made of Batik Silk" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="Scarf made of Batik Silk" inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="N" isVirtual="Y" orderDecimalQuantity="N" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10002-01" productTypeId="FINISHED_GOOD" productName="Hand blue painted silk scarf, roses with leaves" brandName="Careel" internalName="Hand blue painted silk scarf, roses with leaves" description="Hand blue painted silk scarf, roses with leaves" longDescription="" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10002-02" productTypeId="FINISHED_GOOD" productName="Hand violet painted silk scarf, roses with leaves" brandName="Careel" internalName="Hand violet painted silk scarf, roses with leaves" description="Hand violet painted silk scarf, roses with leaves" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10002-03" productTypeId="FINISHED_GOOD" productName="Hand white painted silk scarf, roses with leaves" brandName="Careel" internalName="Hand white painted silk scarf, roses with leaves" description="Hand white painted silk scarf, roses with leaves" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10002-04" productTypeId="FINISHED_GOOD" productName="Hand pink painted silk scarf, roses with leaves" brandName="Careel" internalName="Hand pink painted silk scarf, roses with leaves" description="Hand pink painted silk scarf, roses with leaves" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10002" productName="Scarf made of Batik Silk" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="Scarf made of Batik Silk" inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="N" isVirtual="Y" orderDecimalQuantity="N"/>
+    <Product productId="CR10002-01" productTypeId="FINISHED_GOOD" productName="Hand blue painted silk scarf, roses with leaves" brandName="Careel" internalName="Hand blue painted silk scarf, roses with leaves" description="Hand blue painted silk scarf, roses with leaves" longDescription="" isVirtual="N" isVariant="Y"/>
+    <Product productId="CR10002-02" productTypeId="FINISHED_GOOD" productName="Hand violet painted silk scarf, roses with leaves" brandName="Careel" internalName="Hand violet painted silk scarf, roses with leaves" description="Hand violet painted silk scarf, roses with leaves" isVirtual="N" isVariant="Y"/>
+    <Product productId="CR10002-03" productTypeId="FINISHED_GOOD" productName="Hand white painted silk scarf, roses with leaves" brandName="Careel" internalName="Hand white painted silk scarf, roses with leaves" description="Hand white painted silk scarf, roses with leaves" isVirtual="N" isVariant="Y"/>
+    <Product productId="CR10002-04" productTypeId="FINISHED_GOOD" productName="Hand pink painted silk scarf, roses with leaves" brandName="Careel" internalName="Hand pink painted silk scarf, roses with leaves" description="Hand pink painted silk scarf, roses with leaves" isVirtual="N" isVariant="Y"/>
+    <Product productId="CR10002-05" productTypeId="FINISHED_GOOD" productName="Hand yellow painted silk scarf, roses with leaves" brandName="Careel" internalName="Hand yellow painted silk scarf, roses with leaves" description="Hand yellow painted silk scarf, roses with leaves" isVirtual="N" isVariant="Y"/>
+    <Product productId="CR10002-06" productTypeId="FINISHED_GOOD" productName="Hand white painted silk scarf, green flowers with leaves" brandName="Careel" internalName="Hand white painted silk scarf, green flowers with leaves" description="Hand white painted silk scarf, green flowers with leaves" isVirtual="N" isVariant="Y"/>
 
-   <ProductFeatureAppl productId="CR10002" productFeatureId="CF30001"
+    <ProductFeatureAppl productId="CR10002" productFeatureId="CF30001"
         productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
     <ProductFeatureAppl productId="CR10002" productFeatureId="CF30002"
         productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="2"/>
@@ -248,6 +250,10 @@ under the License.
         productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="3"/>
     <ProductFeatureAppl productId="CR10002" productFeatureId="CF30004"
         productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="4"/>
+    <ProductFeatureAppl productId="CR10002" productFeatureId="CF30005"
+        productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="5"/>
+    <ProductFeatureAppl productId="CR10002" productFeatureId="CF30006"
+        productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="6"/>
 
     <ProductFeatureAppl productId="CR10002-01" productFeatureId="CF30001"
         productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
@@ -256,6 +262,10 @@ under the License.
     <ProductFeatureAppl productId="CR10002-03" productFeatureId="CF30003"
         productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
     <ProductFeatureAppl productId="CR10002-04" productFeatureId="CF30004"
+        productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
+    <ProductFeatureAppl productId="CR10002-05" productFeatureId="CF30005"
+        productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
+    <ProductFeatureAppl productId="CR10002-06" productFeatureId="CF30006"
         productFeatureApplTypeId="STANDARD_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
 
     <ProductAssoc fromDate="2017-10-09 00:00:00.000" productAssocTypeId="PRODUCT_VARIANT" productId="CR10002"
@@ -266,6 +276,10 @@ under the License.
         productIdTo="CR10002-03" quantity="1.0" reason=""/>
     <ProductAssoc fromDate="2017-10-09 00:00:00.000" productAssocTypeId="PRODUCT_VARIANT" productId="CR10002"
         productIdTo="CR10002-04" quantity="1.0" reason=""/>
+    <ProductAssoc fromDate="2017-10-09 00:00:00.000" productAssocTypeId="PRODUCT_VARIANT" productId="CR10002"
+        productIdTo="CR10002-05" quantity="1.0" reason=""/>
+    <ProductAssoc fromDate="2017-10-09 00:00:00.000" productAssocTypeId="PRODUCT_VARIANT" productId="CR10002"
+        productIdTo="CR10002-06" quantity="1.0" reason=""/>
 
     <ProductCategoryMember productCategoryId="THAISILK" productId="CR10002" sequenceNum="1" fromDate="2017-10-09 00:00:00.000"/>
     <ProductPrice productId="CR10002" currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="1600.000" priceWithTax="1600.000" priceWithoutTax="1495.327" productPricePurposeId="PURCHASE" productPriceTypeId="LIST_PRICE" productStoreGroupId="_NA_" taxAmount="104.673" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
@@ -273,17 +287,23 @@ under the License.
     <ProductPrice productId="CR10002-02" currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="1600.000" priceWithTax="1600.000" priceWithoutTax="1495.327" productPricePurposeId="PURCHASE" productPriceTypeId="LIST_PRICE" productStoreGroupId="_NA_" taxAmount="104.673" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
     <ProductPrice productId="CR10002-03" currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="1600.000" priceWithTax="1600.000" priceWithoutTax="1495.327" productPricePurposeId="PURCHASE" productPriceTypeId="LIST_PRICE" productStoreGroupId="_NA_" taxAmount="104.673" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
     <ProductPrice productId="CR10002-04" currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="1600.000" priceWithTax="1600.000" priceWithoutTax="1495.327" productPricePurposeId="PURCHASE" productPriceTypeId="LIST_PRICE" productStoreGroupId="_NA_" taxAmount="104.673" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
+    <ProductPrice productId="CR10002-05" currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="1600.000" priceWithTax="1600.000" priceWithoutTax="1495.327" productPricePurposeId="PURCHASE" productPriceTypeId="LIST_PRICE" productStoreGroupId="_NA_" taxAmount="104.673" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
+    <ProductPrice productId="CR10002-06" currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="1600.000" priceWithTax="1600.000" priceWithoutTax="1495.327" productPricePurposeId="PURCHASE" productPriceTypeId="LIST_PRICE" productStoreGroupId="_NA_" taxAmount="104.673" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
     <ProductPrice productId="CR10002" currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="1600.000" priceWithTax="1600.000" priceWithoutTax="1495.327" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" productStoreGroupId="_NA_" taxAmount="104.673" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
     <ProductPrice productId="CR10002-01" currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="1600.000" priceWithTax="1600.000" priceWithoutTax="1495.327" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" productStoreGroupId="_NA_" taxAmount="104.673" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
     <ProductPrice productId="CR10002-02" currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="1600.000" priceWithTax="1600.000" priceWithoutTax="1495.327" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" productStoreGroupId="_NA_" taxAmount="104.673" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
     <ProductPrice productId="CR10002-03" currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="1600.000" priceWithTax="1600.000" priceWithoutTax="1495.327" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" productStoreGroupId="_NA_" taxAmount="104.673" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
     <ProductPrice productId="CR10002-04" currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="1600.000" priceWithTax="1600.000" priceWithoutTax="1495.327" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" productStoreGroupId="_NA_" taxAmount="104.673" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
+    <ProductPrice productId="CR10002-05" currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="1600.000" priceWithTax="1600.000" priceWithoutTax="1495.327" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" productStoreGroupId="_NA_" taxAmount="104.673" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
+    <ProductPrice productId="CR10002-06" currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="1600.000" priceWithTax="1600.000" priceWithoutTax="1495.327" productPricePurposeId="PURCHASE" productPriceTypeId="DEFAULT_PRICE" productStoreGroupId="_NA_" taxAmount="104.673" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
 
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10002" lastPrice="1600.000" supplierProductId="SP-SCF" supplierProductName="Scarf made of Batik Silk" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10002-01" lastPrice="1600.000" supplierProductId="SP-SCF01" supplierProductName="Scarf made of Batik Silk" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10002-02" lastPrice="1600.000" supplierProductId="SP-SCF02" supplierProductName="Scarf made of Batik Silk" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10002-03" lastPrice="1600.000" supplierProductId="SP-SCF03" supplierProductName="Scarf made of Batik Silk" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
     <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10002-04" lastPrice="1600.000" supplierProductId="SP-SCF04" supplierProductName="Scarf made of Batik Silk" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10002-05" lastPrice="1600.000" supplierProductId="SP-SCF05" supplierProductName="Scarf made of Batik Silk" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
+    <SupplierProduct partyId="SUP10000" minimumOrderQuantity="0" currencyUomId="THB" productId="CR10002-06" lastPrice="1600.000" supplierProductId="SP-SCF06" supplierProductName="Scarf made of Batik Silk" canDropShip="Y" availableFromDate="2017-10-09 00:00:00.000"/>
 
     <DataResource dataResourceId="CR10002-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
     <DataResource dataResourceId="CR10002-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
@@ -314,8 +334,8 @@ under the License.
 
     <DataResource dataResourceId="CR10002-02-NAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
     <DataResource dataResourceId="CR10002-02-NAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    <ElectronicText dataResourceId="CR10002-02-NAMETH" textData="ผ้าพันคอผ้าไหม ลายดอกกุหลาบ พื้นหลังสีฟ้า"/>
-    <ElectronicText dataResourceId="CR10002-02-NAMEEN" textData="Hand blue painted silk scarf, roses with leaves"/>
+    <ElectronicText dataResourceId="CR10002-02-NAMETH" textData="ผ้าพันคอผ้าไหม ลายดอกกุหลาบ พื้นหลังสีม่วง"/>
+    <ElectronicText dataResourceId="CR10002-02-NAMEEN" textData="Hand violet painted silk scarf, roses with leaves"/>
     <Content contentId="CR10002-02-NAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10002-02-NAMETH" description="PRODUCT NAME TH Scarf made of Batik Silk" localeString="th"/>
     <Content contentId="CR10002-02-NAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10002-02-NAMEEN" description="PRODUCT NAME TH Scarf made of Batik Silk" localeString="en"/>
     <ProductContent productId="CR10002-02" contentId="CR10002-02-NAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
@@ -324,7 +344,7 @@ under the License.
     <DataResource dataResourceId="CR10002-03-NAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
     <DataResource dataResourceId="CR10002-03-NAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
     <ElectronicText dataResourceId="CR10002-03-NAMETH" textData="ผ้าพันคอผ้าไหม ลายดอกกุหลาบ พื้นหลังสีฟ้า"/>
-    <ElectronicText dataResourceId="CR10002-03-NAMEEN" textData="Hand blue painted silk scarf, roses with leaves"/>
+    <ElectronicText dataResourceId="CR10002-03-NAMEEN" textData="Hand white painted silk scarf, roses with leaves"/>
     <Content contentId="CR10002-03-NAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10002-03-NAMETH" description="PRODUCT NAME TH Scarf made of Batik Silk" localeString="th"/>
     <Content contentId="CR10002-03-NAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10002-03-NAMEEN" description="PRODUCT NAME TH Scarf made of Batik Silk" localeString="en"/>
     <ProductContent productId="CR10002-03" contentId="CR10002-03-NAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
@@ -332,13 +352,47 @@ under the License.
 
     <DataResource dataResourceId="CR10002-04-NAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
     <DataResource dataResourceId="CR10002-04-NAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
-    <ElectronicText dataResourceId="CR10002-04-NAMETH" textData="ผ้าพันคอผ้าไหม ลายดอกกุหลาบ พื้นหลังสีฟ้า"/>
-    <ElectronicText dataResourceId="CR10002-04-NAMEEN" textData="Hand blue painted silk scarf, roses with leaves"/>
+    <ElectronicText dataResourceId="CR10002-04-NAMETH" textData="ผ้าพันคอผ้าไหม ลายดอกกุหลาบ พื้นหลังสีชมพู"/>
+    <ElectronicText dataResourceId="CR10002-04-NAMEEN" textData="Hand pink painted silk scarf, roses with leaves"/>
     <Content contentId="CR10002-04-NAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10002-04-NAMETH" description="PRODUCT NAME TH Scarf made of Batik Silk" localeString="th"/>
     <Content contentId="CR10002-04-NAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10002-04-NAMEEN" description="PRODUCT NAME TH Scarf made of Batik Silk" localeString="en"/>
     <ProductContent productId="CR10002-04" contentId="CR10002-04-NAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
     <ContentAssoc contentId="CR10002-04-NAMEEN" contentIdTo="CR10002-04-NAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+    <DataResource dataResourceId="CR10002-05-NAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10002-05-NAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10002-05-NAMETH" textData="ผ้าพันคอผ้าไหม ลายดอกกุหลาบ พื้นหลังสีเหลือง"/>
+    <ElectronicText dataResourceId="CR10002-05-NAMEEN" textData="Hand yellow painted silk scarf, roses with leaves"/>
+    <Content contentId="CR10002-05-NAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10002-05-NAMETH" description="PRODUCT NAME TH Scarf made of Batik Silk" localeString="th"/>
+    <Content contentId="CR10002-05-NAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10002-05-NAMEEN" description="PRODUCT NAME TH Scarf made of Batik Silk" localeString="en"/>
+    <ProductContent productId="CR10002-05" contentId="CR10002-05-NAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10002-05-NAMEEN" contentIdTo="CR10002-05-NAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
 
+    <DataResource dataResourceId="CR10002-05-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10002-05-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10002-05-DESCTH" textData="ผ้าพันคอ ผ้าไหมบาติก งานฝีมือสินค้าไทยแท้"/>
+    <ElectronicText dataResourceId="CR10002-05-DESCEN" textData="'Scarf made of Batik Silk' The authentic Thai product from the south of Thailand and HANDMADE."/>
+    <Content contentId="CR10002-05-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10002-05-DESCTH" description="DESCRIPTION TH Shawl made of Batik Silk" localeString="th"/>
+    <Content contentId="CR10002-05-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10002-05-DESCEN" description="DESCRIPTION EN Shawl made of Batik Silk" localeString="en"/>
+    <ProductContent productId="CR10002-05" contentId="CR10002-05-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10002-05-DESCEN" contentIdTo="CR10002-05-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10002-06-NAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10002-06-NAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10002-06-NAMETH" textData="ผ้าพันคอผ้าไหม ลายดอกไม้สีเขียว พื้นหลังสีขาว"/>
+    <ElectronicText dataResourceId="CR10002-06-NAMEEN" textData="Hand white painted silk scarf, green flowers with leaves"/>
+    <Content contentId="CR10002-06-NAMETH" contentTypeId="DOCUMENT" dataResourceId="CR10002-06-NAMETH" description="PRODUCT NAME TH Scarf made of Batik Silk" localeString="th"/>
+    <Content contentId="CR10002-06-NAMEEN" contentTypeId="DOCUMENT" dataResourceId="CR10002-06-NAMEEN" description="PRODUCT NAME TH Scarf made of Batik Silk" localeString="en"/>
+    <ProductContent productId="CR10002-06" contentId="CR10002-06-NAMEEN" productContentTypeId="PRODUCT_NAME" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10002-06-NAMEEN" contentIdTo="CR10002-06-NAMETH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+
+    <DataResource dataResourceId="CR10002-06-DESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="CR10002-06-DESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+    <ElectronicText dataResourceId="CR10002-06-DESCTH" textData="ผ้าพันคอ ผ้าไหมบาติก งานฝีมือสินค้าไทยแท้"/>
+    <ElectronicText dataResourceId="CR10002-06-DESCEN" textData="'Scarf made of Batik Silk' The authentic Thai product from the south of Thailand and HANDMADE."/>
+    <Content contentId="CR10002-06-DESCTH" contentTypeId="DOCUMENT" dataResourceId="CR10002-06-DESCTH" description="DESCRIPTION TH Shawl made of Batik Silk" localeString="th"/>
+    <Content contentId="CR10002-06-DESCEN" contentTypeId="DOCUMENT" dataResourceId="CR10002-06-DESCEN" description="DESCRIPTION EN Shawl made of Batik Silk" localeString="en"/>
+    <ProductContent productId="CR10002-06" contentId="CR10002-06-DESCEN" productContentTypeId="DESCRIPTION" fromDate="2017-10-09 00:00:00.000"/>
+    <ContentAssoc contentId="CR10002-06-DESCEN" contentIdTo="CR10002-06-DESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
     <!-- CR10003: Shawl made of Batik Silk-->
     <Product productId="CR10003" productName="Shawl made of Batik Silk" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="Shawl made of Batik Silk" inventoryItemTypeId="NON_SERIAL_INV_ITEM" isVariant="N" isVirtual="N" orderDecimalQuantity="N" requirementMethodEnumId="PRODRQM_DS"/>
     <ProductCategoryMember productCategoryId="THAISILK" productId="CR10003" sequenceNum="1" fromDate="2017-10-09 00:00:00.000"/>

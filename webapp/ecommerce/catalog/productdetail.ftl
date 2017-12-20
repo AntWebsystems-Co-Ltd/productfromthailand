@@ -751,7 +751,7 @@ $(function(){
             <input type="hidden" name="add_product_id" value="${product.productId}"/>
             <div id="addCart1" style="display:none;">
             <span style="white-space: nowrap;"><strong>${uiLabelMap.CommonQuantity}:</strong></span>&nbsp;
-              <input type="text" size="5" name="quantity" value="1" id="quantity" class="form-control"/>
+              <input type="text" size="5" name="quantity" value="1" id="quantity" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
               <a href="javascript:javascript:addItem();" class="buttontext"><span
                   style="white-space: nowrap;">${uiLabelMap.OrderAddToCart}</span></a>
               &nbsp;
@@ -936,12 +936,12 @@ $(function(){
                   <tr><td>&nbsp;</td><td align="right" nowrap="nowrap">&nbsp;</td-->
                 Number of days<input type="text" size="4" name="reservLength" value=""/>
                 Number of persons<input type="text" size="4" name="reservPersons" value="2"/>
-                Number of rooms<input type="text" size="5" name="quantity" value="1" class="form-control"/>
+                Number of rooms<input type="text" size="5" name="quantity" value="1" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
               </div>
               <a href="javascript:addItem()" class="buttontext"><span
                   style="white-space: nowrap;">${uiLabelMap.OrderAddToCart}</span></a>
             <#else>
-              <span><input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" class="form-control"
+              <span><input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                            <#if product.isVirtual!?upper_case == "Y">disabled="disabled"</#if>/></span>
               <button type="button" name="addCartBtn" class="btn btn-cart" onclick="javascript:addItem();" <#if product.isVirtual!?upper_case == "Y">disabled="disabled"</#if>>
                   ${uiLabelMap.OrderAddToCart}
@@ -953,7 +953,7 @@ $(function(){
             <#if productStore??>
               <#if productStore.requireInventory?? && productStore.requireInventory == "N">
                 <span class="price-head">${uiLabelMap.CommonQuantity} :</span>
-                <input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" class="form-control"
+                <input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
                              <#if product.isVirtual!?upper_case == "Y">disabled="disabled"</#if>/>
                 <button type="button" class="btn btn-cart" id="addToCart" name="addToCart" onclick="javascript:addItem()">
                     ${uiLabelMap.OrderAddToCart}
@@ -961,7 +961,7 @@ $(function(){
                 </button>
                 <@showUnavailableVarients/>
               <#else>
-                <span><input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" class="form-control" disabled="disabled"/></span>
+                <span><input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57" disabled="disabled"/></span>
                 <button type="button" class="btn btn-cart" onclick="javascript:javascript:void(0);" disabled>
                     ${uiLabelMap.OrderAddToCart}
                     <i class="fa fa-shopping-cart"></i>
