@@ -559,6 +559,13 @@ under the License.
         <response name="error" type="request" value="myOrderlist"/>
     </request-map>
 
+    <request-map uri="receiveOrderNoShip">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="quickShipEntireOrderPFT"/>
+        <response name="success" type="request-redirect" value="myOrderlist"/>
+        <response name="error" type="request" value="myOrderlist"/>
+    </request-map>
+
     <request-map uri="trackingShipment">
         <security https="true" auth="false"/>
         <response name="success" type="view" value="trackingShipment"/>

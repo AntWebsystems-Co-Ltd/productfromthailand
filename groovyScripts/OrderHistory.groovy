@@ -53,6 +53,10 @@ if(orderHeaderList) {
                     }
                 }
             }
+        }else {
+            newOrderCtx = [:];
+            newOrderCtx.putAll(orderHeader);
+            newOrderList.add(newOrderCtx);
         }
     }
 }

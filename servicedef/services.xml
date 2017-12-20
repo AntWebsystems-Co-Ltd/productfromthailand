@@ -177,4 +177,12 @@ under the License.
         <description>Send Order Cancel Notification</description>
         <attribute name="orderId" type="String" mode="IN" optional="false"/>
     </service>
+
+    <service name="quickShipEntireOrderPFT" engine="simple" invoke="quickShipEntireOrderPFT" location="component://productfromthailand/minilang/PFTServices.xml">
+        <description>Quick Ships An Entire Order Creating One Shipment Per Facility and Ship Group.  All approved order items are
+          automatically issued in full and put into one package.  The shipment is created in the INPUT status and then updated to
+          PACKED and SHIPPED.</description>
+        <attribute name="orderId" type="String" mode="IN" optional="false"/>
+    </service>
+
 </services>

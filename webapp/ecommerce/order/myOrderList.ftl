@@ -76,7 +76,8 @@ under the License.
                     <td><#if orderHeader.orderDate?has_content>${orderHeader.orderDate!?string.medium}<#else>&nbsp;</#if></td>
                     <td><#if orderHeader.orderTypeId?has_content><a href="<@ofbizUrl>orderstatus?orderId=${orderHeader.orderId}</@ofbizUrl>" target="_BLANK" class="btn btn-main">${orderHeader.orderId!}</a></#if></td>
                     <td>
-                        <#assign orderItemList = EntityQuery.use(delegator).from("OrderItem").where("orderId", orderHeader.purchaseId).queryList()!>
+                        <#if orderHeader.purchaseId?has_content><#assign orderItemId = orderHeader.purchaseId/><#else><#assign orderItemId = orderHeader.orderId/></#if>
+                        <#assign orderItemList = EntityQuery.use(delegator).from("OrderItem").where("orderId", orderItemId).queryList()!>
                         <#if orderItemList?has_content>
                             <table>
                                 <#if orderItemList?has_content>
@@ -91,7 +92,8 @@ under the License.
                             </table>
                         </#if>
                     </td>
-                    <#assign statusItem = EntityQuery.use(delegator).from("StatusItem").where("statusId", orderHeader.purchaseStaus).queryOne()!>
+                    <#if orderHeader.purchaseId?has_content><#assign statusId = orderHeader.purchaseStaus/><#else><#assign statusId = orderHeader.statusId/></#if>
+                    <#assign statusItem = EntityQuery.use(delegator).from("StatusItem").where("statusId", statusId).queryOne()!>
                     <td><#if orderHeader.grandTotal?has_content><@ofbizCurrency amount=orderHeader.grandTotal*conversionRate isoCode=currencyUom /><#else>&nbsp;</#if></td>
                     <#assign conversionRate = rateResult.conversionRate>
                     <td>${statusItem.get("description")!}</td>
@@ -110,25 +112,37 @@ under the License.
                     <#else>
                       <td>&nbsp;</td>
                     </#if>  -->
-                    <#if orderHeader.purchaseId?has_content>
+                    <#if orderHeader.orderItemSeqId?has_content>
                         <#assign orderItemBilling = EntityQuery.use(delegator).from("OrderItemBilling").where("orderId", orderHeader.orderId, "orderItemSeqId", orderHeader.orderItemSeqId).queryFirst()!>
-                        <#if orderItemBilling?has_content>
-                          <td>
-                               <a href="<@ofbizUrl>invoice.pdf?invoiceId=${orderItemBilling.invoiceId!}</@ofbizUrl>" class="btn btn-main">${orderItemBilling.invoiceId!}</a>
-                          </td>
-                        <#else>
-                          <td>&nbsp;</td>
-                        </#if>
+                    <#else>
+                        <#assign orderItemBilling = EntityQuery.use(delegator).from("OrderItemBilling").where("orderId", orderHeader.orderId).queryFirst()!>
                     </#if>
-                    <#-- <td><#if orderHeader.orderId?has_content><a href="<@ofbizUrl>orderstatus?orderId=${orderHeader.orderId}</@ofbizUrl>" class="btn btn-main">${uiLabelMap.CommonView}</a></#if></td> -->
-                    <td><#if orderHeader.purchaseStaus.equals("ORDER_APPROVED")>
-                        <#assign orderItemShipGroup = EntityQuery.use(delegator).from("OrderItemShipGroup").where("orderId", orderHeader.purchaseId).queryFirst()!>
-                        <a href="javascript:document.receiveOrder_${countList!}.submit();" class="btn btn-main">${uiLabelMap.PFTReceiveItemOrder}</a>
-                        <form name="receiveOrder_${countList!}" method="post" action="<@ofbizUrl>receiveOrder</@ofbizUrl>">
-                          <input type="hidden" name="orderId" value="${orderHeader.purchaseId!}"/>
-                          <input type="hidden" name="shipGroupSeqId" value="${orderItemShipGroup.shipGroupSeqId!}"/>
-                        </form>
-                    </#if></td>
+                    <#if orderItemBilling?has_content>
+                      <td>
+                           <a href="<@ofbizUrl>invoice.pdf?invoiceId=${orderItemBilling.invoiceId!}</@ofbizUrl>" class="btn btn-main">${orderItemBilling.invoiceId!}</a>
+                      </td>
+                    <#else>
+                      <td>&nbsp;</td>
+                    </#if>
+                    <td>
+                        <#if (orderHeader.purchaseStaus?has_content) && (orderHeader.purchaseStaus.equals("ORDER_APPROVED"))>
+                            <#assign orderItemShipGroup = EntityQuery.use(delegator).from("OrderItemShipGroup").where("orderId", orderHeader.purchaseId).queryFirst()!>
+                            <a href="javascript:document.receiveOrder_${countList!}.submit();" class="btn btn-main">${uiLabelMap.PFTReceiveItemOrder}</a>
+                            <form name="receiveOrder_${countList!}" method="post" action="<@ofbizUrl>receiveOrder</@ofbizUrl>">
+                              <input type="hidden" name="orderId" value="${orderHeader.purchaseId!}"/>
+                              <input type="hidden" name="shipGroupSeqId" value="${orderItemShipGroup.shipGroupSeqId!}"/>
+                            </form>
+                        <#else>
+                            <#if (!orderHeader.purchaseStaus?has_content) &&  orderHeader.statusId.equals("ORDER_APPROVED")>
+                                <a href="javascript:document.receiveOrder_${countList!}.submit();" class="btn btn-main">${uiLabelMap.PFTReceiveItemOrder}</a>
+                                <form name="receiveOrder_${countList!}" method="post" action="<@ofbizUrl>receiveOrderNoShip</@ofbizUrl>">
+                                  <input type="hidden" name="orderId" value="${orderHeader.orderId!}"/>
+                                </form>
+                            <#else>
+                                &nbsp;
+                            </#if>
+                        </#if>
+                    </td>
                     <#assign countList = countList+1>
                   </tr>
                 </#list>

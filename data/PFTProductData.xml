@@ -172,8 +172,8 @@ under the License.
 
     <!-- CR10000: Careel Coffee -->
     <Product productId="CR10000" productName="CAREEL Coffee" productTypeId="FINISHED_GOOD" brandName="Careel" createdDate="2017-10-09 00:00:00.000" internalName="CAREEL Coffee" inventoryItemTypeId="NON_SERIAL_INV_ITEM" orderDecimalQuantity="N" productWeight="200.000000" requirementMethodEnumId="PRODRQM_DS" weightUomId="WT_g" isVirtual="Y" isVariant="N"/>
-    <Product productId="CR10000-RB" productTypeId="FINISHED_GOOD" productName="CAREEL Coffee Roast Whole Bean Coffee" brandName="Careel" internalName="CAREEL Coffee : Roast Whole Bean Coffee" description="CAREEL Coffee : Roast Whole Bean Coffee" longDescription="" productWeight="200.000000" weightUomId="WT_g" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10000-RG" productTypeId="FINISHED_GOOD" productName="CAREEL Coffee Roast Ground Coffee" brandName="Careel" internalName="CAREEL Coffee : Roast Ground Coffee" description="CAREEL Coffee : Roast Ground Coffee" productWeight="200.000000" weightUomId="WT_g" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10000-RB" productTypeId="FINISHED_GOOD" productName="CAREEL Coffee Roast Whole Bean Coffee" brandName="Careel" internalName="CAREEL Coffee : Roast Whole Bean Coffee" description="CAREEL Coffee : Roast Whole Bean Coffee" longDescription="" productWeight="200.000000" weightUomId="WT_g" isVirtual="N" isVariant="Y"/>
+    <Product productId="CR10000-RG" productTypeId="FINISHED_GOOD" productName="CAREEL Coffee Roast Ground Coffee" brandName="Careel" internalName="CAREEL Coffee : Roast Ground Coffee" description="CAREEL Coffee : Roast Ground Coffee" productWeight="200.000000" weightUomId="WT_g" isVirtual="N" isVariant="Y"/>
     <ProductFeatureAppl productId="CR10000" productFeatureId="CF10000"
         productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
     <ProductFeatureAppl productId="CR10000" productFeatureId="CF10001"

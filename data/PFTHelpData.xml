@@ -520,7 +520,7 @@ When you visit  Productfromthailand (PFT) , our servers will automatically recor
         createdDate="2009-09-17 00:00:00.000" mimeTypeId="text/html" localeString="en"/>
     <ElectronicText dataResourceId="HELP_ABOUTUS">
         <textData><![CDATA[
-<p>Product from Thailand is The World's Online Marketplace® that enabling everyone to sell or buy products orginated in Thailand.</p>
+<p>Product from Thailand is The World's Online Marketplace® that enabling everyone to sell or buy products originated in Thailand.</p>
         ]]></textData>
     </ElectronicText>
     <Content contentId="HELP_ABOUTUS" contentTypeId="DOCUMENT" ownerContentId="ABOUTUS" dataResourceId="HELP_ABOUTUS" statusId="CTNT_PUBLISHED"

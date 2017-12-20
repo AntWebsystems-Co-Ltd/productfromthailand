@@ -382,4 +382,14 @@ under the License.
             </if-not-empty>
         </if-not-empty>
     </simple-method>
+
+    <simple-method method-name="quickShipEntireOrderPFT" short-description="receive Item Order">
+        <entity-one value-field="systemUserLogin" entity-name="UserLogin">
+            <field-map field-name="userLoginId" value="system"/>
+        </entity-one>
+        <set-service-fields service-name="quickShipEntireOrder" map="parameters" to-map="quickShipEntireOrderMap"/>
+        <set field="quickShipEntireOrderMap.userLogin" from-field="systemUserLogin"/>
+        <call-service service-name="quickShipEntireOrder" in-map-name="quickShipEntireOrderMap"/>
+    </simple-method>
+
 </simple-methods>
