@@ -25,7 +25,7 @@ under the License.
             data: $(form).serialize(),
             async: false,
             success: function(data) {
-                window.location = "<@ofbizUrl>${parameters._CURRENT_VIEW_?if_exists}</@ofbizUrl>";
+                window.location = "<@ofbizUrl>showcart</@ofbizUrl>";
             }
         });
     }

@@ -188,37 +188,42 @@ under the License.
                             <input type="text" class="form-control" name="brandName" size="30" maxlength="250" value="${(product.brandName)?default(brandName!)}"/>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.ProductProductCategoryId}</label>
-                        <div class="col-sm-6">
-                            <select name="productCategoryId" class="form-control">
-                                <#if productCategoryMember??>
-                                    <option value="${productCategoryMember.productCategoryId}">${productCategoryMember.categoryName!}</option>
-                                    <option value="${productCategoryMember.productCategoryId}">---</option>
-                                <#else>
-                                    <option value=""></option>
-                                    <option value="">---</option>
-                                </#if>
-                                <#list productCategoryList as productCategory>
-                                    <option value="${productCategory.productCategoryId}">${productCategory.categoryName!}</option>
-                                </#list>
-                            </select>
+                    <#if !product?exists || product.isVariant.equals("N")>
+                        <div class="form-group">
+                            <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.ProductProductCategoryId}</label>
+                            <div class="col-sm-6">
+                                <select name="productCategoryId" class="form-control">
+                                    <#if productCategoryMember??>
+                                        <option value="${productCategoryMember.productCategoryId}">${productCategoryMember.categoryName!}</option>
+                                        <option value="${productCategoryMember.productCategoryId}">---</option>
+                                    <#else>
+                                        <option value=""></option>
+                                        <option value="">---</option>
+                                    </#if>
+                                    <#list productCategoryList as productCategory>
+                                        <option value="${productCategory.productCategoryId}">${productCategory.categoryName!}</option>
+                                    </#list>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.PFTPurchasePrice} (${uiLabelMap.PFTThaiBaht}) *</label>
-                        <div class="col-sm-6">
-                            <input type="number" class="form-control required" step='any' placeholder='0.00' min="1" onkeyup="allowOnly2Numeric2Decimal(this)" name="price" id="price" size="8" value="${price?default('')}" class="required"/><span class="tooltip">${uiLabelMap.CommonRequired}</span>
-                            <span id="advice-validate-number-defaultPrice" style="display:none;" class="errorMessage"> (${uiLabelMap.CommonPleaseEnterValidNumberInThisField})</span>
+                        <div class="form-group">
+                            <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.PFTPurchasePrice} (${uiLabelMap.PFTThaiBaht}) *</label>
+                            <div class="col-sm-6">
+                                <input type="number" class="form-control required" step='any' placeholder='0.00' min="1" onkeyup="allowOnly2Numeric2Decimal(this)" name="price" id="price" size="8" value="${price?default('')}" class="required"/><span class="tooltip">${uiLabelMap.CommonRequired}</span>
+                                <span id="advice-validate-number-defaultPrice" style="display:none;" class="errorMessage"> (${uiLabelMap.CommonPleaseEnterValidNumberInThisField})</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.PFTSalePrice} (${uiLabelMap.PFTThaiBaht})</label>
-                        <div class="col-sm-6">
-                            <input type="hidden" id="salePrice" name="salePrice" value="${salePrice?default('')}"/>
-                            <input type="number" class="form-control required" id="salePriceDisplay" name="salePriceDisplay" placeholder='0.00' value="${salePrice?default('')}" class="required" readonly="readonly"/><span class="tooltip">${uiLabelMap.CommonRequired}</span>
+                        <div class="form-group">
+                            <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.PFTSalePrice} (${uiLabelMap.PFTThaiBaht})</label>
+                            <div class="col-sm-6">
+                                <input type="hidden" id="salePrice" name="salePrice" value="${salePrice?default('')}"/>
+                                <input type="number" class="form-control required" id="salePriceDisplay" name="salePriceDisplay" placeholder='0.00' value="${salePrice?default('')}" class="required" readonly="readonly"/><span class="tooltip">${uiLabelMap.CommonRequired}</span>
+                            </div>
                         </div>
-                    </div>
+                    <#else>
+                        <input type="hidden" name="price" value="${price?default('0')}"/>
+                        <input type="hidden" name="salePrice" value="${salePrice?default('0')}"/>
+                    </#if>
                     <div class="form-group">
                         <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.PFTProductWeight} *</label>
                         <div class="col-sm-6">
@@ -242,6 +247,19 @@ under the License.
                                         <option value="${weightUom.uomId!}">${weightUom.get("description",locale)!}</option>
                                     </#list>
                                 </#if>
+                            </select><span class="tooltip">${uiLabelMap.CommonRequired}</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.PFTDropship} *</label>
+                        <div class="col-sm-6">
+                            <select name="dropship" class="required form-control">
+                                <#if product?exists>
+                                    <option value="${isDropship!}"><#if isDropship == "Y">${uiLabelMap.CommonYes}<#else>${uiLabelMap.CommonNo}</#if></option>
+                                    <option value="${isDropship!}">---</option>
+                                </#if>
+                                <option value="Y">${uiLabelMap.CommonYes}</option>
+                                <option value="N">${uiLabelMap.CommonNo}</option>
                             </select><span class="tooltip">${uiLabelMap.CommonRequired}</span>
                         </div>
                     </div>
@@ -363,127 +381,129 @@ under the License.
                         </div>
                     </div>
                     <#-- Additional image -->
-                    <div class="form-group">
-                        <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.PFTProductAdditionalImages}</label>
-                        <div class="col-sm-6">
-                            <div class="browserNotIE">
-                                <div class="additionalImageList">
-                                    <div class="imageBlock">
-                                    <#if additionalImage1?has_content>
+                    <#if !product?exists || product.isVariant.equals("N")>
+                        <div class="form-group">
+                            <label for="inputFname" class="col-sm-4 control-label">${uiLabelMap.PFTProductAdditionalImages}</label>
+                            <div class="col-sm-6">
+                                <div class="browserNotIE">
+                                    <div class="additionalImageList">
+                                        <div class="imageBlock">
+                                        <#if additionalImage1?has_content>
+                                            <div class="uploaded-image">
+                                                <img src="<@ofbizContentUrl>${additionalImage1.productImage}</@ofbizContentUrl>" width="82"/>
+                                            </div>
+                                            <a href="javascript:formImageSubmit('${additionalImage1.contentId?if_exists}','remove')">Remove</a>
+                                        <#else>
+                                            <div id="prev_upfile_additionalImage1" class="uploaded-image" onclick="getFile('additionalImage1')">
+                                                <img id="imgAvatar_additionalImage1" src="/pft-default/images/add.png">
+                                            </div>
+                                            <div style='height: 0px;width:0px; overflow:hidden; border:0;'>
+                                                <input class="file" id="upfile_additionalImage1" type="file" onchange="showPreview(this,'additionalImage1')" name="uploadedFile_additionalImage1"/>
+                                            </div>
+                                            &nbsp;<a class="cancel hidden" id="cancel_additionalImage1" onclick="cancelImage('additionalImage1')">Cancel</a>
+                                        </#if>
+                                        </div>
+                                        <div class="imageBlock">
+                                        <#if additionalImage2?has_content>
+                                            <div class="uploaded-image">
+                                                <img src="<@ofbizContentUrl>${additionalImage2.productImage}</@ofbizContentUrl>" width="82"/>
+                                            </div>
+                                            <a href="javascript:formImageSubmit('${additionalImage2.contentId?if_exists}','remove')">Remove</a>
+                                        <#else>
+                                            <div id="prev_upfile_additionalImage2" class="uploaded-image" onclick="getFile('additionalImage2')">
+                                                <img id="imgAvatar_additionalImage2" src="/pft-default/images/add.png">
+                                            </div>
+                                            <div style='height: 0px;width:0px; overflow:hidden; border:0;'>
+                                                <input class="file" id="upfile_additionalImage2" type="file" onchange="showPreview(this,'additionalImage2')" name="uploadedFile_additionalImage2"/>
+                                            </div>
+                                            &nbsp;<a class="cancel hidden" id="cancel_additionalImage2" onclick="cancelImage('additionalImage2')">Cancel</a>
+                                        </#if>
+                                        </div>
+                                        <div class="imageBlock">
+                                        <#if additionalImage3?has_content>
+                                            <div class="uploaded-image">
+                                                <img src="<@ofbizContentUrl>${additionalImage3.productImage}</@ofbizContentUrl>" width="82"/>
+                                            </div>
+                                            <a href="javascript:formImageSubmit('${additionalImage3.contentId?if_exists}','remove')">Remove</a>
+                                        <#else>
+                                            <div id="prev_upfile_additionalImage3" class="uploaded-image" onclick="getFile('additionalImage3')">
+                                                <img id="imgAvatar_additionalImage3" src="/pft-default/images/add.png">
+                                            </div>
+                                            <div style='height: 0px;width:0px; overflow:hidden; border:0;'>
+                                                <input class="file" id="upfile_additionalImage3" type="file" onchange="showPreview(this,'additionalImage3')" name="uploadedFile_additionalImage3"/>
+                                            </div>
+                                            &nbsp;<a class="cancel hidden" id="cancel_additionalImage3" onclick="cancelImage('additionalImage3')">Cancel</a>
+                                        </#if>
+                                        </div>
+                                        <div class="imageBlock">
+                                        <#if additionalImage4?has_content>
+                                            <div class="uploaded-image">
+                                                <img src="<@ofbizContentUrl>${additionalImage4.productImage}</@ofbizContentUrl>" width="82"/>
+                                            </div>
+                                            <a href="javascript:formImageSubmit('${additionalImage4.contentId?if_exists}','remove')">Remove</a>
+                                        <#else>
+                                            <div id="prev_upfile_additionalImage4" class="uploaded-image" onclick="getFile('additionalImage4')">
+                                                <img id="imgAvatar_additionalImage4" src="/pft-default/images/add.png">
+                                            </div>
+                                            <div style='height: 0px;width:0px; overflow:hidden; border:0;'>
+                                                <input class="file" id="upfile_additionalImage4" type="file" onchange="showPreview(this,'additionalImage4')" name="uploadedFile_additionalImage4"/>
+                                            </div>
+                                            &nbsp;<a class="cancel hidden" id="cancel_additionalImage4" onclick="cancelImage('additionalImage4')">Cancel</a>
+                                        </#if>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="browserIsIE">
+                                    <div class="additionalImageList">
+                                    <#if additionalImage1Image?has_content>
                                         <div class="uploaded-image">
                                             <img src="<@ofbizContentUrl>${additionalImage1.productImage}</@ofbizContentUrl>" width="82"/>
                                         </div>
                                         <a href="javascript:formImageSubmit('${additionalImage1.contentId?if_exists}','remove')">Remove</a>
+                                        <input class="file" id="upfile_additionalImage1" type="file" name="uploadedFile_additionalImage1" style="margin-right:8px;"/><br \>
+                                        <a class="cancel hidden" id="cancel_additionalImage1" onclick="cancelImage(additionalImage1)">Cancel</a>
                                     <#else>
-                                        <div id="prev_upfile_additionalImage1" class="uploaded-image" onclick="getFile('additionalImage1')">
-                                            <img id="imgAvatar_additionalImage1" src="/pft-default/images/add.png">
-                                        </div>
-                                        <div style='height: 0px;width:0px; overflow:hidden; border:0;'>
-                                            <input class="file" id="upfile_additionalImage1" type="file" onchange="showPreview(this,'additionalImage1')" name="uploadedFile_additionalImage1"/>
-                                        </div>
-                                        &nbsp;<a class="cancel hidden" id="cancel_additionalImage1" onclick="cancelImage('additionalImage1')">Cancel</a>
+                                        <input class="file" id="upfile_additionalImage1" type="file" name="uploadedFile_additionalImage1" style="margin-right:8px;"/><br \>
+                                        &nbsp;<a class="cancel hidden" id="cancel_additionalImage1" onclick="cancelImage(additionalImage1)">Cancel</a>
                                     </#if>
-                                    </div>
-                                    <div class="imageBlock">
-                                    <#if additionalImage2?has_content>
+                                    <#if additionalImage2Image?has_content>
                                         <div class="uploaded-image">
                                             <img src="<@ofbizContentUrl>${additionalImage2.productImage}</@ofbizContentUrl>" width="82"/>
                                         </div>
                                         <a href="javascript:formImageSubmit('${additionalImage2.contentId?if_exists}','remove')">Remove</a>
+                                        <input class="file" id="upfile_additionalImage2" type="file" name="uploadedFile_additionalImage2" style="margin-right:8px;"/><br \>
+                                        <a class="cancel hidden" id="cancel_additionalImage2" onclick="cancelImage(additionalImage2)">Cancel</a>
                                     <#else>
-                                        <div id="prev_upfile_additionalImage2" class="uploaded-image" onclick="getFile('additionalImage2')">
-                                            <img id="imgAvatar_additionalImage2" src="/pft-default/images/add.png">
-                                        </div>
-                                        <div style='height: 0px;width:0px; overflow:hidden; border:0;'>
-                                            <input class="file" id="upfile_additionalImage2" type="file" onchange="showPreview(this,'additionalImage2')" name="uploadedFile_additionalImage2"/>
-                                        </div>
-                                        &nbsp;<a class="cancel hidden" id="cancel_additionalImage2" onclick="cancelImage('additionalImage2')">Cancel</a>
+                                        <input class="file" id="upfile_additionalImage2" type="file" name="uploadedFile_additionalImage2" style="margin-right:8px;"/><br \>
+                                        &nbsp;<a class="cancel hidden" id="cancel_additionalImage2" onclick="cancelImage(additionalImage2)">Cancel</a>
                                     </#if>
-                                    </div>
-                                    <div class="imageBlock">
-                                    <#if additionalImage3?has_content>
+                                    <#if additionalImage3Image?has_content>
                                         <div class="uploaded-image">
                                             <img src="<@ofbizContentUrl>${additionalImage3.productImage}</@ofbizContentUrl>" width="82"/>
                                         </div>
                                         <a href="javascript:formImageSubmit('${additionalImage3.contentId?if_exists}','remove')">Remove</a>
+                                        <input class="file" id="upfile_additionalImage3" type="file" name="uploadedFile_additionalImage3" style="margin-right:8px;"/><br \>
+                                        <a class="cancel hidden" id="cancel_additionalImage3" onclick="cancelImage(additionalImage3)">Cancel</a>
                                     <#else>
-                                        <div id="prev_upfile_additionalImage3" class="uploaded-image" onclick="getFile('additionalImage3')">
-                                            <img id="imgAvatar_additionalImage3" src="/pft-default/images/add.png">
-                                        </div>
-                                        <div style='height: 0px;width:0px; overflow:hidden; border:0;'>
-                                            <input class="file" id="upfile_additionalImage3" type="file" onchange="showPreview(this,'additionalImage3')" name="uploadedFile_additionalImage3"/>
-                                        </div>
-                                        &nbsp;<a class="cancel hidden" id="cancel_additionalImage3" onclick="cancelImage('additionalImage3')">Cancel</a>
+                                        <input class="file" id="upfile_additionalImage3" type="file" name="uploadedFile_additionalImage3" style="margin-right:8px;"/><br \>
+                                        &nbsp;<a class="cancel hidden" id="cancel_additionalImage3" onclick="cancelImage(additionalImage3)">Cancel</a>
                                     </#if>
-                                    </div>
-                                    <div class="imageBlock">
-                                    <#if additionalImage4?has_content>
+                                    <#if additionalImage4Image?has_content>
                                         <div class="uploaded-image">
                                             <img src="<@ofbizContentUrl>${additionalImage4.productImage}</@ofbizContentUrl>" width="82"/>
                                         </div>
                                         <a href="javascript:formImageSubmit('${additionalImage4.contentId?if_exists}','remove')">Remove</a>
+                                        <input class="file" id="upfile_additionalImage4" type="file" name="uploadedFile_additionalImage4" style="margin-right:8px;"/><br \>
+                                        <a class="cancel hidden" id="cancel_additionalImage4" onclick="cancelImage(additionalImage4)">Cancel</a>
                                     <#else>
-                                        <div id="prev_upfile_additionalImage4" class="uploaded-image" onclick="getFile('additionalImage4')">
-                                            <img id="imgAvatar_additionalImage4" src="/pft-default/images/add.png">
-                                        </div>
-                                        <div style='height: 0px;width:0px; overflow:hidden; border:0;'>
-                                            <input class="file" id="upfile_additionalImage4" type="file" onchange="showPreview(this,'additionalImage4')" name="uploadedFile_additionalImage4"/>
-                                        </div>
-                                        &nbsp;<a class="cancel hidden" id="cancel_additionalImage4" onclick="cancelImage('additionalImage4')">Cancel</a>
+                                        <input class="file" id="upfile_additionalImage4" type="file" name="uploadedFile_additionalImage4" style="margin-right:8px;"/><br \>
+                                        &nbsp;<a class="cancel hidden" id="cancel_additionalImage4" onclick="cancelImage(additionalImage4)">Cancel</a>
                                     </#if>
                                     </div>
                                 </div>
                             </div>
-                            <div class="browserIsIE">
-                                <div class="additionalImageList">
-                                <#if additionalImage1Image?has_content>
-                                    <div class="uploaded-image">
-                                        <img src="<@ofbizContentUrl>${additionalImage1.productImage}</@ofbizContentUrl>" width="82"/>
-                                    </div>
-                                    <a href="javascript:formImageSubmit('${additionalImage1.contentId?if_exists}','remove')">Remove</a>
-                                    <input class="file" id="upfile_additionalImage1" type="file" name="uploadedFile_additionalImage1" style="margin-right:8px;"/><br \>
-                                    <a class="cancel hidden" id="cancel_additionalImage1" onclick="cancelImage(additionalImage1)">Cancel</a>
-                                <#else>
-                                    <input class="file" id="upfile_additionalImage1" type="file" name="uploadedFile_additionalImage1" style="margin-right:8px;"/><br \>
-                                    &nbsp;<a class="cancel hidden" id="cancel_additionalImage1" onclick="cancelImage(additionalImage1)">Cancel</a>
-                                </#if>
-                                <#if additionalImage2Image?has_content>
-                                    <div class="uploaded-image">
-                                        <img src="<@ofbizContentUrl>${additionalImage2.productImage}</@ofbizContentUrl>" width="82"/>
-                                    </div>
-                                    <a href="javascript:formImageSubmit('${additionalImage2.contentId?if_exists}','remove')">Remove</a>
-                                    <input class="file" id="upfile_additionalImage2" type="file" name="uploadedFile_additionalImage2" style="margin-right:8px;"/><br \>
-                                    <a class="cancel hidden" id="cancel_additionalImage2" onclick="cancelImage(additionalImage2)">Cancel</a>
-                                <#else>
-                                    <input class="file" id="upfile_additionalImage2" type="file" name="uploadedFile_additionalImage2" style="margin-right:8px;"/><br \>
-                                    &nbsp;<a class="cancel hidden" id="cancel_additionalImage2" onclick="cancelImage(additionalImage2)">Cancel</a>
-                                </#if>
-                                <#if additionalImage3Image?has_content>
-                                    <div class="uploaded-image">
-                                        <img src="<@ofbizContentUrl>${additionalImage3.productImage}</@ofbizContentUrl>" width="82"/>
-                                    </div>
-                                    <a href="javascript:formImageSubmit('${additionalImage3.contentId?if_exists}','remove')">Remove</a>
-                                    <input class="file" id="upfile_additionalImage3" type="file" name="uploadedFile_additionalImage3" style="margin-right:8px;"/><br \>
-                                    <a class="cancel hidden" id="cancel_additionalImage3" onclick="cancelImage(additionalImage3)">Cancel</a>
-                                <#else>
-                                    <input class="file" id="upfile_additionalImage3" type="file" name="uploadedFile_additionalImage3" style="margin-right:8px;"/><br \>
-                                    &nbsp;<a class="cancel hidden" id="cancel_additionalImage3" onclick="cancelImage(additionalImage3)">Cancel</a>
-                                </#if>
-                                <#if additionalImage4Image?has_content>
-                                    <div class="uploaded-image">
-                                        <img src="<@ofbizContentUrl>${additionalImage4.productImage}</@ofbizContentUrl>" width="82"/>
-                                    </div>
-                                    <a href="javascript:formImageSubmit('${additionalImage4.contentId?if_exists}','remove')">Remove</a>
-                                    <input class="file" id="upfile_additionalImage4" type="file" name="uploadedFile_additionalImage4" style="margin-right:8px;"/><br \>
-                                    <a class="cancel hidden" id="cancel_additionalImage4" onclick="cancelImage(additionalImage4)">Cancel</a>
-                                <#else>
-                                    <input class="file" id="upfile_additionalImage4" type="file" name="uploadedFile_additionalImage4" style="margin-right:8px;"/><br \>
-                                    &nbsp;<a class="cancel hidden" id="cancel_additionalImage4" onclick="cancelImage(additionalImage4)">Cancel</a>
-                                </#if>
-                                </div>
-                            </div>
                         </div>
-                    </div>
+                    </#if>
                     <div class="form-group">
                         <label for="inputFname" class="col-sm-4 control-label"></label>
                         <div class="col-sm-6">

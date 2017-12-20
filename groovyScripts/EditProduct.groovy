@@ -193,4 +193,10 @@ if (product) {
         }
     }
     context.productImageList = productImageList;
+
+    isDropship = "N"
+    if (product.requirementMethodEnumId && product.requirementMethodEnumId.equals("PRODRQM_DS")){
+        isDropship = "Y"
+    }
+    context.isDropship = isDropship;
 }

@@ -186,6 +186,10 @@
         <value xml:lang="en">Download Product Template</value>
         <value xml:lang="th">ดาวน์โหลดรูปแบบการอัปโหลดสินค้า</value>
     </property>
+    <property key="PFTDropship">
+        <value xml:lang="en">Dropship</value>
+        <value xml:lang="th">ดรอปชิบ</value>
+    </property>
     <property key="PFTErrorCheckoutStep1">
         <value xml:lang="en">Please select your shipping address</value>
         <value xml:lang="th">กรุณาเลือกที่อยู่ในการจัดส่ง</value>
