@@ -24,23 +24,7 @@
     height:200px;
     overflow:auto;
 }
-.social-icon-facebook {
-    padding: 8px;
-    font-size: 30px;
-    width: 30px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 50%;
-}
-.social-icon-twitter {
-    padding: 8px;
-    font-size: 30px;
-    width: 30px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 50%;
-}
-.social-icon-google {
+.social-icon {
     padding: 8px;
     font-size: 30px;
     width: 30px;
@@ -303,8 +287,11 @@ div#list-group-promo {
 #variantitem div.tooltip.in {
     opacity: 1 !important;
 }
-#variant_name_display {
+#variant_name_display, #variant_type_display {
     color: #e66d72;
+}
+#vTitle {
+    width: 25%;
 }
 .vr-img {
     padding: 0px;

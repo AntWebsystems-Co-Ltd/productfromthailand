@@ -93,6 +93,26 @@ ${virtualVariantJavaScript!}
             }
         }
     }
+    function setVariantType(sku, vtype) {
+        if (vtype == '' || vtype == 'NULL' || isVirtual(sku) == true) {
+            var elem = document.getElementById('variant_type_display');
+            var txt = document.createTextNode('');
+            if(elem.hasChildNodes()) {
+                elem.replaceChild(txt, elem.firstChild);
+            } else {
+                elem.appendChild(txt);
+            }
+        }
+        else {
+            var elem = document.getElementById('variant_type_display');
+            var txt = document.createTextNode(unescape(vtype));
+            if(elem.hasChildNodes()) {
+                elem.replaceChild(txt, elem.firstChild);
+            } else {
+                elem.appendChild(txt);
+            }
+        }
+    }
     function isVirtual(product) {
         var isVirtual = false;
         <#if virtualJavaScript??>
@@ -174,7 +194,7 @@ ${virtualVariantJavaScript!}
         return -1;
     }
 
-    function getList(name, index, src, img, vname) {
+    function getList(name, index, src, img, vname, vtype) {
         currentFeatureIndex = findIndex(name);
 
         if (currentFeatureIndex == 0) {
@@ -209,6 +229,7 @@ ${virtualVariantJavaScript!}
             setVariantPrice('NULL');
 
             setVariantName('NULL', 'NULL');
+            setVariantType('NULL', 'NULL');
         } else {
             // this is the final selection -- locate the selected index of the last selection
             var indexSelected = document.forms["addform"].elements[name].selectedIndex;
@@ -227,6 +248,9 @@ ${virtualVariantJavaScript!}
             // set the variant name
             if (vname != "") {
                 setVariantName(sku, vname);
+            }
+            if (vtype != "") {
+                setVariantType(sku, vtype);
             }
 
             // check for amount box
@@ -368,6 +392,13 @@ $(function(){
             $('#productTagsearchform').submit();
         }
     });
+
+    $("#addVarientBtn").click(function() {
+        var vId = $("input[name='add_product_id']").val();
+        if (vId == "NULL") {
+            alert("${StringUtil.wrapString(uiLabelMap.PFTPleaseSelectOption)}")
+        }
+    })
 })
 $(function(){
   // TABS
@@ -484,7 +515,7 @@ $(function(){
       <hr/>
       <ul class="list-unstyled manufacturer">
         <li>
-            <span>${uiLabelMap.PFTBrand}:</span> ${product.brandName!}
+            <span>${uiLabelMap.PFTBrand} :</span> ${product.brandName!}
         </li>
         <#if product.virtualVariantMethodEnum! != "VV_FEATURETREE">
             <#if productStore??>
@@ -770,7 +801,7 @@ $(function(){
                 <label for="select" class="control-label text-uppercase">${uiLabelMap.CommonSelect}:</label>
                 <#list featureSet as currentType>
                 <div id="variantTreeOption">
-                  <select name="FT${currentType}" onchange="javascript:getList(this.name, (this.selectedIndex-1), 1, '', '');" class="form-control">
+                  <select name="FT${currentType}" onchange="javascript:getList(this.name, (this.selectedIndex-1), 1, '', '', '');" class="form-control">
                     <option>${featureTypes.get(currentType)}</option>
                   </select>
                 </div>
@@ -797,76 +828,84 @@ $(function(){
 
             <#-- Swatches (virtual products only) -->
             <#if variantSample?? && 0 &lt; variantSample.size()>
-              <#assign imageKeys = variantSample.keySet() />
-              <#assign imageMap = variantSample />
-              <ul class="list-unstyled list-inline" id="variantitem">
-                <#assign indexer = 0 />
-                <#list imageKeys as key>
-                  <#assign swatchProduct = imageMap.get(key) />
-                  <#assign variantProductContentWrapper = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(swatchProduct, request)>
-                  <#assign variantLargeImageUrl = variantProductContentWrapper.get("LARGE_IMAGE_URL", "url")!/>
-                  <#if !variantLargeImageUrl?string?has_content>
-                    <#assign variantLargeImageUrl = "/pft-default/images/defaultImage.jpg">
-                  </#if>
-                  <#assign variantMediumImageUrl = variantProductContentWrapper.get("MEDIUM_IMAGE_URL", "url")!/>
-                  <#if !variantMediumImageUrl?string?has_content>
-                    <#assign variantMediumImageUrl = "/pft-default/images/defaultImage.jpg">
-                  </#if>
-                  <#assign variantSmallImageUrl = variantProductContentWrapper.get("SMALL_IMAGE_URL", "url")!/>
-                  <#if !variantSmallImageUrl?string?has_content>
-                    <#assign variantSmallImageUrl = "/pft-default/images/defaultImage.jpg">
-                  </#if>
-                  <#assign variantName = variantProductContentWrapper.get("PRODUCT_NAME", "html")! />
-                  <li>
-                    <#assign productInfoLinkId = "productInfoLink">
-                    <#assign productInfoLinkId = productInfoLinkId + swatchProduct.productId/>
-                    <#assign productDetailId = "productDetailId"/>
-                    <#assign productDetailId = productDetailId + swatchProduct.productId/>
-                    <a href="#images-block" id="imageLink_${indexer}">
-                      <span id="${productInfoLinkId}" class="popup_link" data-toggle="tooltip">
-                        <img src="<@ofbizContentUrl>${contentPathPrefix!}${variantSmallImageUrl!}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail vr-img" id="variantProduct${indexer!}"/>
-                      </span>
-                    </a>
-                    <div id="${productDetailId}" class="popup img-responsive thumbnail" style="display:none;">
-                      <img src="<@ofbizContentUrl>${contentPathPrefix!}${variantMediumImageUrl!}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail vr-img"/>
-                    </div>
-                    <script type="text/javascript">
-                      $(document).ready(function(){
-                        jQuery("#${productInfoLinkId}").attr('title', jQuery("#${productDetailId}").remove().html());
-                        jQuery("#${productInfoLinkId}").tooltip({
-                          content: function(){
-                            return this.getAttribute("title");
-                          },
-                          tooltipClass: "popup",
-                          track: true,
-                          html: true,
-                          placement: function (context, element) {
-                            var position = $(element).position();
-                            if ((position.top - $(window).scrollTop()) < 0){
-                              return "bottom";
-                            }
-                            return "top";
-                          }
-                        });
-                        $("#imageLink_${indexer!}").click(function() {
-                          var image = unescape("${variantLargeImageUrl!}")
-                          getList('FT${featureOrderFirst}','${indexer}',1,image,'${variantName!}')
-                        })
-                      });
-                    </script>
-                  </li>
-                  <#-- Add cart dialog -->
-                  ${setRequestAttribute("productUrl", productUrl)}
-                  ${setRequestAttribute("smallImageUrl", variantLargeImageUrl)}
-                  ${setRequestAttribute("productId", swatchProduct.productId)}
-                  ${setRequestAttribute("productContentWrapper", variantProductContentWrapper)}
-                  ${setRequestAttribute("price", price)}
-                  ${screens.render("component://productfromthailand/widget/CartScreens.xml#addToCartDialog")}
-                  <#assign indexer = indexer + 1 />
-                </#list>
-              </ul>
-              <div>
-                <strong><span id="variant_name_display" class="h4"> </span></strong>
+              <div class="productDetailBox">
+                <ul class="list-unstyled manufacturer">
+                    <li><span class="h4" id="vTitle">${uiLabelMap.PFTOptionSelected} : </span> <label id="variant_name_display" class="h4"> </label></li>
+                    <li><span class="h4">${uiLabelMap.PFTPleaseSelectOption} :</span></li>
+                    <#list featureSet as currentType>
+                        <li><span class="h4" id="vTitle">${featureTypes.get(currentType)} : </span> <label id="variant_type_display" class="h4"> </label></li>
+                    </#list>
+                </ul>
+                <#assign imageKeys = variantSample.keySet() />
+                <#assign imageMap = variantSample />
+                <ul class="list-unstyled list-inline" id="variantitem">
+                    <#assign indexer = 0 />
+                    <#list imageKeys as key>
+                      <#assign swatchProduct = imageMap.get(key) />
+                      <#assign variantProductContentWrapper = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(swatchProduct, request)>
+                      <#assign variantLargeImageUrl = variantProductContentWrapper.get("LARGE_IMAGE_URL", "url")!/>
+                      <#if !variantLargeImageUrl?string?has_content>
+                        <#assign variantLargeImageUrl = "/pft-default/images/defaultImage.jpg">
+                      </#if>
+                      <#assign variantMediumImageUrl = variantProductContentWrapper.get("MEDIUM_IMAGE_URL", "url")!/>
+                      <#if !variantMediumImageUrl?string?has_content>
+                        <#assign variantMediumImageUrl = "/pft-default/images/defaultImage.jpg">
+                      </#if>
+                      <#assign variantSmallImageUrl = variantProductContentWrapper.get("SMALL_IMAGE_URL", "url")!/>
+                      <#if !variantSmallImageUrl?string?has_content>
+                        <#assign variantSmallImageUrl = "/pft-default/images/defaultImage.jpg">
+                      </#if>
+                      <#assign variantName = variantProductContentWrapper.get("PRODUCT_NAME", "html")! />
+                      <li>
+                        <#assign productInfoLinkId = "productInfoLink">
+                        <#assign productInfoLinkId = productInfoLinkId + swatchProduct.productId/>
+                        <#assign productDetailId = "productDetailId"/>
+                        <#assign productDetailId = productDetailId + swatchProduct.productId/>
+                        <a href="#images-block" id="imageLink_${indexer}">
+                          <span id="${productInfoLinkId}" class="popup_link" data-toggle="tooltip">
+                            <img src="<@ofbizContentUrl>${contentPathPrefix!}${variantSmallImageUrl!}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail vr-img" id="variantProduct${indexer!}"/>
+                          </span>
+                        </a>
+                        <center><a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1,'${variantLargeImageUrl!}','${variantName!}','${StringUtil.wrapString(key)!}');" class="linktext">${key}</a></center>
+                        <br/>
+                        <div id="${productDetailId}" class="popup img-responsive thumbnail" style="display:none;">
+                          <img src="<@ofbizContentUrl>${contentPathPrefix!}${variantMediumImageUrl!}</@ofbizContentUrl>" alt="Image" class="img-responsive thumbnail vr-img"/>
+                        </div>
+                        <script type="text/javascript">
+                          $(document).ready(function(){
+                            jQuery("#${productInfoLinkId}").attr('title', jQuery("#${productDetailId}").remove().html());
+                            jQuery("#${productInfoLinkId}").tooltip({
+                              content: function(){
+                                return this.getAttribute("title");
+                              },
+                              tooltipClass: "popup",
+                              track: true,
+                              html: true,
+                              placement: function (context, element) {
+                                var position = $(element).position();
+                                if ((position.top - $(window).scrollTop()) < 0){
+                                  return "bottom";
+                                }
+                                return "top";
+                              }
+                            });
+                            $("#imageLink_${indexer!}").click(function() {
+                              var image = unescape("${variantLargeImageUrl!}")
+                              getList('FT${featureOrderFirst}','${indexer}',1,image,'${variantName!}','${StringUtil.wrapString(key)!}')
+                            })
+                          });
+                        </script>
+                      </li>
+                      <#-- Add cart dialog -->
+                      ${setRequestAttribute("productUrl", productUrl)}
+                      ${setRequestAttribute("smallImageUrl", variantLargeImageUrl)}
+                      ${setRequestAttribute("productId", swatchProduct.productId)}
+                      ${setRequestAttribute("productContentWrapper", variantProductContentWrapper)}
+                      ${setRequestAttribute("price", price)}
+                      ${screens.render("component://productfromthailand/widget/CartScreens.xml#addToCartDialog")}
+                      <#assign indexer = indexer + 1 />
+                    </#list>
+                </ul>
               </div>
               <br/>
             </#if>
@@ -941,9 +980,8 @@ $(function(){
               <a href="javascript:addItem()" class="buttontext"><span
                   style="white-space: nowrap;">${uiLabelMap.OrderAddToCart}</span></a>
             <#else>
-              <span><input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-                           <#if product.isVirtual!?upper_case == "Y">disabled="disabled"</#if>/></span>
-              <button type="button" name="addCartBtn" class="btn btn-cart" onclick="javascript:addItem();" <#if product.isVirtual!?upper_case == "Y">disabled="disabled"</#if>>
+              <span><input name="quantity" id="quantity" value="1" size="4" maxLength="4" type="text" class="form-control" onkeypress="return event.charCode >= 48 && event.charCode <= 57"/></span>
+              <button type="button" name="addCartBtn" id="addVarientBtn" class="btn btn-cart" onclick="javascript:addItem();">
                   ${uiLabelMap.OrderAddToCart}
                   <i class="fa fa-shopping-cart"></i>
               </button>

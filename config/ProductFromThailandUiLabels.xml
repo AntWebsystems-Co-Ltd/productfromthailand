@@ -315,6 +315,10 @@
         <value xml:lang="en">Notification Message</value>
         <value xml:lang="th">ข้อความแจ้งเตือน</value>
     </property>
+    <property key="PFTOptionSelected">
+        <value xml:lang="en">Option Selected</value>
+        <value xml:lang="th">ตัวเลือกที่ถูกเลือก</value>
+    </property>
     <property key="PFTOr">
         <value xml:lang="en">Or</value>
         <value xml:lang="th">หรือ</value>
@@ -358,6 +362,10 @@
     <property key="PFTPleaseRegister">
         <value xml:lang="en">Please Register if you like to be notified when we go online.</value>
         <value xml:lang="th">คุณสามารถลงทะเบียนทิ้งไว้ แล้วทางเราจะแจ้งให้ท่านทราบเมื่อเรา online</value>
+    </property>
+    <property key="PFTPleaseSelectOption">
+        <value xml:lang="en">Please select option</value>
+        <value xml:lang="th">กรุณาเลือกตัวเลือก</value>
     </property>
     <property key="PFTPreview">
         <value xml:lang="en">Preview</value>

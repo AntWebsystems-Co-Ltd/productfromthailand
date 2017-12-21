@@ -50,9 +50,12 @@ under the License.
                     <div class="col-md-3 col-sm-6" align="center">
                         <h5>${uiLabelMap.PFTFollowUs}</h5>
                         <ul>
-                            <li><a href="https://www.facebook.com/Careelnatural/" class="social-icon-facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="https://twitter.com/Product_Thai/" class="social-icon-twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="#" class="social-icon-google"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            <li>
+                                <a href="https://www.facebook.com/productfromthailandByANT/" class="social-icon" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                                <a href="https://line.me/ti/p/%40hhs5055u" class="social-icon" target="_blank"><i class="fab fa-line" aria-hidden="true"></i></a>
+                                <a href="https://twitter.com/Product_Thai" class="social-icon" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#" class="social-icon"><i class="fab fa-google-plus-g" aria-hidden="true" target="_blank"></i></a>
+                            </li>
                         </ul>
                         <ul>
                             <img src="/pft-default/pftimages/LOGO_AUTHENTIC_2.png" style="" width="130px">
@@ -101,7 +104,7 @@ under the License.
             <div class="clearfix">
             <#-- Starts -->
                 <p class="pull-left">
-                    Copyright <i class="fa fa-copyright" aria-hidden="true"></i> 2017 <a href="http://www.productfromthailand.com">productfromthailand.com</a> by <a href="https://www.antwebsystems.com" target="_blank">AntWebsystems Co.,Ltd</a>
+                    Copyright <i class="far fa-copyright" aria-hidden="true"></i> 2017 <a href="http://www.productfromthailand.com">productfromthailand.com</a> by <a href="https://www.antwebsystems.com" target="_blank">AntWebsystems Co.,Ltd</a>
                 </p>
             <#-- Ends -->
             <#-- Payment Gateway Links Starts -->
