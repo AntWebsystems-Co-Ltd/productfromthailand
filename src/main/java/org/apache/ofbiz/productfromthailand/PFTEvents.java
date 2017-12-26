@@ -403,19 +403,36 @@ public class PFTEvents {
         } catch (GenericEntityException e) {
             Debug.logError(e, module);
         }
-
+        String partyCheckSupplier = null;
         if(UtilValidate.isNotEmpty(shippableItemInfo)) {
             for (Map<String, Object> itemInfo: shippableItemInfo) {
                 try {
-                    Map<String, Object> newMapListCtx = new HashMap<String, Object>();
-                    GenericValue supplierTo = EntityQuery.use(delegator).from("SupplierProduct").where("productId", (String) itemInfo.get("productId")).queryFirst();
-                    if (UtilValidate.isNotEmpty(supplierTo)) {
-                        newMapListCtx.putAll(itemInfo);
-                        newMapListCtx.put("supplierTo", supplierTo.getString("partyId"));
-                        newListShippableItemInfo.add(newMapListCtx);
+                    GenericValue productValue = EntityQuery.use(delegator).from("Product").where("productId",(String) itemInfo.get("productId")).cache().queryOne();
+                    if(UtilValidate.isNotEmpty(productValue)) {
+                        Map<String, Object> newMapListCtx = new HashMap<String, Object>();
+                        if(UtilValidate.isNotEmpty(productValue.get("requirementMethodEnumId")) && (productValue.get("requirementMethodEnumId")).equals("PRODRQM_DS")){
+                            if((productValue.get("isVariant")).equals("N")) {
+                                partyCheckSupplier = (String) productValue.get("productId");
+                            } else {
+                                GenericValue productAssocValue = EntityQuery.use(delegator).from("ProductAssoc").where("productIdTo",(String) itemInfo.get("productId"), "productAssocTypeId", "PRODUCT_VARIANT").cache().queryFirst();
+                                if(UtilValidate.isNotEmpty(productAssocValue)) {
+                                    partyCheckSupplier = (String) productAssocValue.get("productId");
+                                }
+                            }
+                            GenericValue supplierTo = EntityQuery.use(delegator).from("SupplierProduct").where("productId", partyCheckSupplier).queryFirst();
+                            if (UtilValidate.isNotEmpty(supplierTo)) {
+                                newMapListCtx.putAll(itemInfo);
+                                newMapListCtx.put("supplierTo", supplierTo.getString("partyId"));
+                                newListShippableItemInfo.add(newMapListCtx);
+                            }
+                        }else {
+                            newMapListCtx.putAll(itemInfo);
+                            newMapListCtx.put("supplierTo", null);
+                            newListShippableItemInfo.add(newMapListCtx);
+                        }
                     }
-                }catch (Exception e) {
-                    e.printStackTrace();
+                } catch (GenericEntityException e) {
+                    Debug.logError(e, module);
                 }
             }
         }
@@ -650,12 +667,27 @@ public class PFTEvents {
         try {
             GenericValue productItem = EntityQuery.use(delegator).from("Product").where("productId", productId).cache().queryOne();
             if (UtilValidate.isNotEmpty(productItem)) {
-                if (UtilValidate.isNotEmpty(productItem.get("productWeight"))) {
-                    if(productItem.getString("weightUomId").equals("WT_g")) {
-                        BigDecimal weightProudcts = (BigDecimal) productItem.get("productWeight");
-                        weightProudct = (BigDecimal) weightProudcts.divide(BigDecimal.valueOf(1000), 3, RoundingMode.CEILING);
-                    }else {
-                        weightProudct = (BigDecimal) productItem.get("productWeight");
+                if((productItem.get("isVariant")).equals("N")) {
+                    if (UtilValidate.isNotEmpty(productItem.get("productWeight"))) {
+                        if(productItem.getString("weightUomId").equals("WT_g")) {
+                            BigDecimal weightProudcts = (BigDecimal) productItem.get("productWeight");
+                            weightProudct = (BigDecimal) weightProudcts.divide(BigDecimal.valueOf(1000), 3, RoundingMode.CEILING);
+                        }else {
+                            weightProudct = (BigDecimal) productItem.get("productWeight");
+                        }
+                    }
+                }else {
+                    GenericValue productAssoc = EntityQuery.use(delegator).from("ProductAssoc").where("productIdTo", productId, "productAssocTypeId", "PRODUCT_VARIANT").cache().queryFirst();
+                    if(UtilValidate.isNotEmpty(productAssoc)) {
+                        GenericValue productItemValue = EntityQuery.use(delegator).from("Product").where("productId", productAssoc.get("productId")).cache().queryOne();
+                        if (UtilValidate.isNotEmpty(productItemValue.get("productWeight"))) {
+                            if(productItemValue.getString("weightUomId").equals("WT_g")) {
+                                BigDecimal weightProudcts = (BigDecimal) productItemValue.get("productWeight");
+                                weightProudct = (BigDecimal) weightProudcts.divide(BigDecimal.valueOf(1000), 3, RoundingMode.CEILING);
+                            }else {
+                                weightProudct = (BigDecimal) productItemValue.get("productWeight");
+                            }
+                        }
                     }
                 }
             }
