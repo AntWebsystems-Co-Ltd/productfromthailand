@@ -993,6 +993,12 @@
     <SystemProperty systemResourceId="catalog" systemPropertyId="top.category.default" systemPropertyValue="PFT_ROOT"/>
     <SystemProperty systemResourceId="catalog" systemPropertyId="all.product.category" systemPropertyValue="PFT_ROOT"/>
 
+    InventoryItem facilityId="pftWarehouse" inventoryItemId="PFT10000" inventoryItemTypeId="NON_SERIAL_INV_ITEM" datetimeReceived="2017-12-01 00:00:00" productId="CR10001" ownerPartyId="pft" currencyUomId="THB" unitCost="825"/>
+    <InventoryItemDetail inventoryItemId="PFT10000" inventoryItemDetailSeqId="0001" effectiveDate="2017-12-01 00:00:00" availableToPromiseDiff="100" quantityOnHandDiff="100" accountingQuantityDiff="100"/>
+    <InventoryItem facilityId="pftWarehouse" inventoryItemId="PFT10001" inventoryItemTypeId="NON_SERIAL_INV_ITEM" datetimeReceived="2017-12-01 00:00:00" productId="CR10000-RB" ownerPartyId="pft" currencyUomId="THB" unitCost="200"/>
+    <InventoryItemDetail inventoryItemId="PFT10001" inventoryItemDetailSeqId="0001" effectiveDate="2017-12-01 00:00:00" availableToPromiseDiff="100" quantityOnHandDiff="100" accountingQuantityDiff="100"/>
+    <InventoryItem facilityId="pftWarehouse" inventoryItemId="PFT10002" inventoryItemTypeId="NON_SERIAL_INV_ITEM" datetimeReceived="2017-12-01 00:00:00" productId="CR10000-RG" ownerPartyId="pft" currencyUomId="THB" unitCost="200"/>
+    <InventoryItemDetail inventoryItemId="PFT10002" inventoryItemDetailSeqId="0001" effectiveDate="2017-12-01 00:00:00" availableToPromiseDiff="100" quantityOnHandDiff="100" accountingQuantityDiff="100"/>
     <!-- Promotion Rule -->
     <ProductPrice currencyUomId="THB" fromDate="2017-12-07 14:55:40.0" price="850.000" priceWithTax="850.000" priceWithoutTax="794.393" productId="CR10002" productPricePurposeId="PURCHASE" productPriceTypeId="SPECIAL_PROMO_PRICE" productStoreGroupId="_NA_" taxAmount="55.607" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
     <ProductPromo productPromoId="PFT20000" promoName="Scarf" promoText="Buy Scarf 20 pieces get a special promo price" requireCode="N" showToCustomer="Y" userEntered="N"/>
@@ -1010,10 +1016,57 @@
     <ProductPromoProduct productId="CR10011" productPromoActionSeqId="_NA_" productPromoApplEnumId="PPPA_INCLUDE" productPromoCondSeqId="01" productPromoId="PFT20001" productPromoRuleId="00001"/>
     <ProductStorePromoAppl productStoreId="PFTSTORE" productPromoId="PFT20001" fromDate="2017-10-01 00:00:00.0"/>
 
-    <InventoryItem facilityId="pftWarehouse" inventoryItemId="PFT10000" inventoryItemTypeId="NON_SERIAL_INV_ITEM" datetimeReceived="2017-12-01 00:00:00" productId="CR10001" ownerPartyId="pft" currencyUomId="THB" unitCost="825"/>
-    <InventoryItemDetail inventoryItemId="PFT10000" inventoryItemDetailSeqId="0001" effectiveDate="2017-12-01 00:00:00" availableToPromiseDiff="100" quantityOnHandDiff="100" accountingQuantityDiff="100"/>
-    <InventoryItem facilityId="pftWarehouse" inventoryItemId="PFT10001" inventoryItemTypeId="NON_SERIAL_INV_ITEM" datetimeReceived="2017-12-01 00:00:00" productId="CR10000-RB" ownerPartyId="pft" currencyUomId="THB" unitCost="200"/>
-    <InventoryItemDetail inventoryItemId="PFT10001" inventoryItemDetailSeqId="0001" effectiveDate="2017-12-01 00:00:00" availableToPromiseDiff="100" quantityOnHandDiff="100" accountingQuantityDiff="100"/>
-    <InventoryItem facilityId="pftWarehouse" inventoryItemId="PFT10002" inventoryItemTypeId="NON_SERIAL_INV_ITEM" datetimeReceived="2017-12-01 00:00:00" productId="CR10000-RG" ownerPartyId="pft" currencyUomId="THB" unitCost="200"/>
-    <InventoryItemDetail inventoryItemId="PFT10002" inventoryItemDetailSeqId="0001" effectiveDate="2017-12-01 00:00:00" availableToPromiseDiff="100" quantityOnHandDiff="100" accountingQuantityDiff="100"/>
+    <!-- Free Shipping for Careel Products -->
+    <ProductPromo productPromoId="PFT20002" promoName="Free Shipping in Thailand" promoText="Free Shipping in Thailand" requireCode="N" showToCustomer="Y" useLimitPerOrder="1" userEntered="Y" />
+    <ProductPromoRule productPromoId="PFT20002" productPromoRuleId="01" ruleName="Free Shipping in Thailand" />
+    <ProductPromoAction productPromoId="PFT20002"
+                    productPromoRuleId="01" productPromoActionSeqId="01"
+                    productPromoActionEnumId="PROMO_SHIP_CHARGE"
+                    orderAdjustmentTypeId="PROMOTION_ADJUSTMENT" amount="100.000000" />
+    <ProductPromoCond productPromoId="PFT20002"
+                    productPromoRuleId="01" productPromoCondSeqId="01"
+                    inputParamEnumId="PPIP_GEO_ID" operatorEnumId="PPC_EQ"
+                    condValue="THA" />
+    <ProductPromoProduct productPromoId="PFT20002"
+                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
+                    productPromoCondSeqId="01" productId="CR10000"
+                    productPromoApplEnumId="PPPA_INCLUDE" />
+    <ProductPromoProduct productPromoId="PFT20002"
+                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
+                    productPromoCondSeqId="01" productId="CR10001"
+                    productPromoApplEnumId="PPPA_INCLUDE" />
+    <ProductPromoProduct productPromoId="PFT20002"
+                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
+                    productPromoCondSeqId="01" productId="CR10002"
+                    productPromoApplEnumId="PPPA_INCLUDE" />
+    <ProductPromoProduct productPromoId="PFT20002"
+                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
+                    productPromoCondSeqId="01" productId="CR10003"
+                    productPromoApplEnumId="PPPA_INCLUDE" />
+    <ProductPromoProduct productPromoId="PFT20002"
+                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
+                    productPromoCondSeqId="01" productId="CR10004"
+                    productPromoApplEnumId="PPPA_INCLUDE" />
+    <ProductPromoProduct productPromoId="PFT20002"
+                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
+                    productPromoCondSeqId="01" productId="CR10004"
+                    productPromoApplEnumId="PPPA_INCLUDE" />
+    <ProductPromoProduct productPromoId="PFT20002"
+                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
+                    productPromoCondSeqId="01" productId="CR10005"
+                    productPromoApplEnumId="PPPA_INCLUDE" />
+    <ProductPromoProduct productPromoId="PFT20002"
+                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
+                    productPromoCondSeqId="01" productId="CR10009"
+                    productPromoApplEnumId="PPPA_INCLUDE" />
+    <ProductPromoProduct productPromoId="PFT20002"
+                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
+                    productPromoCondSeqId="01" productId="CR10010"
+                    productPromoApplEnumId="PPPA_INCLUDE" />
+    <ProductPromoProduct productPromoId="PFT20002"
+                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
+                    productPromoCondSeqId="01" productId="CR10011"
+                    productPromoApplEnumId="PPPA_INCLUDE" />
+    <ProductStorePromoAppl productStoreId="PFTSTORE" productPromoId="PFT20002" fromDate="2016-04-16 00:00:00.000" sequenceNum="1" />
+
 </entity-engine-xml>
