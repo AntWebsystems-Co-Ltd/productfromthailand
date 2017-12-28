@@ -98,7 +98,7 @@ under the License.
                             </td>
                             <td class="text-center">
                                 <button type="submit" title="${uiLabelMap.CommonUpdate}" class="btn btn-default tool-tip" onclick="javascript:document.cartform_${cartLineIndex!}.submit();">
-                                    <i class="fa fa-refresh"></i>
+                                    <i class="fa fa-sync"></i>
                                 </button>
                                 <button type="button" title="${uiLabelMap.CommonRemove}" class="btn btn-default tool-tip" onclick="javascript:document.removecartform_${cartLineIndex!}.submit();">
                                     <i class="fa fa-times-circle"></i>
