@@ -583,6 +583,10 @@
         <value xml:lang="en">Store Menu</value>
         <value xml:lang="th">เมนูร้านค้า</value>
     </property>
+    <property key="PFTSubscribe">
+        <value xml:lang="en">Subscribe</value>
+        <value xml:lang="th">การติดตาม</value>
+    </property>
     <property key="PFTSupplier">
         <value xml:lang="en">Supplier</value>
         <value xml:lang="th">ผู้จัดจำหน่าย</value>

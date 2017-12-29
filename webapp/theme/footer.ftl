@@ -64,7 +64,7 @@ under the License.
                 <#-- Follow Us Links Ends -->
                 <#-- Last Colum Start -->
                     <div class="col-md-5 col-sm-12 last">
-                        <h5>${uiLabelMap.EcommerceSubscribe}</h5>
+                        <h5>${uiLabelMap.PFTSubscribe}</h5>
                             <div class="input-group input-group-md" id="emailSubscribe">
                               <form method="post" name="signUpForContactListForm" id="signUpForContactListForm">
                                 <input type="hidden" name="contactListId" value="${webSiteId?if_exists}"/>
