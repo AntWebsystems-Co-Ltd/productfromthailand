@@ -58,9 +58,9 @@
         verifyEmailScreen="component://growerpbackend/widget/EmailContactListScreens.xml#ContactListVerifyEmail" verifyEmailSubject="Subscription Verify Contact List" verifyEmailWebSiteId="PFT"/>
 
     <SystemProperty systemPropertyId="mail.notifications.enabled" systemPropertyValue="Y" systemResourceId="general"/>
-    <SystemProperty systemPropertyId="defaultFromEmailAddress" systemPropertyValue="ofbiztest05@gmail.com" systemResourceId="general"/>
-    <SystemProperty systemPropertyId="mail.smtp.auth.user" systemPropertyValue="ofbiztest05@gmail.com" systemResourceId="general"/>
-    <SystemProperty systemPropertyId="mail.smtp.auth.password" systemPropertyValue="awstesttest" systemResourceId="general"/>
+    <SystemProperty systemPropertyId="defaultFromEmailAddress" systemPropertyValue="ofbiztest01@gmail.com" systemResourceId="general"/>
+    <SystemProperty systemPropertyId="mail.smtp.auth.user" systemPropertyValue="ofbiztest01@gmail.com" systemResourceId="general"/>
+    <SystemProperty systemPropertyId="mail.smtp.auth.password" systemPropertyValue="awsofbiztest" systemResourceId="general"/>
     <SystemProperty systemPropertyId="mail.smtp.relay.host" systemPropertyValue="smtp.gmail.com" systemResourceId="general"/>
     <SystemProperty systemPropertyId="mail.smtp.port" systemPropertyValue="465" systemResourceId="general"/>
     <SystemProperty systemPropertyId="mail.smtp.starttls.enable" systemPropertyValue="true" systemResourceId="general"/>
