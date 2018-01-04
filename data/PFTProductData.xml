@@ -38,6 +38,7 @@ under the License.
     <ProductCategory categoryName="Health &amp; Beauty" primaryParentCategoryId="PFT_ROOT" productCategoryId="HEALTHANDBEAUTY" productCategoryTypeId="CATALOG_CATEGORY" categoryImageUrl="/pft-default/categories/HealthBeauty.jpg"/>
     <ProductCategory categoryName="Body Accessories" primaryParentCategoryId="PFT_ROOT" productCategoryId="BODYACCESSORIES" productCategoryTypeId="CATALOG_CATEGORY" categoryImageUrl="/pft-default/categories/BodyAccessories.jpg"/>
     <ProductCategory categoryName="Coffee" productCategoryId="COFFEE-CAT" productCategoryTypeId="CATALOG_CATEGORY" categoryImageUrl="/pft-default/categories/Coffee.png"/>
+    <ProductCategory categoryName="Art" productCategoryId="ART-CAT" productCategoryTypeId="CATALOG_CATEGORY" categoryImageUrl=""/>
 
     <ProductCategoryRollup fromDate="2009-01-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="BAGS" sequenceNum="1"/>
     <ProductCategoryRollup fromDate="2009-02-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="CLOTHING" sequenceNum="2"/>
@@ -46,7 +47,8 @@ under the License.
     <ProductCategoryRollup fromDate="2009-05-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="THAISILK" sequenceNum="5"/>
     <ProductCategoryRollup fromDate="2009-06-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="HEALTHANDBEAUTY" sequenceNum="6"/>
     <ProductCategoryRollup fromDate="2009-07-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="BODYACCESSORIES" sequenceNum="7"/>
-    <ProductCategoryRollup fromDate="2009-07-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="COFFEE-CAT" sequenceNum="7"/>
+    <ProductCategoryRollup fromDate="2009-07-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="COFFEE-CAT" sequenceNum="8"/>
+    <ProductCategoryRollup fromDate="2009-07-25 00:00:00.000" parentProductCategoryId="PFT_ROOT" productCategoryId="ART-CAT" sequenceNum="9"/>
 
     <ProdCatalogCategory prodCatalogId="PFTCatalog" productCategoryId="PFT_ROOT" fromDate="2009-09-25 00:00:00.000"
         sequenceNum="1" prodCatalogCategoryTypeId="PCCT_BROWSE_ROOT"/>
@@ -155,6 +157,18 @@ under the License.
 
     <ProductCategoryContent productCategoryId="COFFEE-CAT" contentId="COFFEEDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2017-10-09 00:00:00.000"/>
     <ContentAssoc contentId="COFFEEDESCEN" contentIdTo="COFFEEDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2017-10-09 00:00:00.000"/>
+    <!-- Art category -->
+    <DataResource dataResourceId="ARTDESCTH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
+    <DataResource dataResourceId="ARTSDESCEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
+
+    <ElectronicText dataResourceId="ARTDESCTH" textData="ศิลปะ"/>
+    <ElectronicText dataResourceId="ARTSDESCEN" textData="Art"/>
+
+    <Content contentId="ARTDESCTH" contentTypeId="DOCUMENT" dataResourceId="ARTDESCTH" description="DESCRIPTION TH Art" localeString="th"/>
+    <Content contentId="ARTSDESCEN" contentTypeId="DOCUMENT" dataResourceId="ARTSDESCEN" description="DESCRIPTION EN Art" localeString="en"/>
+
+    <ProductCategoryContent productCategoryId="ART-CAT" contentId="ARTSDESCEN" prodCatContentTypeId="CATEGORY_NAME" fromDate="2009-01-25 00:00:00.000"/>
+    <ContentAssoc contentId="ARTSDESCEN" contentIdTo="ARTDESCTH" contentAssocTypeId="ALTERNATE_LOCALE" fromDate="2009-01-25 00:00:00.000"/>
 
     <!-- Careel Supplier data -->
     <Party partyId="SUP10000" partyTypeId="PARTY_GROUP"/>

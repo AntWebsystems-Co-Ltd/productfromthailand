@@ -1045,11 +1045,11 @@ $(function(){
       </div>
     </#if>
 
-    <#-- Long description of product -->
+    <#-- Long description of product
     <div id="long-description">
       <div>${productContentWrapper.get("LONG_DESCRIPTION", "html")!}</div>
       <div>${productContentWrapper.get("WARNINGS", "html")!}</div>
-    </div>
+    </div> -->
   </div>
   </div>
   </div>

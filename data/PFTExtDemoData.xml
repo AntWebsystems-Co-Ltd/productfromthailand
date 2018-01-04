@@ -993,7 +993,7 @@
     <SystemProperty systemResourceId="catalog" systemPropertyId="top.category.default" systemPropertyValue="PFT_ROOT"/>
     <SystemProperty systemResourceId="catalog" systemPropertyId="all.product.category" systemPropertyValue="PFT_ROOT"/>
 
-    InventoryItem facilityId="pftWarehouse" inventoryItemId="PFT10000" inventoryItemTypeId="NON_SERIAL_INV_ITEM" datetimeReceived="2017-12-01 00:00:00" productId="CR10001" ownerPartyId="pft" currencyUomId="THB" unitCost="825"/>
+    <InventoryItem facilityId="pftWarehouse" inventoryItemId="PFT10000" inventoryItemTypeId="NON_SERIAL_INV_ITEM" datetimeReceived="2017-12-01 00:00:00" productId="CR10001" ownerPartyId="pft" currencyUomId="THB" unitCost="825"/>
     <InventoryItemDetail inventoryItemId="PFT10000" inventoryItemDetailSeqId="0001" effectiveDate="2017-12-01 00:00:00" availableToPromiseDiff="100" quantityOnHandDiff="100" accountingQuantityDiff="100"/>
     <InventoryItem facilityId="pftWarehouse" inventoryItemId="PFT10001" inventoryItemTypeId="NON_SERIAL_INV_ITEM" datetimeReceived="2017-12-01 00:00:00" productId="CR10000-RB" ownerPartyId="pft" currencyUomId="THB" unitCost="200"/>
     <InventoryItemDetail inventoryItemId="PFT10001" inventoryItemDetailSeqId="0001" effectiveDate="2017-12-01 00:00:00" availableToPromiseDiff="100" quantityOnHandDiff="100" accountingQuantityDiff="100"/>
