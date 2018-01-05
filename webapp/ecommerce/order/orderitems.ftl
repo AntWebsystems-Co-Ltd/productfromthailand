@@ -233,7 +233,7 @@ under the License.
         </tr>
         <#list headerAdjustmentsToShow as orderHeaderAdjustment>
           <tr class="checkouttotal">
-            <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>><b>${localOrderReadHelper.getAdjustmentType(orderHeaderAdjustment)}</b></td>
+            <td <#if maySelectItems?default("N") == "Y">colspan="7"<#else>colspan="6"</#if>><b>${uiLabelMap.AccountingAgreementPromoAppls}</b></td>
             <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>><b><@ofbizCurrency amount=localOrderReadHelper.getOrderAdjustmentTotal(orderHeaderAdjustment)*conversionRate isoCode=currencyUom/></b><#--@ofbizCurrency amount=localOrderReadHelper.getOrderAdjustmentTotal(orderHeaderAdjustment) isoCode=currencyUomId/--></td>
           </tr>
         </#list>

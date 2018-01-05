@@ -114,6 +114,7 @@
             <actions>
                 <set field="titleProperty" value="PageTitleCheckoutReview"/>
                 <set field="parameters.formNameValue" value="orderreview" global="true"/>
+                <set field="parameters.formAction" value="processorder" global="true"/>
                 <script location="component://ecommerce/groovyScripts/order/CheckoutReview.groovy"/>
             </actions>
             <widgets>
@@ -165,9 +166,25 @@
 
     <screen name="checkoutoptions">
         <section>
+            <condition>
+                <and>
+                    <not><if-empty field="userLogin"/></not>
+                    <if-compare field="userLogin.userLoginId" operator="not-equals" value="anonymous"/>
+                </and>
+            </condition>
+            <widgets>
+                <include-screen name="checkoutOptionsMain"/>
+            </widgets>
+            <fail-widgets>
+                <include-screen name="anonCheckoutAddress"/>
+            </fail-widgets>
+        </section>
+    </screen>
+
+    <screen name="checkoutOptionsMain">
+        <section>
             <actions>
                 <set field="titleProperty" value="PageTitleCheckoutOptions"/>
-
                 <script location="component://ecommerce/groovyScripts/customer/EditShippingAddress.groovy"/>
                 <set field="dependentForm" value="checkoutInfoForm"/>
                 <set field="paramKey" value="countryGeoId"/>
@@ -244,6 +261,105 @@
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/order/checkoutoptionsOrderDetails.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <!-- Anonymous Checkout -->
+    <screen name="anonCheckoutAddress">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleCheckoutOptions"/>
+                <set field="dependentForm" value="anonProcessCustomer"/>
+                <set field="paramKey" value="countryGeoId"/>
+                <set field="mainId" value="shipToCountryGeoId"/>
+                <set field="dependentId" value="shipToStateProvinceGeoId"/>
+                <set field="requestName" value="getAssociatedStateList"/>
+                <set field="responseName" value="stateList"/>
+                <set field="dependentKeyName" value="geoId"/>
+                <set field="descName" value="geoName"/>
+                <set field="orderBy" value="geoName"/>
+                <set field="selectedDependentOption" from-field="shipToStateProvinceGeoId" default-value="_none_"/>
+                <set field="layoutSettings.styleSheets[]" value="/theme/css/arrowProgressBar.css" global="true"/>
+                <script location="component://productfromthailand/groovyScripts/QuickAnonCustSettings.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://common/template/includes/SetDependentDropdownValuesJs.ftl"/>
+                                <html-template location="component://productfromthailand/webapp/ecommerce/order/anonCheckoutAddress.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="anonCheckoutShippingPayments">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleCheckoutReview"/>
+                <set field="layoutSettings.styleSheets[]" value="/theme/css/arrowProgressBar.css" global="true"/>
+                <script location="component://order/groovyScripts/entry/CheckoutPayment.groovy"/>
+                <script location="component://order/groovyScripts/entry/StorePaymentOptions.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/anonCheckoutShippingPayments.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/order/anonCheckoutShippingPayments.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="anonCheckoutOrderDetails">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleCheckoutReview"/>
+                <set field="layoutSettings.styleSheets[]" value="/theme/css/arrowProgressBar.css" global="true"/>
+                <script location="component://order/groovyScripts/entry/CheckoutPayment.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/anonCheckoutOrderDetails.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/order/anonCheckoutOrderDetails.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="anonOrderDetails">
+        <section>
+            <actions>
+                <script location="component://productfromthailand/groovyScripts/anonCheckoutOrderDetails.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/order/anonOrderDetails.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="anonCheckoutreview">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleCheckoutReview"/>
+                <set field="parameters.formNameValue" value="orderreview" global="true"/>
+                <set field="parameters.formAction" value="anonProcessOrder" global="true"/>
+                <script location="component://ecommerce/groovyScripts/order/CheckoutReview.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/order/checkoutreview.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
             </widgets>
         </section>
     </screen>

@@ -323,6 +323,10 @@
         <value xml:lang="en">Or</value>
         <value xml:lang="th">หรือ</value>
     </property>
+        <property key="PFTOrderContinueToFinalOrderReview">
+        <value xml:lang="en">Continue to Final Order Review</value>
+        <value xml:lang="th">ดูรายการสั่งซื้อในหน้าสุดท้าย</value>
+    </property>
     <property key="PFTOrderNbr">
         <value xml:lang="en">Order Nbr</value>
         <value xml:lang="th">หมายเลขคำสั่งซื้อ</value>

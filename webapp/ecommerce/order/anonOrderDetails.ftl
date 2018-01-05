@@ -16,19 +16,6 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<script language="javascript" type="text/javascript">
-$(document).ready( function() {
-    <#if shoppingCart.getShippingContactMechId()?exists>
-        <#if chosenShippingMethod?exists>
-            if ($("input:radio[name='shipping_method']").is(":checked")) {
-                if(checkoutStep == 3) {
-                    $("#checkoutStep3Button").removeClass("hide");
-                }
-            }
-        </#if>
-    </#if>
-});
-</script>
 <table class="table table-bordered" id="checkoutreview-table">
     <thead>
         <tr>
@@ -67,26 +54,11 @@ $(document).ready( function() {
         </tr>
         <tr id="checkouttotal_tax" class="checkouttotal">
             <td colspan="2"><b>${uiLabelMap.PFTSalesTax}</b></td>
-            <td class="text-right"><b><@ofbizCurrency amount=orderTaxTotal isoCode=shoppingCart.getCurrency() /></b></td>
+            <td class="text-right"><b><@ofbizCurrency amount=shoppingCart.getTotalSalesTax() isoCode=shoppingCart.getCurrency() /></b></td>
         </tr>
         <tr id="checkouttotal_grandtotal" class="checkouttotal">
             <td colspan="2"><b>${uiLabelMap.OrderGrandTotal}</b></td>
-            <td class="text-right"><b><@ofbizCurrency amount=orderGrandTotal isoCode=shoppingCart.getCurrency() /></b></td>
+            <td class="text-right"><b><@ofbizCurrency amount=shoppingCart.getDisplayGrandTotal() isoCode=shoppingCart.getCurrency() /></b></td>
         </tr>
     </tfoot>
 </table>
-<#-- Your Order Details Ends -->
-<#-- Spacer Starts -->
-<div class="spacer"></div>
-<#-- Spacer Ends -->
-<div id="checkoutStep3Button" class="">
-    <div class="checkbox">
-        <label class="checkbox-style-1">
-            <input type="checkbox" id="acceptcondition"> ${uiLabelMap.PFTIHaveReadAndAcceptThe} <a href="<@ofbizUrl>showhelpcontent</@ofbizUrl>?contentId=HELP_TERMSANDCON&nodeTrailCsv=HELP_TERMSANDCON" target="_blank">${uiLabelMap.PFTTermsAndCons}</a>
-        </label>
-        <button type="button" id="finalOrderBtn" class="btn btn-main btn-block  btn-style-1 animation flat text-uppercase"
-        onclick="javascript:stepAction('next',3);">
-        ${uiLabelMap.PFTOrderContinueToFinalOrderReview}
-    </button>
-    </div>
-</div>

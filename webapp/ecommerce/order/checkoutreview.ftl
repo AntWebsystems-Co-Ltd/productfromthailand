@@ -57,7 +57,7 @@ under the License.
             &nbsp;
           </td>
           <td align="right">
-            <form type="POST" action="<@ofbizUrl>processorder</@ofbizUrl>" name="${parameters.formNameValue}">
+            <form type="POST" action="<@ofbizUrl>${parameters.formAction}</@ofbizUrl>" name="${parameters.formNameValue}">
               <#if (requestParameters.checkoutpage)?has_content>
                 <input type="hidden" name="checkoutpage" value="${requestParameters.checkoutpage}"/>
               </#if>

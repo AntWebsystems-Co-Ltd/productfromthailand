@@ -263,7 +263,13 @@ public class PFTEvents {
             }
         }
 
-        return "success";
+        GenericValue thisUserLogin = (GenericValue) request.getSession().getAttribute("userLogin");
+        if(UtilValidate.isNotEmpty(thisUserLogin)) {
+            if(UtilValidate.isNotEmpty(thisUserLogin.get("userLoginId"))) {
+                return "success";
+            }
+        }
+        return "anonSuccess";
     }
 
     private static String getPaymentGatewayConfigValue(Delegator delegator, String paymentGatewayConfigId,

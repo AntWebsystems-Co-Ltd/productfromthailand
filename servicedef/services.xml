@@ -34,6 +34,17 @@ under the License.
         <attribute name="productStoreId" type="String" mode="IN" optional="true"/>
     </service>
 
+    <service name="createPartyEmailAddress" engine="simple"
+            location="component://productfromthailand/minilang/customer/QuickAnonCustomerEvents.xml" invoke="createPartyEmailAddress" auth="true">
+        <description>Create an Email Address</description>
+        <permission-service service-name="partyContactMechPermissionCheck" main-action="CREATE"/>
+        <auto-attributes entity-name="ContactMech" include="nonpk" mode="IN" optional="true"/>
+        <auto-attributes entity-name="PartyContactMech" include="all" mode="IN" optional="true"/>
+        <attribute name="contactMechPurposeTypeId" type="String" mode="IN" optional="true"/>
+        <attribute name="contactMechId" type="String" mode="INOUT" optional="true"/>
+        <attribute name="emailAddress" type="String" mode="IN" optional="false"/>
+    </service>
+
     <service name="createMissingProductPrice" engine="simple" invoke="createMissingProductPrice" location="component://productfromthailand/minilang/ProductEvents.xml">
         <description>To Create Missing Product Price in Other Currencies</description>
     </service>

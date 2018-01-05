@@ -91,14 +91,34 @@ hr{
 .btn-main.active {
     background-color: #c5272d;
 }
+.btn-secondary {
+    background-color: #0d9cd7;
+}
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary.active {
+    background-color: #0b7baa;
+}
 .btn-main,
 .btn-main:hover,
 .btn-main:focus,
 .btn-main:active,
-.btn-main.active {
+.btn-main.active,
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary.active {
     color:#fff;
 }
-
+.btn-left {
+    margin-left: 15px;
+}
+.btn-right {
+    margin-right: 15px;
+    float: right;
+}
 /* Header Area Styles Starts */
 
 #header-area{
