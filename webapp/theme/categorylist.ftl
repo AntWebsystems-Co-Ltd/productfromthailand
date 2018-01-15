@@ -66,10 +66,10 @@ under the License.
                             <div class="display">
                                 <#assign categoryListUrl = "categorylist?productCategoryId="+productCategory.productCategoryId>
                                 <#assign categoryGridUrl = "categorygrid?productCategoryId="+productCategory.productCategoryId>
-                                <a href="<@ofbizUrl>${categoryListUrl!}</@ofbizUrl>" class="active">
+                                <a href="<@ofbizUrl>${categoryListUrl!}</@ofbizUrl>#main-container" class="active">
                                     <i class="fa fa-th-list" title="List View"></i>
                                 </a>
-                                <a href="<@ofbizUrl>${categoryGridUrl!}</@ofbizUrl>">
+                                <a href="<@ofbizUrl>${categoryGridUrl!}</@ofbizUrl>#main-container">
                                     <i class="fa fa-th" title="Grid View"></i>
                                 </a>
                             </div>
@@ -108,13 +108,13 @@ under the License.
                     <div class="col-sm-6 pagination-block">
                         <ul class="pagination">
                             <#if lowHasNext>
-                                <li><a href="<@ofbizUrl>categorylist/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${lowNext}/~productCategoryId=${productCategoryId}</@ofbizUrl>">&laquo;</a></li>
+                                <li><a href="<@ofbizUrl>categorylist/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${lowNext}/~productCategoryId=${productCategoryId}</@ofbizUrl>#main-container">&laquo;</a></li>
                             </#if>
                             <#list lowViewList..highViewList as curViewNum>
-                                <li <#if (curViewNum?int == viewIndex?int)>class="active"</#if>><a href="<@ofbizUrl>categorylist/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${curViewNum?int}/~productCategoryId=${productCategoryId}</@ofbizUrl>">${curViewNum?int+1}</a></li>
+                                <li <#if (curViewNum?int == viewIndex?int)>class="active"</#if>><a href="<@ofbizUrl>categorylist/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${curViewNum?int}/~productCategoryId=${productCategoryId}</@ofbizUrl>#main-container">${curViewNum?int+1}</a></li>
                             </#list>
                             <#if highHasNext>
-                                <li><a href="<@ofbizUrl>categorylist/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${highNext}/~productCategoryId=${productCategoryId}</@ofbizUrl>">&raquo;</a></li>
+                                <li><a href="<@ofbizUrl>categorylist/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${highNext}/~productCategoryId=${productCategoryId}</@ofbizUrl>#main-container">&raquo;</a></li>
                             </#if>
                         </ul>
                     </div>
@@ -152,13 +152,13 @@ under the License.
                     <div class="col-sm-6 pagination-block">
                         <ul class="pagination">
                             <#if lowHasNext>
-                                <li><a href="<@ofbizUrl>categorylist/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${lowNext}/~productCategoryId=${productCategoryId}</@ofbizUrl>">&laquo;</a></li>
+                                <li><a href="<@ofbizUrl>categorylist/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${lowNext}/~productCategoryId=${productCategoryId}</@ofbizUrl>#main-container">&laquo;</a></li>
                             </#if>
                             <#list lowViewList..highViewList as curViewNum>
-                                <li <#if (curViewNum?int == viewIndex?int)>class="active"</#if>><a href="<@ofbizUrl>categorylist/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${curViewNum?int}/~productCategoryId=${productCategoryId}</@ofbizUrl>">${curViewNum?int+1}</a></li>
+                                <li <#if (curViewNum?int == viewIndex?int)>class="active"</#if>><a href="<@ofbizUrl>categorylist/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${curViewNum?int}/~productCategoryId=${productCategoryId}</@ofbizUrl>#main-container">${curViewNum?int+1}</a></li>
                             </#list>
                             <#if highHasNext>
-                                <li><a href="<@ofbizUrl>categorylist/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${highNext}/~productCategoryId=${productCategoryId}</@ofbizUrl>">&raquo;</a></li>
+                                <li><a href="<@ofbizUrl>categorylist/~VIEW_SIZE=${viewSize}/~VIEW_INDEX=${highNext}/~productCategoryId=${productCategoryId}</@ofbizUrl>#main-container">&raquo;</a></li>
                             </#if>
                         </ul>
                     </div>

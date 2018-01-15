@@ -46,46 +46,49 @@ under the License.
  </script>
 <#-- Main Container Starts -->
     <div id="main-container" class="container">
-    <#-- Main Heading Starts -->
-        <h2 class="main-heading text-center">
-            ${uiLabelMap.PFTTrackingShipment}
-        </h2>
     <#-- Main Heading Ends -->
         <div class="panel-smart">
-            <div class="row">
-                <div class="col-sm-3"></div>
-                <div class=" col-sm-6">
-                    <div class="input-group input-group-md">
-                        <form name="trackingShipments" id="trackingShipments" method="post" action="javascript: trackingShipments();" style="margin: 0;">
-                            <input type="text" id="TrakingNumber" name="TrakingNumber" class="form-control" placeholder="Tracking Number">
+            <div class="panel-heading">
+                <h2 class="main-heading text-center">
+                    ${uiLabelMap.PFTTrackingShipment}
+                </h2>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class=" col-sm-6">
+                        <div class="input-group input-group-md">
+                            <form name="trackingShipments" id="trackingShipments" method="post" action="javascript: trackingShipments();" style="margin: 0;">
+                                <input type="text" id="TrakingNumber" name="TrakingNumber" class="form-control" placeholder="Tracking Number">
+                            </form>
+                            <a href="javascript: trackingShipments();" class="input-group-addon" id="trackBtn">Track</a>
+                        </div>
+                        <div style="margin: 12px 0 0 7px;">
+                            <div><input type="radio" name="couriers" id="couriers" value="thaiPost" <#if !fedExReply?has_content>checked</#if>> Thailand Post</div>
+                            <div><input type="radio" name="couriers" id="couriers" value="fedEx"<#if fedExReply?has_content>checked</#if>> FedEx</div>
+                        </div>
+                        <form id="trackThaiPost" action="http://track.thailandpost.co.th/tracking/default.aspx" method="post" target="_blank" class="hide">
+                            <input type="hidden" name="CaptchaCTL1$submit" value="Submit Query" />
+                            <input type="hidden" id="TextBarcodeThaiPost" name="TextBarcode" value="" />
+                            <input type="hidden" name="__EVENTARGUMENT" value="" />
+                            <input type="hidden" name="__EVENTTARGET" value="" />
+                            <input type="hidden" name="__VIEWSTATE" value="" />
+                            <input type="hidden" name="__VIEWSTATEGENERATOR" value="" />
+                            <input type="hidden" name="textkey" value="" />
+                            <input type="hidden" name="pwThaiPost" value="" />
                         </form>
-                        <a href="javascript: trackingShipments();" class="input-group-addon" id="trackBtn">Track</a>
+                        <form id="trackFedEx" action="https://www.fedex.com/apps/fedextrack/index.html" method="get" target="_blank" class="hide">
+                            <input type="hidden" name="action" value="track" />
+                            <input type="hidden" id="trackNumbersFedEx" name="tracknumbers" value="" />
+                        </form>
+                        <#--
+                        <form id="trackFedEx" action="<@ofbizUrl>trackFedEx</@ofbizUrl>" method="post" target="_blank" class="hide">
+                            <input type="hidden" id="trackNumbersFedEx" name="tracknumbers" value="" />
+                        </form>
+                        -->
                     </div>
-                    <div style="margin: 12px 0 0 7px;">
-                        <div><input type="radio" name="couriers" id="couriers" value="thaiPost" <#if !fedExReply?has_content>checked</#if>> Thailand Post</div>
-                        <div><input type="radio" name="couriers" id="couriers" value="fedEx"<#if fedExReply?has_content>checked</#if>> FedEx</div>
-                    </div>
-                    <form id="trackThaiPost" action="http://track.thailandpost.co.th/tracking/default.aspx" method="post" target="_blank" class="hide">
-                        <input type="hidden" name="CaptchaCTL1$submit" value="Submit Query" />
-                        <input type="hidden" id="TextBarcodeThaiPost" name="TextBarcode" value="" />
-                        <input type="hidden" name="__EVENTARGUMENT" value="" />
-                        <input type="hidden" name="__EVENTTARGET" value="" />
-                        <input type="hidden" name="__VIEWSTATE" value="" />
-                        <input type="hidden" name="__VIEWSTATEGENERATOR" value="" />
-                        <input type="hidden" name="textkey" value="" />
-                        <input type="hidden" name="pwThaiPost" value="" />
-                    </form>
-                    <form id="trackFedEx" action="https://www.fedex.com/apps/fedextrack/index.html" method="get" target="_blank" class="hide">
-                        <input type="hidden" name="action" value="track" />
-                        <input type="hidden" id="trackNumbersFedEx" name="tracknumbers" value="" />
-                    </form>
-                    <#--
-                    <form id="trackFedEx" action="<@ofbizUrl>trackFedEx</@ofbizUrl>" method="post" target="_blank" class="hide">
-                        <input type="hidden" id="trackNumbersFedEx" name="tracknumbers" value="" />
-                    </form>
-                    -->
+                    <div class="col-sm-3"></div>
                 </div>
-                <div class="col-sm-3"></div>
             </div>
         </div>
     </div>

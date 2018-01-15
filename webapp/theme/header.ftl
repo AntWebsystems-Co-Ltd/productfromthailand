@@ -344,6 +344,7 @@ under the License.
             <#-- Nav Header Starts -->
                 <div class="navbar-header">
                     <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-cat-collapse">
+                        ${uiLabelMap.PFTMenu}&nbsp;
                         <span class="sr-only">Toggle Navigation</span>
                         <i class="fa fa-bars"></i>
                     </button>
@@ -355,10 +356,10 @@ under the License.
                         <#if (completedTree?has_content)>
                             <#list completedTree?sort_by("productCategoryId") as root>
                                 <#if !root.child?has_content>
-                                   <#if parameters.category_id?has_content>
-                                          <li <#if root.productCategoryId == parameters.category_id> class="selected"</#if> >
-                                       <#else>
-                                       <li>
+                                    <#if parameters.category_id?has_content>
+                                        <li <#if root.productCategoryId == parameters.category_id> class="selected"</#if> >
+                                    <#else>
+                                        <li>
                                     </#if>
                                         <a href="<@ofbizUrl>categorylist?productCategoryId=${root.productCategoryId!}</@ofbizUrl>"><#if root.categoryName??>${root.categoryName?js_string}<#elseif root.categoryDescription??>${root.categoryDescription?js_string}<#else>${root.productCategoryId?js_string}</#if></a>
                                     </li>
@@ -395,6 +396,47 @@ under the License.
             <#-- Navbar Cat collapse Ends -->
             </nav>
         <#-- Main Menu Ends -->
+        <#-- Categories Menu Starts -->
+            <div class="categories">
+                <div class="container">
+                   <#if (completedTree?has_content)>
+                        <#list completedTree?sort_by("productCategoryId") as root>
+                            <div class="col-md-2 focus-grid">
+                                <a href="<@ofbizUrl>categorylist?productCategoryId=${root.productCategoryId!}</@ofbizUrl>#main-container">
+                                    <div class="focus-border">
+                                        <div class="focus-layout <#if !(parameters.category_id?has_content && root.productCategoryId == parameters.category_id)>hover</#if>">
+                                            <div class="focus-image <#if parameters.category_id?has_content && root.productCategoryId == parameters.category_id>selected<#else>hover</#if>">
+                                                <#if root.productCategoryId == "ART-CAT">
+                                                    <i class="fas fa-paint-brush">
+                                                <#elseif root.productCategoryId == "BAGS">
+                                                    <i class="fas fa-briefcase">
+                                                <#elseif root.productCategoryId == "BODYACCESSORIES">
+                                                    <i class="fas fa-gem">
+                                                <#elseif root.productCategoryId == "COFFEE-CAT">
+                                                    <i class="fas fa-coffee">
+                                                <#elseif root.productCategoryId == "CRAFTANDGIFT">
+                                                    <i class="fas fa-gift">
+                                                <#elseif root.productCategoryId == "FURNITURE">
+                                                    <i class="fas fa-home">
+                                                <#elseif root.productCategoryId == "HEALTHANDBEAUTY">
+                                                    <i class="fas fa-female">
+                                                <#elseif root.productCategoryId == "THAISILK">
+                                                    <i class="fas fa-bookmark">
+                                                <#else>
+                                                    <i class="fas fa-asterisk">
+                                                </#if>
+                                                </i>
+                                            </div>
+                                            <h4 class="clrchg"><#if root.categoryName??>${root.categoryName?js_string}<#elseif root.categoryDescription??>${root.categoryDescription?js_string}<#else>${root.productCategoryId?js_string}</#if></h4>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </#list>
+                    </#if>
+                </div>
+            </div>
+        <#-- Categories Menu Ends -->
         </div>
     <#-- Ends -->
     </header>

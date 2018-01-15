@@ -23,7 +23,7 @@ under the License.
         <div class="panel-heading">
           <h1>${uiLabelMap.PFTSalesconditions}</h1>
         </div>
-        <div class="screenlet-body">
+        <div class="panel-body">
           <p>${uiLabelMap.PFTSalescond}
            <br/><br/><a href="<@ofbizUrl>newsupplier</@ofbizUrl>" class="btn btn-main text-uppercase">${uiLabelMap.PFTClickToRegister}</a></p><br/><br/>
           <ul class="partnerconditions">

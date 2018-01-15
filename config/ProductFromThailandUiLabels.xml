@@ -277,6 +277,10 @@
         <value xml:lang="en">Maintain your own products at our website without any further costs.</value>
         <value xml:lang="th">จัดการสินค้าของคุณโดยไม่เสียค่าใช้จ่าย</value>
     </property>
+    <property key="PFTMenu">
+        <value xml:lang="en">Menu</value>
+        <value xml:lang="th">เมนู</value>
+    </property>
     <property key="PFTMyAccount">
         <value xml:lang="da">Min konto</value>
         <value xml:lang="de">Mein Konto</value>

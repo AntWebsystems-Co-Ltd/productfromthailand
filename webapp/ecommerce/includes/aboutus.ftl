@@ -24,7 +24,9 @@ under the License.
                 <div class="panel-heading">
                     <h1>${uiLabelMap.PFTAboutCompany}</h1>
                 </div>
+                <div class="panel-body">
                 <@renderSubContentCache subContentId=subContentId/>
+                </div
             </div>
         </div>
     </div>
