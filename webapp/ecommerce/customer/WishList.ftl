@@ -68,7 +68,6 @@ under the License.
                                 <#-- check to see if salesDiscontinuationDate has passed -->
                                 <#elseif wishList.salesDiscontinuationDate?? && nowTimestamp.after(wishList.salesDiscontinuationDate)>
                                     <button type="button" class="btn btn-cart">
-                                        <i class="fa fa-shopping-cart"></i>
                                         ${uiLabelMap.ProductNoLongerAvailable}
                                     </button>
                                 <#-- check to see if it is a rental item; will enter parameters on the detail screen-->

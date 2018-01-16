@@ -941,10 +941,14 @@ $(function(){
         <#-- check to see if introductionDate hasnt passed yet -->
         <#if product.introductionDate?? && nowTimestamp.before(product.introductionDate)>
           <p>&nbsp;</p>
-          <div style="color: red;">${uiLabelMap.ProductProductNotYetMadeAvailable}.</div>
+          <button type="button" class="btn btn-cart">
+            ${uiLabelMap.ProductProductNotYetMadeAvailable}
+          </button>
         <#-- check to see if salesDiscontinuationDate has passed -->
         <#elseif product.salesDiscontinuationDate?? && nowTimestamp.after(product.salesDiscontinuationDate)>
-          <div style="color: red;">${uiLabelMap.ProductProductNoLongerAvailable}.</div>
+          <button type="button" class="btn btn-cart">
+            ${uiLabelMap.ProductNoLongerAvailable}
+          </button>
         <#-- check to see if the product requires inventory check and has inventory -->
         <#elseif product.virtualVariantMethodEnum! != "VV_FEATURETREE">
           <#if inStock>

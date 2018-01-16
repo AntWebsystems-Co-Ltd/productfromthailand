@@ -325,6 +325,24 @@ public Map getProductCategoryAndLimitedMembers() {
                     productCategoryMembers = CategoryWorker.filterProductsInCategory(delegator, productCategoryMembers, viewProductCategoryId);
                 }
 
+                // filter sales discontinuation date
+                productCategoryMemberList = [];
+                productCategoryMembers.each { productCategoryMember ->
+                    condList = EntityCondition.makeCondition(
+                        [EntityCondition.makeCondition("productId", EntityOperator.EQUALS, productCategoryMember.productId),
+                        EntityCondition.makeCondition([
+                            EntityCondition.makeCondition("salesDiscontinuationDate", EntityOperator.EQUALS, null),
+                            EntityCondition.makeCondition("salesDiscontinuationDate", EntityOperator.GREATER_THAN_EQUAL_TO, nowTimestamp)
+                            ], EntityOperator.OR)
+                        ]
+                        , EntityOperator.AND);
+                    productDiscontinuationDate = from("Product").where(condList).queryOne();
+                    if (productDiscontinuationDate) {
+                        productCategoryMemberList.add(productCategoryMember)
+                    }
+                }
+                productCategoryMembers = productCategoryMemberList;
+
                 // set the index and size
                 listSize = productCategoryMembers.size();
                 if (limitView) {

@@ -32,6 +32,10 @@ under the License.
     <#if (lowViewList?int != 0)>
         <#assign highViewList = highViewList?int-viewIndexMax?int>
         <#assign lowViewList = lowViewList?int-highViewList?int>
+        <#if (lowViewList?int <= 0)>
+            <#assign lowViewList = 0>
+            <#assign lowHasNext = false>
+        </#if>
     </#if>
     <#assign highViewList = viewIndexMax?int>
     <#assign highHasNext = false>
