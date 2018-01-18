@@ -325,7 +325,6 @@ public class PFTEvents {
 
         List <GenericValue> toStore = new LinkedList <GenericValue> ();
 
-        paymentPreference.set("maxAmount", new BigDecimal(paymentAmount));
         if (paymentStatus.equals("Completed")) {
             paymentPreference.set("statusId", "PAYMENT_RECEIVED");
         } else if (paymentStatus.equals("Pending")) {
@@ -348,7 +347,7 @@ public class PFTEvents {
         response.set("paymentMethodId", paymentPreference.get("paymentMethodId"));
 
         // set the auth info
-        response.set("amount", new BigDecimal(paymentAmount));
+        response.set("amount", paymentPreference.get("maxAmount"));
         response.set("referenceNum", transactionId);
         response.set("gatewayCode", paymentStatus);
         response.set("gatewayFlag", paymentStatus.substring(0,1));
