@@ -26,7 +26,7 @@ webSite = from('WebSite').where('webSiteId', webSiteId).queryOne();
 if (webSite) {
     productStore = from('ProductStore').where("productStoreId", webSite.productStoreId).queryOne();
     if (productStore) {
-        supplierProducts = from("SupplierProduct").where("partyId", supplierPartyId, "currencyUomId", productStore.defaultCurrencyUomId).filterByDate(nowTimestamp, "availableFromDate", "availableThruDate").queryList()
+        supplierProducts = from("SupplierProduct").where("partyId", supplierPartyId, "currencyUomId", productStore.defaultCurrencyUomId).filterByDate(nowTimestamp, "availableFromDate", "availableThruDate").orderBy("productId").queryList()
     }
 }
 supplier = from("PartyNameView").where("partyId", supplierPartyId).queryOne()
