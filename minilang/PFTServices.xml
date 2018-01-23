@@ -401,4 +401,75 @@ under the License.
         <call-service service-name="cancelOrderItem" in-map-name="cancelOrderItemMap"/>
     </simple-method>
 
+    <simple-method method-name="sendRemindCustomerShopping" short-description="send Email Remind to Customer">
+        <now-timestamp field="nowTimestamp"/>
+        <entity-one value-field="systemUserLogin" entity-name="UserLogin">
+            <field-map field-name="userLoginId" value="system"/>
+        </entity-one>
+        <entity-and entity-name="WebSiteContent" list="webSiteContents">
+            <field-map field-name="webSiteContentTypeId" value="FRONTEND_URL"/>
+        </entity-and>
+        <if-not-empty field="webSiteContents">
+            <first-from-list entry="webSiteContent" list="webSiteContents"/>
+            <set field="parameters.webSiteId" from-field="webSiteContent.webSiteId"/>
+            <set field="checkStartDate" value="${groovy: org.apache.ofbiz.base.util.UtilDateTime.getDayStart(nowTimestamp)-7}" type="Timestamp"/>
+            <set field="checkEndDate" value="${groovy: org.apache.ofbiz.base.util.UtilDateTime.getDayEnd(checkStartDate)}" type="Timestamp"/>
+            <entity-condition list="shoppingLists" entity-name="ShoppingList">
+                <condition-list combine="and">
+                    <condition-expr field-name="lastUpdatedStamp" operator="greater-equals" from-field="checkStartDate"/>
+                    <condition-expr field-name="lastUpdatedStamp" operator="less-equals" from-field="checkEndDate"/>
+                    <condition-expr field-name="partyId" operator="not-equals" from-field="nullField"/>
+                </condition-list>
+            </entity-condition>
+            <if-not-empty field="shoppingLists">
+                <iterate entry="shoppingListValue" list="shoppingLists">
+                    <!-- List Item in shopping list -->
+                    <entity-and list="shoppingListItem" entity-name="ShoppingListItem">
+                        <field-map field-name="shoppingListId" from-field="shoppingListValue.shoppingListId"/>
+                    </entity-and>
+                    <if-not-empty field="shoppingListItem">
+                        <entity-one entity-name="PartyNameView" value-field="partyNameView">
+                            <field-map field-name="partyId" from-field="shoppingListValue.partyId"/>
+                        </entity-one>
+                        <if-not-empty field="partyNameView">
+                            <if-compare operator="equals" value="PERSON" field="partyNameView.partyTypeId">
+                                <set field="customerName" value="${partyNameView.firstName} ${partyNameView.lastName}"/>
+                            <else>
+                                <set field="customerName" value="${partyNameView.groupName}"/>
+                            </else>
+                            </if-compare>
+                        </if-not-empty>
+
+                        <entity-and entity-name="UserLogin" list="userLogin">
+                            <field-map field-name="partyId" from-field="shoppingListValue.partyId"/>
+                        </entity-and>
+                        <first-from-list entry="userLoginLastLocale" list="userLogin"/>
+                        <set field="lastLocale" from-field="userLoginLastLocale.lastLocale"/>
+                        <set field="lastCurrencyUom" from-field="userLoginLastLocale.lastCurrencyUom"/>
+                        <!-- Set email body parameters -->
+                        <set field="bodyParameters.customerName" from-field="customerName"/>
+                        <set field="bodyParameters.listProduct" from-field="shoppingListItem" type="List"/>
+                        <set field="bodyParameters.webSiteId" from-field="parameters.webSiteId"/>
+                        <set field="bodyParameters.localeValue" from-field="lastLocale"/>
+                        <set field="bodyParameters.lastCurrencyUom" from-field="lastCurrencyUom"/>
+
+                        <clear-field field="sendMailMap"/>
+                        <set field="sendMailMap.webSiteId" from-field="parameters.webSiteId"/>
+                        <set field="sendMailMap.partyIdTo" from-field="shoppingListValue.partyId"/>
+                        <if-compare operator="equals" value="th" field="lastLocale">
+                            <set field="sendMailMap.emailTemplateSettingId" value="CUST_REMIND_TH"/>
+                        <else>
+                            <set field="sendMailMap.emailTemplateSettingId" value="CUST_REMIND_EN"/>
+                        </else>
+                        </if-compare>
+                        <set field="sendMailMap.bodyParameters" from-field="bodyParameters"/>
+                        <call-service service-name="sendMailFromTemplateSetting" in-map-name="sendMailMap"/>
+                        <set-service-fields service-name="updateShoppingList" map="shoppingListValue" to-map="updateShoppingListMap"/>
+                        <set field="updateShoppingListMap.userLogin" from-field="systemUserLogin"/>
+                        <call-service service-name="updateShoppingList" in-map-name="updateShoppingListMap"/>
+                    </if-not-empty>
+                </iterate>
+            </if-not-empty>
+        </if-not-empty>
+    </simple-method>
 </simple-methods>

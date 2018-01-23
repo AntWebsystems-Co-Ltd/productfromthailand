@@ -199,4 +199,8 @@ under the License.
         <implements service="cancelOrderItem"/>
     </service>
 
+    <service name="sendRemindCustomerShopping" engine="simple" location="component://productfromthailand/minilang/PFTServices.xml" invoke="sendRemindCustomerShopping">
+        <description>Send Email remind to customer</description>
+    </service>
+
 </services>

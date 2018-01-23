@@ -267,4 +267,14 @@ under the License.
 
     <!-- <JobSandbox jobId="AUTO_GEN_PURC_INV" jobName="Auto generate purchase invoice" runTime="2017-01-01 00:00:00.000" serviceName="autoGeneratePurchaseInvoice" poolId="pool" runAsUser="system" tempExprId="DAYOFMONTH_01" maxRecurrenceCount="-1"/> -->
     <SystemProperty systemPropertyId="image.slide.size" systemPropertyValue="5" systemResourceId="pft"/>
+
+    <!-- job for send remind customer shopping -->
+    <TemporalExpression tempExprId="MIDNIGHT_DAILY" tempExprTypeId="FREQUENCY" description="Daily Midnight" date1="2000-01-01 00:00:00.000" integer1="5" integer2="1"/>
+    <JobSandbox jobId="REMIND_CUS_SHOPP" jobName="Send Remind Customer Shopping" runTime="2000-01-01 00:00:00.000" serviceName="sendRemindCustomerShopping" poolId="pool" runAsUser="system" tempExprId="MIDNIGHT_DAILY" maxRecurrenceCount="-1"/>
+    <EmailTemplateSetting emailTemplateSettingId="CUST_REMIND_TH"
+        bodyScreenLocation="component://productfromthailand/widget/EmailScreens.xml#remindCustomerShopping"
+        subject="☑ ชำระเงินเลยไหม? กลับไปทำรายการสั่งซื้อกันเถอะ"/>
+    <EmailTemplateSetting emailTemplateSettingId="CUST_REMIND_EN"
+        bodyScreenLocation="component://productfromthailand/widget/EmailScreens.xml#remindCustomerShopping"
+        subject="Cart Updated ? You have something left in your cart."/>
 </entity-engine-xml>

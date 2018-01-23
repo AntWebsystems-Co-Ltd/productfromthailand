@@ -182,6 +182,13 @@
         <value xml:lang="en">Delivery time worldwide should be within 15 days.</value>
         <value xml:lang="th">เวลาในการจัดส่งทั่วโลกควรอยู่ภายใน 15 วัน</value>
     </property>
+    <property key="PFTDontforget">
+        <value xml:lang="en"> You've left this in your cart.</value>
+        <value xml:lang="th">คุณลืมสินค้าอะไรไว้ในตะกร้าช้อปปิ้งของคุณรึเปล่า?</value>
+    </property>
+    <property key="PFTDontforgetEn">
+        <value xml:lang="en">Don't miss out</value>
+    </property>
     <property key="PFTDownloadProductTemplate">
         <value xml:lang="en">Download Product Template</value>
         <value xml:lang="th">ดาวน์โหลดรูปแบบการอัปโหลดสินค้า</value>
@@ -230,9 +237,21 @@
         <value xml:lang="en">Follow us on Twitter</value>
         <value xml:lang="th">ติดตามเราทาง Twitter</value>
     </property>
+    <property key="PFTGotoyourshoppingCart">
+        <value xml:lang="en">Go to your shopping cart</value>
+        <value xml:lang="th">ไปยังตะกร้าสินค้าของคุณ</value>
+    </property>
     <property key="PFTHelpAndInstruction">
         <value xml:lang="en">Help &amp; Instruction</value>
         <value xml:lang="th">แนะนำ/ช่วยเหลือ</value>
+    </property>
+    <property key="PFTHelloRemind">
+        <value xml:lang="en">Hello </value>
+        <value xml:lang="th">สวัสดีจ้า </value>
+    </property>
+    <property key="PFTHi">
+        <value xml:lang="en">Hi</value>
+        <value xml:lang="th">สวัสดี</value>
     </property>
     <property key="PFTHome">
         <value xml:lang="en">Home</value>
@@ -547,6 +566,10 @@
         <value xml:lang="en">Shipping Method</value>
         <value xml:lang="th">วิธีการจัดส่งสินค้า</value>
     </property>
+    <property key="PFTShoppingNow">
+        <value xml:lang="en">Start Shopping!</value>
+        <value xml:lang="th">รีบช๊อปตอนนี้ก่อนสินค้าจะหมด!</value>
+    </property>
     <property key="PFTShowing">
         <value xml:lang="en">Showing</value>
         <value xml:lang="th">กำลังแสดง</value>
@@ -686,6 +709,10 @@
         <value xml:lang="en">THANK YOU FOR YOUR PATRONAGE!</value>
         <value xml:lang="th">ขอบคุณที่ใช้บริการ</value>
     </property>
+    <property key="PFTThanksForYourOrderfromPFT">
+        <value xml:lang="en">Thanks for your Order from ProductFromThailand.com!</value>
+        <value xml:lang="th">ขอบคุณสำหรับการสั่งซื้อสินค้าจากทาง ProductFromThailand.com</value>
+    </property>
     <property key="PFTThisProductAddedToWishListSuccessful">
         <value xml:lang="en">This product added to wish list successful.</value>
         <value xml:lang="th">เพิ่มสินค้าในรายการโปรดแล้ว</value>
@@ -758,6 +785,10 @@
         <value xml:lang="en">Waiting for approval</value>
         <value xml:lang="th">รอการยืนยัน</value>
     </property>
+    <property key="PFTWeHopeYouLoveYourNewThingsAsMuchAsWeDo">
+        <value xml:lang="en">We hope you love your new things as much as we do!</value>
+        <value xml:lang="th">เราหวังว่าคุณจะชอบสินค้าพวกนี้</value>
+    </property>
     <property key="PFTWishList">
         <value xml:lang="en">Wish List</value>
         <value xml:lang="th">รายการโปรด</value>
@@ -769,6 +800,10 @@
     <property key="PFTYourAccount">
         <value xml:lang="en">Your Account</value>
         <value xml:lang="th">บัญชีชองคุณ</value>
+    </property>
+    <property key="PFTYouCanCheckOnYourOrderAtAnytimeByLoggingIntoYourAccount">
+        <value xml:lang="en">You can check on your order at anytime by logging into your account. (If you checked out as a guest your order may not be viewable online). We have listed the details of your purchase below!</value>
+        <value xml:lang="th">คุณสามารถตรวจสอบการสั่งซื้อของคุณได้ตลอดเวลาในระบบของเรา (ยกเว้นกรณีที่คุณทำการสั่งซื้อแบบไม่เป็นสมาชิก)</value>
     </property>
     <property key="PFTYourEmail">
         <value xml:lang="en">Your E-mail</value>

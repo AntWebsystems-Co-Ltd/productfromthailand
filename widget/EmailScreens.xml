@@ -98,4 +98,21 @@
             </widgets>
         </section>
     </screen>
+
+    <screen name="remindCustomerShopping">
+        <section>
+            <actions>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductFromThailandUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://productfromthailand/groovyScripts/EmailCompanyLogo.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <html>
+                        <html-template location="component://productfromthailand/template/customer/RemindShoppingList.ftl"/>
+                    </html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
 </screens>

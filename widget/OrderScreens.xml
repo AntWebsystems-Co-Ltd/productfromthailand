@@ -385,6 +385,7 @@
                 <set field="baseEcommerceSecureUrl" value="${baseSecureUrl}/pft/control"/>
                 <set field="allowAnonymousView" value="Y"/>  <!-- this field will instruction OrderStatus.groovy to allow an anonymous order to be viewed by anybody, so the email confirmation screen will work -->
                 <script location="component://ecommerce/groovyScripts/order/OrderStatus.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/OrderNotice.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/ecommerce/order/OrderNoticeEmail.ftl"/></html></platform-specific>
@@ -546,6 +547,14 @@
         <section>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/OrderItemsNotice.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="OrderNotice">
+        <section>
+            <widgets>
+                <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/OrderNotice.ftl"/></html></platform-specific>
             </widgets>
         </section>
     </screen>
