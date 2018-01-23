@@ -703,6 +703,13 @@ under the License.
         <response name="success" type="view" value="AllFeatureProducts"/>
     </request-map>
 
+    <request-map uri="cancelOrderItem">
+        <security https="true" auth="true"/>
+        <event type="service" invoke="cancelOrderItemPFT"/>
+        <response name="success" type="view" value="orderstatus"/>
+        <response name="error" type="view" value="orderstatus"/>
+    </request-map>
+
     <view-map name="orderview" type="screen" page="component://productfromthailand/widget/OrderViewScreens.xml#OrderHeaderView"/>
     <view-map name="login" type="screen" page="component://productfromthailand/widget/CommonScreens.xml#login"/>
     <view-map name="main" type="screen" page="component://productfromthailand/widget/ProductScreens.xml#main"/>

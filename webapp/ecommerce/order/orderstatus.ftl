@@ -24,6 +24,7 @@ under the License.
           <form name="addCommonToCartForm" action="<@ofbizUrl>addordertocart/orderstatus?orderId=${orderHeader.orderId}</@ofbizUrl>" method="GET">
             <input type="hidden" name="add_all" value="false">
             <input type="hidden" name="orderId" value="${orderHeader.orderId}">
+            <input type="hidden" name="orderItemSeqId" value=""/>
             ${screens.render("component://productfromthailand/widget/OrderScreens.xml#orderheader")}
             <br/>
             ${screens.render("component://productfromthailand/widget/OrderScreens.xml#orderitems")}

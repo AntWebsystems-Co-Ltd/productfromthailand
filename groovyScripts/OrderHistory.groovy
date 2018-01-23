@@ -28,39 +28,69 @@ orderRoleCollection = from("OrderRole").where("partyId", userLogin.partyId, "rol
 orderHeaderList = EntityUtil.orderBy(EntityUtil.filterByAnd(EntityUtil.getRelated("OrderHeader", null, orderRoleCollection, false),
         [EntityCondition.makeCondition("statusId", EntityOperator.NOT_EQUAL, "ORDER_REJECTED")]), ["orderDate DESC"]);
 newOrderList = [];
+newpoOrderList = [];
 if(orderHeaderList) {
+    newpoOrderList = [];
     String orderCheck = null;
     String orderHeaderCheck = null;
     for (orderHeader in orderHeaderList) {
-        porderItemAssocList = from("OrderItemAssoc").where("orderId", orderHeader.orderId).queryList();
-        if (porderItemAssocList) {
-            for (porderItemAssoc in porderItemAssocList) {
-                if (!orderCheck.equals(porderItemAssoc.toOrderId)) {
-                    porderHeader = from("OrderHeader").where("orderId", porderItemAssoc.toOrderId).queryFirst();
-                    if(porderHeader) {
-                        newOrderCtx = [:];
-                        if(!orderHeaderCheck.equals(orderHeader.orderId)) {
-                            newOrderCtx.putAll(orderHeader);
-                            orderHeaderCheck = orderHeader.orderId;
-                        }else {
-                            newOrderCtx.put("orderId", orderHeader.orderId);
+        orderItemList = from("OrderItem").where("orderId", orderHeader.orderId).queryList();
+        if(orderItemList) {
+            for (orderItem in orderItemList) {
+                newpoOrderCtx = [:];
+                if(!orderHeaderCheck || !orderHeaderCheck.equals(orderItem.orderId)) {
+                    newpoOrderCtx.put("isHeader", "Y");
+                }else {
+                    newpoOrderCtx.put("isHeader", "N");
+                }
+                orderHeaderCheck = orderItem.orderId;
+                porderItemAssoc = from("OrderItemAssoc").where("orderId", orderHeader.orderId, "orderItemSeqId", orderItem.orderItemSeqId).queryFirst();
+                if(porderItemAssoc) {
+                    if (!orderCheck.equals(porderItemAssoc.toOrderId)) {
+                        porderHeader = from("OrderHeader").where("orderId", porderItemAssoc.toOrderId).queryFirst();
+                        if(porderHeader && !(newpoOrderList.purchaseId.contains(porderHeader.orderId))) {
+                            newpoOrderCtx.put("orderDate", orderHeader.orderDate);
+                            newpoOrderCtx.put("orderTypeId", orderHeader.orderTypeId);
+                            newpoOrderCtx.put("grandTotal", orderHeader.grandTotal);
+                            newpoOrderCtx.put("orderId", orderHeader.orderId);
+                            newpoOrderCtx.put("purchaseId", porderHeader.orderId);
+                            newpoOrderCtx.put("orderItemSeqId", orderItem.orderItemSeqId);
+                            newpoOrderCtx.put("statusId", porderHeader.statusId);
+                            newpoOrderCtx.put("requestDropShip", "Y");
+                            orderCheck = porderItemAssoc.toOrderId;
+                            newpoOrderList.add(newpoOrderCtx);
                         }
-                        newOrderCtx.put("purchaseId", porderItemAssoc.toOrderId);
-                        newOrderCtx.put("purchaseStaus", porderHeader.statusId);
-                        newOrderCtx.put("orderItemSeqId", porderItemAssoc.orderItemSeqId);
-                        newOrderList.add(newOrderCtx);
-                        orderCheck = porderItemAssoc.toOrderId;
+                    }
+                }else {
+                    if(!(newpoOrderList.purchaseId.contains(orderHeader.orderId))) {
+                        newItemSeq = [];
+                        newpoOrderCtx.put("orderDate", orderHeader.orderDate);
+                        newpoOrderCtx.put("orderTypeId", orderHeader.orderTypeId);
+                        newpoOrderCtx.put("grandTotal", orderHeader.grandTotal);
+                        newpoOrderCtx.put("orderId", orderHeader.orderId);
+                        newpoOrderCtx.put("purchaseId", orderHeader.orderId);
+                        newItemSeq.add(orderItem.orderItemSeqId);
+                        newpoOrderCtx.put("orderItemSeqId", newItemSeq);
+                        newpoOrderCtx.put("statusId", orderHeader.statusId);
+                        newpoOrderCtx.put("requestDropShip", "N");
+                        newpoOrderList.add(newpoOrderCtx);
+                    } else {
+                        int positionIndex = newpoOrderList.purchaseId.indexOf(orderHeader.orderId);
+                        newItemSeqOrderCtx = [:];
+                        newItemSeqOrder = [];
+                        newItemSeqOrder.add(newpoOrderList[positionIndex].orderItemSeqId);
+                        newItemSeqOrder.add(orderItem.orderItemSeqId);
+                        newItemSeqOrderCtx.putAll(newpoOrderList[positionIndex]);
+                        newItemSeqOrderCtx.put("orderItemSeqId", newItemSeqOrder);
+                        newpoOrderList.remove(positionIndex);
+                        newpoOrderList.add(newItemSeqOrderCtx);
                     }
                 }
             }
-        }else {
-            newOrderCtx = [:];
-            newOrderCtx.putAll(orderHeader);
-            newOrderList.add(newOrderCtx);
         }
     }
 }
-context.newOrderList = newOrderList
+context.newOrderList = newpoOrderList
 context.orderHeaderList = orderHeaderList
 
 downloadOrderRoleAndProductContentInfoList = from("OrderRoleAndProductContentInfo").where("partyId", userLogin.partyId, "roleTypeId", "PLACING_CUSTOMER", "productContentTypeId", "DIGITAL_DOWNLOAD", "statusId", "ITEM_COMPLETED").queryList()

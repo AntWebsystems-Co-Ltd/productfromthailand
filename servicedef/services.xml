@@ -195,5 +195,8 @@ under the License.
           PACKED and SHIPPED.</description>
         <attribute name="orderId" type="String" mode="IN" optional="false"/>
     </service>
+    <service name="cancelOrderItemPFT" engine="simple" invoke="cancelOrderItemPFT" location="component://productfromthailand/minilang/PFTServices.xml">
+        <implements service="cancelOrderItem"/>
+    </service>
 
 </services>

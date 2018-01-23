@@ -54,6 +54,7 @@ under the License.
       <tbody>
         <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("uomId", currencyUomId, "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
         <#assign conversionRate = rateResult.conversionRate>
+        <#assign countList = 0>
         <#list orderItems as orderItem>
           <#-- get info from workeffort and calculate rental quantity, if it was a rental item -->
           <#assign rentalQuantity = 1> <#-- no change if no rental item -->
@@ -169,23 +170,49 @@ under the License.
             </#if>
           </tr>
           <#-- now cancel reason and comment field -->
-          <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER" && (orderHeader.statusId != "ORDER_SENT" && orderItem.statusId != "ITEM_COMPLETED" && orderItem.statusId != "ITEM_CANCELLED" && pickedQty == 0)>
-            <tr id="checkoutreview-detail">
-              <td colspan="7">${uiLabelMap.OrderReturnReason}
-                <select name="irm_${orderItem.orderItemSeqId}" class="selectBox">
-                  <option value=""></option>
-                  <#list orderItemChangeReasons as reason>
-                    <option value="${reason.enumId}">${reason.get("description",locale)?default(reason.enumId)}</option>
-                  </#list>
-                </select>
-                ${uiLabelMap.CommonComments}
-                <input class="inputBox" type="text" name="icm_${orderItem.orderItemSeqId}" value="" size="30" maxlength="60"/>
-              </td>
-              <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>><a href="javascript:document.addCommonToCartForm.action='<@ofbizUrl>cancelOrderItem</@ofbizUrl>';document.addCommonToCartForm.submit()" class="buttontext">${uiLabelMap.CommonCancel}</a>
-                <input type="hidden" name="orderItemSeqId" value="${orderItem.orderItemSeqId}"/>
-              </td>
-            </tr>
+          <#-- cancel button-->
+          <#-- <#if orderHeader?has_content>
+          <#assign orderItempo = EntityQuery.use(delegator).from("OrderItemAssoc").where("orderId", orderHeader.orderId, "orderItemSeqId", orderItem.orderItemSeqId).queryFirst()!>
+          <#if orderItempo?has_content>
+              <#assign orderHeaderPo = EntityQuery.use(delegator).from("OrderHeader").where("orderId", orderItempo.toOrderId).queryOne()!>
+              <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER" && (orderHeader.statusId != "ORDER_SENT" && orderItem.statusId != "ITEM_COMPLETED" && orderHeaderPo.statusId !="ORDER_APPROVED" && orderItem.statusId != "ITEM_CANCELLED" && pickedQty == 0)>
+                <tr id="checkoutreview-detail">
+                  <td colspan="7">${uiLabelMap.OrderReturnReason}
+                    <select name="irm_${orderItem.orderItemSeqId}" class="selectBox">
+                      <option value=""></option>
+                      <#list orderItemChangeReasons as reason>
+                        <option value="${reason.enumId}">${reason.get("description",locale)?default(reason.enumId)}</option>
+                      </#list>
+                    </select>
+                    ${uiLabelMap.CommonComments}
+                    <input class="inputBox" type="text" name="icm_${orderItem.orderItemSeqId}" value="" size="30" maxlength="60"/>
+                  </td>
+                  <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>><a href="javascript:document.addCommonToCartForm.action='<@ofbizUrl>cancelOrderItem</@ofbizUrl>';document.addCommonToCartForm.orderItemSeqId.value='${orderItem.orderItemSeqId}';document.addCommonToCartForm.method='POST';document.addCommonToCartForm.submit()" class="buttontext">${uiLabelMap.CommonCancel}</a>
+                  </td>
+                </tr>
+                <#assign countList = countList+1>
+              </#if>
+              <#else>
+              <#assign orderHeaderStatus = EntityQuery.use(delegator).from("OrderHeader").where("orderId", orderHeader.orderId).queryOne()!>
+              <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER" && (orderHeader.statusId != "ORDER_SENT" && orderItem.statusId != "ITEM_COMPLETED" && orderHeaderStatus.statusId !="ORDER_APPROVED" && orderItem.statusId != "ITEM_CANCELLED" && pickedQty == 0)>
+                <tr id="checkoutreview-detail">
+                  <td colspan="7">${uiLabelMap.OrderReturnReason}
+                    <select name="irm_${orderItem.orderItemSeqId}" class="selectBox">
+                      <option value=""></option>
+                      <#list orderItemChangeReasons as reason>
+                        <option value="${reason.enumId}">${reason.get("description",locale)?default(reason.enumId)}</option>
+                      </#list>
+                    </select>
+                    ${uiLabelMap.CommonComments}
+                    <input class="inputBox" type="text" name="icm_${orderItem.orderItemSeqId}" value="" size="30" maxlength="60"/>
+                  </td>
+                  <td <#if maySelectItems?default("N") == "Y" && roleTypeId?if_exists == "PLACING_CUSTOMER">colspan="2"</#if>><a href="javascript:document.addCommonToCartForm.action='<@ofbizUrl>cancelOrderItem</@ofbizUrl>';document.addCommonToCartForm.orderItemSeqId.value='${orderItem.orderItemSeqId}';document.addCommonToCartForm.method='POST';document.addCommonToCartForm.submit()" class="buttontext">${uiLabelMap.CommonCancel}</a>
+                  </td>
+                </tr>
+                <#assign countList = countList+1>
+              </#if>
           </#if>
+          </#if> -->
           <#-- show info from workeffort if it was a rental item -->
           <#if orderItem.orderItemTypeId == "RENTAL_ORDER_ITEM">
             <#if workEffortSave?exists>

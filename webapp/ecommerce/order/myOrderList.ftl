@@ -70,49 +70,67 @@ under the License.
               <#if newOrderList?has_content>
                 <#assign countList = 0>
                 <#list newOrderList as orderHeader>
-                  <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("uomId", orderHeader.currencyUom!, "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
-                  <#assign conversionRate = rateResult.conversionRate>
-                  <#if orderHeader.orderTypeId?has_content><tr><#else><tr class="removestripe"></#if>
-                    <td><#if orderHeader.orderDate?has_content>${orderHeader.orderDate!?string.medium}<#else>&nbsp;</#if></td>
-                    <td><#if orderHeader.orderTypeId?has_content><a href="<@ofbizUrl>orderstatus?orderId=${orderHeader.orderId}</@ofbizUrl>" target="_BLANK" class="btn btn-main">${orderHeader.orderId!}</a></#if></td>
+                    <#assign rateResult = dispatcher.runSync("getFXConversion", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("uomId", orderHeader.currencyUom!, "uomIdTo", currencyUom, "userLogin", userLogin?default(defaultUserLogin)))/>
+                    <#assign conversionRate = rateResult.conversionRate>
+                    <#if orderHeader.isHeader.equals("Y")><tr><#else><tr class="removestripe"></#if>
+                    <td><#if orderHeader.isHeader.equals("Y")>${orderHeader.orderDate!?string.medium}<#else>&nbsp;</#if></td>
+                    <td><#if orderHeader.isHeader.equals("Y")><a href="<@ofbizUrl>orderstatus?orderId=${orderHeader.orderId}</@ofbizUrl>" target="_BLANK" class="btn btn-main">${orderHeader.orderId!}</a></#if></td>
                     <td>
-                        <#if orderHeader.purchaseId?has_content><#assign orderItemId = orderHeader.purchaseId/><#else><#assign orderItemId = orderHeader.orderId/></#if>
-                        <#assign orderItemList = EntityQuery.use(delegator).from("OrderItem").where("orderId", orderItemId).queryList()!>
-                        <#if orderItemList?has_content>
+                        <#if orderHeader.requestDropShip.equals("Y")><#assign orderItemId = orderHeader.purchaseId/>
+                            <#assign orderItemList = EntityQuery.use(delegator).from("OrderItem").where("orderId", orderItemId).queryList()!>
+                            <#if orderItemList?has_content>
+                                <table>
+                                    <#if orderItemList?has_content>
+                                        <#list orderItemList as orderItem>
+                                            <#assign product = EntityQuery.use(delegator).from("Product").where("productId", orderItem.productId).queryOne()!>
+                                            <#assign productContentWrapper = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(product, request)/>
+                                            <#if product?has_content>
+                                               <tr><td>${orderItem.quantity!} x ${productContentWrapper.get("PRODUCT_NAME", "html")!}</td></tr>
+                                            </#if>
+                                        </#list>
+                                    </#if>
+                                </table>
+                            </#if>
+                        <#else>
                             <table>
-                                <#if orderItemList?has_content>
-                                    <#list orderItemList as orderItem>
-                                        <#assign product = EntityQuery.use(delegator).from("Product").where("productId", orderItem.productId).queryOne()!>
-                                        <#assign productContentWrapper = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(product, request)/>
-                                        <#if product?has_content>
-                                           <tr><td>${orderItem.quantity!} x ${productContentWrapper.get("PRODUCT_NAME", "html")!}</td></tr>
-                                        </#if>
-                                    </#list>
+                            <#list orderHeader.orderItemSeqId as orderItemSeqId>
+                                <#assign orderItemValue = EntityQuery.use(delegator).from("OrderItem").where("orderId", orderHeader.orderId, "orderItemSeqId", orderItemSeqId).queryFirst()!>
+                                <#assign product = EntityQuery.use(delegator).from("Product").where("productId", orderItemValue.productId).queryOne()!>
+                                <#assign productContentWrapper = Static["org.apache.ofbiz.product.product.ProductContentWrapper"].makeProductContentWrapper(product, request)/>
+                                <#if product?has_content>
+                                   <tr><td>${orderItemValue.quantity!} x ${productContentWrapper.get("PRODUCT_NAME", "html")!}</td></tr>
                                 </#if>
+                            </#list>
                             </table>
                         </#if>
                     </td>
-                    <#if orderHeader.purchaseId?has_content><#assign statusId = orderHeader.purchaseStaus/><#else><#assign statusId = orderHeader.statusId/></#if>
-                    <#assign statusItem = EntityQuery.use(delegator).from("StatusItem").where("statusId", statusId).queryOne()!>
-                    <td><#if orderHeader.grandTotal?has_content><@ofbizCurrency amount=orderHeader.grandTotal*conversionRate isoCode=currencyUom /><#else>&nbsp;</#if></td>
+                    <td><#if orderHeader.grandTotal?has_content && orderHeader.isHeader.equals("Y")><@ofbizCurrency amount=orderHeader.grandTotal*conversionRate isoCode=currencyUom /><#else>&nbsp;</#if></td>
                     <#assign conversionRate = rateResult.conversionRate>
-                    <td>${statusItem.get("description")!}</td>
-                    <#-- invoices -->
-                    <#-- <#if orderHeader.orderId?has_content><#assign invoices = delegator.findByAnd("OrderItemBilling", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("orderId", "${orderHeader.purchaseId}"), Static["org.apache.ofbiz.base.util.UtilMisc"].toList("invoiceId"), false) />
-                        <#assign distinctInvoiceIds = Static["org.apache.ofbiz.entity.util.EntityUtil"].getFieldListFromEntityList(invoices, "invoiceId", true)>
-                        <#if distinctInvoiceIds?has_content>
-                          <td>
-                            <#list distinctInvoiceIds as invoiceId>
-                               <a href="<@ofbizUrl>invoice.pdf?invoiceId=${invoiceId!}</@ofbizUrl>" class="btn btn-main">${invoiceId!}</a>
-                            </#list>
-                          </td>
+                    <td>
+                        <#if orderHeader.requestDropShip.equals("Y")><#assign orderItemId = orderHeader.purchaseId/>
+                            <#assign orderItemList = EntityQuery.use(delegator).from("OrderItem").where("orderId", orderItemId).queryList()!>
+                            <#if orderItemList?has_content>
+                                <table>
+                                    <#if orderItemList?has_content>
+                                        <#list orderItemList as orderItem>
+                                            <#assign orderItemValues = EntityQuery.use(delegator).from("OrderItem").where("orderId", orderHeader.orderId, "productId", orderItem.productId).queryFirst()!>
+                                            <#assign statusItem = EntityQuery.use(delegator).from("StatusItem").where("statusId", orderItemValues.statusId).queryOne()!>
+                                            <tr><td>${statusItem.get("description")!}</td></tr>
+                                        </#list>
+                                    </#if>
+                                </table>
+                            </#if>
                         <#else>
-                          <td>&nbsp;</td>
+                            <table>
+                            <#list orderHeader.orderItemSeqId as orderItemSeqId>
+                                <#assign orderItemValue = EntityQuery.use(delegator).from("OrderItem").where("orderId", orderHeader.orderId, "orderItemSeqId", orderItemSeqId).queryFirst()!>
+                                <#assign statusItem = EntityQuery.use(delegator).from("StatusItem").where("statusId", orderItemValue.statusId).queryOne()!>
+                                <tr><td>${statusItem.get("description")!}</td></tr>
+                            </#list>
+                            </table>
                         </#if>
-                    <#else>
-                      <td>&nbsp;</td>
-                    </#if>  -->
-                    <#if orderHeader.orderItemSeqId?has_content>
+                    </td>
+                    <#if orderHeader.requestDropShip.equals("Y")>
                         <#assign orderItemBilling = EntityQuery.use(delegator).from("OrderItemBilling").where("orderId", orderHeader.orderId, "orderItemSeqId", orderHeader.orderItemSeqId).queryFirst()!>
                     <#else>
                         <#assign orderItemBilling = EntityQuery.use(delegator).from("OrderItemBilling").where("orderId", orderHeader.orderId).queryFirst()!>
@@ -125,26 +143,30 @@ under the License.
                       <td>&nbsp;</td>
                     </#if>
                     <td>
-                        <#if (orderHeader.purchaseStaus?has_content) && (orderHeader.purchaseStaus.equals("ORDER_APPROVED"))>
-                            <#assign orderItemShipGroup = EntityQuery.use(delegator).from("OrderItemShipGroup").where("orderId", orderHeader.purchaseId).queryFirst()!>
-                            <a href="javascript:document.receiveOrder_${countList!}.submit();" class="btn btn-main">${uiLabelMap.PFTReceiveItemOrder}</a>
-                            <form name="receiveOrder_${countList!}" method="post" action="<@ofbizUrl>receiveOrder</@ofbizUrl>">
-                              <input type="hidden" name="orderId" value="${orderHeader.purchaseId!}"/>
-                              <input type="hidden" name="shipGroupSeqId" value="${orderItemShipGroup.shipGroupSeqId!}"/>
-                            </form>
-                        <#else>
-                            <#if (!orderHeader.purchaseStaus?has_content) &&  orderHeader.statusId.equals("ORDER_APPROVED")>
+                    <#if orderHeader.requestDropShip.equals("Y") && (orderHeader.statusId.equals("ORDER_APPROVED"))>
+                        <#assign orderItemShipGroup = EntityQuery.use(delegator).from("OrderItemShipGroup").where("orderId", orderHeader.purchaseId).queryFirst()!>
+                        <a href="javascript:document.receiveOrder_${countList!}.submit();" class="btn btn-main">${uiLabelMap.PFTReceiveItemOrder}</a>
+                        <form name="receiveOrder_${countList!}" method="post" action="<@ofbizUrl>receiveOrder</@ofbizUrl>">
+                          <input type="hidden" name="orderId" value="${orderHeader.purchaseId!}"/>
+                          <input type="hidden" name="shipGroupSeqId" value="${orderItemShipGroup.shipGroupSeqId!}"/>
+                        </form>
+                    <#elseif orderHeader.requestDropShip.equals("N")>
+                        <#list orderHeader.orderItemSeqId as orderItemSeqId>
+                            <#assign orderItemValueStatus = EntityQuery.use(delegator).from("OrderItem").where("orderId", orderHeader.orderId, "orderItemSeqId", orderItemSeqId).queryFirst()!>
+                            <#if orderItemValueStatus.statusId.equals("ITEM_APPROVED")>
                                 <a href="javascript:document.receiveOrder_${countList!}.submit();" class="btn btn-main">${uiLabelMap.PFTReceiveItemOrder}</a>
                                 <form name="receiveOrder_${countList!}" method="post" action="<@ofbizUrl>receiveOrderNoShip</@ofbizUrl>">
                                   <input type="hidden" name="orderId" value="${orderHeader.orderId!}"/>
                                 </form>
-                            <#else>
-                                &nbsp;
+                                <#else>
+                                    &nbsp;
                             </#if>
-                        </#if>
+                        </#list>
+                    <#else>
+                        &nbsp;
+                    </#if>
                     </td>
                     <#assign countList = countList+1>
-                  </tr>
                 </#list>
               <#else>
                 <tr><td colspan="6">${uiLabelMap.OrderNoOrderFound}</td></tr>
