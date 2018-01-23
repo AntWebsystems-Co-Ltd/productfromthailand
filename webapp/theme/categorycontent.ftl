@@ -34,7 +34,29 @@ under the License.
 <#assign longDescription = categoryContentWrapper.get("LONG_DESCRIPTION", "html")!/>
 <#-- Category Intro Content Starts -->
     <div class="row cat-intro">
-        <#if categoryImageUrl?default("") != "">
+        <#if (categorySlideImageContentList)??>
+        <div class="col-sm-12">
+            <div id="main-carousel" class="carousel slide" data-ride="carousel">
+            <#-- Wrapper For Slides Starts -->
+                <div class="carousel-inner">
+                    <#list categorySlideImageContentList as categorySlideImageContent>
+                    <div class="item <#if categorySlideImageContent?is_first>active</#if>">
+                        <img src="/content/control/stream?contentId=${categorySlideImageContent.contentId}" alt="Slider" class="img-responsive">
+                    </div>
+                    </#list>
+                </div>
+            <#-- Wrapper For Slides Ends -->
+            <#-- Controls Starts -->
+                <a class="left carousel-control" href="#main-carousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#main-carousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            <#-- Controls Ends -->
+            </div>
+        </div>
+        <#elseif categoryImageUrl?default("") != "">
         <div class="col-sm-12">
             <img src="<@ofbizContentUrl>${categoryImageUrl}</@ofbizContentUrl>" alt="Image" class="img-responsive img-thumbnail" />
         </div>

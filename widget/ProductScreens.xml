@@ -1164,6 +1164,7 @@ under the License.
             <actions>
                 <script location="component://ecommerce/groovyScripts/Main.groovy"/>
                 <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/ProductCategoriesImageSlide.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
@@ -1299,6 +1300,7 @@ under the License.
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
                 <script location="component://productfromthailand/groovyScripts/ProductSummary.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/ProductCategoriesImageSlide.groovy"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://productfromthailand/webapp/theme/categorycontent.ftl"/></html></platform-specific>

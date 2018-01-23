@@ -29,4 +29,6 @@ under the License.
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_HDR_TMPLT_LOC" resourceValue="component://productfromthailand/webapp/ecommerce/includes/header.ftl" sequenceId="06"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_FTR_TMPLT_LOC" resourceValue="component://productfromthailand/webapp/ecommerce/includes/footer.ftl" sequenceId="07"/>
     <VisualThemeResource visualThemeId="EC_PFT" resourceTypeEnumId="VT_SCREENSHOT" resourceValue="/images/ecdefaulttheme.jpg" sequenceId="01"/>
+
+    <ProductCategoryContentType description="Category Slide Image" hasTable="N" parentTypeId="" prodCatContentTypeId="CATEGORY_SLIDE_IMG"/>
 </entity-engine-xml>

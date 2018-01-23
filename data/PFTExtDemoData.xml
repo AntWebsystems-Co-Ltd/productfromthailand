@@ -1069,4 +1069,36 @@
                     productPromoApplEnumId="PPPA_INCLUDE" />
     <ProductStorePromoAppl productStoreId="PFTSTORE" productPromoId="PFT20002" fromDate="2016-04-16 00:00:00.000" sequenceNum="1" />
 
+    <!-- Promotions Category Slide Image -->
+    <DataResource  dataResourceId="CSD_PROMO1" dataResourceName="Promotions Silde Image 1" statusId="CTNT_PUBLISHED"
+        dataResourceTypeId="OFBIZ_FILE" mimeTypeId="image/jpeg" isPublic="Y"
+        objectInfo="/hot-deploy/productfromthailand/webapp/pft-default/pftimages/slide/slide-1.jpg"/>
+    <DataResource  dataResourceId="CSD_PROMO2" dataResourceName="Promotions Silde Image 2" statusId="CTNT_PUBLISHED"
+        dataResourceTypeId="OFBIZ_FILE" mimeTypeId="image/jpeg" isPublic="Y"
+        objectInfo="/hot-deploy/productfromthailand/webapp/pft-default/pftimages/slide/slide-2.jpg"/>
+    <DataResource  dataResourceId="CSD_PROMO3" dataResourceName="Promotions Silde Image 3" statusId="CTNT_PUBLISHED"
+        dataResourceTypeId="OFBIZ_FILE" mimeTypeId="image/jpeg" isPublic="Y"
+        objectInfo="/hot-deploy/productfromthailand/webapp/pft-default/pftimages/slide/slide-3.jpg"/>
+    <DataResource  dataResourceId="CSD_PROMO4" dataResourceName="Promotions Silde Image 4" statusId="CTNT_PUBLISHED"
+        dataResourceTypeId="OFBIZ_FILE" mimeTypeId="image/jpeg" isPublic="Y"
+        objectInfo="/hot-deploy/productfromthailand/webapp/pft-default/pftimages/slide/slide-4.jpg"/>
+    <Content contentId="CSD_PROMO1" dataResourceId="CSD_PROMO1" contentName="Promotions Silde Image 1" contentTypeId="DOCUMENT" statusId="CTNT_PUBLISHED"/>
+    <Content contentId="CSD_PROMO2" dataResourceId="CSD_PROMO2" contentName="Promotions Silde Image 2" contentTypeId="DOCUMENT" statusId="CTNT_PUBLISHED"/>
+    <Content contentId="CSD_PROMO3" dataResourceId="CSD_PROMO3" contentName="Promotions Silde Image 3" contentTypeId="DOCUMENT" statusId="CTNT_PUBLISHED"/>
+    <Content contentId="CSD_PROMO4" dataResourceId="CSD_PROMO4" contentName="Promotions Silde Image 4" contentTypeId="DOCUMENT" statusId="CTNT_PUBLISHED"/>
+    <ProductCategoryContent productCategoryId="PFTPROMOTION" contentId="CSD_PROMO1" prodCatContentTypeId="CATEGORY_SLIDE_IMG" fromDate="2018-01-01 00:00:00.000"/>
+    <ProductCategoryContent productCategoryId="PFTPROMOTION" contentId="CSD_PROMO2" prodCatContentTypeId="CATEGORY_SLIDE_IMG" fromDate="2018-01-01 00:00:00.000"/>
+    <ProductCategoryContent productCategoryId="PFTPROMOTION" contentId="CSD_PROMO3" prodCatContentTypeId="CATEGORY_SLIDE_IMG" fromDate="2018-01-01 00:00:00.000"/>
+    <ProductCategoryContent productCategoryId="PFTPROMOTION" contentId="CSD_PROMO4" prodCatContentTypeId="CATEGORY_SLIDE_IMG" fromDate="2018-01-01 00:00:00.000"/>
+    <!-- Art Category Slide Image -->
+    <DataResource  dataResourceId="CSD_Art_CAT" dataResourceName="Art Categories Silde Image" statusId="CTNT_PUBLISHED"
+        dataResourceTypeId="OFBIZ_FILE" mimeTypeId="image/jpeg" isPublic="Y"
+        objectInfo="/hot-deploy/productfromthailand/webapp/pft-default/pftimages/slide/art_categories.jpg"/>
+    <DataResource  dataResourceId="CSD_Art1" dataResourceName="Art Silde Image 1" statusId="CTNT_PUBLISHED"
+        dataResourceTypeId="OFBIZ_FILE" mimeTypeId="image/jpeg" isPublic="Y"
+        objectInfo="/hot-deploy/productfromthailand/webapp/pft-default/pftimages/slide/art_slide-1.jpg"/>
+    <Content contentId="CSD_Art_CAT" dataResourceId="CSD_Art_CAT" contentName="Art Categories Silde Image" contentTypeId="DOCUMENT" statusId="CTNT_PUBLISHED"/>
+    <Content contentId="CSD_Art1" dataResourceId="CSD_Art1" contentName="Art Silde Image 1" contentTypeId="DOCUMENT" statusId="CTNT_PUBLISHED"/>
+    <ProductCategoryContent productCategoryId="ART-CAT" contentId="CSD_Art_CAT" prodCatContentTypeId="CATEGORY_SLIDE_IMG" fromDate="2018-01-01 00:00:00.000"/>
+    <ProductCategoryContent productCategoryId="ART-CAT" contentId="CSD_Art1" prodCatContentTypeId="CATEGORY_SLIDE_IMG" fromDate="2018-01-01 00:00:00.000"/>
 </entity-engine-xml>
