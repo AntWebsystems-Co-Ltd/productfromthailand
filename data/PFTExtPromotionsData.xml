@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<entity-engine-xml>
+    <!-- Sales scarf from 1600 to 650 -->
+    <ProductPriceRule fromDate="2018-01-01 00:00:00.0" isSale="Y" productPriceRuleId="SS650" ruleName="Scarf Sales 650" thruDate="2018-12-30 23:59:59.0"/>
+    <ProductPriceCond condValue="CR10002" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="SS650"/>
+    <ProductPriceAction amount="650.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="SS650"/>
+
+    <ProductPriceRule fromDate="2018-01-01 00:00:00.0" isSale="Y" productPriceRuleId="SS650-1" ruleName="Scarf Sales 650" thruDate="2018-12-30 23:59:59.0"/>
+    <ProductPriceCond condValue="CR10002-01" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="SS650-1"/>
+    <ProductPriceAction amount="650.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="SS650-1"/>
+
+    <ProductPriceRule fromDate="2018-01-01 00:00:00.0" isSale="Y" productPriceRuleId="SS650-2" ruleName="Scarf Sales 650" thruDate="2018-12-30 23:59:59.0"/>
+    <ProductPriceCond condValue="CR10002-02" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="SS650-2"/>
+    <ProductPriceAction amount="650.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="SS650-2"/>
+
+    <ProductPriceRule fromDate="2018-01-01 00:00:00.0" isSale="Y" productPriceRuleId="SS650-3" ruleName="Scarf Sales 650" thruDate="2018-12-30 23:59:59.0"/>
+    <ProductPriceCond condValue="CR10002-03" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="SS650-3"/>
+    <ProductPriceAction amount="650.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="SS650-3"/>
+
+    <ProductPriceRule fromDate="2018-01-01 00:00:00.0" isSale="Y" productPriceRuleId="SS650-4" ruleName="Scarf Sales 650" thruDate="2018-12-30 23:59:59.0"/>
+    <ProductPriceCond condValue="CR10002-04" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="SS650-4"/>
+    <ProductPriceAction amount="650.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="SS650-4"/>
+
+    <ProductPriceRule fromDate="2018-01-01 00:00:00.0" isSale="Y" productPriceRuleId="SS650-5" ruleName="Scarf Sales 650" thruDate="2018-12-30 23:59:59.0"/>
+    <ProductPriceCond condValue="CR10002-05" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="SS650-5"/>
+    <ProductPriceAction amount="650.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="SS650-5"/>
+
+    <ProductPriceRule fromDate="2018-01-01 00:00:00.0" isSale="Y" productPriceRuleId="SS650-6" ruleName="Scarf Sales 650" thruDate="2018-12-30 23:59:59.0"/>
+    <ProductPriceCond condValue="CR10002-06" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="SS650-6"/>
+    <ProductPriceAction amount="650.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="SS650-6"/>
+    <!-- Scarf 650 baht Slide Image -->
+    <DataResource dataResourceId="CSD_SCARF650B" dataResourceName="Scarf 650 b" statusId="CTNT_PUBLISHED"
+        dataResourceTypeId="OFBIZ_FILE" mimeTypeId="image/jpeg" isPublic="Y"
+        objectInfo="/hot-deploy/productfromthailand/webapp/pft-default/pftimages/slide/scarf650b.jpg"/>
+    <Content contentId="CSD_SCARF650B" dataResourceId="CSD_SCARF650B" contentName="Scarf 650 b Image" contentTypeId="DOCUMENT" statusId="CTNT_PUBLISHED"/>
+    <ProductCategoryContent productCategoryId="PFTPROMOTION" contentId="CSD_SCARF650B" prodCatContentTypeId="CATEGORY_SLIDE_IMG" fromDate="2018-01-01 00:00:00.000"/>
+
+    <!-- Thailand Free Shipping -->
+    <ProductPromo productPromoId="PFTFREESHIP" promoName="Free Shipping in Thailand" promoText="Free Shipping in Thailand" requireCode="N" showToCustomer="Y" useLimitPerOrder="1" userEntered="Y" />
+    <ProductPromoRule productPromoId="PFTFREESHIP" productPromoRuleId="01" ruleName="Free Shipping in Thailand" />
+    <ProductPromoAction productPromoId="PFTFREESHIP"
+                    productPromoRuleId="01" productPromoActionSeqId="01"
+                    productPromoActionEnumId="PROMO_SHIP_CHARGE"
+                    orderAdjustmentTypeId="PROMOTION_ADJUSTMENT" amount="100.000000" />
+    <ProductPromoCond productPromoId="PFTFREESHIP"
+                    productPromoRuleId="01" productPromoCondSeqId="01"
+                    inputParamEnumId="PPIP_GEO_ID" operatorEnumId="PPC_EQ"
+                    condValue="THA" />
+    <ProductPromoCategory  productPromoId="PFTFREESHIP"
+                    productPromoRuleId="01" productPromoCondSeqId="01" productPromoActionSeqId="_NA_"
+                    productPromoApplEnumId="PPPA_INCLUDE"
+                    productCategoryId="ART-CAT" includeSubCategories="Y" andGroupId="_NA_"/>
+    <ProductPromoCategory  productPromoId="PFTFREESHIP"
+                    productPromoRuleId="01" productPromoCondSeqId="01" productPromoActionSeqId="_NA_"
+                    productPromoApplEnumId="PPPA_INCLUDE"
+                    productCategoryId="BAGS" includeSubCategories="Y" andGroupId="_NA_"/>
+    <ProductPromoCategory  productPromoId="PFTFREESHIP"
+                    productPromoRuleId="01" productPromoCondSeqId="01" productPromoActionSeqId="_NA_"
+                    productPromoApplEnumId="PPPA_INCLUDE"
+                    productCategoryId="BODYACCESSORIES" includeSubCategories="Y" andGroupId="_NA_"/>
+    <ProductPromoCategory  productPromoId="PFTFREESHIP"
+                    productPromoRuleId="01" productPromoCondSeqId="01" productPromoActionSeqId="_NA_"
+                    productPromoApplEnumId="PPPA_INCLUDE"
+                    productCategoryId="COFFEE-CAT" includeSubCategories="Y" andGroupId="_NA_"/>
+    <ProductPromoCategory  productPromoId="PFTFREESHIP"
+                    productPromoRuleId="01" productPromoCondSeqId="01" productPromoActionSeqId="_NA_"
+                    productPromoApplEnumId="PPPA_INCLUDE"
+                    productCategoryId="CRAFTANDGIFT" includeSubCategories="Y" andGroupId="_NA_"/>
+    <ProductPromoCategory  productPromoId="PFTFREESHIP"
+                    productPromoRuleId="01" productPromoCondSeqId="01" productPromoActionSeqId="_NA_"
+                    productPromoApplEnumId="PPPA_INCLUDE"
+                    productCategoryId="HEALTHANDBEAUTY" includeSubCategories="Y" andGroupId="_NA_"/>
+    <ProductPromoCategory  productPromoId="PFTFREESHIP"
+                    productPromoRuleId="01" productPromoCondSeqId="01" productPromoActionSeqId="_NA_"
+                    productPromoApplEnumId="PPPA_INCLUDE"
+                    productCategoryId="THAISILK" includeSubCategories="Y" andGroupId="_NA_"/>
+    <ProductStorePromoAppl productStoreId="PFTSTORE" productPromoId="PFTFREESHIP" fromDate="2016-01-01 00:00:00.000" sequenceNum="1" />
+    <!-- Thai Free Shipping Slide Image -->
+    <DataResource dataResourceId="CSD_FREESHIP" dataResourceName="Thai Free Shipping" statusId="CTNT_PUBLISHED"
+        dataResourceTypeId="OFBIZ_FILE" mimeTypeId="image/jpeg" isPublic="Y"
+        objectInfo="/hot-deploy/productfromthailand/webapp/pft-default/pftimages/slide/thaiFreeShipping.jpg"/>
+    <Content contentId="CSD_FREESHIP" dataResourceId="CSD_FREESHIP" contentName="Thai Free Shipping Image" contentTypeId="DOCUMENT" statusId="CTNT_PUBLISHED"/>
+    <ProductCategoryContent productCategoryId="PFTPROMOTION" contentId="CSD_FREESHIP" prodCatContentTypeId="CATEGORY_SLIDE_IMG" fromDate="2018-01-01 00:00:00.000"/>
+</entity-engine-xml>

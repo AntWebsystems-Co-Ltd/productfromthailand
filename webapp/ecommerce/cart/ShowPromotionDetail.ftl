@@ -58,7 +58,6 @@ under the License.
                 </div>
                 <div class="panel-body">
                     <div><#if productPromo??>${StringUtil.wrapString(productPromo.promoText)!}</#if></div><br/>
-                    <div><#if promoAutoDescription?has_content>${uiLabelMap.OrderGeneratedDescription} ${StringUtil.wrapString(promoAutoDescription!)}</#if></div>
                 </div>
             </div>
 
@@ -113,11 +112,10 @@ under the License.
             <br/>
             <div class="panel panel-smart">
                 <div class="panel-body">
-                    <#-- Pagination & Results Starts -->
+                    <#-- Pagination & Results Starts
                     <#if (viewIndexMax > 0)>
                         <div class="row">
                         <#if productIds?has_content>
-                        <#-- Pagination Starts -->
                             <div class="col-sm-6 pagination-block">
                                 <ul class="pagination">
                                     <#if lowHasNext>
@@ -131,15 +129,13 @@ under the License.
                                     </#if>
                                 </ul>
                             </div>
-                        <#-- Pagination Ends -->
-                        <#-- Results Starts -->
                             <div class="col-sm-6 results">
                                 ${uiLabelMap.PFTShowing} ${lowIndex} ${uiLabelMap.CommonTo} ${highIndex} ${uiLabelMap.CommonOf} ${listSize} (${viewIndexMax?int + 1} ${uiLabelMap.PFTPages})
                             </div>
-                        <#-- Results Ends -->
                         </#if>
                         </div>
                     </#if>
+                    <#-- Pagination & Results Ends -->
                     <div class="table-responsive">
                     <table class="table table-bordered" id="productspromotion">
                         <thead>
@@ -165,11 +161,10 @@ under the License.
                         </tbody>
                     </table>
                     </div>
-                    <#-- Pagination & Results Starts -->
+                    <#-- Pagination & Results Starts
                     <#if (viewIndexMax > 0)>
                         <div class="row">
                         <#if productIds?has_content>
-                        <#-- Pagination Starts -->
                             <div class="col-sm-6 pagination-block">
                                 <ul class="pagination">
                                     <#if lowHasNext>
@@ -183,15 +178,13 @@ under the License.
                                     </#if>
                                 </ul>
                             </div>
-                        <#-- Pagination Ends -->
-                        <#-- Results Starts -->
                             <div class="col-sm-6 results">
                                 ${uiLabelMap.PFTShowing} ${lowIndex} ${uiLabelMap.CommonTo} ${highIndex} ${uiLabelMap.CommonOf} ${listSize} (${viewIndexMax?int + 1} ${uiLabelMap.PFTPages})
                             </div>
-                        <#-- Results Ends -->
                         </#if>
                         </div>
                     </#if>
+                    <#-- Pagination & Results Ends -->
                 </div>
             </div>
             </#if>

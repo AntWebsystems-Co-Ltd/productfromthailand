@@ -238,27 +238,6 @@
     <ProductPriceCond condValue="CR10009-RG" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10005"/>
     <ProductPriceAction amount="450.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10005"/>
 
-    <!-- Sales scarf from 1600 to 990 -->
-    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10003" ruleName="Scarf Sales 990" thruDate="2018-12-30 23:59:59.0"/>
-    <ProductPriceCond condValue="CR10002" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10003"/>
-    <ProductPriceAction amount="990.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10003"/>
-
-    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10004" ruleName="Scarf Sales 990" thruDate="2018-12-30 23:59:59.0"/>
-    <ProductPriceCond condValue="CR10002-01" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10004"/>
-    <ProductPriceAction amount="990.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10004"/>
-
-    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10005" ruleName="Scarf Sales 990" thruDate="2018-12-30 23:59:59.0"/>
-    <ProductPriceCond condValue="CR10002-02" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10005"/>
-    <ProductPriceAction amount="990.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10005"/>
-
-    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10006" ruleName="Scarf Sales 990" thruDate="2018-12-30 23:59:59.0"/>
-    <ProductPriceCond condValue="CR10002-03" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10006"/>
-    <ProductPriceAction amount="990.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10006"/>
-
-    <ProductPriceRule fromDate="2017-10-01 00:00:00.0" isSale="Y" productPriceRuleId="PR10007" ruleName="Scarf Sales 990" thruDate="2018-12-30 23:59:59.0"/>
-    <ProductPriceCond condValue="CR10002-04" inputParamEnumId="PRIP_PRODUCT_ID" operatorEnumId="PRC_EQ" productPriceCondSeqId="01" productPriceRuleId="PR10007"/>
-    <ProductPriceAction amount="990.000000" productPriceActionSeqId="00001" productPriceActionTypeId="PRICE_FLAT" productPriceRuleId="PR10007"/>
-
     <!-- Sales 10% for order that greater than ฿1000 (PFT10ORD)-->
     <ProductPromo productPromoId="PFT10000" promoName="Sales 10% for order that greater than ฿1000" promoText="Sales 10% for order that greater than ฿1000" requireCode="Y" showToCustomer="Y" useLimitPerCustomer="1" useLimitPerOrder="1" useLimitPerPromotion="1" userEntered="Y" createdDate="2017-10-01 00:00:00.0"/>
     <ProductPromoRule productPromoId="PFT10000" productPromoRuleId="00001" ruleName="Sales 10%"/>
@@ -298,16 +277,16 @@
     <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.apiUrl.sandbox" systemPropertyValue="https://api.sandbox.paypal.com/"/>
     <SystemProperty systemResourceId="paypal" systemPropertyId="paypal.apiUrl.live" systemPropertyValue="https://api.paypal.com/"/>
 
-    <Product productId="CR10010" productName="Baybee Soft Matte Lip Cream" productTypeId="FINISHED_GOOD" brandName="Baybee" createdDate="2017-10-09 00:00:00.000" internalName="Baybee Soft Matte Lip Cream" inventoryItemTypeId="NON_SERIAL_INV_ITEM" orderDecimalQuantity="N" requirementMethodEnumId="PRODRQM_DS" isVirtual="Y" isVariant="N"/>
-    <Product productId="CR10010-01" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 01 Pink Lady" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 01 Pink Lady" description="Baybee Soft Matte Lip Cream - 01 Pink Lady" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10010-02" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 02 Violet" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 02 Violet" description="Baybee Soft Matte Lip Cream - 02 Violet" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10010-03" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 03 Burry Nude" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 03 Burry Nude" description="Baybee Soft Matte Lip Cream - 03 Burry Nude" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10010-04" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 04 Hot Baech" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 04 Hot Baech" description="Baybee Soft Matte Lip Cream - 04 Hot Baech" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10010-05" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 05 Blueburry" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 05 Blueburry" description="Baybee Soft Matte Lip Cream - 05 Blueburry" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10010-06" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 06 Rose" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 06 Rose" description="Baybee Soft Matte Lip Cream - 06 Rose" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10010-07" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 07 Kissme" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 07 Kissme" description="Baybee Soft Matte Lip Cream - 07 Kissme" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10010-08" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 08 Charming" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 08 Charming" description="Baybee Soft Matte Lip Cream - 08 Charming" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
-    <Product productId="CR10010-09" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 09 Grayberry" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 09 Grayberry" description="Baybee Soft Matte Lip Cream - 09 Grayberry" isVirtual="N" isVariant="Y" requirementMethodEnumId="PRODRQM_DS"/>
+    <Product productId="CR10010" productName="Baybee Soft Matte Lip Cream" productTypeId="FINISHED_GOOD" brandName="Baybee" createdDate="2017-10-09 00:00:00.000" internalName="Baybee Soft Matte Lip Cream" inventoryItemTypeId="NON_SERIAL_INV_ITEM" orderDecimalQuantity="N" isVirtual="Y" isVariant="N"/>
+    <Product productId="CR10010-01" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 01 Pink Lady" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 01 Pink Lady" description="Baybee Soft Matte Lip Cream - 01 Pink Lady" isVirtual="N" isVariant="Y"/>
+    <Product productId="CR10010-02" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 02 Violet" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 02 Violet" description="Baybee Soft Matte Lip Cream - 02 Violet" isVirtual="N" isVariant="Y"/>
+    <Product productId="CR10010-03" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 03 Burry Nude" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 03 Burry Nude" description="Baybee Soft Matte Lip Cream - 03 Burry Nude" isVirtual="N" isVariant="Y"/>
+    <Product productId="CR10010-04" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 04 Hot Baech" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 04 Hot Baech" description="Baybee Soft Matte Lip Cream - 04 Hot Baech" isVirtual="N" isVariant="Y"/>
+    <Product productId="CR10010-05" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 05 Blueburry" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 05 Blueburry" description="Baybee Soft Matte Lip Cream - 05 Blueburry" isVirtual="N" isVariant="Y"/>
+    <Product productId="CR10010-06" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 06 Rose" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 06 Rose" description="Baybee Soft Matte Lip Cream - 06 Rose" isVirtual="N" isVariant="Y"/>
+    <Product productId="CR10010-07" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 07 Kissme" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 07 Kissme" description="Baybee Soft Matte Lip Cream - 07 Kissme" isVirtual="N" isVariant="Y"/>
+    <Product productId="CR10010-08" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 08 Charming" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 08 Charming" description="Baybee Soft Matte Lip Cream - 08 Charming" isVirtual="N" isVariant="Y"/>
+    <Product productId="CR10010-09" productTypeId="FINISHED_GOOD" productName="Baybee Soft Matte Lip Cream - 09 Grayberry" brandName="Baybee" internalName="Baybee Soft Matte Lip Cream - 09 Grayberry" description="Baybee Soft Matte Lip Cream - 09 Grayberry" isVirtual="N" isVariant="Y"/>
 
     <ProductFeatureAppl productId="CR10010" productFeatureId="CF20000"
         productFeatureApplTypeId="SELECTABLE_FEATURE" fromDate="2017-10-09 00:00:00.000" sequenceNum="1"/>
@@ -646,7 +625,7 @@
                 largeImageUrl=""
                 mediumImageUrl=""
                 orderDecimalQuantity="N" productId="CR10011" productTypeId="FINISHED_GOOD"
-                productWeight="300.000000" requirementMethodEnumId="PRODRQM_DS"
+                productWeight="300.000000"
                 smallImageUrl=""
                 weightUomId="WT_g" />
     <Product brandName="NB" createdStamp="2017-11-18 03:11:42.785"
@@ -657,7 +636,7 @@
                     lastUpdatedStamp="2017-11-27 06:26:39.613" lastUpdatedTxStamp="2017-11-27 06:26:39.054"
                     lotIdFilledIn="Allowed" productId="CR10011-01"
                     productName="NB Matte Lipstick Collection1 - 01 Charming"
-                    productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
+                    productTypeId="FINISHED_GOOD"
                     smallImageUrl="" />
     <Product brandName="NB" createdStamp="2017-11-18 03:11:42.926"
                     createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 - 03 Elegant"
@@ -667,7 +646,7 @@
                     lastUpdatedStamp="2017-11-27 06:28:00.941" lastUpdatedTxStamp="2017-11-27 06:28:00.633"
                     lotIdFilledIn="Allowed" productId="CR10011-03"
                     productName="NB Matte Lipstick Collection1 - 03 Elegant"
-                    productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
+                    productTypeId="FINISHED_GOOD"
                     smallImageUrl="" />
     <Product brandName="NB" createdStamp="2017-11-18 03:11:42.995"
                     createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 - 05 Hot Plum"
@@ -677,7 +656,7 @@
                     lastUpdatedStamp="2017-11-27 06:28:39.356" lastUpdatedTxStamp="2017-11-27 06:28:39.049"
                     lotIdFilledIn="Allowed" productId="CR10011-05"
                     productName="NB Matte Lipstick Collection1 - 05 Hot Plum"
-                    productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
+                    productTypeId="FINISHED_GOOD"
                     smallImageUrl="" />
     <Product brandName="NB" createdStamp="2017-11-18 03:11:42.868"
                     createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 - 02 Red Rose"
@@ -687,7 +666,7 @@
                     lastUpdatedStamp="2017-11-27 06:27:37.356" lastUpdatedTxStamp="2017-11-27 06:27:36.899"
                     lotIdFilledIn="Allowed" productId="CR10011-02"
                     productName="NB Matte Lipstick Collection1 - 02 Red Rose"
-                    productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
+                    productTypeId="FINISHED_GOOD"
                     smallImageUrl="" />
     <Product brandName="NB" createdStamp="2017-11-18 03:11:42.961"
                     createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 - 04 Sexy Girl"
@@ -697,7 +676,7 @@
                     lastUpdatedStamp="2017-11-27 06:28:18.62" lastUpdatedTxStamp="2017-11-27 06:28:18.335"
                     lotIdFilledIn="Allowed" productId="CR10011-04"
                     productName="NB Matte Lipstick Collection1 - 04 Sexy Girl"
-                    productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
+                    productTypeId="FINISHED_GOOD"
                     smallImageUrl="" />
     <Product brandName="NB" createdStamp="2017-11-18 03:11:43.053"
                     createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 - 06 Pink Gold"
@@ -707,7 +686,7 @@
                     lastUpdatedStamp="2017-11-27 06:28:54.153" lastUpdatedTxStamp="2017-11-27 06:28:53.847"
                     lotIdFilledIn="Allowed" productId="CR10011-06"
                     productName="NB Matte Lipstick Collection1 - 06 Pink Gold"
-                    productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
+                    productTypeId="FINISHED_GOOD"
                     smallImageUrl="" />
     <Product brandName="NB" createdStamp="2017-11-18 03:11:43.115"
                     createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 - 07 Soft Burry"
@@ -717,7 +696,7 @@
                     lastUpdatedStamp="2017-11-27 06:29:11.268" lastUpdatedTxStamp="2017-11-27 06:29:10.997"
                     lotIdFilledIn="Allowed" productId="CR10011-07"
                     productName="NB Matte Lipstick Collection1 - 07 SoftBurry"
-                    productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
+                    productTypeId="FINISHED_GOOD"
                     smallImageUrl="" />
     <Product brandName="NB" createdStamp="2017-11-18 03:11:43.174"
                     createdTxStamp="2017-11-18 03:11:42.513" description="NB Matte Lipstick Collection1 - 08 Hot Sand"
@@ -727,7 +706,7 @@
                     lastUpdatedStamp="2017-11-27 06:29:36.852" lastUpdatedTxStamp="2017-11-27 06:29:36.554"
                     lotIdFilledIn="Allowed" productId="CR10011-08"
                     productName="NB Matte Lipstick Collection1 - 08 Hot Sand"
-                    productTypeId="FINISHED_GOOD" requirementMethodEnumId="PRODRQM_DS"
+                    productTypeId="FINISHED_GOOD"
                     smallImageUrl="" />
     <DataResource dataResourceId="CR10011-PNAMETH" dataResourceTypeId="ELECTRONIC_TEXT" localeString="th"/>
     <DataResource dataResourceId="CR10011-PNAMEEN" dataResourceTypeId="ELECTRONIC_TEXT" localeString="en"/>
@@ -1001,12 +980,6 @@
     <InventoryItemDetail inventoryItemId="PFT10002" inventoryItemDetailSeqId="0001" effectiveDate="2017-12-01 00:00:00" availableToPromiseDiff="100" quantityOnHandDiff="100" accountingQuantityDiff="100"/>
     <!-- Promotion Rule -->
     <ProductPrice currencyUomId="THB" fromDate="2017-12-07 14:55:40.0" price="850.000" priceWithTax="850.000" priceWithoutTax="794.393" productId="CR10002" productPricePurposeId="PURCHASE" productPriceTypeId="SPECIAL_PROMO_PRICE" productStoreGroupId="_NA_" taxAmount="55.607" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
-    <ProductPromo productPromoId="PFT20000" promoName="Scarf" promoText="Buy Scarf 20 pieces get a special promo price" requireCode="N" showToCustomer="Y" userEntered="N"/>
-    <ProductPromoRule productPromoId="PFT20000" productPromoRuleId="00001" ruleName="Buy Scarf 20 pieces get a special promo price"/>
-    <ProductPromoCond condValue="20" createdStamp="2017-12-07 14:25:55.893" createdTxStamp="2017-12-07 14:25:55.866" inputParamEnumId="PPIP_PRODUCT_QUANT" lastUpdatedStamp="2017-12-07 14:29:15.024" lastUpdatedTxStamp="2017-12-07 14:29:14.997" operatorEnumId="PPC_GTE" productPromoCondSeqId="01" productPromoId="PFT20000" productPromoRuleId="00001"/>
-    <ProductPromoAction orderAdjustmentTypeId="PROMOTION_ADJUSTMENT" productPromoActionEnumId="PROMO_PROD_SPPRC" productPromoActionSeqId="10000" productPromoId="PFT20000" productPromoRuleId="00001" useCartQuantity="N"/>
-    <ProductPromoProduct productId="CR10002" productPromoActionSeqId="_NA_" productPromoApplEnumId="PPPA_INCLUDE" productPromoCondSeqId="01" productPromoId="PFT20000" productPromoRuleId="00001"/>
-    <ProductStorePromoAppl productStoreId="PFTSTORE" productPromoId="PFT20000" fromDate="2017-10-01 00:00:00.0"/>
 
     <ProductPrice productId="CR10011" productPricePurposeId="PURCHASE" productPriceTypeId="SPECIAL_PROMO_PRICE" createdDate="2017-10-09 00:00:00.0" currencyUomId="THB" fromDate="2017-10-09 00:00:00.0" price="350.000" priceWithTax="350.000" priceWithoutTax="327.103" productStoreGroupId="_NA_" taxAmount="22.897" taxAuthGeoId="THA" taxAuthPartyId="THA_RD" taxInPrice="Y" taxPercentage="7.000000"/>
     <ProductPromo productPromoId="PFT20001" promoName="NB Lip" promoText="Buy NB Lip 8 pieces Get price 350 per piece." requireCode="N" showToCustomer="Y" userEntered="N"/>
@@ -1016,70 +989,17 @@
     <ProductPromoProduct productId="CR10011" productPromoActionSeqId="_NA_" productPromoApplEnumId="PPPA_INCLUDE" productPromoCondSeqId="01" productPromoId="PFT20001" productPromoRuleId="00001"/>
     <ProductStorePromoAppl productStoreId="PFTSTORE" productPromoId="PFT20001" fromDate="2017-10-01 00:00:00.0"/>
 
-    <!-- Free Shipping for Careel Products -->
-    <ProductPromo productPromoId="PFT20002" promoName="Free Shipping in Thailand" promoText="Free Shipping in Thailand" requireCode="N" showToCustomer="Y" useLimitPerOrder="1" userEntered="Y" />
-    <ProductPromoRule productPromoId="PFT20002" productPromoRuleId="01" ruleName="Free Shipping in Thailand" />
-    <ProductPromoAction productPromoId="PFT20002"
-                    productPromoRuleId="01" productPromoActionSeqId="01"
-                    productPromoActionEnumId="PROMO_SHIP_CHARGE"
-                    orderAdjustmentTypeId="PROMOTION_ADJUSTMENT" amount="100.000000" />
-    <ProductPromoCond productPromoId="PFT20002"
-                    productPromoRuleId="01" productPromoCondSeqId="01"
-                    inputParamEnumId="PPIP_GEO_ID" operatorEnumId="PPC_EQ"
-                    condValue="THA" />
-    <ProductPromoProduct productPromoId="PFT20002"
-                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
-                    productPromoCondSeqId="01" productId="CR10000"
-                    productPromoApplEnumId="PPPA_INCLUDE" />
-    <ProductPromoProduct productPromoId="PFT20002"
-                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
-                    productPromoCondSeqId="01" productId="CR10001"
-                    productPromoApplEnumId="PPPA_INCLUDE" />
-    <ProductPromoProduct productPromoId="PFT20002"
-                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
-                    productPromoCondSeqId="01" productId="CR10002"
-                    productPromoApplEnumId="PPPA_INCLUDE" />
-    <ProductPromoProduct productPromoId="PFT20002"
-                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
-                    productPromoCondSeqId="01" productId="CR10003"
-                    productPromoApplEnumId="PPPA_INCLUDE" />
-    <ProductPromoProduct productPromoId="PFT20002"
-                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
-                    productPromoCondSeqId="01" productId="CR10004"
-                    productPromoApplEnumId="PPPA_INCLUDE" />
-    <ProductPromoProduct productPromoId="PFT20002"
-                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
-                    productPromoCondSeqId="01" productId="CR10004"
-                    productPromoApplEnumId="PPPA_INCLUDE" />
-    <ProductPromoProduct productPromoId="PFT20002"
-                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
-                    productPromoCondSeqId="01" productId="CR10005"
-                    productPromoApplEnumId="PPPA_INCLUDE" />
-    <ProductPromoProduct productPromoId="PFT20002"
-                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
-                    productPromoCondSeqId="01" productId="CR10009"
-                    productPromoApplEnumId="PPPA_INCLUDE" />
-    <ProductPromoProduct productPromoId="PFT20002"
-                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
-                    productPromoCondSeqId="01" productId="CR10010"
-                    productPromoApplEnumId="PPPA_INCLUDE" />
-    <ProductPromoProduct productPromoId="PFT20002"
-                    productPromoRuleId="01" productPromoActionSeqId="_NA_"
-                    productPromoCondSeqId="01" productId="CR10011"
-                    productPromoApplEnumId="PPPA_INCLUDE" />
-    <ProductStorePromoAppl productStoreId="PFTSTORE" productPromoId="PFT20002" fromDate="2016-04-16 00:00:00.000" sequenceNum="1" />
-
     <!-- Promotions Category Slide Image -->
-    <DataResource  dataResourceId="CSD_PROMO1" dataResourceName="Promotions Silde Image 1" statusId="CTNT_PUBLISHED"
+    <DataResource dataResourceId="CSD_PROMO1" dataResourceName="Promotions Silde Image 1" statusId="CTNT_PUBLISHED"
         dataResourceTypeId="OFBIZ_FILE" mimeTypeId="image/jpeg" isPublic="Y"
         objectInfo="/hot-deploy/productfromthailand/webapp/pft-default/pftimages/slide/slide-1.jpg"/>
-    <DataResource  dataResourceId="CSD_PROMO2" dataResourceName="Promotions Silde Image 2" statusId="CTNT_PUBLISHED"
+    <DataResource dataResourceId="CSD_PROMO2" dataResourceName="Promotions Silde Image 2" statusId="CTNT_PUBLISHED"
         dataResourceTypeId="OFBIZ_FILE" mimeTypeId="image/jpeg" isPublic="Y"
         objectInfo="/hot-deploy/productfromthailand/webapp/pft-default/pftimages/slide/slide-2.jpg"/>
-    <DataResource  dataResourceId="CSD_PROMO3" dataResourceName="Promotions Silde Image 3" statusId="CTNT_PUBLISHED"
+    <DataResource dataResourceId="CSD_PROMO3" dataResourceName="Promotions Silde Image 3" statusId="CTNT_PUBLISHED"
         dataResourceTypeId="OFBIZ_FILE" mimeTypeId="image/jpeg" isPublic="Y"
         objectInfo="/hot-deploy/productfromthailand/webapp/pft-default/pftimages/slide/slide-3.jpg"/>
-    <DataResource  dataResourceId="CSD_PROMO4" dataResourceName="Promotions Silde Image 4" statusId="CTNT_PUBLISHED"
+    <DataResource dataResourceId="CSD_PROMO4" dataResourceName="Promotions Silde Image 4" statusId="CTNT_PUBLISHED"
         dataResourceTypeId="OFBIZ_FILE" mimeTypeId="image/jpeg" isPublic="Y"
         objectInfo="/hot-deploy/productfromthailand/webapp/pft-default/pftimages/slide/slide-4.jpg"/>
     <Content contentId="CSD_PROMO1" dataResourceId="CSD_PROMO1" contentName="Promotions Silde Image 1" contentTypeId="DOCUMENT" statusId="CTNT_PUBLISHED"/>
@@ -1090,6 +1010,7 @@
     <ProductCategoryContent productCategoryId="PFTPROMOTION" contentId="CSD_PROMO2" prodCatContentTypeId="CATEGORY_SLIDE_IMG" fromDate="2018-01-01 00:00:00.000"/>
     <ProductCategoryContent productCategoryId="PFTPROMOTION" contentId="CSD_PROMO3" prodCatContentTypeId="CATEGORY_SLIDE_IMG" fromDate="2018-01-01 00:00:00.000"/>
     <ProductCategoryContent productCategoryId="PFTPROMOTION" contentId="CSD_PROMO4" prodCatContentTypeId="CATEGORY_SLIDE_IMG" fromDate="2018-01-01 00:00:00.000"/>
+
     <!-- Art Category Slide Image -->
     <DataResource  dataResourceId="CSD_Art_CAT" dataResourceName="Art Categories Silde Image" statusId="CTNT_PUBLISHED"
         dataResourceTypeId="OFBIZ_FILE" mimeTypeId="image/jpeg" isPublic="Y"

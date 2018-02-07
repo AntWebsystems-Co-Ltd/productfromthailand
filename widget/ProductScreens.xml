@@ -1249,7 +1249,7 @@ under the License.
                 <set field="parameters.category_id" from-field="parameters.productCategoryId"/>
                 <set field="parameters.VIEW_SIZE" value="5"/>
                 <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
-                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <script location="component://productfromthailand/groovyScripts/CategoryDetail.groovy"/>
                 <script location="component://order/groovyScripts/entry/catalog/SideDeepCategory.groovy"/>
                 <script location="component://productfromthailand/groovyScripts/ProductCategories.groovy"/>
                 <set field="breadcrumbs" value="component://productfromthailand/widget/CatalogScreens.xml#breadcrumbs"/>
