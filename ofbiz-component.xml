@@ -48,19 +48,13 @@
     <service-resource type="model" loader="main" location="servicedef/services.xml"/>
     <service-resource type="eca" loader="main" location="servicedef/secas.xml"/>
 
-    <webapp name="productfromthailand1"
+    <webapp name="productfromthailand"
         title="Product from thailand"
         menu-name="secondary"
         server="default-server"
         location="webapp/ecommerce"
         mount-point="/pft"
         app-bar-display="false">
-<!--         <virtual-host host-name="productfromthailand.com"/> -->
-<!--         <virtual-host host-name="www.productfromthailand.com"/> -->
-<!--         <virtual-host host-name="productfromthailand.antwebsystems.com"/> -->
-<!--         <virtual-host host-name="productfromthailand.ofbizsaas.com"/> -->
-<!--         <virtual-host host-name="productfromthailand.ofbizdemo.com"/> -->
-<!--         <virtual-host host-name="productfromthailand.localhost"/> -->
     </webapp>
 
     <webapp name="pft-backend"
