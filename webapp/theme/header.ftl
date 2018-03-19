@@ -164,11 +164,48 @@ under the License.
        gtag('js', new Date());
        gtag('config', 'UA-109836501-1');
      </script>
+
+    <#-- Facebook Customer Chat -->
+    <script language="JavaScript" type="text/javascript">
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId : '1631534763563531',
+                autoLogAppEvents : true,
+                xfbml : true,
+                version : 'v2.12'
+            });
+        };
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <style>
+        .fb_dialog,.fb_customer_chat_bounce_in,.fb_customer_chat_bounce_out,.fb_iframe_widget > span > iframe {
+            right: initial !important;
+            left: 18pt;
+            z-index: 9999999 !important;
+        }
+     </style>
+     <#-- End Facebook Customer Chat -->
 </head>
 <body>
 <div id="wait-spinner" style="display: none; left: 0px; top: 1057px;">
     <div id="wait-spinner-image"></div>
 </div>
+<#-- Facebook Customer Chat -->
+<div class="fb-customerchat"
+  page_id="1421465281236501"
+  theme_color="#0084ff"
+  minimized = false
+  logged_in_greeting="Product Form Thailand ready to help you."
+  logged_out_greeting="Product Form Thailand ready to help you.">
+</div>
+<#-- End Facebook Customer Chat -->
 <#-- Header Section Starts -->
     <header id="header-area">
     <#-- Header Top Starts -->
