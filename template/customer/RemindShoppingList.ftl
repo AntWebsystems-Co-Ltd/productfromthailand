@@ -177,7 +177,7 @@ under the License.
           <tr>
               <td colspan="3">
                   <center>
-                  <a href="${baseURL}/pft/control/showcartView" class="button_text btn-main">${uiLabelMap.PFTGotoyourshoppingCart}</a>
+                  <a href="${baseURL}/control/showcartView" class="button_text btn-main">${uiLabelMap.PFTGotoyourshoppingCart}</a>
                   </center>
                </td>
           </tr>

@@ -1,6 +1,6 @@
 <testcase>
-    <open value="/pft/control/logout" />
-    <open value="/pft/control/main"/>
+    <open value="/control/logout" />
+    <open value="/control/main"/>
     <waitForPageToLoad value="10000"/>
     <click locator="//li[@id='header-bar-login']/a[2]/div"/>
     <waitForPageToLoad value="10000"/>

@@ -111,7 +111,7 @@ under the License.
           </tr>
           <tr>
             <td>
-              Please click <a href="${baseURL!}/pft/control/StoreManagement?partyId=${parameters.partyId!}">here</a> to update your account.
+              Please click <a href="${baseURL!}/control/StoreManagement?partyId=${parameters.partyId!}">here</a> to update your account.
             </td>
           </tr>
           <tr class="blank_row">

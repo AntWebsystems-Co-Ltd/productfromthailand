@@ -74,7 +74,7 @@ under the License.
                 <script src="//platform.twitter.com/widgets.js" type="text/javascript"></script>
                 <a href="https://twitter.com/share" class="twitter-share-button" data-count="none" data-via="Product_Thai">Tweet</a>
             </span>
-            <div class="g-plus" data-action="share" data-href="https://www.productfromthailand.com/pft/control/main"></div>
+            <div class="g-plus" data-action="share" data-href="https://www.productfromthailand.com/control/main"></div>
         </div>
         <div>
            <#assign shoppingCart = sessionAttributes.shoppingCart?if_exists>

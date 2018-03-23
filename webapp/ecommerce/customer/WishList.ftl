@@ -54,7 +54,7 @@ under the License.
                         </#if>
                         <td>
                             <#assign productName = Static['org.apache.ofbiz.product.product.ProductContentWrapper'].getProductContentAsText(product, 'PRODUCT_NAME', request, "html")!>
-                            <a href="/pft/products/p_${wishList.productId}">${StringUtil.wrapString(productName)!}</a>
+                            <a href="/products/p_${wishList.productId}">${StringUtil.wrapString(productName)!}</a>
                         </td>
                         <td>${wishList.date?string.medium}</td>
                         <td>

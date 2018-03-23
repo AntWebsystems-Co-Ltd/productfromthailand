@@ -107,7 +107,7 @@ font-family: Verdana, Arial, Helvetica, sans-serif;
 }*/
 
 body {
-background-image:url(/pft/images/background.jpg);
+background-image:url(/images/background.jpg);
 background-attachment:fixed;
 color:black;
 font-family: Verdana, Arial, Helvetica, sans-serif;
@@ -229,11 +229,11 @@ float: right;
 #right-links li#home,#right-links li#products,
 #right-links li#services,#right-links li#partner,
 #right-links li#aboutus,#right-links li#contactus, #left-links li#showcart{
-background:url(/pft/images/point.gif) no-repeat bottom center;
+background:url(/images/point.gif) no-repeat bottom center;
 }
 
 #ecom-header-bar #searchbar {
-background-image:url(/pft/images/searchbar.gif);
+background-image:url(/images/searchbar.gif);
 overflow:hidden;
 height: 60px;
 width: 933px;
@@ -320,7 +320,7 @@ margin:0px;
 padding:0px;
 }
 #ecom-header-bar .leftcorner{
-background: url(/pft/images/leftTopCorner.gif) top left no-repeat;
+background: url(/images/leftTopCorner.gif) top left no-repeat;
 width:2%;
 float:left;
 }
@@ -450,7 +450,7 @@ padding:1px 4px 3px;
 .boxhead {
 text-align:center;
 height:25px;
-background-image:url(/pft/images/bt_bg.jpg);
+background-image:url(/images/bt_bg.jpg);
 background-repeat:repeat-x;
 font-size: 10pt;
 font-weight: bold;
@@ -1418,7 +1418,7 @@ width: 955px;
 }
 
 #endpage .leftbottomcorner{
-background: url(/pft/images/leftBottomCorner.gif) bottom left;
+background: url(/images/leftBottomCorner.gif) bottom left;
 background-repeat:no-repeat;
 width:15px;
 float:left;

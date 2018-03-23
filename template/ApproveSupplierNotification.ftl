@@ -104,7 +104,7 @@ under the License.
           <tr>
             <td>
               Now that you are a full supplier member, you will have 100% access to your store management which you can manage your products.
-              You can access those here: <a href="${baseURL!}/pft/control/StoreManagement">Store Management</a>
+              You can access those here: <a href="${baseURL!}/control/StoreManagement">Store Management</a>
             </td>
           </tr>
           <tr class="blank_row">

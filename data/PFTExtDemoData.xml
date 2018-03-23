@@ -49,7 +49,7 @@
         systemPropertyValue="v2.10"/>
 
     <!-- Subscription -->
-    <DataResource dataResourceId="PFT_FE_URL" dataResourceTypeId="LINK" dataTemplateTypeId="NONE" objectInfo="https://localhost:8443/pft" statusId="CTNT_PUBLISHED"/>
+    <DataResource dataResourceId="PFT_FE_URL" dataResourceTypeId="LINK" dataTemplateTypeId="NONE" objectInfo="https://localhost:8443/" statusId="CTNT_PUBLISHED"/>
     <Content contentId="PFT_FE_URL" contentTypeId="DOCUMENT" contentName="Product from Thailand URL" description="" dataResourceId="PFT_FE_URL" statusId="CTNT_PUBLISHED"/>
     <WebSiteContent webSiteId="PFT" contentId="PFT_FE_URL" webSiteContentTypeId="FRONTEND_URL" fromDate="2016-01-01 00:00:00"/>
 
@@ -248,7 +248,7 @@
 
     <!-- PayPal -->
     <PaymentGatewayPayPal paymentGatewayConfigId="PAYPAL_CONFIG" businessEmail="ofbiztest01-facilitator@gmail.com" apiUserName="ofbiztest01-facilitator_api1.gmail.com" apiPassword="P6C7J3UA4PW2J43F" apiSignature="AFcWxV21C7fd0v3bYYYRCpSSRl31Ah.6-74sd2vyc5lrifsajw5WPBBa"
-        apiEnvironment="test" notifyUrl="https://localhost:8443/pft/control/payPalNotify" returnUrl="https://localhost:8443/pft/control/payPalCallBack/main" cancelReturnUrl="https://localhost:8443/pft/control/payPalCancel/main" imageUrl="https://localhost:8443/pft-default/pftimages/pft-logo.png"
+        apiEnvironment="test" notifyUrl="https://localhost:8443/control/payPalNotify" returnUrl="https://localhost:8443/control/payPalCallBack" cancelReturnUrl="https://localhost:8443/control/payPalCancel" imageUrl="https://localhost:8443/pft-default/pftimages/pft-logo.png"
         confirmTemplate="/order/emailconfirmation.ftl" redirectUrl="https://www.sandbox.paypal.com/webscr" confirmUrl="https://www.sandbox.paypal.com/us/cgi-bin/webscr" requireConfirmedShipping="N"/>
 
     <ProductStorePaymentSetting productStoreId="PFTSTORE" paymentMethodTypeId="CREDIT_CARD" paymentServiceTypeEnumId="PRDS_PAY_AUTH" paymentService="alwaysApproveCCProcessor" paymentCustomMethodId="CC_AUTH_ALWAYSAPPROV"/>

@@ -1,5 +1,5 @@
 <testcase>
-    <open value="/pft/control/main"/>
+    <open value="/control/main"/>
     <waitForPageToLoad value="10000" />
     <type name="SEARCH_STRING" value="bed"/>
     <click locator="//input[@value='Find']"/>

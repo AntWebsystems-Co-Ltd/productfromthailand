@@ -15,7 +15,7 @@ ${screens.render(recentlyproductScreen)}
 </div>
 </div> <#-- end screenlet -->
 
-<#--div><a href="#"><img src="/pft/images/adver.gif" width="240px"/></a></div-->
+<#--div><a href="#"><img src="/images/adver.gif" width="240px"/></a></div-->
     <object width="240">
         <param name="movie" value="https://www.youtube.com/v/NA0UC4dIcbQ&hl=en&fs=1&"></param>
         <param name="allowFullScreen" value="true"></param>
