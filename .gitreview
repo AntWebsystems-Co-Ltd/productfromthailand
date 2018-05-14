@@ -1,5 +1,5 @@
 [gerrit]
-host=gerrit.antwebsystems.com
+host=www.antwebsystems.com
 port=55555
 project=productfromthailand
 defaultbranch=master

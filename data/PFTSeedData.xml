@@ -56,6 +56,12 @@ under the License.
     <DataResource dataCategoryId="PERSONAL" dataResourceId="PFT-LOGO" dataResourceName="pft-logo.png" dataResourceTypeId="OFBIZ_FILE" dataTemplateTypeId="NONE" mimeTypeId="image/png" objectInfo="/hot-deploy/productfromthailand/webapp/pft-default/pftimages/pft-logo.png" statusId="CTNT_PUBLISHED"  isPublic="Y"/>
     <Content contentId="PFT-LOGO" contentName="pft-logo.png" contentTypeId="DOCUMENT" dataResourceId="PFT-LOGO" mimeTypeId="image/png" statusId="CTNT_PUBLISHED"/>
     <PartyContent contentId="PFT-LOGO" fromDate="2015-01-03 15:29:22.173" partyContentTypeId="LGOIMGURL" partyId="pft"/>
+    <GlJournal organizationPartyId="pft" glJournalId="ERROR_JOURNAL" glJournalName="Suspense transactions"/>
+    <PartyAcctgPreference partyId="pft" taxFormId="" cogsMethodId="COGS_LIFO" baseCurrencyUomId="THB"
+        invoiceSeqCustMethId="INV_HOOK_ENF_SEQ" invoiceIdPrefix="PFT_I"
+        quoteIdPrefix="PFT_Q"
+        orderIdPrefix="PFT_O"
+        errorGlJournalId="ERROR_JOURNAL"/>
 
     <PartyRole partyId="pft" roleTypeId="CARRIER"/>
     <PartyRole partyId="pft" roleTypeId="INTERNAL_ORGANIZATIO"/>
